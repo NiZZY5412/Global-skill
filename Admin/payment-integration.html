@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10162d">
+    <meta name="csrf-token" content="">
+
+    <title>TALVORA | Global Payment Integration Centre</title>
+
+    <link rel="stylesheet" href="payment-integration.css">
+    <script defer src="talvora-admin-config.js"></script>
+    <script src="payment-integration.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <span>GLOBAL WORKFORCE PLATFORM</span>
+                </div>
+            </div>
+
+            <div class="sidebar-context">
+                <span class="context-dot"></span>
+                SUPER ADMINISTRATION
+            </div>
+
+            <div class="nav-caption">PAYMENT INFRASTRUCTURE</div>
+
+            <nav class="main-nav">
+
+                <a href="#overview" class="nav-link active" data-section="overview">
+                    <span class="nav-icon">◈</span>
+                    <span>Integration Overview</span>
+                </a>
+
+                <a href="#integrations" class="nav-link" data-section="integrations">
+                    <span class="nav-icon">⌘</span>
+                    <span>Connection Registry</span>
+                </a>
+
+                <a href="#journeys" class="nav-link" data-section="journeys">
+                    <span class="nav-icon">⇄</span>
+                    <span>Payment Lifecycle</span>
+                </a>
+
+                <a href="#test-lab" class="nav-link" data-section="test-lab">
+                    <span class="nav-icon">⚗</span>
+                    <span>Integration Test Lab</span>
+                </a>
+
+                <a href="#webhooks" class="nav-link" data-section="webhooks">
+                    <span class="nav-icon">⌁</span>
+                    <span>Webhook Verification</span>
+                </a>
+
+                <a href="#reconciliation" class="nav-link" data-section="reconciliation">
+                    <span class="nav-icon">⇌</span>
+                    <span>Reconciliation</span>
+                </a>
+
+                <a href="#history" class="nav-link" data-section="history">
+                    <span class="nav-icon">◷</span>
+                    <span>Execution History</span>
+                </a>
+
+                <a href="#audit" class="nav-link" data-section="audit">
+                    <span class="nav-icon">▤</span>
+                    <span>Integration Audit</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="environment-card">
+                    <span class="environment-indicator"></span>
+                    <div>
+                        <strong>Integration Environment</strong>
+                        <small>Sandbox by default</small>
+                    </div>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">SA</div>
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Infrastructure</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-toggle" id="navToggle" aria-label="Toggle navigation">
+                        ☰
+                    </button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            TALVORA / SUPER ADMIN / FINANCIAL INFRASTRUCTURE
+                        </div>
+
+                        <h1>Global Integration & Testing Centre</h1>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="api-status" id="apiStatus">
+                        <span class="status-dot"></span>
+                        Connecting
+                    </div>
+
+                    <span class="environment-badge" id="environmentLabel">
+                        SANDBOX
+                    </span>
+
+                    <button class="icon-button" id="refreshAll" title="Refresh data">
+                        ↻
+                    </button>
+
+                    <button class="primary-button" id="runTestQuick">
+                        + Run Test
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- SYSTEM NOTICE -->
+
+            <div class="system-notice" id="systemNotice">
+                <div class="notice-icon">◆</div>
+
+                <div>
+                    <strong>Global Payment Infrastructure</strong>
+                    <p id="noticeMessage">
+                        Initializing integration monitoring and retrieving system health.
+                    </p>
+                </div>
+
+                <span class="notice-label">SECURE OPERATIONS</span>
+            </div>
+
+
+            <!-- =================================================
+         1. INTEGRATION OVERVIEW
+    ================================================== -->
+
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL INFRASTRUCTURE COMMAND</span>
+                        <h2>Integration Overview</h2>
+                        <p>Centralized monitoring of TALVORA's payment infrastructure and financial connections.</p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Overview
+                    </button>
+
+                </div>
+
+
+                <div class="metrics-grid">
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            <span>Total Connections</span>
+                            <span class="metric-icon purple">⌘</span>
+                        </div>
+                        <strong id="metricTotalConnections">—</strong>
+                        <small>Registered infrastructure connections</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            <span>Healthy Connections</span>
+                            <span class="metric-icon green">✓</span>
+                        </div>
+                        <strong id="metricHealthyConnections">—</strong>
+                        <small>Verified connection health</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            <span>Failed Test Runs</span>
+                            <span class="metric-icon red">!</span>
+                        </div>
+                        <strong id="metricFailedTests">—</strong>
+                        <small>Reported failed executions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            <span>Open Exceptions</span>
+                            <span class="metric-icon amber">△</span>
+                        </div>
+                        <strong id="metricOpenExceptions">—</strong>
+                        <small>Unresolved reconciliation exceptions</small>
+                    </article>
+
+                </div>
+
+
+                <div class="overview-layout">
+
+                    <div class="panel integration-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">SYSTEM CONNECTIVITY</span>
+                                <h3>Financial Integration Architecture</h3>
+                            </div>
+                            <span class="live-indicator">LIVE MONITORING</span>
+                        </div>
+
+                        <div class="architecture-flow" id="architectureFlow">
+
+                            <div class="architecture-node primary-node">
+                                <div class="node-symbol">T</div>
+                                <div>
+                                    <strong>TALVORA PLATFORM</strong>
+                                    <small>Payment Orchestration</small>
+                                </div>
+                                <span class="node-state" data-health="orchestration">●</span>
+                            </div>
+
+                            <div class="flow-connector">
+                                <span></span>
+                                <small>Authenticated requests</small>
+                            </div>
+
+                            <div class="architecture-grid">
+
+                                <div class="architecture-node">
+                                    <span class="node-symbol">G</span>
+                                    <div>
+                                        <strong>Gateway Providers</strong>
+                                        <small>Card & digital payments</small>
+                                    </div>
+                                    <span class="node-state" data-health="providers">●</span>
+                                </div>
+
+                                <div class="architecture-node">
+                                    <span class="node-symbol">B</span>
+                                    <div>
+                                        <strong>Banking Networks</strong>
+                                        <small>Transfers & bank rails</small>
+                                    </div>
+                                    <span class="node-state" data-health="banking">●</span>
+                                </div>
+
+                                <div class="architecture-node">
+                                    <span class="node-symbol">M</span>
+                                    <div>
+                                        <strong>Mobile Money</strong>
+                                        <small>Regional payment channels</small>
+                                    </div>
+                                    <span class="node-state" data-health="mobile_money">●</span>
+                                </div>
+
+                                <div class="architecture-node">
+                                    <span class="node-symbol">F</span>
+                                    <div>
+                                        <strong>FX & Currency</strong>
+                                        <small>Exchange rate services</small>
+                                    </div>
+                                    <span class="node-state" data-health="fx">●</span>
+                                </div>
+
+                            </div>
+
+                            <div class="flow-connector">
+                                <span></span>
+                                <small>Verified payment events</small>
+                            </div>
+
+                            <div class="architecture-node settlement-node">
+                                <div class="node-symbol">L</div>
+                                <div>
+                                    <strong>FINANCIAL OPERATIONS</strong>
+                                    <small>Ledger · Reconciliation · Settlements</small>
+                                </div>
+                                <span class="node-state" data-health="financial_operations">●</span>
+                            </div>
+
+                        </div>
+
+                        <div class="architecture-footer">
+                            <span><i class="legend healthy"></i> Healthy</span>
+                            <span><i class="legend degraded"></i> Degraded</span>
+                            <span><i class="legend unavailable"></i> Unavailable</span>
+                            <span><i class="legend unknown"></i> Unknown</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel health-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">OPERATIONAL MONITORING</span>
+                                <h3>Infrastructure Health</h3>
+                            </div>
+                        </div>
+
+                        <div class="health-list" id="overviewHealth">
+                            <div class="empty-state">Retrieving infrastructure health...</div>
+                        </div>
+
+                        <button class="text-button" data-navigate="integrations">
+                            View all connections →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">LATEST EXECUTIONS</span>
+                            <h3>Recent Integration Tests</h3>
+                        </div>
+
+                        <button class="text-button" data-navigate="history">
+                            Full execution history →
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>TEST REFERENCE</th>
+                                    <th>TEST SUITE</th>
+                                    <th>PROVIDER</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>STARTED</th>
+                                    <th>DURATION</th>
+                                    <th>RESULT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="overviewRunTable">
+                                <tr>
+                                    <td colspan="8" class="empty-state">Loading execution history...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+         2. CONNECTION REGISTRY
+    ================================================== -->
+
+            <section class="content-section" id="integrations">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">CONNECTIVITY MANAGEMENT</span>
+                        <h2>Global Connection Registry</h2>
+                        <p>Monitor connected gateways, banks, mobile money providers and financial services.</p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Connections
+                    </button>
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Gateway Connections</span>
+                        <strong id="metricGateways">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Bank Integrations</span>
+                        <strong id="metricBanks">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Mobile Money Channels</span>
+                        <strong id="metricMobileMoney">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Unhealthy Connections</span>
+                        <strong id="metricUnhealthy">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="connectionSearch" placeholder="Search provider, bank or connection...">
+
+                        <select id="connectionFilter">
+                            <option value="">All connection types</option>
+                            <option value="gateway">Gateway</option>
+                            <option value="bank">Banking</option>
+                            <option value="mobile_money">Mobile Money</option>
+                        </select>
+
+                        <select id="connectionStatus">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+
+                        <button class="secondary-button" id="connectionReset">
+                            Reset
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CONNECTION</th>
+                                    <th>TYPE</th>
+                                    <th>COUNTRY</th>
+                                    <th>CURRENCIES</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>HEALTH</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="connectionTable">
+                                <tr>
+                                    <td colspan="8" class="empty-state">Loading connections...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+         3. PAYMENT LIFECYCLE
+    ================================================== -->
+
+            <section class="content-section" id="journeys">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">END-TO-END PAYMENT ORCHESTRATION</span>
+                        <h2>Payment Lifecycle Management</h2>
+                        <p>Trace payments from initiation through provider confirmation, ledger posting and final
+                            reconciliation.</p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Lifecycle
+                    </button>
+                </div>
+
+
+                <div class="journey-overview">
+
+                    <div class="journey-step">
+                        <span class="step-number">01</span>
+                        <strong>Initiation</strong>
+                        <small>Payment intent</small>
+                    </div>
+
+                    <span class="journey-arrow">→</span>
+
+                    <div class="journey-step">
+                        <span class="step-number">02</span>
+                        <strong>Routing</strong>
+                        <small>Provider selection</small>
+                    </div>
+
+                    <span class="journey-arrow">→</span>
+
+                    <div class="journey-step">
+                        <span class="step-number">03</span>
+                        <strong>Processing</strong>
+                        <small>Provider response</small>
+                    </div>
+
+                    <span class="journey-arrow">→</span>
+
+                    <div class="journey-step">
+                        <span class="step-number">04</span>
+                        <strong>Verification</strong>
+                        <small>Webhook validation</small>
+                    </div>
+
+                    <span class="journey-arrow">→</span>
+
+                    <div class="journey-step">
+                        <span class="step-number">05</span>
+                        <strong>Accounting</strong>
+                        <small>Ledger posting</small>
+                    </div>
+
+                    <span class="journey-arrow">→</span>
+
+                    <div class="journey-step">
+                        <span class="step-number">06</span>
+                        <strong>Settlement</strong>
+                        <small>Reconciliation</small>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">PAYMENT TRACEABILITY</span>
+                            <h3>Lifecycle Execution Records</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>TRACE REFERENCE</th>
+                                    <th>PAYMENT REFERENCE</th>
+                                    <th>COUNTRY</th>
+                                    <th>CURRENCY</th>
+                                    <th>PROVIDER</th>
+                                    <th>CURRENT STAGE</th>
+                                    <th>LEDGER STATUS</th>
+                                    <th>SETTLEMENT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="journeyTable">
+                                <tr>
+                                    <td colspan="9" class="empty-state">Loading payment lifecycle records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+         4. TEST LAB
+    ================================================== -->
+
+            <section class="content-section" id="test-lab">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">QUALITY ASSURANCE & AUTOMATION</span>
+                        <h2>Integration Testing Laboratory</h2>
+                        <p>Execute controlled integration scenarios against approved provider test environments.</p>
+                    </div>
+
+                    <span class="environment-badge sandbox-badge">
+                        SANDBOX DEFAULT
+                    </span>
+                </div>
+
+
+                <div class="security-banner">
+                    <span class="security-symbol">⬡</span>
+                    <div>
+                        <strong>Protected Testing Environment</strong>
+                        <p>Payment lifecycle tests use backend-managed sandbox credentials and test fixtures. Production
+                            financial transactions are not initiated by this testing form.</p>
+                    </div>
+                </div>
+
+
+                <div class="test-lab-grid">
+
+                    <div class="panel test-form-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">NEW TEST EXECUTION</span>
+                                <h3>Configure Integration Test</h3>
+                            </div>
+                            <span class="test-icon">⚗</span>
+                        </div>
+
+
+                        <form id="testForm">
+
+                            <label>
+                                Test Suite
+                                <select name="testType" id="testType" required>
+                                    <option value="connectivity">Provider Connectivity</option>
+                                    <option value="authentication">Authentication & Credentials</option>
+                                    <option value="authorization">Payment Authorization</option>
+                                    <option value="payment_lifecycle">Complete Payment Lifecycle</option>
+                                    <option value="webhook">Webhook Delivery & Verification</option>
+                                    <option value="settlement">Settlement Verification</option>
+                                    <option value="reconciliation">Ledger Reconciliation</option>
+                                    <option value="full_e2e">Full End-to-End Financial Flow</option>
+                                </select>
+                            </label>
+
+
+                            <label>
+                                Test Environment
+                                <select name="environment" id="testEnvironment" required>
+                                    <option value="sandbox">Sandbox</option>
+                                    <option value="production_health_check">Production Health Check</option>
+                                </select>
+                            </label>
+
+
+                            <label>
+                                Payment Provider
+                                <select name="providerId" id="testProvider" required>
+                                    <option value="">Select registered provider</option>
+                                </select>
+                            </label>
+
+
+                            <div class="form-grid">
+
+                                <label>
+                                    Country Code
+                                    <input name="country" id="testCountry" placeholder="e.g. KE" maxlength="2"
+                                        pattern="[A-Za-z]{2}" required>
+                                </label>
+
+                                <label>
+                                    Currency
+                                    <select name="currency" id="testCurrency">
+                                        <option value="">Select currency</option>
+                                    </select>
+                                </label>
+
+                            </div>
+
+
+                            <label>
+                                Payment Channel
+                                <select name="channel" id="testChannel" required>
+                                    <option value="card">Card</option>
+                                    <option value="bank_transfer">Bank Transfer</option>
+                                    <option value="mobile_money">Mobile Money</option>
+                                    <option value="digital_wallet">Digital Wallet</option>
+                                </select>
+                            </label>
+
+
+                            <label>
+                                Test Scenario / Profile
+                                <select name="scenario" id="testScenario">
+                                    <option value="standard_success">Standard Success</option>
+                                    <option value="declined_payment">Declined Payment</option>
+                                    <option value="delayed_response">Delayed Provider Response</option>
+                                    <option value="duplicate_request">Idempotency Verification</option>
+                                    <option value="webhook_retry">Webhook Retry</option>
+                                    <option value="settlement_mismatch">Settlement Exception</option>
+                                    <option value="provider_failover">Provider Failover</option>
+                                </select>
+                            </label>
+
+
+                            <label>
+                                Test Justification
+                                <textarea name="reason" id="testReason" rows="3"
+                                    placeholder="Explain the purpose of this test..." required></textarea>
+                            </label>
+
+
+                            <div class="form-note">
+                                Test amounts, credentials and provider fixtures are controlled by the server-side test
+                                profile.
+                            </div>
+
+
+                            <button class="primary-button full-button" id="testRunButton" type="submit">
+                                ▶ Execute Integration Test
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <div class="test-results-column">
+
+                        <div class="panel">
+
+                            <div class="panel-heading">
+                                <div>
+                                    <span class="eyebrow">EXECUTION STATUS</span>
+                                    <h3>Latest Test Result</h3>
+                                </div>
+                            </div>
+
+                            <div id="testResultNotice" class="test-result-placeholder">
+                                <div class="result-symbol">◎</div>
+                                <strong>Awaiting Test Execution</strong>
+                                <p>Configure a test suite and execute it to see its results here.</p>
+                            </div>
+
+                            <div id="testResultDetails" hidden></div>
+
+                        </div>
+
+
+                        <div class="panel">
+
+                            <div class="panel-heading">
+                                <div>
+                                    <span class="eyebrow">TEST COVERAGE</span>
+                                    <h3>Financial Infrastructure Checks</h3>
+                                </div>
+                            </div>
+
+                            <div class="coverage-list">
+
+                                <div><span>Provider Connectivity</span><span>01</span></div>
+                                <div><span>Payment Authorization</span><span>02</span></div>
+                                <div><span>Idempotency Protection</span><span>03</span></div>
+                                <div><span>Webhook Verification</span><span>04</span></div>
+                                <div><span>Ledger Posting</span><span>05</span></div>
+                                <div><span>Settlement Reconciliation</span><span>06</span></div>
+                                <div><span>Provider Failover</span><span>07</span></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+         5. WEBHOOK VERIFICATION
+    ================================================== -->
+
+            <section class="content-section" id="webhooks">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">EVENT DELIVERY & AUTHENTICITY</span>
+                        <h2>Webhook Verification Centre</h2>
+                        <p>Monitor provider event delivery, signature validation, retries and duplicate event
+                            protection.</p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Events
+                    </button>
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Received Events</span>
+                        <strong id="metricWebhookReceived">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Verified Events</span>
+                        <strong id="metricWebhookVerified">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Failed Deliveries</span>
+                        <strong id="metricWebhookFailed">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Signature Failures</span>
+                        <strong id="metricWebhookSignatures">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="security-banner">
+                    <span class="security-symbol">⬡</span>
+                    <div>
+                        <strong>Webhook Security Controls</strong>
+                        <p>Signature verification, timestamp validation, replay protection, event idempotency and
+                            trusted provider identity must be enforced by the backend.</p>
+                    </div>
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="webhookSearch" placeholder="Search webhook reference...">
+
+                        <select id="webhookStatus">
+                            <option value="">All delivery statuses</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="failed">Failed</option>
+                            <option value="retrying">Retrying</option>
+                            <option value="pending">Pending</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>EVENT REFERENCE</th>
+                                    <th>PROVIDER</th>
+                                    <th>EVENT TYPE</th>
+                                    <th>PAYMENT REFERENCE</th>
+                                    <th>SIGNATURE</th>
+                                    <th>RECEIVED</th>
+                                    <th>ATTEMPTS</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="webhookTable">
+                                <tr>
+                                    <td colspan="9" class="empty-state">Loading webhook events...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+         6. RECONCILIATION
+    ================================================== -->
+
+            <section class="content-section" id="reconciliation">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL DATA CONSISTENCY</span>
+                        <h2>Settlement & Ledger Reconciliation</h2>
+                        <p>Validate consistency between payment providers, settlement records and TALVORA's financial
+                            ledger.</p>
+                    </div>
+
+                    <button class="primary-button" id="runReconciliation">
+                        ↻ Request Reconciliation
+                    </button>
+                </div>
+
+
+                <div class="security-banner">
+                    <span class="security-symbol">⬡</span>
+                    <div>
+                        <strong>Financial Integrity</strong>
+                        <p>Reconciliation identifies discrepancies. It must never silently alter ledger entries or mark
+                            unsettled funds as settled.</p>
+                    </div>
+                </div>
+
+
+                <div class="metrics-grid">
+
+                    <article class="metric-card">
+                        <span>Pending Reconciliation</span>
+                        <strong id="reconPending">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Matched Records</span>
+                        <strong id="reconMatched">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Exceptions</span>
+                        <strong id="reconExceptions">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Unmatched Value</span>
+                        <strong id="reconValue">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">RECONCILIATION REGISTER</span>
+                            <h3>Settlement & Ledger Exceptions</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>PROVIDER</th>
+                                    <th>SETTLEMENT AMOUNT</th>
+                                    <th>LEDGER AMOUNT</th>
+                                    <th>DIFFERENCE</th>
+                                    <th>CURRENCY</th>
+                                    <th>DETECTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="reconciliationTable">
+                                <tr>
+                                    <td colspan="9" class="empty-state">Loading reconciliation records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+         7. EXECUTION HISTORY
+    ================================================== -->
+
+            <section class="content-section" id="history">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">TEST GOVERNANCE</span>
+                        <h2>Integration Execution History</h2>
+                        <p>Review completed, failed, pending and in-progress integration test runs.</p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh History
+                    </button>
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="historySearch" placeholder="Search test reference or provider...">
+
+                        <select id="historyStatus">
+                            <option value="">All results</option>
+                            <option value="successful">Successful</option>
+                            <option value="failed">Failed</option>
+                            <option value="pending">Pending</option>
+                            <option value="running">Running</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>TEST REFERENCE</th>
+                                    <th>SUITE</th>
+                                    <th>PROVIDER</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>EXECUTOR</th>
+                                    <th>STARTED</th>
+                                    <th>DURATION</th>
+                                    <th>RESULT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="historyTable">
+                                <tr>
+                                    <td colspan="9" class="empty-state">Loading test history...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+         8. INTEGRATION AUDIT
+    ================================================== -->
+
+            <section class="content-section" id="audit">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">SECURITY & ACCOUNTABILITY</span>
+                        <h2>Integration Audit Centre</h2>
+                        <p>Track administrative activity, test executions, configuration changes and privileged
+                            integration operations.</p>
+                    </div>
+
+                    <button class="secondary-button" id="exportAudit">
+                        ↓ Export Audit
+                    </button>
+                </div>
+
+
+                <div class="security-banner">
+                    <span class="security-symbol">⬡</span>
+                    <div>
+                        <strong>Immutable Audit Requirements</strong>
+                        <p>Audit records must be generated and protected server-side, with actor identity, timestamp,
+                            correlation ID, action, approval and outcome.</p>
+                    </div>
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="auditSearch" placeholder="Search administrator or operation...">
+
+                        <select id="auditAction">
+                            <option value="">All actions</option>
+                            <option value="test_execution">Test Execution</option>
+                            <option value="connection_change">Connection Change</option>
+                            <option value="webhook_replay">Webhook Replay</option>
+                            <option value="reconciliation">Reconciliation</option>
+                            <option value="approval">Approval</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>AUDIT ID</th>
+                                    <th>ADMINISTRATOR</th>
+                                    <th>OPERATION</th>
+                                    <th>RESOURCE</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>REASON</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="auditTable">
+                                <tr>
+                                    <td colspan="9" class="empty-state">Loading audit records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer>
+                <div>
+                    TALVORA GLOBAL INFRASTRUCTURE
+                    <span>·</span>
+                    PAYMENT INTEGRATION CENTRE
+                </div>
+
+                <div>SECURE ADMINISTRATIVE ENVIRONMENT</div>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- RECORD DETAILS MODAL -->
+
+    <div class="modal-overlay" id="detailModal" hidden>
+
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">INFRASTRUCTURE RECORD</span>
+                    <h2 id="detailTitle">Record Details</h2>
+                </div>
+
+                <button class="modal-close" data-close-modal aria-label="Close">×</button>
+            </div>
+
+            <div id="detailBody" class="detail-body"></div>
+
+            <div id="detailActions" class="modal-actions">
+                <button class="secondary-button" data-close-modal>Close</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONFIRMATION MODAL -->
+
+    <div class="modal-overlay" id="actionModal" hidden>
+
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">PROTECTED OPERATION</span>
+                    <h2 id="actionTitle">Confirm Operation</h2>
+                </div>
+
+                <button class="modal-close" data-close-modal aria-label="Close">×</button>
+            </div>
+
+            <div class="confirmation-warning" id="actionDescription">
+                This operation requires backend authorization.
+            </div>
+
+            <label class="modal-label">
+                Administrative justification
+                <textarea id="actionReason" rows="3" placeholder="Enter a detailed operational reason..."
+                    required></textarea>
+            </label>
+
+            <div class="modal-note">
+                Submission does not guarantee execution. The backend must validate your permissions, approval
+                requirements and current record state.
+            </div>
+
+            <div class="modal-actions">
+                <button class="secondary-button" data-close-modal>Cancel</button>
+                <button class="primary-button" id="actionConfirm">Submit Request</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOTIFICATIONS -->
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="false"></div>
+
+</body>
+
+</html>

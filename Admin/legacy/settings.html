@@ -1,0 +1,3760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b1730">
+
+    <meta name="description" content="TALVORA Global System Settings, Super Admin Management, Security and Permissions">
+
+    <title>System Settings | TALVORA Global</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="settings.css">
+
+    <script src="settings.js" defer></script>
+</head>
+
+<body>
+
+    <div class="settings-app" id="settings-app">
+
+        <!-- ==========================================
+         MOBILE SIDEBAR OVERLAY
+    =========================================== -->
+
+        <div class="settings-sidebar-overlay" id="settings-sidebar-overlay" hidden></div>
+
+
+        <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+        <aside class="settings-sidebar" id="settings-sidebar">
+
+            <div class="settings-sidebar-brand">
+
+                <a href="../index.html" class="settings-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="TALVORA Technologies" class="settings-brand-logo">
+
+                    <div class="settings-brand-text">
+
+                        <strong>TALVORA</strong>
+
+                        <span>GLOBAL ADMINISTRATION</span>
+
+                    </div>
+
+                </a>
+
+                <button type="button" class="settings-sidebar-close" id="settings-sidebar-close"
+                    aria-label="Close navigation">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <!-- ADMIN IDENTITY -->
+
+            <div class="settings-admin-identity">
+
+                <div class="settings-admin-avatar" id="settings-admin-avatar">
+
+                    SA
+
+                </div>
+
+                <div class="settings-admin-info">
+
+                    <strong id="settings-admin-name">
+                        Super Administrator
+                    </strong>
+
+                    <span id="settings-admin-role">
+                        Super Admin
+                    </span>
+
+                    <span class="settings-admin-status">
+
+                        <span class="status-dot"></span>
+
+                        Session status unavailable
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN NAVIGATION -->
+
+            <nav class="settings-navigation" aria-label="System settings navigation">
+
+                <div class="settings-nav-heading">
+                    PLATFORM
+                </div>
+
+                <button type="button" class="settings-nav-item active" data-settings-panel="overview"
+                    aria-current="page">
+
+                    <span class="settings-nav-icon">⌂</span>
+
+                    <span>System Overview</span>
+
+                </button>
+
+
+                <div class="settings-nav-heading">
+                    ADMINISTRATION
+                </div>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="admins">
+
+                    <span class="settings-nav-icon">♙</span>
+
+                    <span>Super Admin Accounts</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="invitations">
+
+                    <span class="settings-nav-icon">✉</span>
+
+                    <span>Administrator Invitations</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="permissions">
+
+                    <span class="settings-nav-icon">⚿</span>
+
+                    <span>Roles & Permissions</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="approvals">
+
+                    <span class="settings-nav-icon">✓</span>
+
+                    <span>Approval Centre</span>
+
+                    <span class="settings-nav-count" id="settings-pending-approval-count" hidden></span>
+
+                </button>
+
+
+                <div class="settings-nav-heading">
+                    ACCESS CONTROL
+                </div>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="portal-access">
+
+                    <span class="settings-nav-icon">◎</span>
+
+                    <span>Portal Access</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="impersonation">
+
+                    <span class="settings-nav-icon">⇄</span>
+
+                    <span>Account Impersonation</span>
+
+                </button>
+
+
+                <div class="settings-nav-heading">
+                    SECURITY & GOVERNANCE
+                </div>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="security">
+
+                    <span class="settings-nav-icon">♢</span>
+
+                    <span>Security Settings</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="audit">
+
+                    <span class="settings-nav-icon">≡</span>
+
+                    <span>Audit Logs</span>
+
+                </button>
+
+
+                <div class="settings-nav-heading">
+                    PLATFORM CONFIGURATION
+                </div>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="branding">
+
+                    <span class="settings-nav-icon">✧</span>
+
+                    <span>Corporate Branding</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="global">
+
+                    <span class="settings-nav-icon">⚙</span>
+
+                    <span>Global Configuration</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="portals">
+
+                    <span class="settings-nav-icon">▣</span>
+
+                    <span>Portal Configuration</span>
+
+                </button>
+
+
+                <div class="settings-nav-heading">
+                    COMMUNICATION
+                </div>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="notifications">
+
+                    <span class="settings-nav-icon">♧</span>
+
+                    <span>Notifications</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="email">
+
+                    <span class="settings-nav-icon">✉</span>
+
+                    <span>Email Templates</span>
+
+                </button>
+
+
+                <div class="settings-nav-heading">
+                    INFRASTRUCTURE
+                </div>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="maintenance">
+
+                    <span class="settings-nav-icon">⌘</span>
+
+                    <span>Maintenance</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="integrations">
+
+                    <span class="settings-nav-icon">⌁</span>
+
+                    <span>Integrations & APIs</span>
+
+                </button>
+
+                <button type="button" class="settings-nav-item" data-settings-panel="monitoring">
+
+                    <span class="settings-nav-icon">◉</span>
+
+                    <span>System Monitoring</span>
+
+                </button>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="settings-sidebar-footer">
+
+                <a href="../index.html" class="settings-back-link">
+
+                    <span>←</span>
+
+                    Back to Super Admin Dashboard
+
+                </a>
+
+                <div class="settings-version">
+
+                    TALVORA GLOBAL
+
+                    <span>GSES SYSTEM 001</span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+        <main class="settings-main">
+
+
+            <!-- TOP HEADER -->
+
+            <header class="settings-topbar">
+
+                <div class="settings-topbar-left">
+
+                    <button type="button" class="settings-menu-toggle" id="settings-menu-toggle"
+                        aria-label="Open navigation" aria-expanded="false">
+
+                        ☰
+
+                    </button>
+
+                    <div>
+
+                        <div class="settings-breadcrumb">
+
+                            TALVORA GLOBAL
+
+                            <span>/</span>
+
+                            SYSTEM SETTINGS
+
+                        </div>
+
+                        <h1 id="settings-page-title">
+                            System Overview
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-topbar-right">
+
+                    <div class="settings-platform-status">
+
+                        <span class="status-dot"></span>
+
+                        <span id="settings-platform-status">
+                            Status unavailable
+                        </span>
+
+                    </div>
+
+                    <button type="button" class="settings-refresh-button" id="settings-refresh">
+
+                        ↻
+
+                        <span>Refresh</span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- GLOBAL NOTICE -->
+
+            <div class="settings-notice" id="settings-notice" role="status" aria-live="polite" hidden>
+
+            </div>
+
+
+            <!-- ======================================
+             01. SYSTEM OVERVIEW
+        ======================================= -->
+
+            <section class="settings-panel active" id="settings-panel-overview">
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            PLATFORM GOVERNANCE
+                        </span>
+
+                        <h2>Central System Administration</h2>
+
+                        <p>
+                            Manage the security, access architecture,
+                            administrator accounts and global configuration
+                            of the TALVORA employment ecosystem.
+                        </p>
+
+                    </div>
+
+                    <div class="settings-intro-actions">
+
+                        <button type="button" class="settings-button secondary" data-open-panel="audit">
+
+                            View Audit Trail
+
+                        </button>
+
+                        <button type="button" class="settings-button primary" data-open-panel="admins">
+
+                            Manage Administrators
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OVERVIEW METRICS -->
+
+                <div class="settings-metrics-grid">
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            SUPER ADMIN CAPACITY
+                        </div>
+
+                        <div class="settings-metric-value" id="overview-admin-capacity">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Authorized account capacity
+                        </div>
+
+                    </article>
+
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            ACTIVE ADMINISTRATORS
+                        </div>
+
+                        <div class="settings-metric-value" id="overview-active-admins">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Verified active accounts
+                        </div>
+
+                    </article>
+
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            PENDING APPROVALS
+                        </div>
+
+                        <div class="settings-metric-value" id="overview-pending-approvals">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Awaiting independent authorization
+                        </div>
+
+                    </article>
+
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            SECURITY EVENTS
+                        </div>
+
+                        <div class="settings-metric-value" id="overview-security-events">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Reporting period supplied by server
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- THREE PORTALS -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Connected Platform Portals</h3>
+
+                            <p>
+                                Central governance across all three
+                                TALVORA portals.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-portal-grid">
+
+                        <article class="settings-portal-card">
+
+                            <div class="settings-portal-icon">
+                                SA
+                            </div>
+
+                            <div>
+
+                                <h4>Super Admin Portal</h4>
+
+                                <p>
+                                    Platform-wide governance and administration.
+                                </p>
+
+                                <span class="settings-portal-status" id="portal-status-admin">
+
+                                    Status unavailable
+
+                                </span>
+
+                            </div>
+
+                            <button type="button" data-open-panel="permissions">
+
+                                Configure →
+
+                            </button>
+
+                        </article>
+
+
+                        <article class="settings-portal-card">
+
+                            <div class="settings-portal-icon">
+                                EM
+                            </div>
+
+                            <div>
+
+                                <h4>Employer Portal</h4>
+
+                                <p>
+                                    Employer accounts, jobs and workforce operations.
+                                </p>
+
+                                <span class="settings-portal-status" id="portal-status-employer">
+
+                                    Status unavailable
+
+                                </span>
+
+                            </div>
+
+                            <button type="button" data-open-panel="portals">
+
+                                Configure →
+
+                            </button>
+
+                        </article>
+
+
+                        <article class="settings-portal-card">
+
+                            <div class="settings-portal-icon">
+                                EE
+                            </div>
+
+                            <div>
+
+                                <h4>Employee Portal</h4>
+
+                                <p>
+                                    Employee profiles, skills and opportunities.
+                                </p>
+
+                                <span class="settings-portal-status" id="portal-status-employee">
+
+                                    Status unavailable
+
+                                </span>
+
+                            </div>
+
+                            <button type="button" data-open-panel="portals">
+
+                                Configure →
+
+                            </button>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GOVERNANCE QUICK ACCESS -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Governance & Security</h3>
+
+                            <p>
+                                Access the principal control areas.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-quick-grid">
+
+                        <button type="button" class="settings-quick-card" data-open-panel="admins">
+
+                            <strong>Administrator Management</strong>
+
+                            <span>
+                                Manage authorized Super Admin accounts.
+                            </span>
+
+                            <span class="quick-arrow">→</span>
+
+                        </button>
+
+
+                        <button type="button" class="settings-quick-card" data-open-panel="approvals">
+
+                            <strong>Dual Authorization</strong>
+
+                            <span>
+                                Review high-risk administrative operations.
+                            </span>
+
+                            <span class="quick-arrow">→</span>
+
+                        </button>
+
+
+                        <button type="button" class="settings-quick-card" data-open-panel="security">
+
+                            <strong>Security Policies</strong>
+
+                            <span>
+                                Control authentication and session security.
+                            </span>
+
+                            <span class="quick-arrow">→</span>
+
+                        </button>
+
+
+                        <button type="button" class="settings-quick-card" data-open-panel="audit">
+
+                            <strong>Audit & Accountability</strong>
+
+                            <span>
+                                Examine recorded administrative activities.
+                            </span>
+
+                            <span class="quick-arrow">→</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SYSTEM STATUS -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Platform Service Status</h3>
+
+                            <p>
+                                Live service information supplied by
+                                the connected monitoring service.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-service-list">
+
+                        <div class="settings-service-row">
+
+                            <span>Authentication Service</span>
+
+                            <strong id="service-authentication">
+                                Unknown
+                            </strong>
+
+                        </div>
+
+                        <div class="settings-service-row">
+
+                            <span>Authorization Service</span>
+
+                            <strong id="service-authorization">
+                                Unknown
+                            </strong>
+
+                        </div>
+
+                        <div class="settings-service-row">
+
+                            <span>Database Service</span>
+
+                            <strong id="service-database">
+                                Unknown
+                            </strong>
+
+                        </div>
+
+                        <div class="settings-service-row">
+
+                            <span>Notification Service</span>
+
+                            <strong id="service-notifications">
+                                Unknown
+                            </strong>
+
+                        </div>
+
+                        <div class="settings-service-row">
+
+                            <span>Integration Services</span>
+
+                            <strong id="service-integrations">
+                                Unknown
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             02. SUPER ADMIN ACCOUNTS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-admins" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            ADMINISTRATIVE GOVERNANCE
+                        </span>
+
+                        <h2>Super Admin Accounts</h2>
+
+                        <p>
+                            Manage the ten authorized platform-wide
+                            administrator positions.
+                        </p>
+
+                    </div>
+
+                    <button type="button" class="settings-button primary" id="settings-invite-admin">
+
+                        + Invite Replacement Administrator
+
+                    </button>
+
+                </div>
+
+
+                <div class="settings-policy-banner">
+
+                    <strong>Platform Administrator Policy</strong>
+
+                    <p>
+                        TALVORA has a maximum of ten active Super Admin
+                        positions. All administrators have equal
+                        operational authority. Every account must be
+                        individually authenticated and auditable.
+                    </p>
+
+                    <div class="settings-policy-stats">
+
+                        <span>
+                            Authorized capacity:
+                            <strong>10</strong>
+                        </span>
+
+                        <span>
+                            Self-registration:
+                            <strong>Disabled</strong>
+                        </span>
+
+                        <span>
+                            MFA:
+                            <strong>Mandatory</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-toolbar">
+
+                    <div class="settings-search">
+
+                        <input type="search" id="admin-search" placeholder="Search administrators..."
+                            autocomplete="off">
+
+                    </div>
+
+                    <select id="admin-status-filter" aria-label="Filter administrators by status">
+
+                        <option value="">All statuses</option>
+
+                        <option value="active">Active</option>
+
+                        <option value="suspended">Suspended</option>
+
+                        <option value="pending">Pending</option>
+
+                        <option value="invited">Invited</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Administrator</th>
+
+                                <th>Account Reference</th>
+
+                                <th>Status</th>
+
+                                <th>MFA</th>
+
+                                <th>Last Login</th>
+
+                                <th>Created</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="admin-table-body">
+
+                            <tr>
+
+                                <td colspan="7" class="settings-empty-cell">
+
+                                    Administrator records will appear
+                                    when the authorized service is connected.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="settings-pagination" id="admin-pagination">
+
+                    <span id="admin-record-count">
+                        Records unavailable
+                    </span>
+
+                    <div>
+
+                        <button type="button" id="admin-prev" disabled>
+
+                            Previous
+
+                        </button>
+
+                        <span id="admin-page-info">
+                            —
+                        </span>
+
+                        <button type="button" id="admin-next" disabled>
+
+                            Next
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INVITATION FORM -->
+
+                <div class="settings-card" id="admin-invitation-card" hidden>
+
+                    <div class="settings-card-heading">
+
+                        <div>
+
+                            <h3>Invite Replacement Administrator</h3>
+
+                            <p>
+                                Invitations require independent approval
+                                before an account can be activated.
+                            </p>
+
+                        </div>
+
+                        <button type="button" class="settings-close-button" data-close-card="admin-invitation-card">
+
+                            &times;
+
+                        </button>
+
+                    </div>
+
+
+                    <form id="admin-invitation-form">
+
+                        <div class="settings-form-grid">
+
+                            <label>
+
+                                Full Name
+
+                                <input type="text" name="fullName" maxlength="120" required>
+
+                            </label>
+
+
+                            <label>
+
+                                Official Email Address
+
+                                <input type="email" name="email" maxlength="254" required>
+
+                            </label>
+
+
+                            <label>
+
+                                Replacement Reason
+
+                                <select name="replacementReason" required>
+
+                                    <option value="">
+                                        Select reason
+                                    </option>
+
+                                    <option value="resignation">
+                                        Resignation
+                                    </option>
+
+                                    <option value="termination">
+                                        Termination
+                                    </option>
+
+                                    <option value="account_compromise">
+                                        Account Compromise
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+
+                            <label>
+
+                                Supporting Reference
+
+                                <input type="text" name="supportingReference" maxlength="200">
+
+                            </label>
+
+                        </div>
+
+
+                        <label>
+
+                            Administrative Justification
+
+                            <textarea name="reason" rows="4" minlength="10" required></textarea>
+
+                        </label>
+
+
+                        <div class="settings-form-actions">
+
+                            <button type="button" class="settings-button secondary"
+                                data-close-card="admin-invitation-card">
+
+                                Cancel
+
+                            </button>
+
+                            <button type="submit" class="settings-button primary">
+
+                                Submit for Approval
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             03. ADMINISTRATOR INVITATIONS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-invitations" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            ACCOUNT GOVERNANCE
+                        </span>
+
+                        <h2>Administrator Invitations</h2>
+
+                        <p>
+                            Review replacement administrator invitations,
+                            approval decisions and invitation status.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-filter-row">
+
+                    <input type="search" id="invitation-search" placeholder="Search invitations...">
+
+                    <select id="invitation-status-filter">
+
+                        <option value="">All statuses</option>
+
+                        <option value="pending_approval">
+                            Pending Approval
+                        </option>
+
+                        <option value="approved">
+                            Approved
+                        </option>
+
+                        <option value="rejected">
+                            Rejected
+                        </option>
+
+                        <option value="sent">
+                            Invitation Sent
+                        </option>
+
+                        <option value="accepted">
+                            Accepted
+                        </option>
+
+                        <option value="expired">
+                            Expired
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Invitee</th>
+
+                                <th>Email</th>
+
+                                <th>Reason</th>
+
+                                <th>Requested By</th>
+
+                                <th>Status</th>
+
+                                <th>Submitted</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="invitation-table-body">
+
+                            <tr>
+
+                                <td colspan="7" class="settings-empty-cell">
+
+                                    No invitation records loaded.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             04. ROLES & PERMISSIONS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-permissions" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            CENTRAL AUTHORIZATION
+                        </span>
+
+                        <h2>Roles & Permissions</h2>
+
+                        <p>
+                            Establish the central authorization architecture
+                            shared across all TALVORA portals.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-policy-banner">
+
+                    <strong>Super Admin Authorization Model</strong>
+
+                    <p>
+                        All ten authorized Super Admin accounts have
+                        equal platform-wide authority. Administrative
+                        access is assigned through authenticated
+                        individual identities, not shared credentials.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Platform Permission Domains</h3>
+
+                            <p>
+                                These are the central administrative
+                                capability areas.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-permission-grid">
+
+                        <article class="settings-permission-card">
+
+                            <h4>Employee Management</h4>
+
+                            <p>
+                                Employee profiles, account access,
+                                records and account administration.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+
+                        <article class="settings-permission-card">
+
+                            <h4>Employer Management</h4>
+
+                            <p>
+                                Employer accounts, organizations,
+                                verification and account controls.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+
+                        <article class="settings-permission-card">
+
+                            <h4>Jobs & Applications</h4>
+
+                            <p>
+                                Job listings, applications,
+                                recruitment and platform matching.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+
+                        <article class="settings-permission-card">
+
+                            <h4>Assessments & Evidence</h4>
+
+                            <p>
+                                Skills assessments, evidence
+                                verification and related records.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+
+                        <article class="settings-permission-card">
+
+                            <h4>Finance</h4>
+
+                            <p>
+                                Platform revenue, financial operations
+                                and transaction oversight.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+
+                        <article class="settings-permission-card">
+
+                            <h4>Disputes</h4>
+
+                            <p>
+                                Dispute investigation, resolution
+                                and case management.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+
+                        <article class="settings-permission-card">
+
+                            <h4>Privacy & Consent</h4>
+
+                            <p>
+                                Privacy governance, consent,
+                                retention and data protection.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+
+                        <article class="settings-permission-card">
+
+                            <h4>System Administration</h4>
+
+                            <p>
+                                Configuration, security, integrations,
+                                monitoring and audit governance.
+                            </p>
+
+                            <span>Super Admin Authority</span>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Portal Access Architecture</h3>
+
+                            <p>
+                                The authorization service must enforce
+                                access independently for each portal.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-table-container">
+
+                        <table class="settings-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Portal</th>
+
+                                    <th>Super Admin Access</th>
+
+                                    <th>Employee Access</th>
+
+                                    <th>Employer Access</th>
+
+                                    <th>Authorization</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Super Admin Portal</td>
+
+                                    <td>Full</td>
+
+                                    <td>Restricted</td>
+
+                                    <td>Restricted</td>
+
+                                    <td>Central Admin</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Employer Portal</td>
+
+                                    <td>Audited Access</td>
+
+                                    <td>Restricted</td>
+
+                                    <td>Tenant Restricted</td>
+
+                                    <td>Employer Guard</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Employee Portal</td>
+
+                                    <td>Audited Access</td>
+
+                                    <td>Own Account</td>
+
+                                    <td>Restricted</td>
+
+                                    <td>Employee Guard</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Authorization Architecture</h3>
+
+                            <p>
+                                Permission enforcement must be performed
+                                by the backend, not just hidden frontend controls.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-card">
+
+                        <div class="settings-information-row">
+
+                            <strong>Authentication</strong>
+
+                            <span>
+                                Individual administrator identity verification
+                            </span>
+
+                        </div>
+
+                        <div class="settings-information-row">
+
+                            <strong>Authorization</strong>
+
+                            <span>
+                                Server-side Super Admin permission verification
+                            </span>
+
+                        </div>
+
+                        <div class="settings-information-row">
+
+                            <strong>Tenant Isolation</strong>
+
+                            <span>
+                                Employee and employer data boundaries
+                            </span>
+
+                        </div>
+
+                        <div class="settings-information-row">
+
+                            <strong>High-Risk Actions</strong>
+
+                            <span>
+                                Independent second-administrator authorization
+                            </span>
+
+                        </div>
+
+                        <div class="settings-information-row">
+
+                            <strong>Account Impersonation</strong>
+
+                            <span>
+                                Explicit authorization, time limits and audit logging
+                            </span>
+
+                        </div>
+
+                        <div class="settings-information-row">
+
+                            <strong>Audit Integrity</strong>
+
+                            <span>
+                                Protected, append-only administrative event history
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             05. APPROVAL CENTRE
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-approvals" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            DUAL AUTHORIZATION
+                        </span>
+
+                        <h2>Approval Centre</h2>
+
+                        <p>
+                            Independently review sensitive administrative
+                            operations before execution.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-policy-banner">
+
+                    <strong>Two-Person Authorization Policy</strong>
+
+                    <p>
+                        The administrator who initiates a high-risk
+                        operation cannot approve their own request.
+                        Approval must come from a different authorized
+                        Super Admin.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Controlled Operations</h3>
+
+                            <p>
+                                Actions requiring independent authorization.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-approval-types">
+
+                        <div>Permanent deletion of sensitive records</div>
+
+                        <div>Large financial adjustments</div>
+
+                        <div>Removal of a Super Admin account</div>
+
+                        <div>Replacement administrator approval</div>
+
+                        <div>Legal hold release</div>
+
+                        <div>Sensitive data disposal</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-toolbar">
+
+                    <input type="search" id="approval-search" placeholder="Search approval requests...">
+
+                    <select id="approval-status-filter">
+
+                        <option value="">All statuses</option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="approved">
+                            Approved
+                        </option>
+
+                        <option value="rejected">
+                            Rejected
+                        </option>
+
+                        <option value="cancelled">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Request Reference</th>
+
+                                <th>Operation</th>
+
+                                <th>Initiated By</th>
+
+                                <th>Submitted</th>
+
+                                <th>Approval Status</th>
+
+                                <th>Second Administrator</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="approval-table-body">
+
+                            <tr>
+
+                                <td colspan="7" class="settings-empty-cell">
+
+                                    Approval records will appear
+                                    when connected to the approval service.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             06. PORTAL ACCESS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-portal-access" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            ACCESS GOVERNANCE
+                        </span>
+
+                        <h2>Portal Access Management</h2>
+
+                        <p>
+                            Manage platform access across employees,
+                            employers and administrators.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-toolbar">
+
+                    <input type="search" id="portal-access-search" placeholder="Search accounts...">
+
+                    <select id="portal-access-type">
+
+                        <option value="">All account types</option>
+
+                        <option value="employee">Employee</option>
+
+                        <option value="employer">Employer</option>
+
+                        <option value="super_admin">Super Admin</option>
+
+                    </select>
+
+                    <select id="portal-access-status">
+
+                        <option value="">All statuses</option>
+
+                        <option value="active">Active</option>
+
+                        <option value="suspended">Suspended</option>
+
+                        <option value="locked">Locked</option>
+
+                        <option value="pending">Pending</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Account Reference</th>
+
+                                <th>Account Holder</th>
+
+                                <th>Account Type</th>
+
+                                <th>Portal</th>
+
+                                <th>Status</th>
+
+                                <th>Last Activity</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="portal-access-table-body">
+
+                            <tr>
+
+                                <td colspan="7" class="settings-empty-cell">
+
+                                    Account information unavailable.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             07. ACCOUNT IMPERSONATION
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-impersonation" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            CONTROLLED PORTAL ACCESS
+                        </span>
+
+                        <h2>Account Impersonation</h2>
+
+                        <p>
+                            Temporarily access employee or employer
+                            portals for authorized investigations
+                            and support operations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-warning-banner">
+
+                    <strong>Privileged Access Warning</strong>
+
+                    <p>
+                        Portal impersonation must never be silent.
+                        The original administrator identity must remain
+                        traceable throughout the entire session.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Impersonation Safeguards</h3>
+
+                    <div class="settings-check-list">
+
+                        <div>
+                            <span>✓</span>
+                            Mandatory administrative justification
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Target account identity verification
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Visible Super Admin access banner
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Time-limited access session
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Full action logging
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Explicit session termination
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Sensitive authentication information remains inaccessible
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Request Temporary Portal Access</h3>
+
+                    <form id="impersonation-form">
+
+                        <div class="settings-form-grid">
+
+                            <label>
+
+                                Target Account Reference
+
+                                <input type="text" name="accountReference" required maxlength="150">
+
+                            </label>
+
+
+                            <label>
+
+                                Portal
+
+                                <select name="portal" required>
+
+                                    <option value="">
+                                        Select portal
+                                    </option>
+
+                                    <option value="employee">
+                                        Employee Portal
+                                    </option>
+
+                                    <option value="employer">
+                                        Employer Portal
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+
+                            <label>
+
+                                Access Duration
+
+                                <select name="duration" required>
+
+                                    <option value="">
+                                        Select duration
+                                    </option>
+
+                                    <option value="15">
+                                        15 minutes
+                                    </option>
+
+                                    <option value="30">
+                                        30 minutes
+                                    </option>
+
+                                    <option value="60">
+                                        60 minutes
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+
+                        </div>
+
+
+                        <label>
+
+                            Reason for Access
+
+                            <textarea name="reason" minlength="10" maxlength="2000" rows="4" required></textarea>
+
+                        </label>
+
+
+                        <div class="settings-form-actions">
+
+                            <button type="submit" class="settings-button primary">
+
+                                Request Temporary Access
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <div class="settings-section">
+
+                    <div class="settings-section-heading">
+
+                        <div>
+
+                            <h3>Impersonation History</h3>
+
+                            <p>
+                                Previously authorized access sessions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-table-container">
+
+                        <table class="settings-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Session Reference</th>
+
+                                    <th>Administrator</th>
+
+                                    <th>Target Account</th>
+
+                                    <th>Portal</th>
+
+                                    <th>Started</th>
+
+                                    <th>Ended</th>
+
+                                    <th>Status</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="impersonation-table-body">
+
+                                <tr>
+
+                                    <td colspan="7" class="settings-empty-cell">
+
+                                        No impersonation history loaded.
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             08. SECURITY SETTINGS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-security" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            PLATFORM SECURITY
+                        </span>
+
+                        <h2>Security Settings</h2>
+
+                        <p>
+                            Central authentication, account protection
+                            and platform security policies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-warning-banner">
+
+                    <strong>Security Configuration</strong>
+
+                    <p>
+                        Security policy changes affect the entire
+                        platform and must be validated, authorized
+                        and recorded by the backend.
+                    </p>
+
+                </div>
+
+
+                <form id="security-settings-form">
+
+                    <div class="settings-section">
+
+                        <h3>Administrator Authentication</h3>
+
+                        <div class="settings-card">
+
+                            <label class="settings-toggle-row">
+
+                                <span>
+
+                                    <strong>Mandatory Multi-Factor Authentication</strong>
+
+                                    <small>
+                                        Required for every Super Admin account.
+                                    </small>
+
+                                </span>
+
+                                <input type="checkbox" name="adminMfa" checked disabled>
+
+                            </label>
+
+
+                            <label class="settings-toggle-row">
+
+                                <span>
+
+                                    <strong>Individual Administrator Accounts</strong>
+
+                                    <small>
+                                        Prohibit shared administrator credentials.
+                                    </small>
+
+                                </span>
+
+                                <input type="checkbox" name="individualAdminAccounts" checked disabled>
+
+                            </label>
+
+
+                            <label class="settings-toggle-row">
+
+                                <span>
+
+                                    <strong>Admin Login Alerts</strong>
+
+                                    <small>
+                                        Notify administrators of security-relevant login events.
+                                    </small>
+
+                                </span>
+
+                                <input type="checkbox" name="adminLoginAlerts" disabled>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-section">
+
+                        <h3>Session Security</h3>
+
+                        <div class="settings-card">
+
+                            <div class="settings-form-grid">
+
+                                <label>
+
+                                    Administrator Session Timeout
+
+                                    <select name="adminSessionTimeout" disabled>
+
+                                        <option value="">
+                                            Server policy unavailable
+                                        </option>
+
+                                    </select>
+
+                                </label>
+
+
+                                <label>
+
+                                    Maximum Concurrent Sessions
+
+                                    <select name="maxConcurrentSessions" disabled>
+
+                                        <option value="">
+                                            Server policy unavailable
+                                        </option>
+
+                                    </select>
+
+                                </label>
+
+
+                                <label>
+
+                                    Failed Login Threshold
+
+                                    <input type="number" name="failedLoginThreshold" min="1" max="20" disabled>
+
+                                </label>
+
+
+                                <label>
+
+                                    Account Lockout Duration
+
+                                    <select name="lockoutDuration" disabled>
+
+                                        <option value="">
+                                            Server policy unavailable
+                                        </option>
+
+                                    </select>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-section">
+
+                        <h3>Platform Protection</h3>
+
+                        <div class="settings-card">
+
+                            <label class="settings-toggle-row">
+
+                                <span>
+
+                                    <strong>CSRF Protection</strong>
+
+                                    <small>
+                                        Protect authenticated state-changing requests.
+                                    </small>
+
+                                </span>
+
+                                <input type="checkbox" name="csrfProtection" checked disabled>
+
+                            </label>
+
+
+                            <label class="settings-toggle-row">
+
+                                <span>
+
+                                    <strong>Audit Event Integrity</strong>
+
+                                    <small>
+                                        Preserve protected administrative event history.
+                                    </small>
+
+                                </span>
+
+                                <input type="checkbox" name="auditIntegrity" checked disabled>
+
+                            </label>
+
+
+                            <label class="settings-toggle-row">
+
+                                <span>
+
+                                    <strong>Secure Cookie Policy</strong>
+
+                                    <small>
+                                        Require secure, HTTP-only and appropriate
+                                        SameSite cookie attributes.
+                                    </small>
+
+                                </span>
+
+                                <input type="checkbox" name="secureCookies" checked disabled>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-form-actions">
+
+                        <button type="submit" class="settings-button primary" disabled>
+
+                            Save Security Policies
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- ======================================
+             09. AUDIT LOGS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-audit" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            ACCOUNTABILITY & OVERSIGHT
+                        </span>
+
+                        <h2>Administrative Audit Logs</h2>
+
+                        <p>
+                            Examine platform-wide administrator activity,
+                            security events and sensitive interventions.
+                        </p>
+
+                    </div>
+
+                    <button type="button" class="settings-button secondary" id="settings-audit-export">
+
+                        Export Audit Report
+
+                    </button>
+
+                </div>
+
+
+                <div class="settings-warning-banner">
+
+                    <strong>Audit Integrity</strong>
+
+                    <p>
+                        Audit records must be retained in protected,
+                        append-only storage. Frontend administrators
+                        cannot edit or silently remove audit events.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-toolbar">
+
+                    <input type="search" id="audit-search" placeholder="Search audit records...">
+
+                    <select id="audit-category-filter">
+
+                        <option value="">All categories</option>
+
+                        <option value="authentication">
+                            Authentication
+                        </option>
+
+                        <option value="authorization">
+                            Authorization
+                        </option>
+
+                        <option value="account_management">
+                            Account Management
+                        </option>
+
+                        <option value="financial">
+                            Financial
+                        </option>
+
+                        <option value="privacy">
+                            Privacy
+                        </option>
+
+                        <option value="security">
+                            Security
+                        </option>
+
+                        <option value="configuration">
+                            Configuration
+                        </option>
+
+                        <option value="impersonation">
+                            Impersonation
+                        </option>
+
+                    </select>
+
+                    <input type="date" id="audit-date-from" aria-label="Audit start date">
+
+                    <input type="date" id="audit-date-to" aria-label="Audit end date">
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Event Reference</th>
+
+                                <th>Administrator</th>
+
+                                <th>Activity</th>
+
+                                <th>Category</th>
+
+                                <th>Target</th>
+
+                                <th>Timestamp</th>
+
+                                <th>Outcome</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="settings-audit-body">
+
+                            <tr>
+
+                                <td colspan="7" class="settings-empty-cell">
+
+                                    Audit records unavailable until
+                                    the protected audit service is connected.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             10. CORPORATE BRANDING
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-branding" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            CORPORATE IDENTITY
+                        </span>
+
+                        <h2>Corporate Branding</h2>
+
+                        <p>
+                            Manage the global TALVORA corporate identity
+                            and shared platform appearance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Corporate Identity</h3>
+
+                    <div class="settings-form-grid">
+
+                        <label>
+
+                            Corporate Name
+
+                            <input type="text" name="corporateName" value="TALVORA Technologies" disabled>
+
+                        </label>
+
+
+                        <label>
+
+                            Brand Name
+
+                            <input type="text" name="brandName" value="TALVORA" disabled>
+
+                        </label>
+
+
+                        <label>
+
+                            Main Platform
+
+                            <input type="text" name="platformName" value="TALVORA Global" disabled>
+
+                        </label>
+
+
+                        <label>
+
+                            Primary Tagline
+
+                            <input type="text" name="tagline" value="Connecting Human Capability to Global Opportunity."
+                                disabled>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Brand Colour System</h3>
+
+                    <div class="settings-brand-colours">
+
+                        <div>
+
+                            <span class="brand-colour-swatch navy"></span>
+
+                            <strong>Deep Navy</strong>
+
+                            <small>#0B1730</small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="brand-colour-swatch blue"></span>
+
+                            <strong>Technology Blue</strong>
+
+                            <small>#2563EB</small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="brand-colour-swatch cyan"></span>
+
+                            <strong>Electric Cyan</strong>
+
+                            <small>#06B6D4</small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="brand-colour-swatch white"></span>
+
+                            <strong>White</strong>
+
+                            <small>#FFFFFF</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Logo Management</h3>
+
+                    <div class="settings-logo-preview">
+
+                        <img src="../../talvora-logo.png" alt="TALVORA corporate logo">
+
+                    </div>
+
+                    <p class="settings-help-text">
+                        The corporate logo is shared across the
+                        Super Admin, Employer and Employee portals.
+                        Logo changes will require authorized configuration.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             11. GLOBAL CONFIGURATION
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-global" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            PLATFORM-WIDE CONFIGURATION
+                        </span>
+
+                        <h2>Global Configuration</h2>
+
+                        <p>
+                            Central configuration for the TALVORA
+                            technology and workforce infrastructure.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>General Platform Settings</h3>
+
+                    <form id="global-settings-form">
+
+                        <div class="settings-form-grid">
+
+                            <label>
+
+                                Platform Display Name
+
+                                <input type="text" name="platformDisplayName" disabled>
+
+                            </label>
+
+
+                            <label>
+
+                                Default Language
+
+                                <select name="defaultLanguage" disabled>
+
+                                    <option value="">
+                                        Configuration unavailable
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+
+                            <label>
+
+                                Default Time Zone
+
+                                <select name="timezone" disabled>
+
+                                    <option value="">
+                                        Configuration unavailable
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+
+                            <label>
+
+                                Default Date Format
+
+                                <select name="dateFormat" disabled>
+
+                                    <option value="">
+                                        Configuration unavailable
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+                        </div>
+
+                        <button type="submit" class="settings-button primary" disabled>
+
+                            Save Global Configuration
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Platform-Wide Operational Policies</h3>
+
+                    <div class="settings-information-row">
+
+                        <strong>Account Registration</strong>
+
+                        <span id="global-registration-status">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Employee Verification</strong>
+
+                        <span id="global-employee-verification">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Employer Verification</strong>
+
+                        <span id="global-employer-verification">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Platform Maintenance Policy</strong>
+
+                        <span id="global-maintenance-policy">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             12. PORTAL CONFIGURATION
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-portals" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            CONNECTED PORTALS
+                        </span>
+
+                        <h2>Portal Configuration</h2>
+
+                        <p>
+                            Manage shared configurations and independent
+                            operational settings across all three portals.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-portal-config-grid">
+
+                    <article class="settings-card">
+
+                        <h3>Super Admin Portal</h3>
+
+                        <p>
+                            Global governance, administrator management,
+                            monitoring and platform control.
+                        </p>
+
+                        <button type="button" class="settings-button secondary" data-portal-config="super_admin"
+                            disabled>
+
+                            Configure Portal
+
+                        </button>
+
+                    </article>
+
+
+                    <article class="settings-card">
+
+                        <h3>Employer Portal</h3>
+
+                        <p>
+                            Employer registration, organization
+                            management, jobs and recruitment operations.
+                        </p>
+
+                        <button type="button" class="settings-button secondary" data-portal-config="employer" disabled>
+
+                            Configure Portal
+
+                        </button>
+
+                    </article>
+
+
+                    <article class="settings-card">
+
+                        <h3>Employee Portal</h3>
+
+                        <p>
+                            Employee registration, professional profiles,
+                            skills, evidence and employment opportunities.
+                        </p>
+
+                        <button type="button" class="settings-button secondary" data-portal-config="employee" disabled>
+
+                            Configure Portal
+
+                        </button>
+
+                    </article>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Shared Platform Policies</h3>
+
+                    <div class="settings-information-row">
+
+                        <strong>Corporate Branding</strong>
+
+                        <span>Shared across all portals</span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Authentication</strong>
+
+                        <span>Central identity architecture</span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Authorization</strong>
+
+                        <span>Server-side permission enforcement</span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Privacy & Consent</strong>
+
+                        <span>Shared privacy governance framework</span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Audit Infrastructure</strong>
+
+                        <span>Central administrative accountability</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             13. NOTIFICATIONS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-notifications" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            COMMUNICATION MANAGEMENT
+                        </span>
+
+                        <h2>Notification Settings</h2>
+
+                        <p>
+                            Manage system-wide notification policies
+                            for employees, employers and administrators.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Notification Channels</h3>
+
+                    <div class="settings-information-row">
+
+                        <strong>Email Notifications</strong>
+
+                        <span id="notification-email-status">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>In-App Notifications</strong>
+
+                        <span id="notification-inapp-status">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>SMS Notifications</strong>
+
+                        <span id="notification-sms-status">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-toolbar">
+
+                    <input type="search" id="notification-search" placeholder="Search notification policies...">
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Notification Event</th>
+
+                                <th>Recipient Group</th>
+
+                                <th>Channel</th>
+
+                                <th>Status</th>
+
+                                <th>Last Updated</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="notification-table-body">
+
+                            <tr>
+
+                                <td colspan="6" class="settings-empty-cell">
+
+                                    Notification policies unavailable.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             14. EMAIL TEMPLATES
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-email" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            EMAIL GOVERNANCE
+                        </span>
+
+                        <h2>Email Templates</h2>
+
+                        <p>
+                            Manage official TALVORA communications
+                            and transactional email templates.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Email Infrastructure</h3>
+
+                    <div class="settings-information-row">
+
+                        <strong>Email Provider</strong>
+
+                        <span id="email-provider-status">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Sender Domain</strong>
+
+                        <span id="email-sender-domain">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Domain Verification</strong>
+
+                        <span id="email-domain-verification">
+                            Configuration unavailable
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Template</th>
+
+                                <th>Category</th>
+
+                                <th>Recipient</th>
+
+                                <th>Status</th>
+
+                                <th>Updated</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="email-template-table-body">
+
+                            <tr>
+
+                                <td colspan="6" class="settings-empty-cell">
+
+                                    Email template records unavailable.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             15. MAINTENANCE
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-maintenance" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            INFRASTRUCTURE CONTROL
+                        </span>
+
+                        <h2>System Maintenance</h2>
+
+                        <p>
+                            Govern maintenance windows, service
+                            availability and operational interventions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-warning-banner">
+
+                    <strong>Platform-Wide Operational Impact</strong>
+
+                    <p>
+                        Maintenance operations can affect all three portals.
+                        Any activation must require explicit authorization,
+                        impact assessment, scheduling and audit recording.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Maintenance Configuration</h3>
+
+                    <div class="settings-information-row">
+
+                        <strong>Maintenance Mode</strong>
+
+                        <span id="maintenance-mode-status">
+                            Unknown
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Scheduled Window</strong>
+
+                        <span id="maintenance-window">
+                            Not available
+                        </span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Platform Availability</strong>
+
+                        <span id="maintenance-availability">
+                            Unknown
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Schedule Maintenance</h3>
+
+                    <form id="maintenance-form">
+
+                        <div class="settings-form-grid">
+
+                            <label>
+
+                                Maintenance Start
+
+                                <input type="datetime-local" name="startAt" required>
+
+                            </label>
+
+
+                            <label>
+
+                                Expected Completion
+
+                                <input type="datetime-local" name="endAt" required>
+
+                            </label>
+
+
+                            <label>
+
+                                Affected Services
+
+                                <select name="scope" required>
+
+                                    <option value="">
+                                        Select affected services
+                                    </option>
+
+                                    <option value="all">
+                                        All Portals
+                                    </option>
+
+                                    <option value="admin">
+                                        Super Admin Portal
+                                    </option>
+
+                                    <option value="employer">
+                                        Employer Portal
+                                    </option>
+
+                                    <option value="employee">
+                                        Employee Portal
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+                        </div>
+
+
+                        <label>
+
+                            Maintenance Description
+
+                            <textarea name="description" rows="4" minlength="10" required></textarea>
+
+                        </label>
+
+
+                        <button type="submit" class="settings-button primary">
+
+                            Submit Maintenance Request
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Maintenance Reference</th>
+
+                                <th>Scope</th>
+
+                                <th>Scheduled Start</th>
+
+                                <th>Scheduled End</th>
+
+                                <th>Status</th>
+
+                                <th>Requested By</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="maintenance-table-body">
+
+                            <tr>
+
+                                <td colspan="6" class="settings-empty-cell">
+
+                                    No maintenance records loaded.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             16. INTEGRATIONS & APIS
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-integrations" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            CONNECTED TECHNOLOGY
+                        </span>
+
+                        <h2>Integrations & APIs</h2>
+
+                        <p>
+                            Govern approved third-party services,
+                            integrations and application interfaces.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-warning-banner">
+
+                    <strong>Credential Protection</strong>
+
+                    <p>
+                        API secrets, private keys, access tokens and
+                        integration credentials must never be displayed
+                        in full in the browser or exposed in frontend code.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Integration Governance</h3>
+
+                    <p>
+                        Every connected service must have an identified
+                        owner, approved purpose, authorized permissions,
+                        credential rotation policy and audit history.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Integration</th>
+
+                                <th>Category</th>
+
+                                <th>Environment</th>
+
+                                <th>Connection Status</th>
+
+                                <th>Last Verified</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="integration-table-body">
+
+                            <tr>
+
+                                <td colspan="6" class="settings-empty-cell">
+
+                                    Integration records unavailable.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>API Governance</h3>
+
+                    <div class="settings-information-row">
+
+                        <strong>API Authentication</strong>
+
+                        <span>Server-managed credentials</span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Credential Storage</strong>
+
+                        <span>Protected server-side secret storage</span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>API Activity</strong>
+
+                        <span>Audited and monitored</span>
+
+                    </div>
+
+                    <div class="settings-information-row">
+
+                        <strong>Access Scope</strong>
+
+                        <span>Least privilege and explicit authorization</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             17. SYSTEM MONITORING
+        ======================================= -->
+
+            <section class="settings-panel" id="settings-panel-monitoring" hidden>
+
+                <div class="settings-page-intro">
+
+                    <div>
+
+                        <span class="settings-eyebrow">
+                            OPERATIONAL INTELLIGENCE
+                        </span>
+
+                        <h2>System Monitoring</h2>
+
+                        <p>
+                            Observe platform availability, infrastructure
+                            health, service performance and operational alerts.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-metrics-grid">
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            PLATFORM AVAILABILITY
+                        </div>
+
+                        <div class="settings-metric-value" id="monitor-availability">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Monitoring service data
+                        </div>
+
+                    </article>
+
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            API RESPONSE TIME
+                        </div>
+
+                        <div class="settings-metric-value" id="monitor-api-latency">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Current measured response
+                        </div>
+
+                    </article>
+
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            FAILED REQUESTS
+                        </div>
+
+                        <div class="settings-metric-value" id="monitor-failed-requests">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Monitoring period supplied by server
+                        </div>
+
+                    </article>
+
+
+                    <article class="settings-metric-card">
+
+                        <div class="settings-metric-label">
+                            ACTIVE ALERTS
+                        </div>
+
+                        <div class="settings-metric-value" id="monitor-active-alerts">
+
+                            —
+
+                        </div>
+
+                        <div class="settings-metric-description">
+                            Unresolved system alerts
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="settings-table-container">
+
+                    <table class="settings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Service</th>
+
+                                <th>Environment</th>
+
+                                <th>Status</th>
+
+                                <th>Response Time</th>
+
+                                <th>Last Checked</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="monitor-service-body">
+
+                            <tr>
+
+                                <td colspan="5" class="settings-empty-cell">
+
+                                    Monitoring information unavailable.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="settings-section">
+
+                    <h3>Operational Alerts</h3>
+
+                    <div class="settings-table-container">
+
+                        <table class="settings-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Alert Reference</th>
+
+                                    <th>Severity</th>
+
+                                    <th>Service</th>
+
+                                    <th>Description</th>
+
+                                    <th>Detected</th>
+
+                                    <th>Status</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="monitor-alert-body">
+
+                                <tr>
+
+                                    <td colspan="6" class="settings-empty-cell">
+
+                                        No monitoring records loaded.
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ==========================================
+     GLOBAL RECORD DETAIL MODAL
+=========================================== -->
+
+    <div class="settings-modal-overlay" id="settings-detail-modal" hidden role="dialog" aria-modal="true"
+        aria-labelledby="settings-detail-title">
+
+        <div class="settings-modal">
+
+            <div class="settings-modal-header">
+
+                <div>
+
+                    <span class="settings-eyebrow">
+                        SYSTEM RECORD
+                    </span>
+
+                    <h2 id="settings-detail-title">
+                        Record Details
+                    </h2>
+
+                </div>
+
+                <button type="button" class="settings-close-button" data-close-modal aria-label="Close details">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <div class="settings-modal-content" id="settings-detail-content">
+
+            </div>
+
+
+            <div class="settings-modal-footer">
+
+                <button type="button" class="settings-button secondary" data-close-modal>
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+     ADMINISTRATIVE ACTION CONFIRMATION
+=========================================== -->
+
+    <div class="settings-modal-overlay" id="settings-confirm-modal" hidden role="dialog" aria-modal="true"
+        aria-labelledby="settings-confirm-title">
+
+        <div class="settings-modal settings-confirm-modal">
+
+            <div class="settings-modal-header">
+
+                <h2 id="settings-confirm-title">
+                    Confirm Administrative Action
+                </h2>
+
+                <button type="button" class="settings-close-button" data-close-confirm aria-label="Close confirmation">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <div class="settings-modal-content">
+
+                <p id="settings-confirm-description">
+
+                    Review this administrative operation.
+
+                </p>
+
+
+                <label>
+
+                    Administrative Justification
+
+                    <textarea id="settings-confirm-reason" minlength="10" maxlength="2000" rows="5" required></textarea>
+
+                </label>
+
+
+                <div class="settings-warning-banner">
+
+                    This action will be recorded in the
+                    administrative audit trail.
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-modal-footer">
+
+                <button type="button" class="settings-button secondary" data-close-confirm>
+
+                    Cancel
+
+                </button>
+
+                <button type="button" class="settings-button danger" id="settings-confirm-submit">
+
+                    Confirm Action
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+     TOAST NOTIFICATIONS
+=========================================== -->
+
+    <div class="settings-toast-container" id="settings-toast-container" aria-live="polite" aria-atomic="true">
+
+    </div>
+
+
+</body>
+
+</html>

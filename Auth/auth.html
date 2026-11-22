@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <title>Login & Registration | TALVORA</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+
+    <div class="auth-layout">
+
+        <!-- LEFT BRANDING PANEL -->
+        <aside class="brand-panel">
+
+            <a href="auth.html" class="brand">
+                <span class="brand-logo">T</span>
+                <span>
+                    TALVORA
+                    <small>GLOBAL WORKFORCE PLATFORM</small>
+                </span>
+            </a>
+
+            <div class="brand-content">
+
+                <span class="brand-tag">
+                    ONE GLOBAL WORKFORCE PLATFORM
+                </span>
+
+                <h1>
+                    Connecting people,
+                    employers and
+                    opportunities.
+                </h1>
+
+                <p>
+                    TALVORA brings recruitment, professional
+                    development, employment management and
+                    workforce services together in one secure platform.
+                </p>
+
+                <div class="brand-features">
+
+                    <div class="feature">
+                        <span>✓</span>
+                        Global recruitment and employment
+                    </div>
+
+                    <div class="feature">
+                        <span>✓</span>
+                        Verified professional skills and qualifications
+                    </div>
+
+                    <div class="feature">
+                        <span>✓</span>
+                        Integrated workforce management
+                    </div>
+
+                    <div class="feature">
+                        <span>✓</span>
+                        Secure employer and employee workspaces
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="brand-footer">
+                © TALVORA. All rights reserved.
+            </div>
+
+        </aside>
+
+
+        <!-- RIGHT AUTHENTICATION PANEL -->
+        <main class="auth-panel">
+
+            <section class="auth-card">
+
+                <div class="mobile-brand">
+                    <span class="brand-logo">T</span>
+                    <strong>TALVORA</strong>
+                </div>
+
+                <div class="welcome-heading">
+
+                    <span class="eyebrow">WELCOME TO TALVORA</span>
+
+                    <h2 id="authTitle">Welcome back</h2>
+
+                    <p id="authSubtitle">
+                        Select your account type and sign in to continue.
+                    </p>
+
+                </div>
+
+
+                <!-- ACCOUNT TYPE -->
+                <div class="section-label">
+                    SELECT YOUR ACCOUNT TYPE
+                </div>
+
+                <div class="account-selector">
+
+                    <button type="button" class="account-option active" data-portal="employee" aria-pressed="true">
+
+                        <span class="account-icon employee-icon">♙</span>
+
+                        <span class="account-info">
+                            <strong>Employee</strong>
+                            <small>Personal workspace</small>
+                        </span>
+
+                        <span class="selection-indicator"></span>
+
+                    </button>
+
+
+                    <button type="button" class="account-option" data-portal="employer" aria-pressed="false">
+
+                        <span class="account-icon employer-icon">▦</span>
+
+                        <span class="account-info">
+                            <strong>Employer</strong>
+                            <small>Company workspace</small>
+                        </span>
+
+                        <span class="selection-indicator"></span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- LOGIN / SIGN UP SWITCH -->
+                <div class="auth-tabs">
+
+                    <button type="button" class="auth-tab active" data-mode="login" aria-pressed="true">
+                        Sign In
+                    </button>
+
+                    <button type="button" class="auth-tab" data-mode="signup" aria-pressed="false">
+                        Create Account
+                    </button>
+
+                </div>
+
+
+                <!-- AUTHENTICATION FORM -->
+                <form id="authForm" novalidate>
+
+                    <!-- EMPLOYER COMPANY NAME -->
+                    <div class="form-group" id="companyNameGroup" hidden>
+
+                        <label for="companyName">
+                            Company / Organization Name
+                        </label>
+
+                        <input type="text" id="companyName" name="companyName"
+                            placeholder="Enter your registered company name" maxlength="160" autocomplete="organization"
+                            disabled>
+
+                    </div>
+
+
+                    <!-- FIRST AND LAST NAME -->
+                    <div class="name-grid">
+
+                        <div class="form-group" id="firstNameGroup" hidden>
+
+                            <label for="firstName">First Name</label>
+
+                            <input type="text" id="firstName" name="firstName" placeholder="First name" maxlength="80"
+                                autocomplete="given-name" disabled>
+
+                        </div>
+
+
+                        <div class="form-group" id="lastNameGroup" hidden>
+
+                            <label for="lastName">Last Name</label>
+
+                            <input type="text" id="lastName" name="lastName" placeholder="Last name" maxlength="80"
+                                autocomplete="family-name" disabled>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input type="email" id="email" name="email" placeholder="Enter your email address"
+                            maxlength="254" autocomplete="username" required>
+
+                    </div>
+
+
+                    <!-- EMPLOYEE INVITATION CODE -->
+                    <div class="form-group" id="invitationGroup" hidden>
+
+                        <label for="invitationCode">
+                            Employer Invitation Code <span class="optional">(Optional)</span>
+                        </label>
+
+                        <input type="text" id="invitationCode" name="invitationCode"
+                            placeholder="Enter the invitation code provided by your employer" maxlength="120"
+                            autocomplete="off" disabled>
+
+                        <small class="field-help">
+                            Leave this blank if you are creating an independent
+                            employee account to search and apply for jobs. Use a
+                            code only when an employer has invited you.
+                        </small>
+
+                    </div>
+
+
+                    <!-- COMPANY CODE FOR LOGIN -->
+                    <div class="form-group" id="companyCodeGroup" hidden>
+
+                        <label for="companyCode">
+                            Company Code <span class="optional">(Optional)</span>
+                        </label>
+
+                        <input type="text" id="companyCode" name="companyCode"
+                            placeholder="Enter your organization code" maxlength="80" autocomplete="organization">
+
+                        <small class="field-help">
+                            Required only when your account is associated
+                            with multiple organizations.
+                        </small>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+
+                        <label for="password">Password</label>
+
+                        <div class="password-wrapper">
+
+                            <input type="password" id="password" name="password" placeholder="Enter your password"
+                                autocomplete="current-password" required>
+
+                            <button type="button" class="password-toggle" data-target="password">
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small class="field-help" id="passwordHelp" hidden>
+                            Use at least 12 characters.
+                        </small>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+                    <div class="form-group" id="confirmPasswordGroup" hidden>
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                placeholder="Confirm your password" autocomplete="new-password" disabled>
+
+                            <button type="button" class="password-toggle" data-target="confirmPassword">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+                    <div class="terms-group" id="termsGroup" hidden>
+
+                        <label class="checkbox-label">
+
+                            <input type="checkbox" id="acceptTerms" name="acceptTerms" disabled>
+
+                            <span>
+                                I agree to TALVORA's Terms of Service
+                                and Privacy Policy.
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- FEEDBACK -->
+                    <div id="authMessage" class="auth-message" role="status" aria-live="polite" hidden>
+                    </div>
+
+
+                    <!-- SUBMIT -->
+                    <button type="submit" id="submitButton" class="submit-button">
+
+                        Sign In to Employee Portal
+
+                    </button>
+
+                </form>
+
+
+                <!-- FOOTER -->
+                <div class="auth-footer">
+
+                    <p id="switchMessage">
+                        New to TALVORA?
+                        <button type="button" id="switchMode">
+                            Create an account
+                        </button>
+                    </p>
+
+                    <p class="security-note">
+                        Your account information is protected
+                        through secure authentication.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="app-config.js"></script>
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

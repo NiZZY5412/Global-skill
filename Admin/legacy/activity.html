@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b1730">
+    <meta name="description" content="TALVORA Super Admin Activity and Security Centre">
+
+    <title>Activity & Security Centre | TALVORA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="activity.css">
+</head>
+
+<body>
+
+    <div class="activity-app" id="activity-app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="activity-sidebar" id="activity-sidebar">
+
+            <div class="activity-brand">
+                <a href="../index.html" class="activity-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="TALVORA logo" class="activity-logo">
+
+                    <div class="activity-brand-name">
+                        <strong>TALVORA</strong>
+                        <span>SUPER ADMINISTRATION</span>
+                    </div>
+
+                </a>
+
+                <button type="button" class="activity-sidebar-close" id="activity-sidebar-close"
+                    aria-label="Close navigation">&times;</button>
+            </div>
+
+
+            <!-- ADMIN IDENTITY -->
+
+            <div class="activity-admin-card">
+
+                <div class="activity-admin-avatar" id="activity-admin-avatar">
+                    SA
+                </div>
+
+                <div class="activity-admin-details">
+                    <strong id="activity-admin-name">
+                        Super Administrator
+                    </strong>
+
+                    <span id="activity-admin-email">
+                        Session verification pending
+                    </span>
+
+                    <div class="activity-admin-status">
+                        <span class="activity-status-dot"></span>
+                        <span id="activity-session-status">Checking session</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="activity-navigation">
+
+                <div class="activity-nav-label">MAIN PORTAL</div>
+
+                <a href="../index.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="employees.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">♙</span>
+                    <span>Employee Management</span>
+                </a>
+
+                <a href="employers.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">▣</span>
+                    <span>Employer Management</span>
+                </a>
+
+                <div class="activity-nav-label">PLATFORM OPERATIONS</div>
+
+                <a href="jobs.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">▤</span>
+                    <span>Jobs</span>
+                </a>
+
+                <a href="applications.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">▧</span>
+                    <span>Applications</span>
+                </a>
+
+                <a href="assessments.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">◈</span>
+                    <span>Assessments</span>
+                </a>
+
+                <a href="matching.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">⇄</span>
+                    <span>Matching</span>
+                </a>
+
+                <a href="evidence.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">▧</span>
+                    <span>Evidence Management</span>
+                </a>
+
+                <a href="reports.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">▥</span>
+                    <span>Reports</span>
+                </a>
+
+                <a href="disputes.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">⚖</span>
+                    <span>Disputes</span>
+                </a>
+
+                <div class="activity-nav-label">ADMINISTRATION</div>
+
+                <a href="consents.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">✓</span>
+                    <span>Privacy & Consent</span>
+                </a>
+
+                <a href="settings.html" class="activity-nav-link">
+                    <span class="activity-nav-icon">⚙</span>
+                    <span>System Settings</span>
+                </a>
+
+                <a href="activity.html" class="activity-nav-link active" aria-current="page">
+                    <span class="activity-nav-icon">◉</span>
+                    <span>Activity & Security</span>
+                    <span class="activity-nav-active-dot"></span>
+                </a>
+
+            </nav>
+
+
+            <div class="activity-sidebar-footer">
+
+                <a href="../index.html" class="activity-back-link">
+                    <span>←</span>
+                    Back to Super Admin
+                </a>
+
+                <div class="activity-version">
+                    <span>TALVORA GLOBAL</span>
+                    <span>GSES SYSTEM 001</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <div class="activity-sidebar-overlay" id="activity-sidebar-overlay" hidden></div>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="activity-main">
+
+            <!-- TOPBAR -->
+
+            <header class="activity-topbar">
+
+                <div class="activity-topbar-left">
+
+                    <button type="button" id="activity-menu-toggle" class="activity-menu-toggle"
+                        aria-label="Open navigation" aria-expanded="false">☰</button>
+
+                    <div>
+                        <div class="activity-breadcrumb">
+                            SUPER ADMIN <span>/</span> SECURITY CENTRE
+                        </div>
+
+                        <h1>Activity & Security Centre</h1>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-topbar-right">
+
+                    <div class="activity-live-indicator">
+                        <span class="activity-live-dot"></span>
+                        <span id="activity-data-status">Awaiting server connection</span>
+                    </div>
+
+                    <button type="button" class="activity-refresh-button" id="activity-refresh">
+                        ↻ <span>Refresh</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- NOTICE -->
+
+            <div class="activity-notice" id="activity-notice" role="status" hidden></div>
+
+
+            <!-- PAGE CONTENT -->
+
+            <div class="activity-content">
+
+
+                <!-- =================================================
+                 OVERVIEW
+            ================================================== -->
+
+                <section class="activity-panel active" id="activity-panel-overview">
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">
+                                PLATFORM SECURITY INTELLIGENCE
+                            </span>
+
+                            <h2>Security Overview</h2>
+
+                            <p>
+                                Monitor administrator access, platform security,
+                                suspicious activity and privileged operations
+                                across TALVORA.
+                            </p>
+                        </div>
+
+                        <div class="activity-heading-actions">
+
+                            <button class="activity-button secondary" type="button" data-export-audit>
+                                ↓ Export Records
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SECURITY METRICS -->
+
+                    <div class="activity-metrics-grid">
+
+                        <article class="activity-metric-card">
+                            <div class="activity-metric-top">
+                                <span>ADMINISTRATOR LOGINS</span>
+                                <span class="activity-metric-icon blue">↗</span>
+                            </div>
+
+                            <strong id="metric-admin-logins">—</strong>
+
+                            <small>For the selected reporting period</small>
+                        </article>
+
+
+                        <article class="activity-metric-card">
+                            <div class="activity-metric-top">
+                                <span>FAILED LOGIN ATTEMPTS</span>
+                                <span class="activity-metric-icon red">!</span>
+                            </div>
+
+                            <strong id="metric-failed-logins">—</strong>
+
+                            <small>Recorded authentication failures</small>
+                        </article>
+
+
+                        <article class="activity-metric-card">
+                            <div class="activity-metric-top">
+                                <span>ACTIVE DEVICE SESSIONS</span>
+                                <span class="activity-metric-icon cyan">⌘</span>
+                            </div>
+
+                            <strong id="metric-active-sessions">—</strong>
+
+                            <small>Verified active sessions</small>
+                        </article>
+
+
+                        <article class="activity-metric-card">
+                            <div class="activity-metric-top">
+                                <span>OPEN SECURITY INCIDENTS</span>
+                                <span class="activity-metric-icon orange">⚑</span>
+                            </div>
+
+                            <strong id="metric-open-incidents">—</strong>
+
+                            <small>Incidents requiring attention</small>
+                        </article>
+
+
+                        <article class="activity-metric-card">
+                            <div class="activity-metric-top">
+                                <span>SUSPICIOUS ACCESS EVENTS</span>
+                                <span class="activity-metric-icon red">⌕</span>
+                            </div>
+
+                            <strong id="metric-suspicious-events">—</strong>
+
+                            <small>Detected suspicious events</small>
+                        </article>
+
+
+                        <article class="activity-metric-card">
+                            <div class="activity-metric-top">
+                                <span>PRIVILEGED OPERATIONS</span>
+                                <span class="activity-metric-icon purple">◈</span>
+                            </div>
+
+                            <strong id="metric-privileged-actions">—</strong>
+
+                            <small>Recorded privileged operations</small>
+                        </article>
+
+                    </div>
+
+
+                    <!-- SECURITY POSTURE -->
+
+                    <div class="activity-grid-two">
+
+                        <article class="activity-card">
+
+                            <div class="activity-card-heading">
+                                <div>
+                                    <h3>Security Posture</h3>
+                                    <p>Server-reported security control status</p>
+                                </div>
+
+                                <span class="activity-neutral-tag">
+                                    Live status
+                                </span>
+                            </div>
+
+
+                            <div class="activity-posture-list">
+
+                                <div class="activity-posture-row">
+                                    <div>
+                                        <strong>Administrator MFA</strong>
+                                        <small>Multi-factor authentication</small>
+                                    </div>
+                                    <span id="posture-mfa" class="activity-status">
+                                        Unknown
+                                    </span>
+                                </div>
+
+                                <div class="activity-posture-row">
+                                    <div>
+                                        <strong>Session Security</strong>
+                                        <small>Administrator session controls</small>
+                                    </div>
+                                    <span id="posture-sessions" class="activity-status">
+                                        Unknown
+                                    </span>
+                                </div>
+
+                                <div class="activity-posture-row">
+                                    <div>
+                                        <strong>Audit Integrity</strong>
+                                        <small>Protected administrative records</small>
+                                    </div>
+                                    <span id="posture-audit" class="activity-status">
+                                        Unknown
+                                    </span>
+                                </div>
+
+                                <div class="activity-posture-row">
+                                    <div>
+                                        <strong>Access Monitoring</strong>
+                                        <small>Authentication and access monitoring</small>
+                                    </div>
+                                    <span id="posture-monitoring" class="activity-status">
+                                        Unknown
+                                    </span>
+                                </div>
+
+                                <div class="activity-posture-row">
+                                    <div>
+                                        <strong>Incident Response</strong>
+                                        <small>Security incident management</small>
+                                    </div>
+                                    <span id="posture-incidents" class="activity-status">
+                                        Unknown
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- SECURITY ALERT SUMMARY -->
+
+                        <article class="activity-card">
+
+                            <div class="activity-card-heading">
+                                <div>
+                                    <h3>Security Alerts</h3>
+                                    <p>Unresolved security events</p>
+                                </div>
+
+                                <button class="activity-text-button" type="button" data-activity-panel="suspicious">
+                                    View all →
+                                </button>
+                            </div>
+
+
+                            <div class="activity-alert-summary" id="overview-security-alerts">
+                                <div class="activity-empty-state">
+                                    <span>◎</span>
+                                    <strong>No records loaded</strong>
+                                    <p>
+                                        Security alerts will appear when
+                                        returned by the backend.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- RECENT ADMIN ACTIVITY -->
+
+                    <article class="activity-card activity-section-gap">
+
+                        <div class="activity-card-heading">
+
+                            <div>
+                                <h3>Recent Administrator Activity</h3>
+                                <p>
+                                    Latest recorded actions by authorized
+                                    Super Administrators.
+                                </p>
+                            </div>
+
+                            <button class="activity-text-button" type="button" data-activity-panel="actions">
+                                View activity →
+                            </button>
+
+                        </div>
+
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Administrator</th>
+                                        <th>Action</th>
+                                        <th>Target</th>
+                                        <th>Portal</th>
+                                        <th>Date & Time</th>
+                                        <th>Outcome</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="overview-recent-activity">
+                                    <tr>
+                                        <td colspan="6" class="activity-empty-cell">
+                                            No activity records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 LOGIN HISTORY
+            ================================================== -->
+
+                <section class="activity-panel" id="activity-panel-logins" hidden>
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">AUTHENTICATION RECORDS</span>
+
+                            <h2>Administrator Login History</h2>
+
+                            <p>
+                                Review successful logins, failed authentication
+                                attempts, login methods, locations and devices.
+                            </p>
+                        </div>
+
+                        <button type="button" class="activity-button secondary" data-export-audit>
+                            ↓ Export Login History
+                        </button>
+
+                    </div>
+
+
+                    <div class="activity-filter-bar">
+
+                        <input type="search" id="login-search"
+                            placeholder="Search administrator, IP, device or reference">
+
+                        <select id="login-result-filter">
+                            <option value="">All Results</option>
+                            <option value="success">Successful</option>
+                            <option value="failed">Failed</option>
+                            <option value="blocked">Blocked</option>
+                        </select>
+
+                        <select id="login-method-filter">
+                            <option value="">All Login Methods</option>
+                            <option value="password">Password</option>
+                            <option value="mfa">MFA</option>
+                            <option value="sso">SSO</option>
+                        </select>
+
+                        <input type="date" id="login-date-from" aria-label="From date">
+
+                        <input type="date" id="login-date-to" aria-label="To date">
+
+                        <button class="activity-button secondary" id="login-apply-filter" type="button">Apply</button>
+
+                    </div>
+
+
+                    <article class="activity-card">
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Administrator</th>
+                                        <th>Event</th>
+                                        <th>Result</th>
+                                        <th>IP Address</th>
+                                        <th>Device</th>
+                                        <th>Location</th>
+                                        <th>Login Method</th>
+                                        <th>Date & Time</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="login-history-body">
+                                    <tr>
+                                        <td colspan="9" class="activity-empty-cell">
+                                            Login records will appear when
+                                            provided by the authentication service.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="activity-pagination">
+                            <span id="login-record-count">No records loaded</span>
+
+                            <div>
+                                <button id="login-prev" type="button" disabled>Previous</button>
+                                <span id="login-page-info">—</span>
+                                <button id="login-next" type="button" disabled>Next</button>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 SUSPICIOUS ACCESS
+            ================================================== -->
+
+                <section class="activity-panel" id="activity-panel-suspicious" hidden>
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">THREAT DETECTION</span>
+
+                            <h2>Suspicious Access Monitoring</h2>
+
+                            <p>
+                                Investigate unusual authentication patterns,
+                                suspicious IP addresses, abnormal access
+                                behaviour and potential account compromise.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-warning-banner">
+                        <strong>Security investigation notice</strong>
+                        <p>
+                            Detection and risk classification must be produced
+                            by trusted server-side security controls. Browser
+                            activity alone cannot establish that an account
+                            has been compromised.
+                        </p>
+                    </div>
+
+
+                    <div class="activity-filter-bar">
+
+                        <input type="search" id="suspicious-search" placeholder="Search event, IP or administrator">
+
+                        <select id="suspicious-severity">
+                            <option value="">All Severity Levels</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                        <select id="suspicious-status">
+                            <option value="">All Statuses</option>
+                            <option value="open">Open</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="dismissed">Dismissed</option>
+                        </select>
+
+                        <button type="button" class="activity-button secondary" id="suspicious-apply">Apply
+                            Filters</button>
+
+                    </div>
+
+
+                    <article class="activity-card">
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Event Reference</th>
+                                        <th>Administrator</th>
+                                        <th>Detection Type</th>
+                                        <th>IP Address</th>
+                                        <th>Risk Level</th>
+                                        <th>Detected</th>
+                                        <th>Status</th>
+                                        <th>Investigate</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="suspicious-events-body">
+                                    <tr>
+                                        <td colspan="8" class="activity-empty-cell">
+                                            No suspicious access records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 DEVICE SESSIONS
+            ================================================== -->
+
+                <section class="activity-panel" id="activity-panel-sessions" hidden>
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">SESSION GOVERNANCE</span>
+
+                            <h2>Administrator Device Sessions</h2>
+
+                            <p>
+                                Review active administrator sessions,
+                                recognized devices, IP addresses,
+                                session duration and session termination.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-warning-banner">
+                        <strong>Session termination controls</strong>
+                        <p>
+                            Terminating a session must revoke its server-side
+                            credentials and refresh tokens. Removing a row
+                            from this interface is not sufficient.
+                        </p>
+                    </div>
+
+
+                    <div class="activity-filter-bar">
+
+                        <input type="search" id="session-search" placeholder="Search administrator, device or IP">
+
+                        <select id="session-status-filter">
+                            <option value="">All Sessions</option>
+                            <option value="active">Active</option>
+                            <option value="expired">Expired</option>
+                            <option value="revoked">Revoked</option>
+                        </select>
+
+                        <button type="button" class="activity-button secondary" id="session-apply">Apply</button>
+
+                    </div>
+
+
+                    <article class="activity-card">
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Administrator</th>
+                                        <th>Device</th>
+                                        <th>Browser / OS</th>
+                                        <th>IP Address</th>
+                                        <th>Location</th>
+                                        <th>Started</th>
+                                        <th>Last Activity</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="device-sessions-body">
+                                    <tr>
+                                        <td colspan="9" class="activity-empty-cell">
+                                            No device session records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 SECURITY INCIDENTS
+            ================================================== -->
+
+                <section class="activity-panel" id="activity-panel-incidents" hidden>
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">INCIDENT RESPONSE</span>
+
+                            <h2>Security Incidents</h2>
+
+                            <p>
+                                Record, investigate, assign, escalate and
+                                resolve security incidents affecting
+                                administrators and platform operations.
+                            </p>
+                        </div>
+
+                        <button type="button" class="activity-button primary" id="incident-create">
+                            + Record Incident
+                        </button>
+
+                    </div>
+
+
+                    <div class="activity-filter-bar">
+
+                        <input type="search" id="incident-search" placeholder="Search incident reference or title">
+
+                        <select id="incident-severity-filter">
+                            <option value="">All Severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                        <select id="incident-status-filter">
+                            <option value="">All Incident Statuses</option>
+                            <option value="open">Open</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="contained">Contained</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <button type="button" class="activity-button secondary" id="incident-apply">Apply</button>
+
+                    </div>
+
+
+                    <article class="activity-card">
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Incident</th>
+                                        <th>Category</th>
+                                        <th>Severity</th>
+                                        <th>Assigned To</th>
+                                        <th>Reported</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="security-incidents-body">
+                                    <tr>
+                                        <td colspan="8" class="activity-empty-cell">
+                                            No security incidents loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="activity-card activity-section-gap">
+
+                        <div class="activity-card-heading">
+                            <div>
+                                <h3>Incident Investigation</h3>
+                                <p>
+                                    Investigation records and incident
+                                    evidence returned by the server.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="incident-investigation-panel">
+                            <div class="activity-empty-state">
+                                <span>⚑</span>
+                                <strong>No incident selected</strong>
+                                <p>Select an incident to view its investigation.</p>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 PRIVILEGED ACTIONS
+            ================================================== -->
+
+                <section class="activity-panel" id="activity-panel-actions" hidden>
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">ADMINISTRATIVE ACCOUNTABILITY</span>
+
+                            <h2>Privileged Actions Register</h2>
+
+                            <p>
+                                Review sensitive operations performed by
+                                Super Administrators across the entire platform.
+                            </p>
+                        </div>
+
+                        <button class="activity-button secondary" type="button" data-export-audit>↓ Export
+                            Register</button>
+
+                    </div>
+
+
+                    <div class="activity-filter-bar">
+
+                        <input type="search" id="actions-search"
+                            placeholder="Search administrator, operation or target">
+
+                        <select id="actions-category">
+                            <option value="">All Categories</option>
+                            <option value="account">Account Management</option>
+                            <option value="finance">Financial Operations</option>
+                            <option value="privacy">Privacy & Consent</option>
+                            <option value="evidence">Evidence</option>
+                            <option value="permissions">Permissions</option>
+                            <option value="security">Security</option>
+                            <option value="system">System Operations</option>
+                        </select>
+
+                        <select id="actions-outcome">
+                            <option value="">All Outcomes</option>
+                            <option value="success">Successful</option>
+                            <option value="failed">Failed</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="pending">Pending</option>
+                        </select>
+
+                        <button type="button" class="activity-button secondary" id="actions-apply">Apply</button>
+
+                    </div>
+
+
+                    <article class="activity-card">
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Administrator</th>
+                                        <th>Operation</th>
+                                        <th>Category</th>
+                                        <th>Target</th>
+                                        <th>Portal</th>
+                                        <th>Approval Reference</th>
+                                        <th>Date & Time</th>
+                                        <th>Outcome</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privileged-actions-body">
+                                    <tr>
+                                        <td colspan="9" class="activity-empty-cell">
+                                            No privileged operations loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 ADMINISTRATOR ACCOUNTABILITY
+            ================================================== -->
+
+                <section class="activity-panel" id="activity-panel-accountability" hidden>
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">GOVERNANCE & OVERSIGHT</span>
+
+                            <h2>Administrator Accountability</h2>
+
+                            <p>
+                                Review the activity, access history,
+                                security compliance and operational
+                                responsibility of each Super Administrator.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-warning-banner">
+                        <strong>Individual accountability</strong>
+                        <p>
+                            Every Super Administrator must use an individual
+                            identity. Shared credentials cannot establish
+                            reliable individual accountability.
+                        </p>
+                    </div>
+
+
+                    <div class="activity-filter-bar">
+
+                        <input type="search" id="accountability-search" placeholder="Search administrator">
+
+                        <select id="accountability-status">
+                            <option value="">All Account Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="pending">Pending</option>
+                        </select>
+
+                        <button type="button" class="activity-button secondary" id="accountability-apply">Apply</button>
+
+                    </div>
+
+
+                    <article class="activity-card">
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Administrator</th>
+                                        <th>Admin Reference</th>
+                                        <th>Account Status</th>
+                                        <th>Last Login</th>
+                                        <th>Last Privileged Action</th>
+                                        <th>MFA Status</th>
+                                        <th>Active Sessions</th>
+                                        <th>Profile</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="accountability-body">
+                                    <tr>
+                                        <td colspan="8" class="activity-empty-cell">
+                                            No administrator accountability records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="activity-card activity-section-gap">
+
+                        <div class="activity-card-heading">
+                            <div>
+                                <h3>Administrator Activity Profile</h3>
+                                <p>
+                                    Detailed activity and accountability
+                                    records for the selected administrator.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="administrator-profile-panel">
+
+                            <div class="activity-empty-state">
+                                <span>♙</span>
+                                <strong>No administrator selected</strong>
+                                <p>
+                                    Select an administrator to inspect
+                                    their activity profile.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 AUDIT TRAIL
+            ================================================== -->
+
+                <section class="activity-panel" id="activity-panel-audit" hidden>
+
+                    <div class="activity-page-heading">
+
+                        <div>
+                            <span class="activity-eyebrow">RECORD INTEGRITY</span>
+
+                            <h2>Security Audit Trail</h2>
+
+                            <p>
+                                Search and inspect protected records of
+                                authentication, administrator operations,
+                                security decisions and system events.
+                            </p>
+                        </div>
+
+                        <button type="button" class="activity-button secondary" data-export-audit>↓ Export
+                            Audit</button>
+
+                    </div>
+
+
+                    <div class="activity-warning-banner">
+                        <strong>Protected audit records</strong>
+                        <p>
+                            Audit entries must be append-only, timestamped
+                            by the server and protected against unauthorized
+                            modification or deletion.
+                        </p>
+                    </div>
+
+
+                    <div class="activity-filter-bar">
+
+                        <input type="search" id="audit-search"
+                            placeholder="Search event reference, administrator or target">
+
+                        <select id="audit-type-filter">
+                            <option value="">All Event Types</option>
+                            <option value="authentication">Authentication</option>
+                            <option value="access">Access</option>
+                            <option value="administrative">Administrative</option>
+                            <option value="security">Security</option>
+                            <option value="system">System</option>
+                        </select>
+
+                        <input type="date" id="audit-from">
+
+                        <input type="date" id="audit-to">
+
+                        <button type="button" class="activity-button secondary" id="audit-apply">Search</button>
+
+                    </div>
+
+
+                    <article class="activity-card">
+
+                        <div class="activity-table-wrap">
+
+                            <table class="activity-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Event Reference</th>
+                                        <th>Timestamp</th>
+                                        <th>Actor</th>
+                                        <th>Event Type</th>
+                                        <th>Operation</th>
+                                        <th>Target</th>
+                                        <th>Source IP</th>
+                                        <th>Integrity Status</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="security-audit-body">
+                                    <tr>
+                                        <td colspan="9" class="activity-empty-cell">
+                                            No audit records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+     DETAIL MODAL
+========================================================= -->
+
+    <div class="activity-modal-overlay" id="activity-detail-modal" hidden>
+
+        <div class="activity-modal" role="dialog" aria-modal="true" aria-labelledby="activity-detail-title">
+
+            <div class="activity-modal-header">
+
+                <div>
+                    <span class="activity-eyebrow">SECURITY RECORD</span>
+                    <h2 id="activity-detail-title">Record Details</h2>
+                </div>
+
+                <button type="button" class="activity-modal-close" data-close-activity-modal
+                    aria-label="Close">&times;</button>
+
+            </div>
+
+            <div class="activity-modal-content" id="activity-detail-content"></div>
+
+            <div class="activity-modal-footer">
+
+                <button type="button" class="activity-button secondary" data-close-activity-modal>Close</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+     INCIDENT FORM MODAL
+========================================================= -->
+
+    <div class="activity-modal-overlay" id="incident-modal" hidden>
+
+        <div class="activity-modal" role="dialog" aria-modal="true" aria-labelledby="incident-modal-title">
+
+            <div class="activity-modal-header">
+
+                <div>
+                    <span class="activity-eyebrow">INCIDENT MANAGEMENT</span>
+                    <h2 id="incident-modal-title">Record Security Incident</h2>
+                </div>
+
+                <button type="button" class="activity-modal-close" data-close-incident-modal
+                    aria-label="Close">&times;</button>
+
+            </div>
+
+
+            <form id="incident-create-form">
+
+                <div class="activity-modal-content">
+
+                    <label>
+                        Incident title
+
+                        <input type="text" name="title" maxlength="180" required>
+                    </label>
+
+
+                    <label>
+                        Incident category
+
+                        <select name="category" required>
+                            <option value="">Select category</option>
+                            <option value="unauthorized_access">Unauthorized Access</option>
+                            <option value="account_compromise">Account Compromise</option>
+                            <option value="data_exposure">Data Exposure</option>
+                            <option value="authentication_attack">Authentication Attack</option>
+                            <option value="privilege_abuse">Privilege Abuse</option>
+                            <option value="system_security">System Security</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+
+
+                    <label>
+                        Severity
+
+                        <select name="severity" required>
+                            <option value="">Select severity</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </label>
+
+
+                    <label>
+                        Description
+
+                        <textarea name="description" minlength="10" maxlength="5000" required></textarea>
+                    </label>
+
+
+                    <label>
+                        Initial response taken
+
+                        <textarea name="initialResponse" maxlength="3000"></textarea>
+                    </label>
+
+
+                    <p class="activity-help-text">
+                        The server will assign the incident reference,
+                        record the reporting administrator and timestamp,
+                        and maintain the investigation history.
+                    </p>
+
+                </div>
+
+
+                <div class="activity-modal-footer">
+
+                    <button type="button" class="activity-button secondary" data-close-incident-modal>Cancel</button>
+
+                    <button type="submit" class="activity-button primary">Submit Incident</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+     CONFIRMATION MODAL
+========================================================= -->
+
+    <div class="activity-modal-overlay" id="activity-confirm-modal" hidden>
+
+        <div class="activity-modal activity-confirm-modal" role="dialog" aria-modal="true"
+            aria-labelledby="activity-confirm-title">
+
+            <div class="activity-modal-header">
+
+                <h2 id="activity-confirm-title">
+                    Confirm Security Action
+                </h2>
+
+                <button type="button" class="activity-modal-close" data-close-confirm-modal
+                    aria-label="Close">&times;</button>
+
+            </div>
+
+
+            <div class="activity-modal-content">
+
+                <p id="activity-confirm-description"></p>
+
+                <label>
+                    Administrative justification
+
+                    <textarea id="activity-confirm-reason" minlength="10" maxlength="2000" required></textarea>
+                </label>
+
+                <p class="activity-help-text">
+                    This action will be submitted to the backend for
+                    authorization and audit recording.
+                </p>
+
+            </div>
+
+
+            <div class="activity-modal-footer">
+
+                <button type="button" class="activity-button secondary" data-close-confirm-modal>Cancel</button>
+
+                <button type="button" class="activity-button danger" id="activity-confirm-submit">Confirm
+                    Action</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOASTS -->
+
+    <div class="activity-toast-container" id="activity-toast-container" aria-live="polite"></div>
+
+
+    <script src="activity.js" defer></script>
+
+</body>
+
+</html>

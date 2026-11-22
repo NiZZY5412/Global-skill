@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <title>Employer Payments & Billing | TALVORA</title>
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="billing.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="billing-page">
+
+    <div class="employer-layout">
+
+        <aside class="employer-sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div><strong>TALVORA</strong><small>EMPLOYER PORTAL</small></div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+                <a href="employer-dashboard.html" class="nav-link">▦ Dashboard</a>
+                <a href="company-profile.html" class="nav-link">▤ Company Profile</a>
+                <a href="locations.html" class="nav-link">⌖ Branches & Locations</a>
+                <a href="jobs.html" class="nav-link">▣ Jobs Management</a>
+                <a href="applications.html" class="nav-link">▥ Applications</a>
+                <a href="skills-matching.html" class="nav-link">✧ Skills & Matching</a>
+                <a href="interviews.html" class="nav-link">◷ Interviews</a>
+                <a href="offers-onboarding.html" class="nav-link">♙ Offers & Onboarding</a>
+                <a href="workforce.html" class="nav-link">♧ Employee & Workforce</a>
+                <a href="billing.html" class="nav-link active">▧ Payments & Billing</a>
+                <a href="compliance-documents.html" class="nav-link">▤ Compliance & Documents</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-label">ACCOUNT</div>
+                <a href="team-permissions.html" class="nav-link">♧ Team & Permissions</a>
+<a href="disputes-support.html" class="nav-link">? Support Centre</a>
+            </div>
+        </aside>
+
+        <main class="employer-main">
+
+            <header class="employer-topbar">
+                <button id="menuToggle" class="icon-button" type="button">☰</button>
+
+                <div class="topbar-title">
+                    <h1>Employer Payments & Billing</h1>
+                    <p>Manage invoices, transactions and subscriptions.</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <select id="companySwitcher" aria-label="Organization">
+                        <option value="">Select organization</option>
+                    </select>
+                    <button class="icon-button" type="button" id="billingRefresh">↻</button>
+                </div>
+            </header>
+
+            <section class="billing-content">
+
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL OPERATIONS</span>
+                        <h2>Global Billing & Payments Centre</h2>
+                        <p>Transparent billing, secure payments and subscription oversight.</p>
+                    </div>
+                    <div class="heading-actions">
+                        <button class="btn btn-secondary" id="billingPortalButton">Billing Portal ↗</button>
+                        <button class="btn btn-primary" id="addPaymentMethodButton">+ Add Payment Method</button>
+                    </div>
+                </div>
+
+                <div class="billing-connection">
+                    <span class="connection-dot"></span>
+                    <span id="billingConnectionStatus">Connecting to billing services...</span>
+                    <span id="billingUpdated"></span>
+                </div>
+
+                <!-- BILLING KPIs -->
+                <div class="billing-kpi-grid">
+                    <article class="billing-kpi">
+                        <div class="billing-kpi-icon blue">▤</div>
+                        <div><span>Total Invoices</span><strong id="totalInvoices">0</strong></div>
+                    </article>
+
+                    <article class="billing-kpi">
+                        <div class="billing-kpi-icon green">✓</div>
+                        <div><span>Paid Invoices</span><strong id="paidInvoices">0</strong></div>
+                    </article>
+
+                    <article class="billing-kpi">
+                        <div class="billing-kpi-icon orange">◷</div>
+                        <div><span>Outstanding</span><strong id="outstandingAmount">0</strong></div>
+                    </article>
+
+                    <article class="billing-kpi">
+                        <div class="billing-kpi-icon red">!</div>
+                        <div><span>Overdue Invoices</span><strong id="overdueInvoices">0</strong></div>
+                    </article>
+                </div>
+
+                <!-- SUBSCRIPTION -->
+                <section class="billing-panel subscription-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Current Subscription</h3>
+                            <p>Your organization's current TALVORA subscription.</p>
+                        </div>
+                        <span id="subscriptionStatus" class="billing-status neutral">Not loaded</span>
+                    </div>
+
+                    <div class="subscription-grid">
+                        <div>
+                            <span>Subscription Plan</span>
+                            <strong id="subscriptionPlan">—</strong>
+                        </div>
+                        <div>
+                            <span>Billing Cycle</span>
+                            <strong id="subscriptionCycle">—</strong>
+                        </div>
+                        <div>
+                            <span>Next Billing Date</span>
+                            <strong id="subscriptionNextDate">—</strong>
+                        </div>
+                        <div>
+                            <span>Renewal Amount</span>
+                            <strong id="subscriptionAmount">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="subscription-actions">
+                        <button class="btn btn-primary" id="manageSubscriptionButton">Manage Subscription</button>
+                        <span id="subscriptionNotice">Subscription changes are processed through the secure billing
+                            portal.</span>
+                    </div>
+                </section>
+
+                <!-- INVOICES -->
+                <section class="billing-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Invoices & Billing Statements</h3>
+                            <p>View outstanding, paid and overdue invoices.</p>
+                        </div>
+                        <span id="invoiceCount">0 invoices</span>
+                    </div>
+
+                    <div class="billing-filters">
+                        <input type="search" id="invoiceSearch" placeholder="Search invoice number...">
+
+                        <select id="invoiceStatusFilter">
+                            <option value="">All Invoice Statuses</option>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                            <option value="overdue">Overdue</option>
+                            <option value="draft">Draft</option>
+                            <option value="void">Void</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+
+                        <select id="invoiceCurrencyFilter">
+                            <option value="">All Currencies</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearBillingFilters">Clear</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="billing-table">
+                            <thead>
+                                <tr>
+                                    <th>INVOICE</th>
+                                    <th>ISSUE DATE</th>
+                                    <th>DUE DATE</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoiceTableBody">
+                                <tr>
+                                    <td colspan="7" class="empty-cell">Loading invoices...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="billing-table-footer" id="invoiceFooter">0 invoices</div>
+                </section>
+
+                <!-- PAYMENT METHODS -->
+                <section class="billing-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Saved Payment Methods</h3>
+                            <p>Securely tokenized payment methods associated with your organization.</p>
+                        </div>
+                        <button class="btn btn-secondary" id="refreshMethodsButton">Refresh</button>
+                    </div>
+
+                    <div id="paymentMethodsContainer" class="payment-methods-grid">
+                        <p class="empty-state">Loading payment methods...</p>
+                    </div>
+
+                    <p class="billing-security-note">
+                        TALVORA displays masked payment references only. Card numbers and security codes are handled by
+                        the payment gateway.
+                    </p>
+                </section>
+
+                <!-- TRANSACTIONS -->
+                <section class="billing-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Transaction History</h3>
+                            <p>Monitor payment attempts, settlements and refunds.</p>
+                        </div>
+                    </div>
+
+                    <div class="billing-filters">
+                        <input type="search" id="transactionSearch" placeholder="Search transaction reference...">
+                        <select id="transactionStatusFilter">
+                            <option value="">All Transaction Statuses</option>
+                            <option value="successful">Successful</option>
+                            <option value="pending">Pending</option>
+                            <option value="failed">Failed</option>
+                            <option value="refunded">Refunded</option>
+                        </select>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="billing-table">
+                            <thead>
+                                <tr>
+                                    <th>TRANSACTION REF</th>
+                                    <th>DATE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>METHOD</th>
+                                    <th>AMOUNT</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionTableBody">
+                                <tr>
+                                    <td colspan="6" class="empty-cell">Loading transactions...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- BILLING DETAILS -->
+                <section class="billing-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Billing Account Information</h3>
+                            <p>Organization billing identity and invoice destination.</p>
+                        </div>
+                        <button class="btn btn-secondary" id="editBillingDetailsButton">Edit Details</button>
+                    </div>
+
+                    <div class="billing-account-grid">
+                        <div><span>Legal Entity</span><strong id="billingLegalName">—</strong></div>
+                        <div><span>Billing Email</span><strong id="billingEmail">—</strong></div>
+                        <div><span>Country</span><strong id="billingCountry">—</strong></div>
+                        <div><span>Tax / Registration Reference</span><strong id="billingTaxReference">—</strong></div>
+                        <div><span>Billing Address</span><strong id="billingAddress">—</strong></div>
+                    </div>
+                </section>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- BILLING DETAILS DIALOG -->
+    <dialog id="billingDetailsDialog" class="billing-dialog">
+        <div class="dialog-header">
+            <h2>Update Billing Information</h2>
+            <button type="button" data-close="billingDetailsDialog">×</button>
+        </div>
+
+        <form id="billingDetailsForm">
+            <label>Legal Entity Name *
+                <input name="legalName" required maxlength="180">
+            </label>
+
+            <label>Billing Email *
+                <input name="billingEmail" type="email" required>
+            </label>
+
+            <label>Country
+                <input name="country" maxlength="100">
+            </label>
+
+            <label>Tax / Registration Reference
+                <input name="taxReference" maxlength="120">
+            </label>
+
+            <label>Billing Address
+                <textarea name="billingAddress" rows="3"></textarea>
+            </label>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close="billingDetailsDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveBillingDetailsButton">Save Details</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- INVOICE DETAILS -->
+    <dialog id="invoiceDialog" class="billing-dialog">
+        <div class="dialog-header">
+            <h2>Invoice Details</h2>
+            <button type="button" data-close="invoiceDialog">×</button>
+        </div>
+        <div id="invoiceDetailsContent" class="invoice-details-content"></div>
+        <div class="dialog-actions">
+            <button class="btn btn-secondary" data-close="invoiceDialog">Close</button>
+        </div>
+    </dialog>
+
+    <div id="billingToastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="billing.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

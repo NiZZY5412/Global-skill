@@ -1,0 +1,7 @@
+(()=>{"use strict";const TE=window.TALVORA_EMPLOYEE,$=id=>document.getElementById(id),form=$("profileForm");
+const fields=["firstName","lastName","preferredName","email","phone","country","city","headline","summary","experienceYears","availability","workAuthorization","linkedInUrl","portfolioUrl"];
+function fill(p){fields.forEach(k=>{if(form.elements[k])form.elements[k].value=p[k]??"";});const pct=Math.max(0,Math.min(100,Number(p.profileCompletion||0)));$("completionValue").textContent=pct+"%";$("completionBar").style.width=pct+"%";$("lifecycleStatus").innerHTML=TE.badge(p.lifecycleStatus||"active");}
+async function load(){try{const d=TE.unwrap(await TE.request("/profile"));fill(d.profile||d);}catch(e){TE.notify(e.message,"error");$("lifecycleStatus").textContent="Unable to load lifecycle status.";}}
+async function save(e){e?.preventDefault();if(!form.reportValidity())return;const payload={};fields.filter(k=>k!=="email").forEach(k=>{const v=form.elements[k]?.value;if(v!==undefined)payload[k]=k==="experienceYears"?(v===""?null:Number(v)):v.trim();});const btn=$("saveProfile");TE.setBusy(btn,true,"Saving…");try{const r=TE.unwrap(await TE.request("/profile",{method:"PATCH",body:payload}));fill(r.profile||r);TE.notify("Your profile has been updated.","success");TE.refreshCommon();}catch(err){TE.notify(err.message,"error");}finally{TE.setBusy(btn,false);}}
+form.addEventListener("submit",save);$("saveProfileTop").addEventListener("click",save);load();window.TALVORA_EMPLOYEE_PROFILE={refresh:load};
+})();

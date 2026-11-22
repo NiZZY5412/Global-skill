@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA employee professional development and employee services portal.">
+<title>Learning & Certification | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a>
+<a class="nav-link active" href="learning.html"><span class="nav-icon">⌑</span>Learning & Certification</a>
+<a class="nav-link " href="performance.html"><span class="nav-icon">↗</span>Performance & Career</a>
+<a class="nav-link " href="communications.html"><span class="nav-icon">◉</span>Communication Centre</a>
+<a class="nav-link " href="employee-support.html"><span class="nav-icon">♡</span>Employee Support</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Learning & Certification</div><div class="topbar-sub">Build skills and track professional learning</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">PROFESSIONAL DEVELOPMENT</span><h1>Learning, Training & Certification</h1><p>Explore learning opportunities, continue your training and keep a record of completed courses and certificates.</p></div><div class="heading-actions"><button class="btn" id="refreshLearning">↻ Refresh learning</button></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Available courses</div><div class="kpi-value" id="availableCourses">—</div><div class="kpi-foot">Courses in the learning catalogue</div></div>
+ <div class="kpi"><div class="kpi-label">In progress</div><div class="kpi-value" id="learningInProgress">—</div><div class="kpi-foot">Active learning enrolments</div></div>
+ <div class="kpi"><div class="kpi-label">Completed courses</div><div class="kpi-value" id="learningCompleted">—</div><div class="kpi-foot">Successfully completed</div></div>
+ <div class="kpi"><div class="kpi-label">Certificates issued</div><div class="kpi-value" id="certificateCount">—</div><div class="kpi-foot">Certificates recorded in your profile</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>My learning plan</h2><p>Continue enrolled courses and review your progress.</p></div></div>
+ <div id="myLearningGrid" class="grid grid-3"><div class="empty-state">Loading your learning plan…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Learning catalogue</h2><p>Browse available training and professional development opportunities.</p></div></div>
+ <div class="filter-bar"><div class="search-wrap"><span>⌕</span><input id="courseSearch" class="control" placeholder="Search courses, skills or provider"></div><select id="courseCategory" class="control"><option value="">All categories</option><option>Leadership</option><option>Digital Skills</option><option>Professional Skills</option><option>Compliance</option><option>Workplace Skills</option></select><select id="courseLevel" class="control"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+ <div id="courseGrid" class="grid grid-3"><div class="empty-state">Loading courses…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>My certificates</h2><p>Completed learning and certificate references.</p></div></div>
+ <div class="table-wrap"><table><thead><tr><th>COURSE</th><th>ISSUED</th><th>CERTIFICATE NUMBER</th><th>STATUS</th></tr></thead><tbody id="certificateRows"><tr><td colspan="4" class="empty-state">Loading certificates…</td></tr></tbody></table></div>
+ <p class="panel-note mt-12">Certificate records are provided by the connected learning system. A course completion shown in demo mode is illustrative and is not an externally accredited qualification.</p>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="courseDialog"><div class="modal-head"><h2>Course details</h2><button class="modal-close" data-close-dialog="courseDialog">×</button></div><div class="modal-body" id="courseDetailBody"></div><div class="modal-foot" id="courseDetailActions"></div></dialog>
+
+<script src="employee.js"></script>
+<script src="learning.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

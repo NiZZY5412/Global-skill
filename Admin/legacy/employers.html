@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1730">
+
+    <title>Employer Management | GSES SYSTEM 001</title>
+
+    <link rel="stylesheet" href="compliance.css">
+    <link rel="stylesheet" href="employers.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand-area">
+                <div class="brand">
+                    <div class="brand-symbol">T</div>
+                    <div class="brand-text">
+                        <strong>TALVORA</strong>
+                        <small>TECHNOLOGIES</small>
+                    </div>
+                </div>
+
+                <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">&times;</button>
+            </div>
+
+            <div class="portal-label">GLOBAL SUPER ADMIN</div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar" id="admin-avatar">SA</div>
+                <div class="admin-details">
+                    <strong id="admin-name">Verifying session...</strong>
+                    <span id="admin-email">Administrator</span>
+                    <small><i></i> Super Admin Portal</small>
+                </div>
+            </div>
+
+            <nav class="sidebar-navigation">
+
+                <div class="nav-section-title">MAIN DASHBOARD</div>
+
+                <a href="../index.html" class="nav-link">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <div class="nav-section-title">PLATFORM MANAGEMENT</div>
+
+                <a href="employers.html" class="nav-link active" aria-current="page">
+                    <span class="nav-icon">▣</span>
+                    Employer Management
+                </a>
+
+                <a href="employees.html" class="nav-link">
+                    <span class="nav-icon">♙</span>
+                    Employee Management
+                </a>
+
+                <a href="jobs.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Job Management
+                </a>
+
+                <a href="applications.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Applications
+                </a>
+
+                <a href="assessments.html" class="nav-link">
+                    <span class="nav-icon">◈</span>
+                    Assessments
+                </a>
+
+                <a href="matching.html" class="nav-link">
+                    <span class="nav-icon">⇄</span>
+                    Talent Matching
+                </a>
+
+                <div class="nav-section-title">GOVERNANCE</div>
+
+                <a href="compliance.html" class="nav-link">
+                    <span class="nav-icon">⚖</span>
+                    Compliance Centre
+                </a>
+
+                <a href="evidence.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Evidence Management
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <span class="nav-icon">▥</span>
+                    Reports
+                </a>
+
+                <div class="nav-section-title">SYSTEM ADMINISTRATION</div>
+
+                <a href="disputes.html" class="nav-link">
+                    <span class="nav-icon">⚑</span>
+                    Disputes
+                </a>
+
+                <a href="consents.html" class="nav-link">
+                    <span class="nav-icon">✓</span>
+                    Consents
+                </a>
+
+                <a href="monitoring.html" class="nav-link">
+                    <span class="nav-icon">◉</span>
+                    System Monitoring
+                </a>
+
+                <a href="settings.html" class="nav-link">
+                    <span class="nav-icon">⚙</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="../index.html" class="back-link">
+                    <span>←</span>
+                    Return to Main Dashboard
+                </a>
+
+                <div class="sidebar-version">
+                    <strong>GSES SYSTEM 001</strong>
+                    <span>EMPLOYER MANAGEMENT MODULE</span>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-button" id="menu-button" aria-label="Open navigation">☰</button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            SUPER ADMIN <span>/</span> PLATFORM MANAGEMENT
+                        </div>
+
+                        <h1>Employer Management</h1>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="system-status">
+                        <i class="status-dot" id="connection-dot"></i>
+                        <span id="connection-label">Checking services...</span>
+                    </div>
+
+                    <button class="icon-button" id="refresh-button" title="Refresh employer records">↻</button>
+
+                    <button class="notification-button" id="notification-button" aria-label="Notifications">
+                        ♧
+                        <span id="notification-count" hidden>0</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <div class="notice" id="global-notice" hidden role="status" aria-live="polite"></div>
+
+
+            <div class="page-content">
+
+                <!-- PAGE HEADING -->
+                <section class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL PLATFORM ADMINISTRATION</span>
+
+                        <h2>Employer Administration</h2>
+
+                        <p>
+                            Manage employer accounts, onboarding, verification,
+                            registration information, account status and
+                            administrative oversight across the GSES platform.
+                        </p>
+                    </div>
+
+                    <div class="heading-actions">
+                        <span class="live-indicator">
+                            <i></i> ADMINISTRATIVE WORKSPACE
+                        </span>
+
+                        <button class="primary-button" id="add-employer-button">
+                            + Register Employer
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <!-- INTRODUCTION -->
+                <section class="employer-banner">
+
+                    <div class="employer-banner-icon">▣</div>
+
+                    <div>
+                        <span>EMPLOYER CONTROL CENTRE</span>
+
+                        <h3>Global Employer Administration</h3>
+
+                        <p>
+                            Centralized oversight of employer registrations,
+                            verification, platform access and account standing.
+                            All administrative changes require server-side
+                            authorization and audit recording.
+                        </p>
+                    </div>
+
+                    <div class="employer-banner-decoration">E</div>
+
+                </section>
+
+
+                <!-- METRICS -->
+                <section class="metric-grid employer-metrics">
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            TOTAL EMPLOYERS
+                            <span class="metric-icon blue">▣</span>
+                        </div>
+                        <strong id="employer-total">—</strong>
+                        <small>Registered employer accounts</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            ACTIVE EMPLOYERS
+                            <span class="metric-icon green">✓</span>
+                        </div>
+                        <strong id="employer-active">—</strong>
+                        <small>Currently active accounts</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            PENDING VERIFICATION
+                            <span class="metric-icon orange">◷</span>
+                        </div>
+                        <strong id="employer-pending">—</strong>
+                        <small>Awaiting verification review</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <div class="metric-top">
+                            SUSPENDED ACCOUNTS
+                            <span class="metric-icon red">!</span>
+                        </div>
+                        <strong id="employer-suspended">—</strong>
+                        <small>Currently suspended accounts</small>
+                    </article>
+
+                </section>
+
+
+                <!-- ONBOARDING SUMMARY -->
+                <section class="two-column-grid employer-summary">
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Employer Onboarding</h3>
+                                <p>Registration and verification oversight</p>
+                            </div>
+
+                            <span class="metric-icon cyan">◈</span>
+                        </div>
+
+                        <div class="employer-summary-row">
+                            <span>Registration submissions</span>
+                            <strong id="employer-registrations">—</strong>
+                        </div>
+
+                        <div class="employer-summary-row">
+                            <span>Verification completed</span>
+                            <strong id="employer-verified">—</strong>
+                        </div>
+
+                        <div class="employer-summary-row">
+                            <span>Verification rejected</span>
+                            <strong id="employer-rejected">—</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Account Oversight</h3>
+                                <p>Employer account health indicators</p>
+                            </div>
+
+                            <span class="metric-icon purple">◎</span>
+                        </div>
+
+                        <div class="employer-summary-row">
+                            <span>Accounts requiring attention</span>
+                            <strong id="employer-attention">—</strong>
+                        </div>
+
+                        <div class="employer-summary-row">
+                            <span>Recently registered</span>
+                            <strong id="employer-recent">—</strong>
+                        </div>
+
+                        <div class="employer-summary-row">
+                            <span>Last data synchronization</span>
+                            <strong id="employer-sync">—</strong>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- EMPLOYER DIRECTORY -->
+                <section class="content-card employer-directory">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h3>Global Employer Directory</h3>
+
+                            <p>
+                                Search and administer employer accounts
+                                registered on the GSES platform.
+                            </p>
+                        </div>
+
+                        <button class="secondary-button" id="directory-refresh">
+                            ↻ Refresh Directory
+                        </button>
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+                    <form class="filter-bar employer-filters" id="employer-filter-form">
+
+                        <input type="search" id="employer-search" placeholder="Search name, reference or email..."
+                            aria-label="Search employers">
+
+                        <select id="employer-status-filter" aria-label="Filter by account status">
+
+                            <option value="">All account statuses</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="rejected">Rejected</option>
+
+                        </select>
+
+                        <select id="employer-verification-filter" aria-label="Filter by verification">
+
+                            <option value="">All verification statuses</option>
+                            <option value="verified">Verified</option>
+                            <option value="pending">Pending</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="unverified">Unverified</option>
+
+                        </select>
+
+                        <input type="text" id="employer-country-filter" placeholder="Country"
+                            aria-label="Filter by country">
+
+                        <button class="primary-button" type="submit">
+                            Apply Filters
+                        </button>
+
+                        <button class="secondary-button" type="reset" id="clear-employer-filters">
+                            Clear
+                        </button>
+
+                    </form>
+
+
+                    <!-- TABLE -->
+                    <div class="table-wrap">
+
+                        <table class="employer-table">
+
+                            <thead>
+                                <tr>
+                                    <th>EMPLOYER</th>
+                                    <th>REFERENCE</th>
+                                    <th>COUNTRY</th>
+                                    <th>VERIFICATION</th>
+                                    <th>ACCOUNT STATUS</th>
+                                    <th>REGISTRATION DATE</th>
+                                    <th>LAST ACTIVITY</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="employer-table-body">
+
+                                <tr>
+                                    <td colspan="8" class="empty-cell">
+                                        Waiting for authenticated employer data...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+                    <div class="employer-pagination">
+
+                        <span id="pagination-information">
+                            No records loaded
+                        </span>
+
+                        <div>
+                            <button class="secondary-button" id="previous-page" disabled>
+                                ← Previous
+                            </button>
+
+                            <button class="secondary-button" id="next-page" disabled>
+                                Next →
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="last-updated">
+                        Last synchronized:
+                        <strong id="last-updated">—</strong>
+                    </div>
+
+                </section>
+
+
+                <!-- ADMINISTRATIVE INFORMATION -->
+                <section class="content-card employer-governance">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Employer Administration Controls</h3>
+                            <p>Governance principles for account management</p>
+                        </div>
+                    </div>
+
+                    <div class="employer-governance-grid">
+
+                        <div>
+                            <span class="governance-icon">✓</span>
+                            <strong>Identity Verification</strong>
+                            <p>
+                                Employer verification decisions must be supported
+                                by approved evidence and backend validation.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span class="governance-icon">⚖</span>
+                            <strong>Account Status Management</strong>
+                            <p>
+                                Account changes require a documented reason,
+                                authorization and an auditable outcome.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span class="governance-icon">◈</span>
+                            <strong>Audit Accountability</strong>
+                            <p>
+                                Employer administrative activity must be
+                                attributable to an authorized administrator.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <footer class="main-footer">
+                <span>© TALVORA TECHNOLOGIES</span>
+                <span>GSES SYSTEM 001 · EMPLOYER MANAGEMENT</span>
+                <span>GLOBAL SUPER ADMINISTRATION</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- REGISTER EMPLOYER MODAL -->
+    <div class="modal-overlay" id="employer-modal" hidden>
+
+        <section class="modal-card">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow">EMPLOYER ONBOARDING</span>
+                    <h2>Register Employer</h2>
+                </div>
+
+                <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+
+            </header>
+
+
+            <div class="modal-body">
+
+                <div class="form-warning">
+                    This action submits a new employer registration request.
+                    It does not automatically approve or verify the employer.
+                </div>
+
+
+                <form id="employer-form" class="modal-form">
+
+                    <label class="form-field full-field">
+                        Employer / Organization Name
+                        <input type="text" name="name" maxlength="200" required
+                            placeholder="Registered organization name">
+                    </label>
+
+                    <label class="form-field">
+                        Contact Person
+                        <input type="text" name="contactName" maxlength="150" placeholder="Authorized contact person">
+                    </label>
+
+                    <label class="form-field">
+                        Contact Email
+                        <input type="email" name="email" maxlength="254" required
+                            placeholder="Official organization email">
+                    </label>
+
+                    <label class="form-field">
+                        Country
+                        <input type="text" name="country" maxlength="100" required
+                            placeholder="Country of registration">
+                    </label>
+
+                    <label class="form-field">
+                        Registration Reference
+                        <input type="text" name="registrationReference" maxlength="150"
+                            placeholder="Official registration reference">
+                    </label>
+
+                    <label class="form-field">
+                        Industry
+                        <input type="text" name="industry" maxlength="120" placeholder="Industry classification">
+                    </label>
+
+                    <label class="form-field">
+                        Organization Website
+                        <input type="url" name="website" maxlength="500" placeholder="https://example.com">
+                    </label>
+
+                    <div class="full-field">
+                        <label class="confirm-line">
+                            <input type="checkbox" name="reviewAcknowledged" value="true" required>
+                            I confirm that this registration is being submitted
+                            for administrative review.
+                        </label>
+                    </div>
+
+                    <div class="modal-actions full-field">
+
+                        <button type="button" class="secondary-button" data-close-modal>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Submit Registration
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- EMPLOYER DETAILS MODAL -->
+    <div class="modal-overlay" id="employer-details-modal" hidden>
+
+        <section class="modal-card">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow">EMPLOYER RECORD</span>
+                    <h2>Employer Details</h2>
+                </div>
+
+                <button class="modal-close" data-close-details aria-label="Close">&times;</button>
+
+            </header>
+
+            <div class="modal-body">
+
+                <dl class="employer-details-list" id="employer-details">
+                    <div class="empty-state">
+                        Select an employer record to view its details.
+                    </div>
+                </dl>
+
+                <div class="modal-actions">
+                    <button class="secondary-button" data-close-details>
+                        Close
+                    </button>
+
+                    <button class="primary-button" id="open-status-button" disabled>
+                        Manage Account Status
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- STATUS MANAGEMENT MODAL -->
+    <div class="modal-overlay" id="employer-status-modal" hidden>
+
+        <section class="modal-card">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED ADMINISTRATIVE ACTION</span>
+                    <h2>Manage Employer Status</h2>
+                </div>
+
+                <button class="modal-close" data-close-status aria-label="Close">&times;</button>
+
+            </header>
+
+            <div class="modal-body">
+
+                <div class="form-warning">
+                    Status changes are subject to backend permission checks,
+                    applicable policies and permanent audit recording.
+                </div>
+
+                <form id="employer-status-form" class="modal-form">
+
+                    <input type="hidden" name="reference">
+
+                    <label class="form-field full-field">
+                        New Account Status
+                        <select name="status" required>
+                            <option value="">Select status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="pending">Pending Review</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Administrative Reason
+                        <textarea name="reason" required minlength="10" maxlength="2000"
+                            placeholder="Document the reason for this action..."></textarea>
+                    </label>
+
+                    <div class="modal-actions full-field">
+
+                        <button type="button" class="secondary-button" data-close-status>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Submit Status Change
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- NOTIFICATION DRAWER -->
+    <aside class="notification-drawer" id="notification-drawer" hidden>
+
+        <header class="drawer-header">
+            <h3>Administrator Notifications</h3>
+
+            <button class="modal-close" id="drawer-close" aria-label="Close notifications">&times;</button>
+        </header>
+
+        <div class="drawer-content" id="notification-feed">
+            <div class="empty-state">
+                No notifications loaded.
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+
+    <script src="employers.js" defer></script>
+
+</body>
+
+</html>

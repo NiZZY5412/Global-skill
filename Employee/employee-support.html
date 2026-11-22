@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA employee professional development and employee services portal.">
+<title>Employee Support | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a>
+<a class="nav-link " href="learning.html"><span class="nav-icon">⌑</span>Learning & Certification</a>
+<a class="nav-link " href="performance.html"><span class="nav-icon">↗</span>Performance & Career</a>
+<a class="nav-link " href="communications.html"><span class="nav-icon">◉</span>Communication Centre</a>
+<a class="nav-link active" href="employee-support.html"><span class="nav-icon">♡</span>Employee Support</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Employee Support</div><div class="topbar-sub">Confidential support, disputes, complaints and appeals</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">EMPLOYEE CARE & CASE MANAGEMENT</span><h1>Employee Support, Disputes & Appeals</h1><p>Raise a workplace concern, request policy guidance, submit a complaint or appeal a case outcome through the designated employee support process.</p></div><div class="heading-actions"><button class="btn" id="refreshSupport">↻ Refresh cases</button><button class="btn btn-primary" id="newSupportCase">+ Submit a request</button></div></div>
+<div class="grid grid-3">
+ <div class="kpi"><div class="kpi-label">My open cases</div><div class="kpi-value" id="openCaseCount">—</div><div class="kpi-foot">Submitted or under review</div></div>
+ <div class="kpi"><div class="kpi-label">Awaiting my response</div><div class="kpi-value" id="awaitingResponseCount">—</div><div class="kpi-foot">Cases with updates to review</div></div>
+ <div class="kpi"><div class="kpi-label">Resolved cases</div><div class="kpi-value" id="resolvedCaseCount">—</div><div class="kpi-foot">Closed or resolved records</div></div>
+</div>
+<div class="grid grid-2">
+ <section class="panel">
+  <div class="panel-head"><div><h2>My support cases</h2><p>Track case status, updates and next steps.</p></div></div>
+  <div class="filter-bar"><select id="caseStatusFilter" class="control"><option value="">All case statuses</option><option value="submitted">Submitted</option><option value="in_review">In review</option><option value="awaiting_employee">Awaiting employee</option><option value="resolved">Resolved</option><option value="closed">Closed</option><option value="appeal_submitted">Appeal submitted</option></select></div>
+  <div id="caseList" class="grid"><div class="empty-state">Loading support cases…</div></div>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Support and case guidance</h2><p>Choose the appropriate route and share only relevant information.</p></div></div>
+  <div class="privacy-callout"><strong>Confidentiality:</strong> Access to case details should be restricted to authorized personnel. Marking a request confidential signals sensitive handling but does not guarantee anonymity or absolute confidentiality.</div>
+  <div class="mt-12">
+   <div class="compliance-item"><span class="compliance-icon">i</span><div><strong>Workplace concern or dispute</strong><p>Describe the concern, relevant events and the support or outcome you are seeking.</p></div></div>
+   <div class="compliance-item mt-12"><span class="compliance-icon">§</span><div><strong>Formal complaint or grievance</strong><p>Use the formal route designated by your employer. Include relevant facts and available supporting information.</p></div></div>
+   <div class="compliance-item mt-12"><span class="compliance-icon">↗</span><div><strong>Appeal</strong><p>Where the process permits, submit an appeal against a resolved or closed case with the reasons for reconsideration.</p></div></div>
+  </div>
+  <div class="confidential-callout mt-12"><strong>Urgent safety matters:</strong> If someone is in immediate danger or needs urgent medical or emergency assistance, contact local emergency services or your employer's designated urgent response channel. Do not wait for a portal case response.</div>
+ </section>
+</div>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="supportCaseDialog"><div class="modal-head"><h2>Submit employee support request</h2><button class="modal-close" data-close-dialog="supportCaseDialog">×</button></div><form id="supportCaseForm"><div class="modal-body">
+ <div class="field"><label for="supportCategory">Request category *</label><select id="supportCategory" name="category" required><option value="">Choose a category</option></select></div>
+ <div class="field"><label for="supportSubject">Subject *</label><input id="supportSubject" name="subject" required maxlength="160" placeholder="Briefly describe the issue"></div>
+ <div class="field"><label for="supportDescription">Description *</label><textarea id="supportDescription" name="description" required maxlength="4000" rows="6" placeholder="Provide relevant facts, dates where appropriate, and the support or outcome you are seeking."></textarea></div>
+ <div class="field"><label for="supportPriority">Priority</label><select id="supportPriority" name="priority"><option value="normal">Normal</option><option value="low">Low</option><option value="high">High</option></select></div>
+ <label class="check-row"><input type="checkbox" id="supportConfidential" name="confidential" value="true"><span>Request confidential handling because this matter contains sensitive information.</span></label>
+ <div class="privacy-callout">Only authorized support personnel should access case information. Do not include passwords, bank details, unnecessary medical details or information about other employees that is not relevant. The portal does not promise anonymous reporting.</div>
+</div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="supportCaseDialog">Cancel</button><button type="submit" class="btn btn-primary" id="submitSupportCase">Submit request</button></div></form></dialog>
+<dialog class="modal" id="caseDetailDialog"><div class="modal-head"><h2>Support case</h2><button class="modal-close" data-close-dialog="caseDetailDialog">×</button></div><div class="modal-body" id="caseDetailBody"></div><div class="modal-foot" id="caseDetailActions"></div></dialog>
+<dialog class="modal" id="appealDialog"><div class="modal-head"><h2>Submit case appeal</h2><button class="modal-close" data-close-dialog="appealDialog">×</button></div><form id="appealForm"><div class="modal-body"><p class="muted" id="appealCaseRef"></p><div class="field"><label for="appealReason">Reason for appeal *</label><textarea id="appealReason" name="reason" rows="6" maxlength="3000" required placeholder="Explain why the outcome should be reconsidered and include any relevant new information."></textarea></div><div class="notice warning">An appeal is a request for reconsideration and does not guarantee a different outcome. The applicable employer procedure and timelines govern.</div></div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="appealDialog">Cancel</button><button type="submit" class="btn btn-primary">Submit appeal</button></div></form></dialog>
+
+<script src="employee.js"></script>
+<script src="employee-support.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

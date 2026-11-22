@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060638">
+    <meta charset="utf-8">
+    <title>TALVORA | GSES</title>
+    <style>
+        :root { color-scheme: dark; font-family: Inter, "Segoe UI", sans-serif; }
+        * { box-sizing: border-box; }
+        html, body { min-height: 100%; margin: 0; }
+        body { display: grid; min-height: 100vh; place-items: center; overflow: hidden; background: radial-gradient(circle at 50% 36%, rgba(49,214,220,.12), transparent 24%), linear-gradient(145deg, #060638, #0b1045 58%, #061b48); }
+        .splash { display: none; }
+        .splash-logo { width: 112px; height: 112px; object-fit: contain; border-radius: 24px; filter: drop-shadow(0 18px 28px rgba(0,0,0,.25)); }
+        .splash-name { margin: 0; color: #fff; font-size: clamp(34px, 7vw, 62px); font-weight: 800; letter-spacing: .18em; text-indent: .18em; }
+        .splash-subtitle { margin: -8px 0 0; color: #31d6dc; font-size: 11px; font-weight: 800; letter-spacing: .38em; text-indent: .38em; }
+        .splash-status { margin-top: 14px; color: rgba(255,255,255,.68); font-size: 12px; }
+        body > p { display: none; }
+        @keyframes appear { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    </style>
+    <script>
+        window.location.replace("./Admin/index.html#/admin/dashboard");
+    </script>
+</head>
+<body>
+    <main class="splash" aria-label="Opening TALVORA Global Skills-to-Employment System">
+        <img class="splash-logo" src="talvora-logo.png" alt="TALVORA logo">
+        <h1 class="splash-name">TALVORA</h1>
+        <p class="splash-subtitle">TECHNOLOGIES</p>
+        <p class="splash-status">Opening the admin dashboard...</p>
+    </main>
+    <p>Opening the GSES Super Admin dashboard…</p>
+</body>
+</html>

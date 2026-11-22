@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <title>Employee & Workforce Management | TALVORA</title>
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="workforce.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="workforce-page">
+
+    <div class="employer-layout">
+
+        <aside class="employer-sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <strong>TALVORA</strong>
+                    <small>EMPLOYER PORTAL</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+                <a href="employer-dashboard.html" class="nav-link">▦ Dashboard</a>
+                <a href="company-profile.html" class="nav-link">▤ Company Profile</a>
+                <a href="locations.html" class="nav-link">⌖ Branches & Locations</a>
+                <a href="jobs.html" class="nav-link">▣ Jobs Management</a>
+                <a href="applications.html" class="nav-link">▥ Applications</a>
+                <a href="skills-matching.html" class="nav-link">✧ Skills & Matching</a>
+                <a href="interviews.html" class="nav-link">◷ Interviews</a>
+                <a href="offers-onboarding.html" class="nav-link">♙ Offers & Onboarding</a>
+                <a href="workforce.html" class="nav-link active">♧ Employee & Workforce</a>
+                <a href="billing.html" class="nav-link">▧ Payments & Billing</a>
+                <a href="compliance-documents.html" class="nav-link">▤ Compliance & Documents</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-label">ACCOUNT</div>
+                <a href="team-permissions.html" class="nav-link">♧ Team & Permissions</a>
+<a href="disputes-support.html" class="nav-link">? Support Centre</a>
+            </div>
+        </aside>
+
+        <main class="employer-main">
+
+            <header class="employer-topbar">
+                <button id="menuToggle" class="icon-button" type="button">☰</button>
+
+                <div class="topbar-title">
+                    <h1>Employee & Workforce Management</h1>
+                    <p>Manage your complete employee lifecycle.</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <select id="companySwitcher" aria-label="Organization">
+                        <option value="">Select organization</option>
+                    </select>
+                    <button class="icon-button" id="notificationToggle" type="button">♧</button>
+                </div>
+            </header>
+
+            <section class="module-content">
+
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">HUMAN CAPITAL MANAGEMENT</span>
+                        <h2>Global Employee & Workforce Centre</h2>
+                        <p>Centralized employee records, assignments, employment status and workforce oversight.</p>
+                    </div>
+
+                    <div class="heading-actions">
+                        <button class="btn btn-secondary" id="refreshWorkforceButton">↻ Refresh</button>
+                        <button class="btn btn-primary" id="createEmployeeButton">+ Add Employee</button>
+                    </div>
+                </div>
+
+                <div class="connection-banner">
+                    <span class="connection-dot"></span>
+                    <span id="workforceConnectionStatus">Connecting...</span>
+                    <span id="workforceLastUpdated"></span>
+                </div>
+
+                <!-- KPI CARDS -->
+                <div class="workforce-kpi-grid">
+
+                    <article class="workforce-kpi-card">
+                        <div class="workforce-icon navy">♧</div>
+                        <div><span>Total Employees</span><strong id="totalEmployees">0</strong><small>Registered
+                                workforce</small></div>
+                    </article>
+
+                    <article class="workforce-kpi-card">
+                        <div class="workforce-icon green">✓</div>
+                        <div><span>Active Employees</span><strong id="activeEmployees">0</strong><small>Currently
+                                active</small></div>
+                    </article>
+
+                    <article class="workforce-kpi-card">
+                        <div class="workforce-icon blue">◷</div>
+                        <div><span>On Leave</span><strong id="onLeaveEmployees">0</strong><small>Currently on
+                                leave</small></div>
+                    </article>
+
+                    <article class="workforce-kpi-card">
+                        <div class="workforce-icon orange">◉</div>
+                        <div><span>Probation</span><strong id="probationEmployees">0</strong><small>Probationary
+                                employees</small></div>
+                    </article>
+
+                    <article class="workforce-kpi-card">
+                        <div class="workforce-icon red">!</div>
+                        <div><span>Inactive</span><strong id="inactiveEmployees">0</strong><small>Suspended or
+                                exited</small></div>
+                    </article>
+
+                    <article class="workforce-kpi-card">
+                        <div class="workforce-icon purple">▤</div>
+                        <div><span>Departments</span><strong id="departmentsCount">0</strong><small>Departments
+                                represented</small></div>
+                    </article>
+
+                </div>
+
+                <!-- DEPARTMENT OVERVIEW -->
+                <section class="workforce-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Organizational Workforce Overview</h3>
+                            <p>Employee distribution across departments.</p>
+                        </div>
+                    </div>
+                    <div id="departmentOverview" class="department-overview">
+                        <p class="overview-empty">Department information will appear here.</p>
+                    </div>
+                </section>
+
+                <!-- EMPLOYEE RECORDS -->
+                <section class="workforce-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Employee Master Records</h3>
+                            <p>Manage employee profiles, assignments and employment information.</p>
+                        </div>
+                        <span id="employeeCountLabel">0 employees</span>
+                    </div>
+
+                    <div class="workforce-filter-bar">
+                        <input type="search" id="employeeSearch" placeholder="Search employee, ID, email or position">
+
+                        <select id="employeeStatusFilter">
+                            <option value="">All Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="probation">Probation</option>
+                            <option value="on_leave">On Leave</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="terminated">Terminated</option>
+                            <option value="offboarded">Offboarded</option>
+                        </select>
+
+                        <select id="employeeDepartmentFilter">
+                            <option value="">All Departments</option>
+                        </select>
+
+                        <select id="employeeLocationFilter">
+                            <option value="">All Locations</option>
+                        </select>
+
+                        <select id="employeeTypeFilter">
+                            <option value="">All Employment Types</option>
+                            <option value="full_time">Full-time</option>
+                            <option value="part_time">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="internship">Internship</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearEmployeeFilters">Clear</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="workforce-table">
+                            <thead>
+                                <tr>
+                                    <th>EMPLOYEE</th>
+                                    <th>EMPLOYEE ID</th>
+                                    <th>DEPARTMENT</th>
+                                    <th>POSITION</th>
+                                    <th>LOCATION</th>
+                                    <th>EMPLOYMENT TYPE</th>
+                                    <th>STATUS</th>
+                                    <th>START DATE</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTableBody">
+                                <tr>
+                                    <td colspan="9" class="table-loading">Loading employee records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="workforceTableFooter">Showing 0 employees</span>
+                        <span id="workforceFilteredCount">0 records</span>
+                    </div>
+                </section>
+
+                <!-- EMPLOYMENT LIFECYCLE -->
+                <section class="workforce-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Employment Lifecycle Overview</h3>
+                            <p>Monitor employment status distribution.</p>
+                        </div>
+                    </div>
+                    <div id="lifecycleOverview" class="lifecycle-overview"></div>
+                </section>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- ADD / EDIT EMPLOYEE -->
+    <dialog id="employeeDialog" class="workforce-dialog">
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">EMPLOYEE MASTER DATA</span>
+                <h2 id="employeeDialogTitle">Add New Employee</h2>
+            </div>
+            <button class="dialog-close" data-close="employeeDialog" type="button">×</button>
+        </div>
+
+        <form id="employeeForm">
+            <input type="hidden" id="employeeId">
+
+            <div class="form-section">
+                <h3>Personal Information</h3>
+
+                <div class="workforce-form-grid">
+                    <label class="form-field">First Name *
+                        <input name="firstName" required maxlength="80">
+                    </label>
+
+                    <label class="form-field">Last Name *
+                        <input name="lastName" required maxlength="80">
+                    </label>
+
+                    <label class="form-field">Work Email *
+                        <input name="email" type="email" required maxlength="180">
+                    </label>
+
+                    <label class="form-field">Phone Number
+                        <input name="phone" type="tel" maxlength="35">
+                    </label>
+
+                    <label class="form-field">Employee Number
+                        <input name="employeeNumber" maxlength="60">
+                    </label>
+
+                    <label class="form-field">Identification Reference
+                        <input name="identificationReference" maxlength="100">
+                    </label>
+                </div>
+
+                <p class="form-help">Sensitive identity information must be encrypted and access-controlled by the
+                    backend.</p>
+            </div>
+
+            <div class="form-section">
+                <h3>Organizational Assignment</h3>
+
+                <div class="workforce-form-grid">
+                    <label class="form-field">Department *
+                        <input name="department" required maxlength="120">
+                    </label>
+
+                    <label class="form-field">Job Title *
+                        <input name="jobTitle" required maxlength="150">
+                    </label>
+
+                    <label class="form-field">Branch / Work Location
+                        <input name="location" maxlength="180">
+                    </label>
+
+                    <label class="form-field">Reporting Manager
+                        <input name="manager" maxlength="150">
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Employment Information</h3>
+
+                <div class="workforce-form-grid">
+                    <label class="form-field">Employment Type *
+                        <select name="employmentType" required>
+                            <option value="full_time">Full-time</option>
+                            <option value="part_time">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="internship">Internship</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">Employment Status *
+                        <select name="employmentStatus" required>
+                            <option value="active">Active</option>
+                            <option value="probation">Probation</option>
+                            <option value="on_leave">On Leave</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">Employment Start Date *
+                        <input name="startDate" type="date" required>
+                    </label>
+
+                    <label class="form-field">Contract End Date
+                        <input name="contractEndDate" type="date">
+                    </label>
+                </div>
+
+                <label class="form-field">Employment Notes
+                    <textarea name="notes" rows="4" maxlength="3000"></textarea>
+                </label>
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close="employeeDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveEmployeeButton">Save Employee</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- EMPLOYEE PROFILE -->
+    <dialog id="employeeProfileDialog" class="workforce-dialog">
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">EMPLOYEE PROFILE</span>
+                <h2>Employee Information Centre</h2>
+            </div>
+            <button class="dialog-close" data-close="employeeProfileDialog" type="button">×</button>
+        </div>
+
+        <div class="profile-content">
+            <div class="employee-profile-header">
+                <div class="employee-avatar" id="profileAvatar">E</div>
+                <div>
+                    <h3 id="profileEmployeeName">Employee</h3>
+                    <p id="profileEmployeeNumber">Employee ID</p>
+                    <div id="profileEmployeeStatus"></div>
+                </div>
+            </div>
+
+            <div class="profile-action-buttons">
+                <button class="btn btn-primary" id="profileEditButton">Edit Profile</button>
+                <button class="btn btn-secondary" id="profileAssignmentButton">Change Assignment</button>
+                <button class="btn btn-secondary" id="profileStatusButton">Change Status</button>
+            </div>
+
+            <div class="profile-section">
+                <h3>Personal Information</h3>
+                <div class="profile-information-grid">
+                    <div><span>Email</span><strong id="profileEmployeeEmail">—</strong></div>
+                    <div><span>Phone</span><strong id="profileEmployeePhone">—</strong></div>
+                    <div><span>Identification</span><strong id="profileEmployeeIdentification">—</strong></div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h3>Organizational Information</h3>
+                <div class="profile-information-grid">
+                    <div><span>Department</span><strong id="profileEmployeeDepartment">—</strong></div>
+                    <div><span>Position</span><strong id="profileEmployeePosition">—</strong></div>
+                    <div><span>Location</span><strong id="profileEmployeeLocation">—</strong></div>
+                    <div><span>Reporting Manager</span><strong id="profileEmployeeManager">—</strong></div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h3>Employment Information</h3>
+                <div class="profile-information-grid">
+                    <div><span>Employment Type</span><strong id="profileEmployeeType">—</strong></div>
+                    <div><span>Start Date</span><strong id="profileEmployeeStartDate">—</strong></div>
+                    <div><span>Contract End</span><strong id="profileEmployeeContractEnd">—</strong></div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h3>Employment & Assignment History</h3>
+                <div id="profileAssignmentHistory" class="profile-history"></div>
+            </div>
+        </div>
+
+        <div class="dialog-actions">
+            <button class="btn btn-secondary" data-close="employeeProfileDialog">Close</button>
+        </div>
+    </dialog>
+
+    <!-- ASSIGNMENT / PROMOTION / TRANSFER -->
+    <dialog id="assignmentDialog" class="workforce-dialog">
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">WORKFORCE ASSIGNMENT</span>
+                <h2>Employee Assignment Change</h2>
+            </div>
+            <button class="dialog-close" data-close="assignmentDialog" type="button">×</button>
+        </div>
+
+        <form id="assignmentForm">
+            <input type="hidden" name="employeeId" id="assignmentEmployeeId">
+
+            <div class="form-section">
+                <label class="form-field">Change Type *
+                    <select name="type" required>
+                        <option value="transfer">Branch / Location Transfer</option>
+                        <option value="promotion">Promotion</option>
+                        <option value="role_change">Role Change</option>
+                        <option value="department_change">Department Change</option>
+                    </select>
+                </label>
+
+                <div class="workforce-form-grid">
+                    <label class="form-field">New Department
+                        <input name="department" id="assignmentDepartment">
+                    </label>
+
+                    <label class="form-field">New Position
+                        <input name="jobTitle" id="assignmentJobTitle">
+                    </label>
+
+                    <label class="form-field">New Location
+                        <input name="location" id="assignmentLocation">
+                    </label>
+
+                    <label class="form-field">New Manager
+                        <input name="manager" id="assignmentManager">
+                    </label>
+
+                    <label class="form-field">Effective Date *
+                        <input name="effectiveDate" id="assignmentEffectiveDate" type="date" required>
+                    </label>
+                </div>
+
+                <label class="form-field">Reason for Change *
+                    <textarea name="reason" rows="4" required maxlength="2000"></textarea>
+                </label>
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close="assignmentDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveAssignmentButton">Save Assignment</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- STATUS CHANGE -->
+    <dialog id="statusDialog" class="workforce-dialog">
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">EMPLOYMENT LIFECYCLE</span>
+                <h2>Update Employment Status</h2>
+            </div>
+            <button class="dialog-close" data-close="statusDialog" type="button">×</button>
+        </div>
+
+        <form id="statusForm">
+            <input type="hidden" name="employeeId" id="statusEmployeeId">
+
+            <div class="form-section">
+                <label class="form-field">New Employment Status *
+                    <select name="employmentStatus" id="employeeNewStatus" required>
+                        <option value="active">Active</option>
+                        <option value="probation">Probation</option>
+                        <option value="on_leave">On Leave</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="terminated">Terminated</option>
+                        <option value="offboarded">Offboarded</option>
+                    </select>
+                </label>
+
+                <label class="form-field">Effective Date *
+                    <input name="effectiveDate" id="statusEffectiveDate" type="date" required>
+                </label>
+
+                <label class="form-field">Reason *
+                    <textarea name="reason" id="statusReason" rows="4" required maxlength="2000"></textarea>
+                </label>
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close="statusDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveStatusButton">Update Status</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="workforce.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

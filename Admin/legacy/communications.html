@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1730">
+    <meta name="description" content="TALVORA Super Admin Notifications and Communication Centre">
+
+    <title>Notifications & Communication | TALVORA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="communications.css">
+</head>
+
+<body>
+
+    <div class="comm-app" id="comm-app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="comm-sidebar" id="comm-sidebar">
+
+            <div class="comm-brand">
+                <a href="../index.html" class="comm-brand-link">
+                    <img src="../../talvora-logo.png" alt="TALVORA logo" class="comm-logo">
+
+                    <div class="comm-brand-name">
+                        <strong>TALVORA</strong>
+                        <span>SUPER ADMINISTRATION</span>
+                    </div>
+                </a>
+
+                <button type="button" class="comm-sidebar-close" id="comm-sidebar-close" aria-label="Close navigation">
+                    &times;
+                </button>
+            </div>
+
+
+            <!-- ADMIN IDENTITY -->
+
+            <div class="comm-admin-card">
+                <div class="comm-admin-avatar" id="comm-admin-avatar">SA</div>
+
+                <div class="comm-admin-details">
+                    <strong id="comm-admin-name">Super Administrator</strong>
+                    <span id="comm-admin-email">Session verification pending</span>
+
+                    <div class="comm-admin-status">
+                        <span class="comm-status-dot"></span>
+                        <span id="comm-session-status">Checking session</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="comm-navigation">
+
+                <div class="comm-nav-label">MAIN PORTAL</div>
+
+                <a href="../index.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="employees.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">♙</span>
+                    Employee Management
+                </a>
+
+                <a href="employers.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">▣</span>
+                    Employer Management
+                </a>
+
+
+                <div class="comm-nav-label">PLATFORM OPERATIONS</div>
+
+                <a href="jobs.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">▤</span>
+                    Jobs
+                </a>
+
+                <a href="applications.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">▧</span>
+                    Applications
+                </a>
+
+                <a href="assessments.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">◈</span>
+                    Assessments
+                </a>
+
+                <a href="matching.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">⇄</span>
+                    Matching
+                </a>
+
+                <a href="evidence.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">▧</span>
+                    Evidence Management
+                </a>
+
+                <a href="reports.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">▥</span>
+                    Reports
+                </a>
+
+                <a href="disputes.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">⚖</span>
+                    Disputes
+                </a>
+
+
+                <div class="comm-nav-label">ADMINISTRATION</div>
+
+                <a href="consents.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">✓</span>
+                    Privacy & Consent
+                </a>
+
+                <a href="settings.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">⚙</span>
+                    System Settings
+                </a>
+
+                <a href="activity.html" class="comm-nav-link">
+                    <span class="comm-nav-icon">◉</span>
+                    Activity & Security
+                </a>
+
+                <a href="communications.html" class="comm-nav-link active" aria-current="page">
+                    <span class="comm-nav-icon">✉</span>
+                    <span>Communications</span>
+                    <span class="comm-nav-active-dot"></span>
+                </a>
+
+            </nav>
+
+
+            <div class="comm-sidebar-footer">
+                <a href="../index.html" class="comm-back-link">
+                    <span>←</span>
+                    Back to Super Admin
+                </a>
+
+                <div class="comm-version">
+                    <span>TALVORA GLOBAL</span>
+                    <span>GSES SYSTEM 001</span>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <div class="comm-sidebar-overlay" id="comm-sidebar-overlay" hidden></div>
+
+
+        <!-- MAIN -->
+
+        <main class="comm-main">
+
+            <!-- TOPBAR -->
+
+            <header class="comm-topbar">
+
+                <div class="comm-topbar-left">
+
+                    <button type="button" class="comm-menu-toggle" id="comm-menu-toggle" aria-label="Open navigation"
+                        aria-expanded="false">
+                        ☰
+                    </button>
+
+                    <div>
+                        <div class="comm-breadcrumb">
+                            SUPER ADMIN <span>/</span> COMMUNICATION CENTRE
+                        </div>
+
+                        <h1>Notifications & Communication</h1>
+                    </div>
+
+                </div>
+
+
+                <div class="comm-topbar-right">
+
+                    <div class="comm-connection-status">
+                        <span class="comm-connection-dot"></span>
+                        <span id="comm-data-status">Awaiting server connection</span>
+                    </div>
+
+                    <button type="button" class="comm-refresh-button" id="comm-refresh">
+                        ↻ <span>Refresh</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <div class="comm-notice" id="comm-notice" role="status" hidden></div>
+
+
+            <div class="comm-content">
+
+
+                <!-- =================================================
+                 OVERVIEW
+            ================================================== -->
+
+                <section class="comm-panel active" id="comm-panel-overview">
+
+                    <div class="comm-page-heading">
+
+                        <div>
+                            <span class="comm-eyebrow">GLOBAL COMMUNICATION OPERATIONS</span>
+
+                            <h2>Communication Overview</h2>
+
+                            <p>
+                                Manage notifications, announcements, automated
+                                system messages and communication delivery
+                                across all TALVORA portals.
+                            </p>
+                        </div>
+
+                        <button type="button" class="comm-button primary" data-open-composer>
+                            + Create Communication
+                        </button>
+
+                    </div>
+
+
+                    <!-- METRICS -->
+
+                    <div class="comm-metrics-grid">
+
+                        <article class="comm-metric-card">
+                            <div class="comm-metric-top">
+                                <span>TOTAL MESSAGES</span>
+                                <span class="comm-metric-icon blue">✉</span>
+                            </div>
+                            <strong id="metric-total-messages">—</strong>
+                            <small>Server-reported reporting period</small>
+                        </article>
+
+                        <article class="comm-metric-card">
+                            <div class="comm-metric-top">
+                                <span>DELIVERED</span>
+                                <span class="comm-metric-icon green">✓</span>
+                            </div>
+                            <strong id="metric-delivered">—</strong>
+                            <small>Confirmed delivery records</small>
+                        </article>
+
+                        <article class="comm-metric-card">
+                            <div class="comm-metric-top">
+                                <span>PENDING</span>
+                                <span class="comm-metric-icon orange">◷</span>
+                            </div>
+                            <strong id="metric-pending">—</strong>
+                            <small>Awaiting processing or delivery</small>
+                        </article>
+
+                        <article class="comm-metric-card">
+                            <div class="comm-metric-top">
+                                <span>FAILED</span>
+                                <span class="comm-metric-icon red">!</span>
+                            </div>
+                            <strong id="metric-failed">—</strong>
+                            <small>Failed delivery records</small>
+                        </article>
+
+                        <article class="comm-metric-card">
+                            <div class="comm-metric-top">
+                                <span>ACTIVE ANNOUNCEMENTS</span>
+                                <span class="comm-metric-icon cyan">◉</span>
+                            </div>
+                            <strong id="metric-announcements">—</strong>
+                            <small>Currently active announcements</small>
+                        </article>
+
+                        <article class="comm-metric-card">
+                            <div class="comm-metric-top">
+                                <span>UNREAD ADMIN ALERTS</span>
+                                <span class="comm-metric-icon purple">♢</span>
+                            </div>
+                            <strong id="metric-unread-admin">—</strong>
+                            <small>Unread administrator notifications</small>
+                        </article>
+
+                    </div>
+
+
+                    <!-- PORTAL COMMUNICATION -->
+
+                    <div class="comm-section-heading">
+                        <div>
+                            <h3>Connected Portal Communications</h3>
+                            <p>Communication activity across the three portals.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="comm-portal-grid">
+
+                        <article class="comm-portal-card">
+                            <div class="comm-portal-icon admin">♙</div>
+
+                            <div>
+                                <span>PORTAL 01</span>
+                                <h3>Super Admin Portal</h3>
+                                <p>Internal notifications and administrative alerts.</p>
+                            </div>
+
+                            <strong id="portal-admin-count">—</strong>
+                        </article>
+
+
+                        <article class="comm-portal-card">
+                            <div class="comm-portal-icon employer">▣</div>
+
+                            <div>
+                                <span>PORTAL 02</span>
+                                <h3>Employer Portal</h3>
+                                <p>Employer announcements and account communications.</p>
+                            </div>
+
+                            <strong id="portal-employer-count">—</strong>
+                        </article>
+
+
+                        <article class="comm-portal-card">
+                            <div class="comm-portal-icon employee">♙</div>
+
+                            <div>
+                                <span>PORTAL 03</span>
+                                <h3>Employee Portal</h3>
+                                <p>Employee updates, opportunities and notifications.</p>
+                            </div>
+
+                            <strong id="portal-employee-count">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <!-- OVERVIEW GRID -->
+
+                    <div class="comm-overview-grid">
+
+                        <article class="comm-card">
+
+                            <div class="comm-card-heading">
+                                <div>
+                                    <h3>Recent Communications</h3>
+                                    <p>Latest server-recorded communications.</p>
+                                </div>
+
+                                <button type="button" class="comm-link-button" data-comm-panel="delivery">
+                                    View history →
+                                </button>
+                            </div>
+
+
+                            <div class="comm-table-wrap">
+
+                                <table class="comm-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Reference</th>
+                                            <th>Subject</th>
+                                            <th>Audience</th>
+                                            <th>Channel</th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="overview-recent-body">
+                                        <tr>
+                                            <td colspan="6" class="comm-empty-cell">
+                                                No communication records loaded.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="comm-card">
+
+                            <div class="comm-card-heading">
+                                <div>
+                                    <h3>Delivery Health</h3>
+                                    <p>Delivery information returned by the server.</p>
+                                </div>
+                            </div>
+
+                            <div class="comm-delivery-health" id="overview-delivery-health">
+
+                                <div class="comm-empty-state">
+                                    <span>◎</span>
+                                    <strong>No delivery data loaded</strong>
+                                    <p>Delivery metrics will appear when the backend supplies them.</p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- QUICK ACTIONS -->
+
+                    <article class="comm-card comm-quick-actions">
+
+                        <div class="comm-card-heading">
+                            <div>
+                                <h3>Communication Operations</h3>
+                                <p>Quick access to communication functions.</p>
+                            </div>
+                        </div>
+
+                        <div class="comm-quick-grid">
+
+                            <button type="button" data-open-composer>
+                                <span>✉</span>
+                                <strong>Compose Message</strong>
+                                <small>Create a new communication</small>
+                            </button>
+
+                            <button type="button" data-comm-panel="announcements">
+                                <span>◉</span>
+                                <strong>Announcements</strong>
+                                <small>Manage platform announcements</small>
+                            </button>
+
+                            <button type="button" data-comm-panel="system">
+                                <span>⚙</span>
+                                <strong>System Messages</strong>
+                                <small>Review automated messages</small>
+                            </button>
+
+                            <button type="button" data-comm-panel="delivery">
+                                <span>↗</span>
+                                <strong>Delivery History</strong>
+                                <small>Inspect message delivery</small>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 ADMIN NOTIFICATIONS
+            ================================================== -->
+
+                <section class="comm-panel" id="comm-panel-admin" hidden>
+
+                    <div class="comm-page-heading">
+                        <div>
+                            <span class="comm-eyebrow">INTERNAL ADMINISTRATION</span>
+                            <h2>Administrator Notifications</h2>
+                            <p>
+                                Review internal notifications delivered to
+                                the authorized Super Administrator accounts.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="comm-filter-bar">
+
+                        <input type="search" id="admin-search" placeholder="Search notification or reference">
+
+                        <select id="admin-notification-status">
+                            <option value="">All Statuses</option>
+                            <option value="unread">Unread</option>
+                            <option value="read">Read</option>
+                            <option value="archived">Archived</option>
+                        </select>
+
+                        <select id="admin-notification-type">
+                            <option value="">All Notification Types</option>
+                            <option value="security">Security</option>
+                            <option value="finance">Finance</option>
+                            <option value="system">System</option>
+                            <option value="dispute">Disputes</option>
+                            <option value="operations">Operations</option>
+                        </select>
+
+                        <button type="button" class="comm-button secondary" id="admin-notification-apply">
+                            Apply
+                        </button>
+
+                    </div>
+
+
+                    <article class="comm-card">
+
+                        <div class="comm-table-wrap">
+                            <table class="comm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Notification</th>
+                                        <th>Category</th>
+                                        <th>Priority</th>
+                                        <th>Recipient</th>
+                                        <th>Created</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="admin-notifications-body">
+                                    <tr>
+                                        <td colspan="8" class="comm-empty-cell">
+                                            No administrator notifications loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 ANNOUNCEMENTS
+            ================================================== -->
+
+                <section class="comm-panel" id="comm-panel-announcements" hidden>
+
+                    <div class="comm-page-heading">
+                        <div>
+                            <span class="comm-eyebrow">PLATFORM-WIDE COMMUNICATION</span>
+                            <h2>Announcements Management</h2>
+                            <p>
+                                Publish, schedule, review and manage
+                                announcements for the TALVORA portals.
+                            </p>
+                        </div>
+
+                        <button type="button" class="comm-button primary" data-open-composer
+                            data-compose-type="announcement">
+                            + Create Announcement
+                        </button>
+                    </div>
+
+
+                    <div class="comm-announcement-guidance">
+                        <strong>Audience and publication control</strong>
+                        <p>
+                            Each announcement must have an explicit audience,
+                            publication status, visibility period and
+                            authorized delivery scope. Publishing is only
+                            confirmed after backend acceptance.
+                        </p>
+                    </div>
+
+
+                    <div class="comm-filter-bar">
+
+                        <input type="search" id="announcement-search" placeholder="Search announcement">
+
+                        <select id="announcement-audience">
+                            <option value="">All Audiences</option>
+                            <option value="super_admin">Super Admins</option>
+                            <option value="employers">Employers</option>
+                            <option value="employees">Employees</option>
+                            <option value="all_portals">All Portals</option>
+                        </select>
+
+                        <select id="announcement-status">
+                            <option value="">All Publication States</option>
+                            <option value="draft">Draft</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="published">Published</option>
+                            <option value="paused">Paused</option>
+                            <option value="expired">Expired</option>
+                            <option value="archived">Archived</option>
+                        </select>
+
+                        <button type="button" class="comm-button secondary" id="announcement-apply">
+                            Apply
+                        </button>
+
+                    </div>
+
+
+                    <article class="comm-card">
+
+                        <div class="comm-table-wrap">
+                            <table class="comm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Announcement</th>
+                                        <th>Audience</th>
+                                        <th>Created By</th>
+                                        <th>Publish Date</th>
+                                        <th>Expiry</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="announcements-body">
+                                    <tr>
+                                        <td colspan="8" class="comm-empty-cell">
+                                            No announcements loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 MESSAGE COMPOSER
+            ================================================== -->
+
+                <section class="comm-panel" id="comm-panel-composer" hidden>
+
+                    <div class="comm-page-heading">
+                        <div>
+                            <span class="comm-eyebrow">COMMUNICATION CREATION</span>
+                            <h2>Message Composer</h2>
+                            <p>
+                                Create announcements, administrative
+                                notifications and platform communications.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="comm-composer-layout">
+
+                        <form id="communication-form" class="comm-card comm-composer-form">
+
+                            <div class="comm-form-section-heading">
+                                <h3>Message Information</h3>
+                                <p>Define the type and content of your communication.</p>
+                            </div>
+
+
+                            <label class="comm-field">
+                                Communication type
+
+                                <select name="type" id="compose-type" required>
+                                    <option value="">Select communication type</option>
+                                    <option value="announcement">Announcement</option>
+                                    <option value="admin_notification">Admin Notification</option>
+                                    <option value="system_message">System Message</option>
+                                    <option value="platform_notice">Platform Notice</option>
+                                </select>
+                            </label>
+
+
+                            <label class="comm-field">
+                                Communication subject
+
+                                <input type="text" name="subject" id="compose-subject" maxlength="180"
+                                    placeholder="Enter subject" required>
+                            </label>
+
+
+                            <label class="comm-field">
+                                Message content
+
+                                <textarea name="body" id="compose-body" minlength="5" maxlength="20000"
+                                    placeholder="Write your communication here..." required></textarea>
+
+                                <small>Maximum 20,000 characters.</small>
+                            </label>
+
+
+                            <div class="comm-form-section-heading">
+                                <h3>Audience & Distribution</h3>
+                                <p>Select exactly who should receive the communication.</p>
+                            </div>
+
+
+                            <label class="comm-field">
+                                Target portal
+
+                                <select name="audience" id="compose-audience" required>
+                                    <option value="">Select audience</option>
+                                    <option value="super_admin">Super Admin Portal</option>
+                                    <option value="employers">Employer Portal</option>
+                                    <option value="employees">Employee Portal</option>
+                                    <option value="all_portals">All Three Portals</option>
+                                </select>
+                            </label>
+
+
+                            <div id="comm-audience-details" class="comm-audience-details" hidden>
+
+                                <label class="comm-field">
+                                    Recipient scope
+
+                                    <select name="recipientScope" id="compose-recipient-scope">
+                                        <option value="all">All eligible recipients</option>
+                                        <option value="selected">Selected recipients</option>
+                                        <option value="segment">Eligible recipient segment</option>
+                                    </select>
+                                </label>
+
+
+                                <div id="comm-segment-controls" hidden>
+
+                                    <label class="comm-field">
+                                        Recipient segment
+
+                                        <select name="segment" id="compose-segment">
+                                            <option value="">Select segment</option>
+                                            <option value="active">Active accounts</option>
+                                            <option value="pending">Pending accounts</option>
+                                            <option value="verified">Verified accounts</option>
+                                            <option value="suspended">Suspended accounts</option>
+                                        </select>
+                                    </label>
+
+                                    <p class="comm-help">
+                                        Segment membership must be resolved and
+                                        validated by the backend at dispatch time.
+                                    </p>
+
+                                </div>
+
+
+                                <div id="comm-selected-recipients" hidden>
+                                    <label class="comm-field">
+                                        Recipient references
+
+                                        <textarea name="recipientReferences" id="compose-recipient-references"
+                                            placeholder="Enter authorized recipient references, one per line."></textarea>
+                                    </label>
+                                </div>
+
+                            </div>
+
+
+                            <div class="comm-form-section-heading">
+                                <h3>Delivery Configuration</h3>
+                                <p>Configure available delivery channels and timing.</p>
+                            </div>
+
+
+                            <div class="comm-channel-options">
+
+                                <label class="comm-channel-option">
+                                    <input type="checkbox" name="channels" value="in_app" checked>
+                                    <span>
+                                        <strong>In-app notification</strong>
+                                        <small>Inside the relevant portal</small>
+                                    </span>
+                                </label>
+
+
+                                <label class="comm-channel-option">
+                                    <input type="checkbox" name="channels" value="email">
+                                    <span>
+                                        <strong>Email</strong>
+                                        <small>External email delivery</small>
+                                    </span>
+                                </label>
+
+
+                                <label class="comm-channel-option">
+                                    <input type="checkbox" name="channels" value="sms">
+                                    <span>
+                                        <strong>SMS</strong>
+                                        <small>Subject to available integration and consent</small>
+                                    </span>
+                                </label>
+
+                            </div>
+
+
+                            <label class="comm-field">
+                                Delivery timing
+
+                                <select name="deliveryMode" id="compose-delivery-mode" required>
+                                    <option value="immediate">Send immediately</option>
+                                    <option value="scheduled">Schedule delivery</option>
+                                    <option value="draft">Save as draft</option>
+                                </select>
+                            </label>
+
+
+                            <div id="comm-schedule-fields" hidden>
+
+                                <label class="comm-field">
+                                    Scheduled date and time
+
+                                    <input type="datetime-local" name="scheduledAt" id="compose-scheduled-at">
+                                </label>
+
+                                <p class="comm-help">
+                                    The backend must validate the scheduled time
+                                    and timezone before accepting the schedule.
+                                </p>
+
+                            </div>
+
+
+                            <label class="comm-field">
+                                Priority
+
+                                <select name="priority" required>
+                                    <option value="normal">Normal</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </label>
+
+
+                            <label class="comm-checkbox-field">
+                                <input type="checkbox" name="requiresAcknowledgement" value="true">
+                                Require recipient acknowledgement where supported
+                            </label>
+
+
+                            <div class="comm-form-actions">
+
+                                <button type="button" class="comm-button secondary" id="compose-preview">
+                                    Preview
+                                </button>
+
+                                <button type="button" class="comm-button secondary" id="compose-save-draft">
+                                    Save Draft
+                                </button>
+
+                                <button type="submit" class="comm-button primary" id="compose-submit">
+                                    Submit Communication
+                                </button>
+
+                            </div>
+
+                        </form>
+
+
+                        <!-- PREVIEW -->
+
+                        <aside class="comm-card comm-preview-card">
+
+                            <div class="comm-card-heading">
+                                <div>
+                                    <h3>Message Preview</h3>
+                                    <p>Review the communication before submission.</p>
+                                </div>
+                            </div>
+
+                            <div class="comm-preview-window">
+
+                                <div class="comm-preview-header">
+                                    <strong>TALVORA</strong>
+                                    <span>COMMUNICATION PREVIEW</span>
+                                </div>
+
+                                <div class="comm-preview-content">
+                                    <span class="comm-preview-type" id="preview-type">MESSAGE TYPE</span>
+
+                                    <h3 id="preview-subject">
+                                        Your subject will appear here
+                                    </h3>
+
+                                    <p id="preview-body">
+                                        Your message content will appear here.
+                                    </p>
+
+                                    <div class="comm-preview-footer">
+                                        TALVORA Technologies
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="comm-preview-disclaimer">
+                                <strong>Preview only</strong>
+                                <p>
+                                    This preview does not send, schedule or
+                                    publish a communication.
+                                </p>
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 SYSTEM MESSAGES
+            ================================================== -->
+
+                <section class="comm-panel" id="comm-panel-system" hidden>
+
+                    <div class="comm-page-heading">
+                        <div>
+                            <span class="comm-eyebrow">AUTOMATED PLATFORM COMMUNICATION</span>
+                            <h2>System Messages</h2>
+                            <p>
+                                Monitor automatically generated communications
+                                triggered by authentication, applications,
+                                assessments and platform operations.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="comm-system-warning">
+                        <strong>Automation ownership</strong>
+                        <p>
+                            These records represent messages generated by
+                            platform workflows. This interface does not
+                            independently create or simulate automated events.
+                        </p>
+                    </div>
+
+
+                    <div class="comm-filter-bar">
+
+                        <input type="search" id="system-search" placeholder="Search message or trigger">
+
+                        <select id="system-category">
+                            <option value="">All Categories</option>
+                            <option value="authentication">Authentication</option>
+                            <option value="account">Account Events</option>
+                            <option value="jobs">Jobs</option>
+                            <option value="applications">Applications</option>
+                            <option value="assessments">Assessments</option>
+                            <option value="evidence">Evidence</option>
+                            <option value="finance">Finance</option>
+                            <option value="security">Security</option>
+                        </select>
+
+                        <select id="system-status">
+                            <option value="">All Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="paused">Paused</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+
+                        <button type="button" class="comm-button secondary" id="system-apply">
+                            Apply
+                        </button>
+
+                    </div>
+
+
+                    <article class="comm-card">
+
+                        <div class="comm-table-wrap">
+                            <table class="comm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Template Reference</th>
+                                        <th>Template Name</th>
+                                        <th>Trigger</th>
+                                        <th>Portal</th>
+                                        <th>Channels</th>
+                                        <th>Last Triggered</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="system-messages-body">
+                                    <tr>
+                                        <td colspan="8" class="comm-empty-cell">
+                                            No system message templates loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 DELIVERY HISTORY
+            ================================================== -->
+
+                <section class="comm-panel" id="comm-panel-delivery" hidden>
+
+                    <div class="comm-page-heading">
+                        <div>
+                            <span class="comm-eyebrow">DELIVERY OPERATIONS</span>
+                            <h2>Delivery History</h2>
+                            <p>
+                                Track message processing, delivery attempts,
+                                failures and recipient-level delivery outcomes.
+                            </p>
+                        </div>
+
+                        <button type="button" class="comm-button secondary" data-export-communications>
+                            ↓ Export Records
+                        </button>
+                    </div>
+
+
+                    <div class="comm-filter-bar">
+
+                        <input type="search" id="delivery-search" placeholder="Search reference, subject or recipient">
+
+                        <select id="delivery-channel">
+                            <option value="">All Channels</option>
+                            <option value="in_app">In-App</option>
+                            <option value="email">Email</option>
+                            <option value="sms">SMS</option>
+                        </select>
+
+                        <select id="delivery-status">
+                            <option value="">All Delivery States</option>
+                            <option value="queued">Queued</option>
+                            <option value="processing">Processing</option>
+                            <option value="sent">Sent</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="failed">Failed</option>
+                            <option value="bounced">Bounced</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+
+                        <select id="delivery-portal">
+                            <option value="">All Portals</option>
+                            <option value="super_admin">Super Admin</option>
+                            <option value="employers">Employer</option>
+                            <option value="employees">Employee</option>
+                        </select>
+
+                        <input type="date" id="delivery-from" aria-label="From date">
+                        <input type="date" id="delivery-to" aria-label="To date">
+
+                        <button type="button" class="comm-button secondary" id="delivery-apply">
+                            Apply
+                        </button>
+
+                    </div>
+
+
+                    <article class="comm-card">
+
+                        <div class="comm-table-wrap">
+                            <table class="comm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Delivery Reference</th>
+                                        <th>Communication</th>
+                                        <th>Recipient</th>
+                                        <th>Portal</th>
+                                        <th>Channel</th>
+                                        <th>Attempt</th>
+                                        <th>Last Attempt</th>
+                                        <th>Status</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="delivery-history-body">
+                                    <tr>
+                                        <td colspan="9" class="comm-empty-cell">
+                                            No delivery records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="comm-pagination">
+                            <span id="delivery-record-count">No records loaded</span>
+
+                            <div>
+                                <button type="button" id="delivery-prev" disabled>
+                                    Previous
+                                </button>
+                                <span id="delivery-page-info">—</span>
+                                <button type="button" id="delivery-next" disabled>
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 AUDIENCE MANAGEMENT
+            ================================================== -->
+
+                <section class="comm-panel" id="comm-panel-audience" hidden>
+
+                    <div class="comm-page-heading">
+                        <div>
+                            <span class="comm-eyebrow">RECIPIENT GOVERNANCE</span>
+                            <h2>Audience Management</h2>
+                            <p>
+                                Inspect communication eligibility,
+                                portal distribution scope and recipient
+                                segmentation.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="comm-system-warning">
+                        <strong>Privacy and audience protection</strong>
+                        <p>
+                            Recipient lists must be resolved server-side.
+                            Personal contact details and account information
+                            must only be exposed when necessary and authorized.
+                            Marketing preferences and channel consent must be
+                            respected.
+                        </p>
+                    </div>
+
+
+                    <div class="comm-filter-bar">
+
+                        <input type="search" id="audience-search" placeholder="Search audience or segment">
+
+                        <select id="audience-portal">
+                            <option value="">All Portals</option>
+                            <option value="super_admin">Super Admin</option>
+                            <option value="employers">Employer</option>
+                            <option value="employees">Employee</option>
+                        </select>
+
+                        <select id="audience-category">
+                            <option value="">All Account Categories</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="verified">Verified</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+
+                        <button type="button" class="comm-button secondary" id="audience-apply">
+                            Apply
+                        </button>
+
+                    </div>
+
+
+                    <article class="comm-card">
+
+                        <div class="comm-table-wrap">
+                            <table class="comm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Segment Reference</th>
+                                        <th>Segment</th>
+                                        <th>Portal</th>
+                                        <th>Eligibility Rules</th>
+                                        <th>Recipient Count</th>
+                                        <th>Last Updated</th>
+                                        <th>Status</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="audience-body">
+                                    <tr>
+                                        <td colspan="8" class="comm-empty-cell">
+                                            No audience segments loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 COMMUNICATION OVERSIGHT
+            ================================================== -->
+
+                <section class="comm-panel" id="comm-panel-oversight" hidden>
+
+                    <div class="comm-page-heading">
+                        <div>
+                            <span class="comm-eyebrow">COMMUNICATION GOVERNANCE</span>
+                            <h2>Communication Oversight</h2>
+                            <p>
+                                Monitor communication policies, channel
+                                availability, consent compliance, delivery
+                                configuration and communication accountability.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="comm-system-warning">
+                        <strong>Centralized configuration oversight</strong>
+                        <p>
+                            Actual provider credentials, email infrastructure,
+                            SMS integrations, consent enforcement and delivery
+                            configuration belong to the backend and secure
+                            system configuration. They must not be stored
+                            in browser JavaScript.
+                        </p>
+                    </div>
+
+
+                    <div class="comm-oversight-grid">
+
+                        <article class="comm-card">
+                            <div class="comm-card-heading">
+                                <h3>Channel Availability</h3>
+                            </div>
+
+                            <div id="oversight-channels">
+                                <div class="comm-empty-state">
+                                    <span>◎</span>
+                                    <strong>Channel status unavailable</strong>
+                                    <p>Awaiting backend configuration.</p>
+                                </div>
+                            </div>
+                        </article>
+
+
+                        <article class="comm-card">
+                            <div class="comm-card-heading">
+                                <h3>Consent Compliance</h3>
+                            </div>
+
+                            <div id="oversight-consent">
+                                <div class="comm-empty-state">
+                                    <span>✓</span>
+                                    <strong>No compliance data loaded</strong>
+                                    <p>Awaiting consent service information.</p>
+                                </div>
+                            </div>
+                        </article>
+
+
+                        <article class="comm-card">
+                            <div class="comm-card-heading">
+                                <h3>Communication Controls</h3>
+                            </div>
+
+                            <div id="oversight-controls">
+                                <div class="comm-empty-state">
+                                    <span>⚙</span>
+                                    <strong>Configuration unavailable</strong>
+                                    <p>Awaiting authorized server configuration.</p>
+                                </div>
+                            </div>
+                        </article>
+
+
+                        <article class="comm-card">
+                            <div class="comm-card-heading">
+                                <h3>Delivery Providers</h3>
+                            </div>
+
+                            <div id="oversight-providers">
+                                <div class="comm-empty-state">
+                                    <span>↗</span>
+                                    <strong>No provider data loaded</strong>
+                                    <p>Provider integration status will be supplied by the backend.</p>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+
+                    <article class="comm-card comm-section-gap">
+
+                        <div class="comm-card-heading">
+                            <div>
+                                <h3>Communication Audit Records</h3>
+                                <p>Administrative communication changes and decisions.</p>
+                            </div>
+                        </div>
+
+                        <div class="comm-table-wrap">
+                            <table class="comm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Administrator</th>
+                                        <th>Operation</th>
+                                        <th>Target</th>
+                                        <th>Reason</th>
+                                        <th>Date & Time</th>
+                                        <th>Outcome</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="communication-audit-body">
+                                    <tr>
+                                        <td colspan="7" class="comm-empty-cell">
+                                            No communication audit records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+     RECORD DETAIL MODAL
+========================================================= -->
+
+    <div class="comm-modal-overlay" id="comm-detail-modal" hidden>
+
+        <div class="comm-modal" role="dialog" aria-modal="true" aria-labelledby="comm-detail-title">
+
+            <div class="comm-modal-header">
+                <div>
+                    <span class="comm-eyebrow">COMMUNICATION RECORD</span>
+                    <h2 id="comm-detail-title">Record Details</h2>
+                </div>
+
+                <button type="button" class="comm-modal-close" data-close-comm-modal aria-label="Close">
+                    &times;
+                </button>
+            </div>
+
+            <div class="comm-modal-content" id="comm-detail-content"></div>
+
+            <div class="comm-modal-footer">
+                <button type="button" class="comm-button secondary" data-close-comm-modal>
+                    Close
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+     COMMUNICATION CONFIRMATION MODAL
+========================================================= -->
+
+    <div class="comm-modal-overlay" id="comm-confirm-modal" hidden>
+
+        <div class="comm-modal comm-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="comm-confirm-title">
+
+            <div class="comm-modal-header">
+                <h2 id="comm-confirm-title">Confirm Communication Action</h2>
+
+                <button type="button" class="comm-modal-close" data-close-confirm aria-label="Close">
+                    &times;
+                </button>
+            </div>
+
+            <div class="comm-modal-content">
+
+                <p id="comm-confirm-description"></p>
+
+                <label class="comm-field">
+                    Administrative justification
+
+                    <textarea id="comm-confirm-reason" minlength="10" maxlength="2000"
+                        placeholder="Explain why this action is necessary..." required></textarea>
+                </label>
+
+            </div>
+
+            <div class="comm-modal-footer">
+                <button type="button" class="comm-button secondary" data-close-confirm>
+                    Cancel
+                </button>
+
+                <button type="button" class="comm-button danger" id="comm-confirm-submit">
+                    Confirm Action
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+     ANNOUNCEMENT PUBLICATION CONFIRMATION
+========================================================= -->
+
+    <div class="comm-modal-overlay" id="comm-publish-modal" hidden>
+
+        <div class="comm-modal comm-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="comm-publish-title">
+
+            <div class="comm-modal-header">
+                <h2 id="comm-publish-title">Confirm Publication</h2>
+
+                <button type="button" class="comm-modal-close" data-close-publish aria-label="Close">
+                    &times;
+                </button>
+            </div>
+
+            <div class="comm-modal-content">
+
+                <div class="comm-publish-warning">
+                    <strong>You are about to publish a communication.</strong>
+
+                    <p id="comm-publish-description"></p>
+                </div>
+
+                <label class="comm-field">
+                    Publication justification
+
+                    <textarea id="comm-publish-reason" minlength="10" maxlength="2000" required></textarea>
+                </label>
+
+                <p class="comm-help">
+                    Publication must be authorized and recorded by the backend.
+                    Recipient eligibility, consent and scheduled status must
+                    be validated before distribution.
+                </p>
+
+            </div>
+
+            <div class="comm-modal-footer">
+
+                <button type="button" class="comm-button secondary" data-close-publish>
+                    Cancel
+                </button>
+
+                <button type="button" class="comm-button primary" id="comm-publish-submit">
+                    Confirm Publication
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOASTS -->
+
+    <div class="comm-toast-container" id="comm-toast-container" aria-live="polite"></div>
+
+
+    <script src="communications.js" defer></script>
+
+</body>
+
+</html>

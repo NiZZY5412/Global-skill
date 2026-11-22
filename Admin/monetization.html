@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1730">
+
+    <title>Subscription & Monetization | TALVORA</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="monetization.css">
+    <script defer src="talvora-admin-config.js"></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand-area">
+                <div class="brand">
+                    <div class="brand-symbol">T</div>
+                    <div class="brand-text">
+                        <strong>TALVORA</strong>
+                        <small>TECHNOLOGIES</small>
+                    </div>
+                </div>
+
+                <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">&times;</button>
+            </div>
+
+            <div class="portal-label">GLOBAL SUPER ADMIN</div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar" id="admin-avatar">SA</div>
+
+                <div class="admin-details">
+                    <strong id="admin-name">Verifying session...</strong>
+                    <span id="admin-email">Administrator</span>
+                    <small><i></i> Super Admin Portal</small>
+                </div>
+            </div>
+
+            <nav class="sidebar-navigation">
+
+                <div class="nav-section-title">MAIN DASHBOARD</div>
+
+                <a href="index.html" class="nav-link">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <div class="nav-section-title">PLATFORM MANAGEMENT</div>
+
+                <a href="employers.html" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    Employer Management
+                </a>
+
+                <a href="employees.html" class="nav-link">
+                    <span class="nav-icon">♙</span>
+                    Employee Management
+                </a>
+
+                <a href="jobs.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Job Management
+                </a>
+
+                <a href="legacy/applications.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Applications
+                </a>
+
+                <a href="legacy/assessments.html" class="nav-link">
+                    <span class="nav-icon">◈</span>
+                    Assessments
+                </a>
+
+                <a href="legacy/matching.html" class="nav-link">
+                    <span class="nav-icon">⇄</span>
+                    Talent Matching
+                </a>
+
+                <div class="nav-section-title">FINANCIAL MANAGEMENT</div>
+
+                <a href="finance.html" class="nav-link">
+                    <span class="nav-icon">◇</span>
+                    Finance & Revenue
+                </a>
+
+                <a href="monetization.html" class="nav-link active" aria-current="page">
+                    <span class="nav-icon">◈</span>
+                    Subscription & Monetization
+                </a>
+
+                <div class="nav-section-title">GOVERNANCE</div>
+
+                <a href="compliance.html" class="nav-link">
+                    <span class="nav-icon">⚖</span>
+                    Compliance Centre
+                </a>
+
+                <a href="legacy/evidence.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Evidence Management
+                </a>
+
+                <a href="legacy/reports.html" class="nav-link">
+                    <span class="nav-icon">▥</span>
+                    Platform Reports
+                </a>
+
+                <a href="disputes.html" class="nav-link">
+                    <span class="nav-icon">⚑</span>
+                    Disputes
+                </a>
+
+                <a href="legacy/consents.html" class="nav-link">
+                    <span class="nav-icon">✓</span>
+                    Privacy & Consents
+                </a>
+
+                <div class="nav-section-title">SYSTEM ADMINISTRATION</div>
+
+                <a href="legacy/monitoring.html" class="nav-link">
+                    <span class="nav-icon">◉</span>
+                    System Monitoring
+                </a>
+
+                <a href="legacy/settings.html" class="nav-link">
+                    <span class="nav-icon">⚙</span>
+                    System Settings
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a href="index.html" class="back-link">
+                    <span>←</span>
+                    Return to Dashboard
+                </a>
+
+                <div class="sidebar-version">
+                    <strong>GSES SYSTEM 001</strong>
+                    <span>MONETIZATION MODULE</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-button" id="menu-button" aria-label="Open navigation">☰</button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            SUPER ADMIN <span>/</span> REVENUE STRATEGY
+                        </div>
+
+                        <h1>Subscription & Monetization</h1>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="system-status">
+                        <i class="status-dot" id="connection-dot"></i>
+                        <span id="connection-label">Checking services...</span>
+                    </div>
+
+                    <button class="icon-button" id="refresh-button" title="Refresh monetization data">↻</button>
+
+                    <button class="notification-button" id="notification-button" aria-label="Notifications">
+                        ♧
+                        <span id="notification-count" hidden>0</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <div class="notice" id="global-notice" hidden role="status" aria-live="polite"></div>
+
+
+            <div class="page-content">
+
+                <!-- PAGE INTRO -->
+                <section class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL REVENUE STRATEGY</span>
+
+                        <h2>Subscription & Monetization Centre</h2>
+
+                        <p>
+                            Centralized management of subscription structures,
+                            pricing policies, employer billing, platform fees,
+                            premium services and monetization rules across
+                            TALVORA's connected portals.
+                        </p>
+                    </div>
+
+                    <div class="heading-actions">
+
+                        <span class="live-indicator">
+                            <i></i> SUPER ADMIN CONTROL
+                        </span>
+
+                        <button class="secondary-button" id="export-overview-button">
+                            ↓ Export Overview
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- HERO BANNER -->
+                <section class="monetization-banner">
+
+                    <div class="monetization-banner-icon">◈</div>
+
+                    <div class="monetization-banner-content">
+
+                        <span>TALVORA GLOBAL MONETIZATION ARCHITECTURE</span>
+
+                        <h3>One Revenue Strategy. Three Connected Portals.</h3>
+
+                        <p>
+                            Govern the commercial structures that support
+                            TALVORA's employer and employee services, with
+                            centralized pricing administration, transparent
+                            revenue policies and complete administrative
+                            accountability.
+                        </p>
+
+                    </div>
+
+                    <div class="monetization-banner-decoration">T</div>
+
+                </section>
+
+
+                <!-- PERIOD FILTERS -->
+                <section class="monetization-toolbar">
+
+                    <div>
+                        <strong>Reporting scope</strong>
+
+                        <small>
+                            Select a reporting period, market and currency.
+                        </small>
+                    </div>
+
+                    <form id="overview-filter-form" class="monetization-filter-form">
+
+                        <label>
+                            From
+                            <input type="date" id="overview-from">
+                        </label>
+
+                        <label>
+                            To
+                            <input type="date" id="overview-to">
+                        </label>
+
+                        <label>
+                            Country
+                            <select id="overview-country">
+                                <option value="">All countries</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Currency
+                            <select id="overview-currency">
+                                <option value="">All currencies</option>
+                            </select>
+                        </label>
+
+                        <button type="submit" class="primary-button">
+                            Apply
+                        </button>
+
+                    </form>
+
+                </section>
+
+
+                <!-- KPI METRICS -->
+                <section class="metric-grid monetization-metrics">
+
+                    <article class="metric-card monetization-metric">
+
+                        <div class="metric-top">
+                            ACTIVE SUBSCRIPTION PLANS
+                            <span class="metric-icon blue">▤</span>
+                        </div>
+
+                        <strong id="active-plan-count">—</strong>
+
+                        <small>Currently published plans</small>
+
+                    </article>
+
+
+                    <article class="metric-card monetization-metric">
+
+                        <div class="metric-top">
+                            ACTIVE SUBSCRIPTIONS
+                            <span class="metric-icon green">♙</span>
+                        </div>
+
+                        <strong id="active-subscription-count">—</strong>
+
+                        <small>Current subscribed accounts</small>
+
+                    </article>
+
+
+                    <article class="metric-card monetization-metric">
+
+                        <div class="metric-top">
+                            RECURRING REVENUE
+                            <span class="metric-icon cyan">↗</span>
+                        </div>
+
+                        <strong id="recurring-revenue">—</strong>
+
+                        <small>Based on configured recurring billing</small>
+
+                    </article>
+
+
+                    <article class="metric-card monetization-metric">
+
+                        <div class="metric-top">
+                            MONETIZATION REVENUE
+                            <span class="metric-icon purple">◇</span>
+                        </div>
+
+                        <strong id="monetization-revenue">—</strong>
+
+                        <small>Recognized revenue for selected period</small>
+
+                    </article>
+
+
+                    <article class="metric-card monetization-metric">
+
+                        <div class="metric-top">
+                            PAID SERVICE ADOPTION
+                            <span class="metric-icon orange">◎</span>
+                        </div>
+
+                        <strong id="paid-service-adoption">—</strong>
+
+                        <small>Accounts using paid services</small>
+
+                    </article>
+
+
+                    <article class="metric-card monetization-metric">
+
+                        <div class="metric-top">
+                            ACTIVE MONETIZATION RULES
+                            <span class="metric-icon red">⚙</span>
+                        </div>
+
+                        <strong id="active-rule-count">—</strong>
+
+                        <small>Currently effective policies</small>
+
+                    </article>
+
+                </section>
+
+
+                <!-- MODULE NAVIGATION -->
+                <nav class="monetization-tabs" aria-label="Monetization management sections">
+
+                    <button class="monetization-tab active" data-tab="overview" aria-selected="true">Overview</button>
+
+                    <button class="monetization-tab" data-tab="plans" aria-selected="false">Subscription Plans</button>
+
+                    <button class="monetization-tab" data-tab="pricing" aria-selected="false">Pricing</button>
+
+                    <button class="monetization-tab" data-tab="billing" aria-selected="false">Billing Models</button>
+
+                    <button class="monetization-tab" data-tab="fees" aria-selected="false">Fees & Commissions</button>
+
+                    <button class="monetization-tab" data-tab="services" aria-selected="false">Premium Services</button>
+
+                    <button class="monetization-tab" data-tab="rules" aria-selected="false">Revenue Rules</button>
+
+                    <button class="monetization-tab" data-tab="analytics" aria-selected="false">Analytics</button>
+
+                    <button class="monetization-tab" data-tab="history" aria-selected="false">Change History</button>
+
+                </nav>
+
+
+                <!-- ==========================================
+                 01. OVERVIEW
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-overview">
+
+                    <div class="monetization-overview-grid">
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Monetization Performance</h3>
+
+                                    <p>
+                                        Revenue and subscription performance
+                                        over the selected period.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon blue">↗</span>
+
+                            </div>
+
+                            <div class="monetization-legend">
+                                <span><i class="legend-recurring"></i> Recurring revenue</span>
+                                <span><i class="legend-other"></i> Other monetization revenue</span>
+                            </div>
+
+                            <div id="monetization-chart" class="monetization-chart">
+
+                                <div class="finance-empty">
+                                    No monetization performance data loaded.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Revenue by Monetization Model</h3>
+
+                                    <p>
+                                        Revenue classification from
+                                        authoritative financial records.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon cyan">◈</span>
+
+                            </div>
+
+                            <div id="monetization-model-breakdown" class="monetization-breakdown">
+
+                                <div class="finance-empty">
+                                    No monetization model data loaded.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="monetization-overview-grid">
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Subscription Adoption</h3>
+
+                                    <p>
+                                        Published plans and account adoption
+                                        across the connected portals.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon green">♙</span>
+
+                            </div>
+
+                            <div id="subscription-adoption" class="monetization-breakdown">
+
+                                <div class="finance-empty">
+                                    No subscription adoption data loaded.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Portal Monetization</h3>
+
+                                    <p>
+                                        Monetization activity by portal.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon purple">◎</span>
+
+                            </div>
+
+                            <div id="portal-monetization" class="monetization-breakdown">
+
+                                <div class="finance-empty">
+                                    No portal monetization data loaded.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Monetization Governance</h3>
+
+                                <p>
+                                    Commercial policy and configuration controls.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="monetization-governance-grid">
+
+                            <article>
+                                <span class="governance-icon">▤</span>
+                                <strong>Controlled Pricing</strong>
+                                <p>
+                                    Every price must have a defined currency,
+                                    market, effective date and approval history.
+                                </p>
+                            </article>
+
+                            <article>
+                                <span class="governance-icon">⚖</span>
+                                <strong>Transparent Policies</strong>
+                                <p>
+                                    Charges and commercial rules must be
+                                    traceable to published configurations.
+                                </p>
+                            </article>
+
+                            <article>
+                                <span class="governance-icon">⇄</span>
+                                <strong>Portal Consistency</strong>
+                                <p>
+                                    The employer, employee and admin portals
+                                    must use the same authoritative policy records.
+                                </p>
+                            </article>
+
+                            <article>
+                                <span class="governance-icon">◈</span>
+                                <strong>Administrative Accountability</strong>
+                                <p>
+                                    Pricing and monetization changes must
+                                    identify the responsible administrator.
+                                </p>
+                            </article>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 02. SUBSCRIPTION PLANS
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-plans" hidden>
+
+                    <article class="content-card monetization-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Subscription Plan Management</h3>
+
+                                <p>
+                                    Configure and govern subscription plans
+                                    available across TALVORA.
+                                </p>
+                            </div>
+
+                            <button class="primary-button" data-create="plan">
+                                + Create Subscription Plan
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-info">
+                            Plan definitions describe commercial entitlements.
+                            Prices are managed separately in the Pricing section.
+                        </div>
+
+                        <form class="monetization-filters" id="plans-filter-form">
+
+                            <input type="search" name="search" placeholder="Search plan name or reference...">
+
+                            <select name="portal">
+                                <option value="">All portals</option>
+                                <option value="employer">Employer</option>
+                                <option value="employee">Employee</option>
+                                <option value="shared">Shared</option>
+                            </select>
+
+                            <select name="status">
+                                <option value="">All statuses</option>
+                                <option value="draft">Draft</option>
+                                <option value="published">Published</option>
+                                <option value="suspended">Suspended</option>
+                                <option value="retired">Retired</option>
+                            </select>
+
+                            <button type="submit" class="primary-button">
+                                Search
+                            </button>
+
+                            <button type="reset" class="secondary-button" data-clear-filter="plans">
+                                Clear
+                            </button>
+
+                        </form>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>PLAN</th>
+                                        <th>REFERENCE</th>
+                                        <th>PORTAL</th>
+                                        <th>BILLING MODEL</th>
+                                        <th>ENTITLEMENTS</th>
+                                        <th>STATUS</th>
+                                        <th>EFFECTIVE DATE</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="plans-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">
+                                            No subscription plans loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="monetization-pagination" id="plans-pagination"></div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 03. PRICING
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-pricing" hidden>
+
+                    <article class="content-card monetization-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Global Pricing Management</h3>
+
+                                <p>
+                                    Manage market-specific prices,
+                                    currencies and pricing effective dates.
+                                </p>
+                            </div>
+
+                            <button class="primary-button" data-create="price">
+                                + Add Pricing Configuration
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-info">
+                            Pricing records must preserve their original
+                            currency and effective dates. Exchange rates
+                            must not be assumed or fabricated.
+                        </div>
+
+                        <form class="monetization-filters" id="pricing-filter-form">
+
+                            <input type="search" name="search" placeholder="Search pricing reference or plan...">
+
+                            <select name="country" id="pricing-country">
+                                <option value="">All countries</option>
+                            </select>
+
+                            <select name="currency" id="pricing-currency">
+                                <option value="">All currencies</option>
+                            </select>
+
+                            <select name="status">
+                                <option value="">All statuses</option>
+                                <option value="draft">Draft</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="active">Active</option>
+                                <option value="expired">Expired</option>
+                                <option value="withdrawn">Withdrawn</option>
+                            </select>
+
+                            <button type="submit" class="primary-button">
+                                Search
+                            </button>
+
+                            <button type="reset" class="secondary-button" data-clear-filter="pricing">
+                                Clear
+                            </button>
+
+                        </form>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>PRICING REFERENCE</th>
+                                        <th>PLAN / SERVICE</th>
+                                        <th>COUNTRY</th>
+                                        <th>CURRENCY</th>
+                                        <th>AMOUNT</th>
+                                        <th>INTERVAL</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="pricing-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">
+                                            No pricing configurations loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="monetization-pagination" id="pricing-pagination"></div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 04. BILLING MODELS
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-billing" hidden>
+
+                    <article class="content-card monetization-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Employer Billing Models</h3>
+
+                                <p>
+                                    Configure the billing structures
+                                    applicable to employer accounts.
+                                </p>
+                            </div>
+
+                            <button class="primary-button" data-create="billing">
+                                + Create Billing Model
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-info">
+                            Billing models define how an obligation is calculated
+                            and collected. They do not process payments by
+                            themselves.
+                        </div>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>MODEL</th>
+                                        <th>REFERENCE</th>
+                                        <th>BILLING STRUCTURE</th>
+                                        <th>FREQUENCY</th>
+                                        <th>PORTAL</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="billing-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            No billing models loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="monetization-pagination" id="billing-pagination"></div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 05. FEES & COMMISSIONS
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-fees" hidden>
+
+                    <article class="content-card monetization-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Platform Fees & Commissions</h3>
+
+                                <p>
+                                    Govern configurable platform charges,
+                                    commission policies and their application.
+                                </p>
+                            </div>
+
+                            <button class="primary-button" data-create="fee">
+                                + Create Fee Rule
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-warning">
+                            No fee or commission is assumed to exist.
+                            A rule must be explicitly configured and approved
+                            before it can become effective.
+                        </div>
+
+                        <form class="monetization-filters" id="fees-filter-form">
+
+                            <input type="search" name="search" placeholder="Search fee or rule reference...">
+
+                            <select name="type">
+                                <option value="">All fee types</option>
+                                <option value="fixed">Fixed</option>
+                                <option value="percentage">Percentage</option>
+                                <option value="tiered">Tiered</option>
+                                <option value="hybrid">Hybrid</option>
+                            </select>
+
+                            <select name="status">
+                                <option value="">All statuses</option>
+                                <option value="draft">Draft</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="active">Active</option>
+                                <option value="suspended">Suspended</option>
+                                <option value="retired">Retired</option>
+                            </select>
+
+                            <button type="submit" class="primary-button">
+                                Search
+                            </button>
+
+                        </form>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>RULE</th>
+                                        <th>TYPE</th>
+                                        <th>APPLIES TO</th>
+                                        <th>CALCULATION</th>
+                                        <th>MARKET</th>
+                                        <th>STATUS</th>
+                                        <th>EFFECTIVE DATE</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="fees-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">
+                                            No fee or commission rules loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="monetization-pagination" id="fees-pagination"></div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 06. PREMIUM SERVICES
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-services" hidden>
+
+                    <article class="content-card monetization-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Premium Services Catalogue</h3>
+
+                                <p>
+                                    Manage optional paid services and
+                                    their commercial availability.
+                                </p>
+                            </div>
+
+                            <button class="primary-button" data-create="service">
+                                + Add Premium Service
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-info">
+                            Service availability, eligibility, pricing
+                            and access entitlements must be linked to
+                            authoritative configuration records.
+                        </div>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>SERVICE</th>
+                                        <th>REFERENCE</th>
+                                        <th>PORTAL</th>
+                                        <th>PRICING REFERENCE</th>
+                                        <th>ACCESS MODEL</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="services-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            No premium services loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="monetization-pagination" id="services-pagination"></div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 07. REVENUE RULES
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-rules" hidden>
+
+                    <article class="content-card monetization-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Revenue Rules & Policy Engine</h3>
+
+                                <p>
+                                    Manage conditions that determine when
+                                    configured monetization policies apply.
+                                </p>
+                            </div>
+
+                            <button class="primary-button" data-create="rule">
+                                + Create Revenue Rule
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-warning">
+                            Revenue rules must reference existing plans,
+                            prices or fee configurations. Creating a rule
+                            must never create an unapproved charge.
+                        </div>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>RULE NAME</th>
+                                        <th>REFERENCE</th>
+                                        <th>TRIGGER</th>
+                                        <th>APPLIES TO</th>
+                                        <th>PRIORITY</th>
+                                        <th>STATUS</th>
+                                        <th>EFFECTIVE DATE</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="rules-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">
+                                            No revenue rules loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="monetization-pagination" id="rules-pagination"></div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 08. ANALYTICS
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-analytics" hidden>
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Monetization Analytics</h3>
+
+                                <p>
+                                    Analyze adoption, commercial performance
+                                    and monetization outcomes.
+                                </p>
+                            </div>
+
+                            <button class="secondary-button" id="refresh-analytics-button">
+                                ↻ Refresh Analytics
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-analytics-grid">
+
+                            <article>
+                                <span class="analytics-icon">▤</span>
+                                <strong>Subscription Performance</strong>
+                                <p>
+                                    Plan adoption, renewals, cancellations
+                                    and subscription status.
+                                </p>
+                                <button class="text-action" data-analytics="subscriptions">
+                                    View report →
+                                </button>
+                            </article>
+
+                            <article>
+                                <span class="analytics-icon">↗</span>
+                                <strong>Revenue Performance</strong>
+                                <p>
+                                    Recurring revenue, recognized revenue
+                                    and revenue trends.
+                                </p>
+                                <button class="text-action" data-analytics="revenue">
+                                    View report →
+                                </button>
+                            </article>
+
+                            <article>
+                                <span class="analytics-icon">◎</span>
+                                <strong>Market Performance</strong>
+                                <p>
+                                    Country, currency and regional
+                                    monetization comparisons.
+                                </p>
+                                <button class="text-action" data-analytics="markets">
+                                    View report →
+                                </button>
+                            </article>
+
+                            <article>
+                                <span class="analytics-icon">⇄</span>
+                                <strong>Portal Performance</strong>
+                                <p>
+                                    Employer and employee monetization
+                                    adoption and outcomes.
+                                </p>
+                                <button class="text-action" data-analytics="portals">
+                                    View report →
+                                </button>
+                            </article>
+
+                        </div>
+
+                        <div class="report-history-heading">
+
+                            <div>
+                                <h3>Analytics Report History</h3>
+                                <p>Previously generated monetization reports.</p>
+                            </div>
+
+                            <button class="secondary-button" id="export-analytics-button">
+                                ↓ Export CSV
+                            </button>
+
+                        </div>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>REPORT REFERENCE</th>
+                                        <th>REPORT TYPE</th>
+                                        <th>PERIOD</th>
+                                        <th>GENERATED BY</th>
+                                        <th>GENERATED DATE</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="analytics-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            No analytics reports loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==========================================
+                 09. CHANGE HISTORY
+            =========================================== -->
+
+                <section class="monetization-panel" id="panel-history" hidden>
+
+                    <article class="content-card monetization-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Monetization Change History</h3>
+
+                                <p>
+                                    Administrative accountability for all
+                                    commercial configuration changes.
+                                </p>
+                            </div>
+
+                            <button class="secondary-button" id="export-history-button">
+                                ↓ Export Audit Records
+                            </button>
+
+                        </div>
+
+                        <div class="monetization-warning">
+                            Audit history is read-only in this interface.
+                            Historical events must be retained and protected
+                            by the central backend.
+                        </div>
+
+                        <form class="monetization-filters" id="history-filter-form">
+
+                            <input type="search" name="search" placeholder="Search administrator or reference...">
+
+                            <select name="action">
+                                <option value="">All actions</option>
+                                <option value="created">Created</option>
+                                <option value="updated">Updated</option>
+                                <option value="published">Published</option>
+                                <option value="suspended">Suspended</option>
+                                <option value="retired">Retired</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+
+                            <select name="entityType">
+                                <option value="">All configurations</option>
+                                <option value="plan">Plans</option>
+                                <option value="price">Pricing</option>
+                                <option value="billing">Billing models</option>
+                                <option value="fee">Fee rules</option>
+                                <option value="service">Services</option>
+                                <option value="rule">Revenue rules</option>
+                            </select>
+
+                            <button type="submit" class="primary-button">
+                                Search
+                            </button>
+
+                        </form>
+
+                        <div class="table-wrap">
+
+                            <table class="monetization-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>DATE & TIME</th>
+                                        <th>ADMINISTRATOR</th>
+                                        <th>ACTION</th>
+                                        <th>CONFIGURATION</th>
+                                        <th>REFERENCE</th>
+                                        <th>CHANGE REASON</th>
+                                        <th>DETAILS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="history-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            No audit history loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="monetization-pagination" id="history-pagination"></div>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+                <span>© TALVORA TECHNOLOGIES</span>
+                <span>GSES SYSTEM 001 · MONETIZATION</span>
+                <span>GLOBAL SUPER ADMINISTRATION</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==========================================
+     CONFIGURATION EDITOR MODAL
+=========================================== -->
+
+    <div class="modal-overlay" id="configuration-modal" hidden>
+
+        <section class="modal-card monetization-editor">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow" id="editor-kicker">
+                        MONETIZATION CONFIGURATION
+                    </span>
+
+                    <h2 id="editor-title">Create Configuration</h2>
+
+                    <p id="editor-description">
+                        Configure a new commercial policy.
+                    </p>
+                </div>
+
+                <button class="modal-close" data-close-editor aria-label="Close">&times;</button>
+
+            </header>
+
+            <div class="modal-body">
+
+                <div class="monetization-info">
+                    New configurations begin as drafts unless an approved
+                    workflow explicitly permits another status.
+                    Publication and financial execution are separately
+                    controlled.
+                </div>
+
+                <form id="configuration-form" class="monetization-form">
+
+                    <input type="hidden" name="entityType">
+                    <input type="hidden" name="reference">
+
+                    <div id="configuration-fields" class="configuration-fields"></div>
+
+                    <div class="editor-actions">
+
+                        <button type="button" class="secondary-button" data-close-editor>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Save Draft
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- RECORD DETAILS MODAL -->
+    <div class="modal-overlay" id="record-modal" hidden>
+
+        <section class="modal-card monetization-details-modal">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow">MONETIZATION RECORD</span>
+                    <h2 id="record-title">Configuration Details</h2>
+                </div>
+
+                <button class="modal-close" data-close-record aria-label="Close">&times;</button>
+
+            </header>
+
+            <div class="modal-body">
+
+                <dl class="monetization-details" id="record-details"></dl>
+
+                <div class="editor-actions">
+                    <button class="secondary-button" data-close-record>
+                        Close
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- NOTIFICATIONS -->
+    <aside class="notification-drawer" id="notification-drawer" hidden>
+
+        <header class="drawer-header">
+
+            <h3>Monetization Notifications</h3>
+
+            <button class="modal-close" id="drawer-close" aria-label="Close">&times;</button>
+
+        </header>
+
+        <div class="drawer-content" id="notification-feed">
+
+            <div class="empty-state">
+                No notifications loaded.
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- TOASTS -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+
+    <script src="monetization.js" defer></script>
+
+</body>
+
+</html>

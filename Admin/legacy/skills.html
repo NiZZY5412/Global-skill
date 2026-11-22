@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="../talvora-admin-config.js"></script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#102B46">
+
+    <meta name="description"
+        content="TALVORA Global Super Admin Skills Passport, Evidence, Assessments and Workforce Matching Management Centre.">
+
+    <title>TALVORA | Global Skills Intelligence Centre</title>
+
+    <!-- SHARED TALVORA DESIGN SYSTEM -->
+    <link rel="stylesheet" href="talvora-modules.css">
+
+    <!-- SHARED TALVORA APPLICATION ENGINE -->
+    <script defer src="talvora-modules.js"></script>
+
+</head>
+
+
+<body data-module="skills">
+
+    <div class="app-shell">
+
+
+        <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+
+            <a class="brand" href="#overview">
+
+                <span class="brand-mark">T</span>
+
+                <span class="brand-copy">
+
+                    <strong>TALVORA</strong>
+
+                    <small>GLOBAL SUPER ADMIN</small>
+
+                </span>
+
+            </a>
+
+
+            <div class="sidebar-label">
+
+                <span class="live-dot"></span>
+
+                SKILLS INTELLIGENCE
+
+            </div>
+
+
+            <nav class="side-nav" aria-label="Skills administration navigation">
+
+
+                <a class="nav-link active" href="#overview" data-section="overview">
+
+                    <span class="nav-icon">◈</span>
+
+                    Global Overview
+
+                </a>
+
+
+                <a class="nav-link" href="#passports" data-section="passports">
+
+                    <span class="nav-icon">▤</span>
+
+                    Skills Passports
+
+                </a>
+
+
+                <a class="nav-link" href="#evidence" data-section="evidence">
+
+                    <span class="nav-icon">▣</span>
+
+                    Evidence & Verification
+
+                </a>
+
+
+                <a class="nav-link" href="#assessments" data-section="assessments">
+
+                    <span class="nav-icon">✓</span>
+
+                    Skills Assessments
+
+                </a>
+
+
+                <a class="nav-link" href="#matching" data-section="matching">
+
+                    <span class="nav-icon">⇄</span>
+
+                    Workforce Matching
+
+                </a>
+
+
+                <a class="nav-link" href="#quality" data-section="quality">
+
+                    <span class="nav-icon">⚑</span>
+
+                    Quality & Integrity
+
+                </a>
+
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+
+                <div class="sidebar-security">
+
+                    <span class="security-mark">⬡</span>
+
+                    <span>
+
+                        <strong>Skills governance</strong>
+
+                        <small>
+                            Global verification oversight
+                        </small>
+
+                    </span>
+
+                </div>
+
+
+                <div class="admin-chip">
+
+                    <span class="admin-avatar">SA</span>
+
+                    <span>
+
+                        <strong>Super Administrator</strong>
+
+                        <small>Authorized workspace</small>
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+
+        <main class="main-area">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+
+                <div class="topbar-heading">
+
+
+                    <button type="button" class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">
+
+                        ☰
+
+                    </button>
+
+
+                    <div>
+
+                        <div class="breadcrumb">
+
+                            SUPER ADMIN
+
+                            <span>/</span>
+
+                            SKILLS INTELLIGENCE
+
+                        </div>
+
+
+                        <h1>Skills Passport & Matching Centre</h1>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="topbar-actions">
+
+
+                    <span class="connection-pill" id="connectionStatus">
+
+                        <i></i>
+
+                        Connecting
+
+                    </span>
+
+
+                    <span class="region-pill">
+
+                        GLOBAL PLATFORM
+
+                    </span>
+
+
+                    <button type="button" class="button button-outline" id="refreshButton">
+
+                        ↻ Refresh
+
+                    </button>
+
+
+                </div>
+
+            </header>
+
+
+
+            <!-- WELCOME BANNER -->
+
+            <section class="welcome-banner banner-teal">
+
+
+                <div class="banner-symbol">
+
+                    ◈
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+
+                        Global Skills Passport, Evidence & Workforce Matching
+
+                    </strong>
+
+
+                    <p>
+
+                        Centralized supervision of workforce skills records,
+                        professional evidence, competency assessments,
+                        verification workflows and intelligent job matching
+                        across TALVORA jurisdictions.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="banner-tag">
+
+                    TALVORA SKILLS INTELLIGENCE
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+             SECTION 1: GLOBAL OVERVIEW
+        =================================================== -->
+
+            <section class="module-section active" id="overview" data-view="overview">
+
+
+                <div class="section-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+
+                            GLOBAL SKILLS INTELLIGENCE
+
+                        </span>
+
+
+                        <h2>
+
+                            Platform Overview
+
+                        </h2>
+
+
+                        <p>
+
+                            Monitor skills passport activity,
+                            evidence verification, assessments,
+                            matching performance and integrity.
+
+                        </p>
+
+                    </div>
+
+
+                    <span class="updated-label" id="lastUpdated">
+
+                        Awaiting data
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- PRIMARY METRICS -->
+
+                <div class="metric-grid">
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Total Skills Passports
+
+                        </span>
+
+
+                        <strong data-metric="totalPassports">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Registered workforce passports
+
+                        </small>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Verified Skills
+
+                        </span>
+
+
+                        <strong data-metric="verifiedSkills">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Successfully verified competencies
+
+                        </small>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Pending Evidence
+
+                        </span>
+
+
+                        <strong data-metric="pendingEvidence">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Evidence awaiting review
+
+                        </small>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Active Assessments
+
+                        </span>
+
+
+                        <strong data-metric="activeAssessments">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Assessments in progress
+
+                        </small>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- SECONDARY METRICS -->
+
+                <div class="metric-grid">
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Completed Assessments
+
+                        </span>
+
+
+                        <strong data-metric="completedAssessments">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Completed assessment records
+
+                        </small>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Active Matches
+
+                        </span>
+
+
+                        <strong data-metric="activeMatches">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Workforce-to-job matches
+
+                        </small>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Open Quality Cases
+
+                        </span>
+
+
+                        <strong data-metric="openQualityCases">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Skills integrity cases
+
+                        </small>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <span>
+
+                            Jurisdictions Covered
+
+                        </span>
+
+
+                        <strong data-metric="jurisdictionsCovered">
+
+                            —
+
+                        </strong>
+
+
+                        <small>
+
+                            Countries and jurisdictions
+
+                        </small>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- DISTRIBUTION PANELS -->
+
+                <div class="content-grid">
+
+
+                    <article class="panel">
+
+
+                        <div class="panel-heading">
+
+
+                            <div>
+
+                                <span class="eyebrow">
+
+                                    PASSPORT GOVERNANCE
+
+                                </span>
+
+
+                                <h3>
+
+                                    Skills Passport Distribution
+
+                                </h3>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="distribution" data-distribution="passportStatus">
+
+                        </div>
+
+
+                    </article>
+
+
+
+                    <article class="panel">
+
+
+                        <div class="panel-heading">
+
+
+                            <div>
+
+                                <span class="eyebrow">
+
+                                    EVIDENCE GOVERNANCE
+
+                                </span>
+
+
+                                <h3>
+
+                                    Evidence Verification Distribution
+
+                                </h3>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="distribution" data-distribution="evidenceStatus">
+
+                        </div>
+
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- RECENT PASSPORT RECORDS -->
+
+                <article class="panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+
+                                RECENT ACTIVITY
+
+                            </span>
+
+
+                            <h3>
+
+                                Recently Updated Skills Passports
+
+                            </h3>
+
+                        </div>
+
+
+                        <button type="button" class="button button-outline button-small" data-go="passports">
+
+                            View All Passports
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <div class="table-wrap">
+
+
+                        <table>
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>PASSPORT REF.</th>
+
+                                    <th>PROFILE REF.</th>
+
+                                    <th>SKILLS TOTAL</th>
+
+                                    <th>VERIFIED SKILLS</th>
+
+                                    <th>JURISDICTION</th>
+
+                                    <th>STATUS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody data-dashboard-table="passports">
+
+
+                                <tr>
+
+                                    <td colspan="6" class="empty-cell">
+
+                                        Loading skills passport records...
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+                </article>
+
+
+                <!-- GOVERNANCE NOTICE -->
+
+                <article class="panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+
+                                GOVERNANCE & CONTROL
+
+                            </span>
+
+
+                            <h3>
+
+                                Skills Intelligence Oversight
+
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="notice notice-teal">
+
+
+                        <strong>
+
+                            Evidence integrity and verification
+
+                        </strong>
+
+
+                        <p>
+
+                            Skills verification should maintain traceable
+                            evidence references, authorized reviewer decisions,
+                            assessment records and auditable changes to
+                            workforce competency information.
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <div class="notice">
+
+
+                        <strong>
+
+                            Fair and transparent workforce matching
+
+                        </strong>
+
+
+                        <p>
+
+                            Matching decisions should be explainable,
+                            reviewable and subject to appropriate fairness
+                            and quality controls.
+
+                        </p>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+             SECTION 2: SKILLS PASSPORTS
+        =================================================== -->
+
+            <section class="module-section" id="passports" data-view="passports">
+
+
+                <div class="section-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+
+                            WORKFORCE SKILLS RECORDS
+
+                        </span>
+
+
+                        <h2>
+
+                            Skills Passport Management
+
+                        </h2>
+
+
+                        <p>
+
+                            Manage workforce passport records,
+                            competency summaries, verification status
+                            and passport lifecycle reviews.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="notice notice-teal">
+
+
+                    <strong>
+
+                        Centralized skills passport oversight
+
+                    </strong>
+
+
+                    <p>
+
+                        Review passport references and competency
+                        verification summaries while preserving
+                        restricted personal information.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- PASSPORT FILTERS -->
+
+                <div class="filter-bar" data-filter-for="passports">
+
+
+                    <input type="search" placeholder="Search passport or profile reference..." data-query="search">
+
+
+                    <select data-query="status">
+
+                        <option value="">
+
+                            All passport statuses
+
+                        </option>
+
+
+                        <option value="active">
+
+                            Active
+
+                        </option>
+
+
+                        <option value="pending">
+
+                            Pending
+
+                        </option>
+
+
+                        <option value="under_review">
+
+                            Under Review
+
+                        </option>
+
+
+                        <option value="verified">
+
+                            Verified
+
+                        </option>
+
+
+                        <option value="suspended">
+
+                            Suspended
+
+                        </option>
+
+
+                        <option value="expired">
+
+                            Expired
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+
+                </div>
+
+
+
+                <!-- PASSPORT TABLE -->
+
+                <article class="panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+
+                                PASSPORT REGISTER
+
+                            </span>
+
+
+                            <h3>
+
+                                Global Skills Passport Records
+
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="table-wrap">
+
+
+                        <table>
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>PASSPORT REF.</th>
+
+                                    <th>PROFILE REF.</th>
+
+                                    <th>SKILLS TOTAL</th>
+
+                                    <th>VERIFIED SKILLS</th>
+
+                                    <th>JURISDICTION</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>UPDATED</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody data-table-body="passports">
+
+
+                                <tr>
+
+                                    <td colspan="8" class="empty-cell">
+
+                                        Loading passport records...
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+
+                    <div class="table-foot">
+
+
+                        <span data-result-count="passports">
+
+                            Awaiting records
+
+                        </span>
+
+
+                        <span>
+
+                            Global workforce passport register
+
+                        </span>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+             SECTION 3: EVIDENCE AND VERIFICATION
+        =================================================== -->
+
+            <section class="module-section" id="evidence" data-view="evidence">
+
+
+                <div class="section-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+
+                            PROFESSIONAL EVIDENCE GOVERNANCE
+
+                        </span>
+
+
+                        <h2>
+
+                            Evidence & Verification Management
+
+                        </h2>
+
+
+                        <p>
+
+                            Monitor professional qualifications,
+                            experience evidence, skills credentials,
+                            issuers and verification workflows.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="notice">
+
+
+                    <strong>
+
+                        Controlled evidence access
+
+                    </strong>
+
+
+                    <p>
+
+                        Evidence records should be accessed through
+                        authorized, auditable workflows. Sensitive
+                        document contents and storage credentials
+                        must remain protected.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- EVIDENCE FILTERS -->
+
+                <div class="filter-bar" data-filter-for="evidence">
+
+
+                    <input type="search" placeholder="Search evidence or passport reference..." data-query="search">
+
+
+                    <select data-query="status">
+
+                        <option value="">
+
+                            All evidence statuses
+
+                        </option>
+
+
+                        <option value="pending">
+
+                            Pending
+
+                        </option>
+
+
+                        <option value="under_review">
+
+                            Under Review
+
+                        </option>
+
+
+                        <option value="verified">
+
+                            Verified
+
+                        </option>
+
+
+                        <option value="rejected">
+
+                            Rejected
+
+                        </option>
+
+
+                        <option value="flagged">
+
+                            Flagged
+
+                        </option>
+
+
+                        <option value="expired">
+
+                            Expired
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <select data-query="evidenceType">
+
+                        <option value="">
+
+                            All evidence types
+
+                        </option>
+
+
+                        <option value="qualification">
+
+                            Academic Qualifications
+
+                        </option>
+
+
+                        <option value="certification">
+
+                            Professional Certifications
+
+                        </option>
+
+
+                        <option value="experience">
+
+                            Work Experience
+
+                        </option>
+
+
+                        <option value="assessment">
+
+                            Skills Assessments
+
+                        </option>
+
+
+                        <option value="licence">
+
+                            Professional Licences
+
+                        </option>
+
+
+                        <option value="portfolio">
+
+                            Portfolio Evidence
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+
+                </div>
+
+
+
+                <!-- EVIDENCE TABLE -->
+
+                <article class="panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+
+                                EVIDENCE REGISTER
+
+                            </span>
+
+
+                            <h3>
+
+                                Global Evidence Records
+
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="table-wrap">
+
+
+                        <table>
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>EVIDENCE REF.</th>
+
+                                    <th>PASSPORT REF.</th>
+
+                                    <th>SKILL REF.</th>
+
+                                    <th>EVIDENCE TYPE</th>
+
+                                    <th>ISSUER REF.</th>
+
+                                    <th>SUBMITTED</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody data-table-body="evidence">
+
+
+                                <tr>
+
+                                    <td colspan="8" class="empty-cell">
+
+                                        Loading evidence records...
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+
+                    <div class="table-foot">
+
+
+                        <span data-result-count="evidence">
+
+                            Awaiting records
+
+                        </span>
+
+
+                        <span>
+
+                            Authorized evidence governance
+
+                        </span>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+             SECTION 4: ASSESSMENTS
+        =================================================== -->
+
+            <section class="module-section" id="assessments" data-view="assessments">
+
+
+                <div class="section-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+
+                            COMPETENCY ASSESSMENT GOVERNANCE
+
+                        </span>
+
+
+                        <h2>
+
+                            Skills Assessment Management
+
+                        </h2>
+
+
+                        <p>
+
+                            Monitor competency assessments,
+                            assessment types, assessor references,
+                            recorded results and quality reviews.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="notice notice-teal">
+
+
+                    <strong>
+
+                        Assessment integrity
+
+                    </strong>
+
+
+                    <p>
+
+                        Assessment outcomes should be traceable
+                        to authorized assessment procedures,
+                        assessor records and documented decisions.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- ASSESSMENT FILTERS -->
+
+                <div class="filter-bar" data-filter-for="assessments">
+
+
+                    <input type="search" placeholder="Search assessment or profile reference..." data-query="search">
+
+
+                    <select data-query="status">
+
+                        <option value="">
+
+                            All assessment statuses
+
+                        </option>
+
+
+                        <option value="scheduled">
+
+                            Scheduled
+
+                        </option>
+
+
+                        <option value="in_progress">
+
+                            In Progress
+
+                        </option>
+
+
+                        <option value="pending">
+
+                            Pending Review
+
+                        </option>
+
+
+                        <option value="completed">
+
+                            Completed
+
+                        </option>
+
+
+                        <option value="failed">
+
+                            Unsuccessful
+
+                        </option>
+
+
+                        <option value="flagged">
+
+                            Flagged
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <select data-query="assessmentType">
+
+                        <option value="">
+
+                            All assessment types
+
+                        </option>
+
+
+                        <option value="practical">
+
+                            Practical Assessment
+
+                        </option>
+
+
+                        <option value="theoretical">
+
+                            Theoretical Assessment
+
+                        </option>
+
+
+                        <option value="digital">
+
+                            Digital Skills Assessment
+
+                        </option>
+
+
+                        <option value="professional">
+
+                            Professional Assessment
+
+                        </option>
+
+
+                        <option value="competency">
+
+                            Competency Assessment
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <input type="text" placeholder="Assessor reference" data-query="assessorReference">
+
+
+                </div>
+
+
+
+                <!-- ASSESSMENT TABLE -->
+
+                <article class="panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+
+                                ASSESSMENT REGISTER
+
+                            </span>
+
+
+                            <h3>
+
+                                Global Competency Assessments
+
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="table-wrap">
+
+
+                        <table>
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>ASSESSMENT REF.</th>
+
+                                    <th>PROFILE REF.</th>
+
+                                    <th>SKILL REF.</th>
+
+                                    <th>ASSESSMENT TYPE</th>
+
+                                    <th>ASSESSOR REF.</th>
+
+                                    <th>RESULT</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody data-table-body="assessments">
+
+
+                                <tr>
+
+                                    <td colspan="8" class="empty-cell">
+
+                                        Loading assessment records...
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+
+                    <div class="table-foot">
+
+
+                        <span data-result-count="assessments">
+
+                            Awaiting records
+
+                        </span>
+
+
+                        <span>
+
+                            Global assessment oversight
+
+                        </span>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+             SECTION 5: WORKFORCE MATCHING
+        =================================================== -->
+
+            <section class="module-section" id="matching" data-view="matching">
+
+
+                <div class="section-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+
+                            WORKFORCE INTELLIGENCE
+
+                        </span>
+
+
+                        <h2>
+
+                            Global Skills Matching Centre
+
+                        </h2>
+
+
+                        <p>
+
+                            Monitor job-to-workforce matching,
+                            skill coverage, matching explanations,
+                            jurisdiction compatibility and fairness reviews.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="notice notice-teal">
+
+
+                    <strong>
+
+                        Explainable and fair skills matching
+
+                    </strong>
+
+
+                    <p>
+
+                        Matching outcomes should be supported by
+                        relevant skills criteria, verified competency
+                        information and appropriate human review.
+                        Match scores must not be treated as automatic
+                        employment decisions.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- MATCHING FILTERS -->
+
+                <div class="filter-bar" data-filter-for="matching">
+
+
+                    <input type="search" placeholder="Search match, job or passport reference..." data-query="search">
+
+
+                    <select data-query="status">
+
+                        <option value="">
+
+                            All matching statuses
+
+                        </option>
+
+
+                        <option value="active">
+
+                            Active
+
+                        </option>
+
+
+                        <option value="pending">
+
+                            Pending Review
+
+                        </option>
+
+
+                        <option value="shortlisted">
+
+                            Shortlisted
+
+                        </option>
+
+
+                        <option value="completed">
+
+                            Completed
+
+                        </option>
+
+
+                        <option value="rejected">
+
+                            Rejected
+
+                        </option>
+
+
+                        <option value="flagged">
+
+                            Flagged
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+
+                </div>
+
+
+
+                <!-- MATCHING TABLE -->
+
+                <article class="panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+
+                                MATCHING REGISTER
+
+                            </span>
+
+
+                            <h3>
+
+                                Workforce-to-Job Matches
+
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="table-wrap">
+
+
+                        <table>
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>MATCH REF.</th>
+
+                                    <th>JOB REF.</th>
+
+                                    <th>PASSPORT REF.</th>
+
+                                    <th>SKILL COVERAGE</th>
+
+                                    <th>MATCH SCORE</th>
+
+                                    <th>JURISDICTION</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody data-table-body="matching">
+
+
+                                <tr>
+
+                                    <td colspan="8" class="empty-cell">
+
+                                        Loading matching records...
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+
+                    <div class="table-foot">
+
+
+                        <span data-result-count="matching">
+
+                            Awaiting records
+
+                        </span>
+
+
+                        <span>
+
+                            Skills matching and fairness oversight
+
+                        </span>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+             SECTION 6: QUALITY AND INTEGRITY
+        =================================================== -->
+
+            <section class="module-section" id="quality" data-view="quality">
+
+
+                <div class="section-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+
+                            SKILLS QUALITY ASSURANCE
+
+                        </span>
+
+
+                        <h2>
+
+                            Skills Quality & Integrity Centre
+
+                        </h2>
+
+
+                        <p>
+
+                            Manage quality cases, suspicious evidence,
+                            competency inconsistencies, matching concerns
+                            and assessment integrity issues.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="notice">
+
+
+                    <strong>
+
+                        Global skills integrity controls
+
+                    </strong>
+
+
+                    <p>
+
+                        All quality decisions should be documented
+                        with a reason, authorized reviewer,
+                        supporting references and an auditable
+                        resolution history.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- QUALITY FILTERS -->
+
+                <div class="filter-bar" data-filter-for="quality">
+
+
+                    <input type="search" placeholder="Search quality case or record reference..." data-query="search">
+
+
+                    <select data-query="status">
+
+                        <option value="">
+
+                            All case statuses
+
+                        </option>
+
+
+                        <option value="open">
+
+                            Open
+
+                        </option>
+
+
+                        <option value="under_review">
+
+                            Under Review
+
+                        </option>
+
+
+                        <option value="escalated">
+
+                            Escalated
+
+                        </option>
+
+
+                        <option value="resolved">
+
+                            Resolved
+
+                        </option>
+
+
+                        <option value="dismissed">
+
+                            Dismissed
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <select data-query="priority">
+
+                        <option value="">
+
+                            All priorities
+
+                        </option>
+
+
+                        <option value="critical">
+
+                            Critical
+
+                        </option>
+
+
+                        <option value="high">
+
+                            High
+
+                        </option>
+
+
+                        <option value="normal">
+
+                            Normal
+
+                        </option>
+
+
+                        <option value="low">
+
+                            Low
+
+                        </option>
+
+
+                    </select>
+
+
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+
+                </div>
+
+
+
+                <!-- QUALITY TABLE -->
+
+                <article class="panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+
+                                QUALITY CASE REGISTER
+
+                            </span>
+
+
+                            <h3>
+
+                                Global Skills Integrity Cases
+
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="table-wrap">
+
+
+                        <table>
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>CASE REF.</th>
+
+                                    <th>RECORD REF.</th>
+
+                                    <th>CASE TYPE</th>
+
+                                    <th>REASON</th>
+
+                                    <th>JURISDICTION</th>
+
+                                    <th>PRIORITY</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody data-table-body="quality">
+
+
+                                <tr>
+
+                                    <td colspan="8" class="empty-cell">
+
+                                        Loading quality cases...
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+
+                    <div class="table-foot">
+
+
+                        <span data-result-count="quality">
+
+                            Awaiting records
+
+                        </span>
+
+
+                        <span>
+
+                            Global skills quality and integrity
+
+                        </span>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+             FOOTER
+        =================================================== -->
+
+            <footer class="page-footer">
+
+                TALVORA GLOBAL PLATFORM OPERATIONS
+
+                <span>•</span>
+
+                SKILLS PASSPORT & WORKFORCE INTELLIGENCE
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ======================================================
+     ADMINISTRATIVE ACTION MODAL
+======================================================= -->
+
+    <div class="modal-backdrop" id="actionModal" hidden>
+
+
+        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="actionTitle">
+
+
+            <div class="modal-heading">
+
+
+                <div>
+
+                    <span class="eyebrow">
+
+                        CONTROLLED ADMINISTRATIVE ACTION
+
+                    </span>
+
+
+                    <h2 id="actionTitle">
+
+                        Review Skills Record
+
+                    </h2>
+
+                </div>
+
+
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">
+
+                    ×
+
+                </button>
+
+
+            </div>
+
+
+
+            <p class="modal-description" id="actionDescription">
+
+                This action will be submitted to the authorized
+                platform workflow.
+
+            </p>
+
+
+
+            <label class="field-label" for="actionReason">
+
+                Reason / Decision Notes
+
+            </label>
+
+
+
+            <textarea id="actionReason" rows="4" minlength="10" maxlength="2000"
+                placeholder="Provide a clear reason for this action..." required></textarea>
+
+
+
+            <label class="field-label" for="actionEvidence">
+
+                Supporting Evidence Reference (Optional)
+
+            </label>
+
+
+
+            <input type="text" id="actionEvidence" maxlength="250" placeholder="Evidence or case reference">
+
+
+
+            <div class="modal-actions">
+
+
+                <button type="button" class="button button-outline" data-close-modal>
+
+                    Cancel
+
+                </button>
+
+
+
+                <button type="button" class="button button-primary" id="submitAction" disabled>
+
+                    Submit Action
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+
+    <!-- ======================================================
+     RECORD DETAILS MODAL
+======================================================= -->
+
+    <div class="modal-backdrop" id="detailModal" hidden>
+
+
+        <section class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+
+
+            <div class="modal-heading">
+
+
+                <div>
+
+                    <span class="eyebrow">
+
+                        CONTROLLED RECORD VIEW
+
+                    </span>
+
+
+                    <h2 id="detailTitle">
+
+                        Skills Record Details
+
+                    </h2>
+
+                </div>
+
+
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">
+
+                    ×
+
+                </button>
+
+
+            </div>
+
+
+
+            <div class="detail-grid" id="detailContent">
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+
+    <!-- ======================================================
+     NOTIFICATION REGION
+======================================================= -->
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true">
+
+    </div>
+
+
+
+</body>
+
+</html>

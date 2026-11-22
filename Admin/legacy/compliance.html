@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1730">
+
+    <title>TALVORA | Compliance & Governance Centre</title>
+
+    <meta name="description" content="TALVORA Global Compliance and Governance Centre">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="compliance.css">
+    <script src="compliance.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand-area">
+
+                <a href="../index.html" class="brand">
+
+                    <span class="brand-symbol">T</span>
+
+                    <span class="brand-text">
+                        <strong>TALVORA</strong>
+                        <small>TECHNOLOGIES</small>
+                    </span>
+
+                </a>
+
+                <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <div class="portal-label">
+                SUPER ADMINISTRATION
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar" id="admin-avatar">SA</div>
+
+                <div class="admin-details">
+                    <strong id="admin-name">Administrator</strong>
+                    <span id="admin-email">Verified administrator session</span>
+                    <small><i></i> Super Admin</small>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-navigation" aria-label="Compliance navigation">
+
+                <div class="nav-section-title">GOVERNANCE</div>
+
+                <a href="#overview" class="nav-link active" data-panel="overview">
+                    <span class="nav-icon">▦</span>
+                    <span>Compliance Overview</span>
+                </a>
+
+                <a href="#jurisdictions" class="nav-link" data-panel="jurisdictions">
+                    <span class="nav-icon">◎</span>
+                    <span>Regulations & Countries</span>
+                </a>
+
+
+                <div class="nav-section-title">PORTAL COMPLIANCE</div>
+
+                <a href="#employers" class="nav-link" data-panel="employers">
+                    <span class="nav-icon">▣</span>
+                    <span>Employer Compliance</span>
+                </a>
+
+                <a href="#employees" class="nav-link" data-panel="employees">
+                    <span class="nav-icon">♙</span>
+                    <span>Employee Compliance</span>
+                </a>
+
+                <a href="#evidence" class="nav-link" data-panel="evidence">
+                    <span class="nav-icon">▤</span>
+                    <span>Documents & Evidence</span>
+                </a>
+
+                <a href="#privacy" class="nav-link" data-panel="privacy">
+                    <span class="nav-icon">◇</span>
+                    <span>Data Protection & Privacy</span>
+                </a>
+
+
+                <div class="nav-section-title">RISK & ACCOUNTABILITY</div>
+
+                <a href="#incidents" class="nav-link" data-panel="incidents">
+                    <span class="nav-icon">⚠</span>
+                    <span>Risk & Incidents</span>
+                    <span class="nav-count" id="incident-count" hidden>0</span>
+                </a>
+
+                <a href="#audits" class="nav-link" data-panel="audits">
+                    <span class="nav-icon">✓</span>
+                    <span>Audits & Corrective Actions</span>
+                </a>
+
+
+                <div class="nav-section-title">INTELLIGENCE</div>
+
+                <a href="#reports" class="nav-link" data-panel="reports">
+                    <span class="nav-icon">▥</span>
+                    <span>Reports & Alerts</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a href="../index.html" class="back-link">
+                    <span>←</span>
+                    Return to Super Admin Dashboard
+                </a>
+
+                <div class="sidebar-version">
+                    <strong>TALVORA GLOBAL</strong>
+                    <span>GSES SYSTEM 001</span>
+                    <span>COMPLIANCE CENTRE</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-button" id="menu-button" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            TALVORA <span>/</span> SUPER ADMIN <span>/</span> GOVERNANCE
+                        </div>
+
+                        <h1 id="page-title">Compliance Overview</h1>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="system-status">
+                        <span class="status-dot" id="connection-dot"></span>
+                        <span id="connection-label">Checking connection</span>
+                    </div>
+
+                    <button class="icon-button" id="refresh-button" title="Refresh monitoring data">
+                        ↻
+                    </button>
+
+                    <button class="notification-button" id="notification-button" title="View Super Admin alerts">
+                        ♢
+                        <span id="notification-count" hidden>0</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- GLOBAL NOTICE -->
+
+            <div class="notice" id="global-notice" role="status" hidden></div>
+
+
+            <div class="page-content">
+
+
+                <!-- =========================================
+                 1. COMPLIANCE OVERVIEW
+            ========================================== -->
+
+                <section class="panel active" id="panel-overview">
+
+                    <div class="page-heading">
+
+                        <div>
+                            <span class="eyebrow">GLOBAL GOVERNANCE</span>
+                            <h2>Compliance Overview</h2>
+                            <p>
+                                Centralised compliance oversight across TALVORA Employer,
+                                Employee and Super Admin portals.
+                            </p>
+                        </div>
+
+                        <div class="heading-actions">
+                            <span class="live-indicator">
+                                <i></i> LIVE DATA WHEN CONNECTED
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="welcome-banner">
+
+                        <div class="welcome-icon">✦</div>
+
+                        <div class="welcome-copy">
+                            <span>GLOBAL COMPLIANCE COMMAND CENTRE</span>
+                            <h3>Protecting trust. Strengthening governance.</h3>
+                            <p>
+                                Monitor regulatory obligations, organisational compliance,
+                                evidence integrity and operational risks across all jurisdictions.
+                            </p>
+                        </div>
+
+                        <div class="welcome-decoration">T</div>
+
+                    </div>
+
+
+                    <div class="metric-grid">
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Overall compliance score</span>
+                                <span class="metric-icon blue">◈</span>
+                            </div>
+                            <strong id="overview-score">—</strong>
+                            <small id="overview-score-period">Awaiting verified data</small>
+                        </article>
+
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Registered jurisdictions</span>
+                                <span class="metric-icon cyan">◎</span>
+                            </div>
+                            <strong id="overview-countries">—</strong>
+                            <small>Configured jurisdictions</small>
+                        </article>
+
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Open compliance risks</span>
+                                <span class="metric-icon orange">⚠</span>
+                            </div>
+                            <strong id="overview-risks">—</strong>
+                            <small>Outstanding risk records</small>
+                        </article>
+
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Pending investigations</span>
+                                <span class="metric-icon red">⌕</span>
+                            </div>
+                            <strong id="overview-investigations">—</strong>
+                            <small>Investigation workload</small>
+                        </article>
+
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Outstanding corrective actions</span>
+                                <span class="metric-icon purple">✓</span>
+                            </div>
+                            <strong id="overview-corrective">—</strong>
+                            <small>Open remediation records</small>
+                        </article>
+
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Upcoming regulatory deadlines</span>
+                                <span class="metric-icon gold">◷</span>
+                            </div>
+                            <strong id="overview-deadlines">—</strong>
+                            <small>Upcoming recorded deadlines</small>
+                        </article>
+
+                    </div>
+
+
+                    <div class="section-heading">
+                        <div>
+                            <h3>Three-Portal Compliance Status</h3>
+                            <p>Connected platform compliance oversight</p>
+                        </div>
+                    </div>
+
+
+                    <div class="portal-grid">
+
+                        <article class="portal-card">
+                            <div class="portal-icon employer">E</div>
+                            <div class="portal-content">
+                                <span>PORTAL 01</span>
+                                <h3>Employer Portal</h3>
+                                <strong id="portal-employer-status">—</strong>
+                                <small id="portal-employer-detail">Awaiting data</small>
+                            </div>
+                        </article>
+
+
+                        <article class="portal-card">
+                            <div class="portal-icon employee">P</div>
+                            <div class="portal-content">
+                                <span>PORTAL 02</span>
+                                <h3>Employee Portal</h3>
+                                <strong id="portal-employee-status">—</strong>
+                                <small id="portal-employee-detail">Awaiting data</small>
+                            </div>
+                        </article>
+
+
+                        <article class="portal-card">
+                            <div class="portal-icon admin">A</div>
+                            <div class="portal-content">
+                                <span>PORTAL 03</span>
+                                <h3>Super Admin Portal</h3>
+                                <strong id="portal-admin-status">—</strong>
+                                <small id="portal-admin-detail">Awaiting data</small>
+                            </div>
+                        </article>
+
+                    </div>
+
+
+                    <div class="two-column-grid">
+
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Compliance by Jurisdiction</h3>
+                                    <p>Live jurisdiction compliance assessments</p>
+                                </div>
+                            </div>
+
+                            <div id="jurisdiction-overview" class="data-list">
+                                <div class="empty-state">
+                                    No jurisdiction compliance data received.
+                                </div>
+                            </div>
+                        </article>
+
+
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Priority Compliance Risks</h3>
+                                    <p>Matters requiring administrative attention</p>
+                                </div>
+
+                                <button class="text-button" data-panel="incidents">
+                                    View all →
+                                </button>
+                            </div>
+
+                            <div id="priority-risk-list" class="event-list">
+                                <div class="empty-state">
+                                    No risk records received.
+                                </div>
+                            </div>
+                        </article>
+
+
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Upcoming Deadlines</h3>
+                                    <p>Regulatory and compliance review dates</p>
+                                </div>
+                            </div>
+
+                            <div id="deadline-list" class="data-list">
+                                <div class="empty-state">
+                                    No deadline records received.
+                                </div>
+                            </div>
+                        </article>
+
+
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Recent Governance Activity</h3>
+                                    <p>Recorded administrative activity</p>
+                                </div>
+
+                                <button class="text-button" data-panel="audits">
+                                    View audit →
+                                </button>
+                            </div>
+
+                            <div id="recent-governance-activity" class="event-list">
+                                <div class="empty-state">
+                                    No governance activity received.
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="last-updated">
+                        Last data update: <strong id="last-updated">—</strong>
+                    </div>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 2. REGULATIONS & COUNTRIES
+            ========================================== -->
+
+                <section class="panel" id="panel-jurisdictions">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">GLOBAL REGULATORY FRAMEWORK</span>
+                            <h2>Regulations & Countries</h2>
+                            <p>
+                                Manage countries, jurisdictions, applicable regulations,
+                                compliance requirements and regulatory version history.
+                            </p>
+                        </div>
+
+                        <div class="heading-actions">
+                            <button class="primary-button" data-open-form="jurisdiction-form">
+                                + Add Jurisdiction
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="system-info-banner">
+                        <strong>Global regulatory architecture</strong>
+                        <p>
+                            Regulatory requirements must be sourced, reviewed and approved
+                            before becoming active. Each requirement retains its jurisdiction,
+                            effective date and historical version.
+                        </p>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Jurisdictions</span>
+                            <strong id="jurisdiction-total">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Active requirements</span>
+                            <strong id="requirement-active">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Pending reviews</span>
+                            <strong id="requirement-review">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Upcoming changes</span>
+                            <strong id="requirement-upcoming">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card section-gap">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Country & Jurisdiction Register</h3>
+                                <p>Configured regulatory jurisdictions</p>
+                            </div>
+
+                            <input type="search" class="table-search" id="jurisdiction-search"
+                                placeholder="Search countries or jurisdictions">
+                        </div>
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Country / Jurisdiction</th>
+                                        <th>Regulatory Authority</th>
+                                        <th>Requirements</th>
+                                        <th>Review Status</th>
+                                        <th>Effective Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="jurisdiction-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No jurisdiction records received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+
+                    <article class="content-card section-gap">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Regulatory Requirements Register</h3>
+                                <p>Requirements, obligations, expiry periods and review history</p>
+                            </div>
+
+                            <button class="primary-button" data-open-form="requirement-form">
+                                + Add Requirement
+                            </button>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Requirement</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Category</th>
+                                        <th>Version</th>
+                                        <th>Effective From</th>
+                                        <th>Review Status</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="requirement-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No regulatory requirements received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 3. EMPLOYER COMPLIANCE
+            ========================================== -->
+
+                <section class="panel" id="panel-employers">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">PORTAL COMPLIANCE / EMPLOYERS</span>
+                            <h2>Employer Compliance</h2>
+                            <p>
+                                Monitor employer verification, required documentation,
+                                regulatory obligations, account restrictions and compliance history.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Employers assessed</span>
+                            <strong id="employer-assessed">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Compliant</span>
+                            <strong id="employer-compliant">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Requires attention</span>
+                            <strong id="employer-attention">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Under investigation</span>
+                            <strong id="employer-investigation">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Employer Compliance Register</h3>
+                                <p>Connected to the central TALVORA Employer Register</p>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-bar">
+
+                            <input type="search" id="employer-search" placeholder="Search employer name or reference">
+
+                            <select id="employer-status-filter">
+                                <option value="">All compliance statuses</option>
+                                <option value="compliant">Compliant</option>
+                                <option value="attention">Requires attention</option>
+                                <option value="under_investigation">Under investigation</option>
+                                <option value="restricted">Restricted</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+
+                            <button class="secondary-button" id="employer-filter">
+                                Apply Filters
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Employer</th>
+                                        <th>Reference</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Verification</th>
+                                        <th>Compliance Status</th>
+                                        <th>Outstanding Issues</th>
+                                        <th>Last Assessment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="employer-table">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No employer compliance records received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 4. EMPLOYEE COMPLIANCE
+            ========================================== -->
+
+                <section class="panel" id="panel-employees">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">PORTAL COMPLIANCE / EMPLOYEES</span>
+                            <h2>Employee Compliance</h2>
+                            <p>
+                                Oversee employee identity, qualifications, professional
+                                credentials, eligibility and verification requirements.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Employees assessed</span>
+                            <strong id="employee-assessed">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Verified</span>
+                            <strong id="employee-verified">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Verification pending</span>
+                            <strong id="employee-pending">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Compliance issues</span>
+                            <strong id="employee-issues">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Employee Compliance Register</h3>
+                                <p>Connected to the central TALVORA Employee Register</p>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-bar">
+
+                            <input type="search" id="employee-search" placeholder="Search employee name or reference">
+
+                            <select id="employee-status-filter">
+                                <option value="">All statuses</option>
+                                <option value="compliant">Compliant</option>
+                                <option value="attention">Requires attention</option>
+                                <option value="pending">Pending verification</option>
+                                <option value="restricted">Restricted</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+
+                            <button class="secondary-button" id="employee-filter">
+                                Apply Filters
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Reference</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Identity Status</th>
+                                        <th>Qualification Status</th>
+                                        <th>Compliance Status</th>
+                                        <th>Last Assessment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="employee-table">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No employee compliance records received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 5. DOCUMENTS & EVIDENCE
+            ========================================== -->
+
+                <section class="panel" id="panel-evidence">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">EVIDENCE INTEGRITY</span>
+                            <h2>Documents & Evidence Compliance</h2>
+                            <p>
+                                Monitor verification status, document validity,
+                                expiration dates, evidence integrity and regulatory requirements.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Records assessed</span>
+                            <strong id="evidence-total">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Verified records</span>
+                            <strong id="evidence-verified">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Expiring documents</span>
+                            <strong id="evidence-expiring">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Verification issues</span>
+                            <strong id="evidence-issues">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Document Compliance Register</h3>
+                                <p>Connected to TALVORA Evidence Management</p>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-bar">
+
+                            <input type="search" id="evidence-search" placeholder="Search document or reference">
+
+                            <select id="evidence-status-filter">
+                                <option value="">All document statuses</option>
+                                <option value="verified">Verified</option>
+                                <option value="pending">Pending</option>
+                                <option value="expired">Expired</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="flagged">Flagged</option>
+                            </select>
+
+                            <button class="secondary-button" id="evidence-filter">
+                                Apply Filters
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Evidence Reference</th>
+                                        <th>Document Type</th>
+                                        <th>Owner Type</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Verification</th>
+                                        <th>Expiry Date</th>
+                                        <th>Integrity Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="evidence-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No document compliance records received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 6. DATA PROTECTION & PRIVACY
+            ========================================== -->
+
+                <section class="panel" id="panel-privacy">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">DATA GOVERNANCE</span>
+                            <h2>Data Protection & Privacy</h2>
+                            <p>
+                                Oversee consent records, data protection obligations,
+                                retention policies, access reviews and privacy incidents.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Consent records</span>
+                            <strong id="privacy-consents">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Pending reviews</span>
+                            <strong id="privacy-reviews">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Retention reviews due</span>
+                            <strong id="privacy-retention">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Privacy incidents</span>
+                            <strong id="privacy-incidents">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Privacy Governance Register</h3>
+                                <p>Connected to TALVORA Privacy & Consent Management</p>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-bar">
+                            <input type="search" id="privacy-search" placeholder="Search privacy record">
+
+                            <select id="privacy-status-filter">
+                                <option value="">All review statuses</option>
+                                <option value="compliant">Compliant</option>
+                                <option value="pending">Pending review</option>
+                                <option value="attention">Requires attention</option>
+                                <option value="overdue">Overdue</option>
+                            </select>
+
+                            <button class="secondary-button" id="privacy-filter">
+                                Apply Filters
+                            </button>
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Record Reference</th>
+                                        <th>Governance Area</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Requirement</th>
+                                        <th>Review Date</th>
+                                        <th>Compliance Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No privacy governance records received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 7. RISKS & INCIDENTS
+            ========================================== -->
+
+                <section class="panel" id="panel-incidents">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">RISK MANAGEMENT</span>
+                            <h2>Risk & Compliance Incidents</h2>
+                            <p>
+                                Identify, investigate, manage and resolve compliance risks
+                                and violations across the connected platform.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Open risks</span>
+                            <strong id="risk-open">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Critical risks</span>
+                            <strong id="risk-critical">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Under investigation</span>
+                            <strong id="risk-investigating">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Resolved incidents</span>
+                            <strong id="risk-resolved">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <div class="system-info-banner warning-banner">
+                        <strong>Progressive enforcement framework</strong>
+                        <p>
+                            Warning → Flag → Relevant activity restriction → Investigation
+                            → Suspension → Reinstatement. Every decision requires a reason,
+                            administrator identity and audit record. Automated flags alone
+                            do not automatically suspend accounts.
+                        </p>
+                    </div>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Compliance Incident Register</h3>
+                                <p>All recorded compliance incidents and risk findings</p>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-bar">
+
+                            <input type="search" id="risk-search" placeholder="Search incident or reference">
+
+                            <select id="risk-severity-filter">
+                                <option value="">All severities</option>
+                                <option value="critical">Critical</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+
+                            <select id="risk-status-filter">
+                                <option value="">All statuses</option>
+                                <option value="open">Open</option>
+                                <option value="investigating">Investigating</option>
+                                <option value="resolved">Resolved</option>
+                                <option value="closed">Closed</option>
+                            </select>
+
+                            <button class="secondary-button" id="risk-filter">
+                                Apply Filters
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Incident Reference</th>
+                                        <th>Subject</th>
+                                        <th>Category</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Severity</th>
+                                        <th>Status</th>
+                                        <th>Reported</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="risk-table">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No compliance incidents received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+
+                    <article class="content-card section-gap">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Enforcement History</h3>
+                                <p>Documented warnings, flags, restrictions and account decisions</p>
+                            </div>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Action Reference</th>
+                                        <th>Subject</th>
+                                        <th>Action</th>
+                                        <th>Reason</th>
+                                        <th>Administrator</th>
+                                        <th>Date</th>
+                                        <th>Outcome</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="enforcement-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No enforcement history received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 8. AUDITS & CORRECTIVE ACTIONS
+            ========================================== -->
+
+                <section class="panel" id="panel-audits">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">ACCOUNTABILITY & ASSURANCE</span>
+                            <h2>Audits & Corrective Actions</h2>
+                            <p>
+                                Maintain traceable audit records, investigate findings,
+                                assign corrective actions and verify their completion.
+                            </p>
+                        </div>
+
+                        <button class="primary-button" data-open-form="corrective-form">
+                            + Create Corrective Action
+                        </button>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Audit records</span>
+                            <strong id="audit-total">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Open findings</span>
+                            <strong id="audit-findings">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Corrective actions</span>
+                            <strong id="audit-actions">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Overdue actions</span>
+                            <strong id="audit-overdue">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Governance Audit Trail</h3>
+                                <p>Immutable historical records of administrative activity</p>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-bar">
+                            <input type="search" id="audit-search"
+                                placeholder="Search audit reference or administrator">
+
+                            <button class="secondary-button" id="audit-filter">
+                                Search Audit
+                            </button>
+
+                            <button class="secondary-button" id="audit-export">
+                                ↓ Export Audit
+                            </button>
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Audit Reference</th>
+                                        <th>Administrator</th>
+                                        <th>Operation</th>
+                                        <th>Target</th>
+                                        <th>Justification</th>
+                                        <th>Timestamp</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="audit-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No audit records received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+
+                    <article class="content-card section-gap">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Corrective Action Register</h3>
+                                <p>Remediation ownership, deadlines and verification</p>
+                            </div>
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Action Reference</th>
+                                        <th>Finding</th>
+                                        <th>Assigned Owner</th>
+                                        <th>Due Date</th>
+                                        <th>Progress</th>
+                                        <th>Verification</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="corrective-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No corrective action records received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =========================================
+                 9. REPORTS & ALERTS
+            ========================================== -->
+
+                <section class="panel" id="panel-reports">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">COMPLIANCE INTELLIGENCE</span>
+                            <h2>Reports & Alerts</h2>
+                            <p>
+                                Generate governance reports, monitor notifications,
+                                and oversee compliance alerts across TALVORA.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="metric-grid compact-grid">
+
+                        <article class="metric-card">
+                            <span>Generated reports</span>
+                            <strong id="report-total">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Active alerts</span>
+                            <strong id="report-alerts">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Notifications delivered</span>
+                            <strong id="report-delivered">—</strong>
+                        </article>
+
+                        <article class="metric-card">
+                            <span>Delivery failures</span>
+                            <strong id="report-failed">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <div class="two-column-grid">
+
+                        <article class="content-card">
+
+                            <h3>Generate Compliance Report</h3>
+
+                            <p class="card-description">
+                                Request reports using verified compliance records.
+                            </p>
+
+                            <form id="report-form" class="form-layout">
+
+                                <label class="form-field">
+                                    Report category
+
+                                    <select name="category" required>
+                                        <option value="">Select report category</option>
+                                        <option value="global_compliance">Global Compliance</option>
+                                        <option value="jurisdiction">Jurisdiction Compliance</option>
+                                        <option value="employer">Employer Compliance</option>
+                                        <option value="employee">Employee Compliance</option>
+                                        <option value="evidence">Evidence Compliance</option>
+                                        <option value="privacy">Privacy Governance</option>
+                                        <option value="risk">Risk & Incidents</option>
+                                        <option value="audit">Audit & Corrective Actions</option>
+                                    </select>
+                                </label>
+
+
+                                <label class="form-field">
+                                    Start date
+                                    <input type="date" name="from" required>
+                                </label>
+
+
+                                <label class="form-field">
+                                    End date
+                                    <input type="date" name="to" required>
+                                </label>
+
+
+                                <label class="form-field">
+                                    Export format
+
+                                    <select name="format" required>
+                                        <option value="pdf">PDF</option>
+                                        <option value="csv">CSV</option>
+                                        <option value="xlsx">Excel</option>
+                                    </select>
+                                </label>
+
+
+                                <button type="submit" class="primary-button">
+                                    Generate Report
+                                </button>
+
+                            </form>
+
+                        </article>
+
+
+                        <article class="content-card">
+
+                            <h3>Notification Channels</h3>
+
+                            <p class="card-description">
+                                TALVORA compliance communication architecture.
+                            </p>
+
+
+                            <div class="channel-item">
+                                <span class="channel-icon blue">▣</span>
+                                <div>
+                                    <strong>In-platform notifications</strong>
+                                    <small>Employer, Employee and Super Admin portals</small>
+                                </div>
+                                <span class="channel-status">Selected</span>
+                            </div>
+
+
+                            <div class="channel-item">
+                                <span class="channel-icon green">✉</span>
+                                <div>
+                                    <strong>Email notifications</strong>
+                                    <small>Compliance notices and important deadlines</small>
+                                </div>
+                                <span class="channel-status">Selected</span>
+                            </div>
+
+
+                            <div class="channel-item">
+                                <span class="channel-icon gold">♢</span>
+                                <div>
+                                    <strong>Super Admin alerts</strong>
+                                    <small>Critical governance and regulatory events</small>
+                                </div>
+                                <span class="channel-status">Selected</span>
+                            </div>
+
+                            <div class="info-note">
+                                Delivery status will only be displayed when confirmed
+                                by the connected notification services.
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <article class="content-card section-gap">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Notification & Alert History</h3>
+                                <p>In-platform messages, email deliveries and Super Admin alerts</p>
+                            </div>
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Notification</th>
+                                        <th>Recipient Group</th>
+                                        <th>Channel</th>
+                                        <th>Created</th>
+                                        <th>Delivery Status</th>
+                                        <th>Acknowledgement</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="notification-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No notification history received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+
+                    <article class="content-card section-gap">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Compliance Report History</h3>
+                                <p>Previously generated reports and available exports</p>
+                            </div>
+                        </div>
+
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Report Reference</th>
+                                        <th>Category</th>
+                                        <th>Period</th>
+                                        <th>Generated By</th>
+                                        <th>Generated At</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="report-table">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No compliance report history received.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <footer class="main-footer">
+                <span>© TALVORA Technologies</span>
+                <span>Connecting Human Capability to Global Opportunity.</span>
+                <span>GSES SYSTEM 001</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================
+     MANAGEMENT MODAL
+========================================== -->
+
+    <div class="modal-overlay" id="management-modal" hidden>
+
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">TALVORA GOVERNANCE</span>
+                    <h2 id="modal-title">Management Form</h2>
+                </div>
+
+                <button class="modal-close" id="modal-close" aria-label="Close modal">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+
+                <!-- JURISDICTION FORM -->
+
+                <form id="jurisdiction-form" class="modal-form" hidden>
+
+                    <label class="form-field">
+                        Country name
+                        <input name="countryName" required maxlength="120">
+                    </label>
+
+                    <label class="form-field">
+                        Jurisdiction name
+                        <input name="name" required maxlength="160">
+                    </label>
+
+                    <label class="form-field">
+                        Jurisdiction code
+                        <input name="code" required maxlength="30">
+                    </label>
+
+                    <label class="form-field">
+                        Regulatory authority
+                        <input name="authority" required maxlength="200">
+                    </label>
+
+                    <label class="form-field">
+                        Official regulatory source
+                        <input name="sourceUrl" type="url" placeholder="https://">
+                    </label>
+
+                    <label class="form-field">
+                        Effective date
+                        <input name="effectiveFrom" type="date" required>
+                    </label>
+
+                    <label class="form-field">
+                        Review status
+                        <select name="reviewStatus" required>
+                            <option value="pending_review">Pending review</option>
+                            <option value="under_review">Under review</option>
+                            <option value="approved">Approved</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Initial status
+                        <select name="status" required>
+                            <option value="pending">Pending</option>
+                            <option value="active">Active after approval</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Administrative notes
+                        <textarea name="notes" rows="3"></textarea>
+                    </label>
+
+                    <div class="form-warning full-field">
+                        New jurisdictions must undergo authorised review.
+                        Selecting an active status does not bypass backend approval.
+                    </div>
+
+                    <div class="modal-actions full-field">
+                        <button type="button" class="secondary-button" data-close-modal>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Submit Jurisdiction
+                        </button>
+                    </div>
+
+                </form>
+
+
+
+                <!-- REGULATORY REQUIREMENT FORM -->
+
+                <form id="requirement-form" class="modal-form" hidden>
+
+                    <label class="form-field">
+                        Jurisdiction reference
+                        <input name="jurisdictionReference" required>
+                    </label>
+
+                    <label class="form-field">
+                        Requirement title
+                        <input name="title" required maxlength="200">
+                    </label>
+
+                    <label class="form-field">
+                        Requirement category
+                        <select name="category" required>
+                            <option value="">Select category</option>
+                            <option value="business_registration">Business registration</option>
+                            <option value="identity_verification">Identity verification</option>
+                            <option value="professional_credentials">Professional credentials</option>
+                            <option value="employment_eligibility">Employment eligibility</option>
+                            <option value="data_protection">Data protection</option>
+                            <option value="document_validity">Document validity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Regulatory source
+                        <input name="source" required maxlength="500">
+                    </label>
+
+                    <label class="form-field">
+                        Version
+                        <input name="version" required maxlength="40">
+                    </label>
+
+                    <label class="form-field">
+                        Effective from
+                        <input name="effectiveFrom" type="date" required>
+                    </label>
+
+                    <label class="form-field">
+                        Expiry / renewal period (days)
+                        <input name="expiryDays" type="number" min="0">
+                    </label>
+
+                    <label class="form-field">
+                        Review status
+                        <select name="reviewStatus" required>
+                            <option value="pending_review">Pending review</option>
+                            <option value="under_review">Under review</option>
+                            <option value="approved">Approved</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Requirement description
+                        <textarea name="description" rows="4" required></textarea>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Required document standards
+                        <textarea name="documentStandards" rows="3"></textarea>
+                    </label>
+
+                    <div class="form-warning full-field">
+                        Requirements must have a traceable source and approved
+                        review before enforcement.
+                    </div>
+
+                    <div class="modal-actions full-field">
+                        <button type="button" class="secondary-button" data-close-modal>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Submit Requirement
+                        </button>
+                    </div>
+
+                </form>
+
+
+
+                <!-- PROGRESSIVE ENFORCEMENT FORM -->
+
+                <form id="enforcement-form" class="modal-form" hidden>
+
+                    <div class="form-warning full-field">
+                        Every enforcement decision must have a valid reason.
+                        Automated flags alone cannot independently suspend an account.
+                    </div>
+
+                    <label class="form-field">
+                        Subject type
+                        <select name="subjectType" required>
+                            <option value="employer">Employer</option>
+                            <option value="employee">Employee</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Subject reference
+                        <input name="subjectReference" required readonly>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Enforcement stage
+                        <select name="stage" required>
+                            <option value="warning">1. Warning</option>
+                            <option value="flag">2. Compliance flag</option>
+                            <option value="restrict">3. Restrict relevant activities</option>
+                            <option value="investigate">4. Open investigation</option>
+                            <option value="suspend">5. Suspend account</option>
+                            <option value="reinstate">6. Reinstate account</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Reason and supporting justification
+                        <textarea name="reason" rows="4" minlength="10" required></textarea>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Relevant incident reference
+                        <input name="incidentReference">
+                    </label>
+
+                    <label class="form-field full-field">
+                        Activity restriction scope
+                        <textarea name="restrictionScope" rows="2"
+                            placeholder="Required when requesting an activity restriction"></textarea>
+                    </label>
+
+                    <label class="confirm-line full-field">
+                        <input type="checkbox" name="confirmation" required>
+                        <span>
+                            I confirm that this action has a documented compliance basis
+                            and is being submitted for authorised review.
+                        </span>
+                    </label>
+
+                    <div class="modal-actions full-field">
+                        <button type="button" class="secondary-button" data-close-modal>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="danger-button">
+                            Submit Enforcement Request
+                        </button>
+                    </div>
+
+                </form>
+
+
+
+                <!-- CORRECTIVE ACTION FORM -->
+
+                <form id="corrective-form" class="modal-form" hidden>
+
+                    <label class="form-field">
+                        Related audit or finding reference
+                        <input name="findingReference" required>
+                    </label>
+
+                    <label class="form-field">
+                        Assigned owner reference
+                        <input name="ownerReference" required>
+                    </label>
+
+                    <label class="form-field">
+                        Due date
+                        <input name="dueDate" type="date" required>
+                    </label>
+
+                    <label class="form-field">
+                        Priority
+                        <select name="priority" required>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Corrective action description
+                        <textarea name="description" rows="4" required></textarea>
+                    </label>
+
+                    <label class="form-field full-field">
+                        Required completion evidence
+                        <textarea name="evidenceRequired" rows="3"></textarea>
+                    </label>
+
+                    <div class="modal-actions full-field">
+                        <button type="button" class="secondary-button" data-close-modal>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Create Corrective Action
+                        </button>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOTIFICATION DRAWER -->
+
+    <div class="notification-drawer" id="notification-drawer" hidden>
+
+        <div class="drawer-header">
+            <div>
+                <span class="eyebrow">GOVERNANCE ALERTS</span>
+                <h3>Super Admin Notifications</h3>
+            </div>
+
+            <button id="drawer-close" class="modal-close" aria-label="Close notifications">
+                &times;
+            </button>
+        </div>
+
+        <div id="notification-feed" class="drawer-content">
+            <div class="empty-state">
+                No notification records received.
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+
+</body>
+
+</html>

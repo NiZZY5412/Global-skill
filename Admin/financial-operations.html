@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>TALVORA | Global Financial Operations</title>
+    <link rel="stylesheet" href="financial-operations.css">
+    <script defer src="talvora-admin-config.js"></script>
+    <script src="financial-operations.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </div>
+            </div>
+
+            <div class="side-label">FINANCIAL COMMAND</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">
+                    ◈ Financial Dashboard
+                </a>
+                <a href="#transactions" class="nav-link" data-section="transactions">
+                    ⇄ Transactions
+                </a>
+                <a href="#revenue" class="nav-link" data-section="revenue">
+                    ◉ Revenue Management
+                </a>
+                <a href="#fees" class="nav-link" data-section="fees">
+                    % Fees & Commissions
+                </a>
+                <a href="#payouts" class="nav-link" data-section="payouts">
+                    ↗ Payout Management
+                </a>
+                <a href="#refunds" class="nav-link" data-section="refunds">
+                    ↩ Refund Management
+                </a>
+                <a href="#chargebacks" class="nav-link" data-section="chargebacks">
+                    ⚠ Chargebacks & Disputes
+                </a>
+                <a href="#reconciliation" class="nav-link" data-section="reconciliation">
+                    ⇄ Reconciliation
+                </a>
+                <a href="#invoices" class="nav-link" data-section="invoices">
+                    ▤ Invoicing & Billing
+                </a>
+                <a href="#controls" class="nav-link" data-section="controls">
+                    ◈ Financial Controls
+                </a>
+                <a href="#reports" class="nav-link" data-section="reports">
+                    ▥ Financial Reports
+                </a>
+                <a href="#audit" class="nav-link" data-section="audit">
+                    ◷ Financial Audit
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <div>
+                        <strong>Super Admin</strong>
+                        <small>Financial Command</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div class="topbar-title">
+                    <button id="menuToggle" class="menu-toggle" aria-label="Open navigation">☰</button>
+
+                    <div>
+                        <small>GLOBAL OPERATIONS / FINANCIAL GOVERNANCE</small>
+                        <h1>Financial Operations Centre</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span class="connection-status" id="connectionStatus">
+                        <i></i>Connecting
+                    </span>
+
+                    <button class="icon-button" id="refreshButton">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+            </header>
+
+            <div class="system-banner">
+                <strong>FINANCIAL GOVERNANCE</strong>
+                <span id="bannerMessage">
+                    Connecting to the financial management service...
+                </span>
+            </div>
+
+            <!-- ==================================
+         1. GLOBAL FINANCIAL DASHBOARD
+    =================================== -->
+
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL FINANCIAL INTELLIGENCE</span>
+                        <h2>Financial Overview</h2>
+                        <p>Monitor platform-wide financial performance and operational exposure.</p>
+                    </div>
+
+                    <button class="primary-button" id="exportOverview">
+                        Export Overview
+                    </button>
+                </div>
+
+                <div class="metrics-grid">
+
+                    <article class="metric-card">
+                        <span>Gross Transaction Volume</span>
+                        <strong id="grossVolume">—</strong>
+                        <small>Backend-reported financial volume</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Net Platform Revenue</span>
+                        <strong id="netRevenue">—</strong>
+                        <small>Recognized net revenue</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Platform Fees Earned</span>
+                        <strong id="platformFees">—</strong>
+                        <small>Recorded fee revenue</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Payouts</span>
+                        <strong id="pendingPayouts">—</strong>
+                        <small>Outstanding payout obligations</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Refund Exposure</span>
+                        <strong id="refundExposure">—</strong>
+                        <small>Pending refund obligations</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Chargeback Exposure</span>
+                        <strong id="chargebackExposure">—</strong>
+                        <small>Open dispute exposure</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Unreconciled Transactions</span>
+                        <strong id="unreconciledTransactions">—</strong>
+                        <small>Awaiting financial matching</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Outstanding Invoices</span>
+                        <strong id="outstandingInvoices">—</strong>
+                        <small>Unpaid invoice obligations</small>
+                    </article>
+
+                </div>
+
+                <div class="overview-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Revenue by Currency</h3>
+                                <p>Separate currency reporting without artificial aggregation.</p>
+                            </div>
+                        </div>
+
+                        <div id="revenueByCurrency" class="distribution-list">
+                            No financial data available.
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Financial Health</h3>
+                                <p>Operational indicators returned by the backend.</p>
+                            </div>
+                        </div>
+
+                        <div id="financialHealth" class="summary-list">
+                            No financial health data available.
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent Financial Transactions</h3>
+                            <p>Latest financial records across the platform.</p>
+                        </div>
+
+                        <button class="text-button" data-navigate="transactions">
+                            View all →
+                        </button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>ACCOUNT</th>
+                                    <th>TYPE</th>
+                                    <th>AMOUNT</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTransactions">
+                                <tr>
+                                    <td colspan="6">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <h3>Financial Alerts & Exceptions</h3>
+                    </div>
+                    <div id="financialAlerts" class="alert-list">
+                        No alerts available.
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         2. TRANSACTIONS
+    =================================== -->
+
+            <section class="content-section" id="transactions">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PAYMENT OPERATIONS</span>
+                        <h2>Transaction Management</h2>
+                        <p>Search, monitor and investigate platform transactions.</p>
+                    </div>
+
+                    <button class="secondary-button" id="exportTransactions">
+                        Export Transactions
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input id="transactionSearch" placeholder="Search reference, account or transaction ID">
+
+                    <select id="transactionStatus">
+                        <option value="">All statuses</option>
+                        <option value="successful">Successful</option>
+                        <option value="pending">Pending</option>
+                        <option value="failed">Failed</option>
+                        <option value="reversed">Reversed</option>
+                    </select>
+
+                    <select id="transactionType">
+                        <option value="">All transaction types</option>
+                        <option value="payment">Payments</option>
+                        <option value="fee">Fees</option>
+                        <option value="payout">Payouts</option>
+                        <option value="refund">Refunds</option>
+                        <option value="adjustment">Adjustments</option>
+                    </select>
+
+                    <select id="transactionCurrency">
+                        <option value="">All currencies</option>
+                    </select>
+
+                    <input type="date" id="transactionFrom" aria-label="From date">
+                    <input type="date" id="transactionTo" aria-label="To date">
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>ACCOUNT</th>
+                                    <th>TYPE</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>PROVIDER</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <span id="transactionPaginationInfo">Page 1</span>
+                        <div>
+                            <button class="secondary-button" id="previousTransactions">
+                                Previous
+                            </button>
+                            <button class="secondary-button" id="nextTransactions">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         3. REVENUE MANAGEMENT
+    =================================== -->
+
+            <section class="content-section" id="revenue">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PLATFORM EARNINGS</span>
+                        <h2>Revenue Management</h2>
+                        <p>Monitor recognized revenue, commissions, fees and revenue allocation.</p>
+                    </div>
+
+                    <button class="secondary-button" id="exportRevenue">
+                        Export Revenue
+                    </button>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Gross Revenue</span>
+                        <strong id="grossRevenue">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Recognized Revenue</span>
+                        <strong id="recognizedRevenue">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Deferred Revenue</span>
+                        <strong id="deferredRevenue">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Revenue Adjustments</span>
+                        <strong id="revenueAdjustments">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Revenue Ledger</h3>
+                            <p>Revenue movements with source references and accounting classification.</p>
+                        </div>
+                    </div>
+
+                    <div class="filters">
+                        <input id="revenueSearch" placeholder="Search revenue reference">
+
+                        <select id="revenueStatus">
+                            <option value="">All statuses</option>
+                            <option value="recognized">Recognized</option>
+                            <option value="deferred">Deferred</option>
+                            <option value="reversed">Reversed</option>
+                        </select>
+
+                        <select id="revenueCurrency">
+                            <option value="">All currencies</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>SOURCE</th>
+                                    <th>CATEGORY</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>ACCOUNTING DATE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="revenueTable">
+                                <tr>
+                                    <td colspan="7">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         4. FEES AND COMMISSIONS
+    =================================== -->
+
+            <section class="content-section" id="fees">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">REVENUE POLICY</span>
+                        <h2>Fees & Commissions</h2>
+                        <p>Manage approved platform fee schedules and commission structures.</p>
+                    </div>
+
+                    <button class="primary-button" id="createFeeButton">
+                        + Propose Fee Schedule
+                    </button>
+                </div>
+
+                <div class="security-notice">
+                    <strong>Financial policy protection</strong>
+                    Fee changes must be versioned, approved, effective-dated and audited.
+                    Existing transaction records must retain the fee rules applied at transaction time.
+                </div>
+
+                <article class="panel">
+                    <h3>Fee Schedule Register</h3>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>POLICY ID</th>
+                                    <th>NAME</th>
+                                    <th>TRANSACTION TYPE</th>
+                                    <th>CURRENCY</th>
+                                    <th>RATE</th>
+                                    <th>FIXED FEE</th>
+                                    <th>EFFECTIVE DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="feeScheduleTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         5. PAYOUT MANAGEMENT
+    =================================== -->
+
+            <section class="content-section" id="payouts">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">OUTBOUND FINANCIAL OPERATIONS</span>
+                        <h2>Payout Management</h2>
+                        <p>Review beneficiary payouts, settlement instructions and payment status.</p>
+                    </div>
+
+                    <button class="secondary-button" id="exportPayouts">
+                        Export Payouts
+                    </button>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    <strong>Restricted financial operation</strong>
+                    Releasing, rejecting or holding a payout requires server-side authorization.
+                    High-value payouts must follow the configured dual-approval workflow.
+                </div>
+
+                <div class="filters">
+                    <input id="payoutSearch" placeholder="Search payout or beneficiary">
+
+                    <select id="payoutStatus">
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under review</option>
+                        <option value="approved">Approved</option>
+                        <option value="processing">Processing</option>
+                        <option value="completed">Completed</option>
+                        <option value="held">Held</option>
+                        <option value="failed">Failed</option>
+                    </select>
+
+                    <select id="payoutCurrency">
+                        <option value="">All currencies</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PAYOUT ID</th>
+                                    <th>BENEFICIARY</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>DESTINATION</th>
+                                    <th>REQUESTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payoutTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         6. REFUND MANAGEMENT
+    =================================== -->
+
+            <section class="content-section" id="refunds">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">CUSTOMER FINANCIAL PROTECTION</span>
+                        <h2>Refund Management</h2>
+                        <p>Review refund requests, eligibility and payment reversals.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice">
+                    Every refund must reference an original transaction and comply with
+                    the applicable refund policy and payment-provider capabilities.
+                </div>
+
+                <div class="filters">
+                    <input id="refundSearch" placeholder="Search refund reference">
+
+                    <select id="refundStatus">
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under review</option>
+                        <option value="approved">Approved</option>
+                        <option value="processing">Processing</option>
+                        <option value="completed">Completed</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFUND ID</th>
+                                    <th>ORIGINAL TRANSACTION</th>
+                                    <th>ACCOUNT</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>REASON</th>
+                                    <th>REQUESTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="refundTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         7. CHARGEBACKS AND DISPUTES
+    =================================== -->
+
+            <section class="content-section" id="chargebacks">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL RISK MANAGEMENT</span>
+                        <h2>Chargebacks & Disputes</h2>
+                        <p>Monitor disputes, deadlines, evidence and financial exposure.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Open Disputes</span>
+                        <strong id="openDisputes">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Disputed Amount</span>
+                        <strong id="disputedAmount">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Evidence Required</span>
+                        <strong id="evidenceRequired">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Upcoming Deadlines</span>
+                        <strong id="disputeDeadlines">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="disputeSearch" placeholder="Search dispute reference">
+
+                        <select id="disputeStatus">
+                            <option value="">All statuses</option>
+                            <option value="open">Open</option>
+                            <option value="evidence_required">Evidence required</option>
+                            <option value="under_review">Under review</option>
+                            <option value="won">Won</option>
+                            <option value="lost">Lost</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>DISPUTE ID</th>
+                                    <th>TRANSACTION</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>REASON</th>
+                                    <th>DEADLINE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="disputeTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         8. RECONCILIATION
+    =================================== -->
+
+            <section class="content-section" id="reconciliation">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL INTEGRITY</span>
+                        <h2>Financial Reconciliation</h2>
+                        <p>Match platform ledger records with payment-provider and banking records.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    Reconciliation previews are non-destructive. Unmatched entries and
+                    discrepancies must be reviewed before any approved posting.
+                </div>
+
+                <div class="overview-grid">
+
+                    <article class="panel">
+                        <h3>Run Reconciliation</h3>
+
+                        <form id="reconciliationForm">
+
+                            <label>Start date
+                                <input type="date" name="fromDate" required>
+                            </label>
+
+                            <label>End date
+                                <input type="date" name="toDate" required>
+                            </label>
+
+                            <label>Financial provider
+                                <select name="provider" required>
+                                    <option value="">Select provider</option>
+                                </select>
+                            </label>
+
+                            <label>Settlement currency
+                                <select name="currency" required>
+                                    <option value="">Select currency</option>
+                                </select>
+                            </label>
+
+                            <div class="modal-note">
+                                The system will generate a reconciliation preview for the selected
+                                provider, date range and currency.
+                            </div>
+
+                            <button type="submit" class="primary-button">
+                                Generate Reconciliation Preview
+                            </button>
+
+                        </form>
+                    </article>
+
+                    <article class="panel">
+                        <h3>Import Financial Statement</h3>
+
+                        <form id="statementForm">
+
+                            <label>Provider
+                                <select name="provider" required>
+                                    <option value="">Select provider</option>
+                                </select>
+                            </label>
+
+                            <label>Currency
+                                <select name="currency" required>
+                                    <option value="">Select currency</option>
+                                </select>
+                            </label>
+
+                            <label>Statement file
+                                <input type="file" name="statement" id="statementFile" accept=".csv,.xlsx,.ofx"
+                                    required>
+                            </label>
+
+                            <label>Statement period
+                                <input type="month" name="period" required>
+                            </label>
+
+                            <button type="submit" class="secondary-button">
+                                Validate Statement
+                            </button>
+
+                        </form>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <h3>Reconciliation History</h3>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RUN ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>PERIOD</th>
+                                    <th>CURRENCY</th>
+                                    <th>MATCHED</th>
+                                    <th>UNMATCHED</th>
+                                    <th>DISCREPANCIES</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reconciliationTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         9. INVOICING AND BILLING
+    =================================== -->
+
+            <section class="content-section" id="invoices">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ACCOUNTS RECEIVABLE</span>
+                        <h2>Invoicing & Billing</h2>
+                        <p>Track invoices, payment obligations and billing status.</p>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <input id="invoiceSearch" placeholder="Search invoice or account">
+
+                    <select id="invoiceStatus">
+                        <option value="">All statuses</option>
+                        <option value="draft">Draft</option>
+                        <option value="issued">Issued</option>
+                        <option value="partially_paid">Partially paid</option>
+                        <option value="paid">Paid</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>INVOICE</th>
+                                    <th>ACCOUNT</th>
+                                    <th>ISSUE DATE</th>
+                                    <th>DUE DATE</th>
+                                    <th>TOTAL</th>
+                                    <th>PAID</th>
+                                    <th>BALANCE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoiceTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         10. FINANCIAL CONTROLS
+    =================================== -->
+
+            <section class="content-section" id="controls">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL GOVERNANCE</span>
+                        <h2>Financial Controls & Authorization</h2>
+                        <p>Monitor approval rules, administrator permissions and operational limits.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    Approval policies are enforced by the backend, not by this interface.
+                    Changes to authorization limits must follow independent approval.
+                </div>
+
+                <article class="panel">
+                    <h3>Financial Authorization Matrix</h3>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>OPERATION</th>
+                                    <th>INITIATION</th>
+                                    <th>FIRST APPROVAL</th>
+                                    <th>SECOND APPROVAL</th>
+                                    <th>LIMIT</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="approvalMatrix">
+                                <tr>
+                                    <td colspan="6">Loading authorization policies...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <h3>Financial Control Indicators</h3>
+                    <div id="financialControls" class="summary-list">
+                        No control information available.
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         11. FINANCIAL REPORTING
+    =================================== -->
+
+            <section class="content-section" id="reports">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL INTELLIGENCE</span>
+                        <h2>Financial Reports</h2>
+                        <p>Generate authorized financial reports and accounting exports.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+
+                    <h3>Generate Financial Report</h3>
+
+                    <form id="reportForm">
+
+                        <label>Report category
+                            <select name="reportType" required>
+                                <option value="revenue">Revenue Report</option>
+                                <option value="transactions">Transaction Report</option>
+                                <option value="payouts">Payout Report</option>
+                                <option value="refunds">Refund Report</option>
+                                <option value="chargebacks">Chargeback Report</option>
+                                <option value="fees">Fee & Commission Report</option>
+                                <option value="reconciliation">Reconciliation Report</option>
+                                <option value="invoices">Invoice Report</option>
+                                <option value="financial_position">Financial Position Report</option>
+                                <option value="audit">Financial Audit Report</option>
+                            </select>
+                        </label>
+
+                        <label>Start date
+                            <input type="date" name="fromDate" required>
+                        </label>
+
+                        <label>End date
+                            <input type="date" name="toDate" required>
+                        </label>
+
+                        <label>Currency
+                            <select name="currency" id="reportCurrency">
+                                <option value="">All supported currencies</option>
+                            </select>
+                        </label>
+
+                        <label>Export format
+                            <select name="format">
+                                <option value="csv">CSV</option>
+                                <option value="xlsx">Excel</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+                        </label>
+
+                        <button type="submit" class="primary-button">
+                            Generate Report
+                        </button>
+
+                    </form>
+                </article>
+
+                <article class="panel">
+                    <h3>Generated Report History</h3>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REPORT ID</th>
+                                    <th>REPORT TYPE</th>
+                                    <th>PERIOD</th>
+                                    <th>REQUESTED BY</th>
+                                    <th>CREATED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportHistoryTable">
+                                <tr>
+                                    <td colspan="7">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ==================================
+         12. FINANCIAL AUDIT
+    =================================== -->
+
+            <section class="content-section" id="audit">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ACCOUNTABILITY & TRACEABILITY</span>
+                        <h2>Financial Audit Centre</h2>
+                        <p>Review financial events, approval records and administrator actions.</p>
+                    </div>
+
+                    <button class="secondary-button" id="exportAudit">
+                        Export Audit
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input id="auditSearch" placeholder="Search financial audit records">
+
+                    <select id="auditAction">
+                        <option value="">All operations</option>
+                        <option value="payout">Payout</option>
+                        <option value="refund">Refund</option>
+                        <option value="fee_change">Fee change</option>
+                        <option value="reconciliation">Reconciliation</option>
+                        <option value="approval">Approval</option>
+                        <option value="rejection">Rejection</option>
+                        <option value="adjustment">Adjustment</option>
+                    </select>
+
+                    <select id="auditResult">
+                        <option value="">All outcomes</option>
+                        <option value="successful">Successful</option>
+                        <option value="pending">Pending</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>AUDIT ID</th>
+                                    <th>ADMINISTRATOR</th>
+                                    <th>OPERATION</th>
+                                    <th>FINANCIAL REFERENCE</th>
+                                    <th>AMOUNT</th>
+                                    <th>REASON</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                    <th>DETAILS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <footer>
+                <span>TALVORA GLOBAL FINANCIAL OPERATIONS</span>
+                <span>Financial actions subject to backend authorization and audit.</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- ==================================
+     FINANCIAL DETAIL MODAL
+=================================== -->
+
+    <div class="modal-overlay" id="detailModal" hidden>
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>FINANCIAL RECORD</small>
+                    <h2 id="detailTitle">Record details</h2>
+                </div>
+
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div id="detailContent"></div>
+
+            <div class="modal-actions" id="detailActions"></div>
+
+        </div>
+    </div>
+
+    <!-- ==================================
+     PROTECTED ACTION CONFIRMATION
+=================================== -->
+
+    <div class="modal-overlay" id="confirmationModal" hidden>
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>FINANCIAL AUTHORIZATION</small>
+                    <h2 id="confirmationTitle">Confirm operation</h2>
+                </div>
+
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div class="confirmation-warning">
+                This operation affects financial records or payment obligations.
+                It will be submitted to backend authorization and approval controls.
+            </div>
+
+            <p id="confirmationMessage"></p>
+
+            <label>Reason for this operation *
+                <textarea id="confirmationReason" rows="3"
+                    placeholder="Enter a detailed business justification"></textarea>
+            </label>
+
+            <label>Type CONFIRM to proceed *
+                <input id="confirmationText" autocomplete="off" placeholder="CONFIRM">
+            </label>
+
+            <div class="modal-note">
+                Typing CONFIRM does not bypass the server's independent approval
+                requirements. The operation may remain pending until authorized.
+            </div>
+
+            <div class="modal-actions">
+                <button class="secondary-button" data-close-modal>Cancel</button>
+                <button class="danger-button" id="confirmOperation" disabled>
+                    Submit Financial Operation
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==================================
+     FEE SCHEDULE MODAL
+=================================== -->
+
+    <div class="modal-overlay" id="feeModal" hidden>
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>REVENUE POLICY MANAGEMENT</small>
+                    <h2 id="feeModalTitle">Propose Fee Schedule</h2>
+                </div>
+
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="feeForm">
+
+                <input type="hidden" name="feeId">
+
+                <label>Fee schedule name *
+                    <input name="name" required>
+                </label>
+
+                <label>Transaction category *
+                    <select name="transactionType" required>
+                        <option value="">Select category</option>
+                        <option value="payment">Payment</option>
+                        <option value="payout">Payout</option>
+                        <option value="subscription">Subscription</option>
+                        <option value="service">Service</option>
+                    </select>
+                </label>
+
+                <label>Currency *
+                    <select name="currency" class="currency-options" required>
+                        <option value="">Select currency</option>
+                    </select>
+                </label>
+
+                <label>Percentage fee *
+                    <input type="number" name="percentageRate" min="0" step="0.0001" required>
+                </label>
+
+                <label>Fixed fee *
+                    <input type="number" name="fixedFee" min="0" step="0.01" required>
+                </label>
+
+                <label>Effective date *
+                    <input type="date" name="effectiveDate" required>
+                </label>
+
+                <label>Business justification *
+                    <textarea name="reason" rows="3" required></textarea>
+                </label>
+
+                <div class="modal-note">
+                    This creates a proposed fee policy. Activation requires
+                    independent backend approval and policy validation.
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        Submit Fee Proposal
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================================
+     RECONCILIATION PREVIEW MODAL
+=================================== -->
+
+    <div class="modal-overlay" id="reconciliationModal" hidden>
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>RECONCILIATION VALIDATION</small>
+                    <h2>Reconciliation Preview</h2>
+                </div>
+
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div id="reconciliationPreview"></div>
+
+            <div class="modal-note">
+                Review every discrepancy before submitting a reconciliation.
+                Posting and financial adjustments remain subject to independent approval.
+            </div>
+
+            <div class="modal-actions">
+                <button class="secondary-button" data-close-modal>
+                    Close
+                </button>
+
+                <button class="primary-button" id="submitReconciliation" disabled>
+                    Submit for Approval
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==================================
+     GLOBAL TOASTS
+=================================== -->
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+</body>
+
+</html>

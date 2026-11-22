@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="../talvora-admin-config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <meta name="description" content="TALVORA Global Trust, Safety and Moderation Management Centre.">
+
+    <title>TALVORA | Global Trust & Safety Centre</title>
+
+    <link rel="stylesheet" href="talvora-modules.css">
+    <script defer src="talvora-modules.js"></script>
+</head>
+
+<body data-module="trustSafety">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar">
+
+            <a class="brand" href="#overview">
+                <span class="brand-mark">T</span>
+                <span class="brand-copy">
+                    <strong>TALVORA</strong>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </span>
+            </a>
+
+            <div class="sidebar-label">
+                <span class="live-dot"></span>
+                TRUST & SAFETY
+            </div>
+
+            <nav class="side-nav" aria-label="Trust and safety navigation">
+
+                <a class="nav-link active" href="#overview" data-section="overview">
+                    <span class="nav-icon">◈</span> Global Overview
+                </a>
+
+                <a class="nav-link" href="#reports" data-section="reports">
+                    <span class="nav-icon">⚑</span> User Reports
+                </a>
+
+                <a class="nav-link" href="#moderation" data-section="moderation">
+                    <span class="nav-icon">▤</span> Moderation Cases
+                </a>
+
+                <a class="nav-link" href="#accounts" data-section="accounts">
+                    <span class="nav-icon">♙</span> Account Enforcement
+                </a>
+
+                <a class="nav-link" href="#appeals" data-section="appeals">
+                    <span class="nav-icon">↗</span> Appeals Management
+                </a>
+
+                <a class="nav-link" href="#risk" data-section="risk">
+                    <span class="nav-icon">⬡</span> Risk Intelligence
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-security">
+                    <span class="security-mark">⬡</span>
+                    <span>
+                        <strong>Platform protection</strong>
+                        <small>Global trust and safety oversight</small>
+                    </span>
+                </div>
+
+                <div class="admin-chip">
+                    <span class="admin-avatar">SA</span>
+                    <span>
+                        <strong>Super Administrator</strong>
+                        <small>Authorized workspace</small>
+                    </span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-area">
+
+            <header class="topbar">
+
+                <div class="topbar-heading">
+
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            SUPER ADMIN <span>/</span> PLATFORM PROTECTION
+                        </div>
+                        <h1>Global Trust & Safety Centre</h1>
+                    </div>
+
+                </div>
+
+                <div class="topbar-actions">
+
+                    <span class="connection-pill" id="connectionStatus">
+                        <i></i> Connecting
+                    </span>
+
+                    <span class="region-pill">GLOBAL PLATFORM</span>
+
+                    <button class="button button-outline" id="refreshButton">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <section class="welcome-banner">
+
+                <div class="banner-symbol">⬡</div>
+
+                <div>
+                    <strong>Global Trust, Safety & Platform Integrity Management</strong>
+                    <p>
+                        Centralized oversight of user reports, moderation,
+                        platform conduct, account enforcement, appeals
+                        and risk intelligence across TALVORA.
+                    </p>
+                </div>
+
+                <div class="banner-tag">TALVORA TRUST FRAMEWORK</div>
+
+            </section>
+
+
+            <!-- GLOBAL OVERVIEW -->
+
+            <section class="module-section active" id="overview" data-view="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL PLATFORM PROTECTION</span>
+                        <h2>Trust & Safety Overview</h2>
+                        <p>Monitor reports, moderation operations, account enforcement and platform integrity.</p>
+                    </div>
+                    <span class="updated-label" id="lastUpdated">Awaiting data</span>
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Open User Reports</span>
+                        <strong data-metric="openReports">—</strong>
+                        <small>Reports awaiting resolution</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Moderation</span>
+                        <strong data-metric="pendingModeration">—</strong>
+                        <small>Moderation cases awaiting review</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Restricted Accounts</span>
+                        <strong data-metric="restrictedAccounts">—</strong>
+                        <small>Accounts with active restrictions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Open Appeals</span>
+                        <strong data-metric="openAppeals">—</strong>
+                        <small>Appeals awaiting assessment</small>
+                    </article>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Escalated Cases</span>
+                        <strong data-metric="escalatedCases">—</strong>
+                        <small>Cases requiring escalation</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active Risk Signals</span>
+                        <strong data-metric="activeRiskSignals">—</strong>
+                        <small>Signals awaiting assessment</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Resolved Reports</span>
+                        <strong data-metric="resolvedReports">—</strong>
+                        <small>Completed report workflows</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Jurisdictions Covered</span>
+                        <strong data-metric="jurisdictionsCovered">—</strong>
+                        <small>Active safety jurisdictions</small>
+                    </article>
+
+                </div>
+
+
+                <div class="content-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">USER REPORTS</span>
+                                <h3>Report Status Distribution</h3>
+                            </div>
+                        </div>
+                        <div class="distribution" data-distribution="reportStatus"></div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">MODERATION OPERATIONS</span>
+                                <h3>Moderation Status Distribution</h3>
+                            </div>
+                        </div>
+                        <div class="distribution" data-distribution="moderationStatus"></div>
+                    </article>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">LATEST SAFETY ACTIVITY</span>
+                            <h3>Recently Submitted User Reports</h3>
+                        </div>
+
+                        <button class="button button-outline button-small" data-go="reports">
+                            View All
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REPORT REF.</th>
+                                    <th>ITEM REF.</th>
+                                    <th>CATEGORY</th>
+                                    <th>REASON</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                </tr>
+                            </thead>
+                            <tbody data-dashboard-table="reports">
+                                <tr>
+                                    <td colspan="6" class="empty-cell">Loading user reports...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">SAFETY GOVERNANCE</span>
+                            <h3>Platform Protection Principles</h3>
+                        </div>
+                    </div>
+
+                    <div class="notice notice-teal">
+                        <strong>Consistent and proportionate enforcement</strong>
+                        <p>Moderation decisions should be based on documented policies, relevant evidence, proportionate
+                            measures and authorized review.</p>
+                    </div>
+
+                    <div class="notice">
+                        <strong>Appeal and review rights</strong>
+                        <p>Users should have access to appropriate review mechanisms for eligible moderation and account
+                            enforcement decisions.</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- USER REPORTS -->
+
+            <section class="module-section" id="reports" data-view="reports">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">COMMUNITY REPORTING</span>
+                        <h2>User Reports Management</h2>
+                        <p>Review reports concerning suspicious activity, harmful content, misconduct and platform
+                            policy violations.</p>
+                    </div>
+                </div>
+
+                <div class="filter-bar" data-filter-for="reports">
+
+                    <input type="search" placeholder="Search report or item reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="assigned">Assigned</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+
+                    <select data-query="priority">
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">REPORT REGISTER</span>
+                            <h3>Global User Reports</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REPORT REF.</th>
+                                    <th>ITEM REF.</th>
+                                    <th>CATEGORY</th>
+                                    <th>REASON</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="reports">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading user reports...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="reports">Awaiting records</span>
+                        <span>Community reporting register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- MODERATION CASES -->
+
+            <section class="module-section" id="moderation" data-view="moderation">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">CONTENT & CONDUCT GOVERNANCE</span>
+                        <h2>Moderation Management</h2>
+                        <p>Manage moderation investigations, policy decisions, assignments and case resolutions.</p>
+                    </div>
+                </div>
+
+                <div class="notice notice-teal">
+                    <strong>Evidence-based moderation</strong>
+                    <p>Every moderation decision should be linked to the relevant policy, case evidence, assigned
+                        reviewer, decision rationale and review history.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="moderation">
+
+                    <input type="search" placeholder="Search moderation case or item..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="assigned">Assigned</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+
+                    <select data-query="priority">
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">MODERATION REGISTER</span>
+                            <h3>Global Moderation Cases</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CASE REF.</th>
+                                    <th>ITEM REF.</th>
+                                    <th>POLICY CATEGORY</th>
+                                    <th>ASSIGNED TEAM</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="moderation">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading moderation cases...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="moderation">Awaiting records</span>
+                        <span>Moderation and policy enforcement register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ACCOUNT ENFORCEMENT -->
+
+            <section class="module-section" id="accounts" data-view="accounts">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ACCOUNT GOVERNANCE</span>
+                        <h2>Account Enforcement Centre</h2>
+                        <p>Review account restrictions, enforcement decisions, risk assessments and account review
+                            history.</p>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <strong>Controlled account enforcement</strong>
+                    <p>Restrictions, suspensions and reinstatements must follow authorized policies, documented
+                        evidence, proportionality requirements and appropriate review procedures.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="accounts">
+
+                    <input type="search" placeholder="Search account or review reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="active">Active</option>
+                        <option value="restricted">Restricted</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="reinstated">Reinstated</option>
+                    </select>
+
+                    <select data-query="riskLevel">
+                        <option value="">All risk levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">ACCOUNT REVIEW REGISTER</span>
+                            <h3>Global Account Enforcement Records</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REVIEW REF.</th>
+                                    <th>ACCOUNT REF.</th>
+                                    <th>ACCOUNT TYPE</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>JURISDICTION</th>
+                                    <th>REVIEWED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="accounts">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading account records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="accounts">Awaiting records</span>
+                        <span>Account enforcement oversight</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- APPEALS -->
+
+            <section class="module-section" id="appeals" data-view="appeals">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INDEPENDENT REVIEW WORKFLOW</span>
+                        <h2>Appeals Management Centre</h2>
+                        <p>Review appeals against eligible moderation, account restrictions and platform enforcement
+                            decisions.</p>
+                    </div>
+                </div>
+
+                <div class="notice notice-teal">
+                    <strong>Fair and traceable appeals</strong>
+                    <p>Appeals should be assessed against the original decision, the submitted grounds, relevant
+                        evidence and applicable review standards. Where required, review should be independent of the
+                        original decision-maker.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="appeals">
+
+                    <input type="search" placeholder="Search appeal or decision reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="received">Received</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="awaiting_information">Awaiting Information</option>
+                        <option value="upheld">Decision Upheld</option>
+                        <option value="overturned">Decision Overturned</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+
+                    <select data-query="priority">
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">APPEALS REGISTER</span>
+                            <h3>Global Appeals Records</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>APPEAL REF.</th>
+                                    <th>DECISION REF.</th>
+                                    <th>APPEAL TYPE</th>
+                                    <th>SUBMITTED</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="appeals">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading appeals...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="appeals">Awaiting records</span>
+                        <span>Appeals and independent review register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- RISK INTELLIGENCE -->
+
+            <section class="module-section" id="risk" data-view="risk">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PLATFORM RISK INTELLIGENCE</span>
+                        <h2>Trust & Safety Risk Intelligence</h2>
+                        <p>Monitor platform risk signals, suspicious activity indicators and escalation workflows.</p>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <strong>Risk signals require contextual assessment</strong>
+                    <p>Automated or reported risk indicators should support human investigation, not independently
+                        determine user wrongdoing or impose irreversible enforcement decisions.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="risk">
+
+                    <input type="search" placeholder="Search risk signal or subject reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+
+                    <select data-query="riskLevel">
+                        <option value="">All risk levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">RISK SIGNAL REGISTER</span>
+                            <h3>Global Platform Risk Signals</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>SIGNAL REF.</th>
+                                    <th>SUBJECT REF.</th>
+                                    <th>SIGNAL TYPE</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>JURISDICTION</th>
+                                    <th>DETECTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="risk">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading risk signals...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="risk">Awaiting records</span>
+                        <span>Platform risk intelligence register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <footer class="page-footer">
+                TALVORA GLOBAL PLATFORM OPERATIONS
+                <span>•</span>
+                TRUST, SAFETY & MODERATION
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ADMINISTRATIVE ACTION MODAL -->
+
+    <div class="modal-backdrop" id="actionModal" hidden>
+
+        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="actionTitle">
+
+            <div class="modal-heading">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED SAFETY ACTION</span>
+                    <h2 id="actionTitle">Review Safety Record</h2>
+                </div>
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">×</button>
+
+            </div>
+
+            <p class="modal-description" id="actionDescription">
+                Submit this action to the authorized trust and safety workflow.
+            </p>
+
+            <label class="field-label" for="actionReason">
+                Reason / Decision Notes
+            </label>
+
+            <textarea id="actionReason" rows="4" minlength="10" maxlength="2000"
+                placeholder="Document the evidence, applicable policy and reason for this action..."
+                required></textarea>
+
+            <label class="field-label" for="actionEvidence">
+                Supporting Evidence Reference (Optional)
+            </label>
+
+            <input type="text" id="actionEvidence" maxlength="250" placeholder="Evidence or case reference">
+
+            <div class="modal-actions">
+
+                <button type="button" class="button button-outline" data-close-modal>Cancel</button>
+
+                <button type="button" class="button button-primary" id="submitAction" disabled>Submit Action</button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- RECORD DETAILS MODAL -->
+
+    <div class="modal-backdrop" id="detailModal" hidden>
+
+        <section class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+
+            <div class="modal-heading">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED SAFETY RECORD</span>
+                    <h2 id="detailTitle">Safety Record Details</h2>
+                </div>
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">×</button>
+
+            </div>
+
+            <div class="detail-grid" id="detailContent"></div>
+
+        </section>
+
+    </div>
+
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+</body>
+
+</html>

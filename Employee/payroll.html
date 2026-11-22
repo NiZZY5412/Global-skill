@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA global employee workforce services and self-service portal.">
+<title>Payroll & Benefits | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link active" href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Payroll & Benefits</div><div class="topbar-sub">Review compensation, payslips, payments and benefits</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">COMPENSATION & EMPLOYEE BENEFITS</span><h1>Payroll, Payslips & Benefits</h1><p>Access payroll information and benefit enrolment details for the selected employer. Amounts and statements are provided by the employer's payroll system.</p></div><div class="heading-actions"><button class="btn" id="refreshPayroll">↻ Refresh payroll</button></div></div>
+<div class="context-banner"><div><strong id="payrollEmployer">Loading employer context…</strong><span id="payrollPeriod">Payroll period</span></div><span class="pill success" id="payrollPaymentStatus">Payment status</span></div>
+<div class="grid grid-4">
+ <div class="kpi"><div class="kpi-label">Gross pay</div><div class="kpi-value" id="grossPay">—</div><div class="kpi-foot">Current displayed payroll period</div></div>
+ <div class="kpi"><div class="kpi-label">Deductions</div><div class="kpi-value" id="deductionsPay">—</div><div class="kpi-foot">As recorded by payroll</div></div>
+ <div class="kpi"><div class="kpi-label">Net pay</div><div class="kpi-value" id="netPay">—</div><div class="kpi-foot">Net amount recorded</div></div>
+ <div class="kpi"><div class="kpi-label">Pay date</div><div class="kpi-value" id="payDate" style="font-size:17px">—</div><div class="kpi-foot">Scheduled or recorded pay date</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Current compensation breakdown</h2><p>Illustrative breakdown from the employer payroll record.</p></div><span class="pill info" id="payCurrency">Currency</span></div>
+ <div class="grid grid-2">
+  <div><div class="money-label">Basic pay</div><div class="money-value" id="basicPay">—</div></div>
+  <div><div class="money-label">Allowances & additions</div><div class="money-value" id="allowancesPay">—</div></div>
+ </div>
+ <hr class="soft"><div class="notice warning">Payroll data is confidential. Only view or download your own payslips using an authenticated, secure employer connection. This page does not initiate bank transfers or change payroll instructions.</div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Payslip history</h2><p>Review pay periods and payment statement references.</p></div></div>
+ <div class="table-wrap"><table><thead><tr><th>PAY PERIOD</th><th>PAY DATE</th><th>GROSS</th><th>DEDUCTIONS</th><th>NET PAY</th><th>STATUS</th><th>DETAILS</th></tr></thead><tbody id="payslipRows"><tr><td colspan="7" class="empty-state">Loading payslips…</td></tr></tbody></table></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Payment history</h2><p>Payroll transactions recorded by your employer.</p></div></div>
+ <div class="table-wrap"><table><thead><tr><th>DATE</th><th>DESCRIPTION</th><th>TYPE</th><th>REFERENCE</th><th>AMOUNT</th><th>STATUS</th></tr></thead><tbody id="payTransactionRows"><tr><td colspan="6" class="empty-state">Loading payment history…</td></tr></tbody></table></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Employee benefits</h2><p>Review available benefit programmes and your enrolment status.</p></div></div>
+ <div id="benefitsGrid" class="grid grid-3"><div class="empty-state">Loading benefits…</div></div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="payslipDialog"><div class="modal-head"><h2>Payslip details</h2><button class="modal-close" data-close-dialog="payslipDialog">×</button></div><div class="modal-body" id="payslipDetail"></div><div class="modal-foot"><button class="btn" data-close-dialog="payslipDialog">Close</button></div></dialog>
+
+<script src="employee.js"></script>
+<script src="payroll.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

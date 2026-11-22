@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<title>Applications & Recruitment Tracking | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link active" href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Applications & Recruitment Tracking</div><div class="topbar-sub">Track the progress of every job application</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">YOUR RECRUITMENT JOURNEY</span><h1>My Applications</h1><p>Review submitted applications, monitor recruitment stages and manage your application history.</p></div><div class="heading-actions"><a class="btn btn-primary" href="job-search.html">+ Find opportunities</a></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Total applications</div><div class="kpi-value" id="appTotal">—</div></div>
+ <div class="kpi"><div class="kpi-label">In progress</div><div class="kpi-value" id="appActive">—</div></div>
+ <div class="kpi"><div class="kpi-label">Interviews</div><div class="kpi-value" id="appInterviews">—</div></div>
+ <div class="kpi"><div class="kpi-label">Offers</div><div class="kpi-value" id="appOffers">—</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Application history</h2><p>Recruitment status is independent from your employment status.</p></div></div>
+ <div class="filter-bar"><div class="search-wrap"><span>⌕</span><input id="applicationSearch" class="control" placeholder="Search job, employer or reference"></div><select id="applicationStatus" class="control"><option value="">All statuses</option><option value="submitted">Submitted</option><option value="in_review">In review</option><option value="shortlisted">Shortlisted</option><option value="interview">Interview</option><option value="offered">Offered</option><option value="rejected">Rejected</option><option value="withdrawn">Withdrawn</option></select></div>
+ <div class="table-wrap"><table><thead><tr><th>REFERENCE</th><th>POSITION</th><th>EMPLOYER</th><th>SUBMITTED</th><th>STATUS</th><th>LAST UPDATED</th><th>ACTIONS</th></tr></thead><tbody id="applicationRows"><tr><td colspan="7" class="empty-state">Loading applications…</td></tr></tbody></table></div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="applicationDetailDialog"><div class="modal-head"><h2>Application details</h2><button class="modal-close" data-close-dialog="applicationDetailDialog">×</button></div><div class="modal-body" id="applicationDetailBody"></div><div class="modal-foot" id="applicationDetailActions"></div></dialog>
+
+<script src="employee.js"></script>
+<script src="applications.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

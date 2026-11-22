@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA employee professional development and employee services portal.">
+<title>Communication Centre | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a>
+<a class="nav-link " href="learning.html"><span class="nav-icon">⌑</span>Learning & Certification</a>
+<a class="nav-link " href="performance.html"><span class="nav-icon">↗</span>Performance & Career</a>
+<a class="nav-link active" href="communications.html"><span class="nav-icon">◉</span>Communication Centre</a>
+<a class="nav-link " href="employee-support.html"><span class="nav-icon">♡</span>Employee Support</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Communication Centre</div><div class="topbar-sub">Workplace updates, messages and notifications</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">WORKPLACE COMMUNICATION</span><h1>Notifications & Communication Centre</h1><p>Stay informed about workplace updates, review your notifications and contact the relevant employee team.</p></div><div class="heading-actions"><button class="btn" id="refreshCommunications">↻ Refresh</button><button class="btn btn-primary" id="composeMessage">+ New message</button></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Unread notifications</div><div class="kpi-value" id="unreadNotificationCount">—</div><div class="kpi-foot">Items needing your attention</div></div>
+ <div class="kpi"><div class="kpi-label">Announcements</div><div class="kpi-value" id="announcementCount">—</div><div class="kpi-foot">Published workplace updates</div></div>
+ <div class="kpi"><div class="kpi-label">Inbox messages</div><div class="kpi-value" id="inboxCount">—</div><div class="kpi-foot">Received communication</div></div>
+ <div class="kpi"><div class="kpi-label">Unread messages</div><div class="kpi-value" id="unreadMessageCount">—</div><div class="kpi-foot">Messages not yet reviewed</div></div>
+</div>
+<div class="grid grid-2">
+ <section class="panel">
+  <div class="panel-head"><div><h2>Notifications</h2><p>Personal updates linked to your employee services.</p></div><button class="btn btn-small" id="markAllRead">Mark all read</button></div>
+  <div class="filter-bar"><select id="notificationFilter" class="control"><option value="">All notifications</option><option value="unread">Unread only</option><option value="read">Read only</option></select></div>
+  <div id="notificationList"><div class="empty-state">Loading notifications…</div></div>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Workplace announcements</h2><p>Updates published for employees.</p></div></div>
+  <div id="announcementList" class="grid"><div class="empty-state">Loading announcements…</div></div>
+ </section>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Messages</h2><p>Messages sent to and received from employee service teams.</p></div></div>
+ <div id="messageList" class="grid grid-2"><div class="empty-state">Loading messages…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Communication preferences</h2><p>Manage the types of employee updates you want to receive. Available channels depend on your employer's systems.</p></div></div>
+ <form id="preferencesForm">
+  <div class="grid grid-2">
+   <label class="check-row"><input type="checkbox" name="email"><span>Email notifications</span></label>
+   <label class="check-row"><input type="checkbox" name="inApp"><span>In-app notifications</span></label>
+   <label class="check-row"><input type="checkbox" name="learningUpdates"><span>Learning and certification updates</span></label>
+   <label class="check-row"><input type="checkbox" name="performanceReminders"><span>Performance review reminders</span></label>
+   <label class="check-row"><input type="checkbox" name="workplaceAnnouncements"><span>Workplace announcements</span></label>
+   <label class="check-row"><input type="checkbox" name="caseUpdates"><span>Employee support case updates</span></label>
+  </div>
+  <div class="form-actions"><button type="submit" class="btn btn-primary" id="savePreferences">Save preferences</button></div>
+ </form>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="messageDialog"><div class="modal-head"><h2>New workplace message</h2><button class="modal-close" data-close-dialog="messageDialog">×</button></div><form id="messageForm"><div class="modal-body">
+ <div class="field"><label for="messageRecipient">Team</label><select id="messageRecipient" name="recipient"><option>People & Culture</option><option>Learning & Development</option><option>Payroll Support</option><option>IT Support</option><option>Employee Support</option></select></div>
+ <div class="field"><label for="messageSubject">Subject *</label><input id="messageSubject" name="subject" required maxlength="160"></div>
+ <div class="field"><label for="messageBody">Message *</label><textarea id="messageBody" name="message" required maxlength="3000" rows="5" placeholder="Write your message"></textarea></div>
+ <div class="notice">Do not use general workplace messaging for emergencies or highly sensitive complaints. Use the designated confidential support process where appropriate.</div>
+</div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="messageDialog">Cancel</button><button type="submit" class="btn btn-primary">Send message</button></div></form></dialog>
+
+<script src="employee.js"></script>
+<script src="communications.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

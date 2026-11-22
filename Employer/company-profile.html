@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <title>Company Profile & Verification | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body data-module="company-profile">
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <span>EMPLOYER PORTAL</span>
+                </div>
+            </div>
+
+            <div class="company-selector">
+                <label for="companySwitcher">ACTIVE ORGANIZATION</label>
+                <select id="companySwitcher">
+                    <option value="">Loading organizations...</option>
+                </select>
+            </div>
+
+            <nav class="sidebar-navigation">
+
+                <div class="nav-heading">WORKSPACE</div>
+
+                <a href="employer-dashboard.html" class="nav-link">
+                    <span class="nav-icon">▦</span>
+                    Dashboard
+                </a>
+
+                <a href="company-profile.html" class="nav-link active">
+                    <span class="nav-icon">▤</span>
+                    Company Profile
+                </a>
+
+                <a href="locations.html" class="nav-link">
+                    <span class="nav-icon">⌖</span>
+                    Branches & Locations
+                </a>
+
+                <div class="nav-heading">TALENT ACQUISITION</div>
+
+                <a href="jobs.html" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    Jobs Management
+                </a>
+
+                <a href="applications.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Applications
+                </a>
+
+                <a href="skills-matching.html" class="nav-link">
+                    <span class="nav-icon">◈</span>
+                    Skills & Matching
+                </a>
+
+                <a href="interviews.html" class="nav-link">
+                    <span class="nav-icon">◷</span>
+                    Interviews & Messages
+                </a>
+
+                <a href="offers-onboarding.html" class="nav-link">
+                    <span class="nav-icon">✓</span>
+                    Offers & Onboarding
+                </a>
+
+                <div class="nav-heading">WORKFORCE & FINANCE</div>
+
+                <a href="workforce.html" class="nav-link">
+                    <span class="nav-icon">♙</span>
+                    Workforce Management
+                </a>
+
+                <a href="billing.html" class="nav-link">
+                    <span class="nav-icon">◇</span>
+                    Payments & Billing
+                </a>
+
+<a href="compliance-documents.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Compliance & Documents
+                </a>
+
+                <div class="nav-heading">BUSINESS MANAGEMENT</div>
+
+<a href="disputes-support.html" class="nav-link">
+                    <span class="nav-icon">◎</span>
+                    Disputes & Support
+                </a>
+
+<a href="analytics-reports.html" class="nav-link">
+                    <span class="nav-icon">▥</span>
+                    Analytics & Reports
+                </a>
+
+                <a href="team-permissions.html" class="nav-link">
+                    <span class="nav-icon">♧</span>
+                    Team & Permissions
+                </a>
+
+                <a href="notifications-settings.html" class="nav-link">
+                    <span class="nav-icon">⚙</span>
+                    Settings & Security
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="support-card">
+                    <span class="support-icon">?</span>
+                    <div>
+                        <strong>Need assistance?</strong>
+<a href="disputes-support.html">
+                            Contact TALVORA Support
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-version">
+                    TALVORA Employer Portal
+                    <span>Enterprise Workspace</span>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div class="breadcrumb">
+                        <span>Employer Portal</span>
+                        <span>/</span>
+                        <strong>Company Profile</strong>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="search" id="globalSearch" placeholder="Search workspace..."
+                            aria-label="Search workspace">
+                    </div>
+
+                    <button class="icon-button" id="notificationToggle" aria-label="Notifications">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+<a href="disputes-support.html" class="topbar-help">
+                        Help Centre
+                    </a>
+
+                    <div class="user-menu">
+                        <div class="avatar" id="userAvatar">E</div>
+                        <div class="user-details">
+                            <strong id="userName">Employer User</strong>
+                            <span id="userRole">Organization Member</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE -->
+            <div class="dashboard-container profile-page">
+
+                <!-- PAGE HEADING -->
+                <section class="profile-page-heading">
+
+                    <div>
+                        <div class="eyebrow">
+                            ORGANIZATION MANAGEMENT
+                        </div>
+
+                        <h1>Company Profile & Verification</h1>
+
+                        <p>
+                            Manage your legal identity, ownership,
+                            company structure, documents and verification
+                            across your global organization.
+                        </p>
+                    </div>
+
+                    <div class="profile-heading-actions">
+
+                        <button class="btn btn-outline" id="addCompanyButton">
+                            + Add Organization
+                        </button>
+
+                        <button class="btn btn-primary" id="refreshButton">
+                            ↻ Refresh
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- COMPANY HERO -->
+                <section class="profile-hero">
+
+                    <div class="profile-identity">
+
+                        <div class="company-mark" id="companyInitials">
+                            T
+                        </div>
+
+                        <div class="profile-identity-info">
+
+                            <span class="eyebrow">
+                                ACTIVE ORGANIZATION
+                            </span>
+
+                            <h2 id="companyDisplayName">
+                                Loading company...
+                            </h2>
+
+                            <p id="companyMeta">
+                                Organization information loading
+                            </p>
+
+                            <div class="profile-hero-tags">
+                                <span id="companyTypeBadge" class="status-badge neutral">
+                                    Entity type
+                                </span>
+
+                                <span id="companyVerificationBadge" class="status-badge neutral">
+                                    Verification pending
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-hero-reference">
+                        <span>COMPANY REFERENCE</span>
+                        <strong id="companyReference">—</strong>
+                        <small id="companyCreated">—</small>
+                    </div>
+
+                </section>
+
+
+                <!-- PROFILE TABS -->
+                <nav class="profile-tabs" aria-label="Company profile sections">
+
+                    <button class="profile-tab active" type="button" data-tab-button="overview" aria-selected="true">
+                        Overview
+                    </button>
+
+                    <button class="profile-tab" type="button" data-tab-button="legal" aria-selected="false">
+                        Legal Information
+                    </button>
+
+                    <button class="profile-tab" type="button" data-tab-button="ownership" aria-selected="false">
+                        Ownership & Directors
+                    </button>
+
+                    <button class="profile-tab" type="button" data-tab-button="locations" aria-selected="false">
+                        Group Structure
+                    </button>
+
+                    <button class="profile-tab" type="button" data-tab-button="documents" aria-selected="false">
+                        Documents
+                    </button>
+
+                    <button class="profile-tab" type="button" data-tab-button="verification" aria-selected="false">
+                        Verification
+                    </button>
+
+                </nav>
+
+
+                <!-- =========================================
+                 TAB 1: OVERVIEW
+            ========================================== -->
+
+                <section class="profile-tab-panel active" data-tab-panel="overview">
+
+                    <div class="profile-section-heading">
+                        <div>
+                            <h2>Organization Overview</h2>
+                            <p>
+                                Your company's registered and operational
+                                information.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-outline" type="button" data-open-tab="legal">
+                            Edit Company Information
+                        </button>
+                    </div>
+
+
+                    <div class="profile-overview-grid">
+
+                        <article class="profile-card overview-main">
+
+                            <div class="profile-card-heading">
+                                <h3>Company Identity</h3>
+                                <span class="profile-card-icon">▤</span>
+                            </div>
+
+                            <div class="company-summary">
+
+                                <div class="summary-row">
+                                    <span>Legal company name</span>
+                                    <strong id="overviewLegalName">—</strong>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Trading name</span>
+                                    <strong id="overviewTradingName">—</strong>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Registration number</span>
+                                    <strong id="overviewRegistration">—</strong>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Tax identification number</span>
+                                    <strong id="overviewTax">—</strong>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Country of incorporation</span>
+                                    <strong id="overviewCountry">—</strong>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Business sector</span>
+                                    <strong id="overviewIndustry">—</strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="profile-card">
+
+                            <div class="profile-card-heading">
+                                <h3>Contact Information</h3>
+                                <span class="profile-card-icon">◎</span>
+                            </div>
+
+                            <div class="contact-information">
+
+                                <div>
+                                    <span>Business email</span>
+                                    <strong id="overviewEmail">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Business telephone</span>
+                                    <strong id="overviewPhone">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Website</span>
+                                    <strong id="overviewWebsite">—</strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="profile-card description-card">
+
+                        <div class="profile-card-heading">
+                            <h3>About the Organization</h3>
+                        </div>
+
+                        <p id="overviewDescription" class="company-description">
+                            Company description has not been provided.
+                        </p>
+
+                    </div>
+
+
+                    <div class="profile-overview-grid">
+
+                        <article class="profile-card">
+                            <div class="profile-card-heading">
+                                <h3>Organization Structure</h3>
+                            </div>
+
+                            <div class="mini-stat-grid">
+
+                                <div>
+                                    <strong id="overviewSubsidiaryCount">—</strong>
+                                    <span>Subsidiaries</span>
+                                </div>
+
+                                <div>
+                                    <strong id="overviewBranchCount">—</strong>
+                                    <span>Branches</span>
+                                </div>
+
+                                <div>
+                                    <strong id="overviewDirectorCount">—</strong>
+                                    <span>Directors & Owners</span>
+                                </div>
+
+                            </div>
+
+                            <button class="btn btn-light" type="button" data-open-tab="locations">
+                                View Group Structure →
+                            </button>
+                        </article>
+
+
+                        <article class="profile-card">
+                            <div class="profile-card-heading">
+                                <h3>Verification Progress</h3>
+                            </div>
+
+                            <div class="verification-summary">
+                                <div class="verification-progress-track">
+                                    <div id="verificationProgressBar" class="verification-progress-fill">
+                                    </div>
+                                </div>
+
+                                <strong id="verificationProgressText">
+                                    Verification information unavailable
+                                </strong>
+
+                                <p id="verificationSummaryMessage">
+                                    Complete your company profile and
+                                    required documents to begin verification.
+                                </p>
+                            </div>
+
+                            <button class="btn btn-light" type="button" data-open-tab="verification">
+                                View Verification →
+                            </button>
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 2: LEGAL INFORMATION
+            ========================================== -->
+
+                <section class="profile-tab-panel" data-tab-panel="legal" hidden>
+
+                    <div class="profile-section-heading">
+                        <div>
+                            <h2>Legal Company Information</h2>
+                            <p>
+                                Maintain accurate legal and registered
+                                company information.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <form id="companyProfileForm" class="profile-card profile-form">
+
+                        <div class="form-section-heading">
+                            <h3>Basic Company Information</h3>
+                            <p>
+                                Information must match your official
+                                registration records.
+                            </p>
+                        </div>
+
+                        <div class="form-grid">
+
+                            <div class="form-field full">
+                                <label for="legalName">
+                                    Legal Company Name *
+                                </label>
+
+                                <input type="text" id="legalName" name="legalName" maxlength="200" required
+                                    placeholder="Registered legal company name">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="tradingName">
+                                    Trading / Commercial Name
+                                </label>
+
+                                <input type="text" id="tradingName" name="tradingName" maxlength="200"
+                                    placeholder="Trading name">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="registrationNumber">
+                                    Company Registration Number *
+                                </label>
+
+                                <input type="text" id="registrationNumber" name="registrationNumber" maxlength="100"
+                                    required placeholder="Official registration number">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="taxNumber">
+                                    Tax Identification Number
+                                </label>
+
+                                <input type="text" id="taxNumber" name="taxNumber" maxlength="100"
+                                    placeholder="Tax identification number">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="entityType">
+                                    Legal Entity Type *
+                                </label>
+
+                                <select id="entityType" name="entityType" required>
+
+                                    <option value="">Select entity type</option>
+                                    <option value="private_limited">
+                                        Private Limited Company
+                                    </option>
+                                    <option value="public_limited">
+                                        Public Limited Company
+                                    </option>
+                                    <option value="partnership">
+                                        Partnership
+                                    </option>
+                                    <option value="sole_proprietorship">
+                                        Sole Proprietorship
+                                    </option>
+                                    <option value="nonprofit">
+                                        Non-Profit Organization
+                                    </option>
+                                    <option value="cooperative">
+                                        Cooperative
+                                    </option>
+                                    <option value="government">
+                                        Government Entity
+                                    </option>
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="industry">
+                                    Primary Industry *
+                                </label>
+
+                                <input type="text" id="industry" name="industry" required maxlength="150"
+                                    placeholder="Primary business industry">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="incorporationCountry">
+                                    Country of Incorporation *
+                                </label>
+
+                                <input type="text" id="incorporationCountry" name="incorporationCountry" required
+                                    maxlength="100" placeholder="Country">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="incorporationDate">
+                                    Incorporation Date
+                                </label>
+
+                                <input type="date" id="incorporationDate" name="incorporationDate">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="companyWebsite">
+                                    Company Website
+                                </label>
+
+                                <input type="url" id="companyWebsite" name="website" placeholder="https://example.com">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="businessEmail">
+                                    Business Email
+                                </label>
+
+                                <input type="email" id="businessEmail" name="businessEmail"
+                                    placeholder="business@example.com">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="businessPhone">
+                                    Business Telephone
+                                </label>
+
+                                <input type="tel" id="businessPhone" name="businessPhone"
+                                    placeholder="+Country code and number">
+                            </div>
+
+                            <div class="form-field full">
+                                <label for="companyDescription">
+                                    Company Description
+                                </label>
+
+                                <textarea id="companyDescription" name="description" rows="4" maxlength="3000"
+                                    placeholder="Describe your organization and its activities..."></textarea>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-divider"></div>
+
+                        <div class="form-section-heading">
+                            <h3>Registered Business Address</h3>
+                            <p>
+                                Enter the official registered address
+                                of this legal entity.
+                            </p>
+                        </div>
+
+                        <div class="form-grid">
+
+                            <div class="form-field full">
+                                <label for="addressLine1">
+                                    Address Line 1
+                                </label>
+
+                                <input type="text" id="addressLine1" name="registeredAddress.addressLine1">
+                            </div>
+
+                            <div class="form-field full">
+                                <label for="addressLine2">
+                                    Address Line 2
+                                </label>
+
+                                <input type="text" id="addressLine2" name="registeredAddress.addressLine2">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="addressCity">City</label>
+                                <input type="text" id="addressCity" name="registeredAddress.city">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="addressRegion">
+                                    State / Province / Region
+                                </label>
+
+                                <input type="text" id="addressRegion" name="registeredAddress.region">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="postalCode">Postal Code</label>
+                                <input type="text" id="postalCode" name="registeredAddress.postalCode">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="addressCountry">
+                                    Address Country
+                                </label>
+
+                                <input type="text" id="addressCountry" name="registeredAddress.country">
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <span id="profileSaveState" class="form-save-state">
+                                Changes are saved when you submit.
+                            </span>
+
+                            <button type="submit" class="btn btn-primary" id="saveProfileButton">
+                                Save Company Information
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 3: OWNERSHIP & DIRECTORS
+            ========================================== -->
+
+                <section class="profile-tab-panel" data-tab-panel="ownership" hidden>
+
+                    <div class="profile-section-heading">
+                        <div>
+                            <h2>Ownership & Directors</h2>
+                            <p>
+                                Manage the directors, authorized
+                                representatives and beneficial owners
+                                associated with this company.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-outline" type="button" id="addDirectorButton">
+                            + Add Person
+                        </button>
+                    </div>
+
+
+                    <div class="information-notice">
+                        <strong>Important verification information</strong>
+                        <p>
+                            Ownership and director details may be subject
+                            to KYB checks. Only authorized users should
+                            access or update this sensitive information.
+                        </p>
+                    </div>
+
+
+                    <form id="ownershipForm" class="profile-card profile-form">
+
+                        <div class="profile-card-heading">
+                            <h3>Company Directors & Beneficial Owners</h3>
+                            <span class="small-counter" id="directorCounter">
+                                0 records
+                            </span>
+                        </div>
+
+                        <div id="directorsList" class="directors-list">
+
+                            <div class="empty-state">
+                                <span>♙</span>
+                                <p>Loading ownership records...</p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <span class="form-save-state">
+                                Ensure all ownership information is accurate.
+                            </span>
+
+                            <button type="submit" class="btn btn-primary" id="saveOwnershipButton">
+                                Save Ownership Records
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 4: GROUP STRUCTURE
+            ========================================== -->
+
+                <section class="profile-tab-panel" data-tab-panel="locations" hidden>
+
+                    <div class="profile-section-heading">
+                        <div>
+                            <h2>Global Group Structure</h2>
+                            <p>
+                                Manage subsidiaries, associated entities
+                                and registered operating locations.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" id="addLocationButton">
+                            + Add Location
+                        </button>
+                    </div>
+
+
+                    <div class="profile-card">
+
+                        <div class="profile-card-heading">
+                            <div>
+                                <h3>Subsidiaries & Group Companies</h3>
+                                <p>
+                                    Legal entities associated with
+                                    the selected organization.
+                                </p>
+                            </div>
+
+                            <button class="btn btn-light" type="button" id="addSubsidiaryButton">
+                                + Add Subsidiary
+                            </button>
+                        </div>
+
+                        <div id="subsidiariesList" class="entity-list">
+
+                            <div class="empty-state">
+                                <span>▤</span>
+                                <p>Subsidiary records will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-card locations-card">
+
+                        <div class="profile-card-heading">
+                            <div>
+                                <h3>Branches & Work Locations</h3>
+                                <p>
+                                    Operating offices and business
+                                    locations registered under this entity.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="locationsList" class="entity-list">
+
+                            <div class="empty-state">
+                                <span>⌖</span>
+                                <p>Location records will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 5: DOCUMENTS
+            ========================================== -->
+
+                <section class="profile-tab-panel" data-tab-panel="documents" hidden>
+
+                    <div class="profile-section-heading">
+                        <div>
+                            <h2>Company Documents</h2>
+                            <p>
+                                Upload and manage corporate registration,
+                                tax, ownership and supporting documents.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <form id="documentUploadForm" class="profile-card document-upload-card">
+
+                        <div class="profile-card-heading">
+                            <h3>Upload Company Document</h3>
+                        </div>
+
+                        <div class="form-grid">
+
+                            <div class="form-field">
+                                <label for="documentType">
+                                    Document Category *
+                                </label>
+
+                                <select id="documentType" name="documentType" required>
+
+                                    <option value="">
+                                        Select document category
+                                    </option>
+
+                                    <option value="incorporation_certificate">
+                                        Certificate of Incorporation
+                                    </option>
+
+                                    <option value="business_registration">
+                                        Business Registration Certificate
+                                    </option>
+
+                                    <option value="tax_certificate">
+                                        Tax Registration Certificate
+                                    </option>
+
+                                    <option value="proof_of_address">
+                                        Proof of Business Address
+                                    </option>
+
+                                    <option value="ownership_register">
+                                        Ownership Register
+                                    </option>
+
+                                    <option value="director_identity">
+                                        Director Identity Document
+                                    </option>
+
+                                    <option value="financial_statement">
+                                        Financial Statement
+                                    </option>
+
+                                    <option value="operating_license">
+                                        Operating Licence
+                                    </option>
+
+                                    <option value="other">
+                                        Other Supporting Document
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="documentExpiry">
+                                    Expiry Date (if applicable)
+                                </label>
+
+                                <input type="date" id="documentExpiry" name="expiryDate">
+                            </div>
+
+                            <div class="form-field full">
+                                <label for="documentFile">
+                                    Select Document *
+                                </label>
+
+                                <input type="file" id="documentFile" name="file" accept=".pdf,.png,.jpg,.jpeg" required>
+
+                                <small>
+                                    Accepted formats: PDF, PNG, JPG and JPEG.
+                                    Maximum size: 15 MB.
+                                </small>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+
+                            <span id="uploadState" class="form-save-state">
+                                Documents are securely submitted for processing.
+                            </span>
+
+                            <button type="submit" class="btn btn-primary" id="uploadDocumentButton">
+                                Upload Document
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <div class="profile-card">
+
+                        <div class="profile-card-heading">
+                            <div>
+                                <h3>Uploaded Documents</h3>
+                                <p>
+                                    Review document submission and
+                                    verification statuses.
+                                </p>
+                            </div>
+
+                            <span id="documentCounter" class="small-counter">
+                                0 documents
+                            </span>
+                        </div>
+
+                        <div id="documentsList" class="document-list">
+
+                            <div class="empty-state">
+                                <span>▧</span>
+                                <p>Company documents will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 6: VERIFICATION
+            ========================================== -->
+
+                <section class="profile-tab-panel" data-tab-panel="verification" hidden>
+
+                    <div class="profile-section-heading">
+                        <div>
+                            <h2>Company Verification Centre</h2>
+                            <p>
+                                Track your organization's KYB verification
+                                and compliance review.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="verification-status-card">
+
+                        <div class="verification-status-main">
+
+                            <div class="verification-large-icon">
+                                ✓
+                            </div>
+
+                            <div>
+                                <span class="eyebrow">
+                                    ORGANIZATION VERIFICATION
+                                </span>
+
+                                <h3 id="verificationHeading">
+                                    Verification status unavailable
+                                </h3>
+
+                                <p id="verificationMessage">
+                                    Verification information will appear
+                                    when available.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <span id="verificationStatusBadge" class="status-badge neutral">
+                            Awaiting status
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-card">
+
+                        <div class="profile-card-heading">
+                            <h3>Verification Requirements</h3>
+                        </div>
+
+                        <div id="verificationRequirements" class="verification-requirements">
+
+                            <div class="empty-state">
+                                <span>✓</span>
+                                <p>Verification requirements will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-card">
+
+                        <div class="profile-card-heading">
+                            <h3>Verification History</h3>
+                        </div>
+
+                        <div id="verificationHistory" class="verification-history">
+
+                            <div class="empty-state">
+                                <span>◷</span>
+                                <p>Verification history will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="verification-submit-card">
+
+                        <div>
+                            <h3>Ready to submit your company?</h3>
+                            <p>
+                                Submit your organization for review.
+                                TALVORA's verification service will
+                                validate the applicable requirements.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" id="submitVerificationButton">
+                            Submit for Verification →
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+                <footer class="main-footer">
+
+                    <div>
+                        <strong>TALVORA</strong>
+                        <span>Global Employer Enterprise Portal</span>
+                    </div>
+
+                    <span>
+                        © <span id="currentYear"></span>
+                        TALVORA. All rights reserved.
+                    </span>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+     ADD COMPANY / SUBSIDIARY DIALOG
+========================================== -->
+
+    <dialog class="enterprise-dialog" id="companyDialog">
+
+        <form id="createCompanyForm" class="dialog-content">
+
+            <div class="dialog-heading">
+                <div>
+                    <span class="eyebrow">ORGANIZATION MANAGEMENT</span>
+                    <h2>Add Organization</h2>
+                    <p>
+                        Register an additional company or subsidiary.
+                    </p>
+                </div>
+
+                <button type="button" class="dialog-close" data-close-dialog="companyDialog" aria-label="Close">
+                    ×
+                </button>
+            </div>
+
+            <div class="form-field">
+                <label for="newCompanyName">
+                    Legal Company Name *
+                </label>
+
+                <input type="text" id="newCompanyName" name="legalName" required maxlength="200">
+            </div>
+
+            <div class="form-field">
+                <label for="newCompanyCountry">
+                    Country of Incorporation *
+                </label>
+
+                <input type="text" id="newCompanyCountry" name="incorporationCountry" required maxlength="100">
+            </div>
+
+            <div class="form-field">
+                <label for="newCompanyEntityType">
+                    Legal Entity Type *
+                </label>
+
+                <select id="newCompanyEntityType" name="entityType" required>
+
+                    <option value="">Select entity type</option>
+                    <option value="private_limited">Private Limited</option>
+                    <option value="public_limited">Public Limited</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="sole_proprietorship">Sole Proprietorship</option>
+                    <option value="nonprofit">Non-Profit</option>
+                    <option value="cooperative">Cooperative</option>
+                    <option value="government">Government</option>
+                    <option value="other">Other</option>
+
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="companyRelationship">
+                    Organization Relationship
+                </label>
+
+                <select id="companyRelationship" name="relationship">
+
+                    <option value="independent">
+                        Independent Organization
+                    </option>
+
+                    <option value="subsidiary">
+                        Subsidiary of Selected Company
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-outline" data-close-dialog="companyDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="createCompanySubmit">
+                    Create Organization
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- =========================================
+     ADD LOCATION DIALOG
+========================================== -->
+
+    <dialog class="enterprise-dialog" id="locationDialog">
+
+        <form id="createLocationForm" class="dialog-content">
+
+            <div class="dialog-heading">
+                <div>
+                    <span class="eyebrow">GLOBAL OPERATIONS</span>
+                    <h2>Add Work Location</h2>
+                    <p>
+                        Register a new company operating location.
+                    </p>
+                </div>
+
+                <button type="button" class="dialog-close" data-close-dialog="locationDialog" aria-label="Close">
+                    ×
+                </button>
+            </div>
+
+            <div class="form-field">
+                <label for="locationName">Location Name *</label>
+                <input type="text" id="locationName" name="name" required maxlength="150">
+            </div>
+
+            <div class="form-field">
+                <label for="locationType">Location Type *</label>
+
+                <select id="locationType" name="type" required>
+
+                    <option value="">Select location type</option>
+                    <option value="headquarters">Headquarters</option>
+                    <option value="branch">Branch</option>
+                    <option value="office">Office</option>
+                    <option value="warehouse">Warehouse</option>
+                    <option value="factory">Factory</option>
+                    <option value="remote_hub">Remote Work Hub</option>
+                    <option value="other">Other</option>
+
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="locationCountry">Country *</label>
+                <input type="text" id="locationCountry" name="country" required>
+            </div>
+
+            <div class="form-field">
+                <label for="locationCity">City *</label>
+                <input type="text" id="locationCity" name="city" required>
+            </div>
+
+            <div class="form-field">
+                <label for="locationAddress">Street Address</label>
+                <input type="text" id="locationAddress" name="address">
+            </div>
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-outline" data-close-dialog="locationDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="createLocationSubmit">
+                    Save Location
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- NOTIFICATION PANEL -->
+
+    <div class="notification-panel" id="notificationPanel" hidden>
+
+        <div class="notification-heading">
+            <strong>Notifications</strong>
+            <a href="notifications-settings.html">View all</a>
+        </div>
+
+        <div id="notificationList">
+            <p class="empty-state">No notifications loaded.</p>
+        </div>
+
+    </div>
+
+
+    <!-- TOAST NOTIFICATIONS -->
+
+    <div id="toastRegion" class="toast-region" aria-live="polite">
+    </div>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1730">
+
+    <title>Finance & Revenue | TALVORA</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="finance.css">
+    <script defer src="talvora-admin-config.js"></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand-area">
+
+                <div class="brand">
+                    <div class="brand-symbol">T</div>
+
+                    <div class="brand-text">
+                        <strong>TALVORA</strong>
+                        <small>TECHNOLOGIES</small>
+                    </div>
+                </div>
+
+                <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">&times;</button>
+
+            </div>
+
+            <div class="portal-label">GLOBAL SUPER ADMIN</div>
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar" id="admin-avatar">SA</div>
+
+                <div class="admin-details">
+                    <strong id="admin-name">Verifying session...</strong>
+                    <span id="admin-email">Administrator</span>
+                    <small><i></i> Super Admin Portal</small>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-navigation">
+
+                <div class="nav-section-title">MAIN DASHBOARD</div>
+
+                <a href="index.html" class="nav-link">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+
+                <div class="nav-section-title">PLATFORM MANAGEMENT</div>
+
+                <a href="employers.html" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    Employer Management
+                </a>
+
+                <a href="employees.html" class="nav-link">
+                    <span class="nav-icon">♙</span>
+                    Employee Management
+                </a>
+
+                <a href="jobs.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Job Management
+                </a>
+
+                <a href="legacy/applications.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Applications
+                </a>
+
+                <a href="legacy/assessments.html" class="nav-link">
+                    <span class="nav-icon">◈</span>
+                    Assessments
+                </a>
+
+                <a href="legacy/matching.html" class="nav-link">
+                    <span class="nav-icon">⇄</span>
+                    Talent Matching
+                </a>
+
+
+                <div class="nav-section-title">FINANCIAL MANAGEMENT</div>
+
+                <a href="finance.html" class="nav-link active" aria-current="page">
+                    <span class="nav-icon">◇</span>
+                    Finance & Revenue
+                </a>
+
+
+                <div class="nav-section-title">GOVERNANCE</div>
+
+                <a href="compliance.html" class="nav-link">
+                    <span class="nav-icon">⚖</span>
+                    Compliance Centre
+                </a>
+
+                <a href="legacy/evidence.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Evidence Management
+                </a>
+
+                <a href="legacy/reports.html" class="nav-link">
+                    <span class="nav-icon">▥</span>
+                    Platform Reports
+                </a>
+
+                <a href="disputes.html" class="nav-link">
+                    <span class="nav-icon">⚑</span>
+                    Disputes
+                </a>
+
+                <a href="legacy/consents.html" class="nav-link">
+                    <span class="nav-icon">✓</span>
+                    Privacy & Consents
+                </a>
+
+
+                <div class="nav-section-title">SYSTEM ADMINISTRATION</div>
+
+                <a href="legacy/monitoring.html" class="nav-link">
+                    <span class="nav-icon">◉</span>
+                    System Monitoring
+                </a>
+
+                <a href="legacy/settings.html" class="nav-link">
+                    <span class="nav-icon">⚙</span>
+                    System Settings
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a href="index.html" class="back-link">
+                    <span>←</span>
+                    Return to Dashboard
+                </a>
+
+                <div class="sidebar-version">
+                    <strong>GSES SYSTEM 001</strong>
+                    <span>FINANCE & REVENUE MODULE</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-button" id="menu-button" aria-label="Open navigation">☰</button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            SUPER ADMIN <span>/</span> FINANCIAL MANAGEMENT
+                        </div>
+
+                        <h1>Finance & Revenue</h1>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="system-status">
+                        <i class="status-dot" id="connection-dot"></i>
+                        <span id="connection-label">Checking services...</span>
+                    </div>
+
+                    <button class="icon-button" id="refresh-button" title="Refresh financial information">↻</button>
+
+                    <button class="notification-button" id="notification-button" aria-label="Notifications">
+
+                        ♧
+
+                        <span id="notification-count" hidden>0</span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <div class="notice" id="global-notice" hidden role="status" aria-live="polite"></div>
+
+
+            <div class="page-content">
+
+
+                <!-- INTRODUCTION -->
+
+                <section class="page-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            GLOBAL FINANCIAL ADMINISTRATION
+                        </span>
+
+                        <h2>Finance & Revenue Management</h2>
+
+                        <p>
+                            Centralized financial oversight for TALVORA.
+                            Monitor platform income, transactions, billing,
+                            settlements, refunds, reconciliation and
+                            financial performance across connected portals.
+                        </p>
+
+                    </div>
+
+                    <div class="heading-actions">
+
+                        <span class="live-indicator">
+                            <i></i> SUPER ADMIN FINANCE
+                        </span>
+
+                        <button class="secondary-button" id="export-overview-button">
+                            ↓ Export Overview
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FINANCE BANNER -->
+
+                <section class="finance-banner">
+
+                    <div class="finance-banner-icon">◇</div>
+
+                    <div class="finance-banner-content">
+
+                        <span>TALVORA GLOBAL FINANCIAL CONTROL</span>
+
+                        <h3>Financial Intelligence & Revenue Oversight</h3>
+
+                        <p>
+                            One centralized financial management environment
+                            for tracking revenue, monitoring payments,
+                            overseeing financial obligations and maintaining
+                            accountability across the platform.
+                        </p>
+
+                    </div>
+
+                    <div class="finance-banner-decoration">T</div>
+
+                </section>
+
+
+                <!-- DATE AND CURRENCY FILTERS -->
+
+                <section class="finance-toolbar">
+
+                    <div>
+                        <strong>Financial reporting period</strong>
+
+                        <small>
+                            Select a period and reporting currency.
+                        </small>
+                    </div>
+
+
+                    <form id="overview-filter-form" class="finance-period-form">
+
+                        <label>
+                            From
+
+                            <input type="date" id="overview-from">
+                        </label>
+
+                        <label>
+                            To
+
+                            <input type="date" id="overview-to">
+                        </label>
+
+                        <label>
+                            Currency
+
+                            <select id="overview-currency">
+                                <option value="">All currencies</option>
+                            </select>
+                        </label>
+
+                        <button type="submit" class="primary-button">
+                            Apply
+                        </button>
+
+                    </form>
+
+                </section>
+
+
+                <!-- FINANCIAL METRICS -->
+
+                <section class="metric-grid finance-metrics">
+
+
+                    <article class="metric-card finance-metric-card">
+
+                        <div class="metric-top">
+                            GROSS REVENUE
+                            <span class="metric-icon blue">↗</span>
+                        </div>
+
+                        <strong id="gross-revenue">—</strong>
+
+                        <small>Revenue before applicable deductions</small>
+
+                    </article>
+
+
+                    <article class="metric-card finance-metric-card">
+
+                        <div class="metric-top">
+                            NET REVENUE
+                            <span class="metric-icon green">◇</span>
+                        </div>
+
+                        <strong id="net-revenue">—</strong>
+
+                        <small>Based on the platform accounting definition</small>
+
+                    </article>
+
+
+                    <article class="metric-card finance-metric-card">
+
+                        <div class="metric-top">
+                            PENDING SETTLEMENTS
+                            <span class="metric-icon orange">◷</span>
+                        </div>
+
+                        <strong id="pending-settlements">—</strong>
+
+                        <small>Amounts awaiting settlement</small>
+
+                    </article>
+
+
+                    <article class="metric-card finance-metric-card">
+
+                        <div class="metric-top">
+                            REFUNDS
+                            <span class="metric-icon red">↩</span>
+                        </div>
+
+                        <strong id="refund-total">—</strong>
+
+                        <small>Refund value in the selected period</small>
+
+                    </article>
+
+
+                    <article class="metric-card finance-metric-card">
+
+                        <div class="metric-top">
+                            TRANSACTIONS
+                            <span class="metric-icon cyan">⇄</span>
+                        </div>
+
+                        <strong id="transaction-count">—</strong>
+
+                        <small>Recorded financial transactions</small>
+
+                    </article>
+
+
+                    <article class="metric-card finance-metric-card">
+
+                        <div class="metric-top">
+                            PLATFORM FEES
+                            <span class="metric-icon purple">%</span>
+                        </div>
+
+                        <strong id="platform-fees">—</strong>
+
+                        <small>Only where a fee structure is configured</small>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- FINANCE NAVIGATION -->
+
+                <nav class="finance-tabs" aria-label="Financial management sections">
+
+                    <button class="finance-tab active" data-tab="overview" aria-selected="true">
+                        Overview
+                    </button>
+
+                    <button class="finance-tab" data-tab="transactions" aria-selected="false">
+                        Transactions
+                    </button>
+
+                    <button class="finance-tab" data-tab="billing" aria-selected="false">
+                        Billing & Invoices
+                    </button>
+
+                    <button class="finance-tab" data-tab="refunds" aria-selected="false">
+                        Refunds
+                    </button>
+
+                    <button class="finance-tab" data-tab="reconciliation" aria-selected="false">
+                        Reconciliation
+                    </button>
+
+                    <button class="finance-tab" data-tab="reports" aria-selected="false">
+                        Financial Reports
+                    </button>
+
+                </nav>
+
+
+                <!-- =====================================
+                 OVERVIEW
+            ====================================== -->
+
+                <section class="finance-panel" id="panel-overview">
+
+                    <div class="finance-chart-grid">
+
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Revenue Performance</h3>
+
+                                    <p>
+                                        Revenue movement across the selected period.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon blue">↗</span>
+
+                            </div>
+
+
+                            <div class="finance-chart-legend">
+
+                                <span><i class="legend-gross"></i> Gross revenue</span>
+
+                                <span><i class="legend-net"></i> Net revenue</span>
+
+                            </div>
+
+
+                            <div id="revenue-trend-chart" class="revenue-trend-chart" aria-live="polite">
+
+                                <div class="empty-state">
+                                    Revenue trend data will appear when available.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Revenue by Source</h3>
+
+                                    <p>
+                                        Revenue classification returned by the
+                                        financial system.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon cyan">◈</span>
+
+                            </div>
+
+
+                            <div id="revenue-source-list" class="finance-breakdown-list">
+
+                                <div class="empty-state">
+                                    No revenue source data loaded.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- COUNTRY AND PAYMENT PROVIDERS -->
+
+                    <div class="finance-chart-grid">
+
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Revenue by Country</h3>
+
+                                    <p>
+                                        Financial performance across supported markets.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon purple">◎</span>
+
+                            </div>
+
+
+                            <div id="revenue-country-list" class="finance-breakdown-list">
+
+                                <div class="empty-state">
+                                    Country revenue data will appear here.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <h3>Payment Infrastructure</h3>
+
+                                    <p>
+                                        Payment provider status supplied by
+                                        connected services.
+                                    </p>
+                                </div>
+
+                                <span class="metric-icon green">◉</span>
+
+                            </div>
+
+
+                            <div id="payment-provider-list" class="finance-provider-list">
+
+                                <div class="empty-state">
+                                    No payment provider information received.
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- FINANCIAL CONTROL SUMMARY -->
+
+                    <article class="content-card finance-governance">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Financial Control & Governance</h3>
+
+                                <p>
+                                    Key financial administration principles.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="finance-governance-grid">
+
+
+                            <article>
+                                <span class="governance-icon">◇</span>
+
+                                <strong>Revenue Integrity</strong>
+
+                                <p>
+                                    Financial income must be traceable to
+                                    recorded transactions and approved
+                                    accounting classifications.
+                                </p>
+                            </article>
+
+
+                            <article>
+                                <span class="governance-icon">⇄</span>
+
+                                <strong>Transaction Accountability</strong>
+
+                                <p>
+                                    Payment records must retain references,
+                                    processing history and transaction outcomes.
+                                </p>
+                            </article>
+
+
+                            <article>
+                                <span class="governance-icon">⚖</span>
+
+                                <strong>Financial Authorization</strong>
+
+                                <p>
+                                    Refunds and privileged financial operations
+                                    must be authorized and audited.
+                                </p>
+                            </article>
+
+
+                            <article>
+                                <span class="governance-icon">◎</span>
+
+                                <strong>Global Currency Oversight</strong>
+
+                                <p>
+                                    Transactions retain their original currencies
+                                    and use documented conversion rules where
+                                    consolidated reporting is required.
+                                </p>
+                            </article>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =====================================
+                 TRANSACTIONS
+            ====================================== -->
+
+                <section class="finance-panel" id="panel-transactions" hidden>
+
+                    <article class="content-card finance-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Global Transaction Register</h3>
+
+                                <p>
+                                    Search and inspect recorded platform
+                                    financial transactions.
+                                </p>
+                            </div>
+
+                            <button class="secondary-button" id="export-transactions-button">
+                                ↓ Export CSV
+                            </button>
+
+                        </div>
+
+
+                        <form id="transaction-filter-form" class="filter-bar finance-filters">
+
+                            <input type="search" id="transaction-search" placeholder="Search transaction reference...">
+
+                            <select id="transaction-status">
+                                <option value="">All statuses</option>
+                                <option value="successful">Successful</option>
+                                <option value="pending">Pending</option>
+                                <option value="failed">Failed</option>
+                                <option value="reversed">Reversed</option>
+                            </select>
+
+                            <select id="transaction-type">
+                                <option value="">All transaction types</option>
+                            </select>
+
+                            <select id="transaction-currency">
+                                <option value="">All currencies</option>
+                            </select>
+
+                            <button type="submit" class="primary-button">
+                                Search
+                            </button>
+
+                            <button type="button" class="secondary-button" id="clear-transaction-filters">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-wrap">
+
+                            <table class="finance-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>DATE</th>
+                                        <th>REFERENCE</th>
+                                        <th>ACCOUNT / CUSTOMER</th>
+                                        <th>TYPE / SOURCE</th>
+                                        <th>AMOUNT</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="transaction-table-body">
+
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            Waiting for financial records...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="finance-pagination">
+
+                            <span id="transaction-pagination">
+                                No transactions loaded
+                            </span>
+
+                            <div>
+                                <button class="secondary-button" id="transaction-previous" disabled>
+                                    ← Previous
+                                </button>
+
+                                <button class="secondary-button" id="transaction-next" disabled>
+                                    Next →
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =====================================
+                 BILLING AND INVOICES
+            ====================================== -->
+
+                <section class="finance-panel" id="panel-billing" hidden>
+
+                    <article class="content-card finance-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Billing & Invoice Register</h3>
+
+                                <p>
+                                    Central oversight of issued invoices,
+                                    payment obligations and billing status.
+                                </p>
+                            </div>
+
+                            <button class="secondary-button" id="export-invoices-button">
+                                ↓ Export CSV
+                            </button>
+
+                        </div>
+
+
+                        <form id="invoice-filter-form" class="filter-bar finance-filters">
+
+                            <input type="search" id="invoice-search"
+                                placeholder="Search invoice or account reference...">
+
+                            <select id="invoice-status">
+                                <option value="">All invoice statuses</option>
+                                <option value="draft">Draft</option>
+                                <option value="issued">Issued</option>
+                                <option value="paid">Paid</option>
+                                <option value="overdue">Overdue</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+
+                            <button type="submit" class="primary-button">
+                                Search
+                            </button>
+
+                            <button type="button" class="secondary-button" id="clear-invoice-filters">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-wrap">
+
+                            <table class="finance-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>INVOICE</th>
+                                        <th>ACCOUNT</th>
+                                        <th>ISSUED</th>
+                                        <th>DUE DATE</th>
+                                        <th>AMOUNT</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="invoice-table-body">
+
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            No invoice records loaded.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="finance-pagination">
+
+                            <span id="invoice-pagination">
+                                No invoices loaded
+                            </span>
+
+                            <div>
+
+                                <button class="secondary-button" id="invoice-previous" disabled>
+                                    ← Previous
+                                </button>
+
+                                <button class="secondary-button" id="invoice-next" disabled>
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =====================================
+                 REFUNDS
+            ====================================== -->
+
+                <section class="finance-panel" id="panel-refunds" hidden>
+
+                    <article class="content-card finance-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Refund Management</h3>
+
+                                <p>
+                                    Review refund requests and monitor
+                                    financial reversals.
+                                </p>
+                            </div>
+
+                            <button class="secondary-button" id="export-refunds-button">
+                                ↓ Export CSV
+                            </button>
+
+                        </div>
+
+
+                        <form id="refund-filter-form" class="filter-bar finance-filters">
+
+                            <input type="search" id="refund-search"
+                                placeholder="Search refund or transaction reference...">
+
+                            <select id="refund-status">
+                                <option value="">All refund statuses</option>
+                                <option value="pending">Pending Review</option>
+                                <option value="approved">Approved</option>
+                                <option value="processing">Processing</option>
+                                <option value="completed">Completed</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="failed">Failed</option>
+                            </select>
+
+                            <button type="submit" class="primary-button">
+                                Search
+                            </button>
+
+                            <button type="button" class="secondary-button" id="clear-refund-filters">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-wrap">
+
+                            <table class="finance-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>REFUND REFERENCE</th>
+                                        <th>TRANSACTION</th>
+                                        <th>REQUEST DATE</th>
+                                        <th>AMOUNT</th>
+                                        <th>REASON</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="refund-table-body">
+
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            No refund records loaded.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="finance-pagination">
+
+                            <span id="refund-pagination">
+                                No refund records loaded
+                            </span>
+
+                            <div>
+
+                                <button class="secondary-button" id="refund-previous" disabled>
+                                    ← Previous
+                                </button>
+
+                                <button class="secondary-button" id="refund-next" disabled>
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =====================================
+                 RECONCILIATION
+            ====================================== -->
+
+                <section class="finance-panel" id="panel-reconciliation" hidden>
+
+                    <article class="content-card finance-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Financial Reconciliation</h3>
+
+                                <p>
+                                    Compare internal financial records
+                                    against payment provider and settlement
+                                    records.
+                                </p>
+                            </div>
+
+                            <button class="primary-button" id="run-reconciliation-button">
+                                + Run Reconciliation
+                            </button>
+
+                        </div>
+
+
+                        <div class="reconciliation-notice">
+
+                            <span>◎</span>
+
+                            <p>
+                                Reconciliation identifies discrepancies
+                                for investigation. It must not silently
+                                alter transaction records or accounting entries.
+                            </p>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+
+                            <table class="finance-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>RUN REFERENCE</th>
+                                        <th>PERIOD</th>
+                                        <th>CURRENCY</th>
+                                        <th>RECORDS REVIEWED</th>
+                                        <th>DISCREPANCIES</th>
+                                        <th>STATUS</th>
+                                        <th>STARTED</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="reconciliation-table-body">
+
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">
+                                            No reconciliation history loaded.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="finance-pagination">
+
+                            <span id="reconciliation-pagination">
+                                No reconciliation records loaded
+                            </span>
+
+                            <div>
+
+                                <button class="secondary-button" id="reconciliation-previous" disabled>
+                                    ← Previous
+                                </button>
+
+                                <button class="secondary-button" id="reconciliation-next" disabled>
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =====================================
+                 FINANCIAL REPORTS
+            ====================================== -->
+
+                <section class="finance-panel" id="panel-reports" hidden>
+
+                    <article class="content-card finance-table-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <h3>Financial Reporting Centre</h3>
+
+                                <p>
+                                    Financial reporting generated from
+                                    verified platform accounting records.
+                                </p>
+                            </div>
+
+                            <button class="secondary-button" id="refresh-reports-button">
+                                ↻ Refresh Reports
+                            </button>
+
+                        </div>
+
+
+                        <div class="finance-report-grid">
+
+                            <article>
+                                <span class="report-icon">↗</span>
+                                <strong>Revenue Performance</strong>
+                                <p>
+                                    Gross and net revenue over selected
+                                    reporting periods.
+                                </p>
+                            </article>
+
+                            <article>
+                                <span class="report-icon">◎</span>
+                                <strong>Country Performance</strong>
+                                <p>
+                                    Financial activity across supported
+                                    markets and currencies.
+                                </p>
+                            </article>
+
+                            <article>
+                                <span class="report-icon">⇄</span>
+                                <strong>Payment Reliability</strong>
+                                <p>
+                                    Successful, pending and failed
+                                    payment activity.
+                                </p>
+                            </article>
+
+                            <article>
+                                <span class="report-icon">◇</span>
+                                <strong>Settlement & Refunds</strong>
+                                <p>
+                                    Settlement activity, refund exposure
+                                    and financial reconciliation.
+                                </p>
+                            </article>
+
+                        </div>
+
+
+                        <div class="report-history-heading">
+
+                            <div>
+                                <h3>Generated Report History</h3>
+                                <p>Previously generated financial reports.</p>
+                            </div>
+
+                            <button class="secondary-button" id="export-reports-button">
+                                ↓ Export CSV
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+
+                            <table class="finance-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>REPORT REFERENCE</th>
+                                        <th>REPORT TYPE</th>
+                                        <th>PERIOD</th>
+                                        <th>GENERATED BY</th>
+                                        <th>GENERATED DATE</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="report-table-body">
+
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">
+                                            No financial reports loaded.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <footer class="main-footer">
+
+                <span>© TALVORA TECHNOLOGIES</span>
+
+                <span>GSES SYSTEM 001 · FINANCE & REVENUE</span>
+
+                <span>GLOBAL SUPER ADMINISTRATION</span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+     FINANCIAL RECORD DETAILS MODAL
+========================================== -->
+
+    <div class="modal-overlay" id="finance-details-modal" hidden>
+
+        <section class="modal-card finance-details-modal">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow" id="details-kicker">
+                        FINANCIAL RECORD
+                    </span>
+
+                    <h2 id="details-title">Record Details</h2>
+                </div>
+
+                <button class="modal-close" data-close-details aria-label="Close">&times;</button>
+
+            </header>
+
+
+            <div class="modal-body">
+
+                <dl class="finance-details-list" id="record-details">
+
+                    <div class="empty-state">
+                        No record selected.
+                    </div>
+
+                </dl>
+
+                <div class="modal-actions">
+
+                    <button class="secondary-button" data-close-details>
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================
+     REFUND REVIEW MODAL
+========================================== -->
+
+    <div class="modal-overlay" id="refund-review-modal" hidden>
+
+        <section class="modal-card">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow">FINANCIAL AUTHORIZATION</span>
+                    <h2>Review Refund Request</h2>
+                </div>
+
+                <button class="modal-close" data-close-refund aria-label="Close">&times;</button>
+
+            </header>
+
+
+            <div class="modal-body">
+
+                <div class="form-warning">
+                    A refund decision may initiate a financial operation.
+                    Confirm the original transaction, refund eligibility
+                    and available evidence before submission.
+                </div>
+
+
+                <div id="refund-review-summary" class="refund-review-summary">
+
+                    <div class="empty-state">
+                        No refund selected.
+                    </div>
+
+                </div>
+
+
+                <form id="refund-decision-form" class="modal-form">
+
+                    <input type="hidden" name="reference">
+
+
+                    <label class="form-field full-field">
+                        Administrative Decision
+
+                        <select name="decision" required>
+
+                            <option value="">Select decision</option>
+
+                            <option value="approved">
+                                Approve Refund
+                            </option>
+
+                            <option value="rejected">
+                                Reject Refund
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label class="form-field full-field">
+                        Decision Reason
+
+                        <textarea name="reason" required minlength="10" maxlength="2000"
+                            placeholder="Provide the detailed reason for this financial decision..."></textarea>
+
+                    </label>
+
+
+                    <div class="modal-actions full-field">
+
+                        <button type="button" class="secondary-button" data-close-refund>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Submit Refund Decision
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================
+     RECONCILIATION MODAL
+========================================== -->
+
+    <div class="modal-overlay" id="reconciliation-modal" hidden>
+
+        <section class="modal-card">
+
+            <header class="modal-header">
+
+                <div>
+                    <span class="eyebrow">FINANCIAL OPERATIONS</span>
+                    <h2>Run Reconciliation</h2>
+                </div>
+
+                <button class="modal-close" data-close-reconciliation aria-label="Close">&times;</button>
+
+            </header>
+
+
+            <div class="modal-body">
+
+                <div class="form-warning">
+                    Reconciliation compares eligible financial records.
+                    It does not automatically correct discrepancies.
+                    All reconciliation runs must be recorded.
+                </div>
+
+
+                <form id="reconciliation-form" class="modal-form">
+
+                    <label class="form-field">
+                        Period Start
+
+                        <input type="date" name="from" required>
+                    </label>
+
+
+                    <label class="form-field">
+                        Period End
+
+                        <input type="date" name="to" required>
+                    </label>
+
+
+                    <label class="form-field full-field">
+                        Reporting Currency
+
+                        <select name="currency" required>
+                            <option value="">Select currency</option>
+                        </select>
+
+                    </label>
+
+
+                    <div class="modal-actions full-field">
+
+                        <button type="button" class="secondary-button" data-close-reconciliation>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-button">
+                            Start Reconciliation
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- NOTIFICATION DRAWER -->
+
+    <aside class="notification-drawer" id="notification-drawer" hidden>
+
+        <header class="drawer-header">
+
+            <h3>Financial Notifications</h3>
+
+            <button class="modal-close" id="drawer-close" aria-label="Close notifications">
+                &times;
+            </button>
+
+        </header>
+
+
+        <div class="drawer-content" id="notification-feed">
+
+            <div class="empty-state">
+                No notifications loaded.
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- TOASTS -->
+
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+
+    <script src="finance.js" defer></script>
+
+</body>
+
+</html>

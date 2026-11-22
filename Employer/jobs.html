@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <title>Jobs Management | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="jobs.css?v=create-job-refresh">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="jobs-page" data-module="jobs">
+
+    <div class="employer-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="employer-sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <strong>TALVORA</strong>
+                    <small>EMPLOYER PORTAL</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+
+                <a href="employer-dashboard.html" class="nav-link">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="company-profile.html" class="nav-link">
+                    <span>▤</span> Company Profile
+                </a>
+
+                <a href="locations.html" class="nav-link">
+                    <span>⌖</span> Branches & Locations
+                </a>
+
+                <a href="jobs.html" class="nav-link active">
+                    <span>▣</span> Jobs Management
+                </a>
+
+                <a href="applications.html" class="nav-link">
+                    <span>▥</span> Applications
+                </a>
+
+<a href="skills-matching.html" class="nav-link">
+                    <span>✧</span> Skills Matching
+                </a>
+
+                <a href="workforce.html" class="nav-link">
+                    <span>♙</span> Workforce
+                </a>
+
+<a href="analytics-reports.html" class="nav-link">
+                    <span>◫</span> Analytics
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-label">ACCOUNT</div>
+                <a href="team-permissions.html" class="nav-link">
+                    <span>♧</span> Team & Permissions
+                </a>
+<a href="disputes-support.html" class="nav-link">
+                    <span>?</span> Support Centre
+                </a>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="employer-main">
+
+            <!-- TOPBAR -->
+            <header class="employer-topbar">
+
+                <button id="menuToggle" class="icon-button" aria-label="Toggle navigation">
+                    ☰
+                </button>
+
+                <div class="topbar-title">
+                    <h1>Jobs Management</h1>
+                    <p>Global recruitment and vacancy operations</p>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <select id="companySwitcher" class="company-switcher" aria-label="Select organization">
+                        <option value="">Loading organizations...</option>
+                    </select>
+
+                    <button id="notificationToggle" class="icon-button" aria-label="Notifications">
+                        ♧
+                    </button>
+
+                    <div id="notificationPanel" class="notification-panel" hidden>
+                        <strong>Notifications</strong>
+                        <p>Your recruitment notifications will appear here.</p>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+            <section class="module-content">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">RECRUITMENT OPERATIONS</span>
+                        <h2>Global Jobs Management Centre</h2>
+                        <p>
+                            Create, publish, manage and monitor vacancies
+                            across your organization.
+                        </p>
+                    </div>
+
+                    <div class="heading-actions">
+
+                        <button class="btn btn-secondary" id="refreshJobsButton">
+                            ↻ Refresh
+                        </button>
+
+                        <button class="btn btn-primary" id="addJobButton">
+                            + Create New Job
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONNECTION STATUS -->
+                <div class="connection-banner">
+                    <span class="connection-dot"></span>
+                    <span id="jobsConnectionStatus">
+                        Connecting to TALVORA...
+                    </span>
+                    <span class="last-updated" id="jobsLastUpdated"></span>
+                </div>
+
+
+                <!-- KPI CARDS -->
+                <div class="jobs-kpi-grid">
+
+                    <article class="jobs-kpi-card">
+                        <div class="kpi-icon navy">▣</div>
+                        <div>
+                            <span>Total Job Listings</span>
+                            <strong id="jobsTotal">0</strong>
+                            <small>All registered vacancies</small>
+                        </div>
+                    </article>
+
+                    <article class="jobs-kpi-card">
+                        <div class="kpi-icon teal">✓</div>
+                        <div>
+                            <span>Published Jobs</span>
+                            <strong id="jobsPublished">0</strong>
+                            <small>Currently published</small>
+                        </div>
+                    </article>
+
+                    <article class="jobs-kpi-card">
+                        <div class="kpi-icon blue">◷</div>
+                        <div>
+                            <span>Draft Listings</span>
+                            <strong id="jobsDrafts">0</strong>
+                            <small>Awaiting publication</small>
+                        </div>
+                    </article>
+
+                    <article class="jobs-kpi-card">
+                        <div class="kpi-icon orange">■</div>
+                        <div>
+                            <span>Closed Jobs</span>
+                            <strong id="jobsClosed">0</strong>
+                            <small>Closed or expired</small>
+                        </div>
+                    </article>
+
+                    <article class="jobs-kpi-card">
+                        <div class="kpi-icon purple">♙</div>
+                        <div>
+                            <span>Total Applications</span>
+                            <strong id="jobsApplications">0</strong>
+                            <small>Applications received</small>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- JOB STATUS SUMMARY -->
+                <div class="jobs-overview-grid">
+
+                    <section class="jobs-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Publication Overview</h3>
+                                <p>Distribution of your job listings</p>
+                            </div>
+                        </div>
+
+                        <div id="jobsStatusOverview" class="jobs-status-overview">
+                        </div>
+
+                    </section>
+
+
+                    <section class="jobs-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Recruitment Activity</h3>
+                                <p>Current vacancy performance</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-stat">
+                            <span>Published vacancies</span>
+                            <strong id="activityPublished">0</strong>
+                        </div>
+
+                        <div class="activity-stat">
+                            <span>Total vacancies available</span>
+                            <strong id="activityVacancies">0</strong>
+                        </div>
+
+                        <div class="activity-stat">
+                            <span>Applications received</span>
+                            <strong id="activityApplications">0</strong>
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- JOB MANAGEMENT TABLE -->
+                <section class="jobs-panel job-listings-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>Job Listings</h3>
+                            <p>Manage all vacancies across your organization.</p>
+                        </div>
+
+                        <div class="panel-heading-actions">
+                            <span id="jobCountLabel">0 job listings</span>
+
+                            <button class="btn btn-outline" id="exportJobsButton">
+                                ↓ Export CSV
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+                    <div class="jobs-filter-bar">
+
+                        <input type="search" id="jobSearch" placeholder="Search job title, reference or department..."
+                            aria-label="Search jobs">
+
+                        <select id="jobStatusFilter">
+                            <option value="">All statuses</option>
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                            <option value="closed">Closed</option>
+                            <option value="archived">Archived</option>
+                        </select>
+
+                        <select id="jobTypeFilter">
+                            <option value="">All employment types</option>
+                            <option value="full_time">Full-time</option>
+                            <option value="part_time">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="internship">Internship</option>
+                            <option value="casual">Casual</option>
+                        </select>
+
+                        <select id="jobLocationFilter">
+                            <option value="">All locations</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearJobFilters">
+                            Clear
+                        </button>
+
+                    </div>
+
+
+                    <!-- TABLE -->
+                    <div class="table-responsive">
+
+                        <table class="jobs-table">
+
+                            <thead>
+                                <tr>
+                                    <th>JOB DETAILS</th>
+                                    <th>LOCATION</th>
+                                    <th>EMPLOYMENT</th>
+                                    <th>VACANCIES</th>
+                                    <th>APPLICATIONS</th>
+                                    <th>DEADLINE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="jobsTableBody">
+                                <tr>
+                                    <td colspan="8" class="table-loading">
+                                        Loading job listings...
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="jobsTableFooter">
+                            Showing 0 job listings
+                        </span>
+
+                        <span id="jobsFilteredCount">
+                            0 records
+                        </span>
+                    </div>
+
+                </section>
+
+
+                <!-- RECENT ACTIVITY -->
+                <section class="jobs-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recently Updated Listings</h3>
+                            <p>Latest changes to recruitment listings</p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="jobs-table">
+
+                            <thead>
+                                <tr>
+                                    <th>JOB TITLE</th>
+                                    <th>REFERENCE</th>
+                                    <th>LAST UPDATED</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recentJobsBody">
+                                <tr>
+                                    <td colspan="4">Loading...</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- CREATE / EDIT JOB DIALOG -->
+    <dialog id="jobDialog" class="jobs-dialog">
+
+        <div class="dialog-header">
+
+            <div>
+                <span class="eyebrow">JOB MANAGEMENT</span>
+                <h2 id="jobDialogTitle">Create New Job</h2>
+            </div>
+
+            <button type="button" class="dialog-close" data-close-dialog="jobDialog">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="jobForm">
+
+            <input type="hidden" id="jobId" name="jobId">
+
+            <div class="form-section">
+                <h3>Job Information</h3>
+
+                <div class="jobs-form-grid">
+
+                    <label class="form-field full-width">
+                        Job Title *
+                        <input type="text" name="title" required maxlength="180" placeholder="Enter job title">
+                    </label>
+
+                    <label class="form-field">
+                        Job Reference
+                        <input type="text" name="reference" maxlength="80" placeholder="Optional reference">
+                    </label>
+
+                    <label class="form-field">
+                        Employment Type *
+                        <select name="employmentType" required>
+                            <option value="">Select type</option>
+                            <option value="full_time">Full-time</option>
+                            <option value="part_time">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="internship">Internship</option>
+                            <option value="casual">Casual</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Department
+                        <input type="text" name="department" placeholder="Department">
+                    </label>
+
+                    <label class="form-field">
+                        Work Arrangement
+                        <select name="workMode">
+                            <option value="onsite">On-site</option>
+                            <option value="hybrid">Hybrid</option>
+                            <option value="remote">Remote</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Branch / Work Location
+                        <select name="locationId" id="jobLocation">
+                            <option value="">Select location</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Job Category
+                        <input type="text" name="category" placeholder="Job category">
+                    </label>
+
+                    <label class="form-field">
+                        Number of Vacancies *
+                        <input type="number" name="vacancies" min="1" value="1" required>
+                    </label>
+
+                </div>
+            </div>
+
+
+            <div class="form-section">
+                <h3>Compensation & Deadline</h3>
+
+                <div class="jobs-form-grid">
+
+                    <label class="form-field">
+                        Currency
+                    <input type="text" name="salaryCurrency" maxlength="3" value="USD" placeholder="USD">
+                    </label>
+
+                    <label class="form-field">
+                        Minimum Salary
+                        <input type="number" name="salaryMin" min="0" step="0.01" placeholder="Optional">
+                    </label>
+
+                    <label class="form-field">
+                        Maximum Salary
+                        <input type="number" name="salaryMax" min="0" step="0.01" placeholder="Optional">
+                    </label>
+
+                    <label class="form-field">
+                        Application Deadline
+                        <input type="date" name="applicationDeadline" id="jobDeadline">
+                    </label>
+
+                </div>
+            </div>
+
+
+            <div class="form-section">
+                <h3>Job Description & Requirements</h3>
+
+                <label class="form-field">
+                    Job Description *
+                    <textarea name="description" rows="5" required
+                        placeholder="Describe the position and responsibilities..."></textarea>
+                </label>
+
+                <label class="form-field">
+                    Requirements
+                    <textarea name="requirements" rows="4"
+                        placeholder="Describe qualifications, experience and required skills..."></textarea>
+                </label>
+            </div>
+
+
+            <div class="form-section">
+                <h3>Publication Status</h3>
+
+                <label class="form-field">
+                    Initial Status
+                    <select name="status">
+                        <option value="draft">Save as Draft</option>
+                        <option value="published">Publish Immediately</option>
+                    </select>
+                </label>
+
+                <p class="form-help">
+                    Publishing makes the listing available through the
+                    recruitment platform once the server approves it.
+                </p>
+            </div>
+
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-secondary" data-close-dialog="jobDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="saveJobButton">
+                    Save Job
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="toastRegion" class="toast-region" aria-live="polite">
+    </div>
+
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="jobs.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

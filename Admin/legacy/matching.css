@@ -1,0 +1,1506 @@
+/* ==========================================================
+   TALVORA TECHNOLOGIES
+   TALVORA GLOBAL — GSES SYSTEM 001
+
+   MATCHING OVERSIGHT
+   FILE: matching.css
+   ========================================================== */
+
+
+/* ==========================================================
+   01. ACCESS SCREEN
+   ========================================================== */
+
+.matching-locked {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: var(--navy);
+}
+
+.matching-locked-card {
+    width: min(100%, 420px);
+    padding: 35px;
+    text-align: center;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.matching-locked-card img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin: 0 auto 12px;
+}
+
+.matching-locked-card h1 {
+    color: var(--navy);
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+
+.matching-locked-card p {
+    margin: 15px 0 22px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   02. PAGE HEADING
+   ========================================================== */
+
+.matching-heading {
+    align-items: center;
+    gap: 18px;
+}
+
+.matching-heading-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================
+   03. SYSTEM NOTICE
+   ========================================================== */
+
+.matching-notice {
+    padding: 13px 16px;
+    margin-bottom: 22px;
+
+    color: var(--blue-dark);
+    background: var(--blue-light);
+
+    border: 1px solid #D3EAF7;
+    border-radius: var(--radius-md);
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.matching-notice.success {
+    color: var(--success);
+    background: var(--success-bg);
+    border-color: #C6E8DA;
+}
+
+.matching-notice.warning {
+    color: var(--warning);
+    background: var(--warning-bg);
+    border-color: #F2DFB8;
+}
+
+.matching-notice.error {
+    color: var(--danger);
+    background: var(--danger-bg);
+    border-color: #F0D0D2;
+}
+
+
+/* ==========================================================
+   04. MATCHING STATISTICS
+   ========================================================== */
+
+.matching-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 23px;
+}
+
+.matching-stat-card {
+    min-width: 0;
+    padding: 18px;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.matching-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.matching-stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 9px;
+}
+
+.matching-stat-top>span:first-child {
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 650;
+}
+
+.matching-stat-icon {
+    display: grid;
+    place-items: center;
+
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+
+    color: var(--blue-dark);
+    background: var(--blue-light);
+    border-radius: 10px;
+
+    font-size: 15px;
+}
+
+.matching-stat-card strong {
+    display: block;
+    margin-top: 13px;
+
+    color: var(--navy);
+    font-size: 27px;
+    line-height: 1.2;
+    font-weight: 800;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.matching-stat-card p {
+    margin-top: 7px;
+    color: var(--text-muted);
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   05. PERFORMANCE LAYOUT
+   ========================================================== */
+
+.matching-performance-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 17px;
+    margin-bottom: 23px;
+}
+
+.matching-performance-card,
+.matching-engine-card {
+    min-width: 0;
+}
+
+.matching-live-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    color: var(--blue-dark);
+    background: var(--blue-light);
+
+    border-radius: 30px;
+
+    font-size: 9px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.matching-live-label span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+}
+
+.performance-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.performance-metric {
+    min-width: 0;
+    padding: 16px;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.performance-metric>span {
+    display: block;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+.performance-metric strong {
+    display: block;
+    margin-top: 12px;
+
+    color: var(--navy);
+
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.performance-metric small {
+    display: block;
+    margin-top: 7px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.performance-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    padding-top: 15px;
+    margin-top: 16px;
+
+    border-top: 1px solid var(--border);
+}
+
+.performance-footer span {
+    color: var(--text-muted);
+    font-size: 9px;
+}
+
+.performance-footer strong {
+    color: var(--text-secondary);
+    font-size: 10px;
+}
+
+
+/* ==========================================================
+   06. MATCHING ENGINE STATUS
+   ========================================================== */
+
+.engine-status-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    padding: 16px;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.engine-status-indicator {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+
+    margin-top: 4px;
+
+    background: var(--text-muted);
+
+    border-radius: 50%;
+}
+
+.engine-status-indicator.connected {
+    background: var(--success);
+    box-shadow: 0 0 0 4px rgba(35, 160, 110, .12);
+}
+
+.engine-status-indicator.degraded {
+    background: var(--warning);
+}
+
+.engine-status-indicator.error {
+    background: var(--danger);
+}
+
+.engine-status-block strong {
+    color: var(--navy);
+    font-size: 13px;
+}
+
+.engine-status-block p {
+    margin-top: 5px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.engine-information {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 15px;
+
+    margin-top: 12px;
+}
+
+.engine-information>div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.engine-information span {
+    color: var(--text-muted);
+    font-size: 9px;
+}
+
+.engine-information strong {
+    color: var(--navy);
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.engine-footer {
+    margin-top: 15px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   07. MATCH DIRECTORY
+   ========================================================== */
+
+.matching-directory {
+    padding-bottom: 20px;
+}
+
+.matching-record-count {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 11px;
+
+    color: var(--blue-dark);
+    background: var(--blue-light);
+
+    border-radius: 30px;
+
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   08. MATCHING STATUS TABS
+   ========================================================== */
+
+.matching-tabs {
+    display: flex;
+    gap: 3px;
+
+    overflow-x: auto;
+    margin-bottom: 19px;
+
+    border-bottom: 1px solid var(--border);
+
+    scrollbar-width: thin;
+}
+
+.matching-tab {
+    flex-shrink: 0;
+
+    padding: 12px 14px;
+
+    color: var(--text-secondary);
+    background: transparent;
+
+    border: 0;
+    border-bottom: 3px solid transparent;
+
+    font-size: 10px;
+    font-weight: 650;
+    white-space: nowrap;
+
+    transition:
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.matching-tab:hover {
+    color: var(--blue-dark);
+}
+
+.matching-tab.active,
+.matching-tab[aria-selected="true"] {
+    color: var(--blue-dark);
+    border-bottom-color: var(--cyan);
+}
+
+
+/* ==========================================================
+   09. MATCHING FILTERS
+   ========================================================== */
+
+.matching-filters {
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 1.5fr) minmax(130px, .9fr) minmax(135px, .9fr) minmax(120px, .8fr) auto auto;
+
+    align-items: end;
+    gap: 10px;
+
+    padding: 16px;
+    margin-bottom: 19px;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.matching-search-field,
+.matching-filter-field {
+    min-width: 0;
+}
+
+.matching-search-field label,
+.matching-filter-field label {
+    display: block;
+    margin-bottom: 7px;
+
+    color: var(--navy);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.matching-search-field input,
+.matching-filter-field input,
+.matching-filter-field select {
+    width: 100%;
+    min-height: 41px;
+
+    padding: 9px 11px;
+
+    color: var(--text);
+    background: var(--white);
+
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+
+    font-size: 10px;
+}
+
+.matching-search-field input:focus,
+.matching-filter-field input:focus,
+.matching-filter-field select:focus {
+    outline: none;
+    border-color: var(--blue);
+
+    box-shadow: 0 0 0 3px rgba(22, 139, 210, .12);
+}
+
+.matching-filters .btn {
+    min-height: 41px;
+    padding: 9px 12px;
+
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   10. MATCH TABLE
+   ========================================================== */
+
+.matching-table {
+    min-width: 1250px;
+}
+
+.matching-table th,
+.matching-compact-table th,
+.matching-history-table th {
+    font-size: 9px;
+    letter-spacing: .4px;
+}
+
+.matching-table td,
+.matching-compact-table td,
+.matching-history-table td {
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+.match-reference {
+    color: var(--blue-dark);
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.match-employee {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.match-job {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.match-employer {
+    color: var(--text);
+    font-weight: 650;
+}
+
+.match-location {
+    color: var(--text-secondary);
+    font-size: 10px;
+}
+
+.match-secondary {
+    display: block;
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+    font-weight: 450;
+}
+
+.match-view-button {
+    padding: 7px 10px;
+
+    color: var(--blue-dark);
+    background: var(--blue-light);
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+
+    font-size: 9px;
+    font-weight: 750;
+}
+
+.match-view-button:hover {
+    border-color: var(--blue);
+}
+
+
+/* ==========================================================
+   11. COMPATIBILITY SCORES
+   ========================================================== */
+
+.match-score {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 60px;
+    padding: 6px 9px;
+
+    color: var(--text-secondary);
+    background: #EDF0F5;
+
+    border-radius: 30px;
+
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.match-score.high {
+    color: var(--success);
+    background: var(--success-bg);
+}
+
+.match-score.medium {
+    color: var(--warning);
+    background: var(--warning-bg);
+}
+
+.match-score.low {
+    color: var(--danger);
+    background: var(--danger-bg);
+}
+
+.match-score.unavailable {
+    color: var(--text-muted);
+    background: #EDF0F5;
+}
+
+
+/* ==========================================================
+   12. MATCH STATUS BADGES
+   ========================================================== */
+
+.match-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 9px;
+
+    border-radius: 30px;
+
+    font-size: 9px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.match-status.pending {
+    color: var(--warning);
+    background: var(--warning-bg);
+}
+
+.match-status.active {
+    color: var(--blue-dark);
+    background: var(--blue-light);
+}
+
+.match-status.accepted {
+    color: var(--success);
+    background: var(--success-bg);
+}
+
+.match-status.declined {
+    color: var(--danger);
+    background: var(--danger-bg);
+}
+
+.match-status.successful {
+    color: var(--success);
+    background: var(--success-bg);
+}
+
+.match-status.flagged {
+    color: #A44A16;
+    background: #FFF0E7;
+}
+
+.match-status.expired {
+    color: var(--text-secondary);
+    background: #EDF0F5;
+}
+
+.match-status.rejected {
+    color: var(--danger);
+    background: var(--danger-bg);
+}
+
+.match-status.under_review {
+    color: #6848A3;
+    background: #F1EBFC;
+}
+
+
+/* ==========================================================
+   13. EMPTY STATES
+   ========================================================== */
+
+.matching-empty {
+    padding: 35px 17px;
+    text-align: center;
+}
+
+.matching-empty h4 {
+    color: var(--navy);
+    font-size: 13px;
+}
+
+.matching-empty p {
+    max-width: 410px;
+    margin: 7px auto 0;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   14. PAGINATION
+   ========================================================== */
+
+.matching-pagination,
+.matching-section-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 13px;
+
+    padding-top: 19px;
+}
+
+.matching-pagination>span,
+.matching-section-footer>span {
+    color: var(--text-secondary);
+    font-size: 10px;
+}
+
+
+/* ==========================================================
+   15. UNMATCHED AND UNFILLED SECTIONS
+   ========================================================== */
+
+.matching-secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+
+    margin-top: 23px;
+}
+
+.matching-exception-card {
+    min-width: 0;
+}
+
+.matching-exception-filters {
+    margin-bottom: 13px;
+}
+
+.matching-exception-filters input {
+    width: 100%;
+    min-height: 39px;
+
+    padding: 9px 11px;
+
+    color: var(--text);
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    font-size: 10px;
+}
+
+.matching-exception-filters input:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+.matching-compact-table {
+    min-width: 720px;
+}
+
+.matching-section-footer .pagination-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.matching-section-footer .pagination-actions button {
+    padding: 7px 9px;
+    font-size: 9px;
+}
+
+
+/* ==========================================================
+   16. FAIRNESS MONITORING
+   ========================================================== */
+
+.matching-fairness {
+    margin-top: 23px;
+}
+
+.fairness-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.fairness-card {
+    min-width: 0;
+    padding: 17px;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+.fairness-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--blue);
+}
+
+.fairness-icon {
+    display: grid;
+    place-items: center;
+
+    width: 36px;
+    height: 36px;
+
+    margin-bottom: 12px;
+
+    color: var(--blue-dark);
+    background: var(--blue-light);
+
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+.fairness-card h4 {
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.fairness-card strong {
+    display: block;
+    margin-top: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.fairness-card p {
+    min-height: 54px;
+    margin-top: 8px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.matching-fairness-note {
+    margin-top: 17px;
+    padding-top: 14px;
+
+    color: var(--text-muted);
+
+    border-top: 1px solid var(--border);
+
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   17. MATCHING HISTORY
+   ========================================================== */
+
+.matching-history-card {
+    margin-top: 23px;
+}
+
+.matching-history-table {
+    min-width: 1000px;
+}
+
+.matching-event-reference {
+    color: var(--blue-dark);
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.matching-event-description {
+    max-width: 300px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   18. ADMINISTRATIVE GUIDANCE
+   ========================================================== */
+
+.matching-guidance {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    margin-top: 23px;
+
+    border-left: 4px solid var(--cyan);
+}
+
+.matching-guidance-icon {
+    display: grid;
+    place-items: center;
+
+    width: 37px;
+    height: 37px;
+
+    flex-shrink: 0;
+
+    color: var(--blue-dark);
+    background: var(--blue-light);
+
+    border-radius: 10px;
+
+    font-size: 17px;
+}
+
+.matching-guidance h3 {
+    margin-bottom: 7px;
+    color: var(--navy);
+    font-size: 13px;
+}
+
+.matching-guidance p {
+    color: var(--text-secondary);
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   19. MATCH DETAIL DRAWERS
+   ========================================================== */
+
+.matching-detail-overlay,
+.matching-employee-overlay,
+.matching-job-overlay {
+    position: fixed;
+    z-index: 1500;
+    inset: 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    background: rgba(4, 5, 35, .58);
+    backdrop-filter: blur(2px);
+}
+
+.matching-detail-panel,
+.matching-employee-panel,
+.matching-job-panel {
+    width: min(100%, 650px);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--white);
+
+    box-shadow: var(--shadow-lg);
+
+    animation: matching-slide-in .22s ease;
+}
+
+@keyframes matching-slide-in {
+    from {
+        transform: translateX(25px);
+        opacity: .6;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.matching-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 23px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.matching-detail-header h2 {
+    color: var(--navy);
+    font-size: 19px;
+}
+
+.matching-detail-close {
+    width: 37px;
+    height: 37px;
+
+    color: var(--navy);
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    font-size: 23px;
+}
+
+.matching-detail-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 23px;
+}
+
+.matching-detail-section {
+    padding: 17px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.matching-detail-section:first-child {
+    padding-top: 0;
+}
+
+.matching-detail-section h3 {
+    margin-bottom: 14px;
+
+    color: var(--navy);
+
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.matching-detail-field {
+    margin-bottom: 13px;
+}
+
+.matching-detail-field:last-child {
+    margin-bottom: 0;
+}
+
+.matching-detail-field label {
+    display: block;
+    margin-bottom: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+}
+
+.matching-detail-field p {
+    color: var(--text);
+
+    font-size: 11px;
+    line-height: 1.8;
+
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.matching-detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    padding: 18px 23px;
+
+    border-top: 1px solid var(--border);
+}
+
+.matching-detail-actions .btn {
+    flex: 1 1 135px;
+}
+
+.matching-action-note {
+    width: 100%;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   20. MATCH COMPATIBILITY BREAKDOWN
+   ========================================================== */
+
+.matching-breakdown-item {
+    margin-bottom: 16px;
+}
+
+.matching-breakdown-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-bottom: 7px;
+}
+
+.matching-breakdown-heading span {
+    color: var(--text-secondary);
+    font-size: 10px;
+}
+
+.matching-breakdown-heading strong {
+    color: var(--navy);
+    font-size: 10px;
+}
+
+.matching-breakdown-track {
+    height: 7px;
+    overflow: hidden;
+
+    background: #EDF0F5;
+
+    border-radius: 20px;
+}
+
+.matching-breakdown-fill {
+    height: 100%;
+
+    background: var(--blue);
+
+    border-radius: inherit;
+}
+
+
+/* ==========================================================
+   21. MATCHING HISTORY TIMELINE
+   ========================================================== */
+
+.matching-timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.matching-timeline-item {
+    position: relative;
+
+    padding: 0 0 18px 21px;
+
+    border-left: 2px solid #DCE8F1;
+}
+
+.matching-timeline-item:last-child {
+    padding-bottom: 0;
+    border-left-color: transparent;
+}
+
+.matching-timeline-item::before {
+    content: "";
+
+    position: absolute;
+    left: -6px;
+    top: 3px;
+
+    width: 10px;
+    height: 10px;
+
+    background: var(--cyan);
+
+    border: 2px solid var(--white);
+    border-radius: 50%;
+}
+
+.matching-timeline-item strong {
+    display: block;
+    color: var(--navy);
+    font-size: 10px;
+}
+
+.matching-timeline-item p {
+    margin-top: 4px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.matching-timeline-item time {
+    display: block;
+    margin-top: 5px;
+
+    color: var(--text-muted);
+    font-size: 9px;
+}
+
+
+/* ==========================================================
+   22. CONFIRMATION DIALOG
+   ========================================================== */
+
+.matching-confirm-overlay {
+    position: fixed;
+    z-index: 1700;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    padding: 18px;
+
+    background: rgba(4, 5, 35, .65);
+}
+
+.matching-confirm-dialog {
+    width: min(100%, 470px);
+    padding: 25px;
+
+    background: var(--white);
+
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.matching-confirm-dialog h2 {
+    color: var(--navy);
+    font-size: 17px;
+}
+
+.matching-confirm-dialog>p {
+    margin: 10px 0 20px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.matching-confirm-dialog>label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.matching-confirm-dialog textarea {
+    width: 100%;
+    min-height: 100px;
+
+    padding: 12px;
+
+    color: var(--text);
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+
+    font-size: 11px;
+}
+
+.matching-confirm-dialog textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+
+    box-shadow: 0 0 0 3px rgba(22, 139, 210, .12);
+}
+
+.matching-confirm-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+
+/* ==========================================================
+   23. TABLET
+   ========================================================== */
+
+@media (max-width: 1250px) {
+
+    .matching-filters {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .matching-search-field {
+        grid-column: span 2;
+    }
+
+    .matching-performance-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .fairness-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 950px) {
+
+    .matching-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .matching-performance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .matching-secondary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ==========================================================
+   24. MOBILE
+   ========================================================== */
+
+@media (max-width: 650px) {
+
+    .matching-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .matching-heading-actions {
+        width: 100%;
+    }
+
+    .matching-heading-actions .btn {
+        flex: 1;
+    }
+
+    .matching-stats {
+        gap: 10px;
+    }
+
+    .matching-stat-card {
+        padding: 14px;
+    }
+
+    .matching-stat-card strong {
+        font-size: 23px;
+    }
+
+    .matching-filters {
+        grid-template-columns: 1fr 1fr;
+        padding: 13px;
+    }
+
+    .matching-search-field {
+        grid-column: span 2;
+    }
+
+    .matching-filters .btn {
+        width: 100%;
+    }
+
+    .performance-metrics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .performance-metric {
+        padding: 12px;
+    }
+
+    .performance-metric strong {
+        font-size: 20px;
+    }
+
+    .engine-information {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .fairness-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fairness-card p {
+        min-height: auto;
+    }
+
+    .matching-pagination .pagination-actions {
+        width: 100%;
+    }
+
+    .matching-pagination .pagination-actions button {
+        flex: 1;
+    }
+
+    .matching-section-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .matching-section-footer .pagination-actions {
+        width: 100%;
+    }
+
+    .matching-section-footer .pagination-actions button {
+        flex: 1;
+    }
+
+    .matching-guidance {
+        padding: 16px;
+    }
+
+    .matching-detail-actions .btn {
+        flex-basis: 100%;
+    }
+
+}
+
+
+/* ==========================================================
+   25. SMALL MOBILE
+   ========================================================== */
+
+@media (max-width: 380px) {
+
+    .matching-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .matching-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .matching-search-field {
+        grid-column: auto;
+    }
+
+    .performance-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .matching-confirm-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .matching-confirm-buttons .btn {
+        width: 100%;
+    }
+
+}
+
+
+/* ==========================================================
+   26. ACCESSIBILITY
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .matching-detail-panel,
+    .matching-employee-panel,
+    .matching-job-panel {
+        animation: none;
+    }
+
+}

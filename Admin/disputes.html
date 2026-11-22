@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101a35">
+
+    <title>Global Dispute Resolution & Appeals | TALVORA</title>
+
+    <link rel="stylesheet" href="disputes.css">
+    <script src="disputes.js" defer></script>
+</head>
+
+<body>
+
+    <div class="td-app">
+
+        <!-- SIDEBAR OVERLAY -->
+        <div class="td-sidebar-overlay" id="td-sidebar-overlay"></div>
+
+        <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+        <aside class="td-sidebar" id="td-sidebar">
+
+            <div class="td-brand">
+                <div class="td-brand-icon">T</div>
+
+                <div class="td-brand-text">
+                    <strong>TALVORA</strong>
+                    <span>SUPER ADMINISTRATION</span>
+                </div>
+
+                <button class="td-icon-button td-sidebar-close" id="td-sidebar-close" aria-label="Close navigation">
+                    ×
+                </button>
+            </div>
+
+            <div class="td-sidebar-label">GLOBAL OPERATIONS</div>
+
+            <nav class="td-navigation" aria-label="Dispute management navigation">
+
+                <button class="td-nav-link active" data-view="overview">
+                    <span>▦</span>
+                    Overview
+                </button>
+
+                <button class="td-nav-link" data-view="cases">
+                    <span>▤</span>
+                    Global Dispute Register
+                    <span class="td-nav-count" id="td-case-count">—</span>
+                </button>
+
+                <button class="td-nav-link" data-view="intake">
+                    <span>＋</span>
+                    New Dispute Intake
+                </button>
+
+                <button class="td-nav-link" data-view="assignment">
+                    <span>♧</span>
+                    Case Assignment
+                </button>
+
+                <button class="td-nav-link" data-view="investigations">
+                    <span>⌕</span>
+                    Investigations
+                </button>
+
+                <button class="td-nav-link" data-view="mediation">
+                    <span>⇄</span>
+                    Mediation & Resolution
+                </button>
+
+                <button class="td-nav-link" data-view="appeals">
+                    <span>⚖</span>
+                    Appeals Management
+                    <span class="td-nav-count" id="td-appeal-count">—</span>
+                </button>
+
+                <div class="td-sidebar-label">CASE GOVERNANCE</div>
+
+                <button class="td-nav-link" data-view="evidence">
+                    <span>▧</span>
+                    Evidence & Documents
+                </button>
+
+                <button class="td-nav-link" data-view="decisions">
+                    <span>✓</span>
+                    Administrative Decisions
+                </button>
+
+                <button class="td-nav-link" data-view="notifications">
+                    <span>♧</span>
+                    Notifications & Escalations
+                </button>
+
+                <div class="td-sidebar-label">INTELLIGENCE & OVERSIGHT</div>
+
+                <button class="td-nav-link" data-view="reports">
+                    <span>▥</span>
+                    Reports & Analytics
+                </button>
+
+                <button class="td-nav-link" data-view="audit">
+                    <span>◷</span>
+                    Audit & Accountability
+                </button>
+
+            </nav>
+
+            <div class="td-sidebar-bottom">
+
+                <div class="td-authority-card">
+                    <div class="td-authority-icon">♙</div>
+
+                    <div>
+                        <strong>Super Admin Authority</strong>
+                        <span>10 Administrator Accounts</span>
+                        <span>Hybrid Decision Governance</span>
+                    </div>
+                </div>
+
+                <a href="index.html" class="td-back-link">
+                    ← Back to Super Admin Dashboard
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+
+        <main class="td-main">
+
+            <!-- TOPBAR -->
+
+            <header class="td-topbar">
+
+                <div class="td-topbar-left">
+
+                    <button class="td-icon-button td-menu-button" id="td-menu-button" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div>
+                        <div class="td-breadcrumb">
+                            TALVORA / SUPER ADMIN / GLOBAL GOVERNANCE
+                        </div>
+
+                        <h1>Dispute Resolution Centre</h1>
+                    </div>
+
+                </div>
+
+
+                <div class="td-topbar-right">
+
+                    <div class="td-live-status">
+                        <span class="td-status-dot"></span>
+                        Operational Workspace
+                    </div>
+
+                    <button class="td-notification-button" id="td-notification-button" aria-label="Open notifications">
+                        ♧
+                        <span class="td-notification-badge" id="td-notification-badge">—</span>
+                    </button>
+
+                    <div class="td-admin-profile">
+                        <div class="td-admin-avatar">SA</div>
+
+                        <div>
+                            <strong>Super Administrator</strong>
+                            <span>Global Governance</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- SYSTEM NOTICE -->
+
+            <div class="td-system-notice" id="td-system-notice">
+
+                <span>ⓘ</span>
+
+                <span id="td-system-notice-text">
+                    Initializing the global dispute management workspace.
+                </span>
+
+            </div>
+
+
+            <!-- ==================================================
+             GLOBAL FILTERS
+        =================================================== -->
+
+            <section class="td-filter-panel">
+
+                <div class="td-filter-heading">
+                    <div>
+                        <strong>Global Case Filters</strong>
+                        <span>Filter disputes across countries, categories and severity levels.</span>
+                    </div>
+
+                    <button class="td-text-button" id="td-clear-filters">
+                        Clear filters
+                    </button>
+                </div>
+
+
+                <div class="td-filter-controls">
+
+                    <div class="td-filter-field">
+                        <label for="td-date-from">From date</label>
+                        <input type="date" id="td-date-from">
+                    </div>
+
+                    <div class="td-filter-field">
+                        <label for="td-date-to">To date</label>
+                        <input type="date" id="td-date-to">
+                    </div>
+
+                    <div class="td-filter-field">
+                        <label for="td-country-filter">Country</label>
+                        <select id="td-country-filter">
+                            <option value="">All countries</option>
+                        </select>
+                    </div>
+
+                    <div class="td-filter-field">
+                        <label for="td-severity-filter">Severity</label>
+                        <select id="td-severity-filter">
+                            <option value="">All severity levels</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="td-filter-actions">
+
+                        <button class="td-button td-button-primary" id="td-apply-filters">
+                            Apply Filters
+                        </button>
+
+                        <button class="td-button td-button-light" id="td-refresh">
+                            ↻ Refresh
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 1: OVERVIEW
+        =================================================== -->
+
+            <section class="td-view active" id="td-view-overview">
+
+                <div class="td-page-heading">
+
+                    <div>
+                        <span class="td-eyebrow">GLOBAL GOVERNANCE & DISPUTE INTELLIGENCE</span>
+
+                        <h2>Global Dispute Overview</h2>
+
+                        <p>
+                            Centralized oversight of employment disputes,
+                            financial complaints, appeals and administrative resolutions.
+                        </p>
+                    </div>
+
+                    <div class="td-heading-actions">
+
+                        <button class="td-button td-button-light" data-go-view="reports">
+                            Reports
+                        </button>
+
+                        <button class="td-button td-button-primary" id="td-create-case">
+                            + Register Dispute
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- KPI CARDS -->
+
+                <div class="td-kpi-grid">
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Total Registered Cases</span>
+                            <span class="td-kpi-icon purple">▤</span>
+                        </div>
+
+                        <strong id="td-kpi-total">—</strong>
+                        <span>All registered disputes</span>
+                    </article>
+
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Open Disputes</span>
+                            <span class="td-kpi-icon blue">◷</span>
+                        </div>
+
+                        <strong id="td-kpi-open">—</strong>
+                        <span>Cases requiring attention</span>
+                    </article>
+
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Critical Cases</span>
+                            <span class="td-kpi-icon red">!</span>
+                        </div>
+
+                        <strong id="td-kpi-critical">—</strong>
+                        <span>Highest-priority disputes</span>
+                    </article>
+
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Overdue Cases</span>
+                            <span class="td-kpi-icon orange">◴</span>
+                        </div>
+
+                        <strong id="td-kpi-overdue">—</strong>
+                        <span>Cases past their applicable deadlines</span>
+                    </article>
+
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Pending Appeals</span>
+                            <span class="td-kpi-icon purple">⚖</span>
+                        </div>
+
+                        <strong id="td-kpi-appeals">—</strong>
+                        <span>Appeals awaiting review</span>
+                    </article>
+
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Awaiting Decision</span>
+                            <span class="td-kpi-icon orange">⌛</span>
+                        </div>
+
+                        <strong id="td-kpi-decisions">—</strong>
+                        <span>Cases awaiting authorized decisions</span>
+                    </article>
+
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Under Investigation</span>
+                            <span class="td-kpi-icon blue">⌕</span>
+                        </div>
+
+                        <strong id="td-kpi-investigations">—</strong>
+                        <span>Active investigations</span>
+                    </article>
+
+
+                    <article class="td-kpi-card">
+                        <div class="td-kpi-top">
+                            <span>Resolved Cases</span>
+                            <span class="td-kpi-icon green">✓</span>
+                        </div>
+
+                        <strong id="td-kpi-resolved">—</strong>
+                        <span>Cases formally resolved</span>
+                    </article>
+
+                </div>
+
+
+                <!-- CHARTS -->
+
+                <div class="td-dashboard-grid">
+
+                    <article class="td-panel">
+
+                        <div class="td-panel-heading">
+
+                            <div>
+                                <h3>Dispute Trends</h3>
+                                <p>Case registration and resolution trends</p>
+                            </div>
+
+                            <select id="td-trend-period" aria-label="Trend reporting period">
+                                <option value="30d">Last 30 days</option>
+                                <option value="90d">Last 90 days</option>
+                                <option value="6m">Last 6 months</option>
+                                <option value="12m">Last 12 months</option>
+                            </select>
+
+                        </div>
+
+                        <div class="td-chart-container" id="td-dispute-trend">
+                            <div class="td-empty-chart">
+                                Waiting for dispute trend data.
+                            </div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="td-panel">
+
+                        <div class="td-panel-heading">
+                            <div>
+                                <h3>Dispute Severity</h3>
+                                <p>Distribution by severity classification</p>
+                            </div>
+                        </div>
+
+                        <div class="td-chart-container" id="td-severity-chart">
+                            <div class="td-empty-chart">
+                                Waiting for severity data.
+                            </div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- CASE CATEGORY OVERVIEW -->
+
+                <div class="td-section-spacing">
+
+                    <div class="td-section-heading">
+                        <div>
+                            <h3>Global Dispute Categories</h3>
+                            <p>All recognized dispute and complaint classifications</p>
+                        </div>
+                    </div>
+
+
+                    <div class="td-category-grid">
+
+                        <button class="td-category-card" data-category="employment">
+                            <span class="td-category-icon purple">♙</span>
+                            <strong>Employment Disputes</strong>
+                            <span>Contracts, termination and working conditions</span>
+                            <small id="td-cat-employment">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="employer_employee">
+                            <span class="td-category-icon blue">⇄</span>
+                            <strong>Employer–Employee</strong>
+                            <span>Workplace disagreements and complaints</span>
+                            <small id="td-cat-employer-employee">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="recruitment">
+                            <span class="td-category-icon orange">⌕</span>
+                            <strong>Recruitment & Placement</strong>
+                            <span>Recruitment agency and placement disputes</span>
+                            <small id="td-cat-recruitment">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="financial">
+                            <span class="td-category-icon green">¤</span>
+                            <strong>Financial Disputes</strong>
+                            <span>Salary, payments and benefits</span>
+                            <small id="td-cat-financial">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="identity">
+                            <span class="td-category-icon purple">▧</span>
+                            <strong>Identity & Verification</strong>
+                            <span>Identity, authenticity and verification appeals</span>
+                            <small id="td-cat-identity">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="account">
+                            <span class="td-category-icon red">⚿</span>
+                            <strong>Account Appeals</strong>
+                            <span>Suspensions, restrictions and termination</span>
+                            <small id="td-cat-account">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="conduct">
+                            <span class="td-category-icon orange">⚖</span>
+                            <strong>Conduct & Misconduct</strong>
+                            <span>Harassment, discrimination and misconduct</span>
+                            <small id="td-cat-conduct">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="compliance">
+                            <span class="td-category-icon blue">▣</span>
+                            <strong>Compliance & Regulatory</strong>
+                            <span>Regulatory and jurisdictional complaints</span>
+                            <small id="td-cat-compliance">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="privacy">
+                            <span class="td-category-icon purple">◈</span>
+                            <strong>Privacy & Data</strong>
+                            <span>Personal data and privacy complaints</span>
+                            <small id="td-cat-privacy">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="fraud">
+                            <span class="td-category-icon red">!</span>
+                            <strong>Fraud & Forgery</strong>
+                            <span>Impersonation and document authenticity</span>
+                            <small id="td-cat-fraud">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="cross_border">
+                            <span class="td-category-icon green">◎</span>
+                            <strong>Cross-Border Disputes</strong>
+                            <span>International employment disagreements</span>
+                            <small id="td-cat-cross-border">— cases</small>
+                        </button>
+
+
+                        <button class="td-category-card" data-category="platform">
+                            <span class="td-category-icon blue">⌘</span>
+                            <strong>Platform Complaints</strong>
+                            <span>Platform conduct and policy violations</span>
+                            <small id="td-cat-platform">— cases</small>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT CASES -->
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+
+                        <div>
+                            <h3>Recent Global Disputes</h3>
+                            <p>Latest registered cases requiring administrative oversight</p>
+                        </div>
+
+                        <button class="td-text-button" data-go-view="cases">
+                            View all cases →
+                        </button>
+
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>CASE REFERENCE</th>
+                                    <th>DISPUTE TITLE</th>
+                                    <th>CATEGORY</th>
+                                    <th>COUNTRY</th>
+                                    <th>SEVERITY</th>
+                                    <th>STATUS</th>
+                                    <th>DATE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-recent-cases">
+                                <tr>
+                                    <td colspan="8" class="td-table-empty">
+                                        No dispute records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 2: GLOBAL DISPUTE REGISTER
+        =================================================== -->
+
+            <section class="td-view" id="td-view-cases">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">CASE MANAGEMENT</span>
+                        <h2>Global Dispute Register</h2>
+                        <p>Centralized records of every registered dispute across TALVORA.</p>
+                    </div>
+
+                    <div class="td-heading-actions">
+                        <button class="td-button td-button-light" data-report="cases">
+                            Export Register
+                        </button>
+
+                        <button class="td-button td-button-primary" id="td-register-case">
+                            + New Dispute
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="td-panel">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>All Dispute Records</h3>
+                            <p>Search and review global case records</p>
+                        </div>
+
+                        <div class="td-inline-actions">
+                            <input type="search" id="td-case-search" placeholder="Search case reference or title..."
+                                aria-label="Search disputes">
+                        </div>
+                    </div>
+
+
+                    <div class="td-inline-filters">
+
+                        <select id="td-case-status-filter">
+                            <option value="">All statuses</option>
+                            <option value="submitted">Submitted</option>
+                            <option value="under_review">Under Review</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="mediation">Mediation</option>
+                            <option value="awaiting_decision">Awaiting Decision</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="appealed">Appealed</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <select id="td-case-category-filter">
+                            <option value="">All categories</option>
+                        </select>
+
+                        <select id="td-case-priority-filter">
+                            <option value="">All priorities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>DISPUTE</th>
+                                    <th>COMPLAINANT</th>
+                                    <th>RESPONDENT</th>
+                                    <th>COUNTRY</th>
+                                    <th>CATEGORY</th>
+                                    <th>SEVERITY</th>
+                                    <th>ASSIGNED ADMIN</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-cases-table">
+                                <tr>
+                                    <td colspan="10" class="td-table-empty">
+                                        No dispute records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 3: DISPUTE INTAKE
+        =================================================== -->
+
+            <section class="td-view" id="td-view-intake">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">CASE REGISTRATION</span>
+                        <h2>New Dispute Intake</h2>
+                        <p>Register and classify a dispute for global administrative handling.</p>
+                    </div>
+                </div>
+
+
+                <div class="td-panel">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Dispute Registration</h3>
+                            <p>Provide the initial case information and supporting details.</p>
+                        </div>
+                    </div>
+
+
+                    <form id="td-intake-form">
+
+                        <div class="td-form-grid">
+
+                            <div class="td-form-field">
+                                <label for="td-intake-title">Dispute title *</label>
+                                <input id="td-intake-title" name="title" required maxlength="180"
+                                    placeholder="Enter dispute title">
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-category">Dispute category *</label>
+                                <select id="td-intake-category" name="category" required>
+                                    <option value="">Select category</option>
+                                </select>
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-country">Country *</label>
+                                <select id="td-intake-country" name="country" required>
+                                    <option value="">Select country</option>
+                                </select>
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-jurisdiction">Jurisdiction</label>
+                                <input id="td-intake-jurisdiction" name="jurisdiction"
+                                    placeholder="Applicable jurisdiction">
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-complainant-type">Complainant type *</label>
+                                <select id="td-intake-complainant-type" name="complainantType" required>
+                                    <option value="">Select party</option>
+                                    <option value="employee">Employee</option>
+                                    <option value="employer">Employer</option>
+                                    <option value="recruitment_agency">Recruitment Agency</option>
+                                    <option value="administrator">Administrator</option>
+                                    <option value="third_party">Third Party</option>
+                                    <option value="regulatory_body">Regulatory Body</option>
+                                </select>
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-complainant">Complainant reference *</label>
+                                <input id="td-intake-complainant" name="complainantReference" required
+                                    placeholder="User or organization reference">
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-respondent-type">Respondent type</label>
+                                <select id="td-intake-respondent-type" name="respondentType">
+                                    <option value="">Select party</option>
+                                    <option value="employee">Employee</option>
+                                    <option value="employer">Employer</option>
+                                    <option value="recruitment_agency">Recruitment Agency</option>
+                                    <option value="administrator">Administrator</option>
+                                    <option value="third_party">Third Party</option>
+                                    <option value="platform">TALVORA Platform</option>
+                                </select>
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-respondent">Respondent reference</label>
+                                <input id="td-intake-respondent" name="respondentReference"
+                                    placeholder="User or organization reference">
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-severity">Severity *</label>
+                                <select id="td-intake-severity" name="severity" required>
+                                    <option value="">Select severity</option>
+                                    <option value="critical">Critical</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-priority">Priority</label>
+                                <select id="td-intake-priority" name="priority">
+                                    <option value="">Use classification rules</option>
+                                    <option value="urgent">Urgent</option>
+                                    <option value="high">High</option>
+                                    <option value="normal">Normal</option>
+                                </select>
+                            </div>
+
+
+                            <div class="td-form-field td-form-full">
+                                <label for="td-intake-description">Dispute description *</label>
+                                <textarea id="td-intake-description" name="description" required minlength="10"
+                                    placeholder="Describe the complaint, events and circumstances..."></textarea>
+                            </div>
+
+
+                            <div class="td-form-field td-form-full">
+                                <label for="td-intake-outcome">Requested resolution</label>
+                                <textarea id="td-intake-outcome" name="requestedOutcome"
+                                    placeholder="Describe the resolution requested by the complainant..."></textarea>
+                            </div>
+
+
+                            <div class="td-form-field td-form-full">
+                                <label for="td-intake-evidence">Evidence reference</label>
+                                <input id="td-intake-evidence" name="evidenceReference"
+                                    placeholder="Optional evidence or document reference">
+                            </div>
+
+
+                            <div class="td-form-field">
+                                <label for="td-intake-source">Submission source</label>
+                                <select id="td-intake-source" name="source">
+                                    <option value="super_admin">Super Admin</option>
+                                    <option value="employee_portal">Employee Portal</option>
+                                    <option value="employer_portal">Employer Portal</option>
+                                    <option value="external">External Submission</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <div class="td-form-footer">
+
+                            <button type="reset" class="td-button td-button-light">
+                                Clear Form
+                            </button>
+
+                            <button type="submit" class="td-button td-button-primary">
+                                Submit Dispute
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 4: CASE ASSIGNMENT
+        =================================================== -->
+
+            <section class="td-view" id="td-view-assignment">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">ADMINISTRATOR MANAGEMENT</span>
+                        <h2>Case Assignment Centre</h2>
+                        <p>Automatic workload distribution, manual assignment and administrator accountability.</p>
+                    </div>
+
+                    <button class="td-button td-button-primary" id="td-assignment-settings">
+                        Assignment Settings
+                    </button>
+                </div>
+
+
+                <div class="td-kpi-grid td-kpi-grid-four">
+
+                    <article class="td-kpi-card">
+                        <span>Unassigned Cases</span>
+                        <strong id="td-assignment-unassigned">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Assigned Cases</span>
+                        <strong id="td-assignment-assigned">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Overloaded Workloads</span>
+                        <strong id="td-assignment-overloaded">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Active Administrators</span>
+                        <strong id="td-assignment-admins">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Administrator Workload</h3>
+                            <p>Case allocation and responsibility across the 10 Super Admins.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>ADMINISTRATOR</th>
+                                    <th>ASSIGNED CASES</th>
+                                    <th>ACTIVE CASES</th>
+                                    <th>OVERDUE CASES</th>
+                                    <th>WORKLOAD</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-admin-workload">
+                                <tr>
+                                    <td colspan="6" class="td-table-empty">
+                                        Administrator workload data not loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Unassigned Disputes</h3>
+                            <p>Cases awaiting administrator allocation.</p>
+                        </div>
+
+                        <button class="td-button td-button-light" id="td-auto-assign">
+                            Automatic Assignment
+                        </button>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>CASE REFERENCE</th>
+                                    <th>DISPUTE</th>
+                                    <th>CATEGORY</th>
+                                    <th>SEVERITY</th>
+                                    <th>COUNTRY</th>
+                                    <th>SUBMITTED</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-unassigned-table">
+                                <tr>
+                                    <td colspan="7" class="td-table-empty">
+                                        No unassigned case records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 5: INVESTIGATIONS
+        =================================================== -->
+
+            <section class="td-view" id="td-view-investigations">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">CASE INVESTIGATION</span>
+                        <h2>Investigation Centre</h2>
+                        <p>Review allegations, investigate disputes and document findings.</p>
+                    </div>
+
+                    <button class="td-button td-button-primary" id="td-new-investigation">
+                        + Start Investigation
+                    </button>
+                </div>
+
+
+                <div class="td-kpi-grid td-kpi-grid-four">
+
+                    <article class="td-kpi-card">
+                        <span>Active Investigations</span>
+                        <strong id="td-invest-active">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Awaiting Evidence</span>
+                        <strong id="td-invest-evidence">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Escalated Investigations</span>
+                        <strong id="td-invest-escalated">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Completed Investigations</span>
+                        <strong id="td-invest-completed">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Investigation Register</h3>
+                            <p>All ongoing and completed dispute investigations.</p>
+                        </div>
+
+                        <select id="td-investigation-status-filter">
+                            <option value="">All statuses</option>
+                            <option value="assigned">Assigned</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="awaiting_evidence">Awaiting Evidence</option>
+                            <option value="escalated">Escalated</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>INVESTIGATION ID</th>
+                                    <th>CASE REFERENCE</th>
+                                    <th>INVESTIGATOR</th>
+                                    <th>COUNTRY</th>
+                                    <th>SEVERITY</th>
+                                    <th>START DATE</th>
+                                    <th>DEADLINE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-investigations-table">
+                                <tr>
+                                    <td colspan="9" class="td-table-empty">
+                                        No investigation records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 6: MEDIATION AND RESOLUTION
+        =================================================== -->
+
+            <section class="td-view" id="td-view-mediation">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">DISPUTE RESOLUTION</span>
+                        <h2>Mediation & Resolution Centre</h2>
+                        <p>Facilitate dispute resolution and record agreed outcomes.</p>
+                    </div>
+
+                    <button class="td-button td-button-primary" id="td-new-mediation">
+                        + Schedule Mediation
+                    </button>
+                </div>
+
+
+                <div class="td-panel">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Mediation Register</h3>
+                            <p>Cases undergoing mediation and negotiated resolution.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>MEDIATION ID</th>
+                                    <th>CASE REFERENCE</th>
+                                    <th>PARTIES</th>
+                                    <th>MEDIATOR</th>
+                                    <th>COUNTRY</th>
+                                    <th>SCHEDULED DATE</th>
+                                    <th>OUTCOME</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-mediation-table">
+                                <tr>
+                                    <td colspan="9" class="td-table-empty">
+                                        No mediation records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Resolution Framework</h3>
+                            <p>Resolution methods available to authorized administrators.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="td-resolution-grid">
+
+                        <article class="td-resolution-card">
+                            <span class="td-resolution-icon purple">⇄</span>
+                            <strong>Voluntary Mediation</strong>
+                            <p>Facilitated discussions between disputing parties.</p>
+                        </article>
+
+                        <article class="td-resolution-card">
+                            <span class="td-resolution-icon blue">⚖</span>
+                            <strong>Administrative Determination</strong>
+                            <p>Formal decision by an authorized administrator.</p>
+                        </article>
+
+                        <article class="td-resolution-card">
+                            <span class="td-resolution-icon green">✓</span>
+                            <strong>Mutual Settlement</strong>
+                            <p>Documented agreement between the parties.</p>
+                        </article>
+
+                        <article class="td-resolution-card">
+                            <span class="td-resolution-icon orange">↗</span>
+                            <strong>External Escalation</strong>
+                            <p>Referral to an appropriate external authority where applicable.</p>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 7: APPEALS
+        =================================================== -->
+
+            <section class="td-view" id="td-view-appeals">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">ADMINISTRATIVE REVIEW</span>
+                        <h2>Global Appeals Management</h2>
+                        <p>Review contested decisions, account restrictions and previous resolutions.</p>
+                    </div>
+
+                    <button class="td-button td-button-light" data-report="appeals">
+                        Export Appeals
+                    </button>
+                </div>
+
+
+                <div class="td-kpi-grid td-kpi-grid-four">
+
+                    <article class="td-kpi-card">
+                        <span>Total Appeals</span>
+                        <strong id="td-appeal-total">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Awaiting Review</span>
+                        <strong id="td-appeal-pending">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Under Review</span>
+                        <strong id="td-appeal-review">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Decided Appeals</span>
+                        <strong id="td-appeal-decided">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Appeals Register</h3>
+                            <p>All first-level and subsequent administrative appeals.</p>
+                        </div>
+
+                        <select id="td-appeal-status-filter">
+                            <option value="">All appeal statuses</option>
+                            <option value="submitted">Submitted</option>
+                            <option value="under_review">Under Review</option>
+                            <option value="awaiting_decision">Awaiting Decision</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="escalated">Escalated</option>
+                        </select>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>APPEAL REFERENCE</th>
+                                    <th>ORIGINAL CASE</th>
+                                    <th>APPELLANT</th>
+                                    <th>DECISION CONTESTED</th>
+                                    <th>COUNTRY</th>
+                                    <th>SUBMITTED</th>
+                                    <th>REVIEW DEADLINE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-appeals-table">
+                                <tr>
+                                    <td colspan="9" class="td-table-empty">
+                                        No appeal records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 8: EVIDENCE AND DOCUMENTS
+        =================================================== -->
+
+            <section class="td-view" id="td-view-evidence">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">EVIDENCE GOVERNANCE</span>
+                        <h2>Evidence & Document Review</h2>
+                        <p>Review, verify and manage evidence submitted in dispute cases.</p>
+                    </div>
+                </div>
+
+
+                <div class="td-kpi-grid td-kpi-grid-four">
+
+                    <article class="td-kpi-card">
+                        <span>Total Evidence Records</span>
+                        <strong id="td-evidence-total">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Awaiting Review</span>
+                        <strong id="td-evidence-pending">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Verified Documents</span>
+                        <strong id="td-evidence-verified">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Flagged Documents</span>
+                        <strong id="td-evidence-flagged">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Evidence Register</h3>
+                            <p>Evidence associated with disputes and appeals.</p>
+                        </div>
+
+                        <select id="td-evidence-status-filter">
+                            <option value="">All evidence statuses</option>
+                            <option value="pending">Pending Review</option>
+                            <option value="verified">Verified</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="flagged">Flagged</option>
+                        </select>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>DOCUMENT ID</th>
+                                    <th>CASE REFERENCE</th>
+                                    <th>DOCUMENT TYPE</th>
+                                    <th>SUBMITTED BY</th>
+                                    <th>COUNTRY</th>
+                                    <th>SUBMISSION DATE</th>
+                                    <th>VERIFICATION</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-evidence-table">
+                                <tr>
+                                    <td colspan="8" class="td-table-empty">
+                                        No evidence records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 9: ADMINISTRATIVE DECISIONS
+        =================================================== -->
+
+            <section class="td-view" id="td-view-decisions">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">DECISION GOVERNANCE</span>
+                        <h2>Administrative Decisions</h2>
+                        <p>Manage formal case determinations, approvals and decision accountability.</p>
+                    </div>
+                </div>
+
+
+                <div class="td-kpi-grid td-kpi-grid-four">
+
+                    <article class="td-kpi-card">
+                        <span>Pending Decisions</span>
+                        <strong id="td-decision-pending">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Awaiting Approval</span>
+                        <strong id="td-decision-approval">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Approved Decisions</span>
+                        <strong id="td-decision-approved">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Returned for Review</span>
+                        <strong id="td-decision-returned">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Decision Register</h3>
+                            <p>Pending and completed administrative determinations.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>DECISION ID</th>
+                                    <th>CASE REFERENCE</th>
+                                    <th>DECISION TYPE</th>
+                                    <th>RECOMMENDING ADMIN</th>
+                                    <th>APPROVAL LEVEL</th>
+                                    <th>SUBMITTED DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-decisions-table">
+                                <tr>
+                                    <td colspan="8" class="td-table-empty">
+                                        No decision records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 10: NOTIFICATIONS AND ESCALATIONS
+        =================================================== -->
+
+            <section class="td-view" id="td-view-notifications">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">COMMUNICATION & ESCALATION</span>
+                        <h2>Notifications & Escalations</h2>
+                        <p>Monitor dispute notifications, deadline reminders and escalation events.</p>
+                    </div>
+
+                    <button class="td-button td-button-light" id="td-notification-history-export"
+                        data-report="notifications">
+                        Export History
+                    </button>
+                </div>
+
+
+                <div class="td-kpi-grid td-kpi-grid-four">
+
+                    <article class="td-kpi-card">
+                        <span>Pending Notifications</span>
+                        <strong id="td-notify-pending">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Critical Notifications</span>
+                        <strong id="td-notify-critical">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Overdue Escalations</span>
+                        <strong id="td-notify-overdue">—</strong>
+                    </article>
+
+                    <article class="td-kpi-card">
+                        <span>Delivery Failures</span>
+                        <strong id="td-notify-failed">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Dispute Notification History</h3>
+                            <p>Communication events and delivery records.</p>
+                        </div>
+
+                        <select id="td-notification-type-filter">
+                            <option value="">All notification types</option>
+                            <option value="critical_alert">Critical Alerts</option>
+                            <option value="case_assignment">Case Assignment</option>
+                            <option value="deadline_reminder">Deadline Reminders</option>
+                            <option value="appeal">Appeals</option>
+                            <option value="decision">Decisions</option>
+                            <option value="escalation">Escalations</option>
+                        </select>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>NOTIFICATION ID</th>
+                                    <th>EVENT</th>
+                                    <th>RECIPIENT</th>
+                                    <th>CASE REFERENCE</th>
+                                    <th>CHANNEL</th>
+                                    <th>DATE</th>
+                                    <th>DELIVERY STATUS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-notifications-table">
+                                <tr>
+                                    <td colspan="7" class="td-table-empty">
+                                        No notification records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 11: REPORTS AND ANALYTICS
+        =================================================== -->
+
+            <section class="td-view" id="td-view-reports">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">GLOBAL DISPUTE INTELLIGENCE</span>
+                        <h2>Reports & Analytics</h2>
+                        <p>Analyze dispute trends, resolution performance and country-level activity.</p>
+                    </div>
+                </div>
+
+
+                <div class="td-report-grid">
+
+                    <article class="td-report-card">
+                        <span class="td-report-icon">▤</span>
+                        <h3>Global Dispute Report</h3>
+                        <p>Comprehensive overview of registered disputes and their outcomes.</p>
+                        <button class="td-button td-button-light" data-report="global">
+                            Generate Report
+                        </button>
+                    </article>
+
+
+                    <article class="td-report-card">
+                        <span class="td-report-icon">◎</span>
+                        <h3>Country Performance</h3>
+                        <p>Compare case activity and resolution performance by country.</p>
+                        <button class="td-button td-button-light" data-report="countries">
+                            Generate Report
+                        </button>
+                    </article>
+
+
+                    <article class="td-report-card">
+                        <span class="td-report-icon">⚖</span>
+                        <h3>Appeals Report</h3>
+                        <p>Review appeal volumes, decisions and review outcomes.</p>
+                        <button class="td-button td-button-light" data-report="appeals">
+                            Generate Report
+                        </button>
+                    </article>
+
+
+                    <article class="td-report-card">
+                        <span class="td-report-icon">♙</span>
+                        <h3>Administrator Performance</h3>
+                        <p>Review workloads, assignments and administrative accountability.</p>
+                        <button class="td-button td-button-light" data-report="administrators">
+                            Generate Report
+                        </button>
+                    </article>
+
+
+                    <article class="td-report-card">
+                        <span class="td-report-icon">◷</span>
+                        <h3>Resolution Time Report</h3>
+                        <p>Analyze case timelines and resolution deadlines.</p>
+                        <button class="td-button td-button-light" data-report="resolution">
+                            Generate Report
+                        </button>
+                    </article>
+
+
+                    <article class="td-report-card">
+                        <span class="td-report-icon">▧</span>
+                        <h3>Evidence Review Report</h3>
+                        <p>Analyze document verification and evidence review activity.</p>
+                        <button class="td-button td-button-light" data-report="evidence">
+                            Generate Report
+                        </button>
+                    </article>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Country-Level Dispute Activity</h3>
+                            <p>Global case distribution by country.</p>
+                        </div>
+                    </div>
+
+                    <div class="td-chart-container" id="td-country-chart">
+                        <div class="td-empty-chart">
+                            Country-level analytics will appear here.
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="td-panel td-section-spacing">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Report History</h3>
+                            <p>Previously generated administrative reports.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>REPORT ID</th>
+                                    <th>REPORT TYPE</th>
+                                    <th>GENERATED BY</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-report-history">
+                                <tr>
+                                    <td colspan="6" class="td-table-empty">
+                                        No report history loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+             VIEW 12: AUDIT AND ACCOUNTABILITY
+        =================================================== -->
+
+            <section class="td-view" id="td-view-audit">
+
+                <div class="td-page-heading">
+                    <div>
+                        <span class="td-eyebrow">ADMINISTRATIVE OVERSIGHT</span>
+                        <h2>Audit & Accountability</h2>
+                        <p>Track administrator activities, decisions, approvals and case history.</p>
+                    </div>
+
+                    <button class="td-button td-button-light" data-report="audit">
+                        Export Audit
+                    </button>
+                </div>
+
+
+                <div class="td-panel">
+
+                    <div class="td-panel-heading">
+                        <div>
+                            <h3>Administrative Audit Trail</h3>
+                            <p>Recorded administrative actions and accountability events.</p>
+                        </div>
+
+                        <input type="search" id="td-audit-search" placeholder="Search audit records...">
+                    </div>
+
+
+                    <div class="td-table-wrapper">
+
+                        <table class="td-table">
+
+                            <thead>
+                                <tr>
+                                    <th>AUDIT REFERENCE</th>
+                                    <th>ADMINISTRATOR</th>
+                                    <th>ACTION</th>
+                                    <th>CASE REFERENCE</th>
+                                    <th>APPROVAL</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>OUTCOME</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="td-audit-table">
+                                <tr>
+                                    <td colspan="7" class="td-table-empty">
+                                        No audit records loaded.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="td-section-spacing td-audit-principles">
+
+                    <div>
+                        <span>◈</span>
+                        <strong>Administrator Accountability</strong>
+                        <p>Record case assignments, reviews and decisions.</p>
+                    </div>
+
+                    <div>
+                        <span>⚖</span>
+                        <strong>Decision Transparency</strong>
+                        <p>Maintain traceable administrative decision histories.</p>
+                    </div>
+
+                    <div>
+                        <span>▣</span>
+                        <strong>Approval Governance</strong>
+                        <p>Record required approvals for sensitive decisions.</p>
+                    </div>
+
+                    <div>
+                        <span>◷</span>
+                        <strong>Case History</strong>
+                        <p>Preserve a traceable history of case events.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="td-footer">
+                <span>© TALVORA TECHNOLOGIES — Global Dispute Governance</span>
+                <span>Super Admin Management Centre</span>
+                <span id="td-last-updated">Last updated: —</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ======================================================
+     CASE DETAILS MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-case-modal" hidden>
+
+        <div class="td-modal td-modal-large" role="dialog" aria-modal="true" aria-labelledby="td-case-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">DISPUTE RECORD</span>
+                    <h2 id="td-case-modal-title">Case Details</h2>
+                    <p id="td-case-modal-reference">—</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-case-modal" aria-label="Close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="td-case-detail-grid">
+
+                <div>
+                    <span>Dispute Title</span>
+                    <strong id="td-detail-title">—</strong>
+                </div>
+
+                <div>
+                    <span>Category</span>
+                    <strong id="td-detail-category">—</strong>
+                </div>
+
+                <div>
+                    <span>Country</span>
+                    <strong id="td-detail-country">—</strong>
+                </div>
+
+                <div>
+                    <span>Jurisdiction</span>
+                    <strong id="td-detail-jurisdiction">—</strong>
+                </div>
+
+                <div>
+                    <span>Complainant</span>
+                    <strong id="td-detail-complainant">—</strong>
+                </div>
+
+                <div>
+                    <span>Respondent</span>
+                    <strong id="td-detail-respondent">—</strong>
+                </div>
+
+                <div>
+                    <span>Severity</span>
+                    <strong id="td-detail-severity">—</strong>
+                </div>
+
+                <div>
+                    <span>Assigned Administrator</span>
+                    <strong id="td-detail-admin">—</strong>
+                </div>
+
+                <div>
+                    <span>Current Status</span>
+                    <strong id="td-detail-status">—</strong>
+                </div>
+
+                <div>
+                    <span>Deadline</span>
+                    <strong id="td-detail-deadline">—</strong>
+                </div>
+
+            </div>
+
+
+            <div class="td-detail-section">
+                <strong>Dispute Description</strong>
+                <p id="td-detail-description">—</p>
+            </div>
+
+            <div class="td-detail-section">
+                <strong>Requested Resolution</strong>
+                <p id="td-detail-outcome">—</p>
+            </div>
+
+
+            <div class="td-modal-actions">
+
+                <button class="td-button td-button-light" data-close-modal="td-case-modal">
+                    Close
+                </button>
+
+                <button class="td-button td-button-primary" id="td-case-assign-button">
+                    Assign Case
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     ASSIGNMENT MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-assignment-modal" hidden>
+
+        <div class="td-modal" role="dialog" aria-modal="true" aria-labelledby="td-assignment-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">CASE ALLOCATION</span>
+                    <h2 id="td-assignment-modal-title">Assign Administrator</h2>
+                    <p>Allocate case responsibility.</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-assignment-modal" aria-label="Close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="td-assignment-form">
+
+                <input type="hidden" id="td-assignment-case-id">
+
+                <div class="td-form-field">
+                    <label for="td-assignment-admin">
+                        Administrator *
+                    </label>
+
+                    <select id="td-assignment-admin" required>
+                        <option value="">Select administrator</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-assignment-reason">
+                        Assignment reason
+                    </label>
+
+                    <textarea id="td-assignment-reason" placeholder="Reason for assignment or reassignment..."
+                        required></textarea>
+                </div>
+
+
+                <div class="td-modal-actions">
+
+                    <button type="button" class="td-button td-button-light" data-close-modal="td-assignment-modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="td-button td-button-primary">
+                        Confirm Assignment
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     INVESTIGATION MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-investigation-modal" hidden>
+
+        <div class="td-modal" role="dialog" aria-modal="true" aria-labelledby="td-investigation-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">INVESTIGATION MANAGEMENT</span>
+                    <h2 id="td-investigation-modal-title">Start Investigation</h2>
+                    <p>Record an investigation assignment and scope.</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-investigation-modal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="td-investigation-form">
+
+                <div class="td-form-field">
+                    <label for="td-investigation-case">
+                        Case Reference *
+                    </label>
+
+                    <select id="td-investigation-case" required>
+                        <option value="">Select dispute case</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-investigation-admin">
+                        Assigned Investigator *
+                    </label>
+
+                    <select id="td-investigation-admin" required>
+                        <option value="">Select administrator</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-investigation-scope">
+                        Investigation Scope *
+                    </label>
+
+                    <textarea id="td-investigation-scope" required
+                        placeholder="Describe the investigation objectives and required checks..."></textarea>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-investigation-deadline">
+                        Investigation Deadline *
+                    </label>
+
+                    <input type="date" id="td-investigation-deadline" required>
+                </div>
+
+
+                <div class="td-modal-actions">
+
+                    <button type="button" class="td-button td-button-light" data-close-modal="td-investigation-modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="td-button td-button-primary">
+                        Start Investigation
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     DECISION REVIEW MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-decision-modal" hidden>
+
+        <div class="td-modal" role="dialog" aria-modal="true" aria-labelledby="td-decision-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">ADMINISTRATIVE AUTHORITY</span>
+                    <h2 id="td-decision-modal-title">Decision Review</h2>
+                    <p>Review and process a proposed administrative decision.</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-decision-modal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="td-decision-form">
+
+                <input type="hidden" id="td-decision-id">
+
+                <div class="td-form-field">
+                    <label for="td-decision-outcome">
+                        Decision outcome *
+                    </label>
+
+                    <select id="td-decision-outcome" required>
+                        <option value="">Select outcome</option>
+                        <option value="approve">Approve</option>
+                        <option value="reject">Reject</option>
+                        <option value="return_for_review">Return for Further Review</option>
+                        <option value="escalate">Escalate for Higher Approval</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-decision-reason">
+                        Decision reasoning *
+                    </label>
+
+                    <textarea id="td-decision-reason" required minlength="10"
+                        placeholder="Document the reasoning and relevant case considerations..."></textarea>
+                </div>
+
+
+                <div class="td-warning-notice">
+                    Sensitive decisions may require additional authorization.
+                    Final authority and approval eligibility must be verified by the server.
+                </div>
+
+
+                <div class="td-modal-actions">
+
+                    <button type="button" class="td-button td-button-light" data-close-modal="td-decision-modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="td-button td-button-primary">
+                        Submit Decision
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     APPEAL REVIEW MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-appeal-modal" hidden>
+
+        <div class="td-modal" role="dialog" aria-modal="true" aria-labelledby="td-appeal-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">APPEALS GOVERNANCE</span>
+                    <h2 id="td-appeal-modal-title">Appeal Review</h2>
+                    <p>Review the contested administrative decision.</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-appeal-modal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="td-appeal-form">
+
+                <input type="hidden" id="td-appeal-id">
+
+                <div class="td-form-field">
+                    <label for="td-appeal-outcome">
+                        Appeal outcome *
+                    </label>
+
+                    <select id="td-appeal-outcome" required>
+                        <option value="">Select outcome</option>
+                        <option value="upheld">Uphold Original Decision</option>
+                        <option value="overturned">Overturn Original Decision</option>
+                        <option value="modified">Modify Original Decision</option>
+                        <option value="remanded">Return for Further Investigation</option>
+                        <option value="escalated">Escalate for Higher Review</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-appeal-reason">
+                        Review findings and reasons *
+                    </label>
+
+                    <textarea id="td-appeal-reason" required minlength="10"
+                        placeholder="Document the appeal review and findings..."></textarea>
+                </div>
+
+
+                <div class="td-modal-actions">
+
+                    <button type="button" class="td-button td-button-light" data-close-modal="td-appeal-modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="td-button td-button-primary">
+                        Submit Appeal Decision
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     EVIDENCE REVIEW MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-evidence-modal" hidden>
+
+        <div class="td-modal" role="dialog" aria-modal="true" aria-labelledby="td-evidence-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">EVIDENCE VERIFICATION</span>
+                    <h2 id="td-evidence-modal-title">Review Evidence</h2>
+                    <p>Examine the submitted document and record its review status.</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-evidence-modal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="td-evidence-detail">
+
+                <div>
+                    <span>Document Reference</span>
+                    <strong id="td-evidence-reference">—</strong>
+                </div>
+
+                <div>
+                    <span>Document Type</span>
+                    <strong id="td-evidence-type">—</strong>
+                </div>
+
+                <div>
+                    <span>Submitted By</span>
+                    <strong id="td-evidence-submitter">—</strong>
+                </div>
+
+                <div>
+                    <span>Related Case</span>
+                    <strong id="td-evidence-case">—</strong>
+                </div>
+
+            </div>
+
+
+            <form id="td-evidence-form">
+
+                <input type="hidden" id="td-evidence-id">
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-evidence-outcome">
+                        Review outcome *
+                    </label>
+
+                    <select id="td-evidence-outcome" required>
+                        <option value="">Select outcome</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="flagged">Flagged for Further Review</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-evidence-notes">
+                        Review notes *
+                    </label>
+
+                    <textarea id="td-evidence-notes" required minlength="5"
+                        placeholder="Record the evidence review findings..."></textarea>
+                </div>
+
+
+                <div class="td-modal-actions">
+
+                    <button type="button" class="td-button td-button-light" data-close-modal="td-evidence-modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="td-button td-button-primary">
+                        Submit Review
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     MEDIATION MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-mediation-modal" hidden>
+
+        <div class="td-modal" role="dialog" aria-modal="true" aria-labelledby="td-mediation-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">MEDIATION MANAGEMENT</span>
+                    <h2 id="td-mediation-modal-title">Schedule Mediation</h2>
+                    <p>Arrange a facilitated dispute resolution session.</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-mediation-modal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="td-mediation-form">
+
+                <div class="td-form-field">
+                    <label for="td-mediation-case">
+                        Dispute Case *
+                    </label>
+
+                    <select id="td-mediation-case" required>
+                        <option value="">Select case</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-mediation-admin">
+                        Assigned Mediator *
+                    </label>
+
+                    <select id="td-mediation-admin" required>
+                        <option value="">Select administrator</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-mediation-date">
+                        Session Date *
+                    </label>
+
+                    <input type="datetime-local" id="td-mediation-date" required>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-mediation-notes">
+                        Mediation Notes
+                    </label>
+
+                    <textarea id="td-mediation-notes" placeholder="Additional mediation arrangements..."></textarea>
+                </div>
+
+
+                <div class="td-modal-actions">
+
+                    <button type="button" class="td-button td-button-light" data-close-modal="td-mediation-modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="td-button td-button-primary">
+                        Schedule Session
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     ASSIGNMENT SETTINGS MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-settings-modal" hidden>
+
+        <div class="td-modal" role="dialog" aria-modal="true" aria-labelledby="td-settings-modal-title">
+
+            <div class="td-modal-heading">
+
+                <div>
+                    <span class="td-eyebrow">WORKFLOW GOVERNANCE</span>
+                    <h2 id="td-settings-modal-title">Assignment Settings</h2>
+                    <p>Configure authorized case allocation preferences.</p>
+                </div>
+
+                <button class="td-icon-button" data-close-modal="td-settings-modal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="td-settings-form">
+
+                <div class="td-form-field">
+                    <label for="td-assignment-mode">
+                        Assignment Mode
+                    </label>
+
+                    <select id="td-assignment-mode">
+                        <option value="hybrid">Hybrid Assignment</option>
+                        <option value="automatic">Automatic Assignment</option>
+                        <option value="manual">Manual Assignment</option>
+                    </select>
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-workload-limit">
+                        Workload Limit
+                    </label>
+
+                    <input type="number" id="td-workload-limit" min="1" max="100"
+                        placeholder="Configure maximum active workload">
+                </div>
+
+
+                <div class="td-form-field td-form-section">
+                    <label for="td-escalation-threshold">
+                        Escalation Threshold
+                    </label>
+
+                    <select id="td-escalation-threshold">
+                        <option value="deadline">Applicable Case Deadline</option>
+                        <option value="manual">Manual Escalation</option>
+                        <option value="both">Deadline and Manual Escalation</option>
+                    </select>
+                </div>
+
+
+                <div class="td-modal-actions">
+
+                    <button type="button" class="td-button td-button-light" data-close-modal="td-settings-modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="td-button td-button-primary">
+                        Save Settings
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     NOTIFICATION DRAWER
+====================================================== -->
+
+    <aside class="td-notification-drawer" id="td-notification-drawer" hidden>
+
+        <div class="td-drawer-heading">
+
+            <div>
+                <h3>Dispute Notifications</h3>
+                <p>Important case events and escalations</p>
+            </div>
+
+            <button class="td-icon-button" id="td-close-notifications" aria-label="Close notifications">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="td-notification-list" id="td-notification-list">
+
+            <div class="td-empty-state">
+                <strong>No notifications loaded</strong>
+                <span>Dispute notifications will appear here.</span>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ======================================================
+     CRITICAL DISPUTE ALERT MODAL
+====================================================== -->
+
+    <div class="td-modal-overlay" id="td-critical-modal" hidden>
+
+        <div class="td-modal td-critical-modal" role="alertdialog" aria-modal="true"
+            aria-labelledby="td-critical-title">
+
+            <div class="td-critical-header">
+
+                <div class="td-critical-symbol">!</div>
+
+                <div>
+                    <span class="td-eyebrow">PRIORITY DISPUTE ALERT</span>
+                    <h2 id="td-critical-title">Critical Dispute Requires Attention</h2>
+                    <span class="td-severity-badge td-severity-critical">
+                        CRITICAL
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="td-critical-body">
+
+                <div class="td-critical-banner">
+                    Immediate administrator attention required.
+                </div>
+
+
+                <div class="td-critical-details">
+
+                    <div>
+                        <span>Case Reference</span>
+                        <strong id="td-critical-reference">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Dispute Category</span>
+                        <strong id="td-critical-category">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Country</span>
+                        <strong id="td-critical-country">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Submitted</span>
+                        <strong id="td-critical-date">—</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="td-detail-section">
+                    <strong>Incident Summary</strong>
+                    <p id="td-critical-description">—</p>
+                </div>
+
+
+                <div class="td-warning-notice">
+                    This alert requires administrator review.
+                    Viewing an alert does not constitute case acknowledgement or resolution.
+                </div>
+
+            </div>
+
+
+            <div class="td-modal-actions">
+
+                <button class="td-button td-button-light" id="td-critical-view">
+                    View Case
+                </button>
+
+                <button class="td-button td-button-primary" id="td-critical-acknowledge">
+                    Acknowledge Alert
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     TOAST NOTIFICATIONS
+====================================================== -->
+
+    <div class="td-toast-region" id="td-toast-region" aria-live="polite" aria-atomic="false">
+    </div>
+
+
+    <div class="td-live-region" id="td-live-region" aria-live="assertive" aria-atomic="true">
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111a35">
+    <meta name="description" content="TALVORA Global Platform Configuration and System Control Centre">
+    <title>TALVORA | Global Platform Configuration</title>
+    <link rel="stylesheet" href="system-control.css">
+    <script src="system-control.js" defer></script>
+</head>
+
+<body>
+
+    <div class="system-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <small>SUPER ADMINISTRATION</small>
+                </div>
+            </div>
+
+            <div class="side-label">PLATFORM CONTROL</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Configuration Overview</a>
+                <a href="#settings" class="nav-link" data-section="settings">⚙ Global Settings</a>
+                <a href="#features" class="nav-link" data-section="features">▦ Feature Management</a>
+                <a href="#system" class="nav-link" data-section="system">◉ System Controls</a>
+                <a href="#localization" class="nav-link" data-section="localization">◎ Localization</a>
+                <a href="#integrations" class="nav-link" data-section="integrations">⌘ Integrations</a>
+                <a href="#api-management" class="nav-link" data-section="api-management">⌗ API Management</a>
+                <a href="#notifications" class="nav-link" data-section="notifications">♧ Notifications</a>
+                <a href="#branding" class="nav-link" data-section="branding">✧ Platform Branding</a>
+                <a href="#health" class="nav-link" data-section="health">♥ System Health</a>
+                <a href="#history" class="nav-link" data-section="history">◷ Configuration History</a>
+            </nav>
+
+            <div class="side-label">SECURITY & GOVERNANCE</div>
+
+            <nav>
+                <a href="index.html" class="nav-link">← Super Admin Dashboard</a>
+                <a href="security.html" class="nav-link">Security Operations</a>
+                <a href="compliance.html" class="nav-link">Global Compliance</a>
+                <a href="audit.html" class="nav-link">Administrator Audit</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Platform Authority</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div class="topbar-title">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+                    <div>
+                        <small>TALVORA / SUPER ADMIN / PLATFORM CONTROL</small>
+                        <h1>Global Platform Configuration</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span class="connection-status" id="connectionStatus">
+                        <i></i> Connecting
+                    </span>
+                    <button class="icon-button" id="alertsButton" aria-label="View system alerts">♧</button>
+                    <button class="primary-button" id="refreshButton">↻ Refresh</button>
+                </div>
+
+            </header>
+
+            <div class="system-banner" id="systemBanner">
+                <strong>GLOBAL PLATFORM CONTROL</strong>
+                <span id="bannerMessage">Retrieving platform configuration...</span>
+            </div>
+
+            <!-- 1. OVERVIEW -->
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL PLATFORM GOVERNANCE</span>
+                        <h2>Configuration overview</h2>
+                        <p>Monitor and manage TALVORA's global platform configuration.</p>
+                    </div>
+                    <button class="secondary-button" id="exportConfiguration">↓ Export configuration</button>
+                </div>
+
+                <div class="metrics-grid">
+
+                    <article class="metric-card">
+                        <span>Active platform features</span>
+                        <strong id="activeFeatures">—</strong>
+                        <small>Currently enabled features</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Configured jurisdictions</span>
+                        <strong id="jurisdictionCount">—</strong>
+                        <small>Countries and regions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active integrations</span>
+                        <strong id="activeIntegrations">—</strong>
+                        <small>Connected external services</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active API applications</span>
+                        <strong id="activeAPIs">—</strong>
+                        <small>Registered API clients</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending configuration changes</span>
+                        <strong id="pendingChanges">—</strong>
+                        <small>Awaiting review or approval</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>System alerts</span>
+                        <strong id="systemAlerts">—</strong>
+                        <small>Outstanding system notifications</small>
+                    </article>
+
+                </div>
+
+                <div class="overview-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Platform service status</h3>
+                                <p>Current status of monitored platform services.</p>
+                            </div>
+                        </div>
+                        <div id="serviceOverview" class="service-overview">
+                            Loading service information...
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Configuration summary</h3>
+                                <p>Current global configuration state.</p>
+                            </div>
+                        </div>
+                        <div id="configurationSummary" class="summary-list">
+                            Loading configuration...
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent platform configuration activity</h3>
+                            <p>Latest configuration changes and system control events.</p>
+                        </div>
+                        <button class="text-button" data-navigate="history">View history →</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Change ID</th>
+                                    <th>Configuration</th>
+                                    <th>Administrator</th>
+                                    <th>Change type</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentConfiguration"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 2. GLOBAL SETTINGS -->
+            <section class="content-section" id="settings">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PLATFORM-WIDE CONFIGURATION</span>
+                        <h2>Global platform settings</h2>
+                        <p>Manage the central settings governing TALVORA's operations.</p>
+                    </div>
+                </div>
+
+                <form id="globalSettingsForm">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Platform identity and environment</h3>
+                                <p>Core platform identification and operational configuration.</p>
+                            </div>
+                        </div>
+
+                        <div class="settings-grid">
+
+                            <label>Platform name
+                                <input name="platformName" type="text" required>
+                            </label>
+
+                            <label>Platform environment
+                                <select name="environment">
+                                    <option value="production">Production</option>
+                                    <option value="staging">Staging</option>
+                                    <option value="development">Development</option>
+                                </select>
+                            </label>
+
+                            <label>Default country
+                                <select name="defaultCountry" id="defaultCountry">
+                                    <option value="">Select country</option>
+                                </select>
+                            </label>
+
+                            <label>Default language
+                                <select name="defaultLanguage">
+                                    <option value="en">English</option>
+                                    <option value="fr">French</option>
+                                    <option value="sw">Swahili</option>
+                                    <option value="ar">Arabic</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="pt">Portuguese</option>
+                                </select>
+                            </label>
+
+                            <label>Default currency
+                                <input name="defaultCurrency" maxlength="3" placeholder="USD">
+                            </label>
+
+                            <label>Default time zone
+                                <input name="defaultTimezone" placeholder="UTC">
+                            </label>
+
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Operational configuration</h3>
+                                <p>Manage platform-wide operational parameters.</p>
+                            </div>
+                        </div>
+
+                        <div class="settings-grid">
+
+                            <label>Session duration (minutes)
+                                <input name="sessionDuration" type="number" min="1" max="10080">
+                            </label>
+
+                            <label>Maximum upload size (MB)
+                                <input name="maxUploadSize" type="number" min="1">
+                            </label>
+
+                            <label>Default date format
+                                <select name="dateFormat">
+                                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                </select>
+                            </label>
+
+                            <label>Default number format
+                                <select name="numberFormat">
+                                    <option value="international">International</option>
+                                    <option value="localized">Localized</option>
+                                </select>
+                            </label>
+
+                            <label>Default maintenance contact
+                                <input name="maintenanceContact" type="email">
+                            </label>
+
+                            <label>Configuration version
+                                <input name="configurationVersion" readonly>
+                            </label>
+
+                        </div>
+                    </article>
+
+                    <div class="form-actions">
+                        <button type="button" class="secondary-button" id="resetSettings">Reset changes</button>
+                        <button type="submit" class="primary-button">Save global settings</button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- 3. FEATURE MANAGEMENT -->
+            <section class="content-section" id="features">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PLATFORM CAPABILITY CONTROL</span>
+                        <h2>Feature management</h2>
+                        <p>Control the availability of platform modules and capabilities.</p>
+                    </div>
+                    <button class="secondary-button" id="refreshFeatures">↻ Refresh features</button>
+                </div>
+
+                <div class="filters">
+                    <input id="featureSearch" type="search" placeholder="Search platform features...">
+                    <select id="featureCategory">
+                        <option value="">All categories</option>
+                        <option value="workforce">Workforce</option>
+                        <option value="employers">Employers</option>
+                        <option value="finance">Finance</option>
+                        <option value="communication">Communication</option>
+                        <option value="security">Security</option>
+                        <option value="operations">Operations</option>
+                        <option value="analytics">Analytics</option>
+                    </select>
+                    <select id="featureStatus">
+                        <option value="">All statuses</option>
+                        <option value="enabled">Enabled</option>
+                        <option value="disabled">Disabled</option>
+                        <option value="maintenance">Maintenance</option>
+                    </select>
+                </div>
+
+                <div class="feature-grid" id="featureGrid">
+                    Loading platform features...
+                </div>
+
+            </section>
+
+            <!-- 4. SYSTEM CONTROLS -->
+            <section class="content-section" id="system">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL OPERATIONAL AUTHORITY</span>
+                        <h2>System controls</h2>
+                        <p>Manage platform availability, maintenance and operational safeguards.</p>
+                    </div>
+                </div>
+
+                <div class="system-control-grid">
+
+                    <article class="control-card">
+                        <div class="control-icon">◉</div>
+                        <h3>Platform availability</h3>
+                        <p>Monitor and manage overall platform availability.</p>
+                        <div class="control-state" id="platformAvailability">Loading...</div>
+                        <button class="secondary-button" data-system-action="availability">
+                            Manage availability
+                        </button>
+                    </article>
+
+                    <article class="control-card">
+                        <div class="control-icon">⚙</div>
+                        <h3>Maintenance mode</h3>
+                        <p>Control scheduled or emergency maintenance operations.</p>
+                        <div class="control-state" id="maintenanceStatus">Loading...</div>
+                        <button class="secondary-button" data-system-action="maintenance">
+                            Configure maintenance
+                        </button>
+                    </article>
+
+                    <article class="control-card">
+                        <div class="control-icon">↻</div>
+                        <h3>Background services</h3>
+                        <p>Monitor background jobs and service operations.</p>
+                        <div class="control-state" id="backgroundStatus">Loading...</div>
+                        <button class="secondary-button" data-system-action="background">
+                            Manage services
+                        </button>
+                    </article>
+
+                    <article class="control-card">
+                        <div class="control-icon">▤</div>
+                        <h3>Backup operations</h3>
+                        <p>Review backup schedules and recovery readiness.</p>
+                        <div class="control-state" id="backupStatus">Loading...</div>
+                        <button class="secondary-button" data-system-action="backup">
+                            View backups
+                        </button>
+                    </article>
+
+                    <article class="control-card">
+                        <div class="control-icon">♙</div>
+                        <h3>Registration controls</h3>
+                        <p>Manage registration availability and access policies.</p>
+                        <div class="control-state" id="registrationStatus">Loading...</div>
+                        <button class="secondary-button" data-system-action="registration">
+                            Manage registration
+                        </button>
+                    </article>
+
+                    <article class="control-card">
+                        <div class="control-icon">⚠</div>
+                        <h3>Emergency operations</h3>
+                        <p>Access protected emergency platform control procedures.</p>
+                        <div class="control-state warning-state">Restricted operations</div>
+                        <button class="danger-button" id="emergencyControl">
+                            Emergency controls
+                        </button>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Scheduled maintenance</h3>
+                            <p>Review planned platform maintenance windows.</p>
+                        </div>
+                        <button class="primary-button" id="scheduleMaintenance">+ Schedule maintenance</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Maintenance ID</th>
+                                    <th>Description</th>
+                                    <th>Environment</th>
+                                    <th>Start time</th>
+                                    <th>End time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="maintenanceTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 5. LOCALIZATION -->
+            <section class="content-section" id="localization">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL MULTI-COUNTRY CONFIGURATION</span>
+                        <h2>Localization management</h2>
+                        <p>Manage supported countries, currencies, languages and time zones.</p>
+                    </div>
+                    <button class="primary-button" id="addJurisdiction">+ Add jurisdiction</button>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Supported countries</span>
+                        <strong id="countryTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Supported currencies</span>
+                        <strong id="currencyTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Supported languages</span>
+                        <strong id="languageTotal">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="jurisdictionSearch" type="search" placeholder="Search country or region...">
+                        <select id="jurisdictionStatus">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>Country code</th>
+                                    <th>Currency</th>
+                                    <th>Language</th>
+                                    <th>Time zone</th>
+                                    <th>Availability</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="jurisdictionTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 6. INTEGRATIONS -->
+            <section class="content-section" id="integrations">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">EXTERNAL SERVICE GOVERNANCE</span>
+                        <h2>Third-party integrations</h2>
+                        <p>Manage external services connected to the TALVORA platform.</p>
+                    </div>
+                    <button class="primary-button" id="addIntegration">+ Register integration</button>
+                </div>
+
+                <div class="integration-grid" id="integrationGrid">
+                    Loading integrations...
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Integration activity</h3>
+                            <p>Recent connection, configuration and service events.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Integration</th>
+                                    <th>Event</th>
+                                    <th>Timestamp</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody id="integrationActivity"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 7. API MANAGEMENT -->
+            <section class="content-section" id="api-management">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PLATFORM API GOVERNANCE</span>
+                        <h2>API management</h2>
+                        <p>Manage registered API applications, permissions and usage.</p>
+                    </div>
+                    <button class="primary-button" id="registerAPI">+ Register API application</button>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Registered applications</span>
+                        <strong id="apiApplicationTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>API requests</span>
+                        <strong id="apiRequestTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Failed requests</span>
+                        <strong id="apiFailureTotal">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="apiSearch" type="search" placeholder="Search API application...">
+                        <select id="apiStatus">
+                            <option value="">All application statuses</option>
+                            <option value="active">Active</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="revoked">Revoked</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Application ID</th>
+                                    <th>Application name</th>
+                                    <th>Owner</th>
+                                    <th>Access scope</th>
+                                    <th>Requests</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="apiTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>API usage monitoring</h3>
+                            <p>Service consumption and request performance.</p>
+                        </div>
+                    </div>
+                    <div id="apiUsage" class="api-usage">
+                        Loading API usage information...
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 8. NOTIFICATIONS -->
+            <section class="content-section" id="notifications">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL COMMUNICATION CONTROL</span>
+                        <h2>Notification configuration</h2>
+                        <p>Manage platform notification channels, templates and delivery settings.</p>
+                    </div>
+                </div>
+
+                <form id="notificationForm">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Notification channels</h3>
+                                <p>Configure available communication channels.</p>
+                            </div>
+                        </div>
+
+                        <div class="channel-grid">
+
+                            <label class="channel-card">
+                                <span class="channel-icon">✉</span>
+                                <strong>Email notifications</strong>
+                                <small>Transactional and platform emails</small>
+                                <input type="checkbox" name="emailEnabled">
+                            </label>
+
+                            <label class="channel-card">
+                                <span class="channel-icon">▣</span>
+                                <strong>SMS notifications</strong>
+                                <small>SMS communication delivery</small>
+                                <input type="checkbox" name="smsEnabled">
+                            </label>
+
+                            <label class="channel-card">
+                                <span class="channel-icon">♧</span>
+                                <strong>Push notifications</strong>
+                                <small>Mobile and browser notifications</small>
+                                <input type="checkbox" name="pushEnabled">
+                            </label>
+
+                            <label class="channel-card">
+                                <span class="channel-icon">◉</span>
+                                <strong>In-app notifications</strong>
+                                <small>Internal platform notifications</small>
+                                <input type="checkbox" name="inAppEnabled">
+                            </label>
+
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Notification policies</h3>
+                                <p>Control global delivery and retry behavior.</p>
+                            </div>
+                        </div>
+
+                        <div class="settings-grid">
+
+                            <label>Maximum delivery attempts
+                                <input type="number" name="maxAttempts" min="1" max="20">
+                            </label>
+
+                            <label>Retry interval (seconds)
+                                <input type="number" name="retryInterval" min="1">
+                            </label>
+
+                            <label>Default notification priority
+                                <select name="defaultPriority">
+                                    <option value="low">Low</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="high">High</option>
+                                    <option value="critical">Critical</option>
+                                </select>
+                            </label>
+
+                            <label>Delivery monitoring
+                                <select name="deliveryMonitoring">
+                                    <option value="enabled">Enabled</option>
+                                    <option value="disabled">Disabled</option>
+                                </select>
+                            </label>
+
+                        </div>
+                    </article>
+
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button">Save notification configuration</button>
+                    </div>
+
+                </form>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Notification templates</h3>
+                            <p>Manage reusable notification templates.</p>
+                        </div>
+                        <button class="secondary-button" id="addTemplate">+ Add template</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Template ID</th>
+                                    <th>Template name</th>
+                                    <th>Channel</th>
+                                    <th>Language</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="templateTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 9. BRANDING -->
+            <section class="content-section" id="branding">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL PLATFORM IDENTITY</span>
+                        <h2>Platform branding</h2>
+                        <p>Manage TALVORA's visual identity and platform presentation.</p>
+                    </div>
+                </div>
+
+                <div class="branding-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Brand configuration</h3>
+                                <p>Manage the platform's identity assets and appearance.</p>
+                            </div>
+                        </div>
+
+                        <form id="brandingForm">
+
+                            <label>Platform display name
+                                <input name="displayName" required>
+                            </label>
+
+                            <label>Platform tagline
+                                <input name="tagline">
+                            </label>
+
+                            <label>Primary brand color
+                                <input name="primaryColor" type="color" value="#7058df">
+                            </label>
+
+                            <label>Secondary brand color
+                                <input name="secondaryColor" type="color" value="#111a35">
+                            </label>
+
+                            <label>Logo image URL
+                                <input name="logoUrl" type="url" placeholder="https://...">
+                            </label>
+
+                            <label>Favicon URL
+                                <input name="faviconUrl" type="url" placeholder="https://...">
+                            </label>
+
+                            <label>Brand description
+                                <textarea name="description" rows="4"></textarea>
+                            </label>
+
+                            <button type="submit" class="primary-button">Save brand configuration</button>
+
+                        </form>
+                    </article>
+
+                    <article class="panel preview-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Live branding preview</h3>
+                                <p>Preview the configured brand appearance.</p>
+                            </div>
+                        </div>
+
+                        <div id="brandPreview" class="brand-preview">
+                            <div class="preview-logo">T</div>
+                            <h2 id="previewName">TALVORA</h2>
+                            <p id="previewTagline">Global Workforce Platform</p>
+                            <div class="preview-button">Continue</div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- 10. SYSTEM HEALTH -->
+            <section class="content-section" id="health">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PLATFORM INFRASTRUCTURE MONITORING</span>
+                        <h2>System health monitoring</h2>
+                        <p>Monitor infrastructure metrics and operational service availability.</p>
+                    </div>
+                    <button class="secondary-button" id="refreshHealth">↻ Refresh health</button>
+                </div>
+
+                <div class="health-grid" id="healthGrid">
+                    Loading infrastructure health...
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Service availability</h3>
+                            <p>Current operational state of platform components.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Environment</th>
+                                    <th>Status</th>
+                                    <th>Response time</th>
+                                    <th>Last checked</th>
+                                </tr>
+                            </thead>
+                            <tbody id="healthServices"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>System incidents and alerts</h3>
+                            <p>Infrastructure events requiring attention.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Alert ID</th>
+                                    <th>Component</th>
+                                    <th>Severity</th>
+                                    <th>Description</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="healthAlerts"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 11. HISTORY -->
+            <section class="content-section" id="history">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">CONFIGURATION ACCOUNTABILITY</span>
+                        <h2>Configuration history</h2>
+                        <p>Track configuration changes, approvals and administrator actions.</p>
+                    </div>
+                    <button class="secondary-button" id="exportHistory">↓ Export history</button>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input id="historySearch" type="search" placeholder="Search configuration history...">
+
+                        <select id="historyType">
+                            <option value="">All change types</option>
+                            <option value="created">Created</option>
+                            <option value="updated">Updated</option>
+                            <option value="enabled">Enabled</option>
+                            <option value="disabled">Disabled</option>
+                            <option value="deleted">Deleted</option>
+                            <option value="restored">Restored</option>
+                        </select>
+
+                        <select id="historyStatus">
+                            <option value="">All statuses</option>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="rolled_back">Rolled back</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Change ID</th>
+                                    <th>Configuration</th>
+                                    <th>Administrator</th>
+                                    <th>Change type</th>
+                                    <th>Previous value</th>
+                                    <th>New value</th>
+                                    <th>Timestamp</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <footer>
+                <span>© TALVORA Global Workforce Platform</span>
+                <span>Global Platform Configuration & System Control Centre</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- GENERIC CONFIGURATION MODAL -->
+    <div class="modal-overlay" id="configModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>PLATFORM CONFIGURATION</small>
+                    <h2 id="configModalTitle">Configure platform</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div id="configModalBody"></div>
+        </div>
+    </div>
+
+    <!-- JURISDICTION MODAL -->
+    <div class="modal-overlay" id="jurisdictionModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>GLOBAL LOCALIZATION</small>
+                    <h2>Register jurisdiction</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="jurisdictionForm">
+                <label>Country name *
+                    <input name="name" required>
+                </label>
+
+                <label>Country code *
+                    <input name="code" maxlength="3" required>
+                </label>
+
+                <label>Currency code *
+                    <input name="currency" maxlength="3" required>
+                </label>
+
+                <label>Default language *
+                    <input name="language" required>
+                </label>
+
+                <label>Time zone *
+                    <input name="timezone" required>
+                </label>
+
+                <label>Status
+                    <select name="status">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Register jurisdiction</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- INTEGRATION MODAL -->
+    <div class="modal-overlay" id="integrationModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>EXTERNAL SERVICE MANAGEMENT</small>
+                    <h2>Register integration</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="integrationForm">
+                <label>Integration name *
+                    <input name="name" required>
+                </label>
+
+                <label>Integration category *
+                    <select name="category" required>
+                        <option value="">Select category</option>
+                        <option value="payments">Payments</option>
+                        <option value="identity">Identity verification</option>
+                        <option value="communication">Communication</option>
+                        <option value="storage">Storage</option>
+                        <option value="analytics">Analytics</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>Provider identifier *
+                    <input name="provider" required>
+                </label>
+
+                <label>Service endpoint
+                    <input name="endpoint" type="url">
+                </label>
+
+                <label>Environment
+                    <select name="environment">
+                        <option value="production">Production</option>
+                        <option value="staging">Staging</option>
+                    </select>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Register integration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- API APPLICATION MODAL -->
+    <div class="modal-overlay" id="apiModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>API GOVERNANCE</small>
+                    <h2>Register API application</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="apiForm">
+                <label>Application name *
+                    <input name="name" required>
+                </label>
+
+                <label>Application owner *
+                    <input name="owner" required>
+                </label>
+
+                <label>Access scope *
+                    <select name="scope" required>
+                        <option value="read">Read</option>
+                        <option value="read_write">Read and write</option>
+                        <option value="restricted">Restricted</option>
+                    </select>
+                </label>
+
+                <label>Environment
+                    <select name="environment">
+                        <option value="production">Production</option>
+                        <option value="staging">Staging</option>
+                    </select>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Register application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAINTENANCE MODAL -->
+    <div class="modal-overlay" id="maintenanceModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>SYSTEM OPERATIONS</small>
+                    <h2>Schedule maintenance</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="maintenanceForm">
+                <label>Maintenance description *
+                    <input name="description" required>
+                </label>
+
+                <label>Environment *
+                    <select name="environment">
+                        <option value="production">Production</option>
+                        <option value="staging">Staging</option>
+                    </select>
+                </label>
+
+                <label>Start date and time *
+                    <input type="datetime-local" name="startAt" required>
+                </label>
+
+                <label>End date and time *
+                    <input type="datetime-local" name="endAt" required>
+                </label>
+
+                <label>Maintenance notification message
+                    <textarea name="message" rows="3"></textarea>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Schedule maintenance</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+    <div class="modal-overlay" id="confirmationModal" hidden>
+        <div class="modal confirmation-modal">
+            <div class="modal-header">
+                <div>
+                    <small>PROTECTED SYSTEM OPERATION</small>
+                    <h2 id="confirmationTitle">Confirm operation</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <p id="confirmationMessage"></p>
+
+            <label>Reason for this operation *
+                <textarea id="confirmationReason" rows="3" required></textarea>
+            </label>
+
+            <label>Type CONFIRM to authorize
+                <input id="confirmationText" autocomplete="off">
+            </label>
+
+            <div class="modal-actions">
+                <button class="secondary-button" data-close-modal>Cancel</button>
+                <button class="danger-button" id="confirmOperation" disabled>Confirm operation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMERGENCY MODAL -->
+    <div class="modal-overlay" id="emergencyModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>RESTRICTED GLOBAL OPERATIONS</small>
+                    <h2>Emergency control centre</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div class="emergency-warning">
+                <strong>Warning: High-impact operations</strong>
+                <p>Emergency actions can affect platform-wide availability. Each action requires server-side
+                    authorization and the applicable approval procedure.</p>
+            </div>
+
+            <div class="emergency-options">
+                <button class="danger-button" data-emergency-action="maintenance">
+                    Activate emergency maintenance
+                </button>
+                <button class="secondary-button" data-emergency-action="disable_registration">
+                    Restrict new registrations
+                </button>
+                <button class="secondary-button" data-emergency-action="disable_integrations">
+                    Restrict external integrations
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TEMPLATE MODAL -->
+    <div class="modal-overlay" id="templateModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>COMMUNICATION MANAGEMENT</small>
+                    <h2>Register notification template</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="templateForm">
+                <label>Template name *
+                    <input name="name" required>
+                </label>
+
+                <label>Notification channel *
+                    <select name="channel">
+                        <option value="email">Email</option>
+                        <option value="sms">SMS</option>
+                        <option value="push">Push</option>
+                        <option value="in_app">In-app</option>
+                    </select>
+                </label>
+
+                <label>Language *
+                    <input name="language" value="en" required>
+                </label>
+
+                <label>Subject
+                    <input name="subject">
+                </label>
+
+                <label>Message body *
+                    <textarea name="body" rows="5" required></textarea>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Save template</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+</body>
+
+</html>

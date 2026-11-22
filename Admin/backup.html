@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07162f">
+
+    <title>TALVORA | Backup & Recovery Centre</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="backup.css">
+</head>
+
+<body class="tb-page">
+
+    <div class="tb-app">
+
+        <!-- SIDEBAR -->
+        <aside class="tb-sidebar" id="tb-sidebar">
+
+            <div class="tb-brand">
+                <div class="tb-brand-symbol">T</div>
+                <div class="tb-brand-text">
+                    <strong>TALVORA</strong>
+                    <span>TECHNOLOGIES</span>
+                </div>
+                <button class="tb-sidebar-close" id="tb-sidebar-close" aria-label="Close navigation">×</button>
+            </div>
+
+            <div class="tb-sidebar-label">SUPER ADMINISTRATION</div>
+
+            <nav class="tb-navigation">
+
+                <a href="index.html" class="tb-nav-link">
+                    <span>◫</span> Admin Dashboard
+                </a>
+
+                <div class="tb-sidebar-label">PLATFORM MANAGEMENT</div>
+
+                <a href="users.html" class="tb-nav-link">
+                    <span>♙</span> User Accounts & Identity
+                </a>
+
+                <a href="employees.html" class="tb-nav-link">
+                    <span>♧</span> Employees
+                </a>
+
+                <a href="employers.html" class="tb-nav-link">
+                    <span>▣</span> Employers
+                </a>
+
+                <a href="finance.html" class="tb-nav-link">
+                    <span>◇</span> Finance
+                </a>
+
+                <a href="monetization.html" class="tb-nav-link">
+                    <span>◈</span> Monetization
+                </a>
+
+                <div class="tb-sidebar-label">INFRASTRUCTURE & SECURITY</div>
+
+                <a href="legacy/monitoring.html" class="tb-nav-link">
+                    <span>⌁</span> System Monitoring
+                </a>
+
+                <a href="security.html" class="tb-nav-link">
+                    <span>◉</span> Activity & Security
+                </a>
+
+                <a href="legacy/settings.html" class="tb-nav-link">
+                    <span>⚙</span> System Settings
+                </a>
+
+                <a href="backup.html" class="tb-nav-link active" aria-current="page">
+                    <span>▤</span> Backup & Recovery
+                    <span class="tb-nav-current"></span>
+                </a>
+
+                <a href="compliance.html" class="tb-nav-link">
+                    <span>◈</span> Compliance & Governance
+                </a>
+
+            </nav>
+
+            <div class="tb-sidebar-footer">
+                <div class="tb-security-indicator">
+                    <span class="tb-online-dot"></span>
+                    <div>
+                        <strong>Backup Centre</strong>
+                        <small id="tb-sidebar-status">Checking infrastructure</small>
+                    </div>
+                </div>
+
+                <div class="tb-sidebar-version">
+                    TALVORA TECHNOLOGIES
+                    <span>BUSINESS CONTINUITY INFRASTRUCTURE</span>
+                </div>
+            </div>
+
+        </aside>
+
+        <div class="tb-sidebar-overlay" id="tb-sidebar-overlay"></div>
+
+        <!-- MAIN -->
+        <main class="tb-main">
+
+            <!-- TOPBAR -->
+            <header class="tb-topbar">
+
+                <div class="tb-topbar-left">
+
+                    <button class="tb-menu-button" id="tb-menu-button" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div class="tb-breadcrumb">
+                        Super Admin
+                        <span>/</span>
+                        <strong>Backup & Recovery</strong>
+                    </div>
+
+                </div>
+
+                <div class="tb-topbar-right">
+
+                    <div class="tb-connection">
+                        <span class="tb-connection-dot" id="tb-connection-dot"></span>
+                        <span id="tb-connection-label">Checking backend</span>
+                    </div>
+
+                    <button class="tb-icon-button" id="tb-refresh" title="Refresh data">
+                        ↻
+                    </button>
+
+                    <div class="tb-admin-profile">
+                        <div class="tb-admin-avatar" id="tb-admin-avatar">SA</div>
+                        <div class="tb-admin-information">
+                            <strong id="tb-admin-name">Authenticated Administrator</strong>
+                            <span>Super Admin</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div class="tb-content">
+
+                <!-- PAGE HEADING -->
+                <section class="tb-page-heading">
+
+                    <div>
+                        <div class="tb-eyebrow">PLATFORM RESILIENCE & PROTECTION</div>
+                        <h1>Backup & Recovery Centre</h1>
+                        <p>
+                            Centralized backup protection, infrastructure replication,
+                            disaster recovery, data integrity and business continuity
+                            across the entire TALVORA ecosystem.
+                        </p>
+                    </div>
+
+                    <div class="tb-heading-actions">
+                        <button class="tb-button tb-button-secondary" data-action="open-test">
+                            ◈ Test Recovery
+                        </button>
+
+                        <button class="tb-button tb-button-primary" data-action="open-run">
+                            + Run Backup
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- GLOBAL NOTICE -->
+                <div class="tb-notice" id="tb-global-notice" hidden></div>
+
+                <!-- HERO -->
+                <section class="tb-hero">
+
+                    <div class="tb-hero-content">
+
+                        <div class="tb-hero-label">
+                            TALVORA BUSINESS CONTINUITY INFRASTRUCTURE
+                        </div>
+
+                        <h2>Protecting TALVORA. Preserving Every Opportunity.</h2>
+
+                        <p>
+                            Enterprise-grade data protection designed to safeguard
+                            workforce intelligence, identity records, financial
+                            information and the operations connecting all three portals.
+                        </p>
+
+                        <div class="tb-hero-pills">
+                            <span>365-Day Retention</span>
+                            <span>Three Storage Regions</span>
+                            <span>AES-256 Encryption</span>
+                            <span>Continuous Protection Target</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tb-hero-decoration">T</div>
+
+                </section>
+
+                <!-- METRICS -->
+                <section class="tb-metrics-grid">
+
+                    <article class="tb-metric-card">
+                        <div class="tb-metric-top">
+                            Last Successful Full Backup
+                            <span class="tb-metric-icon blue">▤</span>
+                        </div>
+                        <strong id="tb-last-full-backup">—</strong>
+                        <small id="tb-last-full-backup-detail">Awaiting live infrastructure data</small>
+                    </article>
+
+                    <article class="tb-metric-card">
+                        <div class="tb-metric-top">
+                            Protected Data Volume
+                            <span class="tb-metric-icon cyan">◈</span>
+                        </div>
+                        <strong id="tb-protected-volume">—</strong>
+                        <small>Across connected platform services</small>
+                    </article>
+
+                    <article class="tb-metric-card">
+                        <div class="tb-metric-top">
+                            Operational Storage Regions
+                            <span class="tb-metric-icon purple">◎</span>
+                        </div>
+                        <strong id="tb-operational-regions">—</strong>
+                        <small>Three-region architecture target</small>
+                    </article>
+
+                    <article class="tb-metric-card">
+                        <div class="tb-metric-top">
+                            Open Recovery Incidents
+                            <span class="tb-metric-icon orange">!</span>
+                        </div>
+                        <strong id="tb-open-incidents">—</strong>
+                        <small>Live incident information</small>
+                    </article>
+
+                </section>
+
+                <!-- MODULE NAVIGATION -->
+                <nav class="tb-module-navigation" aria-label="Backup management sections">
+
+                    <button class="tb-module-tab active" data-view="overview" aria-selected="true">Overview</button>
+                    <button class="tb-module-tab" data-view="policies" aria-selected="false">Backup Policies</button>
+                    <button class="tb-module-tab" data-view="jobs" aria-selected="false">Backup History</button>
+                    <button class="tb-module-tab" data-view="storage" aria-selected="false">Storage &
+                        Replication</button>
+                    <button class="tb-module-tab" data-view="recovery" aria-selected="false">Recovery Centre</button>
+                    <button class="tb-module-tab" data-view="continuity" aria-selected="false">Disaster
+                        Recovery</button>
+                    <button class="tb-module-tab" data-view="integrity" aria-selected="false">Data Integrity</button>
+                    <button class="tb-module-tab" data-view="audit" aria-selected="false">Audit Trail</button>
+
+                </nav>
+
+                <!-- ==========================================
+                 OVERVIEW
+            =========================================== -->
+                <section class="tb-view" id="tb-view-overview">
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Platform Protection Overview</h2>
+                            <p>Live information from connected backup and recovery infrastructure.</p>
+                        </div>
+
+                        <span class="tb-live-indicator">
+                            <span></span> LIVE DATA WHEN CONNECTED
+                        </span>
+                    </div>
+
+                    <div class="tb-overview-grid">
+
+                        <article class="tb-card">
+
+                            <div class="tb-card-heading">
+                                <div>
+                                    <h3>Connected Portal Protection</h3>
+                                    <p>Backup coverage across all three TALVORA portals.</p>
+                                </div>
+                                <span class="tb-card-icon">◫</span>
+                            </div>
+
+                            <div class="tb-portal-list" id="tb-portal-health">
+
+                                <div class="tb-empty-state">
+                                    <span class="tb-empty-icon">◈</span>
+                                    <strong>No portal health records available</strong>
+                                    <p>Live backup protection information will appear here when the infrastructure API
+                                        is connected.</p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <article class="tb-card">
+
+                            <div class="tb-card-heading">
+                                <div>
+                                    <h3>Recovery Readiness</h3>
+                                    <p>Recovery objectives and current readiness assessment.</p>
+                                </div>
+                                <span class="tb-card-icon">◎</span>
+                            </div>
+
+                            <div class="tb-readiness-list" id="tb-readiness">
+
+                                <div class="tb-readiness-item">
+                                    <span>Critical services RTO</span>
+                                    <strong>1 hour</strong>
+                                </div>
+
+                                <div class="tb-readiness-item">
+                                    <span>Employer portal RTO</span>
+                                    <strong>2 hours</strong>
+                                </div>
+
+                                <div class="tb-readiness-item">
+                                    <span>Employee portal RTO</span>
+                                    <strong>2 hours</strong>
+                                </div>
+
+                                <div class="tb-readiness-item">
+                                    <span>Reporting RTO</span>
+                                    <strong>8 hours</strong>
+                                </div>
+
+                                <div class="tb-readiness-item">
+                                    <span>Critical systems RPO</span>
+                                    <strong>15 minutes</strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Recent Backup & Recovery Events</h3>
+                                <p>Latest infrastructure events returned by the platform.</p>
+                            </div>
+
+                            <button class="tb-text-button" data-go-view="jobs">
+                                View backup history →
+                            </button>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Event</th>
+                                        <th>Operation</th>
+                                        <th>Scope</th>
+                                        <th>Status</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-recent-events">
+                                    <tr>
+                                        <td colspan="5" class="tb-table-empty">
+                                            No backup or recovery events returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- ==========================================
+                 BACKUP POLICIES
+            =========================================== -->
+                <section class="tb-view" id="tb-view-policies" hidden>
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Backup Policy Management</h2>
+                            <p>Approved protection standards and centralized backup configuration.</p>
+                        </div>
+                        <span class="tb-policy-badge">365-DAY RETENTION</span>
+                    </div>
+
+                    <div class="tb-policy-grid">
+
+                        <article class="tb-policy-card">
+                            <span class="tb-policy-icon blue">↻</span>
+                            <h3>Continuous Protection</h3>
+                            <strong>Continuous</strong>
+                            <p>Continuous data protection with frequent incremental snapshots.</p>
+                        </article>
+
+                        <article class="tb-policy-card">
+                            <span class="tb-policy-icon cyan">▤</span>
+                            <h3>Full Backups</h3>
+                            <strong>Daily + Event Based</strong>
+                            <p>Daily full backups and additional backups before major deployments and critical changes.
+                            </p>
+                        </article>
+
+                        <article class="tb-policy-card">
+                            <span class="tb-policy-icon purple">◷</span>
+                            <h3>Retention</h3>
+                            <strong>365 Days</strong>
+                            <p>Centralized retention policy for protected backup records.</p>
+                        </article>
+
+                        <article class="tb-policy-card">
+                            <span class="tb-policy-icon green">◎</span>
+                            <h3>Storage Architecture</h3>
+                            <strong>3 Regions</strong>
+                            <p>Geographically separated storage with encrypted off-site copies.</p>
+                        </article>
+
+                    </div>
+
+                    <article class="tb-card tb-policy-form-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Approved Backup Configuration</h3>
+                                <p>Submit the approved configuration to the backend when available.</p>
+                            </div>
+                            <span class="tb-policy-badge">APPROVED BASELINE</span>
+                        </div>
+
+                        <form id="tb-policy-form">
+
+                            <div class="tb-form-grid">
+
+                                <div class="tb-field">
+                                    <label for="tb-incremental-mode">Incremental Protection</label>
+                                    <select id="tb-incremental-mode" name="incremental_mode" required>
+                                        <option value="continuous">Continuous data protection</option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field">
+                                    <label for="tb-full-schedule">Full Backup Schedule</label>
+                                    <select id="tb-full-schedule" name="full_backup_schedule" required>
+                                        <option value="daily_and_event_based">Daily + deployment and critical-change
+                                            triggers</option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field">
+                                    <label for="tb-retention-days">Retention Period</label>
+                                    <select id="tb-retention-days" name="retention_days" required>
+                                        <option value="365">365 Days</option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field">
+                                    <label for="tb-storage-regions">Geographical Storage Regions</label>
+                                    <select id="tb-storage-regions" name="storage_regions" required>
+                                        <option value="3">Three separate regions</option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field">
+                                    <label for="tb-encryption">Encryption at Rest</label>
+                                    <select id="tb-encryption" name="encryption_at_rest" required>
+                                        <option value="AES-256">AES-256</option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field">
+                                    <label for="tb-transport-encryption">Transmission Encryption</label>
+                                    <select id="tb-transport-encryption" name="transmission_encryption" required>
+                                        <option value="TLS">TLS</option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field">
+                                    <label for="tb-key-management">Key Management</label>
+                                    <select id="tb-key-management" name="key_management" required>
+                                        <option value="independent_automatic_rotation">Independent management with
+                                            automatic rotation</option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field">
+                                    <label for="tb-offsite">Off-site Backup Protection</label>
+                                    <select id="tb-offsite" name="offsite_protection" required>
+                                        <option value="encrypted_independent_copies">Encrypted independent copies
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="tb-field tb-full-field">
+                                    <label>Backup Coverage</label>
+
+                                    <div class="tb-coverage-options">
+
+                                        <label><input type="checkbox" checked disabled> Employer Portal</label>
+
+                                        <label><input type="checkbox" checked disabled> Employee Portal</label>
+
+                                        <label><input type="checkbox" checked disabled> Super Admin Portal</label>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="tb-field tb-full-field">
+                                    <label for="tb-policy-reason">Administrative Reason</label>
+                                    <textarea id="tb-policy-reason" name="reason" rows="3"
+                                        placeholder="Explain why this policy configuration is being submitted."
+                                        required></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="tb-form-footer">
+                                <p>Policy changes require backend authorization, validation and audit recording.</p>
+                                <button type="submit" class="tb-button tb-button-primary">Submit Approved
+                                    Configuration</button>
+                            </div>
+
+                        </form>
+
+                    </article>
+
+                </section>
+
+                <!-- ==========================================
+                 BACKUP HISTORY
+            =========================================== -->
+                <section class="tb-view" id="tb-view-jobs" hidden>
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Backup History & Execution</h2>
+                            <p>Review full backups, incremental snapshots, scheduled jobs and failures.</p>
+                        </div>
+
+                        <button class="tb-button tb-button-primary" data-action="open-run">
+                            + Run Backup
+                        </button>
+                    </div>
+
+                    <div class="tb-filter-bar">
+
+                        <input type="search" id="tb-job-search" placeholder="Search backup reference...">
+
+                        <select id="tb-job-type-filter">
+                            <option value="">All backup types</option>
+                            <option value="full">Full backup</option>
+                            <option value="incremental">Incremental backup</option>
+                            <option value="snapshot">Snapshot</option>
+                        </select>
+
+                        <select id="tb-job-status-filter">
+                            <option value="">All statuses</option>
+                            <option value="completed">Completed</option>
+                            <option value="running">Running</option>
+                            <option value="failed">Failed</option>
+                            <option value="queued">Queued</option>
+                        </select>
+
+                        <button class="tb-button tb-button-secondary" id="tb-filter-jobs">Apply Filters</button>
+
+                    </div>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Backup Reference</th>
+                                        <th>Type</th>
+                                        <th>Portal / Scope</th>
+                                        <th>Storage Region</th>
+                                        <th>Data Size</th>
+                                        <th>Status</th>
+                                        <th>Started</th>
+                                        <th>Completed</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-jobs-body">
+                                    <tr>
+                                        <td colspan="9" class="tb-table-empty">
+                                            No backup records returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="tb-pagination">
+                            <span id="tb-jobs-count">No records loaded</span>
+
+                            <div>
+                                <button id="tb-jobs-prev" disabled>Previous</button>
+                                <span id="tb-jobs-page">—</span>
+                                <button id="tb-jobs-next" disabled>Next</button>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- ==========================================
+                 STORAGE
+            =========================================== -->
+                <section class="tb-view" id="tb-view-storage" hidden>
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Storage & Geographic Replication</h2>
+                            <p>Monitor geographically separated storage, replication and encrypted off-site protection.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tb-storage-summary">
+
+                        <article class="tb-small-stat">
+                            <span>Required Regions</span>
+                            <strong>3</strong>
+                        </article>
+
+                        <article class="tb-small-stat">
+                            <span>Encryption Standard</span>
+                            <strong>AES-256</strong>
+                        </article>
+
+                        <article class="tb-small-stat">
+                            <span>Off-site Copies</span>
+                            <strong>Required</strong>
+                        </article>
+
+                        <article class="tb-small-stat">
+                            <span>Retention Target</span>
+                            <strong>365 Days</strong>
+                        </article>
+
+                    </div>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Geographic Storage Regions</h3>
+                                <p>Actual region identities and health must come from infrastructure configuration.</p>
+                            </div>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Region Reference</th>
+                                        <th>Geographic Location</th>
+                                        <th>Storage Role</th>
+                                        <th>Replication Status</th>
+                                        <th>Encryption Status</th>
+                                        <th>Last Synchronization</th>
+                                        <th>Health</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-regions-body">
+                                    <tr>
+                                        <td colspan="7" class="tb-table-empty">
+                                            No storage region records returned by the infrastructure.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Replication Events</h3>
+                                <p>Cross-region replication and synchronization history.</p>
+                            </div>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Source Region</th>
+                                        <th>Destination Region</th>
+                                        <th>Data Volume</th>
+                                        <th>Status</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-replication-body">
+                                    <tr>
+                                        <td colspan="6" class="tb-table-empty">
+                                            No replication events returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- ==========================================
+                 RECOVERY
+            =========================================== -->
+                <section class="tb-view" id="tb-view-recovery" hidden>
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Recovery Centre</h2>
+                            <p>Review available recovery points and submit controlled restoration requests.</p>
+                        </div>
+
+                        <button class="tb-button tb-button-primary" data-action="open-restore">
+                            Initiate Recovery
+                        </button>
+                    </div>
+
+                    <div class="tb-recovery-notice">
+                        <strong>Production restoration safeguard</strong>
+                        <p>
+                            Production recovery requests must undergo backend authorization,
+                            recovery-point validation, integrity checks and the required
+                            approval workflow before execution.
+                        </p>
+                    </div>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Available Recovery Points</h3>
+                                <p>Validated restoration points returned by the backup service.</p>
+                            </div>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Recovery Reference</th>
+                                        <th>Backup Type</th>
+                                        <th>Portal / Scope</th>
+                                        <th>Timestamp</th>
+                                        <th>Integrity</th>
+                                        <th>Region</th>
+                                        <th>Availability</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-recovery-points-body">
+                                    <tr>
+                                        <td colspan="8" class="tb-table-empty">
+                                            No recovery points returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Restoration Requests</h3>
+                                <p>Track pending, approved, rejected and completed recovery operations.</p>
+                            </div>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Request Reference</th>
+                                        <th>Recovery Point</th>
+                                        <th>Target</th>
+                                        <th>Requested By</th>
+                                        <th>Approval Status</th>
+                                        <th>Execution Status</th>
+                                        <th>Requested At</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-restore-requests-body">
+                                    <tr>
+                                        <td colspan="7" class="tb-table-empty">
+                                            No restoration requests returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- ==========================================
+                 DISASTER RECOVERY
+            =========================================== -->
+                <section class="tb-view" id="tb-view-continuity" hidden>
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Disaster Recovery & Business Continuity</h2>
+                            <p>Recovery objectives, incident response, recovery testing and continuity planning.</p>
+                        </div>
+
+                        <button class="tb-button tb-button-primary" data-action="open-test">
+                            + New Recovery Test
+                        </button>
+                    </div>
+
+                    <div class="tb-recovery-target-grid">
+
+                        <article class="tb-target-card">
+                            <span>CRITICAL SERVICES</span>
+                            <strong>1 Hour</strong>
+                            <small>Recovery time objective</small>
+                        </article>
+
+                        <article class="tb-target-card">
+                            <span>EMPLOYER PORTAL</span>
+                            <strong>2 Hours</strong>
+                            <small>Recovery time objective</small>
+                        </article>
+
+                        <article class="tb-target-card">
+                            <span>EMPLOYEE PORTAL</span>
+                            <strong>2 Hours</strong>
+                            <small>Recovery time objective</small>
+                        </article>
+
+                        <article class="tb-target-card">
+                            <span>REPORTING & ANALYTICS</span>
+                            <strong>8 Hours</strong>
+                            <small>Recovery time objective</small>
+                        </article>
+
+                    </div>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Recovery Testing History</h3>
+                                <p>Isolated recovery simulations and restoration test outcomes.</p>
+                            </div>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Test Reference</th>
+                                        <th>Recovery Scope</th>
+                                        <th>Environment</th>
+                                        <th>Test Result</th>
+                                        <th>Actual Recovery Time</th>
+                                        <th>Integrity Result</th>
+                                        <th>Test Date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-tests-body">
+                                    <tr>
+                                        <td colspan="7" class="tb-table-empty">
+                                            No recovery test records returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Business Continuity Plans</h3>
+                                <p>Approved recovery procedures and assigned operational responsibilities.</p>
+                            </div>
+
+                            <button class="tb-button tb-button-secondary" data-action="open-plan">
+                                Create Plan
+                            </button>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Plan Reference</th>
+                                        <th>Plan Name</th>
+                                        <th>Coverage</th>
+                                        <th>Responsible Team</th>
+                                        <th>Approval Status</th>
+                                        <th>Last Reviewed</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-plans-body">
+                                    <tr>
+                                        <td colspan="6" class="tb-table-empty">
+                                            No business continuity plans returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Disaster & Continuity Incidents</h3>
+                                <p>Recorded infrastructure disruptions and recovery events.</p>
+                            </div>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Incident Reference</th>
+                                        <th>Incident Type</th>
+                                        <th>Affected Service</th>
+                                        <th>Severity</th>
+                                        <th>Status</th>
+                                        <th>Opened</th>
+                                        <th>Resolved</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-incidents-body">
+                                    <tr>
+                                        <td colspan="7" class="tb-table-empty">
+                                            No disaster recovery incidents returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- ==========================================
+                 DATA INTEGRITY
+            =========================================== -->
+                <section class="tb-view" id="tb-view-integrity" hidden>
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Backup Data Integrity Centre</h2>
+                            <p>Validate backup completeness, consistency, encryption and restoration readiness.</p>
+                        </div>
+
+                        <button class="tb-button tb-button-primary" data-action="open-integrity">
+                            Run Integrity Check
+                        </button>
+                    </div>
+
+                    <div class="tb-integrity-grid">
+
+                        <article class="tb-integrity-card">
+                            <span class="tb-integrity-icon">✓</span>
+                            <strong>Checksum Validation</strong>
+                            <p>Verify backup integrity using backend-managed checksums.</p>
+                        </article>
+
+                        <article class="tb-integrity-card">
+                            <span class="tb-integrity-icon">◈</span>
+                            <strong>Data Completeness</strong>
+                            <p>Validate that required backup objects are present.</p>
+                        </article>
+
+                        <article class="tb-integrity-card">
+                            <span class="tb-integrity-icon">⌑</span>
+                            <strong>Encryption Validation</strong>
+                            <p>Confirm encryption and key availability through the storage service.</p>
+                        </article>
+
+                        <article class="tb-integrity-card">
+                            <span class="tb-integrity-icon">◎</span>
+                            <strong>Restore Validation</strong>
+                            <p>Verify that recovery points can be restored in an isolated environment.</p>
+                        </article>
+
+                    </div>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-card-heading">
+                            <div>
+                                <h3>Integrity Verification History</h3>
+                                <p>Results of completed validation operations.</p>
+                            </div>
+                        </div>
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Check Reference</th>
+                                        <th>Backup Reference</th>
+                                        <th>Validation Type</th>
+                                        <th>Scope</th>
+                                        <th>Result</th>
+                                        <th>Findings</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-integrity-body">
+                                    <tr>
+                                        <td colspan="7" class="tb-table-empty">
+                                            No integrity checks returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- ==========================================
+                 AUDIT
+            =========================================== -->
+                <section class="tb-view" id="tb-view-audit" hidden>
+
+                    <div class="tb-section-heading">
+                        <div>
+                            <h2>Backup & Recovery Audit Trail</h2>
+                            <p>Administrative accountability for backup, storage, retention and recovery operations.</p>
+                        </div>
+
+                        <button class="tb-button tb-button-secondary" id="tb-export-audit">
+                            ↓ Export Audit
+                        </button>
+                    </div>
+
+                    <div class="tb-audit-notice">
+                        <strong>Privileged operation accountability</strong>
+                        <p>
+                            Backup policy changes, recovery requests, restoration approvals,
+                            key management operations and retention changes must be recorded
+                            in the backend audit system. Frontend records are not authoritative.
+                        </p>
+                    </div>
+
+                    <div class="tb-filter-bar">
+
+                        <input type="search" id="tb-audit-search" placeholder="Search audit reference...">
+
+                        <select id="tb-audit-action-filter">
+                            <option value="">All operations</option>
+                            <option value="backup">Backup</option>
+                            <option value="restore">Restore</option>
+                            <option value="policy">Policy change</option>
+                            <option value="integrity">Integrity check</option>
+                            <option value="retention">Retention change</option>
+                            <option value="access">Access</option>
+                        </select>
+
+                        <input type="date" id="tb-audit-from" aria-label="Audit start date">
+
+                        <input type="date" id="tb-audit-to" aria-label="Audit end date">
+
+                        <button class="tb-button tb-button-secondary" id="tb-filter-audit">
+                            Apply
+                        </button>
+
+                    </div>
+
+                    <article class="tb-card tb-table-card">
+
+                        <div class="tb-table-wrapper">
+
+                            <table class="tb-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Administrator</th>
+                                        <th>Operation</th>
+                                        <th>Resource</th>
+                                        <th>Reason</th>
+                                        <th>IP Address</th>
+                                        <th>Result</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tb-audit-body">
+                                    <tr>
+                                        <td colspan="8" class="tb-table-empty">
+                                            No audit records returned by the platform.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="tb-pagination">
+                            <span id="tb-audit-count">No records loaded</span>
+
+                            <div>
+                                <button id="tb-audit-prev" disabled>Previous</button>
+                                <span id="tb-audit-page">—</span>
+                                <button id="tb-audit-next" disabled>Next</button>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- FOOTER -->
+                <footer class="tb-footer">
+                    <div>
+                        <strong>TALVORA</strong>
+                        <span>Connecting Human Capability to Global Opportunity.</span>
+                    </div>
+
+                    <span>DATA BACKUP & BUSINESS CONTINUITY CENTRE</span>
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- RUN BACKUP MODAL -->
+    <div class="tb-modal" id="tb-run-modal" hidden>
+
+        <div class="tb-modal-backdrop" data-close-modal></div>
+
+        <div class="tb-modal-dialog">
+
+            <div class="tb-modal-header">
+                <div>
+                    <h2>Initiate Backup</h2>
+                    <p>Submit an authorized backup execution request.</p>
+                </div>
+
+                <button class="tb-modal-close" data-close-modal aria-label="Close">×</button>
+            </div>
+
+            <form id="tb-run-form">
+
+                <div class="tb-form-grid">
+
+                    <div class="tb-field">
+                        <label for="tb-run-type">Backup Type</label>
+                        <select id="tb-run-type" required>
+                            <option value="incremental">Incremental snapshot</option>
+                            <option value="full">Full backup</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field">
+                        <label for="tb-run-scope">Backup Scope</label>
+                        <select id="tb-run-scope" required>
+                            <option value="all">All three portals</option>
+                            <option value="employer">Employer Portal</option>
+                            <option value="employee">Employee Portal</option>
+                            <option value="super_admin">Super Admin Portal</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-run-reason">Reason for Backup</label>
+                        <textarea id="tb-run-reason" rows="3" required minlength="5"
+                            placeholder="Explain why this backup is being initiated."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="tb-modal-warning">
+                    The backup service will determine execution eligibility,
+                    storage allocation and job scheduling.
+                </div>
+
+                <div class="tb-modal-actions">
+                    <button type="button" class="tb-button tb-button-secondary" data-close-modal>Cancel</button>
+                    <button type="submit" class="tb-button tb-button-primary">Submit Backup Request</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- RESTORE MODAL -->
+    <div class="tb-modal" id="tb-restore-modal" hidden>
+
+        <div class="tb-modal-backdrop" data-close-modal></div>
+
+        <div class="tb-modal-dialog">
+
+            <div class="tb-modal-header">
+                <div>
+                    <h2>Recovery Request</h2>
+                    <p>Request restoration from a validated recovery point.</p>
+                </div>
+
+                <button class="tb-modal-close" data-close-modal aria-label="Close">×</button>
+            </div>
+
+            <form id="tb-restore-form">
+
+                <div class="tb-form-grid">
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-restore-point">Recovery Point</label>
+                        <select id="tb-restore-point" required>
+                            <option value="">Select a validated recovery point</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field">
+                        <label for="tb-restore-scope">Restoration Scope</label>
+                        <select id="tb-restore-scope" required>
+                            <option value="all">All three portals</option>
+                            <option value="employer">Employer Portal</option>
+                            <option value="employee">Employee Portal</option>
+                            <option value="super_admin">Super Admin Portal</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field">
+                        <label for="tb-restore-target">Restoration Target</label>
+                        <select id="tb-restore-target" required>
+                            <option value="isolated">Isolated recovery environment</option>
+                            <option value="production">Production restoration request</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-restore-reason">Recovery Reason</label>
+                        <textarea id="tb-restore-reason" rows="3" minlength="5" required
+                            placeholder="Describe the incident or recovery requirement."></textarea>
+                    </div>
+
+                    <div class="tb-field tb-full-field">
+                        <label class="tb-check-label">
+                            <input type="checkbox" id="tb-restore-confirm" required>
+                            I confirm that I have reviewed the recovery point and restoration scope.
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="tb-modal-warning tb-danger-warning">
+                    Production restoration can affect live platform data.
+                    It must pass backend validation and the required approval workflow.
+                </div>
+
+                <div class="tb-modal-actions">
+                    <button type="button" class="tb-button tb-button-secondary" data-close-modal>Cancel</button>
+                    <button type="submit" class="tb-button tb-button-primary">Submit Recovery Request</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- RECOVERY TEST MODAL -->
+    <div class="tb-modal" id="tb-test-modal" hidden>
+
+        <div class="tb-modal-backdrop" data-close-modal></div>
+
+        <div class="tb-modal-dialog">
+
+            <div class="tb-modal-header">
+                <div>
+                    <h2>Recovery Simulation</h2>
+                    <p>Test restoration without affecting production systems.</p>
+                </div>
+
+                <button class="tb-modal-close" data-close-modal aria-label="Close">×</button>
+            </div>
+
+            <form id="tb-test-form">
+
+                <div class="tb-form-grid">
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-test-point">Recovery Point</label>
+                        <select id="tb-test-point" required>
+                            <option value="">Select a recovery point</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field">
+                        <label for="tb-test-scope">Test Scope</label>
+                        <select id="tb-test-scope" required>
+                            <option value="all">All three portals</option>
+                            <option value="employer">Employer Portal</option>
+                            <option value="employee">Employee Portal</option>
+                            <option value="super_admin">Super Admin Portal</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field">
+                        <label>Test Environment</label>
+                        <input value="Isolated recovery environment" disabled>
+                    </div>
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-test-reason">Test Objective</label>
+                        <textarea id="tb-test-reason" rows="3" minlength="5" required
+                            placeholder="Explain the recovery test objective."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="tb-modal-warning">
+                    Recovery tests must run in an isolated environment.
+                    They must not overwrite or modify production records.
+                </div>
+
+                <div class="tb-modal-actions">
+                    <button type="button" class="tb-button tb-button-secondary" data-close-modal>Cancel</button>
+                    <button type="submit" class="tb-button tb-button-primary">Submit Recovery Test</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- CONTINUITY PLAN MODAL -->
+    <div class="tb-modal" id="tb-plan-modal" hidden>
+
+        <div class="tb-modal-backdrop" data-close-modal></div>
+
+        <div class="tb-modal-dialog">
+
+            <div class="tb-modal-header">
+                <div>
+                    <h2>Create Continuity Plan</h2>
+                    <p>Register a business continuity and disaster recovery plan.</p>
+                </div>
+
+                <button class="tb-modal-close" data-close-modal aria-label="Close">×</button>
+            </div>
+
+            <form id="tb-plan-form">
+
+                <div class="tb-form-grid">
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-plan-name">Plan Name</label>
+                        <input id="tb-plan-name" required maxlength="150" placeholder="Enter continuity plan name">
+                    </div>
+
+                    <div class="tb-field">
+                        <label for="tb-plan-scope">Coverage</label>
+                        <select id="tb-plan-scope" required>
+                            <option value="all">All three portals</option>
+                            <option value="employer">Employer Portal</option>
+                            <option value="employee">Employee Portal</option>
+                            <option value="super_admin">Super Admin Portal</option>
+                            <option value="infrastructure">Infrastructure</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field">
+                        <label for="tb-plan-team">Responsible Team</label>
+                        <input id="tb-plan-team" required maxlength="150" placeholder="Enter responsible team">
+                    </div>
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-plan-description">Plan Description</label>
+                        <textarea id="tb-plan-description" rows="4" required minlength="10"
+                            placeholder="Describe the recovery and continuity procedures."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="tb-modal-actions">
+                    <button type="button" class="tb-button tb-button-secondary" data-close-modal>Cancel</button>
+                    <button type="submit" class="tb-button tb-button-primary">Submit Continuity Plan</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- INTEGRITY MODAL -->
+    <div class="tb-modal" id="tb-integrity-modal" hidden>
+
+        <div class="tb-modal-backdrop" data-close-modal></div>
+
+        <div class="tb-modal-dialog">
+
+            <div class="tb-modal-header">
+                <div>
+                    <h2>Run Integrity Verification</h2>
+                    <p>Submit a backup integrity verification request.</p>
+                </div>
+
+                <button class="tb-modal-close" data-close-modal aria-label="Close">×</button>
+            </div>
+
+            <form id="tb-integrity-form">
+
+                <div class="tb-form-grid">
+
+                    <div class="tb-field">
+                        <label for="tb-integrity-type">Validation Type</label>
+                        <select id="tb-integrity-type" required>
+                            <option value="comprehensive">Comprehensive validation</option>
+                            <option value="checksum">Checksum verification</option>
+                            <option value="completeness">Data completeness</option>
+                            <option value="encryption">Encryption validation</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field">
+                        <label for="tb-integrity-scope">Coverage</label>
+                        <select id="tb-integrity-scope" required>
+                            <option value="all">All three portals</option>
+                            <option value="employer">Employer Portal</option>
+                            <option value="employee">Employee Portal</option>
+                            <option value="super_admin">Super Admin Portal</option>
+                        </select>
+                    </div>
+
+                    <div class="tb-field tb-full-field">
+                        <label for="tb-integrity-reason">Reason</label>
+                        <textarea id="tb-integrity-reason" rows="3" required minlength="5"
+                            placeholder="Explain the reason for this integrity check."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="tb-modal-actions">
+                    <button type="button" class="tb-button tb-button-secondary" data-close-modal>Cancel</button>
+                    <button type="submit" class="tb-button tb-button-primary">Submit Verification</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- TOASTS -->
+    <div class="tb-toast-region" id="tb-toast-region" aria-live="polite"></div>
+
+    <script src="backup.js" defer></script>
+
+</body>
+
+</html>

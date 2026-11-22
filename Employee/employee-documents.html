@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA global employee workforce services and self-service portal.">
+<title>Documents & Compliance | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link active" href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Documents & Compliance</div><div class="topbar-sub">Manage employment documents and expiry requirements</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">EMPLOYEE RECORDS & REQUIREMENTS</span><h1>Documents & Compliance</h1><p>Maintain your employment document register, track expiry dates and review requirements associated with your employment location.</p></div><div class="heading-actions"><button class="btn btn-primary" id="openUpload">+ Upload document</button></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Documents on file</div><div class="kpi-value" id="documentCount">—</div><div class="kpi-foot">Your registered employee documents</div></div>
+ <div class="kpi"><div class="kpi-label">Verified documents</div><div class="kpi-value" id="verifiedDocumentCount">—</div><div class="kpi-foot">Reviewed by an authorized verifier</div></div>
+ <div class="kpi"><div class="kpi-label">Expiring soon</div><div class="kpi-value" id="expiringDocumentCount">—</div><div class="kpi-foot">Within the next 60 days</div></div>
+ <div class="kpi"><div class="kpi-label">Action required</div><div class="kpi-value" id="complianceActionCount">—</div><div class="kpi-foot">Requirements needing attention</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Compliance requirements</h2><p>Requirements shown are supplied by the employer or authorized compliance workflow. They are not a legal determination.</p></div></div>
+ <div id="complianceGrid" class="grid grid-2"><div class="empty-state">Loading requirements…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>My document register</h2><p>Documents linked to your TALVORA profile or specific employment relationships.</p></div></div>
+ <div class="filter-bar"><div class="search-wrap"><span>⌕</span><input id="documentSearch" class="control" placeholder="Search document name or file"></div><select id="documentStatusFilter" class="control"><option value="">All review statuses</option><option value="verified">Verified</option><option value="under_review">Under review</option><option value="expiring">Expiring</option><option value="rejected">Rejected</option></select><select id="documentTypeFilter" class="control"><option value="">All document types</option><option>Contract</option><option>Identity</option><option>Qualification</option><option>Work permit</option><option>Tax</option><option>Other</option></select></div>
+ <div id="documentList"><div class="empty-state">Loading documents…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Document security</h2><p>Protect your identity and employment records.</p></div></div>
+ <div class="notice warning">Only upload documents you are authorized to share. Production uploads must be encrypted, scanned for malware, access-controlled and served through short-lived authenticated download links. Demo mode stores document metadata only and does not store file contents.</div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="documentUploadDialog"><div class="modal-head"><h2>Upload employee document</h2><button class="modal-close" data-close-dialog="documentUploadDialog">×</button></div>
+<form id="documentUploadForm"><div class="modal-body">
+ <div class="field"><label for="documentName">Document name *</label><input id="documentName" name="documentName" required maxlength="120" placeholder="e.g. Work authorization"></div>
+ <div class="field-row"><div class="field"><label for="documentType">Document type *</label><select id="documentType" name="documentType" required><option value="">Choose type</option><option>Contract</option><option>Identity</option><option>Qualification</option><option>Work permit</option><option>Tax</option><option>Other</option></select></div><div class="field"><label for="documentExpiry">Expiry date (if applicable)</label><input id="documentExpiry" name="expiryDate" type="date"></div></div>
+ <div class="field"><label for="documentFile">Select file *</label><input id="documentFile" name="file" type="file" required accept=".pdf,.png,.jpg,.jpeg,.docx"><span class="hint">Accepted formats: PDF, PNG, JPG and DOCX. Maximum 10 MB.</span></div>
+ <label class="check-row"><input type="checkbox" id="documentDeclaration" required><span>I confirm this document belongs to me or I am authorized to provide it, and the information is accurate.</span></label>
+ <div class="notice">Your file is sent to the configured secure document endpoint when production mode is enabled. In demo mode, only its name and metadata are recorded.</div>
+</div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="documentUploadDialog">Cancel</button><button type="submit" class="btn btn-primary" id="uploadDocumentBtn">Upload document</button></div></form></dialog>
+<dialog class="modal" id="documentDetailDialog"><div class="modal-head"><h2>Document details</h2><button class="modal-close" data-close-dialog="documentDetailDialog">×</button></div><div class="modal-body" id="documentDetailBody"></div><div class="modal-foot" id="documentDetailActions"></div></dialog>
+
+<script src="employee.js"></script>
+<script src="employee-documents.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

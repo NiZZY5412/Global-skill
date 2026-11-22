@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <title>Offers, Contracts & Onboarding | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="offers-onboarding.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="offers-page" data-module="offers-onboarding">
+
+    <div class="employer-layout">
+
+        <aside class="employer-sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <strong>TALVORA</strong>
+                    <small>EMPLOYER PORTAL</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+                <a href="employer-dashboard.html" class="nav-link"><span>▦</span> Dashboard</a>
+                <a href="company-profile.html" class="nav-link"><span>▤</span> Company Profile</a>
+                <a href="locations.html" class="nav-link"><span>⌖</span> Branches & Locations</a>
+                <a href="jobs.html" class="nav-link"><span>▣</span> Jobs Management</a>
+                <a href="applications.html" class="nav-link"><span>▥</span> Applications</a>
+                <a href="skills-matching.html" class="nav-link"><span>✧</span> Skills Passport & Matching</a>
+                <a href="interviews.html" class="nav-link"><span>◷</span> Interviews & Communication</a>
+                <a href="offers-onboarding.html" class="nav-link active"><span>♙</span> Offers & Onboarding</a>
+                <a href="workforce.html" class="nav-link"><span>♧</span> Workforce</a>
+<a href="analytics-reports.html" class="nav-link"><span>◫</span> Analytics</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-label">ACCOUNT</div>
+                <a href="team-permissions.html" class="nav-link"><span>♧</span> Team & Permissions</a>
+<a href="disputes-support.html" class="nav-link"><span>?</span> Support Centre</a>
+            </div>
+
+        </aside>
+
+
+        <main class="employer-main">
+
+            <header class="employer-topbar">
+
+                <button id="menuToggle" class="icon-button" aria-label="Toggle navigation">☰</button>
+
+                <div class="topbar-title">
+                    <h1>Offers, Contracts & Onboarding</h1>
+                    <p>Employment offers and new employee integration</p>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <select id="companySwitcher" class="company-switcher" aria-label="Select organization">
+                        <option value="">Loading organizations...</option>
+                    </select>
+
+                    <button id="notificationToggle" class="icon-button" aria-label="Notifications">♧</button>
+
+                    <div id="notificationPanel" class="notification-panel" hidden>
+                        <strong>Employment Notifications</strong>
+                        <p>Offer and onboarding notifications will appear here.</p>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="module-content">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">EMPLOYMENT & WORKFORCE TRANSITION</span>
+                        <h2>Global Offers, Contracts & Onboarding Centre</h2>
+                        <p>Issue employment offers, manage agreements and coordinate new employee onboarding.</p>
+                    </div>
+
+                    <div class="heading-actions">
+                        <button class="btn btn-secondary" id="refreshOffersButton">↻ Refresh</button>
+                        <button class="btn btn-primary" id="createOfferButton">+ Create Employment Offer</button>
+                    </div>
+
+                </div>
+
+
+                <div class="connection-banner">
+                    <span class="connection-dot"></span>
+                    <span id="offersConnectionStatus">Connecting to TALVORA...</span>
+                    <span id="offersLastUpdated" class="last-updated"></span>
+                </div>
+
+
+                <!-- KPI CARDS -->
+                <div class="offers-kpi-grid">
+
+                    <article class="offers-kpi-card">
+                        <div class="offer-icon navy">▤</div>
+                        <div>
+                            <span>Total Offers</span>
+                            <strong id="totalOffers">0</strong>
+                            <small>Registered employment offers</small>
+                        </div>
+                    </article>
+
+                    <article class="offers-kpi-card">
+                        <div class="offer-icon blue">◷</div>
+                        <div>
+                            <span>Awaiting Response</span>
+                            <strong id="pendingOffers">0</strong>
+                            <small>Offers awaiting candidate response</small>
+                        </div>
+                    </article>
+
+                    <article class="offers-kpi-card">
+                        <div class="offer-icon teal">✓</div>
+                        <div>
+                            <span>Accepted Offers</span>
+                            <strong id="acceptedOffers">0</strong>
+                            <small>Accepted by candidates</small>
+                        </div>
+                    </article>
+
+                    <article class="offers-kpi-card">
+                        <div class="offer-icon purple">♙</div>
+                        <div>
+                            <span>Active Onboarding</span>
+                            <strong id="activeOnboarding">0</strong>
+                            <small>Employee integration in progress</small>
+                        </div>
+                    </article>
+
+                    <article class="offers-kpi-card">
+                        <div class="offer-icon green">★</div>
+                        <div>
+                            <span>Onboarding Completed</span>
+                            <strong id="completedOnboarding">0</strong>
+                            <small>Completed onboarding records</small>
+                        </div>
+                    </article>
+
+                    <article class="offers-kpi-card">
+                        <div class="offer-icon orange">!</div>
+                        <div>
+                            <span>Expired / Declined</span>
+                            <strong id="unsuccessfulOffers">0</strong>
+                            <small>Unsuccessful offers</small>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- OFFER PIPELINE -->
+                <section class="offers-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Employment Offer Pipeline</h3>
+                            <p>Track offers from preparation through candidate response.</p>
+                        </div>
+                    </div>
+
+                    <div id="offerPipeline" class="offer-pipeline"></div>
+
+                </section>
+
+
+                <!-- OFFERS MANAGEMENT -->
+                <section class="offers-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Employment Offers & Contracts</h3>
+                            <p>Create, issue and monitor employment offers and contract records.</p>
+                        </div>
+
+                        <span id="offerCountLabel">0 offers</span>
+                    </div>
+
+
+                    <div class="offers-filter-bar">
+
+                        <input type="search" id="offerSearch" placeholder="Search candidate, job or reference...">
+
+                        <select id="offerStatusFilter">
+                            <option value="">All offer statuses</option>
+                            <option value="draft">Draft</option>
+                            <option value="sent">Sent</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="declined">Declined</option>
+                            <option value="expired">Expired</option>
+                            <option value="withdrawn">Withdrawn</option>
+                        </select>
+
+                        <select id="offerTypeFilter">
+                            <option value="">All employment types</option>
+                            <option value="full_time">Full-time</option>
+                            <option value="part_time">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="internship">Internship</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearOfferFilters">Clear</button>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="offers-table">
+
+                            <thead>
+                                <tr>
+                                    <th>CANDIDATE</th>
+                                    <th>POSITION</th>
+                                    <th>COMPENSATION</th>
+                                    <th>START DATE</th>
+                                    <th>RESPONSE DEADLINE</th>
+                                    <th>OFFER STATUS</th>
+                                    <th>CONTRACT</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="offersTableBody">
+                                <tr>
+                                    <td colspan="8" class="table-loading">Loading employment offers...</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="offersTableFooter">Showing 0 offers</span>
+                        <span id="offersFilteredCount">0 records</span>
+                    </div>
+
+                </section>
+
+
+                <!-- ONBOARDING MANAGEMENT -->
+                <section class="offers-panel onboarding-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Employee Onboarding Management</h3>
+                            <p>Track new employee documentation, assigned tasks and onboarding progress.</p>
+                        </div>
+
+                        <span id="onboardingCountLabel">0 onboarding records</span>
+                    </div>
+
+
+                    <div class="onboarding-filter-bar">
+
+                        <input type="search" id="onboardingSearch" placeholder="Search employee or position...">
+
+                        <select id="onboardingStatusFilter">
+                            <option value="">All onboarding statuses</option>
+                            <option value="not_started">Not Started</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="on_hold">On Hold</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearOnboardingFilters">Clear</button>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="offers-table onboarding-table">
+
+                            <thead>
+                                <tr>
+                                    <th>EMPLOYEE</th>
+                                    <th>POSITION</th>
+                                    <th>START DATE</th>
+                                    <th>TASKS COMPLETED</th>
+                                    <th>PROGRESS</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="onboardingTableBody">
+                                <tr>
+                                    <td colspan="7" class="table-loading">Loading onboarding records...</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="onboardingTableFooter">Showing 0 records</span>
+                        <span id="onboardingFilteredCount">0 records</span>
+                    </div>
+
+                </section>
+
+
+                <!-- ONBOARDING SUMMARY -->
+                <section class="offers-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Onboarding Completion Overview</h3>
+                            <p>Completion of employee integration tasks.</p>
+                        </div>
+                    </div>
+
+                    <div id="onboardingOverview" class="onboarding-overview"></div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- CREATE / EDIT OFFER DIALOG -->
+    <dialog id="offerDialog" class="offers-dialog">
+
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">EMPLOYMENT OFFER MANAGEMENT</span>
+                <h2 id="offerDialogTitle">Create Employment Offer</h2>
+            </div>
+
+            <button type="button" class="dialog-close" data-close-dialog="offerDialog">×</button>
+        </div>
+
+
+        <form id="offerForm">
+
+            <input type="hidden" name="offerId" id="offerId">
+
+            <div class="form-section">
+                <h3>Candidate & Position</h3>
+
+                <label class="form-field">
+                    Candidate Application *
+                    <select name="applicationId" id="offerApplication" required>
+                        <option value="">Select application</option>
+                    </select>
+                </label>
+
+                <div class="offer-form-grid">
+
+                    <label class="form-field">
+                        Employment Type *
+                        <select name="employmentType" required>
+                            <option value="full_time">Full-time</option>
+                            <option value="part_time">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="internship">Internship</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Work Location
+                        <input type="text" name="workLocation" placeholder="Work location">
+                    </label>
+
+                </div>
+            </div>
+
+
+            <div class="form-section">
+                <h3>Compensation & Benefits</h3>
+
+                <div class="offer-form-grid">
+
+                    <label class="form-field">
+                        Currency *
+                        <input type="text" name="currency" maxlength="3" value="USD" placeholder="USD" required>
+                    </label>
+
+                    <label class="form-field">
+                        Salary Amount *
+                        <input type="number" name="salary" min="0" step="0.01" required>
+                    </label>
+
+                    <label class="form-field">
+                        Salary Frequency *
+                        <select name="salaryFrequency" required>
+                            <option value="monthly">Monthly</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="annually">Annually</option>
+                            <option value="hourly">Hourly</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Employment Start Date *
+                        <input type="date" name="startDate" required>
+                    </label>
+
+                    <label class="form-field">
+                        Offer Response Deadline *
+                        <input type="date" name="expiryDate" required>
+                    </label>
+
+                    <label class="form-field">
+                        Contract Duration
+                        <input type="text" name="contractDuration" placeholder="e.g. 12 months / Permanent">
+                    </label>
+
+                </div>
+
+                <label class="form-field">
+                    Benefits & Additional Compensation
+                    <textarea name="benefits" rows="3"
+                        placeholder="Enter applicable benefits and additional compensation terms..."></textarea>
+                </label>
+
+            </div>
+
+
+            <div class="form-section">
+                <h3>Contract & Employment Terms</h3>
+
+                <label class="form-field">
+                    Contract Reference
+                    <input type="text" name="contractReference" placeholder="Contract reference">
+                </label>
+
+                <label class="form-field">
+                    Secure Contract Document Link
+                    <input type="url" name="contractUrl" placeholder="Secure document URL, if available">
+                </label>
+
+                <label class="form-field">
+                    Employment Terms & Conditions *
+                    <textarea name="terms" rows="5" required
+                        placeholder="Enter the employment terms, conditions and relevant agreement details..."></textarea>
+                </label>
+
+            </div>
+
+
+            <div class="form-section">
+                <h3>Offer Preparation</h3>
+
+                <label class="form-field">
+                    Offer Status
+                    <select name="status" id="offerInitialStatus">
+                        <option value="draft">Save as Draft</option>
+                        <option value="sent">Send Offer</option>
+                    </select>
+                </label>
+
+                <p class="form-help">
+                    Candidate acceptance or rejection must be recorded through
+                    the candidate response workflow.
+                </p>
+
+            </div>
+
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close-dialog="offerDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveOfferButton">Save Employment Offer</button>
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- ONBOARDING DETAILS DIALOG -->
+    <dialog id="onboardingDialog" class="offers-dialog">
+
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">EMPLOYEE INTEGRATION</span>
+                <h2 id="onboardingDialogTitle">Onboarding Details</h2>
+            </div>
+
+            <button type="button" class="dialog-close" data-close-dialog="onboardingDialog">×</button>
+        </div>
+
+        <div class="onboarding-dialog-content">
+
+            <div class="onboarding-employee-profile">
+                <div class="onboarding-avatar" id="onboardingAvatar">?</div>
+                <div>
+                    <h3 id="onboardingEmployeeName">Employee</h3>
+                    <p id="onboardingEmployeePosition">Position</p>
+                    <p id="onboardingStartDate">Start date</p>
+                </div>
+            </div>
+
+            <div class="onboarding-progress-box">
+                <div class="progress-heading">
+                    <span>Overall Completion</span>
+                    <strong id="onboardingProgressText">0%</strong>
+                </div>
+                <div class="progress-track">
+                    <div id="onboardingProgressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <section class="onboarding-task-section">
+                <h3>Onboarding Checklist</h3>
+                <div id="onboardingTasks" class="onboarding-tasks"></div>
+            </section>
+
+            <form id="addOnboardingTaskForm" class="add-task-form">
+                <label class="form-field">
+                    Add Onboarding Task
+                    <input type="text" id="newOnboardingTask" maxlength="180" placeholder="Enter new task..." required>
+                </label>
+
+                <button type="submit" class="btn btn-secondary" id="addTaskButton">
+                    + Add Task
+                </button>
+            </form>
+
+            <p class="form-help">
+                Task completion is recorded against the selected employee's onboarding record.
+            </p>
+
+        </div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary" data-close-dialog="onboardingDialog">Close</button>
+        </div>
+
+    </dialog>
+
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="offers-onboarding.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

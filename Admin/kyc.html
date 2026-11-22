@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <meta name="csrf-token" content="">
+
+    <title>TALVORA | Global KYC & KYB Verification Centre</title>
+
+    <link rel="stylesheet" href="kyc.css">
+
+    <script defer src="talvora-admin-config.js"></script>
+    <script defer src="kyc.js"></script>
+</head>
+
+<body>
+
+    <div class="kyc-app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="kyc-sidebar" id="sidebar">
+
+            <a href="#overview" class="kyc-brand">
+                <span class="brand-symbol">T</span>
+                <span>
+                    <strong>TALVORA</strong>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </span>
+            </a>
+
+            <div class="sidebar-context">
+                <span class="status-dot"></span>
+                IDENTITY & VERIFICATION
+            </div>
+
+            <div class="nav-heading">VERIFICATION OPERATIONS</div>
+
+            <nav class="kyc-navigation">
+
+                <a href="#overview" class="nav-link active" data-section="overview">
+                    <span>◈</span>
+                    <span>Verification Dashboard</span>
+                </a>
+
+                <a href="#individuals" class="nav-link" data-section="individuals">
+                    <span>♙</span>
+                    <span>Individual KYC</span>
+                </a>
+
+                <a href="#businesses" class="nav-link" data-section="businesses">
+                    <span>▤</span>
+                    <span>Business KYB</span>
+                </a>
+
+                <a href="#queue" class="nav-link" data-section="queue">
+                    <span>◎</span>
+                    <span>Verification Queue</span>
+                </a>
+
+                <a href="#documents" class="nav-link" data-section="documents">
+                    <span>▧</span>
+                    <span>Document Management</span>
+                </a>
+
+                <a href="#ownership" class="nav-link" data-section="ownership">
+                    <span>♧</span>
+                    <span>Beneficial Ownership</span>
+                </a>
+
+                <a href="#reviews" class="nav-link" data-section="reviews">
+                    <span>⚑</span>
+                    <span>Risk & EDD Reviews</span>
+                </a>
+
+                <a href="#appeals" class="nav-link" data-section="appeals">
+                    <span>⇄</span>
+                    <span>Verification Appeals</span>
+                </a>
+
+                <a href="#audit" class="nav-link" data-section="audit">
+                    <span>▣</span>
+                    <span>Verification Audit</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="security-card">
+                    <span class="security-icon">⬡</span>
+                    <div>
+                        <strong>Verification Security</strong>
+                        <small>Global Identity Governance</small>
+                    </div>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">SA</div>
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Authority</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN APPLICATION -->
+
+        <main class="kyc-main">
+
+            <!-- TOPBAR -->
+
+            <header class="kyc-topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                        ☰
+                    </button>
+
+                    <div>
+                        <small>SUPER ADMIN / GLOBAL IDENTITY GOVERNANCE</small>
+                        <h1>KYC, KYB & Identity Verification</h1>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <span class="api-status" id="apiStatus">
+                        <i></i>
+                        Connecting
+                    </span>
+
+                    <span class="global-tag">GLOBAL</span>
+
+                    <button class="kyc-btn secondary" id="refreshAll">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- GLOBAL BANNER -->
+
+            <div class="kyc-banner">
+
+                <div class="banner-icon">⬡</div>
+
+                <div>
+                    <strong>Global Identity, Business Verification & Trust Centre</strong>
+
+                    <p>
+                        Centralized verification oversight for employees, employers,
+                        organizations, beneficial owners and identity documents across TALVORA.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- =================================
+         01. VERIFICATION DASHBOARD
+    ================================== -->
+
+            <section class="kyc-section active" id="overview">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL VERIFICATION INTELLIGENCE</span>
+
+                        <h2>Identity Verification Dashboard</h2>
+
+                        <p>
+                            Monitor individual verification, corporate verification,
+                            document reviews and identity risk operations.
+                        </p>
+                    </div>
+
+                    <button class="kyc-btn primary" data-open="verifyModal">
+                        + New Verification Request
+                    </button>
+
+                </div>
+
+                <!-- PRIMARY METRICS -->
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Individual Profiles</span>
+                        <strong id="mIndividuals">—</strong>
+                        <small>Registered verification profiles</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Business Profiles</span>
+                        <strong id="mBusinesses">—</strong>
+                        <small>Corporate verification profiles</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Verifications</span>
+                        <strong id="mPending">—</strong>
+                        <small>Awaiting verification decisions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>High-Risk Profiles</span>
+                        <strong id="mHighRisk">—</strong>
+                        <small>Profiles requiring additional review</small>
+                    </article>
+
+                </div>
+
+                <!-- SECONDARY METRICS -->
+
+                <div class="metric-grid secondary-metrics">
+
+                    <article class="metric-card">
+                        <span>Documents Awaiting Review</span>
+                        <strong id="mDocuments">—</strong>
+                        <small>Pending document examination</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Beneficial Ownership Reviews</span>
+                        <strong id="mOwners">—</strong>
+                        <small>Ownership verification records</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Enhanced Due Diligence</span>
+                        <strong id="mReviews">—</strong>
+                        <small>Open EDD and risk assessments</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Appeals</span>
+                        <strong id="mAppeals">—</strong>
+                        <small>Awaiting authorized review</small>
+                    </article>
+
+                </div>
+
+                <!-- ANALYTICS -->
+
+                <div class="dashboard-grid">
+
+                    <article class="kyc-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">VERIFICATION INTELLIGENCE</span>
+                                <h3>Verification Status Distribution</h3>
+                            </div>
+                        </div>
+
+                        <div id="verificationDistribution" class="distribution-list">
+                            <p class="muted">Loading verification information...</p>
+                        </div>
+
+                    </article>
+
+                    <article class="kyc-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">RISK GOVERNANCE</span>
+                                <h3>Identity Risk Overview</h3>
+                            </div>
+                        </div>
+
+                        <div id="riskDistribution" class="distribution-list">
+                            <p class="muted">Loading risk information...</p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- RECENT VERIFICATIONS -->
+
+                <article class="kyc-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">VERIFICATION OPERATIONS</span>
+                            <h3>Recent Verification Requests</h3>
+                        </div>
+
+                        <button class="kyc-btn secondary" data-navigate="queue">
+                            View all requests
+                        </button>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>SUBJECT TYPE</th>
+                                    <th>VERIFICATION TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>SUBMITTED</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="dashboardQueue"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+                <!-- RECENT RISK REVIEWS -->
+
+                <article class="kyc-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">ENHANCED DUE DILIGENCE</span>
+                            <h3>Priority Risk Reviews</h3>
+                        </div>
+
+                        <button class="kyc-btn secondary" data-navigate="reviews">
+                            View all reviews
+                        </button>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>REVIEW REFERENCE</th>
+                                    <th>SUBJECT REFERENCE</th>
+                                    <th>REVIEW TYPE</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>JURISDICTION</th>
+                                    <th>ASSIGNED TO</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="dashboardReviews"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         02. INDIVIDUAL KYC
+    ================================== -->
+
+            <section class="kyc-section" id="individuals">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">INDIVIDUAL IDENTITY GOVERNANCE</span>
+
+                        <h2>Individual KYC Management</h2>
+
+                        <p>
+                            Manage employee identity verification, personal identity records,
+                            KYC status and periodic verification requirements.
+                        </p>
+                    </div>
+
+                    <button class="kyc-btn primary" data-open="verifyModal">
+                        + Request Verification
+                    </button>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="individualSearch" placeholder="Search profile reference...">
+
+                    <select id="individualStatus">
+                        <option value="">All verification statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under review</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="expired">Expired</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+
+                    <select id="individualRisk">
+                        <option value="">All risk levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <select id="individualJurisdiction">
+                        <option value="">All jurisdictions</option>
+                    </select>
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>PROFILE REFERENCE</th>
+                                    <th>INDIVIDUAL</th>
+                                    <th>JURISDICTION</th>
+                                    <th>IDENTITY STATUS</th>
+                                    <th>RISK CLASSIFICATION</th>
+                                    <th>LAST VERIFIED</th>
+                                    <th>NEXT REVIEW</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="individualTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         03. BUSINESS KYB
+    ================================== -->
+
+            <section class="kyc-section" id="businesses">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">CORPORATE IDENTITY GOVERNANCE</span>
+
+                        <h2>Business KYB Management</h2>
+
+                        <p>
+                            Verify employers, companies, registered organizations,
+                            business representatives and corporate identity records.
+                        </p>
+                    </div>
+
+                    <button class="kyc-btn primary" data-open="verifyModal">
+                        + New Business Verification
+                    </button>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="businessSearch" placeholder="Search business reference or name...">
+
+                    <select id="businessStatus">
+                        <option value="">All KYB statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under review</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="expired">Expired</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+
+                    <select id="businessRisk">
+                        <option value="">All risk levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <select id="businessJurisdiction">
+                        <option value="">All jurisdictions</option>
+                    </select>
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>BUSINESS REFERENCE</th>
+                                    <th>BUSINESS NAME</th>
+                                    <th>JURISDICTION</th>
+                                    <th>REGISTRATION REFERENCE</th>
+                                    <th>KYB STATUS</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>BENEFICIAL OWNERS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="businessTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         04. VERIFICATION QUEUE
+    ================================== -->
+
+            <section class="kyc-section" id="queue">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">CENTRAL VERIFICATION OPERATIONS</span>
+
+                        <h2>Verification Queue</h2>
+
+                        <p>
+                            Manage identity verification requests, business verification,
+                            re-verification, outstanding decisions and escalations.
+                        </p>
+                    </div>
+
+                    <button class="kyc-btn primary" data-open="verifyModal">
+                        + Create Verification
+                    </button>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="queueSearch" placeholder="Search verification reference...">
+
+                    <select id="queueSubjectType">
+                        <option value="">All subject types</option>
+                        <option value="individual">Individual</option>
+                        <option value="business">Business</option>
+                        <option value="beneficial_owner">Beneficial owner</option>
+                    </select>
+
+                    <select id="queueStatus">
+                        <option value="">All statuses</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under review</option>
+                        <option value="awaiting_documents">Awaiting documents</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="escalated">Escalated</option>
+                    </select>
+
+                    <select id="queuePriority">
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>VERIFICATION REFERENCE</th>
+                                    <th>SUBJECT TYPE</th>
+                                    <th>SUBJECT REFERENCE</th>
+                                    <th>VERIFICATION TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>ASSIGNED TO</th>
+                                    <th>SUBMITTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="queueTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         05. DOCUMENT MANAGEMENT
+    ================================== -->
+
+            <section class="kyc-section" id="documents">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">SECURE IDENTITY DOCUMENT GOVERNANCE</span>
+
+                        <h2>Document Management</h2>
+
+                        <p>
+                            Manage identity documents, business registration evidence,
+                            document review status, expiry and verification history.
+                        </p>
+                    </div>
+
+                    <button class="kyc-btn primary" data-open="documentModal">
+                        + Upload Document
+                    </button>
+
+                </div>
+
+                <div class="document-notice">
+
+                    <strong>Secure document handling</strong>
+
+                    <p>
+                        Document files must be stored in protected backend storage.
+                        The browser must not expose permanent storage URLs, identity
+                        document contents or unrestricted download permissions.
+                    </p>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="documentSearch" placeholder="Search document reference...">
+
+                    <select id="documentType">
+                        <option value="">All document types</option>
+                        <option value="national_id">National identity document</option>
+                        <option value="passport">Passport</option>
+                        <option value="driving_license">Driving licence</option>
+                        <option value="residence_permit">Residence permit</option>
+                        <option value="business_registration">Business registration</option>
+                        <option value="tax_certificate">Tax certificate</option>
+                        <option value="proof_of_address">Proof of address</option>
+                        <option value="ownership_document">Ownership document</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <select id="documentStatus">
+                        <option value="">All document statuses</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="pending_review">Pending review</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="expired">Expired</option>
+                        <option value="flagged">Flagged</option>
+                    </select>
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>DOCUMENT REFERENCE</th>
+                                    <th>SUBJECT REFERENCE</th>
+                                    <th>DOCUMENT TYPE</th>
+                                    <th>ISSUING JURISDICTION</th>
+                                    <th>SUBMITTED</th>
+                                    <th>EXPIRY DATE</th>
+                                    <th>REVIEW STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="documentTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         06. BENEFICIAL OWNERSHIP
+    ================================== -->
+
+            <section class="kyc-section" id="ownership">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">CORPORATE OWNERSHIP INTELLIGENCE</span>
+
+                        <h2>Beneficial Ownership & UBO Management</h2>
+
+                        <p>
+                            Monitor declared business ownership, ultimate beneficial owners,
+                            controlling interests and ownership verification.
+                        </p>
+                    </div>
+
+                    <button class="kyc-btn primary" data-open="ownerModal">
+                        + Register Ownership Record
+                    </button>
+
+                </div>
+
+                <div class="ownership-notice">
+
+                    <strong>Ownership verification governance</strong>
+
+                    <p>
+                        Ownership thresholds, control tests and reporting obligations
+                        must follow the applicable jurisdiction's legal requirements.
+                        An ownership percentage alone does not establish beneficial ownership.
+                    </p>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="ownerSearch" placeholder="Search business or ownership reference...">
+
+                    <select id="ownerStatus">
+                        <option value="">All ownership statuses</option>
+                        <option value="declared">Declared</option>
+                        <option value="pending_verification">Pending verification</option>
+                        <option value="verified">Verified</option>
+                        <option value="disputed">Disputed</option>
+                        <option value="under_review">Under review</option>
+                    </select>
+
+                    <select id="ownerType">
+                        <option value="">All control types</option>
+                        <option value="direct_ownership">Direct ownership</option>
+                        <option value="indirect_ownership">Indirect ownership</option>
+                        <option value="voting_control">Voting control</option>
+                        <option value="other_control">Other control</option>
+                    </select>
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>OWNERSHIP REFERENCE</th>
+                                    <th>BUSINESS REFERENCE</th>
+                                    <th>OWNER REFERENCE</th>
+                                    <th>OWNERSHIP PERCENTAGE</th>
+                                    <th>CONTROL TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>VERIFICATION STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="ownerTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         07. RISK & EDD
+    ================================== -->
+
+            <section class="kyc-section" id="reviews">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">IDENTITY RISK INTELLIGENCE</span>
+
+                        <h2>Risk Assessment & Enhanced Due Diligence</h2>
+
+                        <p>
+                            Review high-risk identities, complex ownership structures,
+                            verification concerns and enhanced due diligence cases.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="reviewSearch" placeholder="Search risk review reference...">
+
+                    <select id="reviewType">
+                        <option value="">All review types</option>
+                        <option value="enhanced_due_diligence">Enhanced due diligence</option>
+                        <option value="periodic_review">Periodic review</option>
+                        <option value="identity_risk">Identity risk</option>
+                        <option value="business_risk">Business risk</option>
+                        <option value="ownership_risk">Ownership risk</option>
+                        <option value="document_risk">Document risk</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <select id="reviewRisk">
+                        <option value="">All risk levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <select id="reviewStatus">
+                        <option value="">All review statuses</option>
+                        <option value="open">Open</option>
+                        <option value="under_review">Under review</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="completed">Completed</option>
+                    </select>
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>REVIEW REFERENCE</th>
+                                    <th>SUBJECT REFERENCE</th>
+                                    <th>REVIEW TYPE</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>JURISDICTION</th>
+                                    <th>ASSIGNED TO</th>
+                                    <th>CREATED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="reviewTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         08. VERIFICATION APPEALS
+    ================================== -->
+
+            <section class="kyc-section" id="appeals">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">VERIFICATION DECISION GOVERNANCE</span>
+
+                        <h2>Verification Appeals & Reconsideration</h2>
+
+                        <p>
+                            Manage challenges to verification decisions, requests for
+                            reconsideration, supporting evidence and independent reviews.
+                        </p>
+
+                    </div>
+
+                    <button class="kyc-btn primary" data-open="appealModal">
+                        + Register Appeal
+                    </button>
+
+                </div>
+
+                <div class="appeal-notice">
+
+                    <strong>Independent appeal handling</strong>
+
+                    <p>
+                        Appeals should be reviewed by an appropriately authorized
+                        person who is independent of the original decision where required.
+                        Decisions must include documented reasons.
+                    </p>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="appealSearch" placeholder="Search appeal reference...">
+
+                    <select id="appealStatus">
+                        <option value="">All appeal statuses</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="under_review">Under review</option>
+                        <option value="pending_decision">Pending decision</option>
+                        <option value="upheld">Upheld</option>
+                        <option value="overturned">Overturned</option>
+                        <option value="referred">Referred</option>
+                        <option value="closed">Closed</option>
+                    </select>
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>APPEAL REFERENCE</th>
+                                    <th>SUBJECT TYPE</th>
+                                    <th>SUBJECT REFERENCE</th>
+                                    <th>ORIGINAL DECISION</th>
+                                    <th>APPEAL REASON</th>
+                                    <th>SUBMITTED</th>
+                                    <th>ASSIGNED TO</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="appealTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =================================
+         09. AUDIT
+    ================================== -->
+
+            <section class="kyc-section" id="audit">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">VERIFICATION ACCOUNTABILITY</span>
+
+                        <h2>Identity Verification Audit & Governance</h2>
+
+                        <p>
+                            Monitor verification decisions, document access, risk changes,
+                            ownership reviews and administrative activities.
+                        </p>
+
+                    </div>
+
+                    <button class="kyc-btn secondary" id="exportAudit">
+                        ↓ Export Audit
+                    </button>
+
+                </div>
+
+                <div class="filter-bar">
+
+                    <input id="auditSearch" placeholder="Search audit reference, actor or action...">
+
+                </div>
+
+                <article class="kyc-panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>AUDIT REFERENCE</th>
+                                    <th>ACTOR</th>
+                                    <th>ACTION</th>
+                                    <th>RESOURCE</th>
+                                    <th>REASON</th>
+                                    <th>JURISDICTION</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="auditTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <footer class="kyc-footer">
+                TALVORA GLOBAL PLATFORM OPERATIONS
+                <span>•</span>
+                IDENTITY & VERIFICATION GOVERNANCE
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- =================================
+     MODAL 1: VERIFICATION REQUEST
+================================== -->
+
+    <div class="overlay" id="verifyModal" hidden>
+
+        <div class="kyc-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">IDENTITY VERIFICATION</span>
+                    <h2>New Verification Request</h2>
+                </div>
+
+                <button class="modal-close" data-close aria-label="Close">×</button>
+
+            </div>
+
+            <form id="verifyForm">
+
+                <label>
+                    Subject type
+
+                    <select name="subjectType" id="verifySubjectType" required>
+                        <option value="">Select subject type</option>
+                        <option value="individual">Individual / Employee</option>
+                        <option value="business">Business / Employer</option>
+                        <option value="beneficial_owner">Beneficial owner</option>
+                    </select>
+                </label>
+
+                <label>
+                    Existing subject reference
+
+                    <input name="subjectReference" required maxlength="120" autocomplete="off"
+                        placeholder="Enter existing TALVORA profile reference">
+                </label>
+
+                <label>
+                    Verification type
+
+                    <select name="verificationType" required>
+                        <option value="">Select verification type</option>
+                        <option value="identity">Identity verification</option>
+                        <option value="kyc">Individual KYC</option>
+                        <option value="kyb">Business KYB</option>
+                        <option value="document">Document verification</option>
+                        <option value="beneficial_ownership">Beneficial ownership verification</option>
+                        <option value="reverification">Periodic re-verification</option>
+                        <option value="enhanced_due_diligence">Enhanced due diligence</option>
+                    </select>
+                </label>
+
+                <label>
+                    Jurisdiction
+
+                    <select name="jurisdiction" id="verifyJurisdiction" required>
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>
+                    Priority
+
+                    <select name="priority" required>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </label>
+
+                <label>
+                    Verification reason
+
+                    <textarea name="reason" required minlength="10" maxlength="2000"
+                        placeholder="Explain why this verification is required..."></textarea>
+                </label>
+
+                <p class="form-note">
+                    This creates a verification request against an existing TALVORA account.
+                    The backend assigns the reference and controls its review workflow.
+                </p>
+
+                <button class="kyc-btn primary full-width" id="verifySubmit" type="submit">
+                    Submit Verification Request
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+     MODAL 2: DOCUMENT UPLOAD
+================================== -->
+
+    <div class="overlay" id="documentModal" hidden>
+
+        <div class="kyc-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">SECURE DOCUMENT MANAGEMENT</span>
+                    <h2>Upload Verification Document</h2>
+                </div>
+
+                <button class="modal-close" data-close aria-label="Close">×</button>
+
+            </div>
+
+            <form id="documentForm">
+
+                <label>
+                    Subject type
+
+                    <select name="subjectType" required>
+                        <option value="">Select subject type</option>
+                        <option value="individual">Individual</option>
+                        <option value="business">Business</option>
+                        <option value="beneficial_owner">Beneficial owner</option>
+                    </select>
+                </label>
+
+                <label>
+                    Existing subject reference
+
+                    <input name="subjectReference" required maxlength="120">
+                </label>
+
+                <label>
+                    Document type
+
+                    <select name="documentType" required>
+                        <option value="">Select document type</option>
+                        <option value="national_id">National identity document</option>
+                        <option value="passport">Passport</option>
+                        <option value="driving_license">Driving licence</option>
+                        <option value="residence_permit">Residence permit</option>
+                        <option value="business_registration">Business registration</option>
+                        <option value="tax_certificate">Tax certificate</option>
+                        <option value="proof_of_address">Proof of address</option>
+                        <option value="ownership_document">Ownership document</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Issuing jurisdiction
+
+                    <select name="issuingJurisdiction" id="documentJurisdiction" required>
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>
+                    Document expiry date
+
+                    <input name="expiryDate" type="date">
+                </label>
+
+                <label>
+                    Select document
+
+                    <input name="file" id="documentFile" type="file" accept=".pdf,.png,.jpg,.jpeg" required>
+
+                    <small class="field-hint">
+                        Accepted formats: PDF, PNG and JPEG. Maximum upload size: 10 MB.
+                    </small>
+                </label>
+
+                <label>
+                    Additional notes
+
+                    <textarea name="notes" maxlength="1000"></textarea>
+                </label>
+
+                <p class="form-note">
+                    Uploads are transmitted to the configured secure backend.
+                    Server-side file scanning, validation, access controls and encrypted
+                    storage are required before documents can be trusted.
+                </p>
+
+                <button class="kyc-btn primary full-width" id="uploadSubmit" type="submit">
+                    Upload Securely
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+     MODAL 3: BENEFICIAL OWNERSHIP
+================================== -->
+
+    <div class="overlay" id="ownerModal" hidden>
+
+        <div class="kyc-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">CORPORATE OWNERSHIP</span>
+                    <h2>Register Ownership Record</h2>
+                </div>
+
+                <button class="modal-close" data-close aria-label="Close">×</button>
+
+            </div>
+
+            <form id="ownerForm">
+
+                <label>
+                    Existing business reference
+
+                    <input name="businessReference" required maxlength="120">
+                </label>
+
+                <label>
+                    Owner reference
+
+                    <input name="ownerReference" required maxlength="120">
+                </label>
+
+                <label>
+                    Ownership percentage
+
+                    <input name="ownershipPercentage" type="number" min="0.01" max="100" step="0.01" required>
+                </label>
+
+                <label>
+                    Control type
+
+                    <select name="controlType" required>
+                        <option value="">Select control type</option>
+                        <option value="direct_ownership">Direct ownership</option>
+                        <option value="indirect_ownership">Indirect ownership</option>
+                        <option value="voting_control">Voting control</option>
+                        <option value="other_control">Other form of control</option>
+                    </select>
+                </label>
+
+                <label>
+                    Jurisdiction
+
+                    <select name="jurisdiction" id="ownerJurisdiction" required>
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>
+                    Ownership explanation
+
+                    <textarea name="description" required minlength="10" maxlength="2000"></textarea>
+                </label>
+
+                <p class="form-note">
+                    Ownership records are submitted for verification. Registration does
+                    not automatically establish verified beneficial ownership.
+                </p>
+
+                <button class="kyc-btn primary full-width" id="ownerSubmit" type="submit">
+                    Register Ownership Record
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+     MODAL 4: VERIFICATION APPEAL
+================================== -->
+
+    <div class="overlay" id="appealModal" hidden>
+
+        <div class="kyc-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">DECISION RECONSIDERATION</span>
+                    <h2>Register Verification Appeal</h2>
+                </div>
+
+                <button class="modal-close" data-close aria-label="Close">×</button>
+
+            </div>
+
+            <form id="appealForm">
+
+                <label>
+                    Subject type
+
+                    <select name="subjectType" required>
+                        <option value="">Select subject type</option>
+                        <option value="individual">Individual</option>
+                        <option value="business">Business</option>
+                        <option value="beneficial_owner">Beneficial owner</option>
+                    </select>
+                </label>
+
+                <label>
+                    Subject reference
+
+                    <input name="subjectReference" required maxlength="120">
+                </label>
+
+                <label>
+                    Original decision reference
+
+                    <input name="decisionReference" required maxlength="120">
+                </label>
+
+                <label>
+                    Appeal reason
+
+                    <textarea name="reason" required minlength="20" maxlength="3000"></textarea>
+                </label>
+
+                <label>
+                    Supporting evidence reference
+
+                    <input name="evidenceReference" maxlength="250">
+                </label>
+
+                <p class="form-note">
+                    Appeals are recorded for independent assessment and review.
+                    The original verification decision remains unchanged until an
+                    authorized decision is recorded.
+                </p>
+
+                <button class="kyc-btn primary full-width" id="appealSubmit" type="submit">
+                    Submit Appeal
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+     MODAL 5: CONTROLLED ACTION
+================================== -->
+
+    <div class="overlay" id="actionModal" hidden>
+
+        <div class="kyc-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">AUTHORIZED VERIFICATION WORKFLOW</span>
+                    <h2 id="actionTitle">Verification Action</h2>
+                </div>
+
+                <button class="modal-close" data-close aria-label="Close">×</button>
+
+            </div>
+
+            <p id="actionDescription" class="muted"></p>
+
+            <label class="standalone-label">
+                Reason and supporting explanation
+
+                <textarea id="actionReason" minlength="10" maxlength="2000" required></textarea>
+            </label>
+
+            <label class="standalone-label">
+                Supporting evidence reference
+
+                <input id="actionEvidence" maxlength="250">
+            </label>
+
+            <div class="modal-actions">
+
+                <button class="kyc-btn secondary" data-close>
+                    Cancel
+                </button>
+
+                <button class="kyc-btn primary" id="actionSubmit" disabled>
+                    Submit Request
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+     MODAL 6: RECORD DETAILS
+================================== -->
+
+    <div class="overlay" id="detailModal" hidden>
+
+        <div class="kyc-modal large">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED RECORD ACCESS</span>
+                    <h2 id="detailTitle">Verification Record</h2>
+                </div>
+
+                <button class="modal-close" data-close aria-label="Close">×</button>
+
+            </div>
+
+            <div id="detailBody" class="detail-body"></div>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST NOTIFICATIONS -->
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+</body>
+
+</html>

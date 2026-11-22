@@ -1,0 +1,25 @@
+(()=>{"use strict";
+const TE=window.TALVORA_EMPLOYEE,$=id=>document.getElementById(id),state={summary:null,payslips:[],transactions:[],benefits:[]},esc=TE.escape;
+function money(value,currency="USD"){try{return new Intl.NumberFormat(undefined,{style:"currency",currency:"USD",maximumFractionDigits:2}).format(Number(value||0));}catch(_){return `USD ${Number(value||0).toLocaleString()}`;}}
+function render(){
+ const s=state.summary||{},c="USD";
+ $("payrollEmployer").textContent=s.employer||"Selected employer payroll";
+ $("payrollPeriod").textContent=`Payroll period: ${s.period||"Not specified"}`;
+ $("payrollPaymentStatus").textContent=s.paymentStatus||"Status unavailable";
+ $("payrollPaymentStatus").className="pill "+TE.statusClass(s.paymentStatus);
+ $("grossPay").textContent=money(s.grossPay,c);$("deductionsPay").textContent=money(s.deductions,c);$("netPay").textContent=money(s.netPay,c);
+ $("payDate").textContent=TE.formatDate(s.payDate,{day:"numeric",month:"short"});
+ $("basicPay").textContent=money(s.basicPay,c);$("allowancesPay").textContent=money(s.allowances,c);$("payCurrency").textContent=c;
+ $("payslipRows").innerHTML=state.payslips.length?state.payslips.map(x=>`<tr><td><strong>${esc(x.period)}</strong></td><td>${TE.formatDate(x.payDate)}</td><td>${money(x.gross,x.currency||c)}</td><td>${money(x.deductions,x.currency||c)}</td><td><strong>${money(x.net,x.currency||c)}</strong></td><td>${TE.badge(x.status)}</td><td><button class="btn btn-small" data-view-payslip="${esc(x.id)}">Details</button></td></tr>`).join(""):'<tr><td colspan="7" class="empty-state">No payslips are available.</td></tr>';
+ $("payTransactionRows").innerHTML=state.transactions.length?state.transactions.map(x=>`<tr><td>${TE.formatDate(x.date)}</td><td>${esc(x.description)}</td><td>${esc(x.type)}</td><td>${esc(x.reference||"—")}</td><td><strong>${money(x.amount,x.currency||c)}</strong></td><td>${TE.badge(x.status)}</td></tr>`).join(""):'<tr><td colspan="6" class="empty-state">No payroll transactions are available.</td></tr>';
+ $("benefitsGrid").innerHTML=state.benefits.length?state.benefits.map(x=>`<article class="item-card"><div style="display:flex;justify-content:space-between;gap:8px"><h3>${esc(x.name)}</h3>${TE.badge(x.status)}</div><p>${esc(x.description||"")}</p><div class="item-meta"><span>${esc(x.provider||"Employer programme")}</span><span>${x.effectiveDate?"Effective "+TE.formatDate(x.effectiveDate):"Eligibility subject to plan rules"}</span></div>${["eligible","available"].includes(x.status)?`<button class="btn btn-primary btn-small" data-enroll-benefit="${esc(x.id)}">Request enrolment</button>`:""}</article>`).join(""):'<div class="empty-state" style="grid-column:1/-1">No benefit information is currently available.</div>';
+}
+async function load(){
+ try{const [p,s,b]=await Promise.all([TE.request("/payroll"),TE.request("/payslips"),TE.request("/benefits")]);const pd=TE.unwrap(p);state.summary=pd.summary||{};state.transactions=pd.transactions||[];state.payslips=TE.array(s,"payslips");state.benefits=TE.array(b,"benefits");render();}
+ catch(e){TE.notify(e.message,"error");$("payslipRows").innerHTML=`<tr><td colspan="7" class="empty-state">${esc(e.message)}</td></tr>`;}
+}
+function showPayslip(id){const x=state.payslips.find(v=>v.id===id);if(!x)return;const c="USD";$("payslipDetail").innerHTML=`<h2 style="font-size:18px;margin:0 0 5px">${esc(x.period)}</h2><p class="muted">Statement reference: ${esc(x.reference||x.id)}</p><div class="detail-list"><div class="detail-cell"><span>Pay date</span><strong>${TE.formatDate(x.payDate)}</strong></div><div class="detail-cell"><span>Payment status</span><strong>${esc(x.status)}</strong></div><div class="detail-cell"><span>Gross pay</span><strong>${money(x.gross,c)}</strong></div><div class="detail-cell"><span>Deductions</span><strong>${money(x.deductions,c)}</strong></div><div class="detail-cell"><span>Net pay</span><strong>${money(x.net,c)}</strong></div></div>${TE.safeUrl(x.secureUrl)?`<a class="btn btn-primary" href="${esc(TE.safeUrl(x.secureUrl))}" target="_blank" rel="noopener noreferrer">Open secure payslip ↗</a>`:'<div class="notice">A secure payslip download is not available in this demo record. Production downloads should be served through an authenticated, short-lived link.</div>'}`;TE.openDialog("payslipDialog");}
+$("payslipRows").addEventListener("click",e=>{const b=e.target.closest("[data-view-payslip]");if(b)showPayslip(b.dataset.viewPayslip);});
+$("benefitsGrid").addEventListener("click",async e=>{const b=e.target.closest("[data-enroll-benefit]");if(!b)return;if(!confirm("Send an enrolment request for this benefit to the employer's benefits team? Eligibility and enrolment are subject to plan rules."))return;try{await TE.request(`/benefits/${encodeURIComponent(b.dataset.enrollBenefit)}/enroll`,{method:"POST",body:{}});TE.notify("Benefit enrolment request recorded.","success");await load();}catch(err){TE.notify(err.message,"error");}});
+$("refreshPayroll").addEventListener("click",load);load();window.TALVORA_PAYROLL={refresh:load};
+})();

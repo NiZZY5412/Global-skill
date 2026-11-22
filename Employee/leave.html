@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA global employee workforce services and self-service portal.">
+<title>Leave & Absence | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link active" href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Leave & Absence</div><div class="topbar-sub">Manage leave balances, requests and absence history</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">TIME OFF & AVAILABILITY</span><h1>Leave & Absence Management</h1><p>Review leave balances, submit time-off requests and track decisions for your selected employment relationship.</p></div><div class="heading-actions"><button class="btn btn-primary" id="newLeaveRequest">+ Request leave</button></div></div>
+<div class="context-banner"><div><strong id="leaveEmployerName">Selected employer</strong><span>Leave policies and balances are employer-specific. Confirm the applicable policy before submitting a request.</span></div><span class="pill info">Employment-specific</span></div>
+<div class="panel">
+ <div class="panel-head"><div><h2>My leave balances</h2><p>Balances displayed are supplied by the employer's leave system.</p></div></div>
+ <div id="leaveBalances" class="grid grid-3"><div class="empty-state">Loading balances…</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Leave request history</h2><p>Track pending, approved, declined and cancelled requests.</p></div><select id="leaveStatusFilter" class="control" style="max-width:170px"><option value="">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="declined">Declined</option><option value="cancelled">Cancelled</option></select></div>
+ <div class="table-wrap"><table><thead><tr><th>LEAVE TYPE</th><th>START</th><th>END</th><th>DAYS</th><th>SUBMITTED</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="leaveRows"><tr><td colspan="7" class="empty-state">Loading leave requests…</td></tr></tbody></table></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Absence & return-to-work information</h2><p>Keep employer-required absence records and supporting documents up to date.</p></div></div>
+ <div class="notice">For medical or other sensitive absence information, share only the minimum information required through the employer's authorized secure process. Do not place sensitive medical details in general notes.</div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="leaveDialog"><div class="modal-head"><h2>Submit leave request</h2><button class="modal-close" data-close-dialog="leaveDialog">×</button></div>
+<form id="leaveForm"><div class="modal-body">
+ <div class="field"><label for="leaveType">Leave type *</label><select id="leaveType" name="type" required><option value="">Choose leave type</option><option>Annual leave</option><option>Sick leave</option><option>Personal leave</option><option>Parental leave</option><option>Unpaid leave</option><option>Other approved leave</option></select></div>
+ <div class="field-row"><div class="field"><label for="leaveStart">Start date *</label><input id="leaveStart" name="startDate" type="date" required></div><div class="field"><label for="leaveEnd">End date *</label><input id="leaveEnd" name="endDate" type="date" required></div></div>
+ <div class="field"><label for="leaveReason">Reason / note</label><textarea id="leaveReason" name="reason" maxlength="1000" placeholder="Add a brief note for your manager. Avoid unnecessary sensitive details."></textarea></div>
+ <div class="notice warning">Submitting a request does not mean it is approved. Your employer's leave policy, balance rules, working calendar and approval process determine the final outcome.</div>
+</div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="leaveDialog">Cancel</button><button type="submit" class="btn btn-primary" id="submitLeave">Submit request</button></div></form></dialog>
+
+<script src="employee.js"></script>
+<script src="leave.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

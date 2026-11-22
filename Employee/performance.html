@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA employee professional development and employee services portal.">
+<title>Performance & Career | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a>
+<a class="nav-link " href="learning.html"><span class="nav-icon">⌑</span>Learning & Certification</a>
+<a class="nav-link active" href="performance.html"><span class="nav-icon">↗</span>Performance & Career</a>
+<a class="nav-link " href="communications.html"><span class="nav-icon">◉</span>Communication Centre</a>
+<a class="nav-link " href="employee-support.html"><span class="nav-icon">♡</span>Employee Support</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Performance & Career</div><div class="topbar-sub">Track goals, reviews, feedback and development</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">GROWTH & PERFORMANCE</span><h1>Performance, Goals & Career Development</h1><p>Keep your goals visible, prepare for review conversations and plan the next steps in your professional development.</p></div><div class="heading-actions"><button class="btn" id="refreshPerformance">↻ Refresh</button><button class="btn btn-primary" id="addGoalButton">+ Add goal</button></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Active goals</div><div class="kpi-value" id="activeGoalCount">—</div><div class="kpi-foot">Goals currently in progress</div></div>
+ <div class="kpi"><div class="kpi-label">Completed goals</div><div class="kpi-value" id="completedGoalCount">—</div><div class="kpi-foot">Goals marked complete</div></div>
+ <div class="kpi"><div class="kpi-label">Average goal progress</div><div class="kpi-value" id="averageGoalProgress">—</div><div class="kpi-foot">Across your current goals</div></div>
+ <div class="kpi"><div class="kpi-label">Next review</div><div class="kpi-value" id="nextReviewDate" style="font-size:17px">—</div><div class="kpi-foot">Upcoming performance review</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>My goals & objectives</h2><p>Review progress against agreed objectives and outcomes.</p></div><select id="goalStatusFilter" class="control" style="max-width:170px"><option value="">All goals</option><option value="not_started">Not started</option><option value="in_progress">In progress</option><option value="completed">Completed</option></select></div>
+ <div id="goalGrid" class="grid grid-2"><div class="empty-state">Loading goals…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Performance review cycles</h2><p>Review history and upcoming review activities.</p></div></div>
+ <div id="reviewGrid" class="grid grid-2"><div class="empty-state">Loading review cycles…</div></div>
+</section>
+<div class="grid grid-2">
+ <section class="panel">
+  <div class="panel-head"><div><h2>Feedback & recognition</h2><p>Recent feedback shared with you.</p></div></div>
+  <div id="feedbackList"><div class="empty-state">Loading feedback…</div></div>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Career development plan</h2><p>Your interests, strengths and growth areas.</p></div></div>
+  <div id="careerPlan"></div>
+  <div class="panel-head mt-12"><div><h3>Development actions</h3><p>Practical next steps for your growth.</p></div><button class="btn btn-small btn-primary" id="addDevelopmentAction">+ Add action</button></div>
+  <div id="developmentActions"><div class="empty-state">Loading actions…</div></div>
+ </section>
+</div>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="goalDialog"><div class="modal-head"><h2>Add performance goal</h2><button class="modal-close" data-close-dialog="goalDialog">×</button></div><form id="goalForm"><div class="modal-body">
+ <div class="field"><label for="goalTitle">Goal title *</label><input id="goalTitle" name="title" maxlength="140" required placeholder="Describe the outcome you want to achieve"></div>
+ <div class="field"><label for="goalDescription">Description</label><textarea id="goalDescription" name="description" maxlength="1000" placeholder="Add context and intended outcomes"></textarea></div>
+ <div class="field-row"><div class="field"><label for="goalCategory">Category</label><select id="goalCategory" name="category"><option>Professional Development</option><option>Operational Excellence</option><option>Collaboration</option><option>Customer Outcomes</option><option>Leadership</option></select></div><div class="field"><label for="goalTargetDate">Target date *</label><input id="goalTargetDate" name="targetDate" type="date" required></div></div>
+ <div class="field"><label for="goalMeasure">Success measure</label><input id="goalMeasure" name="measure" maxlength="300" placeholder="How will progress or success be measured?"></div>
+</div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="goalDialog">Cancel</button><button type="submit" class="btn btn-primary" id="saveGoalButton">Save goal</button></div></form></dialog>
+<dialog class="modal" id="reviewDialog"><div class="modal-head"><h2>Employee self-reflection</h2><button class="modal-close" data-close-dialog="reviewDialog">×</button></div><form id="reviewForm"><div class="modal-body"><p class="muted" id="reviewDialogCycle"></p><div class="field"><label for="reviewReflection">Your reflection *</label><textarea id="reviewReflection" name="employeeComment" rows="7" maxlength="3000" required placeholder="Summarize outcomes, strengths, challenges, learning and development priorities."></textarea></div><div class="notice">Your reflection will be submitted to the configured performance review workflow. Follow your employer's review guidance.</div></div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="reviewDialog">Cancel</button><button type="submit" class="btn btn-primary">Submit reflection</button></div></form></dialog>
+<dialog class="modal" id="developmentDialog"><div class="modal-head"><h2>Add development action</h2><button class="modal-close" data-close-dialog="developmentDialog">×</button></div><form id="developmentForm"><div class="modal-body"><div class="field"><label for="developmentTitle">Action *</label><input id="developmentTitle" name="title" required maxlength="160" placeholder="e.g. Attend a coaching session"></div><div class="field-row"><div class="field"><label for="developmentType">Type</label><select id="developmentType" name="type"><option>Learning</option><option>Coaching</option><option>Mentoring</option><option>On-the-job experience</option><option>Certification</option></select></div><div class="field"><label for="developmentDate">Target date *</label><input id="developmentDate" name="targetDate" type="date" required></div></div></div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="developmentDialog">Cancel</button><button type="submit" class="btn btn-primary">Add action</button></div></form></dialog>
+
+<script src="employee.js"></script>
+<script src="performance.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

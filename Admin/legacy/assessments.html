@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060638">
+
+    <meta name="description" content="TALVORA Global - Super Admin Assessments Management">
+
+    <title>Assessments Management | TALVORA Technologies</title>
+
+    <link rel="icon" href="../../talvora-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assessments.css">
+
+    <script src="assessments.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ADMIN ACCESS SCREEN -->
+
+    <section id="assessments-locked" class="assessments-locked">
+
+        <div class="assessments-locked-card">
+
+            <img src="../../talvora-logo.png" alt="TALVORA logo">
+
+            <h1>TALVORA</h1>
+
+            <p id="assessments-access-message" role="status">
+                Verifying administrator access...
+            </p>
+
+            <a href="../index.html" class="btn btn-primary">
+                Return to Super Admin
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPLICATION -->
+
+    <div id="assessments-app" class="app-layout" hidden>
+
+
+        <!-- SIDEBAR -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="../index.html" class="sidebar-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="" class="sidebar-logo">
+
+                    <div class="sidebar-brand">
+
+                        <h2>TALVORA</h2>
+
+                        <span>TECHNOLOGIES</span>
+
+                        <small>TALVORA GLOBAL</small>
+
+                    </div>
+
+                </a>
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-portal-label">
+
+                <span class="portal-indicator"></span>
+
+                SUPER ADMIN PORTAL
+
+            </div>
+
+
+            <nav class="sidebar-navigation" aria-label="Admin navigation">
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">OVERVIEW</p>
+
+                    <a href="../index.html#/admin/dashboard" class="nav-link">
+
+                        <span class="nav-icon">&#9638;</span>
+                        Dashboard
+
+                    </a>
+
+                    <a href="../index.html#/admin/activities" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Platform Activities
+
+                    </a>
+
+                    <a href="../index.html#/admin/locations" class="nav-link">
+
+                        <span class="nav-icon">&#9678;</span>
+                        Locations
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">USER MANAGEMENT</p>
+
+                    <a href="employees.html" class="nav-link">
+
+                        <span class="nav-icon">&#9786;</span>
+                        Employees
+
+                    </a>
+
+                    <a href="employers.html" class="nav-link">
+
+                        <span class="nav-icon">&#9635;</span>
+                        Employers
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">EMPLOYMENT OPERATIONS</p>
+
+                    <a href="jobs.html" class="nav-link">
+
+                        <span class="nav-icon">&#9636;</span>
+                        Job Management
+
+                    </a>
+
+                    <a href="applications.html" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Applications & Hiring
+
+                    </a>
+
+                    <a href="assessments.html" class="nav-link active" aria-current="page">
+
+                        <span class="nav-icon">&#10003;</span>
+                        Assessments
+
+                    </a>
+
+                    <a href="evidence.html" class="nav-link">
+
+                        <span class="nav-icon">&#9635;</span>
+                        Skills & Evidence
+
+                    </a>
+
+                    <a href="matching.html" class="nav-link">
+
+                        <span class="nav-icon">&#8644;</span>
+                        Matching Oversight
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">FINANCIAL MANAGEMENT</p>
+
+                    <a href="finance.html" class="nav-link">
+
+                        <span class="nav-icon">&#36;</span>
+                        Finance & Revenue
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">TRUST & SECURITY</p>
+
+                    <a href="reports.html" class="nav-link">
+
+                        <span class="nav-icon">&#9873;</span>
+                        Reports & Investigations
+
+                    </a>
+
+                    <a href="disputes.html" class="nav-link">
+
+                        <span class="nav-icon">&#9878;</span>
+                        Disputes & Appeals
+
+                    </a>
+
+                    <a href="consents.html" class="nav-link">
+
+                        <span class="nav-icon">&#10003;</span>
+                        Privacy & Consent
+
+                    </a>
+
+                    <a href="audit.html" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Audit Logs
+
+                    </a>
+
+                    <a href="support.html" class="nav-link">
+
+                        <span class="nav-icon">&#9993;</span>
+                        Support Center
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">PLATFORM MANAGEMENT</p>
+
+                    <a href="team.html" class="nav-link">
+
+                        <span class="nav-icon">&#9786;</span>
+                        Admin Team
+
+                    </a>
+
+                    <a href="settings.html" class="nav-link">
+
+                        <span class="nav-icon">&#9881;</span>
+                        System Settings
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="sidebar-footer-brand">
+                    TALVORA TECHNOLOGIES
+                </div>
+
+                <p>GSES SYSTEM 001</p>
+
+                <span>Global Workforce Infrastructure</span>
+
+            </div>
+
+        </aside>
+
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden>
+        </div>
+
+
+        <!-- MAIN WORKSPACE -->
+
+        <div class="main-workspace">
+
+
+            <!-- HEADER -->
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+
+                        &#9776;
+
+                    </button>
+
+
+                    <div class="header-title">
+
+                        <span class="header-brand-label">
+                            TALVORA GLOBAL
+                        </span>
+
+                        <h2>Assessments Management</h2>
+
+                        <p>Skills evaluation and assessment oversight</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <div class="connection-status disconnected">
+
+                        <span class="status-dot"></span>
+
+                        <span id="assessments-system-status">
+                            Not Connected
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">SA</div>
+
+                        <div class="admin-info">
+
+                            <strong>Super Admin</strong>
+
+                            <span>Administration</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="../index.html" class="logout-button">
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+
+            <main class="main-content">
+
+
+                <!-- PAGE HEADING -->
+
+                <section class="page-heading assessments-heading">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            EMPLOYMENT OPERATIONS
+                        </span>
+
+                        <h1>Assessments Management</h1>
+
+                        <p>
+                            Monitor employee assessments, skills evaluations,
+                            results, verification and assessment integrity
+                            across TALVORA Global.
+                        </p>
+
+                    </div>
+
+
+                    <button id="assessments-refresh" class="btn btn-secondary" type="button" disabled>
+
+                        &#8635; Refresh Records
+
+                    </button>
+
+                </section>
+
+
+                <!-- SYSTEM NOTICE -->
+
+                <div id="assessments-notice" class="assessments-notice" role="status" aria-live="polite">
+
+                    Awaiting connection to the assessment management service.
+
+                </div>
+
+
+                <!-- ASSESSMENT STATISTICS -->
+
+                <section class="assessments-stats" aria-label="Assessment statistics">
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>Total Assessments</span>
+
+                            <span class="assessment-stat-icon">&#9776;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-total">—</strong>
+
+                        <p>All assessment records</p>
+
+                    </article>
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>Scheduled</span>
+
+                            <span class="assessment-stat-icon">&#128197;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-scheduled">—</strong>
+
+                        <p>Upcoming assessments</p>
+
+                    </article>
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>In Progress</span>
+
+                            <span class="assessment-stat-icon">&#9881;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-progress">—</strong>
+
+                        <p>Active assessment sessions</p>
+
+                    </article>
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>Submitted</span>
+
+                            <span class="assessment-stat-icon">&#9993;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-submitted">—</strong>
+
+                        <p>Completed submissions</p>
+
+                    </article>
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>Under Review</span>
+
+                            <span class="assessment-stat-icon">&#9906;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-review">—</strong>
+
+                        <p>Awaiting verification</p>
+
+                    </article>
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>Verified</span>
+
+                            <span class="assessment-stat-icon">&#10003;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-verified">—</strong>
+
+                        <p>Verified assessment records</p>
+
+                    </article>
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>Flagged</span>
+
+                            <span class="assessment-stat-icon">&#9873;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-flagged">—</strong>
+
+                        <p>Require integrity review</p>
+
+                    </article>
+
+
+                    <article class="assessment-stat-card">
+
+                        <div class="assessment-stat-top">
+
+                            <span>Integrity Alerts</span>
+
+                            <span class="assessment-stat-icon">&#9888;</span>
+
+                        </div>
+
+                        <strong id="metric-assessments-alerts">—</strong>
+
+                        <p>Outstanding integrity alerts</p>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ASSESSMENT DIRECTORY -->
+
+                <section class="content-card assessments-directory">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Global Assessment Directory</h3>
+
+                            <p>
+                                View assessment records, employee participation,
+                                results and verification status.
+                            </p>
+
+                        </div>
+
+
+                        <span id="assessments-record-count" class="assessments-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- STATUS TABS -->
+
+                    <div class="assessments-tabs" role="tablist" aria-label="Assessment status filters">
+
+
+                        <button type="button" class="assessments-tab active" data-status="all" role="tab"
+                            aria-selected="true" tabindex="0">
+
+                            All
+
+                        </button>
+
+
+                        <button type="button" class="assessments-tab" data-status="scheduled" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Scheduled
+
+                        </button>
+
+
+                        <button type="button" class="assessments-tab" data-status="in_progress" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            In Progress
+
+                        </button>
+
+
+                        <button type="button" class="assessments-tab" data-status="submitted" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Submitted
+
+                        </button>
+
+
+                        <button type="button" class="assessments-tab" data-status="under_review" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Under Review
+
+                        </button>
+
+
+                        <button type="button" class="assessments-tab" data-status="verified" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Verified
+
+                        </button>
+
+
+                        <button type="button" class="assessments-tab" data-status="flagged" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Flagged
+
+                        </button>
+
+
+                        <button type="button" class="assessments-tab" data-status="closed" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Closed
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- SEARCH AND FILTERS -->
+
+                    <form id="assessments-filter-form" class="assessments-filters">
+
+
+                        <div class="assessment-search-field">
+
+                            <label for="assessment-search">
+                                Search assessments
+                            </label>
+
+                            <input id="assessment-search" type="search" placeholder="Reference, employee, assessment..."
+                                disabled>
+
+                        </div>
+
+
+                        <div class="assessment-filter-field">
+
+                            <label for="assessment-type">
+                                Assessment type
+                            </label>
+
+                            <select id="assessment-type" disabled>
+
+                                <option value="">All types</option>
+
+                                <option value="skills">
+                                    Skills Assessment
+                                </option>
+
+                                <option value="competency">
+                                    Competency Assessment
+                                </option>
+
+                                <option value="technical">
+                                    Technical Assessment
+                                </option>
+
+                                <option value="practical">
+                                    Practical Assessment
+                                </option>
+
+                                <option value="knowledge">
+                                    Knowledge Assessment
+                                </option>
+
+                                <option value="language">
+                                    Language Assessment
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="assessment-filter-field">
+
+                            <label for="assessment-date-sort">
+                                Assessment date
+                            </label>
+
+                            <select id="assessment-date-sort" disabled>
+
+                                <option value="newest">
+                                    Newest first
+                                </option>
+
+                                <option value="oldest">
+                                    Oldest first
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <label class="assessment-flagged-filter">
+
+                            <input id="assessment-flagged-only" type="checkbox" disabled>
+
+                            <span>Flagged only</span>
+
+                        </label>
+
+
+                        <button type="submit" id="assessments-apply-filters" class="btn btn-secondary" disabled>
+
+                            Apply Filters
+
+                        </button>
+
+
+                        <button type="button" id="assessments-clear-filters" class="btn btn-outline" disabled>
+
+                            Clear
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- ASSESSMENT TABLE -->
+
+                    <div class="table-container assessments-table-container" role="region"
+                        aria-label="Assessment records" tabindex="0">
+
+
+                        <table class="data-table assessments-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>ASSESSMENT REF.</th>
+
+                                    <th>EMPLOYEE</th>
+
+                                    <th>ASSESSMENT</th>
+
+                                    <th>TYPE</th>
+
+                                    <th>ASSESSMENT DATE</th>
+
+                                    <th>RESULT</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>FLAG</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="assessments-table-body">
+
+                                <tr>
+
+                                    <td colspan="9">
+
+                                        <div class="assessments-empty">
+
+                                            <h4>No assessment records connected</h4>
+
+                                            <p>
+                                                Real employee assessment records will appear
+                                                here when the authorized backend service
+                                                is connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+
+                    <div class="assessments-pagination">
+
+
+                        <span id="assessments-page-info">
+                            No records available
+                        </span>
+
+
+                        <div class="pagination-actions">
+
+
+                            <button id="assessments-prev" class="btn btn-secondary" type="button" disabled>
+
+                                Previous
+
+                            </button>
+
+
+                            <button id="assessments-next" class="btn btn-secondary" type="button" disabled>
+
+                                Next
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- ASSESSMENT CATEGORIES -->
+
+                <section class="content-card assessment-categories">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Assessment Categories</h3>
+
+                            <p>
+                                Types of employee evaluation overseen by the platform.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assessment-category-grid">
+
+
+                        <article class="assessment-category">
+
+                            <span class="category-icon">&#9733;</span>
+
+                            <h4>Skills Assessment</h4>
+
+                            <p>
+                                Evaluation of professional and practical skills.
+                            </p>
+
+                        </article>
+
+
+                        <article class="assessment-category">
+
+                            <span class="category-icon">&#9881;</span>
+
+                            <h4>Technical Assessment</h4>
+
+                            <p>
+                                Evaluation of technical knowledge and capabilities.
+                            </p>
+
+                        </article>
+
+
+                        <article class="assessment-category">
+
+                            <span class="category-icon">&#10003;</span>
+
+                            <h4>Competency Assessment</h4>
+
+                            <p>
+                                Evaluation of occupational competencies.
+                            </p>
+
+                        </article>
+
+
+                        <article class="assessment-category">
+
+                            <span class="category-icon">&#9998;</span>
+
+                            <h4>Practical Assessment</h4>
+
+                            <p>
+                                Evaluation of practical task performance.
+                            </p>
+
+                        </article>
+
+
+                        <article class="assessment-category">
+
+                            <span class="category-icon">&#9776;</span>
+
+                            <h4>Knowledge Assessment</h4>
+
+                            <p>
+                                Evaluation of subject and professional knowledge.
+                            </p>
+
+                        </article>
+
+
+                        <article class="assessment-category">
+
+                            <span class="category-icon">&#9678;</span>
+
+                            <h4>Language Assessment</h4>
+
+                            <p>
+                                Evaluation of language proficiency where applicable.
+                            </p>
+
+                        </article>
+
+
+                    </div>
+
+
+                    <p class="assessment-category-note">
+
+                        These are supported assessment categories in the
+                        administrative interface. Actual assessment types
+                        and evaluation criteria will be determined by the
+                        configured platform assessment system.
+
+                    </p>
+
+
+                </section>
+
+
+                <!-- ASSESSMENT INTEGRITY -->
+
+                <section class="content-card assessment-integrity">
+
+
+                    <div class="assessment-integrity-icon">
+                        &#9888;
+                    </div>
+
+
+                    <div>
+
+                        <h3>Assessment Integrity & Verification</h3>
+
+                        <p>
+
+                            Super Admin monitors assessment integrity,
+                            verification records, suspicious activity and
+                            assessment disputes. Any intervention must follow
+                            established platform policies, preserve original
+                            assessment records and generate an auditable history.
+
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+            </main>
+
+
+            <!-- FOOTER -->
+
+            <footer class="main-footer">
+
+
+                <div class="footer-brand">
+
+                    <strong>TALVORA TECHNOLOGIES</strong>
+
+                    <span>
+                        Connecting Human Capability to Global Opportunity.
+                    </span>
+
+                </div>
+
+
+                <div class="footer-system">
+                    GSES SYSTEM 001
+                </div>
+
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ASSESSMENT DETAIL DRAWER -->
+
+    <div id="assessment-detail-overlay" class="assessment-detail-overlay" hidden>
+
+
+        <aside id="assessment-detail-panel" class="assessment-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="assessment-detail-title">
+
+
+            <div class="assessment-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        ASSESSMENT RECORD
+                    </span>
+
+                    <h2 id="assessment-detail-title">
+                        Assessment Details
+                    </h2>
+
+                </div>
+
+
+                <button id="assessment-detail-close" class="assessment-detail-close" type="button"
+                    aria-label="Close assessment details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="assessment-detail-content" class="assessment-detail-content">
+            </div>
+
+
+            <div id="assessment-detail-actions" class="assessment-detail-actions">
+
+
+                <div class="assessment-action-note">
+
+                    Administrative actions are controlled by
+                    server-side authorization and assessment status.
+
+                </div>
+
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+    <!-- ADMINISTRATIVE CONFIRMATION -->
+
+    <div id="assessment-confirm-overlay" class="assessment-confirm-overlay" hidden>
+
+
+        <section class="assessment-confirm-dialog" role="dialog" aria-modal="true"
+            aria-labelledby="assessment-confirm-title">
+
+
+            <h2 id="assessment-confirm-title">
+                Confirm Administrative Action
+            </h2>
+
+
+            <p id="assessment-confirm-description"></p>
+
+
+            <label for="assessment-action-reason">
+                Reason for this action
+            </label>
+
+
+            <textarea id="assessment-action-reason" rows="4" maxlength="2000"
+                placeholder="Enter the documented reason...">
+      </textarea>
+
+
+            <div class="assessment-confirm-buttons">
+
+
+                <button id="assessment-confirm-cancel" class="btn btn-secondary" type="button">
+
+                    Cancel
+
+                </button>
+
+
+                <button id="assessment-confirm-submit" class="btn btn-danger" type="button" disabled>
+
+                    Confirm Action
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</body>
+
+</html>

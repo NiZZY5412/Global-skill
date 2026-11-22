@@ -1,0 +1,988 @@
+/* ==========================================================
+   GSES SYSTEM 001
+   EMPLOYER MANAGEMENT STYLES
+
+   FILE: employers.css
+   PORTAL: SUPER ADMIN
+
+   Requires: styles.css
+   ========================================================== */
+
+
+/* ==========================================================
+   01. CONNECTION NOTICE
+   ========================================================== */
+
+.employer-notice {
+    padding: 14px 18px;
+    margin-bottom: 24px;
+
+    background: var(--blue-light);
+    color: var(--blue-dark);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.employer-notice.success {
+    background: var(--success-bg);
+    color: var(--teal-dark);
+    border-color: #B9DFD7;
+}
+
+.employer-notice.warning {
+    background: var(--warning-bg);
+    color: #81500D;
+    border-color: #EED9AA;
+}
+
+.employer-notice.error {
+    background: var(--danger-bg);
+    color: var(--danger-dark);
+    border-color: #EFC4C5;
+}
+
+
+/* ==========================================================
+   02. EMPLOYER STATISTICS
+   ========================================================== */
+
+.employer-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.employer-stat-card {
+    min-width: 0;
+    padding: 22px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.employer-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.employer-stat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.employer-stat-header span:first-child {
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.employer-stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    border-radius: var(--radius-md);
+    font-size: 19px;
+}
+
+.employer-stat-card strong {
+    display: block;
+
+    color: var(--navy);
+    font-size: 31px;
+    line-height: 1.2;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.employer-stat-card p {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 9px;
+}
+
+
+/* ==========================================================
+   03. DIRECTORY HEADER
+   ========================================================== */
+
+.employer-directory {
+    margin-bottom: 24px;
+}
+
+.employer-count {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 12px;
+
+    background: var(--blue-light);
+    color: var(--blue-dark);
+
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   04. FILTERS
+   ========================================================== */
+
+.employer-filters {
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 1.6fr) minmax(130px, 1fr) minmax(150px, 1fr) minmax(140px, 1fr);
+
+    gap: 15px;
+    align-items: end;
+
+    margin-bottom: 24px;
+}
+
+.employer-filter-field {
+    min-width: 0;
+}
+
+.employer-filter-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.employer-filter-field input,
+.employer-filter-field select {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+
+    padding: 11px 13px;
+
+    background: var(--white);
+    color: var(--text-primary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    outline: none;
+}
+
+.employer-filter-field input:focus,
+.employer-filter-field select:focus {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 170, 0.12);
+}
+
+.employer-filter-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.employer-filter-actions .btn {
+    min-height: 42px;
+}
+
+
+/* ==========================================================
+   05. ORGANIZATION TABLE
+   ========================================================== */
+
+.employer-table-wrap {
+    margin-bottom: 22px;
+}
+
+.employer-table {
+    min-width: 960px;
+}
+
+.employer-table td {
+    vertical-align: middle;
+}
+
+.employer-name-cell {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.employer-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    background: var(--blue-light);
+    color: var(--blue-dark);
+
+    border-radius: var(--radius-md);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.employer-identity {
+    min-width: 0;
+}
+
+.employer-identity strong {
+    display: block;
+
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 650;
+
+    overflow-wrap: anywhere;
+}
+
+.employer-identity small {
+    display: block;
+
+    color: var(--text-muted);
+    font-size: 11px;
+
+    overflow-wrap: anywhere;
+}
+
+.employer-view-button {
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   06. STATUS BADGES
+   ========================================================== */
+
+.employer-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 11px;
+
+    border-radius: 30px;
+
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.employer-status-active,
+.employer-status-verified {
+    background: var(--success-bg);
+    color: var(--teal-dark);
+}
+
+.employer-status-pending,
+.employer-status-restricted {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.employer-status-suspended,
+.employer-status-rejected {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.employer-status-unverified,
+.employer-status-closed,
+.employer-status-unknown {
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+}
+
+
+/* ==========================================================
+   07. PAGINATION
+   ========================================================== */
+
+.employer-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.employer-pagination>span {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.pagination-actions {
+    display: flex;
+    gap: 9px;
+}
+
+.pagination-actions .btn {
+    padding: 9px 14px;
+}
+
+
+/* ==========================================================
+   08. ADMINISTRATIVE INFORMATION
+   ========================================================== */
+
+.employer-information {
+    padding: 22px;
+    margin-bottom: 24px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+
+    border-radius: var(--radius-md);
+}
+
+.employer-information h3 {
+    color: var(--navy);
+    font-size: 15px;
+
+    margin-bottom: 12px;
+}
+
+.employer-information p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.7;
+
+    margin-bottom: 9px;
+}
+
+.employer-information p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================
+   09. EMPLOYER DETAILS DIALOG
+   ========================================================== */
+
+.employer-dialog,
+.employer-action-dialog {
+    position: fixed;
+    margin: auto;
+
+    background: var(--white);
+    color: var(--navy);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.employer-dialog::backdrop,
+.employer-action-dialog::backdrop {
+    background: rgba(11, 32, 53, 0.72);
+}
+
+.employer-dialog {
+    width: min(960px, calc(100vw - 24px));
+    max-width: 960px;
+
+    max-height: 90vh;
+    max-height: 90dvh;
+
+    padding: 0;
+    overflow-y: auto;
+}
+
+.employer-dialog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 18px;
+    padding: 25px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.dialog-eyebrow {
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    margin-bottom: 7px;
+}
+
+.employer-dialog-header h2 {
+    color: var(--navy);
+    font-size: 23px;
+
+    overflow-wrap: anywhere;
+}
+
+.detail-subtitle {
+    color: var(--text-secondary);
+    font-size: 13px;
+
+    margin-top: 6px;
+    overflow-wrap: anywhere;
+}
+
+.dialog-close {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    background: var(--white);
+    color: var(--navy);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    font-size: 27px;
+    line-height: 1;
+}
+
+.dialog-close:hover {
+    background: var(--surface-muted);
+}
+
+
+/* ==========================================================
+   10. EMPLOYER DETAILS TABS
+   ========================================================== */
+
+.employer-tabs {
+    display: flex;
+    gap: 4px;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid var(--border);
+
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.employer-tab {
+    flex-shrink: 0;
+
+    padding: 15px 13px;
+
+    background: transparent;
+    color: var(--text-secondary);
+
+    border: 0;
+    border-bottom: 3px solid transparent;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.employer-tab:hover {
+    color: var(--blue);
+}
+
+.employer-tab.active,
+.employer-tab[aria-selected="true"] {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+}
+
+
+/* ==========================================================
+   11. DETAILS CONTENT
+   ========================================================== */
+
+.employer-detail-content {
+    min-height: 240px;
+    padding: 25px;
+}
+
+.employer-detail-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+.employer-detail-field {
+    min-width: 0;
+    padding: 16px;
+
+    background: var(--surface-muted);
+
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+}
+
+.employer-detail-field span {
+    display: block;
+
+    color: var(--text-muted);
+    font-size: 11px;
+
+    margin-bottom: 6px;
+}
+
+.employer-detail-field strong {
+    display: block;
+
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
+}
+
+.employer-detail-field a {
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
+}
+
+.employer-detail-field a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================
+   12. RELATED RECORDS
+   ========================================================== */
+
+.employer-record-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+.employer-record {
+    padding: 17px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.employer-record h4 {
+    color: var(--navy);
+    font-size: 14px;
+
+    margin-bottom: 6px;
+}
+
+.employer-record p {
+    color: var(--text-secondary);
+    font-size: 12px;
+
+    overflow-wrap: anywhere;
+}
+
+.employer-record-meta {
+    margin-top: 8px;
+
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+
+/* ==========================================================
+   13. EMPLOYER ACTION FOOTER
+   ========================================================== */
+
+.employer-dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+    flex-wrap: wrap;
+
+    padding: 20px 25px;
+
+    border-top: 1px solid var(--border);
+}
+
+.employer-account-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.employer-account-actions .btn {
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   14. CONFIRMATION DIALOG
+   ========================================================== */
+
+.employer-action-dialog {
+    width: min(500px, calc(100vw - 24px));
+    max-width: 500px;
+
+    max-height: 90dvh;
+    overflow-y: auto;
+
+    padding: 27px;
+}
+
+.employer-action-dialog h2 {
+    color: var(--navy);
+    font-size: 20px;
+
+    margin-bottom: 12px;
+}
+
+.action-description {
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+}
+
+.employer-action-dialog .form-group {
+    margin-bottom: 20px;
+}
+
+.employer-action-dialog textarea,
+.employer-action-dialog input {
+    display: block;
+    width: 100%;
+
+    padding: 12px 13px;
+
+    background: var(--white);
+    color: var(--navy);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    outline: none;
+}
+
+.employer-action-dialog textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.employer-action-dialog textarea:focus,
+.employer-action-dialog input:focus {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 170, 0.12);
+}
+
+.confirmation-help {
+    margin-top: 7px;
+
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.action-error {
+    color: var(--danger);
+    font-size: 12px;
+
+    margin-top: 8px;
+}
+
+.action-error:empty {
+    display: none;
+}
+
+.action-dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin-top: 24px;
+}
+
+
+/* ==========================================================
+   15. RESPONSIVE LAYOUT
+   ========================================================== */
+
+@media (max-width: 1200px) {
+
+    .employer-stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .employer-filters {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .employer-stats {
+        gap: 11px;
+    }
+
+    .employer-stat-card {
+        padding: 16px;
+    }
+
+    .employer-stat-header span:first-child {
+        font-size: 11px;
+    }
+
+    .employer-stat-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .employer-stat-card strong {
+        font-size: 25px;
+    }
+
+    .employer-stat-card p {
+        font-size: 11px;
+    }
+
+    .employer-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .employer-filter-actions .btn {
+        flex: 1;
+    }
+
+    .employer-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .employer-dialog-header,
+    .employer-detail-content,
+    .employer-dialog-footer {
+        padding: 17px;
+    }
+
+    .employer-dialog-header h2 {
+        font-size: 19px;
+    }
+
+    .employer-tabs {
+        padding: 0 10px;
+    }
+
+    .employer-tab {
+        padding: 13px 11px;
+        font-size: 12px;
+    }
+
+    .employer-action-dialog {
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .employer-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .employer-pagination {
+        align-items: stretch;
+    }
+
+    .employer-pagination .pagination-actions {
+        width: 100%;
+    }
+
+    .employer-pagination .btn {
+        flex: 1;
+    }
+
+    .employer-dialog-footer>.btn {
+        width: 100%;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .employer-stat-card {
+        transition: none;
+    }
+
+}
+
+/* ==========================================================
+   16. VISUAL POLISH
+   ========================================================== */
+
+.employers-main {
+    position: relative;
+}
+
+.employers-main .page-heading {
+    padding: 26px 28px;
+    margin: -4px 0 28px;
+    border: 1px solid rgba(79, 70, 229, 0.14);
+    border-radius: var(--radius-xl);
+    background:
+        linear-gradient(120deg, rgba(79, 70, 229, 0.11), rgba(6, 182, 212, 0.08)),
+        var(--white);
+    box-shadow: var(--shadow-sm);
+}
+
+.employers-main .page-heading h1 {
+    background: linear-gradient(100deg, var(--navy), var(--blue-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.employer-stat-card {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(79, 70, 229, 0.14);
+}
+
+.employer-stat-card::after {
+    content: "";
+    position: absolute;
+    right: -28px;
+    bottom: -34px;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.07);
+}
+
+.employer-stat-card:nth-child(2)::after,
+.employer-stat-card:nth-child(5)::after {
+    background: rgba(6, 182, 212, 0.10);
+}
+
+.employer-stat-card:nth-child(3)::after,
+.employer-stat-card:nth-child(6)::after {
+    background: rgba(15, 159, 154, 0.10);
+}
+
+.employer-stat-card:nth-child(4)::after {
+    background: rgba(194, 118, 22, 0.10);
+}
+
+.employer-stat-card:nth-child(2) .employer-stat-icon,
+.employer-stat-card:nth-child(5) .employer-stat-icon {
+    background: #E8F9FC;
+    color: #0891B2;
+}
+
+.employer-stat-card:nth-child(3) .employer-stat-icon,
+.employer-stat-card:nth-child(6) .employer-stat-icon {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+}
+
+.employer-stat-card:nth-child(4) .employer-stat-icon {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.employer-directory {
+    border-top: 4px solid var(--blue);
+}
+
+.employer-table thead {
+    background: linear-gradient(90deg, #EEF2FF, #F0FDFA);
+}
+
+.employer-table th {
+    color: var(--navy);
+}
+
+.employer-table tbody tr {
+    transition: background var(--transition), box-shadow var(--transition);
+}
+
+.employer-table tbody tr:hover {
+    background: #F7F7FF;
+    box-shadow: inset 3px 0 0 var(--blue);
+}
+
+.employer-avatar {
+    background: linear-gradient(135deg, #E0E7FF, #CFFAFE);
+    color: var(--blue-dark);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.12);
+}
+
+.employer-view-button {
+    border-color: #C7D2FE;
+    color: var(--blue-dark);
+}
+
+.employer-view-button:hover:not(:disabled) {
+    background: var(--blue-light);
+    border-color: var(--blue);
+}
+
+.employer-information {
+    background: linear-gradient(120deg, #FFFFFF, #F0FDFA);
+    border-color: #CBECE7;
+    border-left-color: var(--teal);
+}

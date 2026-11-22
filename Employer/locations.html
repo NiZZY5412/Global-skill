@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <title>Global Branches & Locations | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body data-module="locations">
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <span>EMPLOYER PORTAL</span>
+                </div>
+            </div>
+
+            <div class="company-selector">
+                <label for="companySwitcher">ACTIVE ORGANIZATION</label>
+                <select id="companySwitcher">
+                    <option value="">Loading organizations...</option>
+                </select>
+            </div>
+
+            <nav class="sidebar-navigation">
+
+                <div class="nav-heading">WORKSPACE</div>
+
+                <a href="employer-dashboard.html" class="nav-link">
+                    <span class="nav-icon">▦</span>
+                    Dashboard
+                </a>
+
+                <a href="company-profile.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Company Profile
+                </a>
+
+                <a href="locations.html" class="nav-link active">
+                    <span class="nav-icon">⌖</span>
+                    Branches & Locations
+                </a>
+
+                <div class="nav-heading">TALENT ACQUISITION</div>
+
+                <a href="jobs.html" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    Jobs Management
+                </a>
+
+                <a href="applications.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Applications
+                </a>
+
+                <a href="skills-matching.html" class="nav-link">
+                    <span class="nav-icon">◈</span>
+                    Skills & Matching
+                </a>
+
+                <a href="interviews.html" class="nav-link">
+                    <span class="nav-icon">◷</span>
+                    Interviews & Messages
+                </a>
+
+                <a href="offers-onboarding.html" class="nav-link">
+                    <span class="nav-icon">✓</span>
+                    Offers & Onboarding
+                </a>
+
+                <div class="nav-heading">WORKFORCE & FINANCE</div>
+
+                <a href="workforce.html" class="nav-link">
+                    <span class="nav-icon">♙</span>
+                    Workforce Management
+                </a>
+
+                <a href="billing.html" class="nav-link">
+                    <span class="nav-icon">◇</span>
+                    Payments & Billing
+                </a>
+
+<a href="compliance-documents.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Compliance & Documents
+                </a>
+
+                <div class="nav-heading">BUSINESS MANAGEMENT</div>
+
+<a href="disputes-support.html" class="nav-link">
+                    <span class="nav-icon">◎</span>
+                    Disputes & Support
+                </a>
+
+<a href="analytics-reports.html" class="nav-link">
+                    <span class="nav-icon">▥</span>
+                    Analytics & Reports
+                </a>
+
+                <a href="team-permissions.html" class="nav-link">
+                    <span class="nav-icon">♧</span>
+                    Team & Permissions
+                </a>
+
+                <a href="notifications-settings.html" class="nav-link">
+                    <span class="nav-icon">⚙</span>
+                    Settings & Security
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="support-card">
+                    <span class="support-icon">?</span>
+                    <div>
+                        <strong>Need assistance?</strong>
+<a href="disputes-support.html">
+                            Contact TALVORA Support
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-version">
+                    TALVORA Employer Portal
+                    <span>Enterprise Workspace</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div class="breadcrumb">
+                        <span>Employer Portal</span>
+                        <span>/</span>
+                        <strong>Global Locations</strong>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="search" id="globalSearch" placeholder="Search workspace..."
+                            aria-label="Search workspace">
+                    </div>
+
+                    <button class="icon-button" id="notificationToggle" aria-label="Notifications">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+<a href="disputes-support.html" class="topbar-help">
+                        Help Centre
+                    </a>
+
+                    <div class="user-menu">
+                        <div class="avatar" id="userAvatar">E</div>
+                        <div class="user-details">
+                            <strong id="userName">Employer User</strong>
+                            <span id="userRole">Organization Member</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTAINER -->
+            <div class="dashboard-container locations-page">
+
+                <!-- PAGE HEADING -->
+                <section class="locations-page-heading">
+
+                    <div>
+                        <div class="eyebrow">
+                            GLOBAL ORGANIZATION MANAGEMENT
+                        </div>
+
+                        <h1>Branches & Work Locations</h1>
+
+                        <p>
+                            Manage your global corporate structure,
+                            subsidiaries, branches, departments,
+                            location managers and operating workforce
+                            from one central workspace.
+                        </p>
+                    </div>
+
+                    <div class="locations-heading-actions">
+
+                        <button class="btn btn-outline" id="exportLocationsButton">
+                            ↓ Export Report
+                        </button>
+
+                        <button class="btn btn-primary" id="addLocationButton">
+                            + Register Location
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CONNECTION STATUS -->
+                <div class="locations-connection">
+                    <span class="status-indicator"></span>
+                    <span id="connectionStatus">
+                        Connecting to TALVORA...
+                    </span>
+                    <span class="connection-reference" id="locationsLastUpdated">
+                        —
+                    </span>
+                </div>
+
+
+                <!-- GLOBAL KPI CARDS -->
+                <section class="locations-kpi-grid">
+
+                    <article class="location-kpi-card">
+                        <div class="location-kpi-top">
+                            <span>Total Locations</span>
+                            <span class="kpi-icon blue">⌖</span>
+                        </div>
+                        <strong id="totalLocations">—</strong>
+                        <small>Registered operating locations</small>
+                    </article>
+
+                    <article class="location-kpi-card">
+                        <div class="location-kpi-top">
+                            <span>Active Locations</span>
+                            <span class="kpi-icon green">✓</span>
+                        </div>
+                        <strong id="activeLocations">—</strong>
+                        <small>Currently active locations</small>
+                    </article>
+
+                    <article class="location-kpi-card">
+                        <div class="location-kpi-top">
+                            <span>Countries</span>
+                            <span class="kpi-icon teal">◎</span>
+                        </div>
+                        <strong id="locationCountries">—</strong>
+                        <small>Countries represented</small>
+                    </article>
+
+                    <article class="location-kpi-card">
+                        <div class="location-kpi-top">
+                            <span>Workforce</span>
+                            <span class="kpi-icon purple">♙</span>
+                        </div>
+                        <strong id="locationWorkforce">—</strong>
+                        <small>Employees across locations</small>
+                    </article>
+
+                    <article class="location-kpi-card">
+                        <div class="location-kpi-top">
+                            <span>Open Positions</span>
+                            <span class="kpi-icon orange">▣</span>
+                        </div>
+                        <strong id="locationOpenJobs">—</strong>
+                        <small>Active recruitment positions</small>
+                    </article>
+
+                </section>
+
+
+                <!-- MODULE TABS -->
+                <nav class="locations-tabs" aria-label="Location management sections">
+
+                    <button class="locations-tab active" type="button" data-location-tab="overview"
+                        aria-selected="true">
+                        Global Overview
+                    </button>
+
+                    <button class="locations-tab" type="button" data-location-tab="branches" aria-selected="false">
+                        Branch Management
+                    </button>
+
+                    <button class="locations-tab" type="button" data-location-tab="structure" aria-selected="false">
+                        Group Structure
+                    </button>
+
+                    <button class="locations-tab" type="button" data-location-tab="departments" aria-selected="false">
+                        Departments
+                    </button>
+
+                    <button class="locations-tab" type="button" data-location-tab="managers" aria-selected="false">
+                        Location Managers
+                    </button>
+
+                    <button class="locations-tab" type="button" data-location-tab="analytics" aria-selected="false">
+                        Geographic Analytics
+                    </button>
+
+                </nav>
+
+
+                <!-- =========================================
+                 TAB 1: GLOBAL OVERVIEW
+            ========================================== -->
+
+                <section class="locations-tab-panel active" data-location-panel="overview">
+
+                    <div class="locations-section-heading">
+                        <div>
+                            <h2>Global Operations Overview</h2>
+                            <p>
+                                Consolidated visibility of your
+                                registered business locations.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-light" type="button" data-switch-location-tab="branches">
+                            Manage Locations →
+                        </button>
+                    </div>
+
+
+                    <div class="locations-overview-grid">
+
+                        <article class="location-panel-card">
+                            <div class="location-panel-heading">
+                                <div>
+                                    <h3>Corporate Structure</h3>
+                                    <p>
+                                        Parent company and associated
+                                        legal entities.
+                                    </p>
+                                </div>
+                                <span class="panel-icon">▤</span>
+                            </div>
+
+                            <div id="overviewStructure" class="overview-structure">
+
+                                <div class="location-empty">
+                                    <p>Loading corporate structure...</p>
+                                </div>
+
+                            </div>
+
+                            <button class="btn btn-light" type="button" data-switch-location-tab="structure">
+                                View Group Structure →
+                            </button>
+                        </article>
+
+
+                        <article class="location-panel-card">
+                            <div class="location-panel-heading">
+                                <div>
+                                    <h3>Location Status</h3>
+                                    <p>
+                                        Current operational distribution.
+                                    </p>
+                                </div>
+                                <span class="panel-icon">◉</span>
+                            </div>
+
+                            <div id="overviewStatus" class="overview-status">
+
+                                <div class="location-empty">
+                                    <p>Loading location status...</p>
+                                </div>
+
+                            </div>
+                        </article>
+
+                    </div>
+
+
+                    <article class="location-panel-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Recently Updated Locations</h3>
+                                <p>
+                                    Latest registered or modified
+                                    operating locations.
+                                </p>
+                            </div>
+
+                            <button class="btn btn-light" type="button" data-switch-location-tab="branches">
+                                View All
+                            </button>
+                        </div>
+
+                        <div class="location-table-wrapper">
+                            <table class="location-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Location</th>
+                                        <th>Country</th>
+                                        <th>Type</th>
+                                        <th>Workforce</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="overviewRecentLocations">
+                                    <tr>
+                                        <td colspan="5">
+                                            Loading locations...
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 2: BRANCH MANAGEMENT
+            ========================================== -->
+
+                <section class="locations-tab-panel" data-location-panel="branches" hidden>
+
+                    <div class="locations-section-heading">
+
+                        <div>
+                            <h2>Branch & Work Location Register</h2>
+                            <p>
+                                Manage headquarters, regional offices,
+                                branches, factories, warehouses and
+                                other registered operating locations.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" id="branchAddButton">
+                            + Add New Location
+                        </button>
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+                    <div class="location-filter-card">
+
+                        <div class="location-search">
+                            <span>⌕</span>
+                            <input type="search" id="locationSearch"
+                                placeholder="Search by name, code, city or country...">
+                        </div>
+
+                        <select id="locationStatusFilter">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <select id="locationTypeFilter">
+                            <option value="">All location types</option>
+                            <option value="headquarters">Headquarters</option>
+                            <option value="regional_office">Regional Office</option>
+                            <option value="branch">Branch</option>
+                            <option value="office">Office</option>
+                            <option value="warehouse">Warehouse</option>
+                            <option value="factory">Factory</option>
+                            <option value="remote_hub">Remote Work Hub</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <select id="locationCountryFilter">
+                            <option value="">All countries</option>
+                        </select>
+
+                        <button class="btn btn-outline" type="button" id="clearLocationFilters">
+                            Clear
+                        </button>
+
+                    </div>
+
+
+                    <!-- LOCATION TABLE -->
+                    <article class="location-panel-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Registered Locations</h3>
+                                <p id="locationCountLabel">
+                                    Loading records...
+                                </p>
+                            </div>
+
+                            <span class="small-counter" id="filteredLocationCount">
+                                0 records
+                            </span>
+                        </div>
+
+
+                        <div class="location-table-wrapper">
+
+                            <table class="location-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Location</th>
+                                        <th>Type</th>
+                                        <th>Country / City</th>
+                                        <th>Manager</th>
+                                        <th>Workforce</th>
+                                        <th>Open Jobs</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="locationTableBody">
+
+                                    <tr>
+                                        <td colspan="8">
+                                            Loading location records...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="location-table-footer">
+                            <span id="locationTableFooter">
+                                Location records
+                            </span>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 3: CORPORATE GROUP STRUCTURE
+            ========================================== -->
+
+                <section class="locations-tab-panel" data-location-panel="structure" hidden>
+
+                    <div class="locations-section-heading">
+
+                        <div>
+                            <h2>Global Corporate Group Structure</h2>
+                            <p>
+                                View the relationship between parent
+                                organizations, subsidiaries and their
+                                registered operating locations.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" id="addSubsidiaryButton">
+                            + Register Subsidiary
+                        </button>
+
+                    </div>
+
+
+                    <div class="structure-information">
+                        <strong>Corporate hierarchy</strong>
+                        <p>
+                            Each legal entity should have a clearly
+                            defined parent relationship. A subsidiary
+                            must be registered and authorized under
+                            the applicable parent organization.
+                        </p>
+                    </div>
+
+
+                    <article class="location-panel-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Organization Hierarchy</h3>
+                                <p>
+                                    Registered parent and subsidiary
+                                    relationships.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="corporateGroupTree" class="corporate-group-tree">
+
+                            <div class="location-empty">
+                                <p>Loading group structure...</p>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="location-panel-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Subsidiary Register</h3>
+                                <p>
+                                    Legal entities associated with
+                                    this organization.
+                                </p>
+                            </div>
+
+                            <span class="small-counter" id="subsidiaryCount">
+                                0 entities
+                            </span>
+                        </div>
+
+                        <div class="location-table-wrapper">
+
+                            <table class="location-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Legal Entity</th>
+                                        <th>Registration Number</th>
+                                        <th>Country</th>
+                                        <th>Parent Entity</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="subsidiaryTableBody">
+                                    <tr>
+                                        <td colspan="5">
+                                            Loading subsidiaries...
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 4: DEPARTMENTS & WORKPLACES
+            ========================================== -->
+
+                <section class="locations-tab-panel" data-location-panel="departments" hidden>
+
+                    <div class="locations-section-heading">
+
+                        <div>
+                            <h2>Departments & Workplace Allocation</h2>
+                            <p>
+                                Organize business units and allocate
+                                departments to individual locations.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" id="addDepartmentButton">
+                            + Add Department
+                        </button>
+
+                    </div>
+
+
+                    <div class="location-summary-strip">
+
+                        <div>
+                            <span>Departments</span>
+                            <strong id="departmentTotal">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Locations with Departments</span>
+                            <strong id="locationsWithDepartments">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Unassigned Departments</span>
+                            <strong id="unassignedDepartments">—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <article class="location-panel-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Department Register</h3>
+                                <p>
+                                    Departments and their assigned
+                                    business locations.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="location-table-wrapper">
+
+                            <table class="location-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Department</th>
+                                        <th>Department Code</th>
+                                        <th>Location</th>
+                                        <th>Head of Department</th>
+                                        <th>Workforce</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="departmentTableBody">
+
+                                    <tr>
+                                        <td colspan="6">
+                                            Loading departments...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <div class="location-panel-card workplace-allocation-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Workplace Allocation</h3>
+                                <p>
+                                    Overview of how departments are
+                                    distributed across locations.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="workplaceAllocation" class="workplace-allocation">
+
+                            <div class="location-empty">
+                                <p>Loading allocation information...</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 5: LOCATION MANAGERS & PERMISSIONS
+            ========================================== -->
+
+                <section class="locations-tab-panel" data-location-panel="managers" hidden>
+
+                    <div class="locations-section-heading">
+
+                        <div>
+                            <h2>Location Managers & Access Control</h2>
+                            <p>
+                                Assign authorized personnel to manage
+                                specific branches and operating locations.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" id="assignManagerButton">
+                            + Assign Manager
+                        </button>
+
+                    </div>
+
+
+                    <div class="information-notice">
+                        <strong>Location-level access security</strong>
+                        <p>
+                            Location managers should only receive
+                            permissions appropriate to their assigned
+                            responsibilities and authorized locations.
+                            All permission enforcement must be performed
+                            by the server.
+                        </p>
+                    </div>
+
+
+                    <div class="manager-summary-grid">
+
+                        <div>
+                            <span>Assigned Managers</span>
+                            <strong id="managerTotal">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Location Administrators</span>
+                            <strong id="locationAdminTotal">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Locations Without Managers</span>
+                            <strong id="unmanagedLocations">—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <article class="location-panel-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Manager Assignments</h3>
+                                <p>
+                                    Personnel with location-specific
+                                    management access.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="location-table-wrapper">
+
+                            <table class="location-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Manager</th>
+                                        <th>Email</th>
+                                        <th>Assigned Location</th>
+                                        <th>Access Role</th>
+                                        <th>Permissions</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="managerTableBody">
+
+                                    <tr>
+                                        <td colspan="7">
+                                            Loading manager assignments...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================================
+                 TAB 6: GEOGRAPHIC ANALYTICS
+            ========================================== -->
+
+                <section class="locations-tab-panel" data-location-panel="analytics" hidden>
+
+                    <div class="locations-section-heading">
+
+                        <div>
+                            <h2>Geographic Operations Analytics</h2>
+                            <p>
+                                Analyze workforce distribution,
+                                recruitment activity and operational
+                                coverage across registered locations.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="analytics-grid">
+
+                        <article class="location-panel-card">
+
+                            <div class="location-panel-heading">
+                                <div>
+                                    <h3>Workforce by Location</h3>
+                                    <p>
+                                        Employees across operating locations.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="workforceByLocation" class="analytics-bars">
+
+                                <div class="location-empty">
+                                    <p>Workforce analytics unavailable.</p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="location-panel-card">
+
+                            <div class="location-panel-heading">
+                                <div>
+                                    <h3>Recruitment by Location</h3>
+                                    <p>
+                                        Open positions and application activity.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="recruitmentByLocation" class="analytics-bars">
+
+                                <div class="location-empty">
+                                    <p>Recruitment analytics unavailable.</p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <article class="location-panel-card">
+
+                        <div class="location-panel-heading">
+                            <div>
+                                <h3>Country-Level Operational Summary</h3>
+                                <p>
+                                    Comparative geographic coverage.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="location-table-wrapper">
+
+                            <table class="location-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Locations</th>
+                                        <th>Workforce</th>
+                                        <th>Open Positions</th>
+                                        <th>Applications</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="countryAnalyticsTable">
+
+                                    <tr>
+                                        <td colspan="5">
+                                            Loading country analytics...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- FOOTER -->
+                <footer class="main-footer">
+
+                    <div>
+                        <strong>TALVORA</strong>
+                        <span>Global Employer Enterprise Portal</span>
+                    </div>
+
+                    <span>
+                        © <span id="currentYear"></span>
+                        TALVORA. All rights reserved.
+                    </span>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+     LOCATION REGISTRATION / EDIT DIALOG
+===================================================== -->
+
+    <dialog class="enterprise-dialog" id="locationDialog">
+
+        <form id="locationForm" class="dialog-content">
+
+            <div class="dialog-heading">
+
+                <div>
+                    <span class="eyebrow">GLOBAL OPERATIONS</span>
+                    <h2 id="locationDialogTitle">
+                        Register New Location
+                    </h2>
+                    <p>
+                        Add a registered company operating location.
+                    </p>
+                </div>
+
+                <button type="button" class="dialog-close" data-close-dialog="locationDialog">
+                    ×
+                </button>
+
+            </div>
+
+            <input type="hidden" name="locationId" id="locationId">
+
+            <div class="form-grid">
+
+                <div class="form-field full">
+                    <label for="locationName">
+                        Location Name *
+                    </label>
+
+                    <input type="text" name="name" id="locationName" required maxlength="150"
+                        placeholder="e.g. Nairobi Regional Office">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationCode">
+                        Location Reference Code
+                    </label>
+
+                    <input type="text" name="code" id="locationCode" maxlength="50" placeholder="Unique internal code">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationType">
+                        Location Type *
+                    </label>
+
+                    <select name="type" id="locationType" required>
+
+                        <option value="">Select type</option>
+                        <option value="headquarters">Headquarters</option>
+                        <option value="regional_office">Regional Office</option>
+                        <option value="branch">Branch</option>
+                        <option value="office">Office</option>
+                        <option value="warehouse">Warehouse</option>
+                        <option value="factory">Factory</option>
+                        <option value="remote_hub">Remote Work Hub</option>
+                        <option value="other">Other</option>
+
+                    </select>
+                </div>
+
+                <div class="form-field full">
+                    <label for="locationLegalEntity">
+                        Associated Legal Entity *
+                    </label>
+
+                    <select name="legalEntityId" id="locationLegalEntity" required>
+
+                        <option value="">
+                            Select legal entity
+                        </option>
+
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="locationCountry">
+                        Country *
+                    </label>
+
+                    <input type="text" name="country" id="locationCountry" required maxlength="100">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationRegion">
+                        State / Province / Region
+                    </label>
+
+                    <input type="text" name="region" id="locationRegion" maxlength="100">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationCity">
+                        City *
+                    </label>
+
+                    <input type="text" name="city" id="locationCity" required maxlength="100">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationPostalCode">
+                        Postal Code
+                    </label>
+
+                    <input type="text" name="postalCode" id="locationPostalCode" maxlength="30">
+                </div>
+
+                <div class="form-field full">
+                    <label for="locationAddress">
+                        Street Address
+                    </label>
+
+                    <input type="text" name="address" id="locationAddress" maxlength="250">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationTimezone">
+                        Time Zone
+                    </label>
+
+                    <input type="text" name="timezone" id="locationTimezone" placeholder="e.g. Africa/Nairobi">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationPhone">
+                        Business Telephone
+                    </label>
+
+                    <input type="tel" name="phone" id="locationPhone">
+                </div>
+
+                <div class="form-field">
+                    <label for="locationEmail">
+                        Business Email
+                    </label>
+
+                    <input type="email" name="email" id="locationEmail">
+                </div>
+
+                <div class="form-field">
+                    <label for="parentLocation">
+                        Parent Location (Optional)
+                    </label>
+
+                    <select name="parentLocationId" id="parentLocation">
+
+                        <option value="">
+                            No parent location
+                        </option>
+
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-outline" data-close-dialog="locationDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="saveLocationButton">
+                    Save Location
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- =====================================================
+     SUBSIDIARY REGISTRATION DIALOG
+===================================================== -->
+
+    <dialog class="enterprise-dialog" id="subsidiaryDialog">
+
+        <form id="subsidiaryForm" class="dialog-content">
+
+            <div class="dialog-heading">
+                <div>
+                    <span class="eyebrow">CORPORATE STRUCTURE</span>
+                    <h2>Register Subsidiary</h2>
+                    <p>
+                        Register an associated legal entity
+                        under the selected parent company.
+                    </p>
+                </div>
+
+                <button type="button" class="dialog-close" data-close-dialog="subsidiaryDialog">
+                    ×
+                </button>
+            </div>
+
+            <div class="form-field">
+                <label for="subsidiaryName">
+                    Legal Company Name *
+                </label>
+
+                <input type="text" id="subsidiaryName" name="legalName" required maxlength="200">
+            </div>
+
+            <div class="form-field">
+                <label for="subsidiaryRegistration">
+                    Registration Number *
+                </label>
+
+                <input type="text" id="subsidiaryRegistration" name="registrationNumber" required maxlength="100">
+            </div>
+
+            <div class="form-field">
+                <label for="subsidiaryCountry">
+                    Country of Incorporation *
+                </label>
+
+                <input type="text" id="subsidiaryCountry" name="incorporationCountry" required>
+            </div>
+
+            <div class="form-field">
+                <label for="subsidiaryEntityType">
+                    Legal Entity Type *
+                </label>
+
+                <select id="subsidiaryEntityType" name="entityType" required>
+
+                    <option value="">Select entity type</option>
+                    <option value="private_limited">Private Limited</option>
+                    <option value="public_limited">Public Limited</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="other">Other</option>
+
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="subsidiaryRelationship">
+                    Relationship *
+                </label>
+
+                <select id="subsidiaryRelationship" name="relationship" required>
+
+                    <option value="subsidiary">Subsidiary</option>
+                    <option value="associated_entity">Associated Entity</option>
+
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="subsidiaryOwnership">
+                    Parent Ownership Percentage
+                </label>
+
+                <input type="number" id="subsidiaryOwnership" name="ownershipPercentage" min="0" max="100" step="0.01"
+                    placeholder="Optional">
+            </div>
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-outline" data-close-dialog="subsidiaryDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="saveSubsidiaryButton">
+                    Register Subsidiary
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- =====================================================
+     DEPARTMENT REGISTRATION DIALOG
+===================================================== -->
+
+    <dialog class="enterprise-dialog" id="departmentDialog">
+
+        <form id="departmentForm" class="dialog-content">
+
+            <div class="dialog-heading">
+                <div>
+                    <span class="eyebrow">WORKPLACE MANAGEMENT</span>
+                    <h2>Add Department</h2>
+                    <p>
+                        Register and allocate an organization department.
+                    </p>
+                </div>
+
+                <button type="button" class="dialog-close" data-close-dialog="departmentDialog">
+                    ×
+                </button>
+            </div>
+
+            <div class="form-field">
+                <label for="departmentName">
+                    Department Name *
+                </label>
+
+                <input type="text" id="departmentName" name="name" required maxlength="150">
+            </div>
+
+            <div class="form-field">
+                <label for="departmentCode">
+                    Department Code
+                </label>
+
+                <input type="text" id="departmentCode" name="code" maxlength="50">
+            </div>
+
+            <div class="form-field">
+                <label for="departmentLocation">
+                    Assigned Location *
+                </label>
+
+                <select id="departmentLocation" name="locationId" required>
+                    <option value="">Select location</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="departmentHead">
+                    Department Head Email
+                </label>
+
+                <input type="email" id="departmentHead" name="headEmail">
+            </div>
+
+            <div class="form-field">
+                <label for="departmentDescription">
+                    Description
+                </label>
+
+                <textarea id="departmentDescription" name="description" rows="3" maxlength="1000"></textarea>
+            </div>
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-outline" data-close-dialog="departmentDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="saveDepartmentButton">
+                    Save Department
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- =====================================================
+     LOCATION MANAGER ASSIGNMENT DIALOG
+===================================================== -->
+
+    <dialog class="enterprise-dialog" id="managerDialog">
+
+        <form id="managerForm" class="dialog-content">
+
+            <div class="dialog-heading">
+                <div>
+                    <span class="eyebrow">ACCESS MANAGEMENT</span>
+                    <h2>Assign Location Manager</h2>
+                    <p>
+                        Assign an authorized user to an operating location.
+                    </p>
+                </div>
+
+                <button type="button" class="dialog-close" data-close-dialog="managerDialog">
+                    ×
+                </button>
+            </div>
+
+            <div class="form-field">
+                <label for="managerLocation">
+                    Assigned Location *
+                </label>
+
+                <select id="managerLocation" name="locationId" required>
+                    <option value="">Select location</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="managerEmail">
+                    User Email Address *
+                </label>
+
+                <input type="email" id="managerEmail" name="email" required placeholder="manager@company.com">
+            </div>
+
+            <div class="form-field">
+                <label for="managerRole">
+                    Access Role *
+                </label>
+
+                <select id="managerRole" name="role" required>
+
+                    <option value="location_manager">
+                        Location Manager
+                    </option>
+
+                    <option value="location_admin">
+                        Location Administrator
+                    </option>
+
+                    <option value="recruiter">
+                        Location Recruiter
+                    </option>
+
+                    <option value="viewer">
+                        Read-Only Viewer
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="manager-permissions">
+
+                <strong>Requested Permissions</strong>
+
+                <label>
+                    <input type="checkbox" name="permissions" value="view_workforce">
+                    View location workforce
+                </label>
+
+                <label>
+                    <input type="checkbox" name="permissions" value="manage_jobs">
+                    Manage location jobs
+                </label>
+
+                <label>
+                    <input type="checkbox" name="permissions" value="manage_applications">
+                    Manage applications
+                </label>
+
+                <label>
+                    <input type="checkbox" name="permissions" value="manage_departments">
+                    Manage departments
+                </label>
+
+                <label>
+                    <input type="checkbox" name="permissions" value="view_reports">
+                    View location reports
+                </label>
+
+            </div>
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-outline" data-close-dialog="managerDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="saveManagerButton">
+                    Assign Manager
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- NOTIFICATIONS -->
+    <div class="notification-panel" id="notificationPanel" hidden>
+
+        <div class="notification-heading">
+            <strong>Notifications</strong>
+            <a href="notifications-settings.html">View all</a>
+        </div>
+
+        <div id="notificationList">
+            <p class="empty-state">No notifications loaded.</p>
+        </div>
+
+    </div>
+
+
+    <!-- TOASTS -->
+    <div id="toastRegion" class="toast-region" aria-live="polite">
+    </div>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

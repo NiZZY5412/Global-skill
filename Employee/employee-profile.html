@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<title>My Profile | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link active" href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">My Profile</div><div class="topbar-sub">Manage your personal details and professional introduction</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">IDENTITY & PROFILE</span><h1>My Employee Profile</h1><p>Maintain accurate personal and professional information. You control what is shared with employers through the privacy settings available in your account.</p></div><div class="heading-actions"><a class="btn" href="skills-passport.html">View Skills Passport</a><button class="btn btn-primary" id="saveProfileTop" type="button">Save changes</button></div></div>
+<div class="grid grid-2">
+ <section class="panel">
+  <div class="panel-head"><div><h2>Profile completeness</h2><p>A complete profile helps employers understand your experience.</p></div><strong id="completionValue" style="font:800 22px Manrope;color:var(--teal)">—</strong></div>
+  <div class="progress"><span id="completionBar"></span></div>
+  <div class="notice mt-12">Keep your details current. Sensitive identity documents should only be submitted through authorized verification workflows.</div>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Account lifecycle</h2><p>Your recruitment and employment status</p></div></div>
+  <div id="lifecycleStatus">Loading…</div>
+  <p class="panel-note mt-12">Your account identity remains the same as you move between job-seeking and employment stages. Recruitment and individual employment records are maintained separately.</p>
+ </section>
+</div>
+<section class="panel mt-12">
+ <div class="panel-head"><div><h2>Personal information</h2><p>Use your legal name for employment records and contracts.</p></div><span class="pill success">Private account details</span></div>
+ <form id="profileForm">
+  <div class="field-row">
+   <div class="field"><label for="firstName">Legal first name *</label><input id="firstName" name="firstName" required maxlength="80"></div>
+   <div class="field"><label for="lastName">Legal last name *</label><input id="lastName" name="lastName" required maxlength="80"></div>
+  </div>
+  <div class="field-row">
+   <div class="field"><label for="preferredName">Preferred name</label><input id="preferredName" name="preferredName" maxlength="80"></div>
+   <div class="field"><label for="email">Email address</label><input id="email" class="readonly" name="email" type="email" readonly><span class="hint">Change your login email through account security settings.</span></div>
+  </div>
+  <div class="field-row">
+   <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" maxlength="35"></div>
+   <div class="field"><label for="country">Country of residence</label><input id="country" name="country" maxlength="80"></div>
+  </div>
+  <div class="field"><label for="city">City / region</label><input id="city" name="city" maxlength="100"></div>
+  <hr class="soft">
+  <div class="panel-head"><div><h2>Professional introduction</h2><p>Summarize your strengths, experience and career direction.</p></div></div>
+  <div class="field"><label for="headline">Professional headline</label><input id="headline" name="headline" maxlength="140" placeholder="e.g. Operations professional | Project coordination"></div>
+  <div class="field"><label for="summary">Professional summary</label><textarea id="summary" name="summary" maxlength="2000" rows="5" placeholder="Describe your experience, strengths and professional interests."></textarea><span class="hint">Up to 2,000 characters.</span></div>
+  <div class="field-row">
+   <div class="field"><label for="experienceYears">Years of experience</label><input id="experienceYears" name="experienceYears" type="number" min="0" max="60"></div>
+   <div class="field"><label for="availability">Career availability</label><select id="availability" name="availability"><option value="open_to_opportunities">Open to opportunities</option><option value="actively_looking">Actively looking</option><option value="not_looking">Not currently looking</option><option value="employed_open">Employed, open to opportunities</option></select></div>
+  </div>
+  <div class="field-row">
+   <div class="field"><label for="workAuthorization">Work authorization / country</label><input id="workAuthorization" name="workAuthorization" maxlength="120"></div>
+   <div class="field"><label for="linkedInUrl">LinkedIn profile URL</label><input id="linkedInUrl" name="linkedInUrl" type="url" placeholder="https://"></div>
+  </div>
+  <div class="field"><label for="portfolioUrl">Portfolio / professional website</label><input id="portfolioUrl" name="portfolioUrl" type="url" placeholder="https://"></div>
+  <div class="form-actions"><button class="btn" type="reset">Reset form</button><button class="btn btn-primary" type="submit" id="saveProfile">Save profile</button></div>
+ </form>
+</section>
+</div>
+</main>
+</div>
+
+<script src="employee.js"></script>
+<script src="employee-profile.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1730">
+
+    <title>Support & Helpdesk Centre | TALVORA Super Admin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="support.css">
+</head>
+
+<body>
+
+    <div class="support-app">
+
+        <!-- SIDEBAR -->
+        <aside class="support-sidebar" id="support-sidebar">
+
+            <div class="support-brand">
+
+                <a href="../index.html" class="support-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="TALVORA Logo" class="support-logo">
+
+                    <div class="support-brand-name">
+                        <strong>TALVORA</strong>
+                        <span>GLOBAL TECHNOLOGIES</span>
+                    </div>
+
+                </a>
+
+                <button class="support-sidebar-close" id="support-sidebar-close" aria-label="Close navigation">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- ADMIN IDENTITY -->
+            <div class="support-admin-card">
+
+                <div class="support-admin-avatar" id="support-admin-avatar">
+                    SA
+                </div>
+
+                <div class="support-admin-details">
+
+                    <strong id="support-admin-name">
+                        Super Administrator
+                    </strong>
+
+                    <span id="support-admin-email">
+                        Verifying administrator...
+                    </span>
+
+                    <div class="support-admin-status">
+                        <span class="support-status-dot"></span>
+                        Verified administrator session
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <nav class="support-navigation">
+
+                <div class="support-nav-label">
+                    MAIN MENU
+                </div>
+
+                <a href="../index.html" class="support-nav-link">
+                    <span class="support-nav-icon">▦</span>
+                    Dashboard
+                </a>
+
+                <div class="support-nav-label">
+                    PLATFORM MANAGEMENT
+                </div>
+
+                <a href="employees.html" class="support-nav-link">
+                    <span class="support-nav-icon">♙</span>
+                    Employee Management
+                </a>
+
+                <a href="employers.html" class="support-nav-link">
+                    <span class="support-nav-icon">▤</span>
+                    Employer Management
+                </a>
+
+                <a href="jobs.html" class="support-nav-link">
+                    <span class="support-nav-icon">▣</span>
+                    Jobs Management
+                </a>
+
+                <a href="applications.html" class="support-nav-link">
+                    <span class="support-nav-icon">▧</span>
+                    Applications
+                </a>
+
+                <a href="assessments.html" class="support-nav-link">
+                    <span class="support-nav-icon">✓</span>
+                    Assessments
+                </a>
+
+                <a href="matching.html" class="support-nav-link">
+                    <span class="support-nav-icon">⇄</span>
+                    Talent Matching
+                </a>
+
+                <a href="evidence.html" class="support-nav-link">
+                    <span class="support-nav-icon">▧</span>
+                    Evidence Management
+                </a>
+
+                <a href="reports.html" class="support-nav-link">
+                    <span class="support-nav-icon">▥</span>
+                    Reports & Analytics
+                </a>
+
+                <a href="disputes.html" class="support-nav-link">
+                    <span class="support-nav-icon">⚖</span>
+                    Disputes
+                </a>
+
+                <div class="support-nav-label">
+                    ADMINISTRATION
+                </div>
+
+                <a href="consents.html" class="support-nav-link">
+                    <span class="support-nav-icon">♧</span>
+                    Privacy & Consent
+                </a>
+
+                <a href="settings.html" class="support-nav-link">
+                    <span class="support-nav-icon">⚙</span>
+                    System Settings
+                </a>
+
+                <a href="activity.html" class="support-nav-link">
+                    <span class="support-nav-icon">◷</span>
+                    Activity & Security
+                </a>
+
+                <a href="communications.html" class="support-nav-link">
+                    <span class="support-nav-icon">✉</span>
+                    Communications
+                </a>
+
+                <a href="support.html" class="support-nav-link active" aria-current="page">
+                    <span class="support-nav-icon">☏</span>
+                    Support & Helpdesk
+                    <span class="support-nav-active"></span>
+                </a>
+
+            </nav>
+
+
+            <div class="support-sidebar-footer">
+
+                <a href="../index.html" class="support-back-link">
+                    <span>←</span>
+                    Back to Super Admin
+                </a>
+
+                <div class="support-version">
+                    <span>TALVORA GSES SYSTEM 001</span>
+                    <span>SUPPORT CENTRE</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- SIDEBAR OVERLAY -->
+        <div class="support-sidebar-overlay" id="support-sidebar-overlay" hidden>
+        </div>
+
+
+        <!-- MAIN -->
+        <main class="support-main">
+
+
+            <!-- TOPBAR -->
+            <header class="support-topbar">
+
+                <div class="support-topbar-left">
+
+                    <button class="support-menu-toggle" id="support-menu-toggle" aria-label="Open navigation"
+                        aria-expanded="false">
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <div class="support-breadcrumb">
+                            TALVORA <span>/</span> SUPER ADMIN
+                            <span>/</span> SUPPORT
+                        </div>
+
+                        <h1>Support & Helpdesk Centre</h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="support-topbar-right">
+
+                    <div class="support-connection-status">
+                        <span class="support-connection-dot"></span>
+                        <span id="support-connection-text">
+                            Checking connection
+                        </span>
+                    </div>
+
+                    <button class="support-refresh-button" id="support-refresh">
+                        ↻ <span>Refresh</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- NOTICE -->
+            <div class="support-notice" id="support-notice" role="status" hidden>
+            </div>
+
+
+            <div class="support-content">
+
+
+                <!-- =================================================
+                 OVERVIEW
+            ================================================== -->
+                <section class="support-panel active" id="support-panel-overview">
+
+                    <div class="support-page-heading">
+
+                        <div>
+
+                            <span class="support-eyebrow">
+                                CUSTOMER SERVICE & PLATFORM OPERATIONS
+                            </span>
+
+                            <h2>Helpdesk Overview</h2>
+
+                            <p>
+                                Centralized management of employer,
+                                employee and Super Administrator
+                                support operations across TALVORA.
+                            </p>
+
+                        </div>
+
+                        <button class="support-button primary" data-open-ticket>
+                            + Create Support Ticket
+                        </button>
+
+                    </div>
+
+
+                    <!-- METRICS -->
+                    <div class="support-metrics-grid">
+
+                        <article class="support-metric-card">
+
+                            <div class="support-metric-top">
+                                TOTAL TICKETS
+                                <span class="support-metric-icon blue">▤</span>
+                            </div>
+
+                            <strong id="metric-total-tickets">—</strong>
+
+                            <small>All registered support tickets</small>
+
+                        </article>
+
+
+                        <article class="support-metric-card">
+
+                            <div class="support-metric-top">
+                                OPEN TICKETS
+                                <span class="support-metric-icon orange">◷</span>
+                            </div>
+
+                            <strong id="metric-open-tickets">—</strong>
+
+                            <small>Awaiting resolution</small>
+
+                        </article>
+
+
+                        <article class="support-metric-card">
+
+                            <div class="support-metric-top">
+                                UNASSIGNED
+                                <span class="support-metric-icon purple">♙</span>
+                            </div>
+
+                            <strong id="metric-unassigned">—</strong>
+
+                            <small>Awaiting administrator assignment</small>
+
+                        </article>
+
+
+                        <article class="support-metric-card">
+
+                            <div class="support-metric-top">
+                                ESCALATED
+                                <span class="support-metric-icon red">⚑</span>
+                            </div>
+
+                            <strong id="metric-escalated">—</strong>
+
+                            <small>Requiring elevated attention</small>
+
+                        </article>
+
+
+                        <article class="support-metric-card">
+
+                            <div class="support-metric-top">
+                                RESOLVED
+                                <span class="support-metric-icon green">✓</span>
+                            </div>
+
+                            <strong id="metric-resolved">—</strong>
+
+                            <small>Successfully resolved tickets</small>
+
+                        </article>
+
+
+                        <article class="support-metric-card">
+
+                            <div class="support-metric-top">
+                                HIGH PRIORITY
+                                <span class="support-metric-icon cyan">!</span>
+                            </div>
+
+                            <strong id="metric-high-priority">—</strong>
+
+                            <small>High and urgent priority tickets</small>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- PORTAL DISTRIBUTION -->
+                    <div class="support-section-heading">
+
+                        <div>
+                            <h3>Support by Portal</h3>
+
+                            <p>
+                                Ticket distribution across the three
+                                connected TALVORA portals.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-portal-grid">
+
+                        <article class="support-portal-card">
+
+                            <div class="support-portal-icon employer">
+                                ▤
+                            </div>
+
+                            <div class="support-portal-info">
+
+                                <span>PORTAL 01</span>
+
+                                <h3>Employer Support</h3>
+
+                                <p>
+                                    Employer accounts, recruitment,
+                                    job listings and platform services.
+                                </p>
+
+                                <strong id="portal-employer-tickets">—</strong>
+
+                                <small>Registered tickets</small>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="support-portal-card">
+
+                            <div class="support-portal-icon employee">
+                                ♙
+                            </div>
+
+                            <div class="support-portal-info">
+
+                                <span>PORTAL 02</span>
+
+                                <h3>Employee Support</h3>
+
+                                <p>
+                                    Employee accounts, applications,
+                                    assessments and evidence.
+                                </p>
+
+                                <strong id="portal-employee-tickets">—</strong>
+
+                                <small>Registered tickets</small>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="support-portal-card">
+
+                            <div class="support-portal-icon admin">
+                                ◈
+                            </div>
+
+                            <div class="support-portal-info">
+
+                                <span>PORTAL 03</span>
+
+                                <h3>Super Admin Support</h3>
+
+                                <p>
+                                    Internal administrative and
+                                    platform operational support.
+                                </p>
+
+                                <strong id="portal-admin-tickets">—</strong>
+
+                                <small>Registered tickets</small>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- OVERVIEW TABLES -->
+                    <div class="support-overview-grid">
+
+                        <article class="support-card">
+
+                            <div class="support-card-heading">
+
+                                <div>
+                                    <h3>Recent Support Tickets</h3>
+
+                                    <p>
+                                        Latest support records
+                                        received by the platform.
+                                    </p>
+                                </div>
+
+                                <button class="support-link-button" data-support-panel="tickets">
+                                    View all →
+                                </button>
+
+                            </div>
+
+
+                            <div class="support-table-wrap">
+
+                                <table class="support-table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>REFERENCE</th>
+                                            <th>SUBJECT</th>
+                                            <th>PORTAL</th>
+                                            <th>PRIORITY</th>
+                                            <th>STATUS</th>
+                                            <th>CREATED</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="overview-recent-body">
+                                        <tr>
+                                            <td colspan="6" class="support-empty-cell">
+                                                No ticket records loaded.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="support-card">
+
+                            <div class="support-card-heading">
+
+                                <div>
+                                    <h3>Operational Overview</h3>
+
+                                    <p>Current helpdesk performance.</p>
+                                </div>
+
+                            </div>
+
+                            <div id="overview-operational-health" class="support-operational-health">
+
+                                <div class="support-empty-state">
+                                    <span>◎</span>
+                                    <strong>Awaiting operational data</strong>
+                                    <p>
+                                        Live helpdesk information
+                                        will appear here.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- QUICK ACTIONS -->
+                    <div class="support-section-gap">
+
+                        <div class="support-section-heading">
+                            <div>
+                                <h3>Helpdesk Quick Actions</h3>
+                                <p>
+                                    Navigate directly to important
+                                    support operations.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="support-quick-grid">
+
+                            <button data-support-panel="tickets">
+                                <span>▤</span>
+                                <strong>All Tickets</strong>
+                                <small>Manage support requests</small>
+                            </button>
+
+                            <button data-support-panel="escalations">
+                                <span>⚑</span>
+                                <strong>Escalations</strong>
+                                <small>Handle critical issues</small>
+                            </button>
+
+                            <button data-support-panel="assignments">
+                                <span>♙</span>
+                                <strong>Assignments</strong>
+                                <small>Administrator allocation</small>
+                            </button>
+
+                            <button data-support-panel="analytics">
+                                <span>▥</span>
+                                <strong>Support Analytics</strong>
+                                <small>Operational reporting</small>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 ALL TICKETS
+            ================================================== -->
+                <section class="support-panel" id="support-panel-tickets" hidden>
+
+                    <div class="support-page-heading">
+
+                        <div>
+                            <span class="support-eyebrow">
+                                TICKET OPERATIONS
+                            </span>
+
+                            <h2>All Support Tickets</h2>
+
+                            <p>
+                                Review, investigate, assign and manage
+                                requests across all three portals.
+                            </p>
+                        </div>
+
+                        <button class="support-button primary" data-open-ticket>
+                            + New Ticket
+                        </button>
+
+                    </div>
+
+
+                    <div class="support-filter-bar">
+
+                        <input type="search" id="tickets-search" placeholder="Search ticket reference, subject...">
+
+                        <select id="tickets-portal">
+                            <option value="">All Portals</option>
+                            <option value="employer">Employers</option>
+                            <option value="employee">Employees</option>
+                            <option value="super_admin">Super Admins</option>
+                        </select>
+
+                        <select id="tickets-status">
+                            <option value="">All Statuses</option>
+                            <option value="open">Open</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="waiting_response">Waiting Response</option>
+                            <option value="escalated">Escalated</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <select id="tickets-priority">
+                            <option value="">All Priorities</option>
+                            <option value="low">Low</option>
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+
+                        <select id="tickets-category">
+                            <option value="">All Categories</option>
+                            <option value="account">Account</option>
+                            <option value="verification">Verification</option>
+                            <option value="technical">Technical</option>
+                            <option value="applications">Applications</option>
+                            <option value="assessments">Assessments</option>
+                            <option value="evidence">Evidence</option>
+                            <option value="payments">Payments</option>
+                            <option value="disputes">Disputes</option>
+                            <option value="privacy">Privacy</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <button class="support-button secondary" id="tickets-apply">
+                            Apply Filters
+                        </button>
+
+                        <button class="support-button secondary" id="tickets-reset">
+                            Reset
+                        </button>
+
+                    </div>
+
+
+                    <article class="support-card">
+
+                        <div class="support-card-heading">
+
+                            <div>
+                                <h3>Ticket Register</h3>
+                                <p id="tickets-record-count">
+                                    Server records
+                                </p>
+                            </div>
+
+                            <button class="support-button secondary" data-export-support>
+                                ↓ Export
+                            </button>
+
+                        </div>
+
+
+                        <div class="support-table-wrap">
+
+                            <table class="support-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>SUBJECT</th>
+                                        <th>REQUESTER</th>
+                                        <th>PORTAL</th>
+                                        <th>CATEGORY</th>
+                                        <th>PRIORITY</th>
+                                        <th>ASSIGNED TO</th>
+                                        <th>STATUS</th>
+                                        <th>CREATED</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tickets-table-body">
+                                    <tr>
+                                        <td colspan="10" class="support-empty-cell">
+                                            No records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="support-pagination">
+
+                            <span id="tickets-page-info">
+                                Page —
+                            </span>
+
+                            <div>
+                                <button id="tickets-prev" disabled>
+                                    Previous
+                                </button>
+
+                                <button id="tickets-next" disabled>
+                                    Next
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 TICKET DETAIL
+            ================================================== -->
+                <section class="support-panel" id="support-panel-detail" hidden>
+
+                    <div class="support-page-heading">
+
+                        <div>
+                            <span class="support-eyebrow">
+                                CASE INVESTIGATION
+                            </span>
+
+                            <h2>Ticket Details</h2>
+
+                            <p>
+                                Complete case information, communications,
+                                attachments and administrative actions.
+                            </p>
+                        </div>
+
+                        <button class="support-button secondary" data-support-panel="tickets">
+                            ← Back to Tickets
+                        </button>
+
+                    </div>
+
+
+                    <div id="ticket-detail-container">
+
+                        <div class="support-card">
+                            <div class="support-empty-state">
+                                <span>◎</span>
+                                <strong>No ticket selected</strong>
+                                <p>
+                                    Select a ticket from the register
+                                    to view its details.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 ESCALATIONS
+            ================================================== -->
+                <section class="support-panel" id="support-panel-escalations" hidden>
+
+                    <div class="support-page-heading">
+
+                        <div>
+                            <span class="support-eyebrow">
+                                CRITICAL CASE MANAGEMENT
+                            </span>
+
+                            <h2>Escalation Centre</h2>
+
+                            <p>
+                                Investigate urgent complaints, security
+                                concerns, serious platform incidents and
+                                cases requiring higher authority.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-system-warning">
+
+                        <strong>Escalation governance</strong>
+
+                        <p>
+                            Escalation does not automatically resolve
+                            or close a ticket. All decisions, actions
+                            and responsible administrators must remain
+                            recorded in the case history.
+                        </p>
+
+                    </div>
+
+
+                    <div class="support-card">
+
+                        <div class="support-card-heading">
+                            <div>
+                                <h3>Escalated Cases</h3>
+                                <p>Cases requiring elevated intervention.</p>
+                            </div>
+                        </div>
+
+                        <div class="support-table-wrap">
+
+                            <table class="support-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>SUBJECT</th>
+                                        <th>PORTAL</th>
+                                        <th>PRIORITY</th>
+                                        <th>ESCALATION REASON</th>
+                                        <th>ASSIGNED TO</th>
+                                        <th>ESCALATED</th>
+                                        <th>STATUS</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="escalations-table-body">
+                                    <tr>
+                                        <td colspan="9" class="support-empty-cell">
+                                            No escalation records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 ASSIGNMENTS
+            ================================================== -->
+                <section class="support-panel" id="support-panel-assignments" hidden>
+
+                    <div class="support-page-heading">
+
+                        <div>
+                            <span class="support-eyebrow">
+                                ADMINISTRATOR WORKLOAD
+                            </span>
+
+                            <h2>Ticket Assignments</h2>
+
+                            <p>
+                                Allocate and monitor support responsibilities
+                                across the ten authorized Super Administrators.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-system-warning">
+
+                        <strong>Administrator access</strong>
+
+                        <p>
+                            Only authenticated Super Administrators may
+                            perform assignment operations. The backend
+                            must validate all administrator identities
+                            against the authorized administrator register.
+                        </p>
+
+                    </div>
+
+
+                    <article class="support-card">
+
+                        <div class="support-card-heading">
+                            <div>
+                                <h3>Administrator Workload</h3>
+                                <p>
+                                    Workload and assignment information
+                                    supplied by the server.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="support-table-wrap">
+
+                            <table class="support-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>ADMINISTRATOR</th>
+                                        <th>EMAIL</th>
+                                        <th>ASSIGNED</th>
+                                        <th>OPEN</th>
+                                        <th>IN PROGRESS</th>
+                                        <th>RESOLVED</th>
+                                        <th>AVAILABILITY</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="assignments-admin-body">
+                                    <tr>
+                                        <td colspan="7" class="support-empty-cell">
+                                            No administrator workload data loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="support-card support-section-gap">
+
+                        <div class="support-card-heading">
+                            <div>
+                                <h3>Unassigned Tickets</h3>
+                                <p>Requests awaiting allocation.</p>
+                            </div>
+                        </div>
+
+                        <div class="support-table-wrap">
+
+                            <table class="support-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>SUBJECT</th>
+                                        <th>PORTAL</th>
+                                        <th>PRIORITY</th>
+                                        <th>CREATED</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="unassigned-table-body">
+                                    <tr>
+                                        <td colspan="6" class="support-empty-cell">
+                                            No unassigned records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 KNOWLEDGE BASE
+            ================================================== -->
+                <section class="support-panel" id="support-panel-knowledge" hidden>
+
+                    <div class="support-page-heading">
+
+                        <div>
+                            <span class="support-eyebrow">
+                                SUPPORT KNOWLEDGE MANAGEMENT
+                            </span>
+
+                            <h2>Knowledge Base</h2>
+
+                            <p>
+                                Manage approved support articles,
+                                troubleshooting instructions and
+                                guidance available to the three portals.
+                            </p>
+                        </div>
+
+                        <button class="support-button primary" id="knowledge-create">
+                            + New Article
+                        </button>
+
+                    </div>
+
+
+                    <div class="support-filter-bar">
+
+                        <input type="search" id="knowledge-search" placeholder="Search articles...">
+
+                        <select id="knowledge-portal">
+                            <option value="">All Portals</option>
+                            <option value="employer">Employers</option>
+                            <option value="employee">Employees</option>
+                            <option value="super_admin">Super Admins</option>
+                        </select>
+
+                        <select id="knowledge-status">
+                            <option value="">All Statuses</option>
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                            <option value="archived">Archived</option>
+                        </select>
+
+                        <button class="support-button secondary" id="knowledge-apply">
+                            Apply
+                        </button>
+
+                    </div>
+
+
+                    <article class="support-card">
+
+                        <div class="support-table-wrap">
+
+                            <table class="support-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>ARTICLE TITLE</th>
+                                        <th>CATEGORY</th>
+                                        <th>PORTAL</th>
+                                        <th>AUTHOR</th>
+                                        <th>UPDATED</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="knowledge-table-body">
+                                    <tr>
+                                        <td colspan="8" class="support-empty-cell">
+                                            No knowledge base records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 ANALYTICS
+            ================================================== -->
+                <section class="support-panel" id="support-panel-analytics" hidden>
+
+                    <div class="support-page-heading">
+
+                        <div>
+                            <span class="support-eyebrow">
+                                SUPPORT INTELLIGENCE
+                            </span>
+
+                            <h2>Helpdesk Analytics & Reports</h2>
+
+                            <p>
+                                Analyze ticket volumes, resolution
+                                performance, portal demand and
+                                administrator workload.
+                            </p>
+                        </div>
+
+                        <button class="support-button secondary" data-export-support>
+                            ↓ Export Report
+                        </button>
+
+                    </div>
+
+
+                    <div class="support-filter-bar">
+
+                        <input type="date" id="analytics-from">
+
+                        <input type="date" id="analytics-to">
+
+                        <select id="analytics-period">
+                            <option value="">Custom Period</option>
+                            <option value="7d">Last 7 Days</option>
+                            <option value="30d">Last 30 Days</option>
+                            <option value="90d">Last 90 Days</option>
+                            <option value="12m">Last 12 Months</option>
+                        </select>
+
+                        <button class="support-button secondary" id="analytics-apply">
+                            Generate Report
+                        </button>
+
+                    </div>
+
+
+                    <div class="support-analytics-grid">
+
+                        <article class="support-card">
+
+                            <h3>Ticket Volume</h3>
+
+                            <div id="analytics-ticket-volume" class="support-analytics-content">
+                                <div class="support-empty-state">
+                                    <span>▥</span>
+                                    <strong>No analytics data loaded</strong>
+                                    <p>
+                                        Select a period to request
+                                        report data.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <article class="support-card">
+
+                            <h3>Resolution Performance</h3>
+
+                            <div id="analytics-resolution" class="support-analytics-content">
+                                <div class="support-empty-state">
+                                    <span>◷</span>
+                                    <strong>Awaiting performance data</strong>
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <article class="support-card">
+
+                            <h3>Portal Distribution</h3>
+
+                            <div id="analytics-portals" class="support-analytics-content">
+                                <div class="support-empty-state">
+                                    <span>◎</span>
+                                    <strong>Awaiting portal data</strong>
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <article class="support-card">
+
+                            <h3>Category Distribution</h3>
+
+                            <div id="analytics-categories" class="support-analytics-content">
+                                <div class="support-empty-state">
+                                    <span>▤</span>
+                                    <strong>Awaiting category data</strong>
+                                </div>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <article class="support-card support-section-gap">
+
+                        <h3>Administrator Performance</h3>
+
+                        <div class="support-table-wrap">
+
+                            <table class="support-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>ADMINISTRATOR</th>
+                                        <th>ASSIGNED</th>
+                                        <th>RESOLVED</th>
+                                        <th>OPEN</th>
+                                        <th>AVERAGE RESOLUTION</th>
+                                        <th>PERFORMANCE PERIOD</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="analytics-admin-body">
+                                    <tr>
+                                        <td colspan="6" class="support-empty-cell">
+                                            No administrator performance data loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 AUDIT LOG
+            ================================================== -->
+                <section class="support-panel" id="support-panel-audit" hidden>
+
+                    <div class="support-page-heading">
+
+                        <div>
+                            <span class="support-eyebrow">
+                                ADMINISTRATIVE ACCOUNTABILITY
+                            </span>
+
+                            <h2>Helpdesk Audit Trail</h2>
+
+                            <p>
+                                Trace ticket actions, assignment changes,
+                                communications, escalations and resolutions.
+                            </p>
+                        </div>
+
+                        <button class="support-button secondary" data-export-support>
+                            ↓ Export Audit
+                        </button>
+
+                    </div>
+
+
+                    <div class="support-filter-bar">
+
+                        <input type="search" id="audit-search" placeholder="Search reference or administrator...">
+
+                        <select id="audit-operation">
+                            <option value="">All Actions</option>
+                            <option value="created">Created</option>
+                            <option value="assigned">Assigned</option>
+                            <option value="reassigned">Reassigned</option>
+                            <option value="responded">Responded</option>
+                            <option value="escalated">Escalated</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="reopened">Reopened</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <button class="support-button secondary" id="audit-apply">
+                            Apply Filters
+                        </button>
+
+                    </div>
+
+
+                    <article class="support-card">
+
+                        <div class="support-table-wrap">
+
+                            <table class="support-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>EVENT REFERENCE</th>
+                                        <th>TICKET</th>
+                                        <th>ADMINISTRATOR</th>
+                                        <th>OPERATION</th>
+                                        <th>REASON</th>
+                                        <th>TIMESTAMP</th>
+                                        <th>RESULT</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="audit-table-body">
+                                    <tr>
+                                        <td colspan="7" class="support-empty-cell">
+                                            No audit records loaded.
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+     CREATE TICKET MODAL
+========================================================== -->
+    <div class="support-modal-overlay" id="support-create-modal" hidden>
+
+        <section class="support-modal" role="dialog" aria-modal="true" aria-labelledby="create-ticket-title">
+
+            <div class="support-modal-header">
+
+                <div>
+                    <h2 id="create-ticket-title">
+                        Create Support Ticket
+                    </h2>
+
+                    <p>
+                        Register a support case in the TALVORA Helpdesk.
+                    </p>
+                </div>
+
+                <button class="support-modal-close" data-close-create aria-label="Close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="support-create-form">
+
+                <div class="support-modal-content">
+
+                    <label class="support-field">
+                        <span>Requester Portal *</span>
+
+                        <select name="portal" required>
+                            <option value="">Select Portal</option>
+                            <option value="employer">Employer</option>
+                            <option value="employee">Employee</option>
+                            <option value="super_admin">Super Admin</option>
+                        </select>
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Requester Reference *</span>
+
+                        <input type="text" name="requesterReference" required maxlength="120"
+                            placeholder="Actual platform account reference">
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Ticket Subject *</span>
+
+                        <input type="text" name="subject" required maxlength="180"
+                            placeholder="Brief description of the issue">
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Category *</span>
+
+                        <select name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="account">Account</option>
+                            <option value="verification">Verification</option>
+                            <option value="technical">Technical</option>
+                            <option value="applications">Applications</option>
+                            <option value="assessments">Assessments</option>
+                            <option value="evidence">Evidence</option>
+                            <option value="payments">Payments</option>
+                            <option value="disputes">Disputes</option>
+                            <option value="privacy">Privacy</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Priority *</span>
+
+                        <select name="priority" required>
+                            <option value="normal">Normal</option>
+                            <option value="low">Low</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Description *</span>
+
+                        <textarea name="description" required minlength="10" maxlength="10000" rows="6"
+                            placeholder="Describe the issue and relevant information..."></textarea>
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Related Platform Reference</span>
+
+                        <input type="text" name="relatedReference" maxlength="150"
+                            placeholder="Optional job, application or dispute reference">
+                    </label>
+
+
+                    <label class="support-checkbox">
+                        <input type="checkbox" name="sensitive" value="true">
+
+                        <span>
+                            This ticket may contain sensitive information.
+                        </span>
+                    </label>
+
+
+                    <div class="support-form-warning">
+                        Ticket creation does not automatically grant
+                        access to private employee, employer or evidence
+                        records. Access must be independently authorized.
+                    </div>
+
+                </div>
+
+
+                <div class="support-modal-footer">
+
+                    <button type="button" class="support-button secondary" data-close-create>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="support-button primary" id="support-create-submit">
+                        Create Ticket
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================================
+     ASSIGNMENT MODAL
+========================================================== -->
+    <div class="support-modal-overlay" id="support-assign-modal" hidden>
+
+        <section class="support-modal support-modal-small" role="dialog" aria-modal="true"
+            aria-labelledby="assign-ticket-title">
+
+            <div class="support-modal-header">
+
+                <h2 id="assign-ticket-title">
+                    Assign Support Ticket
+                </h2>
+
+                <button class="support-modal-close" data-close-assign>
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="support-assign-form">
+
+                <div class="support-modal-content">
+
+                    <input type="hidden" name="ticketReference">
+
+
+                    <label class="support-field">
+                        <span>Authorized Super Administrator *</span>
+
+                        <select name="administratorReference" required>
+                            <option value="">
+                                Loading authorized administrators...
+                            </option>
+                        </select>
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Assignment Reason *</span>
+
+                        <textarea name="reason" required minlength="10" maxlength="1000" rows="4"
+                            placeholder="Explain why this ticket is being assigned..."></textarea>
+                    </label>
+
+                </div>
+
+
+                <div class="support-modal-footer">
+
+                    <button type="button" class="support-button secondary" data-close-assign>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="support-button primary" id="support-assign-submit">
+                        Confirm Assignment
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================================
+     ACTION CONFIRMATION MODAL
+========================================================== -->
+    <div class="support-modal-overlay" id="support-action-modal" hidden>
+
+        <section class="support-modal support-modal-small" role="dialog" aria-modal="true"
+            aria-labelledby="support-action-title">
+
+            <div class="support-modal-header">
+
+                <h2 id="support-action-title">
+                    Confirm Action
+                </h2>
+
+                <button class="support-modal-close" data-close-action>
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="support-modal-content">
+
+                <p id="support-action-description"></p>
+
+                <label class="support-field">
+                    <span>Administrative Justification *</span>
+
+                    <textarea id="support-action-reason" minlength="10" maxlength="2000" rows="4"
+                        placeholder="Provide the reason for this operation..."></textarea>
+                </label>
+
+            </div>
+
+
+            <div class="support-modal-footer">
+
+                <button class="support-button secondary" data-close-action>
+                    Cancel
+                </button>
+
+                <button class="support-button primary" id="support-action-confirm">
+                    Confirm
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================================
+     KNOWLEDGE ARTICLE MODAL
+========================================================== -->
+    <div class="support-modal-overlay" id="support-knowledge-modal" hidden>
+
+        <section class="support-modal" role="dialog" aria-modal="true" aria-labelledby="knowledge-modal-title">
+
+            <div class="support-modal-header">
+
+                <h2 id="knowledge-modal-title">
+                    Knowledge Base Article
+                </h2>
+
+                <button class="support-modal-close" data-close-knowledge>
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="support-knowledge-form">
+
+                <div class="support-modal-content">
+
+                    <input type="hidden" name="reference">
+
+
+                    <label class="support-field">
+                        <span>Article Title *</span>
+
+                        <input type="text" name="title" required maxlength="180">
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Category *</span>
+
+                        <input type="text" name="category" required maxlength="100">
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Available Portal *</span>
+
+                        <select name="portal" required>
+                            <option value="employer">Employers</option>
+                            <option value="employee">Employees</option>
+                            <option value="super_admin">Super Admins</option>
+                        </select>
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Article Content *</span>
+
+                        <textarea name="content" required minlength="20" maxlength="30000" rows="9"></textarea>
+                    </label>
+
+
+                    <label class="support-field">
+                        <span>Publication Status *</span>
+
+                        <select name="status">
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                        </select>
+                    </label>
+
+                </div>
+
+
+                <div class="support-modal-footer">
+
+                    <button type="button" class="support-button secondary" data-close-knowledge>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="support-button primary" id="support-knowledge-submit">
+                        Save Article
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================================
+     TOAST CONTAINER
+========================================================== -->
+    <div class="support-toast-container" id="support-toast-container" aria-live="polite" aria-atomic="false">
+    </div>
+
+
+    <script src="support.js"></script>
+
+</body>
+
+</html>

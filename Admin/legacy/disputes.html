@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060638">
+
+    <meta name="description" content="TALVORA Global Super Admin Disputes and Appeals Management Centre">
+
+    <title>Disputes & Appeals | TALVORA Technologies</title>
+
+    <link rel="icon" href="../../talvora-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="disputes.css">
+
+    <script src="disputes.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ACCESS CONTROL -->
+
+    <section id="disputes-locked" class="disputes-locked">
+
+        <div class="disputes-locked-card">
+
+            <img src="../../talvora-logo.png" alt="TALVORA logo">
+
+            <h1>TALVORA</h1>
+
+            <p id="disputes-access-message" role="status">
+                Verifying administrator access...
+            </p>
+
+            <a href="../index.html" class="btn btn-primary">
+                Return to Super Admin
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPLICATION -->
+
+    <div id="disputes-app" class="app-layout" hidden>
+
+
+        <!-- SIDEBAR -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="../index.html" class="sidebar-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="" class="sidebar-logo">
+
+                    <div class="sidebar-brand">
+
+                        <h2>TALVORA</h2>
+                        <span>TECHNOLOGIES</span>
+                        <small>TALVORA GLOBAL</small>
+
+                    </div>
+
+                </a>
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-portal-label">
+                <span class="portal-indicator"></span>
+                SUPER ADMIN PORTAL
+            </div>
+
+
+            <nav class="sidebar-navigation" aria-label="Admin navigation">
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">OVERVIEW</p>
+
+                    <a href="../index.html#/admin/dashboard" class="nav-link">
+                        <span class="nav-icon">&#9638;</span>
+                        Dashboard
+                    </a>
+
+                    <a href="../index.html#/admin/activities" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Platform Activities
+                    </a>
+
+                    <a href="../index.html#/admin/locations" class="nav-link">
+                        <span class="nav-icon">&#9678;</span>
+                        Locations
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">USER MANAGEMENT</p>
+
+                    <a href="employees.html" class="nav-link">
+                        <span class="nav-icon">&#9786;</span>
+                        Employees
+                    </a>
+
+                    <a href="employers.html" class="nav-link">
+                        <span class="nav-icon">&#9635;</span>
+                        Employers
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">EMPLOYMENT OPERATIONS</p>
+
+                    <a href="jobs.html" class="nav-link">
+                        <span class="nav-icon">&#9636;</span>
+                        Job Management
+                    </a>
+
+                    <a href="applications.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Applications & Hiring
+                    </a>
+
+                    <a href="assessments.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        Assessments
+                    </a>
+
+                    <a href="evidence.html" class="nav-link">
+                        <span class="nav-icon">&#9635;</span>
+                        Skills & Evidence
+                    </a>
+
+                    <a href="matching.html" class="nav-link">
+                        <span class="nav-icon">&#8644;</span>
+                        Matching Oversight
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">FINANCIAL MANAGEMENT</p>
+
+                    <a href="finance.html" class="nav-link">
+                        <span class="nav-icon">&#36;</span>
+                        Finance & Revenue
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">TRUST & SECURITY</p>
+
+                    <a href="reports.html" class="nav-link">
+                        <span class="nav-icon">&#9873;</span>
+                        Reports & Investigations
+                    </a>
+
+                    <a href="disputes.html" class="nav-link active" aria-current="page">
+
+                        <span class="nav-icon">&#9878;</span>
+                        Disputes & Appeals
+
+                    </a>
+
+                    <a href="evidence.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        Evidence Management
+                    </a>
+
+                    <a href="consents.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        Privacy & Consent
+                    </a>
+
+                    <a href="audit.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Audit Logs
+                    </a>
+
+                    <a href="support.html" class="nav-link">
+                        <span class="nav-icon">&#9993;</span>
+                        Support Center
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">PLATFORM MANAGEMENT</p>
+
+                    <a href="team.html" class="nav-link">
+                        <span class="nav-icon">&#9786;</span>
+                        Admin Team
+                    </a>
+
+                    <a href="settings.html" class="nav-link">
+                        <span class="nav-icon">&#9881;</span>
+                        System Settings
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="sidebar-footer-brand">
+                    TALVORA TECHNOLOGIES
+                </div>
+
+                <p>GSES SYSTEM 001</p>
+
+                <span>Global Workforce Infrastructure</span>
+
+            </div>
+
+        </aside>
+
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden>
+        </div>
+
+
+        <!-- MAIN WORKSPACE -->
+
+        <div class="main-workspace">
+
+
+            <!-- HEADER -->
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+                        &#9776;
+                    </button>
+
+
+                    <div class="header-title">
+
+                        <span class="header-brand-label">
+                            TALVORA GLOBAL
+                        </span>
+
+                        <h2>Disputes & Appeals</h2>
+
+                        <p>Global dispute resolution and administrative oversight</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <div class="connection-status disconnected">
+                        <span class="status-dot"></span>
+                        <span id="disputes-system-status">Not Connected</span>
+                    </div>
+
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">SA</div>
+
+                        <div class="admin-info">
+                            <strong>Super Admin</strong>
+                            <span>Administration</span>
+                        </div>
+
+                    </div>
+
+
+                    <a href="../index.html" class="logout-button">
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- MAIN CONTENT -->
+
+            <main class="main-content">
+
+
+                <!-- HEADING -->
+
+                <section class="page-heading disputes-heading">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            TRUST, FAIRNESS & DISPUTE RESOLUTION
+                        </span>
+
+                        <h1>Disputes & Appeals Centre</h1>
+
+                        <p>
+                            Centralized administration of formal disputes,
+                            employee and employer disagreements, recruitment
+                            disputes, evidence, mediation, appeals and
+                            resolution decisions across TALVORA Global.
+                        </p>
+
+                    </div>
+
+
+                    <div class="disputes-heading-actions">
+
+                        <button id="disputes-refresh" class="btn btn-secondary" type="button" disabled>
+
+                            &#8635; Refresh
+
+                        </button>
+
+
+                        <button id="disputes-export" class="btn btn-primary" type="button" disabled>
+
+                            &#8681; Export Report
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- NOTICE -->
+
+                <div id="disputes-notice" class="disputes-notice" role="status" aria-live="polite">
+
+                    Awaiting connection to the dispute management service.
+
+                </div>
+
+
+                <!-- DASHBOARD STATISTICS -->
+
+                <section class="disputes-stats" aria-label="Dispute statistics">
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>Total Disputes</span>
+                            <span class="disputes-stat-icon">&#9776;</span>
+                        </div>
+
+                        <strong id="metric-disputes-total">—</strong>
+
+                        <p>Registered platform disputes</p>
+
+                    </article>
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>New Submissions</span>
+                            <span class="disputes-stat-icon">&#43;</span>
+                        </div>
+
+                        <strong id="metric-disputes-new">—</strong>
+
+                        <p>Awaiting initial review</p>
+
+                    </article>
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>Under Review</span>
+                            <span class="disputes-stat-icon">&#128269;</span>
+                        </div>
+
+                        <strong id="metric-disputes-review">—</strong>
+
+                        <p>Active dispute reviews</p>
+
+                    </article>
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>Awaiting Response</span>
+                            <span class="disputes-stat-icon">&#9993;</span>
+                        </div>
+
+                        <strong id="metric-disputes-response">—</strong>
+
+                        <p>Awaiting information from parties</p>
+
+                    </article>
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>In Mediation</span>
+                            <span class="disputes-stat-icon">&#8644;</span>
+                        </div>
+
+                        <strong id="metric-disputes-mediation">—</strong>
+
+                        <p>Active mediation cases</p>
+
+                    </article>
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>Appeals Pending</span>
+                            <span class="disputes-stat-icon">&#9878;</span>
+                        </div>
+
+                        <strong id="metric-disputes-appeals">—</strong>
+
+                        <p>Appeals requiring review</p>
+
+                    </article>
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>Resolved</span>
+                            <span class="disputes-stat-icon">&#10003;</span>
+                        </div>
+
+                        <strong id="metric-disputes-resolved">—</strong>
+
+                        <p>Recorded dispute resolutions</p>
+
+                    </article>
+
+
+                    <article class="disputes-stat-card">
+
+                        <div class="disputes-stat-top">
+                            <span>Overdue</span>
+                            <span class="disputes-stat-icon">&#9203;</span>
+                        </div>
+
+                        <strong id="metric-disputes-overdue">—</strong>
+
+                        <p>Cases beyond recorded deadlines</p>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ANALYTICS -->
+
+                <section class="disputes-overview-grid">
+
+
+                    <!-- CATEGORIES -->
+
+                    <article class="content-card disputes-overview-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Dispute Categories</h3>
+
+                                <p>
+                                    Distribution of registered dispute types.
+                                </p>
+
+                            </div>
+
+                            <span class="disputes-data-label">
+                                Service Data
+                            </span>
+
+                        </div>
+
+
+                        <div id="disputes-category-list" class="disputes-category-list">
+
+                            <div class="disputes-empty-inline">
+                                Category data unavailable.
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- RESOLUTION PERFORMANCE -->
+
+                    <article class="content-card disputes-overview-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Resolution Performance</h3>
+
+                                <p>
+                                    Recorded resolution and review performance.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="disputes-performance-grid">
+
+
+                            <div>
+
+                                <span>Resolution Rate</span>
+
+                                <strong id="performance-resolution-rate">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Average Resolution Time</span>
+
+                                <strong id="performance-resolution-time">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Appeal Rate</span>
+
+                                <strong id="performance-appeal-rate">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Unassigned Cases</span>
+
+                                <strong id="performance-unassigned">—</strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="disputes-performance-footer">
+
+                            <span>Last performance update</span>
+
+                            <strong id="performance-updated">
+                                Data unavailable
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- DISPUTE REGISTER -->
+
+                <section class="content-card disputes-directory">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Central Dispute Register</h3>
+
+                            <p>
+                                View, review, manage and monitor all
+                                registered disputes across the platform.
+                            </p>
+
+                        </div>
+
+
+                        <span id="disputes-record-count" class="disputes-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- STATUS TABS -->
+
+                    <div class="disputes-tabs" role="tablist" aria-label="Dispute status filters">
+
+
+                        <button class="disputes-tab active" type="button" data-status="all" role="tab"
+                            aria-selected="true">
+
+                            All Disputes
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="submitted" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Submitted
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="under_review" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Under Review
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="awaiting_response" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Awaiting Response
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="mediation" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Mediation
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="escalated" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Escalated
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="appealed" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Appealed
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="resolved" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Resolved
+
+                        </button>
+
+
+                        <button class="disputes-tab" type="button" data-status="closed" role="tab" aria-selected="false"
+                            tabindex="-1">
+
+                            Closed
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+
+                    <form id="disputes-filter-form" class="disputes-filters">
+
+
+                        <div class="disputes-search-field">
+
+                            <label for="disputes-search">
+                                Search disputes
+                            </label>
+
+                            <input id="disputes-search" type="search"
+                                placeholder="Reference, title, employee, employer..." disabled>
+
+                        </div>
+
+
+                        <div class="disputes-filter-field">
+
+                            <label for="disputes-type-filter">
+                                Dispute Type
+                            </label>
+
+                            <select id="disputes-type-filter" disabled>
+
+                                <option value="">All types</option>
+
+                                <option value="recruitment">
+                                    Recruitment
+                                </option>
+
+                                <option value="application">
+                                    Application
+                                </option>
+
+                                <option value="employment">
+                                    Employment
+                                </option>
+
+                                <option value="payment">
+                                    Payment
+                                </option>
+
+                                <option value="contract">
+                                    Contract
+                                </option>
+
+                                <option value="assessment">
+                                    Assessment
+                                </option>
+
+                                <option value="matching">
+                                    Matching
+                                </option>
+
+                                <option value="identity">
+                                    Identity
+                                </option>
+
+                                <option value="conduct">
+                                    Conduct
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="disputes-filter-field">
+
+                            <label for="disputes-priority-filter">
+                                Priority
+                            </label>
+
+                            <select id="disputes-priority-filter" disabled>
+
+                                <option value="">All priorities</option>
+
+                                <option value="critical">Critical</option>
+
+                                <option value="high">High</option>
+
+                                <option value="medium">Medium</option>
+
+                                <option value="low">Low</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="disputes-filter-field">
+
+                            <label for="disputes-party-filter">
+                                Involved Party
+                            </label>
+
+                            <select id="disputes-party-filter" disabled>
+
+                                <option value="">All parties</option>
+
+                                <option value="employee">Employee</option>
+
+                                <option value="employer">Employer</option>
+
+                                <option value="both">Both</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="disputes-filter-field">
+
+                            <label for="disputes-sort">
+                                Date
+                            </label>
+
+                            <select id="disputes-sort" disabled>
+
+                                <option value="newest">Newest first</option>
+
+                                <option value="oldest">Oldest first</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button class="btn btn-secondary" type="submit" id="disputes-apply" disabled>
+
+                            Apply
+
+                        </button>
+
+
+                        <button class="btn btn-outline" type="button" id="disputes-clear" disabled>
+
+                            Clear
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- TABLE -->
+
+                    <div class="table-container disputes-table-container" role="region" aria-label="Dispute records"
+                        tabindex="0">
+
+
+                        <table class="data-table disputes-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>DISPUTE REFERENCE</th>
+
+                                    <th>DISPUTE SUBJECT</th>
+
+                                    <th>CATEGORY</th>
+
+                                    <th>EMPLOYEE / CLAIMANT</th>
+
+                                    <th>EMPLOYER / RESPONDENT</th>
+
+                                    <th>PRIORITY</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>ASSIGNED TO</th>
+
+                                    <th>DATE SUBMITTED</th>
+
+                                    <th>DEADLINE</th>
+
+                                    <th>ACTION</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="disputes-table-body">
+
+                                <tr>
+
+                                    <td colspan="11">
+
+                                        <div class="disputes-empty">
+
+                                            <h4>No dispute records connected</h4>
+
+                                            <p>
+                                                Actual dispute records will appear
+                                                when the authorized dispute management
+                                                service is connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+
+                    <div class="disputes-pagination">
+
+
+                        <span id="disputes-page-info">
+                            No records available
+                        </span>
+
+
+                        <div class="pagination-actions">
+
+                            <button id="disputes-prev" class="btn btn-secondary" type="button" disabled>
+
+                                Previous
+
+                            </button>
+
+
+                            <button id="disputes-next" class="btn btn-secondary" type="button" disabled>
+
+                                Next
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- APPEALS AND ESCALATIONS -->
+
+                <section class="disputes-secondary-grid">
+
+
+                    <!-- APPEALS -->
+
+                    <article class="content-card">
+
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Appeals Requiring Attention</h3>
+
+                                <p>
+                                    Review requests challenging previous decisions.
+                                </p>
+
+                            </div>
+
+
+                            <span id="disputes-appeal-count" class="disputes-record-count">
+
+                                Records unavailable
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+
+                            <table class="data-table disputes-compact-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>APPEAL REFERENCE</th>
+
+                                        <th>ORIGINAL CASE</th>
+
+                                        <th>STATUS</th>
+
+                                        <th>SUBMITTED</th>
+
+                                        <th>ACTION</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="disputes-appeal-body">
+
+                                    <tr>
+
+                                        <td colspan="5">
+
+                                            <div class="disputes-empty">
+
+                                                <p>
+                                                    Appeal records are not connected.
+                                                </p>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                    </article>
+
+
+                    <!-- ESCALATIONS -->
+
+                    <article class="content-card">
+
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Escalated Disputes</h3>
+
+                                <p>
+                                    Cases requiring elevated administrative review.
+                                </p>
+
+                            </div>
+
+
+                            <span id="disputes-escalation-count" class="disputes-record-count">
+
+                                Records unavailable
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+
+                            <table class="data-table disputes-compact-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>CASE</th>
+
+                                        <th>PRIORITY</th>
+
+                                        <th>REASON</th>
+
+                                        <th>DATE</th>
+
+                                        <th>ACTION</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="disputes-escalation-body">
+
+                                    <tr>
+
+                                        <td colspan="5">
+
+                                            <div class="disputes-empty">
+
+                                                <p>
+                                                    Escalation records are not connected.
+                                                </p>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- MEDIATION -->
+
+                <section class="content-card disputes-mediation">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Mediation Management</h3>
+
+                            <p>
+                                Monitor disputes referred to mediation,
+                                scheduled sessions and recorded outcomes.
+                            </p>
+
+                        </div>
+
+
+                        <span id="disputes-mediation-count" class="disputes-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+
+                        <table class="data-table disputes-mediation-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>CASE REFERENCE</th>
+
+                                    <th>PARTIES</th>
+
+                                    <th>MEDIATOR</th>
+
+                                    <th>SESSION DATE</th>
+
+                                    <th>MEDIATION STATUS</th>
+
+                                    <th>OUTCOME</th>
+
+                                    <th>ACTION</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="disputes-mediation-body">
+
+                                <tr>
+
+                                    <td colspan="7">
+
+                                        <div class="disputes-empty">
+
+                                            <p>
+                                                Mediation records are not connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- ASSIGNMENTS -->
+
+                <section class="content-card disputes-assignments">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Dispute Review Assignments</h3>
+
+                            <p>
+                                Monitor administrators responsible for
+                                dispute assessment, mediation and resolution.
+                            </p>
+
+                        </div>
+
+
+                        <span id="disputes-assignment-count" class="disputes-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+
+                        <table class="data-table disputes-assignment-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>REVIEWER</th>
+
+                                    <th>ADMIN REFERENCE</th>
+
+                                    <th>ASSIGNED CASES</th>
+
+                                    <th>ACTIVE CASES</th>
+
+                                    <th>OVERDUE CASES</th>
+
+                                    <th>LAST ACTIVITY</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="disputes-assignment-body">
+
+                                <tr>
+
+                                    <td colspan="6">
+
+                                        <div class="disputes-empty">
+
+                                            <p>
+                                                Dispute reviewer allocation is unavailable.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <section class="content-card disputes-activity">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Recent Dispute Activity</h3>
+
+                            <p>
+                                Recorded submissions, responses, assignments,
+                                mediation, decisions, appeals and closures.
+                            </p>
+
+                        </div>
+
+
+                        <span id="disputes-activity-count" class="disputes-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+
+                        <table class="data-table disputes-activity-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>EVENT REFERENCE</th>
+
+                                    <th>ACTIVITY</th>
+
+                                    <th>CASE REFERENCE</th>
+
+                                    <th>ACTOR</th>
+
+                                    <th>DESCRIPTION</th>
+
+                                    <th>DATE & TIME</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="disputes-activity-body">
+
+                                <tr>
+
+                                    <td colspan="6">
+
+                                        <div class="disputes-empty">
+
+                                            <p>
+                                                Dispute activity is not connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- FAIRNESS AND GOVERNANCE -->
+
+                <section class="content-card disputes-guidance">
+
+
+                    <div class="disputes-guidance-icon">
+                        &#9878;
+                    </div>
+
+
+                    <div>
+
+                        <h3>Fairness, Impartiality & Resolution Governance</h3>
+
+                        <p>
+
+                            All parties must be treated fairly and consistently.
+                            A dispute submission represents a claim requiring
+                            review and is not proof of wrongdoing. Evidence
+                            must be assessed in context, relevant responses
+                            must be considered, conflicts of interest must be
+                            managed, and decisions must be documented with
+                            clear reasons. Appeals must follow the applicable
+                            review procedure. All sensitive information and
+                            administrative interventions must be handled under
+                            appropriate privacy, access-control and audit
+                            requirements.
+
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+            </main>
+
+
+            <!-- FOOTER -->
+
+            <footer class="main-footer">
+
+                <div class="footer-brand">
+
+                    <strong>TALVORA TECHNOLOGIES</strong>
+
+                    <span>
+                        Connecting Human Capability to Global Opportunity.
+                    </span>
+
+                </div>
+
+                <div class="footer-system">
+                    GSES SYSTEM 001
+                </div>
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+       DISPUTE DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="disputes-detail-overlay" class="disputes-overlay" hidden>
+
+
+        <aside id="disputes-detail-panel" class="disputes-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="disputes-detail-title">
+
+
+            <div class="disputes-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        CONFIDENTIAL DISPUTE RECORD
+                    </span>
+
+                    <h2 id="disputes-detail-title">
+                        Dispute Details
+                    </h2>
+
+                </div>
+
+
+                <button id="disputes-detail-close" class="disputes-detail-close" type="button"
+                    aria-label="Close dispute details">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <div id="disputes-detail-content" class="disputes-detail-content">
+            </div>
+
+
+            <div id="disputes-detail-actions" class="disputes-detail-actions">
+
+
+                <p class="disputes-action-note">
+
+                    Administrative decisions require authorization,
+                    justification and a recorded audit event.
+
+                </p>
+
+
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       EVIDENCE DRAWER
+       ===================================================== -->
+
+    <div id="disputes-evidence-overlay" class="disputes-overlay" hidden>
+
+
+        <aside id="disputes-evidence-panel" class="disputes-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="disputes-evidence-title">
+
+
+            <div class="disputes-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        CONTROLLED EVIDENCE ACCESS
+                    </span>
+
+                    <h2 id="disputes-evidence-title">
+                        Dispute Evidence
+                    </h2>
+
+                </div>
+
+
+                <button id="disputes-evidence-close" class="disputes-detail-close" type="button"
+                    aria-label="Close evidence register">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="disputes-evidence-content" class="disputes-detail-content">
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       COMMUNICATION DRAWER
+       ===================================================== -->
+
+    <div id="disputes-communication-overlay" class="disputes-overlay" hidden>
+
+
+        <aside id="disputes-communication-panel" class="disputes-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="disputes-communication-title">
+
+
+            <div class="disputes-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        FORMAL CASE COMMUNICATION
+                    </span>
+
+                    <h2 id="disputes-communication-title">
+                        Dispute Communications
+                    </h2>
+
+                </div>
+
+
+                <button id="disputes-communication-close" class="disputes-detail-close" type="button"
+                    aria-label="Close communications">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="disputes-communication-content" class="disputes-detail-content">
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       ADMINISTRATIVE ACTION CONFIRMATION
+       ===================================================== -->
+
+    <div id="disputes-confirm-overlay" class="disputes-confirm-overlay" hidden>
+
+
+        <section class="disputes-confirm-dialog" role="dialog" aria-modal="true"
+            aria-labelledby="disputes-confirm-title">
+
+
+            <h2 id="disputes-confirm-title">
+                Confirm Administrative Action
+            </h2>
+
+
+            <p id="disputes-confirm-description"></p>
+
+
+            <div id="disputes-assignee-field" class="disputes-dialog-field" hidden>
+
+                <label for="disputes-assignee-select">
+                    Authorized Reviewer
+                </label>
+
+                <select id="disputes-assignee-select">
+
+                    <option value="">
+                        Select authorized reviewer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div id="disputes-decision-field" class="disputes-dialog-field" hidden>
+
+                <label for="disputes-decision">
+                    Proposed decision or resolution
+                </label>
+
+                <textarea id="disputes-decision" rows="3" maxlength="5000"
+                    placeholder="Record the proposed decision or resolution...">
+        </textarea>
+
+            </div>
+
+
+            <div class="disputes-dialog-field">
+
+                <label for="disputes-action-reason">
+                    Administrative justification
+                </label>
+
+                <textarea id="disputes-action-reason" rows="4" maxlength="3000"
+                    placeholder="Explain the reason and supporting considerations...">
+        </textarea>
+
+            </div>
+
+
+            <div class="disputes-confirm-buttons">
+
+
+                <button id="disputes-confirm-cancel" class="btn btn-secondary" type="button">
+
+                    Cancel
+
+                </button>
+
+
+                <button id="disputes-confirm-submit" class="btn btn-danger" type="button" disabled>
+
+                    Confirm Action
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+</body>
+
+</html>

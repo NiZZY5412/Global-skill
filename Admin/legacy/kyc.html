@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="../talvora-admin-config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <meta name="description" content="TALVORA Global KYC, KYB and Identity Verification Centre.">
+
+    <title>TALVORA | Global KYC & KYB Centre</title>
+
+    <link rel="stylesheet" href="talvora-modules.css">
+    <script defer src="talvora-modules.js"></script>
+</head>
+
+<body data-module="kyc">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar">
+
+            <a class="brand" href="#overview">
+                <span class="brand-mark">T</span>
+                <span class="brand-copy">
+                    <strong>TALVORA</strong>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </span>
+            </a>
+
+            <div class="sidebar-label">
+                <span class="live-dot"></span>
+                IDENTITY & COMPLIANCE
+            </div>
+
+            <nav class="side-nav" aria-label="KYC administration">
+
+                <a class="nav-link active" href="#overview" data-section="overview">
+                    <span class="nav-icon">◈</span> Global Overview
+                </a>
+
+                <a class="nav-link" href="#individuals" data-section="individuals">
+                    <span class="nav-icon">♙</span> Individual KYC
+                </a>
+
+                <a class="nav-link" href="#businesses" data-section="businesses">
+                    <span class="nav-icon">▣</span> Business KYB
+                </a>
+
+                <a class="nav-link" href="#documents" data-section="documents">
+                    <span class="nav-icon">▤</span> Document Verification
+                </a>
+
+                <a class="nav-link" href="#screening" data-section="screening">
+                    <span class="nav-icon">⌕</span> Screening & Alerts
+                </a>
+
+                <a class="nav-link" href="#cases" data-section="cases">
+                    <span class="nav-icon">⚑</span> Compliance Cases
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-security">
+                    <span class="security-mark">⬡</span>
+                    <span>
+                        <strong>Identity governance</strong>
+                        <small>Global verification oversight</small>
+                    </span>
+                </div>
+
+                <div class="admin-chip">
+                    <span class="admin-avatar">SA</span>
+                    <span>
+                        <strong>Super Administrator</strong>
+                        <small>Authorized workspace</small>
+                    </span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-area">
+
+            <header class="topbar">
+
+                <div class="topbar-heading">
+
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            SUPER ADMIN <span>/</span> IDENTITY & COMPLIANCE
+                        </div>
+                        <h1>Global KYC & KYB Centre</h1>
+                    </div>
+
+                </div>
+
+                <div class="topbar-actions">
+
+                    <span class="connection-pill" id="connectionStatus">
+                        <i></i> Connecting
+                    </span>
+
+                    <span class="region-pill">GLOBAL PLATFORM</span>
+
+                    <button class="button button-outline" id="refreshButton">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <section class="welcome-banner">
+
+                <div class="banner-symbol">⬡</div>
+
+                <div>
+                    <strong>Global Identity, Business Verification & Compliance Management</strong>
+                    <p>
+                        Centralized oversight of individual identity verification,
+                        business due diligence, supporting documents, screening
+                        workflows and compliance case management.
+                    </p>
+                </div>
+
+                <div class="banner-tag">TALVORA TRUST FRAMEWORK</div>
+
+            </section>
+
+
+            <!-- GLOBAL OVERVIEW -->
+
+            <section class="module-section active" id="overview" data-view="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL IDENTITY INTELLIGENCE</span>
+                        <h2>KYC & KYB Overview</h2>
+                        <p>Monitor identity verification and business compliance across jurisdictions.</p>
+                    </div>
+                    <span class="updated-label" id="lastUpdated">Awaiting data</span>
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Individual Verification Records</span>
+                        <strong data-metric="totalIndividuals">—</strong>
+                        <small>Registered individual verification records</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Verified Individuals</span>
+                        <strong data-metric="verifiedIndividuals">—</strong>
+                        <small>Completed identity verification</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Verifications</span>
+                        <strong data-metric="pendingVerifications">—</strong>
+                        <small>Awaiting verification decisions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Business Records</span>
+                        <strong data-metric="totalBusinesses">—</strong>
+                        <small>Registered KYB records</small>
+                    </article>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Verified Businesses</span>
+                        <strong data-metric="verifiedBusinesses">—</strong>
+                        <small>Completed business verification</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Documents</span>
+                        <strong data-metric="pendingDocuments">—</strong>
+                        <small>Awaiting document review</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Open Screening Alerts</span>
+                        <strong data-metric="openScreeningAlerts">—</strong>
+                        <small>Alerts requiring assessment</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Open Compliance Cases</span>
+                        <strong data-metric="openCases">—</strong>
+                        <small>Active compliance investigations</small>
+                    </article>
+
+                </div>
+
+
+                <div class="content-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">VERIFICATION PERFORMANCE</span>
+                                <h3>Individual Verification Status</h3>
+                            </div>
+                        </div>
+                        <div class="distribution" data-distribution="individualStatus"></div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">BUSINESS DUE DILIGENCE</span>
+                                <h3>Business Verification Status</h3>
+                            </div>
+                        </div>
+                        <div class="distribution" data-distribution="businessStatus"></div>
+                    </article>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">LATEST VERIFICATION ACTIVITY</span>
+                            <h3>Recently Updated Individual Records</h3>
+                        </div>
+                        <button class="button button-outline button-small" data-go="individuals">
+                            View All
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>VERIFICATION REF.</th>
+                                    <th>PROFILE REF.</th>
+                                    <th>JURISDICTION</th>
+                                    <th>VERIFICATION LEVEL</th>
+                                    <th>STATUS</th>
+                                    <th>UPDATED</th>
+                                </tr>
+                            </thead>
+                            <tbody data-dashboard-table="individuals">
+                                <tr>
+                                    <td colspan="6" class="empty-cell">Loading verification records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- INDIVIDUAL KYC -->
+
+            <section class="module-section" id="individuals" data-view="individuals">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INDIVIDUAL IDENTITY GOVERNANCE</span>
+                        <h2>Individual KYC Management</h2>
+                        <p>Review identity verification records, verification levels and outstanding requirements.</p>
+                    </div>
+                </div>
+
+                <div class="filter-bar" data-filter-for="individuals">
+
+                    <input type="search" placeholder="Search verification or profile reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="expired">Expired</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">INDIVIDUAL VERIFICATION REGISTER</span>
+                            <h3>Global KYC Records</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>VERIFICATION REF.</th>
+                                    <th>PROFILE REF.</th>
+                                    <th>JURISDICTION</th>
+                                    <th>VERIFICATION LEVEL</th>
+                                    <th>STATUS</th>
+                                    <th>UPDATED</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="individuals">
+                                <tr>
+                                    <td colspan="7" class="empty-cell">Loading records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="individuals">Awaiting records</span>
+                        <span>Individual identity verification register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- BUSINESS KYB -->
+
+            <section class="module-section" id="businesses" data-view="businesses">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">BUSINESS DUE DILIGENCE</span>
+                        <h2>Business KYB Management</h2>
+                        <p>Monitor registered entities, legal entity references, verification levels and business due
+                            diligence.</p>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <strong>Business verification governance</strong>
+                    <p>Business verification workflows should support legal entity validation, authorized representative
+                        checks, ownership review and jurisdiction-specific due diligence.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="businesses">
+
+                    <input type="search" placeholder="Search business or legal entity reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="restricted">Restricted</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">BUSINESS VERIFICATION REGISTER</span>
+                            <h3>Global KYB Records</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>KYB REF.</th>
+                                    <th>BUSINESS REF.</th>
+                                    <th>LEGAL ENTITY REF.</th>
+                                    <th>JURISDICTION</th>
+                                    <th>VERIFICATION LEVEL</th>
+                                    <th>STATUS</th>
+                                    <th>UPDATED</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="businesses">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading business records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="businesses">Awaiting records</span>
+                        <span>Business due diligence register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- DOCUMENT VERIFICATION -->
+
+            <section class="module-section" id="documents" data-view="documents">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">DOCUMENT INTEGRITY</span>
+                        <h2>Document Verification Centre</h2>
+                        <p>Oversee supporting identity, business, qualification and verification documents.</p>
+                    </div>
+                </div>
+
+                <div class="notice notice-teal">
+                    <strong>Secure document governance</strong>
+                    <p>Document access must be authorized, purpose-limited and audited. The management interface
+                        displays document references and metadata rather than exposing raw document storage locations.
+                    </p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="documents">
+
+                    <input type="search" placeholder="Search document or subject reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="flagged">Flagged</option>
+                        <option value="expired">Expired</option>
+                    </select>
+
+                    <select data-query="documentType">
+                        <option value="">All document types</option>
+                        <option value="identity">Identity</option>
+                        <option value="qualification">Qualification</option>
+                        <option value="registration">Business Registration</option>
+                        <option value="licence">Professional Licence</option>
+                        <option value="address">Address Evidence</option>
+                    </select>
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">DOCUMENT REGISTER</span>
+                            <h3>Global Verification Documents</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>DOCUMENT REF.</th>
+                                    <th>SUBJECT REF.</th>
+                                    <th>DOCUMENT TYPE</th>
+                                    <th>ISSUER REF.</th>
+                                    <th>JURISDICTION</th>
+                                    <th>SUBMITTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="documents">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading documents...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="documents">Awaiting records</span>
+                        <span>Restricted document access</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- SCREENING -->
+
+            <section class="module-section" id="screening" data-view="screening">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">COMPLIANCE SCREENING</span>
+                        <h2>Screening & Alerts Centre</h2>
+                        <p>Review screening alerts, potential matches, risk indicators and escalation workflows.</p>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <strong>Human-reviewed screening decisions</strong>
+                    <p>Potential screening matches must be assessed using reliable evidence and appropriate review
+                        procedures. A screening alert alone is not a finding of wrongdoing.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="screening">
+
+                    <input type="search" placeholder="Search alert or subject reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+
+                    <select data-query="priority">
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">SCREENING ALERT REGISTER</span>
+                            <h3>Global Screening Alerts</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ALERT REF.</th>
+                                    <th>SUBJECT REF.</th>
+                                    <th>SCREENING TYPE</th>
+                                    <th>MATCH REF.</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="screening">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading screening alerts...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="screening">Awaiting records</span>
+                        <span>Screening and escalation oversight</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- COMPLIANCE CASES -->
+
+            <section class="module-section" id="cases" data-view="cases">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">COMPLIANCE CASE MANAGEMENT</span>
+                        <h2>Global Compliance Cases</h2>
+                        <p>Track investigations, verification exceptions, escalations and documented resolutions.</p>
+                    </div>
+                </div>
+
+                <div class="filter-bar" data-filter-for="cases">
+
+                    <input type="search" placeholder="Search compliance case..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+
+                    <select data-query="priority">
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">COMPLIANCE CASE REGISTER</span>
+                            <h3>Global KYC & KYB Cases</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CASE REF.</th>
+                                    <th>SUBJECT REF.</th>
+                                    <th>CASE TYPE</th>
+                                    <th>REASON</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="cases">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading compliance cases...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="cases">Awaiting records</span>
+                        <span>Global compliance oversight</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <footer class="page-footer">
+                TALVORA GLOBAL PLATFORM OPERATIONS
+                <span>•</span>
+                KYC, KYB & IDENTITY VERIFICATION
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ADMIN ACTION MODAL -->
+
+    <div class="modal-backdrop" id="actionModal" hidden>
+
+        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="actionTitle">
+
+            <div class="modal-heading">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED COMPLIANCE ACTION</span>
+                    <h2 id="actionTitle">Review Verification</h2>
+                </div>
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">×</button>
+
+            </div>
+
+            <p class="modal-description" id="actionDescription">
+                Submit this action to the authorized compliance workflow.
+            </p>
+
+            <label class="field-label" for="actionReason">
+                Reason / Decision Notes
+            </label>
+
+            <textarea id="actionReason" rows="4" minlength="10" maxlength="2000"
+                placeholder="Provide the review reason and decision notes..." required></textarea>
+
+            <label class="field-label" for="actionEvidence">
+                Supporting Evidence Reference (Optional)
+            </label>
+
+            <input type="text" id="actionEvidence" maxlength="250" placeholder="Evidence or case reference">
+
+            <div class="modal-actions">
+
+                <button type="button" class="button button-outline" data-close-modal>Cancel</button>
+
+                <button type="button" class="button button-primary" id="submitAction" disabled>Submit Action</button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- RECORD DETAILS -->
+
+    <div class="modal-backdrop" id="detailModal" hidden>
+
+        <section class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+
+            <div class="modal-heading">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED VERIFICATION RECORD</span>
+                    <h2 id="detailTitle">Verification Details</h2>
+                </div>
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">×</button>
+
+            </div>
+
+            <div class="detail-grid" id="detailContent"></div>
+
+        </section>
+
+    </div>
+
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+</body>
+
+</html>

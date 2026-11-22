@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <title>Interviews & Communication | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="interviews.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="interviews-page" data-module="interviews">
+
+    <div class="employer-layout">
+
+        <aside class="employer-sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <strong>TALVORA</strong>
+                    <small>EMPLOYER PORTAL</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+                <a href="employer-dashboard.html" class="nav-link"><span>▦</span> Dashboard</a>
+                <a href="company-profile.html" class="nav-link"><span>▤</span> Company Profile</a>
+                <a href="locations.html" class="nav-link"><span>⌖</span> Branches & Locations</a>
+                <a href="jobs.html" class="nav-link"><span>▣</span> Jobs Management</a>
+                <a href="applications.html" class="nav-link"><span>▥</span> Applications</a>
+                <a href="skills-matching.html" class="nav-link"><span>✧</span> Skills Passport & Matching</a>
+                <a href="interviews.html" class="nav-link active"><span>◷</span> Interviews & Communication</a>
+                <a href="offers-onboarding.html" class="nav-link"><span>♙</span> Offers & Onboarding</a>
+                <a href="workforce.html" class="nav-link"><span>♧</span> Workforce</a>
+<a href="analytics-reports.html" class="nav-link"><span>◫</span> Analytics</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-label">ACCOUNT</div>
+                <a href="team-permissions.html" class="nav-link"><span>♧</span> Team & Permissions</a>
+<a href="disputes-support.html" class="nav-link"><span>?</span> Support Centre</a>
+            </div>
+
+        </aside>
+
+
+        <main class="employer-main">
+
+            <header class="employer-topbar">
+
+                <button id="menuToggle" class="icon-button" aria-label="Toggle navigation">☰</button>
+
+                <div class="topbar-title">
+                    <h1>Interviews & Communication</h1>
+                    <p>Interview scheduling and candidate engagement</p>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <select id="companySwitcher" class="company-switcher" aria-label="Select organization">
+                        <option value="">Loading organizations...</option>
+                    </select>
+
+                    <button id="notificationToggle" class="icon-button" aria-label="Notifications">♧</button>
+
+                    <div id="notificationPanel" class="notification-panel" hidden>
+                        <strong>Interview Notifications</strong>
+                        <p>Interview invitations and communication updates will appear here.</p>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="module-content">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">RECRUITMENT ENGAGEMENT</span>
+                        <h2>Global Interviews & Communication Centre</h2>
+                        <p>Coordinate interviews, manage recruitment panels and communicate with candidates.</p>
+                    </div>
+
+                    <div class="heading-actions">
+                        <button class="btn btn-secondary" id="refreshInterviewsButton">↻ Refresh</button>
+                        <button class="btn btn-primary" id="scheduleInterviewButton">+ Schedule Interview</button>
+                    </div>
+
+                </div>
+
+
+                <div class="connection-banner">
+                    <span class="connection-dot"></span>
+                    <span id="interviewsConnectionStatus">Connecting to TALVORA...</span>
+                    <span id="interviewsLastUpdated" class="last-updated"></span>
+                </div>
+
+
+                <!-- INTERVIEW STATISTICS -->
+                <div class="interview-kpi-grid">
+
+                    <article class="interview-kpi-card">
+                        <div class="interview-icon navy">◷</div>
+                        <div>
+                            <span>Total Interviews</span>
+                            <strong id="totalInterviews">0</strong>
+                            <small>Registered interview records</small>
+                        </div>
+                    </article>
+
+                    <article class="interview-kpi-card">
+                        <div class="interview-icon blue">▣</div>
+                        <div>
+                            <span>Scheduled</span>
+                            <strong id="scheduledInterviews">0</strong>
+                            <small>Upcoming and planned</small>
+                        </div>
+                    </article>
+
+                    <article class="interview-kpi-card">
+                        <div class="interview-icon teal">✓</div>
+                        <div>
+                            <span>Completed</span>
+                            <strong id="completedInterviews">0</strong>
+                            <small>Completed interviews</small>
+                        </div>
+                    </article>
+
+                    <article class="interview-kpi-card">
+                        <div class="interview-icon purple">◎</div>
+                        <div>
+                            <span>Virtual Interviews</span>
+                            <strong id="virtualInterviews">0</strong>
+                            <small>Online interview sessions</small>
+                        </div>
+                    </article>
+
+                    <article class="interview-kpi-card">
+                        <div class="interview-icon orange">◴</div>
+                        <div>
+                            <span>Pending Feedback</span>
+                            <strong id="pendingFeedback">0</strong>
+                            <small>Awaiting evaluation</small>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- UPCOMING INTERVIEWS -->
+                <section class="interviews-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Upcoming Interview Schedule</h3>
+                            <p>View and coordinate planned candidate interviews.</p>
+                        </div>
+                        <span id="upcomingInterviewCount">0 upcoming</span>
+                    </div>
+
+                    <div id="upcomingInterviews" class="upcoming-interviews">
+                        <p class="empty-record">Loading upcoming interviews...</p>
+                    </div>
+
+                </section>
+
+
+                <!-- INTERVIEW MANAGEMENT -->
+                <section class="interviews-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Interview Management</h3>
+                            <p>Manage interview appointments and recruitment outcomes.</p>
+                        </div>
+                        <span id="interviewCountLabel">0 interviews</span>
+                    </div>
+
+
+                    <div class="interview-filter-bar">
+
+                        <input type="search" id="interviewSearch" placeholder="Search candidate, interviewer or job...">
+
+                        <select id="interviewStatusFilter">
+                            <option value="">All interview statuses</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="rescheduled">Rescheduled</option>
+                        </select>
+
+                        <select id="interviewModeFilter">
+                            <option value="">All interview modes</option>
+                            <option value="virtual">Virtual</option>
+                            <option value="onsite">On-site</option>
+                            <option value="phone">Telephone</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearInterviewFilters">Clear</button>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="interviews-table">
+
+                            <thead>
+                                <tr>
+                                    <th>CANDIDATE</th>
+                                    <th>JOB</th>
+                                    <th>INTERVIEW TYPE</th>
+                                    <th>DATE & TIME</th>
+                                    <th>INTERVIEWER</th>
+                                    <th>MODE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="interviewsTableBody">
+                                <tr>
+                                    <td colspan="8" class="table-loading">Loading interviews...</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="interviewsTableFooter">Showing 0 interviews</span>
+                        <span id="interviewsFilteredCount">0 records</span>
+                    </div>
+
+                </section>
+
+
+                <!-- COMMUNICATION CENTRE -->
+                <section class="interviews-panel communication-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Employer-Candidate Communication Centre</h3>
+                            <p>Manage candidate correspondence and recruitment conversations.</p>
+                        </div>
+                        <span class="communication-indicator">SECURE COMMUNICATION</span>
+                    </div>
+
+
+                    <div class="communication-layout">
+
+                        <div class="communication-controls">
+
+                            <label class="form-field">
+                                Select Candidate / Application
+
+                                <select id="messageApplicationSelect">
+                                    <option value="">Choose an application</option>
+                                </select>
+                            </label>
+
+                            <div class="communication-notice">
+                                <strong>Recruitment communication</strong>
+                                <p>
+                                    Messages are associated with the selected
+                                    application and handled through the TALVORA
+                                    communication service.
+                                </p>
+                            </div>
+
+                            <button class="btn btn-secondary" id="refreshMessagesButton">
+                                ↻ Load Conversation
+                            </button>
+
+                        </div>
+
+
+                        <div class="conversation-area">
+
+                            <div class="conversation-header">
+                                <div>
+                                    <strong id="conversationCandidate">No candidate selected</strong>
+                                    <small id="conversationJob">Select an application to begin</small>
+                                </div>
+                                <span id="conversationStatus">Not connected</span>
+                            </div>
+
+                            <div id="messageThread" class="message-thread" aria-live="polite">
+                                <p class="empty-record">Select a candidate application to view its conversation.</p>
+                            </div>
+
+                            <form id="messageForm" class="message-composer">
+
+                                <textarea id="messageText" rows="2" maxlength="5000"
+                                    placeholder="Write a recruitment message..." required></textarea>
+
+                                <div class="composer-footer">
+                                    <small id="messageCharacterCount">0 / 5000</small>
+                                    <button type="submit" class="btn btn-primary" id="sendMessageButton">
+                                        Send Message →
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- SCHEDULE INTERVIEW DIALOG -->
+    <dialog id="interviewDialog" class="interview-dialog">
+
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">INTERVIEW OPERATIONS</span>
+                <h2 id="interviewDialogTitle">Schedule Interview</h2>
+            </div>
+
+            <button type="button" class="dialog-close" data-close-dialog="interviewDialog">×</button>
+        </div>
+
+
+        <form id="interviewForm">
+
+            <input type="hidden" name="interviewId" id="interviewId">
+
+            <div class="form-section">
+                <h3>Candidate & Recruitment Details</h3>
+
+                <label class="form-field">
+                    Candidate Application *
+                    <select name="applicationId" id="interviewApplication" required>
+                        <option value="">Select application</option>
+                    </select>
+                </label>
+
+                <div class="interview-form-grid">
+
+                    <label class="form-field">
+                        Interview Type *
+                        <select name="interviewType" required>
+                            <option value="screening">Initial Screening</option>
+                            <option value="technical">Technical Interview</option>
+                            <option value="competency">Competency Interview</option>
+                            <option value="panel">Panel Interview</option>
+                            <option value="final">Final Interview</option>
+                            <option value="assessment">Assessment Interview</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Interview Mode *
+                        <select name="mode" id="interviewMode" required>
+                            <option value="virtual">Virtual</option>
+                            <option value="onsite">On-site</option>
+                            <option value="phone">Telephone</option>
+                        </select>
+                    </label>
+
+                </div>
+            </div>
+
+
+            <div class="form-section">
+                <h3>Schedule & Participants</h3>
+
+                <div class="interview-form-grid">
+
+                    <label class="form-field">
+                        Interview Date & Time *
+                        <input type="datetime-local" name="scheduledAt" id="interviewScheduledAt" required>
+                    </label>
+
+                    <label class="form-field">
+                        Duration (Minutes) *
+                        <input type="number" name="durationMinutes" min="15" max="480" value="60" required>
+                    </label>
+
+                    <label class="form-field">
+                        Interviewer / Panel Lead *
+                        <input type="text" name="interviewerName" required maxlength="150">
+                    </label>
+
+                    <label class="form-field">
+                        Interviewer Email
+                        <input type="email" name="interviewerEmail">
+                    </label>
+
+                    <label class="form-field full-width">
+                        Meeting Link
+                        <input type="url" name="meetingUrl" placeholder="https://...">
+                    </label>
+
+                    <label class="form-field full-width">
+                        Physical Interview Location
+                        <input type="text" name="physicalLocation" placeholder="Office / meeting location">
+                    </label>
+
+                </div>
+            </div>
+
+
+            <div class="form-section">
+                <h3>Interview Preparation</h3>
+
+                <label class="form-field">
+                    Interview Instructions & Notes
+                    <textarea name="instructions" rows="4"
+                        placeholder="Interview agenda, preparation instructions and relevant notes..."></textarea>
+                </label>
+
+            </div>
+
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close-dialog="interviewDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveInterviewButton">Schedule Interview</button>
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- INTERVIEW FEEDBACK DIALOG -->
+    <dialog id="feedbackDialog" class="interview-dialog">
+
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">RECRUITMENT EVALUATION</span>
+                <h2>Interview Feedback</h2>
+            </div>
+
+            <button type="button" class="dialog-close" data-close-dialog="feedbackDialog">×</button>
+        </div>
+
+        <form id="feedbackForm">
+
+            <input type="hidden" id="feedbackInterviewId">
+
+            <label class="form-field">
+                Interview Outcome *
+                <select id="feedbackOutcome" required>
+                    <option value="">Select outcome</option>
+                    <option value="passed">Passed</option>
+                    <option value="further_assessment">Further Assessment</option>
+                    <option value="unsuccessful">Unsuccessful</option>
+                </select>
+            </label>
+
+            <label class="form-field">
+                Interview Rating
+                <select id="feedbackRating">
+                    <option value="">Not rated</option>
+                    <option value="1">1 - Poor</option>
+                    <option value="2">2 - Below expectations</option>
+                    <option value="3">3 - Satisfactory</option>
+                    <option value="4">4 - Good</option>
+                    <option value="5">5 - Excellent</option>
+                </select>
+            </label>
+
+            <label class="form-field">
+                Interviewer Feedback *
+                <textarea id="feedbackNotes" rows="5" required></textarea>
+            </label>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close-dialog="feedbackDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveFeedbackButton">Save Feedback</button>
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="interviews.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

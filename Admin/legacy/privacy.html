@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="../talvora-admin-config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <meta name="description" content="TALVORA Global Privacy, Consent and Data Protection Management Centre.">
+
+    <title>TALVORA | Privacy & Data Protection Centre</title>
+
+    <link rel="stylesheet" href="talvora-modules.css">
+    <script defer src="talvora-modules.js"></script>
+</head>
+
+<body data-module="privacy">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar">
+
+            <a class="brand" href="#overview">
+                <span class="brand-mark">T</span>
+                <span class="brand-copy">
+                    <strong>TALVORA</strong>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </span>
+            </a>
+
+            <div class="sidebar-label">
+                <span class="live-dot"></span>
+                PRIVACY GOVERNANCE
+            </div>
+
+            <nav class="side-nav" aria-label="Privacy administration">
+
+                <a class="nav-link active" href="#overview" data-section="overview">
+                    <span class="nav-icon">◈</span> Global Overview
+                </a>
+
+                <a class="nav-link" href="#consents" data-section="consents">
+                    <span class="nav-icon">✓</span> Consent Management
+                </a>
+
+                <a class="nav-link" href="#requests" data-section="requests">
+                    <span class="nav-icon">▤</span> Data Subject Requests
+                </a>
+
+                <a class="nav-link" href="#processing" data-section="processing">
+                    <span class="nav-icon">▣</span> Processing Activities
+                </a>
+
+                <a class="nav-link" href="#incidents" data-section="incidents">
+                    <span class="nav-icon">⚑</span> Privacy Incidents
+                </a>
+
+                <a class="nav-link" href="#retention" data-section="retention">
+                    <span class="nav-icon">◷</span> Retention & Policies
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-security">
+                    <span class="security-mark">⬡</span>
+                    <span>
+                        <strong>Privacy governance</strong>
+                        <small>Global data protection oversight</small>
+                    </span>
+                </div>
+
+                <div class="admin-chip">
+                    <span class="admin-avatar">SA</span>
+                    <span>
+                        <strong>Super Administrator</strong>
+                        <small>Authorized workspace</small>
+                    </span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-area">
+
+            <header class="topbar">
+
+                <div class="topbar-heading">
+
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+
+                    <div>
+                        <div class="breadcrumb">
+                            SUPER ADMIN <span>/</span> PRIVACY GOVERNANCE
+                        </div>
+                        <h1>Privacy & Data Protection Centre</h1>
+                    </div>
+
+                </div>
+
+                <div class="topbar-actions">
+
+                    <span class="connection-pill" id="connectionStatus">
+                        <i></i> Connecting
+                    </span>
+
+                    <span class="region-pill">GLOBAL PLATFORM</span>
+
+                    <button class="button button-outline" id="refreshButton">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <section class="welcome-banner banner-teal">
+
+                <div class="banner-symbol">⬡</div>
+
+                <div>
+                    <strong>Global Privacy, Consent & Data Protection Management</strong>
+                    <p>
+                        Centralized oversight of privacy permissions,
+                        consent records, data-subject rights, processing
+                        activities, privacy incidents and information retention.
+                    </p>
+                </div>
+
+                <div class="banner-tag">TALVORA PRIVACY FRAMEWORK</div>
+
+            </section>
+
+
+            <!-- GLOBAL OVERVIEW -->
+
+            <section class="module-section active" id="overview" data-view="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL DATA PROTECTION INTELLIGENCE</span>
+                        <h2>Privacy Governance Overview</h2>
+                        <p>Monitor consent, privacy requests, processing governance and data protection incidents.</p>
+                    </div>
+                    <span class="updated-label" id="lastUpdated">Awaiting data</span>
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Total Consent Records</span>
+                        <strong data-metric="totalConsentRecords">—</strong>
+                        <small>Recorded privacy permissions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active Consents</span>
+                        <strong data-metric="activeConsents">—</strong>
+                        <small>Currently active consent records</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Privacy Requests</span>
+                        <strong data-metric="pendingRequests">—</strong>
+                        <small>Awaiting processing</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Overdue Requests</span>
+                        <strong data-metric="overdueRequests">—</strong>
+                        <small>Requests requiring attention</small>
+                    </article>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Processing Activities</span>
+                        <strong data-metric="processingActivities">—</strong>
+                        <small>Registered processing activities</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Open Privacy Incidents</span>
+                        <strong data-metric="openPrivacyIncidents">—</strong>
+                        <small>Active incident records</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Records Due for Review</span>
+                        <strong data-metric="recordsDueForReview">—</strong>
+                        <small>Retention and policy reviews</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Jurisdictions Covered</span>
+                        <strong data-metric="jurisdictionsCovered">—</strong>
+                        <small>Privacy governance coverage</small>
+                    </article>
+
+                </div>
+
+
+                <div class="content-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">CONSENT GOVERNANCE</span>
+                                <h3>Consent Status Distribution</h3>
+                            </div>
+                        </div>
+                        <div class="distribution" data-distribution="consentStatus"></div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">DATA SUBJECT RIGHTS</span>
+                                <h3>Privacy Request Distribution</h3>
+                            </div>
+                        </div>
+                        <div class="distribution" data-distribution="requestStatus"></div>
+                    </article>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">LATEST PRIVACY ACTIVITY</span>
+                            <h3>Recently Updated Consent Records</h3>
+                        </div>
+
+                        <button class="button button-outline button-small" data-go="consents">
+                            View All
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CONSENT REF.</th>
+                                    <th>SUBJECT REF.</th>
+                                    <th>PURPOSE</th>
+                                    <th>LAWFUL BASIS</th>
+                                    <th>JURISDICTION</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-dashboard-table="consents">
+                                <tr>
+                                    <td colspan="6" class="empty-cell">Loading consent records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">DATA PROTECTION GOVERNANCE</span>
+                            <h3>Platform Privacy Controls</h3>
+                        </div>
+                    </div>
+
+                    <div class="notice notice-teal">
+                        <strong>Consent and lawful processing</strong>
+                        <p>Consent records must preserve the purpose, applicable lawful basis, collection context,
+                            version and withdrawal history. Consent should not be treated as the lawful basis for every
+                            processing activity.</p>
+                    </div>
+
+                    <div class="notice">
+                        <strong>Data subject rights</strong>
+                        <p>Privacy requests must follow the applicable jurisdictional procedures, identity verification
+                            requirements, response deadlines and documented resolution workflows.</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- CONSENT MANAGEMENT -->
+
+            <section class="module-section" id="consents" data-view="consents">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PRIVACY PERMISSIONS</span>
+                        <h2>Consent Management</h2>
+                        <p>Monitor consent collection, status, purpose, version history and withdrawal requests.</p>
+                    </div>
+                </div>
+
+                <div class="notice notice-teal">
+                    <strong>Consent lifecycle management</strong>
+                    <p>Maintain traceable consent records, including when and how consent was obtained, the purposes
+                        covered, applicable notice versions and subsequent changes or withdrawals.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="consents">
+
+                    <input type="search" placeholder="Search consent or subject reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="active">Active</option>
+                        <option value="withdrawn">Withdrawn</option>
+                        <option value="pending">Pending</option>
+                        <option value="expired">Expired</option>
+                        <option value="invalid">Invalid</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">CONSENT REGISTER</span>
+                            <h3>Global Consent Records</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CONSENT REF.</th>
+                                    <th>SUBJECT REF.</th>
+                                    <th>PURPOSE</th>
+                                    <th>LAWFUL BASIS</th>
+                                    <th>JURISDICTION</th>
+                                    <th>STATUS</th>
+                                    <th>UPDATED</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="consents">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading consent records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="consents">Awaiting records</span>
+                        <span>Consent lifecycle oversight</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- DATA SUBJECT REQUESTS -->
+
+            <section class="module-section" id="requests" data-view="requests">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">DATA SUBJECT RIGHTS</span>
+                        <h2>Privacy Request Management</h2>
+                        <p>Manage access, correction, deletion, portability, restriction and objection requests.</p>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <strong>Rights request processing</strong>
+                    <p>Each request must be assessed against applicable legal requirements, identity verification,
+                        exemptions, response periods and any necessary third-party considerations.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="requests">
+
+                    <input type="search" placeholder="Search request reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="received">Received</option>
+                        <option value="verification_pending">Verification Pending</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="awaiting_information">Awaiting Information</option>
+                        <option value="completed">Completed</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+
+                    <select data-query="requestType">
+                        <option value="">All request types</option>
+                        <option value="access">Access</option>
+                        <option value="rectification">Rectification</option>
+                        <option value="erasure">Erasure</option>
+                        <option value="portability">Portability</option>
+                        <option value="restriction">Restriction</option>
+                        <option value="objection">Objection</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">REQUEST REGISTER</span>
+                            <h3>Global Data Subject Requests</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REQUEST REF.</th>
+                                    <th>SUBJECT REF.</th>
+                                    <th>REQUEST TYPE</th>
+                                    <th>RECEIVED</th>
+                                    <th>DUE DATE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="requests">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading privacy requests...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="requests">Awaiting records</span>
+                        <span>Data subject rights management</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- PROCESSING ACTIVITIES -->
+
+            <section class="module-section" id="processing" data-view="processing">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PROCESSING GOVERNANCE</span>
+                        <h2>Processing Activities Register</h2>
+                        <p>Oversee data processing activities, controllers, purposes and lawful basis records.</p>
+                    </div>
+                </div>
+
+                <div class="notice notice-teal">
+                    <strong>Processing accountability</strong>
+                    <p>Maintain documented records of processing activities, purposes, categories of information,
+                        controller responsibilities, retention rules and applicable safeguards.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="processing">
+
+                    <input type="search" placeholder="Search activity or controller reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="active">Active</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="pending">Pending</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="archived">Archived</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">PROCESSING REGISTER</span>
+                            <h3>Global Processing Activities</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ACTIVITY REF.</th>
+                                    <th>ACTIVITY</th>
+                                    <th>CONTROLLER REF.</th>
+                                    <th>PURPOSE</th>
+                                    <th>LAWFUL BASIS</th>
+                                    <th>JURISDICTION</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="processing">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading processing activities...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="processing">Awaiting records</span>
+                        <span>Processing accountability register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- PRIVACY INCIDENTS -->
+
+            <section class="module-section" id="incidents" data-view="incidents">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PRIVACY INCIDENT RESPONSE</span>
+                        <h2>Privacy Incident Management</h2>
+                        <p>Monitor reported privacy incidents, severity, investigation and response workflows.</p>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <strong>Incident response and escalation</strong>
+                    <p>Incident records should capture discovery, containment, impact assessment, relevant notification
+                        decisions, remediation and closure. Applicable notification obligations and timelines must be
+                        determined by jurisdiction-specific requirements.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="incidents">
+
+                    <input type="search" placeholder="Search incident reference..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="investigating">Investigating</option>
+                        <option value="contained">Contained</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="closed">Closed</option>
+                    </select>
+
+                    <select data-query="severity">
+                        <option value="">All severity levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">INCIDENT REGISTER</span>
+                            <h3>Global Privacy Incidents</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>INCIDENT REF.</th>
+                                    <th>INCIDENT TYPE</th>
+                                    <th>SEVERITY</th>
+                                    <th>AFFECTED SYSTEM</th>
+                                    <th>JURISDICTION</th>
+                                    <th>REPORTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="incidents">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading privacy incidents...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="incidents">Awaiting records</span>
+                        <span>Privacy incident response register</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- RETENTION AND POLICIES -->
+
+            <section class="module-section" id="retention" data-view="retention">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INFORMATION LIFECYCLE GOVERNANCE</span>
+                        <h2>Retention & Policy Management</h2>
+                        <p>Monitor retention schedules, information categories, policy ownership and scheduled reviews.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notice notice-teal">
+                    <strong>Controlled information lifecycle</strong>
+                    <p>Retention and deletion rules should reflect applicable legal obligations, documented purposes,
+                        preservation requirements and approved jurisdiction-specific policies.</p>
+                </div>
+
+                <div class="filter-bar" data-filter-for="retention">
+
+                    <input type="search" placeholder="Search policy or record category..." data-query="search">
+
+                    <select data-query="status">
+                        <option value="">All statuses</option>
+                        <option value="active">Active</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="pending">Pending</option>
+                        <option value="expired">Expired</option>
+                        <option value="archived">Archived</option>
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">RETENTION POLICY REGISTER</span>
+                            <h3>Global Retention & Policy Records</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>POLICY REF.</th>
+                                    <th>RECORD CATEGORY</th>
+                                    <th>RETENTION RULE</th>
+                                    <th>OWNER REF.</th>
+                                    <th>JURISDICTION</th>
+                                    <th>NEXT REVIEW</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody data-table-body="retention">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading retention policies...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span data-result-count="retention">Awaiting records</span>
+                        <span>Information lifecycle governance</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <footer class="page-footer">
+                TALVORA GLOBAL PLATFORM OPERATIONS
+                <span>•</span>
+                PRIVACY, CONSENT & DATA PROTECTION
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ADMINISTRATIVE ACTION MODAL -->
+
+    <div class="modal-backdrop" id="actionModal" hidden>
+
+        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="actionTitle">
+
+            <div class="modal-heading">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED PRIVACY ACTION</span>
+                    <h2 id="actionTitle">Review Privacy Record</h2>
+                </div>
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">×</button>
+
+            </div>
+
+            <p class="modal-description" id="actionDescription">
+                Submit this action to the authorized privacy workflow.
+            </p>
+
+            <label class="field-label" for="actionReason">
+                Reason / Decision Notes
+            </label>
+
+            <textarea id="actionReason" rows="4" minlength="10" maxlength="2000"
+                placeholder="Document the reason and applicable review decision..." required></textarea>
+
+            <label class="field-label" for="actionEvidence">
+                Supporting Evidence Reference (Optional)
+            </label>
+
+            <input type="text" id="actionEvidence" maxlength="250" placeholder="Evidence or incident reference">
+
+            <div class="modal-actions">
+
+                <button type="button" class="button button-outline" data-close-modal>Cancel</button>
+
+                <button type="button" class="button button-primary" id="submitAction" disabled>Submit Action</button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- RECORD DETAILS MODAL -->
+
+    <div class="modal-backdrop" id="detailModal" hidden>
+
+        <section class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+
+            <div class="modal-heading">
+
+                <div>
+                    <span class="eyebrow">CONTROLLED PRIVACY RECORD</span>
+                    <h2 id="detailTitle">Privacy Record Details</h2>
+                </div>
+
+                <button type="button" class="icon-button" data-close-modal aria-label="Close">×</button>
+
+            </div>
+
+            <div class="detail-grid" id="detailContent"></div>
+
+        </section>
+
+    </div>
+
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+</body>
+
+</html>

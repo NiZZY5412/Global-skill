@@ -1,0 +1,61 @@
+/* TALVORA shared support and workplace chat widget */
+.talvora-chat-launcher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 999px;
+    padding: 13px 18px 13px 14px;
+    color: #fff;
+    background: linear-gradient(135deg, #102b46, #16877c);
+    box-shadow: 0 14px 32px rgba(16, 43, 70, .28);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
+
+.talvora-chat-launcher:hover { transform: translateY(-2px); }
+.talvora-chat-launcher:focus-visible { outline: 3px solid #31d6dc; outline-offset: 3px; }
+.talvora-chat-launcher-icon { font-size: 20px; line-height: 1; }
+
+.talvora-chat-panel {
+    position: fixed;
+    right: 24px;
+    bottom: 84px;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    width: min(390px, calc(100vw - 32px));
+    height: min(560px, calc(100vh - 112px));
+    overflow: hidden;
+    border: 1px solid rgba(16, 43, 70, .14);
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(16, 43, 70, .24);
+}
+
+.talvora-chat-panel[hidden] { display: none; }
+.talvora-chat-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 18px 14px; color: #fff; background: #102b46; }
+.talvora-chat-heading { display: flex; gap: 10px; align-items: center; }
+.talvora-chat-avatar { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #102b46; background: #31d6dc; font-weight: 800; }
+.talvora-chat-title { margin: 0; font-size: 15px; }
+.talvora-chat-subtitle { margin: 3px 0 0; color: rgba(255,255,255,.7); font-size: 11px; }
+.talvora-chat-close { border: 0; color: #fff; background: transparent; cursor: pointer; font-size: 22px; }
+.talvora-chat-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px; background: #f3f6fa; }
+.talvora-chat-tab { border: 1px solid transparent; border-radius: 10px; padding: 9px 7px; color: #52677a; background: transparent; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; }
+.talvora-chat-tab.active { border-color: #b7e9e6; color: #102b46; background: #fff; }
+.talvora-chat-note { margin: 0; padding: 8px 16px; color: #6b7f90; background: #fff; font-size: 11px; line-height: 1.4; }
+.talvora-chat-messages { flex: 1; overflow: auto; padding: 14px; background: #f8fafc; }
+.talvora-chat-empty { padding: 38px 18px; color: #7890a2; text-align: center; font-size: 13px; }
+.talvora-chat-message { max-width: 82%; margin: 0 0 10px; padding: 10px 12px; border-radius: 14px 14px 14px 4px; color: #244054; background: #fff; box-shadow: 0 3px 12px rgba(16,43,70,.07); font-size: 13px; line-height: 1.45; }
+.talvora-chat-message.mine { margin-left: auto; border-radius: 14px 14px 4px 14px; color: #fff; background: #16877c; }
+.talvora-chat-message-meta { display: block; margin-top: 5px; opacity: .7; font-size: 10px; }
+.talvora-chat-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #e1e9ef; background: #fff; }
+.talvora-chat-input { min-width: 0; flex: 1; resize: none; border: 1px solid #cfdae3; border-radius: 12px; padding: 10px 12px; color: #102b46; font: inherit; font-size: 13px; }
+.talvora-chat-send { align-self: end; border: 0; border-radius: 11px; padding: 10px 13px; color: #fff; background: #102b46; cursor: pointer; font: inherit; font-weight: 700; }
+.talvora-chat-send:disabled { opacity: .5; cursor: not-allowed; }
+@media (max-width: 520px) { .talvora-chat-launcher { right: 16px; bottom: 16px; } .talvora-chat-panel { right: 16px; bottom: 76px; } }

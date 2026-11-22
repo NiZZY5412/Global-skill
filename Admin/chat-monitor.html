@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Monitor | TALVORA</title>
+    <link rel="stylesheet" href="talvora-admin.css">
+    <link rel="stylesheet" href="chat-monitor.css">
+</head>
+<body class="chat-monitor-page">
+    <main class="chat-monitor-shell">
+        <header class="chat-monitor-header">
+            <div>
+                <p class="eyebrow">ADMIN OVERSIGHT</p>
+                <h1>Conversation Monitor</h1>
+                <p>Review conversations from the Employer and Employee portals.</p>
+            </div>
+            <div class="chat-monitor-actions">
+                <a class="chat-monitor-back" href="index.html#/admin/dashboard">Back to dashboard</a>
+                <button id="refreshChats" type="button">Refresh</button>
+            </div>
+        </header>
+
+        <section class="chat-monitor-notice" aria-label="Read-only notice">
+            <strong>Read-only oversight</strong>
+            <span>Admin can review messages, but cannot intervene, reply, edit, or delete workplace conversations.</span>
+        </section>
+
+        <section id="chatThreads" class="chat-thread-grid" aria-live="polite"></section>
+    </main>
+    <script src="chat-monitor.js" defer></script>
+</body>
+</html>

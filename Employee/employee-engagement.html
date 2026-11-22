@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA employee administration and organizational intelligence portal.">
+<title>Engagement & Culture | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a>
+<a class="nav-link " href="learning.html"><span class="nav-icon">⌑</span>Learning & Certification</a>
+<a class="nav-link " href="performance.html"><span class="nav-icon">↗</span>Performance & Career</a>
+<a class="nav-link " href="communications.html"><span class="nav-icon">◉</span>Communication Centre</a>
+<a class="nav-link " href="employee-support.html"><span class="nav-icon">♡</span>Employee Support</a>
+<a class="nav-link " href="employee-directory.html"><span class="nav-icon">♙</span>Employee Directory</a>
+<a class="nav-link " href="team-management.html"><span class="nav-icon">♧</span>My Team & Manager</a>
+<a class="nav-link " href="hr-policies.html"><span class="nav-icon">▤</span>HR Policies & Handbook</a>
+<a class="nav-link active" href="employee-engagement.html"><span class="nav-icon">♡</span>Engagement & Culture</a>
+<a class="nav-link " href="workforce-analytics.html"><span class="nav-icon">▥</span>Workforce Analytics</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Engagement & Culture</div><div class="topbar-sub">Employee surveys, pulse checks and workplace initiatives</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">EMPLOYEE VOICE & CULTURE</span><h1>Employee Engagement, Surveys & Workplace Culture</h1><p>Share feedback through employee surveys, participate in pulse checks and explore workplace culture initiatives.</p></div><div class="heading-actions"><button class="btn" id="refreshEngagement">↻ Refresh engagement</button></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Open surveys</div><div class="kpi-value" id="openSurveyCount">—</div><div class="kpi-foot">Surveys currently available</div></div>
+ <div class="kpi"><div class="kpi-label">My submissions</div><div class="kpi-value" id="mySurveyCount">—</div><div class="kpi-foot">Responses submitted by you</div></div>
+ <div class="kpi"><div class="kpi-label">Culture initiatives</div><div class="kpi-value" id="initiativeCount">—</div><div class="kpi-foot">Published workplace activities</div></div>
+ <div class="kpi"><div class="kpi-label">Surveys to complete</div><div class="kpi-value" id="surveyPendingCount">—</div><div class="kpi-foot">Open surveys not yet submitted</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Employee surveys & pulse checks</h2><p>Your voice helps inform workplace improvements. Please review the purpose and privacy notice before responding.</p></div></div>
+ <div id="surveyGrid" class="grid grid-3"><div class="empty-state">Loading surveys…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Workplace culture initiatives</h2><p>Activities and practices intended to support collaboration and employee experience.</p></div></div>
+ <div id="initiativeGrid" class="grid grid-3"><div class="empty-state">Loading initiatives…</div></div>
+</section>
+<div class="insight-note"><strong>Privacy and participation:</strong> Survey responses are personal data. The production system must explain who can access responses, whether results are anonymous or confidential, how results are aggregated and how long responses are retained. Do not assume a survey is anonymous unless the employer's system explicitly guarantees it.</div>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="surveyDialog"><div class="modal-head"><h2>Employee survey</h2><button class="modal-close" data-close-dialog="surveyDialog">×</button></div><form id="surveyForm"><div class="modal-body" id="surveyFormBody"></div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="surveyDialog">Cancel</button><button type="submit" class="btn btn-primary" id="submitSurveyButton">Submit response</button></div></form></dialog>
+
+<script src="employee.js"></script>
+<script src="employee-engagement.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

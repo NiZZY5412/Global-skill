@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA global employee workforce services and self-service portal.">
+<title>Global Employment | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link active" href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Global Employment</div><div class="topbar-sub">Manage your employer relationships and employment history</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">GLOBAL WORKFORCE PROFILE</span><h1>Employment & Employer Relationships</h1><p>View your current and previous employment relationships, including separate records for each employer, subsidiary and work location.</p></div><div class="heading-actions"><button class="btn" id="refreshEmployment">↻ Refresh records</button></div></div>
+<div class="context-banner"><div><strong id="selectedEmployerName">Loading selected employer…</strong><span id="selectedEmployerMeta">Your active employment context</span></div><span class="pill success" id="selectedEmployerStatus">Selected context</span></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Active employment records</div><div class="kpi-value" id="activeEmploymentCount">—</div><div class="kpi-foot">Current employment relationships</div></div>
+ <div class="kpi"><div class="kpi-label">Concurrent employers</div><div class="kpi-value" id="concurrentEmployerCount">—</div><div class="kpi-foot">Active employers at the same time</div></div>
+ <div class="kpi"><div class="kpi-label">Previous employers</div><div class="kpi-value" id="formerEmployerCount">—</div><div class="kpi-foot">Employment history records</div></div>
+ <div class="kpi"><div class="kpi-label">Work locations</div><div class="kpi-value" id="workLocationCount">—</div><div class="kpi-foot">Distinct recorded work locations</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>My employment relationships</h2><p>Each employer relationship has its own record, permissions and employment terms.</p></div><select class="control" id="employmentStatusFilter" style="max-width:165px"><option value="">All statuses</option><option value="active">Active</option><option value="former">Former</option><option value="suspended">Suspended</option><option value="pending">Pending</option></select></div>
+ <div class="filter-bar"><div class="search-wrap"><span>⌕</span><input class="control" id="employmentSearch" placeholder="Search employer, role, branch or employee number"></div></div>
+ <div id="employmentGrid" class="grid grid-2"><div class="empty-state">Loading employment records…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Employment record principles</h2><p>How TALVORA keeps your global employment history organized.</p></div></div>
+ <div class="grid grid-3">
+  <div class="notice"><strong>One employee identity</strong><br>Your TALVORA identity remains consistent when you join another employer.</div>
+  <div class="notice"><strong>Separate employer records</strong><br>Contracts, payroll, attendance and leave remain tied to the correct employment relationship.</div>
+  <div class="notice"><strong>Controlled employer access</strong><br>Each employer should only access information authorized for its employment relationship.</div>
+ </div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="employmentDetailDialog"><div class="modal-head"><h2>Employment record</h2><button class="modal-close" data-close-dialog="employmentDetailDialog">×</button></div><div class="modal-body" id="employmentDetailBody"></div><div class="modal-foot" id="employmentDetailActions"></div></dialog>
+
+<script src="employee.js"></script>
+<script src="employment.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

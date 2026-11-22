@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>TALVORA | Global Payment Gateway Centre</title>
+    <link rel="stylesheet" href="payment-gateway.css">
+    <script defer src="talvora-admin-config.js"></script>
+    <script src="payment-gateway.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </div>
+            </div>
+
+            <div class="side-label">PAYMENT INFRASTRUCTURE</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Global Dashboard</a>
+                <a href="#providers" class="nav-link" data-section="providers">▣ Gateway Providers</a>
+                <a href="#banking" class="nav-link" data-section="banking">▤ Banking Integrations</a>
+                <a href="#routing" class="nav-link" data-section="routing">⇄ Payment Routing</a>
+                <a href="#payments" class="nav-link" data-section="payments">↗ Payment Monitoring</a>
+                <a href="#mobile-money" class="nav-link" data-section="mobile-money">▥ Mobile Money</a>
+                <a href="#webhooks" class="nav-link" data-section="webhooks">⌁ Webhook Management</a>
+                <a href="#settlements" class="nav-link" data-section="settlements">◫ Settlements</a>
+                <a href="#fx" class="nav-link" data-section="fx">◎ Currency & FX</a>
+                <a href="#credentials" class="nav-link" data-section="credentials">◆ Security Vault</a>
+                <a href="#health" class="nav-link" data-section="health">♥ Gateway Health</a>
+                <a href="#failover" class="nav-link" data-section="failover">⇋ Failover & Recovery</a>
+                <a href="#testing" class="nav-link" data-section="testing">✓ Integration Testing</a>
+                <a href="#audit" class="nav-link" data-section="audit">◷ Infrastructure Audit</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <div>
+                        <strong>Super Admin</strong>
+                        <small>Payment Infrastructure</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div class="topbar-title">
+                    <button id="menuToggle" class="menu-toggle" aria-label="Open navigation">☰</button>
+                    <div>
+                        <small>GLOBAL OPERATIONS / PAYMENT INFRASTRUCTURE</small>
+                        <h1>Payment Gateway & Banking Centre</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span id="connectionStatus" class="connection-status">
+                        <i></i> Connecting
+                    </span>
+                    <span id="environmentBadge" class="environment-badge">ENVIRONMENT UNKNOWN</span>
+                    <button id="refreshButton" class="icon-button">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="system-banner">
+                <strong>PAYMENT INFRASTRUCTURE CONTROL</strong>
+                <span id="bannerMessage">Connecting to payment infrastructure services...</span>
+            </div>
+
+            <!-- 1. GLOBAL DASHBOARD -->
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL PAYMENT INTELLIGENCE</span>
+                        <h2>Infrastructure Overview</h2>
+                        <p>Monitor payment processing, provider availability, settlements and infrastructure risk.</p>
+                    </div>
+                    <button class="primary-button" id="exportOverview">Export Overview</button>
+                </div>
+
+                <div class="metrics-grid">
+                    <article class="metric-card">
+                        <span>Active Gateway Providers</span>
+                        <strong id="activeProviders">—</strong>
+                        <small>Operationally enabled providers</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Payment Success Rate</span>
+                        <strong id="successRate">—</strong>
+                        <small>Backend-calculated reporting period</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Payments Processing</span>
+                        <strong id="processingPayments">—</strong>
+                        <small>Currently outstanding processing</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Failed Payments</span>
+                        <strong id="failedPayments">—</strong>
+                        <small>Provider-reported failures</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Pending Settlements</span>
+                        <strong id="pendingSettlements">—</strong>
+                        <small>Unsettled financial obligations</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Webhook Failures</span>
+                        <strong id="webhookFailures">—</strong>
+                        <small>Notifications requiring attention</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Open Infrastructure Incidents</span>
+                        <strong id="openIncidents">—</strong>
+                        <small>Active provider or integration incidents</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Unhealthy Integrations</span>
+                        <strong id="unhealthyIntegrations">—</strong>
+                        <small>Provider connections requiring attention</small>
+                    </article>
+                </div>
+
+                <div class="overview-grid">
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Provider Availability</h3>
+                                <p>Current health reported by the integration monitoring service.</p>
+                            </div>
+                            <button class="text-button" data-navigate="health">View health →</button>
+                        </div>
+                        <div id="providerAvailability" class="provider-list">
+                            No provider health information available.
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Payment Channel Distribution</h3>
+                                <p>Payment volume grouped by channel and reported currency.</p>
+                            </div>
+                        </div>
+                        <div id="channelDistribution" class="distribution-list">
+                            No channel information available.
+                        </div>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Infrastructure Alerts</h3>
+                            <p>Provider outages, security warnings and processing exceptions.</p>
+                        </div>
+                        <button class="text-button" data-navigate="failover">Recovery centre →</button>
+                    </div>
+                    <div id="infrastructureAlerts" class="alert-list">
+                        No infrastructure alerts available.
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent Payment Activity</h3>
+                            <p>Latest payment processing events.</p>
+                        </div>
+                        <button class="text-button" data-navigate="payments">View all →</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>PROVIDER</th>
+                                    <th>CHANNEL</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentPayments">
+                                <tr>
+                                    <td colspan="7">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 2. GATEWAY PROVIDERS -->
+            <section class="content-section" id="providers">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PROVIDER ECOSYSTEM</span>
+                        <h2>Gateway Provider Management</h2>
+                        <p>Register, configure, monitor and govern external payment providers.</p>
+                    </div>
+                    <button class="primary-button" id="addProviderButton">+ Register Provider</button>
+                </div>
+
+                <div class="security-notice">
+                    Provider registration does not activate payment processing.
+                    Connections must pass configuration validation, credential verification,
+                    sandbox testing and the required production approval.
+                </div>
+
+                <div class="filters">
+                    <input id="providerSearch" placeholder="Search provider or integration">
+                    <select id="providerStatus">
+                        <option value="">All statuses</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                    <select id="providerEnvironment">
+                        <option value="">All environments</option>
+                        <option value="sandbox">Sandbox</option>
+                        <option value="production">Production</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PROVIDER ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>CHANNEL</th>
+                                    <th>COUNTRIES</th>
+                                    <th>CURRENCIES</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>HEALTH</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="providerTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 3. BANKING INTEGRATIONS -->
+            <section class="content-section" id="banking">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">BANKING NETWORK</span>
+                        <h2>Banking Integrations</h2>
+                        <p>Manage bank connectivity, settlement accounts and transfer infrastructure.</p>
+                    </div>
+                    <button class="primary-button" id="addBankButton">+ Register Bank Integration</button>
+                </div>
+
+                <div class="security-notice">
+                    Bank account details and credentials must be tokenized or represented
+                    by protected vault references. Never display complete account credentials.
+                </div>
+
+                <div class="filters">
+                    <input id="bankSearch" placeholder="Search bank or integration">
+                    <select id="bankStatus">
+                        <option value="">All statuses</option>
+                        <option value="active">Active</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                    <select id="bankCountry">
+                        <option value="">All countries</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>INTEGRATION ID</th>
+                                    <th>BANK / INSTITUTION</th>
+                                    <th>COUNTRY</th>
+                                    <th>TRANSFER RAIL</th>
+                                    <th>CURRENCIES</th>
+                                    <th>ACCOUNT REFERENCE</th>
+                                    <th>SETTLEMENT</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bankTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 4. PAYMENT ROUTING -->
+            <section class="content-section" id="routing">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INTELLIGENT PAYMENT ORCHESTRATION</span>
+                        <h2>Global Payment Routing Engine</h2>
+                        <p>Define provider selection, routing priorities, eligibility and fallback policies.</p>
+                    </div>
+                    <button class="primary-button" id="addRoutingButton">+ Propose Routing Rule</button>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    Routing changes can affect live payment traffic. Rules must be validated,
+                    versioned, tested and approved before production activation.
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Active Routing Rules</span>
+                        <strong id="activeRoutingRules">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Eligible Providers</span>
+                        <strong id="eligibleProviders">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Failover Events</span>
+                        <strong id="failoverEvents">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Routing Exceptions</span>
+                        <strong id="routingExceptions">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <h3>Routing Policy Register</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RULE ID</th>
+                                    <th>RULE NAME</th>
+                                    <th>COUNTRY</th>
+                                    <th>CHANNEL</th>
+                                    <th>CURRENCY</th>
+                                    <th>PRIMARY PROVIDER</th>
+                                    <th>FALLBACK PROVIDER</th>
+                                    <th>PRIORITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="routingTable">
+                                <tr>
+                                    <td colspan="10">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 5. PAYMENT MONITORING -->
+            <section class="content-section" id="payments">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">REAL-TIME PAYMENT OPERATIONS</span>
+                        <h2>Global Payment Monitoring</h2>
+                        <p>Investigate payment states, provider references and processing failures.</p>
+                    </div>
+                    <button class="secondary-button" id="exportPayments">Export Payments</button>
+                </div>
+
+                <div class="filters">
+                    <input id="paymentSearch" placeholder="Search payment reference">
+                    <select id="paymentStatus">
+                        <option value="">All statuses</option>
+                        <option value="initiated">Initiated</option>
+                        <option value="processing">Processing</option>
+                        <option value="successful">Successful</option>
+                        <option value="failed">Failed</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="reversed">Reversed</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                    <select id="paymentProvider">
+                        <option value="">All providers</option>
+                    </select>
+                    <select id="paymentChannel">
+                        <option value="">All channels</option>
+                        <option value="card">Card</option>
+                        <option value="bank_transfer">Bank transfer</option>
+                        <option value="mobile_money">Mobile money</option>
+                        <option value="wallet">Wallet</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="paymentCurrency">
+                        <option value="">All currencies</option>
+                    </select>
+                    <input type="date" id="paymentFrom" aria-label="Payment start date">
+                    <input type="date" id="paymentTo" aria-label="Payment end date">
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PAYMENT ID</th>
+                                    <th>REFERENCE</th>
+                                    <th>PROVIDER</th>
+                                    <th>CHANNEL</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>CREATED</th>
+                                    <th>PROVIDER STATUS</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentTable">
+                                <tr>
+                                    <td colspan="10">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <span id="paymentPaginationInfo">Page 1</span>
+                        <div>
+                            <button class="secondary-button" id="previousPayments">Previous</button>
+                            <button class="secondary-button" id="nextPayments">Next</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 6. MOBILE MONEY -->
+            <section class="content-section" id="mobile-money">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">MOBILE FINANCIAL NETWORKS</span>
+                        <h2>Mobile Money Integrations</h2>
+                        <p>Manage mobile money providers, payment channels and transaction connectivity.</p>
+                    </div>
+                    <button class="primary-button" id="addMobileMoneyButton">+ Register Channel</button>
+                </div>
+
+                <div class="security-notice">
+                    Support country-specific mobile money rails, callback verification,
+                    provider transaction identifiers and asynchronous transaction confirmation.
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CHANNEL ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>COUNTRY</th>
+                                    <th>SUPPORTED CURRENCIES</th>
+                                    <th>PAYMENT METHODS</th>
+                                    <th>HEALTH</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mobileMoneyTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 7. WEBHOOK MANAGEMENT -->
+            <section class="content-section" id="webhooks">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">EVENT DELIVERY INFRASTRUCTURE</span>
+                        <h2>Webhook Management</h2>
+                        <p>Monitor provider callbacks, signature verification and event delivery.</p>
+                    </div>
+                    <button class="secondary-button" id="exportWebhooks">Export Events</button>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    Every webhook must be authenticated, timestamp-checked and processed
+                    idempotently. Replaying an event must never duplicate a payment or settlement.
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Events Received</span>
+                        <strong id="webhookReceived">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Delivered</span>
+                        <strong id="webhookDelivered">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Failed</span>
+                        <strong id="webhookFailed">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Signature Failures</span>
+                        <strong id="signatureFailures">—</strong>
+                    </article>
+                </div>
+
+                <div class="filters">
+                    <input id="webhookSearch" placeholder="Search event or provider reference">
+                    <select id="webhookStatus">
+                        <option value="">All statuses</option>
+                        <option value="received">Received</option>
+                        <option value="processed">Processed</option>
+                        <option value="failed">Failed</option>
+                        <option value="retrying">Retrying</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>EVENT ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>EVENT TYPE</th>
+                                    <th>REFERENCE</th>
+                                    <th>SIGNATURE</th>
+                                    <th>RECEIVED</th>
+                                    <th>ATTEMPTS</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="webhookTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 8. SETTLEMENTS -->
+            <section class="content-section" id="settlements">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">BANKING SETTLEMENT OPERATIONS</span>
+                        <h2>Settlement Management</h2>
+                        <p>Monitor provider settlement batches, bank transfers and settlement exceptions.</p>
+                    </div>
+                    <button class="secondary-button" id="exportSettlements">Export Settlements</button>
+                </div>
+
+                <div class="security-notice">
+                    Settlement records must reconcile against original transactions,
+                    provider reports and actual bank credit or debit evidence.
+                </div>
+
+                <div class="filters">
+                    <input id="settlementSearch" placeholder="Search settlement reference">
+                    <select id="settlementStatus">
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="settled">Settled</option>
+                        <option value="delayed">Delayed</option>
+                        <option value="discrepancy">Discrepancy</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                    <select id="settlementCurrency">
+                        <option value="">All currencies</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>SETTLEMENT ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>BANK REFERENCE</th>
+                                    <th>GROSS</th>
+                                    <th>FEES</th>
+                                    <th>NET SETTLEMENT</th>
+                                    <th>CURRENCY</th>
+                                    <th>EXPECTED DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="settlementTable">
+                                <tr>
+                                    <td colspan="10">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 9. CURRENCY AND FX -->
+            <section class="content-section" id="fx">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL CURRENCY SERVICES</span>
+                        <h2>Currency & Exchange Rate Management</h2>
+                        <p>Manage currency availability, exchange-rate providers and historical rate snapshots.</p>
+                    </div>
+                    <button class="primary-button" id="proposeFxButton">+ Propose FX Policy</button>
+                </div>
+
+                <div class="security-notice">
+                    Exchange rates must include source, timestamp, base currency, quote currency
+                    and effective period. Historical transactions must retain their original
+                    rate snapshot and must not be silently recalculated.
+                </div>
+
+                <article class="panel">
+                    <h3>Supported Currency Register</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CODE</th>
+                                    <th>CURRENCY</th>
+                                    <th>DECIMAL PRECISION</th>
+                                    <th>PAYMENT SUPPORT</th>
+                                    <th>SETTLEMENT SUPPORT</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="currencyTable">
+                                <tr>
+                                    <td colspan="6">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <h3>Exchange Rate Register</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>BASE</th>
+                                    <th>QUOTE</th>
+                                    <th>RATE</th>
+                                    <th>SOURCE</th>
+                                    <th>RATE TYPE</th>
+                                    <th>EFFECTIVE DATE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fxTable">
+                                <tr>
+                                    <td colspan="7">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 10. CREDENTIAL VAULT -->
+            <section class="content-section" id="credentials">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PROTECTED INTEGRATION SECRETS</span>
+                        <h2>Credentials & Security Vault</h2>
+                        <p>Govern provider credential references, access policies and rotation requests.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    Secret values are never retrieved into the browser. Only masked metadata,
+                    vault references, ownership, rotation status and access history are displayed.
+                </div>
+
+                <article class="panel">
+                    <h3>Credential Register</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>VAULT REFERENCE</th>
+                                    <th>PROVIDER</th>
+                                    <th>CREDENTIAL TYPE</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>LAST ROTATED</th>
+                                    <th>EXPIRY</th>
+                                    <th>ACCESS POLICY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="credentialTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <h3>Credential Security Indicators</h3>
+                    <div id="credentialIndicators" class="summary-list">
+                        No credential indicators available.
+                    </div>
+                </article>
+            </section>
+
+            <!-- 11. HEALTH MONITORING -->
+            <section class="content-section" id="health">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INFRASTRUCTURE OBSERVABILITY</span>
+                        <h2>Gateway Health Monitoring</h2>
+                        <p>Track provider availability, latency, error rates and health-check history.</p>
+                    </div>
+                    <button class="secondary-button" id="refreshHealth">Run Health Refresh</button>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Healthy Providers</span>
+                        <strong id="healthyProviders">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Degraded Providers</span>
+                        <strong id="degradedProviders">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Unavailable Providers</span>
+                        <strong id="unavailableProviders">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Average Latency</span>
+                        <strong id="averageLatency">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <h3>Provider Health Register</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PROVIDER</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>AVAILABILITY</th>
+                                    <th>LATENCY</th>
+                                    <th>ERROR RATE</th>
+                                    <th>LAST CHECK</th>
+                                    <th>LAST INCIDENT</th>
+                                    <th>HEALTH</th>
+                                </tr>
+                            </thead>
+                            <tbody id="healthTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 12. FAILOVER AND RECOVERY -->
+            <section class="content-section" id="failover">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">BUSINESS CONTINUITY</span>
+                        <h2>Failover & Recovery Centre</h2>
+                        <p>Govern provider outages, routing recovery, incident response and controlled failback.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    Provider failover must preserve payment idempotency and transaction state.
+                    Never reroute an ambiguous payment to another provider until its original
+                    outcome has been resolved or safely established.
+                </div>
+
+                <article class="panel">
+                    <h3>Recovery Policies</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>POLICY ID</th>
+                                    <th>PRIMARY PROVIDER</th>
+                                    <th>BACKUP PROVIDER</th>
+                                    <th>TRIGGER</th>
+                                    <th>COUNTRY / CHANNEL</th>
+                                    <th>MODE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="failoverTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <h3>Active Infrastructure Incidents</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>INCIDENT ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>SEVERITY</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>OPENED</th>
+                                    <th>OWNER</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="incidentTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 13. INTEGRATION TESTING -->
+            <section class="content-section" id="testing">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INTEGRATION QUALITY ASSURANCE</span>
+                        <h2>Integration Testing Centre</h2>
+                        <p>Validate provider connectivity, authentication, callbacks and payment workflows.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice">
+                    Payment tests use provider sandbox environments and controlled test
+                    credentials. Production tests require explicit authorization and
+                    approved non-monetary health checks.
+                </div>
+
+                <div class="overview-grid">
+                    <article class="panel">
+                        <h3>Run Integration Test</h3>
+
+                        <form id="integrationTestForm">
+                            <label>Provider
+                                <select name="providerId" id="testProvider" required>
+                                    <option value="">Select provider</option>
+                                </select>
+                            </label>
+
+                            <label>Environment
+                                <select name="environment" required>
+                                    <option value="sandbox">Sandbox</option>
+                                    <option value="production_health_check">Production health check</option>
+                                </select>
+                            </label>
+
+                            <label>Test category
+                                <select name="testType" required>
+                                    <option value="connectivity">Connectivity</option>
+                                    <option value="authentication">Authentication</option>
+                                    <option value="webhook">Webhook verification</option>
+                                    <option value="payment_simulation">Payment simulation</option>
+                                    <option value="settlement_status">Settlement status</option>
+                                </select>
+                            </label>
+
+                            <label>Test reason
+                                <textarea name="reason" required rows="3"></textarea>
+                            </label>
+
+                            <button type="submit" class="primary-button">Run Test</button>
+                        </form>
+                    </article>
+
+                    <article class="panel">
+                        <h3>Testing Results</h3>
+                        <div id="testSummary" class="summary-list">
+                            No test results available.
+                        </div>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <h3>Test History</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>TEST ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>TEST TYPE</th>
+                                    <th>RESULT</th>
+                                    <th>EXECUTED</th>
+                                    <th>EXECUTOR</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="testHistoryTable">
+                                <tr>
+                                    <td colspan="8">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 14. AUDIT -->
+            <section class="content-section" id="audit">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">SECURITY & ACCOUNTABILITY</span>
+                        <h2>Payment Infrastructure Audit</h2>
+                        <p>Trace integration changes, credential events, routing decisions and provider operations.</p>
+                    </div>
+                    <button class="secondary-button" id="exportAudit">Export Audit</button>
+                </div>
+
+                <div class="filters">
+                    <input id="auditSearch" placeholder="Search audit reference or administrator">
+                    <select id="auditAction">
+                        <option value="">All operations</option>
+                        <option value="provider_change">Provider change</option>
+                        <option value="bank_change">Bank integration change</option>
+                        <option value="routing_change">Routing change</option>
+                        <option value="credential_rotation">Credential rotation</option>
+                        <option value="failover">Failover</option>
+                        <option value="webhook_replay">Webhook replay</option>
+                        <option value="approval">Approval</option>
+                        <option value="rejection">Rejection</option>
+                        <option value="testing">Integration testing</option>
+                    </select>
+                    <select id="auditResult">
+                        <option value="">All outcomes</option>
+                        <option value="successful">Successful</option>
+                        <option value="pending">Pending</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>AUDIT ID</th>
+                                    <th>ADMINISTRATOR</th>
+                                    <th>OPERATION</th>
+                                    <th>RESOURCE</th>
+                                    <th>ENVIRONMENT</th>
+                                    <th>REASON</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTable">
+                                <tr>
+                                    <td colspan="9">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <footer>
+                <span>TALVORA GLOBAL PAYMENT INFRASTRUCTURE</span>
+                <span>All privileged changes require backend authorization and audit.</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- PROVIDER MODAL -->
+    <div class="modal-overlay" id="providerModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>PROVIDER REGISTRATION</small>
+                    <h2>Register Gateway Provider</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="providerForm">
+                <input type="hidden" name="providerId">
+
+                <label>Provider code *
+                    <input name="code" required maxlength="80">
+                </label>
+
+                <label>Display name *
+                    <input name="name" required maxlength="120">
+                </label>
+
+                <label>Payment channel *
+                    <select name="channel" required>
+                        <option value="">Select channel</option>
+                        <option value="card">Card</option>
+                        <option value="bank_transfer">Bank transfer</option>
+                        <option value="mobile_money">Mobile money</option>
+                        <option value="wallet">Digital wallet</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>Environment *
+                    <select name="environment" required>
+                        <option value="sandbox">Sandbox</option>
+                        <option value="production">Production</option>
+                    </select>
+                </label>
+
+                <label>Supported country codes *
+                    <input name="countries" placeholder="KE, UG, TZ" required>
+                </label>
+
+                <label>Supported currencies *
+                    <input name="currencies" value="USD" placeholder="USD" required>
+                </label>
+
+                <label>Credential vault reference
+                    <input name="credentialRef" placeholder="Existing server-side vault reference">
+                </label>
+
+                <label>Business justification *
+                    <textarea name="reason" rows="3" required></textarea>
+                </label>
+
+                <div class="modal-note">
+                    This submits a provider registration or configuration proposal.
+                    Production activation requires separate approval and testing.
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Submit Provider Proposal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- BANK MODAL -->
+    <div class="modal-overlay" id="bankModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>BANKING CONNECTIVITY</small>
+                    <h2>Register Bank Integration</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="bankForm">
+                <label>Institution name *
+                    <input name="institutionName" required>
+                </label>
+
+                <label>Institution code *
+                    <input name="institutionCode" required>
+                </label>
+
+                <label>Country code *
+                    <input name="country" placeholder="KE" maxlength="2" required>
+                </label>
+
+                <label>Transfer rail *
+                    <select name="rail" required>
+                        <option value="">Select rail</option>
+                        <option value="bank_transfer">Bank transfer</option>
+                        <option value="instant_payment">Instant payment</option>
+                        <option value="ach">ACH</option>
+                        <option value="sepa">SEPA</option>
+                        <option value="swift">SWIFT</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>Supported currencies *
+                    <input name="currencies" value="USD" placeholder="USD" required>
+                </label>
+
+                <label>Protected account reference
+                    <input name="accountRef" placeholder="Vault or tokenized account reference">
+                </label>
+
+                <label>Credential vault reference
+                    <input name="credentialRef">
+                </label>
+
+                <label>Business justification *
+                    <textarea name="reason" required rows="3"></textarea>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Submit Bank Proposal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ROUTING MODAL -->
+    <div class="modal-overlay" id="routingModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>PAYMENT ORCHESTRATION</small>
+                    <h2>Propose Routing Rule</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="routingForm">
+                <label>Rule name *
+                    <input name="name" required>
+                </label>
+
+                <label>Country code *
+                    <input name="country" maxlength="2" placeholder="KE" required>
+                </label>
+
+                <label>Payment channel *
+                    <select name="channel" required>
+                        <option value="">Select channel</option>
+                        <option value="card">Card</option>
+                        <option value="bank_transfer">Bank transfer</option>
+                        <option value="mobile_money">Mobile money</option>
+                        <option value="wallet">Wallet</option>
+                    </select>
+                </label>
+
+                <label>Currency *
+                    <select name="currency" class="currency-options" required>
+                        <option value="">Select currency</option>
+                    </select>
+                </label>
+
+                <label>Primary provider *
+                    <select name="primaryProviderId" class="provider-options" required>
+                        <option value="">Select provider</option>
+                    </select>
+                </label>
+
+                <label>Fallback provider
+                    <select name="fallbackProviderId" class="provider-options">
+                        <option value="">No fallback</option>
+                    </select>
+                </label>
+
+                <label>Priority *
+                    <input type="number" name="priority" min="1" max="1000" value="100" required>
+                </label>
+
+                <label>Routing reason *
+                    <textarea name="reason" required rows="3"></textarea>
+                </label>
+
+                <div class="modal-note">
+                    Provider eligibility, currency compatibility, geographic restrictions,
+                    idempotency and payment-state checks must be enforced by the backend.
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Submit Routing Proposal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FX POLICY MODAL -->
+    <div class="modal-overlay" id="fxModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>CURRENCY GOVERNANCE</small>
+                    <h2>Propose FX Policy</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="fxForm">
+                <label>Base currency *
+                    <select name="baseCurrency" class="currency-options" required>
+                        <option value="">Select currency</option>
+                    </select>
+                </label>
+
+                <label>Quote currency *
+                    <select name="quoteCurrency" class="currency-options" required>
+                        <option value="">Select currency</option>
+                    </select>
+                </label>
+
+                <label>Rate source *
+                    <input name="source" required>
+                </label>
+
+                <label>Rate type *
+                    <select name="rateType" required>
+                        <option value="reference">Reference</option>
+                        <option value="settlement">Settlement</option>
+                        <option value="transaction">Transaction</option>
+                    </select>
+                </label>
+
+                <label>Effective date *
+                    <input type="datetime-local" name="effectiveAt" required>
+                </label>
+
+                <label>Business justification *
+                    <textarea name="reason" required rows="3"></textarea>
+                </label>
+
+                <div class="modal-note">
+                    The exchange rate itself must come from an authorized backend source.
+                    This form proposes a policy and does not allow arbitrary browser-side
+                    exchange-rate overrides.
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Submit FX Proposal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DETAILS MODAL -->
+    <div class="modal-overlay" id="detailModal" hidden>
+        <div class="modal large-modal">
+            <div class="modal-header">
+                <div>
+                    <small>INFRASTRUCTURE RECORD</small>
+                    <h2 id="detailTitle">Record details</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+            <div id="detailContent"></div>
+            <div id="detailActions" class="modal-actions"></div>
+        </div>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+    <div class="modal-overlay" id="confirmationModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>PRIVILEGED INFRASTRUCTURE ACTION</small>
+                    <h2 id="confirmationTitle">Confirm operation</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div class="confirmation-warning">
+                This operation can affect live payment infrastructure.
+                Backend authorization and any required independent approvals remain mandatory.
+            </div>
+
+            <p id="confirmationMessage"></p>
+
+            <label>Business justification *
+                <textarea id="confirmationReason" rows="3"></textarea>
+            </label>
+
+            <label>Type CONFIRM to submit *
+                <input id="confirmationText" autocomplete="off">
+            </label>
+
+            <div class="modal-actions">
+                <button class="secondary-button" data-close-modal>Cancel</button>
+                <button id="confirmOperation" class="danger-button" disabled>
+                    Submit Protected Operation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <title>Compliance & Document Management | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="compliance-documents.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="compliance-page">
+
+    <div class="employer-layout">
+
+        <aside class="employer-sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <strong>TALVORA</strong>
+                    <small>EMPLOYER PORTAL</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+                <a href="employer-dashboard.html" class="nav-link">▦ Dashboard</a>
+                <a href="company-profile.html" class="nav-link">▤ Company Profile</a>
+                <a href="locations.html" class="nav-link">⌖ Branches & Locations</a>
+                <a href="jobs.html" class="nav-link">▣ Jobs Management</a>
+                <a href="applications.html" class="nav-link">▥ Applications</a>
+                <a href="skills-matching.html" class="nav-link">✧ Skills & Matching</a>
+                <a href="interviews.html" class="nav-link">◷ Interviews</a>
+                <a href="offers-onboarding.html" class="nav-link">♙ Offers & Onboarding</a>
+                <a href="workforce.html" class="nav-link">♧ Employee & Workforce</a>
+                <a href="billing.html" class="nav-link">▧ Payments & Billing</a>
+                <a href="compliance-documents.html" class="nav-link active">▤ Compliance & Documents</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-label">ACCOUNT</div>
+                <a href="team-permissions.html" class="nav-link">♧ Team & Permissions</a>
+<a href="disputes-support.html" class="nav-link">? Support Centre</a>
+            </div>
+
+        </aside>
+
+        <main class="employer-main">
+
+            <header class="employer-topbar">
+
+                <button id="menuToggle" class="icon-button" type="button">☰</button>
+
+                <div class="topbar-title">
+                    <h1>Compliance & Document Management</h1>
+                    <p>Manage employment documents and regulatory requirements.</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <select id="companySwitcher" aria-label="Organization">
+                        <option value="">Select organization</option>
+                    </select>
+
+                    <button class="icon-button" id="complianceRefresh" type="button">↻</button>
+                </div>
+
+            </header>
+
+            <section class="compliance-content">
+
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">REGULATORY GOVERNANCE & RECORDS</span>
+                        <h2>Global Compliance & Document Centre</h2>
+                        <p>Track employment documentation, regulatory obligations and document expiry across your
+                            organization.</p>
+                    </div>
+
+                    <div class="heading-actions">
+                        <button class="btn btn-secondary" id="refreshComplianceButton">↻ Refresh</button>
+                        <button class="btn btn-primary" id="uploadDocumentButton">+ Upload Document</button>
+                    </div>
+                </div>
+
+                <div class="compliance-connection">
+                    <span class="connection-dot"></span>
+                    <span id="complianceConnectionStatus">Connecting to compliance services...</span>
+                    <span id="complianceUpdated"></span>
+                </div>
+
+                <!-- KPI -->
+                <div class="compliance-kpi-grid">
+
+                    <article class="compliance-kpi">
+                        <div class="compliance-icon navy">▤</div>
+                        <div><span>Total Documents</span><strong id="totalDocuments">0</strong></div>
+                    </article>
+
+                    <article class="compliance-kpi">
+                        <div class="compliance-icon green">✓</div>
+                        <div><span>Verified Documents</span><strong id="verifiedDocuments">0</strong></div>
+                    </article>
+
+                    <article class="compliance-kpi">
+                        <div class="compliance-icon orange">◷</div>
+                        <div><span>Expiring Soon</span><strong id="expiringDocuments">0</strong></div>
+                    </article>
+
+                    <article class="compliance-kpi">
+                        <div class="compliance-icon red">!</div>
+                        <div><span>Expired Documents</span><strong id="expiredDocuments">0</strong></div>
+                    </article>
+
+                    <article class="compliance-kpi">
+                        <div class="compliance-icon blue">⌛</div>
+                        <div><span>Pending Review</span><strong id="pendingDocuments">0</strong></div>
+                    </article>
+
+                </div>
+
+                <!-- COMPLIANCE SUMMARY -->
+                <section class="compliance-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Organizational Compliance Overview</h3>
+                            <p>Current compliance assessment supplied by TALVORA.</p>
+                        </div>
+
+                        <span id="complianceOverallStatus" class="compliance-badge neutral">Not assessed</span>
+                    </div>
+
+                    <div class="compliance-summary-grid">
+
+                        <div class="compliance-summary-item">
+                            <span>Compliance Coverage</span>
+                            <strong id="complianceCoverage">—</strong>
+                            <div class="coverage-track">
+                                <div id="complianceCoverageBar" class="coverage-fill"></div>
+                            </div>
+                        </div>
+
+                        <div class="compliance-summary-item">
+                            <span>Requirements Applicable</span>
+                            <strong id="applicableRequirements">0</strong>
+                        </div>
+
+                        <div class="compliance-summary-item">
+                            <span>Requirements Met</span>
+                            <strong id="requirementsMet">0</strong>
+                        </div>
+
+                        <div class="compliance-summary-item">
+                            <span>Open Compliance Issues</span>
+                            <strong id="complianceIssues">0</strong>
+                        </div>
+
+                    </div>
+
+                    <p class="compliance-disclaimer">
+                        Compliance coverage is an operational indicator based on recorded data, not a legal
+                        certification or guarantee of regulatory compliance.
+                    </p>
+
+                </section>
+
+                <!-- COUNTRY REQUIREMENTS -->
+                <section class="compliance-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Country-Specific Requirements</h3>
+                            <p>Review applicable documentation and employment obligations by jurisdiction.</p>
+                        </div>
+                    </div>
+
+                    <div class="requirements-filters">
+                        <select id="requirementsCountryFilter">
+                            <option value="">All Countries</option>
+                        </select>
+
+                        <select id="requirementsStatusFilter">
+                            <option value="">All Requirement Statuses</option>
+                            <option value="met">Met</option>
+                            <option value="missing">Missing</option>
+                            <option value="pending">Pending</option>
+                            <option value="not_applicable">Not Applicable</option>
+                        </select>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="compliance-table">
+                            <thead>
+                                <tr>
+                                    <th>COUNTRY</th>
+                                    <th>REQUIREMENT</th>
+                                    <th>DOCUMENT TYPE</th>
+                                    <th>APPLICABILITY</th>
+                                    <th>STATUS</th>
+                                    <th>LAST UPDATED</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="requirementsTableBody">
+                                <tr>
+                                    <td colspan="6" class="empty-cell">Loading requirements...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+                <!-- DOCUMENT REGISTER -->
+                <section class="compliance-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Employment Document Register</h3>
+                            <p>Central repository of organizational and employment documents.</p>
+                        </div>
+
+                        <span id="documentCountLabel">0 documents</span>
+                    </div>
+
+                    <div class="document-filters">
+
+                        <input type="search" id="documentSearch" placeholder="Search document, employee or reference">
+
+                        <select id="documentTypeFilter">
+                            <option value="">All Document Types</option>
+                        </select>
+
+                        <select id="documentStatusFilter">
+                            <option value="">All Statuses</option>
+                            <option value="verified">Verified</option>
+                            <option value="pending">Pending Review</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="expired">Expired</option>
+                            <option value="expiring">Expiring Soon</option>
+                        </select>
+
+                        <select id="documentCountryFilter">
+                            <option value="">All Countries</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearDocumentFilters">Clear</button>
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="compliance-table">
+
+                            <thead>
+                                <tr>
+                                    <th>DOCUMENT</th>
+                                    <th>DOCUMENT TYPE</th>
+                                    <th>EMPLOYEE / ENTITY</th>
+                                    <th>COUNTRY</th>
+                                    <th>ISSUE DATE</th>
+                                    <th>EXPIRY DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="documentTableBody">
+                                <tr>
+                                    <td colspan="8" class="empty-cell">Loading documents...</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="table-footer" id="documentTableFooter">0 documents</div>
+
+                </section>
+
+                <!-- EXPIRY MONITOR -->
+                <section class="compliance-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Document Expiry Monitoring</h3>
+                            <p>Identify documents requiring renewal or administrative attention.</p>
+                        </div>
+                    </div>
+
+                    <div id="expiryMonitor" class="expiry-monitor">
+                        <p class="empty-state">Expiry monitoring information will appear here.</p>
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- UPLOAD DOCUMENT -->
+    <dialog id="uploadDocumentDialog" class="compliance-dialog">
+
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">DOCUMENT REPOSITORY</span>
+                <h2>Upload Employment Document</h2>
+            </div>
+
+            <button type="button" data-close="uploadDocumentDialog">×</button>
+        </div>
+
+        <form id="documentUploadForm">
+
+            <div class="form-section">
+
+                <label class="form-field">Document Name *
+                    <input name="documentName" required maxlength="180">
+                </label>
+
+                <label class="form-field">Document Type *
+                    <select name="documentType" required>
+                        <option value="">Select Document Type</option>
+                        <option value="employment_contract">Employment Contract</option>
+                        <option value="work_permit">Work Permit</option>
+                        <option value="identity_document">Identity Document</option>
+                        <option value="professional_certificate">Professional Certificate</option>
+                        <option value="tax_document">Tax Document</option>
+                        <option value="insurance_document">Insurance Document</option>
+                        <option value="company_registration">Company Registration</option>
+                        <option value="business_license">Business License</option>
+                        <option value="policy_document">Policy Document</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label class="form-field">Employee / Entity Reference
+                    <input name="entityReference" maxlength="120" placeholder="Employee ID or organization reference">
+                </label>
+
+                <div class="compliance-form-grid">
+
+                    <label class="form-field">Country *
+                        <input name="country" required maxlength="100">
+                    </label>
+
+                    <label class="form-field">Issuing Authority
+                        <input name="issuingAuthority" maxlength="180">
+                    </label>
+
+                    <label class="form-field">Issue Date
+                        <input name="issueDate" type="date">
+                    </label>
+
+                    <label class="form-field">Expiry Date
+                        <input name="expiryDate" type="date">
+                    </label>
+
+                </div>
+
+                <label class="form-field">Document File *
+                    <input type="file" name="documentFile" id="documentFile" accept=".pdf,.png,.jpg,.jpeg,.docx"
+                        required>
+                </label>
+
+                <p class="form-help">
+                    Accepted formats: PDF, PNG, JPG and DOCX. Maximum upload size: 15 MB. Server-side validation is
+                    mandatory.
+                </p>
+
+                <label class="form-field">Additional Notes
+                    <textarea name="notes" rows="4" maxlength="2000"></textarea>
+                </label>
+
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" data-close="uploadDocumentDialog">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="uploadDocumentSubmit">Upload Document</button>
+            </div>
+
+        </form>
+
+    </dialog>
+
+    <!-- DOCUMENT DETAILS -->
+    <dialog id="documentDetailsDialog" class="compliance-dialog">
+
+        <div class="dialog-header">
+            <h2>Document Information</h2>
+            <button type="button" data-close="documentDetailsDialog">×</button>
+        </div>
+
+        <div id="documentDetailsContent" class="document-details-content"></div>
+
+        <div class="dialog-actions">
+            <button class="btn btn-secondary" data-close="documentDetailsDialog">Close</button>
+        </div>
+
+    </dialog>
+
+    <div id="complianceToastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="compliance-documents.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

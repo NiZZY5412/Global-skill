@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<title>Skills Passport | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link active" href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Skills Passport</div><div class="topbar-sub">Your skills, qualifications and supporting evidence</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">CAREER CREDENTIALS</span><h1>Skills Passport & Professional Portfolio</h1><p>Build a structured record of your capabilities. Skills you add are self-declared until reviewed through an authorized verification process.</p></div><div class="heading-actions"><button class="btn btn-primary" id="addSkill">+ Add a skill</button></div></div>
+<div class="grid grid-3">
+ <div class="kpi"><div class="kpi-label">Total skills</div><div class="kpi-value" id="totalSkills">—</div><div class="kpi-foot">Your current skill records</div></div>
+ <div class="kpi"><div class="kpi-label">Verified skills</div><div class="kpi-value" id="verifiedSkills">—</div><div class="kpi-foot">Evidence reviewed by an authorized verifier</div></div>
+ <div class="kpi"><div class="kpi-label">Evidence attached</div><div class="kpi-value" id="evidenceSkills">—</div><div class="kpi-foot">Records with supporting evidence links</div></div>
+</div>
+<section class="panel mt-12">
+ <div class="panel-head"><div><h2>My skills</h2><p>Maintain skills and proficiency levels relevant to your career.</p></div><span class="pill info">Employee controlled</span></div>
+ <div class="filter-bar"><div class="search-wrap"><span>⌕</span><input id="skillSearch" class="control" placeholder="Search skills or categories"></div><select id="skillCategory" class="control"><option value="">All categories</option></select><select id="skillVerification" class="control"><option value="">All verification states</option><option value="verified">Verified</option><option value="unverified">Self-declared</option></select></div>
+ <div id="skillsGrid" class="grid grid-2"><div class="empty-state">Loading skills…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Evidence & verification</h2><p>Evidence may include certificates, work samples or references. Do not upload confidential employer information without permission.</p></div></div>
+ <div class="notice warning">Adding a skill does not make it verified. Verification status is controlled by TALVORA's authorized verification workflow and must not be self-assigned.</div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="skillDialog">
+ <div class="modal-head"><h2>Add skill to your passport</h2><button class="modal-close" data-close-dialog="skillDialog" aria-label="Close">×</button></div>
+ <form id="skillForm"><div class="modal-body">
+  <div class="field"><label for="skillName">Skill name *</label><input id="skillName" name="name" required maxlength="100" placeholder="e.g. Data analysis"></div>
+  <div class="field-row">
+   <div class="field"><label for="skillLevel">Proficiency *</label><select id="skillLevel" name="level" required><option value="">Choose level</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Expert</option></select></div>
+   <div class="field"><label for="skillYears">Years of experience</label><input id="skillYears" name="years" type="number" min="0" max="60"></div>
+  </div>
+  <div class="field"><label for="skillCategoryInput">Category</label><select id="skillCategoryInput" name="category"><option>Technology</option><option>Operations</option><option>Leadership</option><option>Communication</option><option>Finance</option><option>Creative</option><option>Other</option></select></div>
+  <div class="field"><label for="skillEvidence">Evidence URL (optional)</label><input id="skillEvidence" name="evidence" type="url" placeholder="https://"><span class="hint">Use a link you are authorized to share. Evidence is not verified automatically.</span></div>
+ </div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="skillDialog">Cancel</button><button class="btn btn-primary" type="submit" id="saveSkill">Add skill</button></div></form>
+</dialog>
+
+<script src="employee.js"></script>
+<script src="skills-passport.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

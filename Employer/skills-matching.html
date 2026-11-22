@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+    <title>Skills Passport & Matching | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="skills-matching.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="skills-matching-page" data-module="skills-matching">
+
+    <div class="employer-layout">
+
+        <aside class="employer-sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <strong>TALVORA</strong>
+                    <small>EMPLOYER PORTAL</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+                <a href="employer-dashboard.html" class="nav-link"><span>▦</span> Dashboard</a>
+                <a href="company-profile.html" class="nav-link"><span>▤</span> Company Profile</a>
+                <a href="locations.html" class="nav-link"><span>⌖</span> Branches & Locations</a>
+                <a href="jobs.html" class="nav-link"><span>▣</span> Jobs Management</a>
+                <a href="applications.html" class="nav-link"><span>▥</span> Applications</a>
+                <a href="skills-matching.html" class="nav-link active"><span>✧</span> Skills Passport & Matching</a>
+                <a href="interviews.html" class="nav-link"><span>◷</span> Interviews & Communication</a>
+                <a href="offers-onboarding.html" class="nav-link"><span>♙</span> Offers & Onboarding</a>
+                <a href="workforce.html" class="nav-link"><span>♧</span> Workforce</a>
+<a href="analytics-reports.html" class="nav-link"><span>◫</span> Analytics</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-label">ACCOUNT</div>
+                <a href="team-permissions.html" class="nav-link"><span>♧</span> Team & Permissions</a>
+<a href="disputes-support.html" class="nav-link"><span>?</span> Support Centre</a>
+            </div>
+        </aside>
+
+
+        <main class="employer-main">
+
+            <header class="employer-topbar">
+                <button id="menuToggle" class="icon-button" aria-label="Toggle navigation">☰</button>
+
+                <div class="topbar-title">
+                    <h1>Skills Passport & Matching</h1>
+                    <p>Verified talent intelligence and candidate suitability</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <select id="companySwitcher" class="company-switcher" aria-label="Select organization">
+                        <option value="">Loading organizations...</option>
+                    </select>
+
+                    <button id="notificationToggle" class="icon-button" aria-label="Notifications">♧</button>
+
+                    <div id="notificationPanel" class="notification-panel" hidden>
+                        <strong>Skills Notifications</strong>
+                        <p>Verification and matching notifications will appear here.</p>
+                    </div>
+                </div>
+            </header>
+
+
+            <section class="module-content">
+
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">TALENT INTELLIGENCE</span>
+                        <h2>Global Skills Passport & Candidate Matching Centre</h2>
+                        <p>Explore verified competencies, qualifications, evidence and candidate-job compatibility.</p>
+                    </div>
+
+                    <div class="heading-actions">
+                        <button class="btn btn-secondary" id="refreshSkillsButton">↻ Refresh</button>
+                        <a href="applications.html" class="btn btn-primary">View Applications</a>
+                    </div>
+                </div>
+
+
+                <div class="connection-banner">
+                    <span class="connection-dot"></span>
+                    <span id="skillsConnectionStatus">Connecting to TALVORA...</span>
+                    <span id="skillsLastUpdated" class="last-updated"></span>
+                </div>
+
+
+                <!-- STATISTICS -->
+                <div class="skills-kpi-grid">
+
+                    <article class="skills-kpi-card">
+                        <div class="skills-icon navy">♙</div>
+                        <div>
+                            <span>Candidate Passports</span>
+                            <strong id="totalPassports">0</strong>
+                            <small>Available talent profiles</small>
+                        </div>
+                    </article>
+
+                    <article class="skills-kpi-card">
+                        <div class="skills-icon teal">✓</div>
+                        <div>
+                            <span>Verified Passports</span>
+                            <strong id="verifiedPassports">0</strong>
+                            <small>Verified profile records</small>
+                        </div>
+                    </article>
+
+                    <article class="skills-kpi-card">
+                        <div class="skills-icon blue">✧</div>
+                        <div>
+                            <span>Skills Recorded</span>
+                            <strong id="totalRecordedSkills">0</strong>
+                            <small>Distinct candidate skill records</small>
+                        </div>
+                    </article>
+
+                    <article class="skills-kpi-card">
+                        <div class="skills-icon purple">◎</div>
+                        <div>
+                            <span>Candidate Matches</span>
+                            <strong id="totalMatches">0</strong>
+                            <small>Available match records</small>
+                        </div>
+                    </article>
+
+                    <article class="skills-kpi-card">
+                        <div class="skills-icon orange">★</div>
+                        <div>
+                            <span>High Compatibility</span>
+                            <strong id="highMatches">0</strong>
+                            <small>Matches scoring 80% or higher</small>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- MATCHING CONTROL -->
+                <section class="skills-panel matching-control">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Candidate Matching Engine</h3>
+                            <p>Compare candidate skills against an organization's published job requirements.</p>
+                        </div>
+                        <span class="engine-indicator">MATCHING ENGINE</span>
+                    </div>
+
+                    <div class="matching-form">
+
+                        <label class="form-field">
+                            Select Job Listing
+                            <select id="matchingJobSelect">
+                                <option value="">Choose a published job</option>
+                            </select>
+                        </label>
+
+                        <div class="matching-explanation">
+                            <strong>Skills-based evaluation</strong>
+                            <p>
+                                Matching results are calculated by the TALVORA
+                                matching service using available candidate
+                                competencies and job requirements.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-primary" id="runMatchingButton">
+                            ✧ Find Matching Candidates
+                        </button>
+
+                    </div>
+
+                    <div id="matchingStatus" class="matching-status" aria-live="polite"></div>
+
+                </section>
+
+
+                <!-- FILTERS -->
+                <section class="skills-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Candidate Skills Passports</h3>
+                            <p>Review candidate skills, qualifications, verification and matching results.</p>
+                        </div>
+
+                        <span id="passportCountLabel">0 candidate profiles</span>
+                    </div>
+
+                    <div class="skills-filter-bar">
+
+                        <input type="search" id="skillsSearch"
+                            placeholder="Search candidate, skill or qualification...">
+
+                        <select id="skillsVerificationFilter">
+                            <option value="">All verification statuses</option>
+                            <option value="verified">Verified</option>
+                            <option value="pending">Pending</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="unverified">Unverified</option>
+                        </select>
+
+                        <select id="skillsJobFilter">
+                            <option value="">All matching jobs</option>
+                        </select>
+
+                        <select id="skillsScoreFilter">
+                            <option value="">All match scores</option>
+                            <option value="80">80% and above</option>
+                            <option value="60">60% and above</option>
+                            <option value="40">40% and above</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearSkillsFilters">Clear</button>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+                        <table class="skills-table">
+                            <thead>
+                                <tr>
+                                    <th>CANDIDATE</th>
+                                    <th>KEY SKILLS</th>
+                                    <th>QUALIFICATIONS</th>
+                                    <th>VERIFICATION</th>
+                                    <th>MATCH SCORE</th>
+                                    <th>PROFILE</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="skillsTableBody">
+                                <tr>
+                                    <td colspan="6" class="table-loading">Loading Skills Passports...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="skillsTableFooter">Showing 0 candidates</span>
+                        <span id="skillsFilteredCount">0 records</span>
+                    </div>
+
+                </section>
+
+
+                <!-- SKILLS ANALYSIS -->
+                <div class="skills-bottom-grid">
+
+                    <section class="skills-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Skills Distribution</h3>
+                                <p>Most frequently recorded competencies in the available profiles.</p>
+                            </div>
+                        </div>
+                        <div id="skillsDistribution" class="skills-distribution"></div>
+                    </section>
+
+                    <section class="skills-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Verification Overview</h3>
+                                <p>Candidate passport verification status.</p>
+                            </div>
+                        </div>
+                        <div id="verificationOverview" class="verification-overview"></div>
+                    </section>
+
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+
+    <!-- CANDIDATE PASSPORT DIALOG -->
+    <dialog id="passportDialog" class="skills-dialog">
+
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">CANDIDATE INTELLIGENCE</span>
+                <h2 id="passportDialogTitle">Skills Passport</h2>
+            </div>
+            <button type="button" class="dialog-close" data-close-dialog="passportDialog">×</button>
+        </div>
+
+        <div class="passport-content">
+
+            <div class="passport-profile">
+                <div class="passport-avatar" id="passportAvatar">?</div>
+                <div>
+                    <h3 id="passportCandidateName">Candidate</h3>
+                    <p id="passportCandidateEmail">Email unavailable</p>
+                    <p id="passportCandidateReference">Reference unavailable</p>
+                </div>
+            </div>
+
+            <div class="passport-status-row">
+                <span>Verification status</span>
+                <span id="passportVerificationBadge"></span>
+            </div>
+
+            <section class="passport-section">
+                <h3>Skills & Competencies</h3>
+                <div id="passportSkills" class="passport-tags"></div>
+            </section>
+
+            <section class="passport-section">
+                <h3>Qualifications & Certifications</h3>
+                <div id="passportQualifications" class="passport-records"></div>
+            </section>
+
+            <section class="passport-section">
+                <h3>Professional Experience</h3>
+                <div id="passportExperience" class="passport-records"></div>
+            </section>
+
+            <section class="passport-section">
+                <h3>Supporting Evidence</h3>
+                <div id="passportEvidence" class="passport-records"></div>
+            </section>
+
+            <section class="passport-section">
+                <h3>Candidate Matching Results</h3>
+                <div id="passportMatches" class="passport-records"></div>
+            </section>
+
+        </div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary" data-close-dialog="passportDialog">Close</button>
+            <a href="applications.html" class="btn btn-primary">Open Applications</a>
+        </div>
+
+    </dialog>
+
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="skills-matching.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

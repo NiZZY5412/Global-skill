@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<title>Global Job Search | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link active" href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Global Job Search</div><div class="topbar-sub">Discover opportunities and manage your saved jobs</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">CAREER OPPORTUNITIES</span><h1>Find your next opportunity</h1><p>Search available roles, explore employer information and review opportunity details before applying.</p></div><div class="heading-actions"><a class="btn" href="applications.html">My applications</a></div></div>
+<section class="panel">
+ <div class="filter-bar">
+  <div class="search-wrap"><span>⌕</span><input id="jobSearch" class="control" placeholder="Job title, employer or skill"></div>
+  <input id="locationFilter" class="control" placeholder="Location or country">
+  <select id="typeFilter" class="control"><option value="">All employment types</option><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Fixed-term</option><option>Internship</option></select>
+  <select id="workModeFilter" class="control"><option value="">All work modes</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
+  <button class="btn btn-primary" id="searchJobs">Search</button>
+ </div>
+ <div class="panel-head"><div><h2>Available opportunities</h2><p id="jobCount">Loading opportunities…</p></div><select id="sortJobs" class="control" style="max-width:170px"><option value="recent">Most recent</option><option value="deadline">Closing soon</option><option value="title">Job title A–Z</option></select></div>
+ <div id="jobResults" class="grid grid-3"><div class="empty-state">Loading jobs…</div></div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="jobDetailDialog"><div class="modal-head"><h2>Opportunity details</h2><button class="modal-close" data-close-dialog="jobDetailDialog">×</button></div><div class="modal-body" id="jobDetailBody"></div><div class="modal-foot" id="jobDetailActions"></div></dialog>
+<dialog class="modal" id="applyDialog"><div class="modal-head"><h2>Submit job application</h2><button class="modal-close" data-close-dialog="applyDialog">×</button></div><form id="applyForm"><div class="modal-body"><input type="hidden" name="jobId" id="applyJobId"><div id="applyJobSummary" class="notice"></div><div class="field mt-12"><label for="coverNote">Cover note (optional)</label><textarea id="coverNote" name="coverNote" rows="5" maxlength="3000" placeholder="Introduce yourself and explain your interest in this opportunity."></textarea></div><label class="check-row"><input type="checkbox" id="confirmApplication" required><span>I confirm that the information I submit is accurate and that I am authorized to share any attached materials.</span></label><p class="panel-note">Your application will be submitted to the employer through TALVORA. Review your profile before applying.</p></div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="applyDialog">Cancel</button><button type="submit" class="btn btn-primary" id="submitApplication">Submit application</button></div></form></dialog>
+
+<script src="employee.js"></script>
+<script src="job-search.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

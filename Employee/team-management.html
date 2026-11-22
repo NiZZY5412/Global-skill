@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA employee administration and organizational intelligence portal.">
+<title>My Team & Manager | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a>
+<a class="nav-link " href="learning.html"><span class="nav-icon">⌑</span>Learning & Certification</a>
+<a class="nav-link " href="performance.html"><span class="nav-icon">↗</span>Performance & Career</a>
+<a class="nav-link " href="communications.html"><span class="nav-icon">◉</span>Communication Centre</a>
+<a class="nav-link " href="employee-support.html"><span class="nav-icon">♡</span>Employee Support</a>
+<a class="nav-link " href="employee-directory.html"><span class="nav-icon">♙</span>Employee Directory</a>
+<a class="nav-link active" href="team-management.html"><span class="nav-icon">♧</span>My Team & Manager</a>
+<a class="nav-link " href="hr-policies.html"><span class="nav-icon">▤</span>HR Policies & Handbook</a>
+<a class="nav-link " href="employee-engagement.html"><span class="nav-icon">♡</span>Engagement & Culture</a>
+<a class="nav-link " href="workforce-analytics.html"><span class="nav-icon">▥</span>Workforce Analytics</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">My Team & Manager</div><div class="topbar-sub">Team membership, reporting lines and shared objectives</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">TEAMWORK & MANAGEMENT</span><h1>Manager & Team Management</h1><p>Understand your reporting line, connect with your team and follow shared team objectives and requests.</p></div><div class="heading-actions"><button class="btn" id="refreshTeams">↻ Refresh teams</button><button class="btn btn-primary" id="newTeamRequest">+ Raise team request</button></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Teams in directory</div><div class="kpi-value" id="teamCount">—</div><div class="kpi-foot">Teams available in the organization</div></div>
+ <div class="kpi"><div class="kpi-label">Your team members</div><div class="kpi-value" id="myTeamMembers">—</div><div class="kpi-foot">Including your manager</div></div>
+ <div class="kpi"><div class="kpi-label">Active team objectives</div><div class="kpi-value" id="teamObjectiveCount">—</div><div class="kpi-foot">Shared goals in progress</div></div>
+ <div class="kpi"><div class="kpi-label">My team requests</div><div class="kpi-value" id="teamRequestCount">—</div><div class="kpi-foot">Requests raised in the demo workspace</div></div>
+</div>
+<div class="grid grid-2">
+ <section class="panel">
+  <div class="panel-head"><div><h2>Your reporting line</h2><p>Manager and team information linked to your current profile.</p></div></div>
+  <div id="reportingLine"><div class="empty-state">Loading reporting line…</div></div>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Team objectives</h2><p>Shared priorities and progress for your team.</p></div><button class="btn btn-small" id="proposeObjective">Suggest objective</button></div>
+  <div id="myTeamObjectives"><div class="empty-state">Loading objectives…</div></div>
+ </section>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Teams across the organization</h2><p>Team leads, departments and membership.</p></div><select class="control" id="teamDepartmentFilter" style="max-width:210px"><option value="">All departments</option></select></div>
+ <div id="teamGrid" class="grid grid-3"><div class="empty-state">Loading teams…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>My team requests</h2><p>Track team suggestions and access requests.</p></div></div>
+ <div class="table-wrap"><table><thead><tr><th>REQUEST</th><th>TEAM</th><th>TYPE</th><th>SUBMITTED</th><th>STATUS</th></tr></thead><tbody id="teamRequestRows"><tr><td colspan="5" class="empty-state">Loading requests…</td></tr></tbody></table></div>
+</section>
+<div class="insight-note">Manager-only functions such as approving leave, changing employee records, assigning formal performance ratings or viewing restricted HR information require a verified manager role and server-side authorization. This employee workspace does not grant those permissions.</div>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="teamRequestDialog"><div class="modal-head"><h2>Raise a team request</h2><button class="modal-close" data-close-dialog="teamRequestDialog">×</button></div><form id="teamRequestForm"><div class="modal-body">
+ <div class="field"><label for="requestTeam">Team *</label><select id="requestTeam" name="team" required></select></div>
+ <div class="field"><label for="requestKind">Request type *</label><select id="requestKind" name="kind"><option>Team suggestion</option><option>Access request</option><option>Team support</option><option>Workplace improvement</option></select></div>
+ <div class="field"><label for="requestTitle">Request summary *</label><input id="requestTitle" name="title" required maxlength="160" placeholder="Briefly describe the request"></div>
+ </div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="teamRequestDialog">Cancel</button><button type="submit" class="btn btn-primary">Submit request</button></div></form></dialog>
+<dialog class="modal" id="objectiveDialog"><div class="modal-head"><h2>Suggest a team objective</h2><button class="modal-close" data-close-dialog="objectiveDialog">×</button></div><form id="objectiveForm"><div class="modal-body">
+ <div class="field"><label for="objectiveTeam">Team *</label><select id="objectiveTeam" name="teamId" required></select></div>
+ <div class="field"><label for="objectiveTitle">Objective *</label><input id="objectiveTitle" name="title" required maxlength="160" placeholder="Describe a useful team outcome"></div>
+ <div class="field"><label for="objectiveDueDate">Suggested target date</label><input id="objectiveDueDate" name="dueDate" type="date"></div>
+ <div class="notice">Your suggestion will be marked as proposed and is not an approved team commitment until reviewed by an authorized manager.</div>
+ </div><div class="modal-foot"><button type="button" class="btn" data-close-dialog="objectiveDialog">Cancel</button><button type="submit" class="btn btn-primary">Submit suggestion</button></div></form></dialog>
+
+<script src="employee.js"></script>
+<script src="team-management.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

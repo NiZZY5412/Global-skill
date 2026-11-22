@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10162d">
+
+    <meta name="csrf-token" content="">
+
+    <title>TALVORA | Global Fraud & AML Centre</title>
+
+    <link rel="stylesheet" href="fraud-aml.css">
+
+    <script>
+        window.TALVORA_FRAUD_CONFIG = {
+            apiBaseUrl: "",
+            timeout: 30000,
+            refreshInterval: 30000,
+            pageSize: 25,
+            endpoints: {}
+        };
+    </script>
+
+    <script src="fraud-aml.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+
+                <div>
+                    <h2>TALVORA</h2>
+                    <span>GLOBAL WORKFORCE PLATFORM</span>
+                </div>
+            </div>
+
+            <div class="sidebar-context">
+                <span class="context-dot"></span>
+                SUPER ADMINISTRATION
+            </div>
+
+            <div class="nav-caption">FINANCIAL SECURITY</div>
+
+            <nav class="main-nav">
+
+                <a href="#overview" class="nav-link active" data-section="overview">
+                    <span class="nav-icon">◈</span>
+                    <span>Fraud Intelligence</span>
+                </a>
+
+                <a href="#alerts" class="nav-link" data-section="alerts">
+                    <span class="nav-icon">⚑</span>
+                    <span>Fraud Alerts</span>
+                </a>
+
+                <a href="#monitoring" class="nav-link" data-section="monitoring">
+                    <span class="nav-icon">⌁</span>
+                    <span>Transaction Monitoring</span>
+                </a>
+
+                <a href="#screening" class="nav-link" data-section="screening">
+                    <span class="nav-icon">⌕</span>
+                    <span>AML & Sanctions Screening</span>
+                </a>
+
+                <a href="#rules" class="nav-link" data-section="rules">
+                    <span class="nav-icon">⚙</span>
+                    <span>Fraud Rules Management</span>
+                </a>
+
+                <a href="#investigations" class="nav-link" data-section="investigations">
+                    <span class="nav-icon">⌖</span>
+                    <span>Investigation Centre</span>
+                </a>
+
+                <a href="#cases" class="nav-link" data-section="cases">
+                    <span class="nav-icon">▤</span>
+                    <span>Financial Crime Cases</span>
+                </a>
+
+                <a href="#compliance" class="nav-link" data-section="compliance">
+                    <span class="nav-icon">◫</span>
+                    <span>Regulatory Compliance</span>
+                </a>
+
+                <a href="#audit" class="nav-link" data-section="audit">
+                    <span class="nav-icon">◷</span>
+                    <span>Security & Audit</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="environment-card">
+                    <span class="environment-indicator"></span>
+
+                    <div>
+                        <strong>Security Environment</strong>
+                        <small id="sidebarEnvironment">Monitoring</small>
+                    </div>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">SA</div>
+
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Financial Security</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-toggle" id="navToggle" aria-label="Toggle navigation">
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <div class="breadcrumb">
+                            TALVORA / SUPER ADMIN / FINANCIAL SECURITY
+                        </div>
+
+                        <h1>Global Fraud & AML Monitoring Centre</h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="api-status" id="apiStatus">
+                        <span class="status-dot"></span>
+                        Connecting
+                    </div>
+
+                    <span class="environment-badge" id="environmentLabel">
+                        MONITORING
+                    </span>
+
+                    <button class="icon-button" id="refreshAll" title="Refresh">
+                        ↻
+                    </button>
+
+                    <button class="primary-button" id="quickInvestigation">
+                        + Investigation
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- SYSTEM NOTICE -->
+
+            <div class="system-notice">
+
+                <div class="notice-icon">◆</div>
+
+                <div>
+                    <strong>Global Financial Crime Intelligence</strong>
+
+                    <p id="noticeMessage">
+                        Initializing financial security monitoring and retrieving system intelligence.
+                    </p>
+                </div>
+
+                <span class="notice-label">SECURE OPERATIONS</span>
+
+            </div>
+
+
+            <!-- =====================================================
+         1. FRAUD INTELLIGENCE OVERVIEW
+    ====================================================== -->
+
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL SECURITY COMMAND</span>
+
+                        <h2>Fraud Intelligence Dashboard</h2>
+
+                        <p>
+                            Centralized visibility into financial crime indicators,
+                            suspicious activity, transaction risk and investigation operations.
+                        </p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Intelligence
+                    </button>
+
+                </div>
+
+
+                <!-- KEY METRICS -->
+
+                <div class="metrics-grid">
+
+                    <article class="metric-card">
+
+                        <div class="metric-top">
+                            <span>Active Fraud Alerts</span>
+                            <span class="metric-icon red">!</span>
+                        </div>
+
+                        <strong id="metricActiveAlerts">—</strong>
+
+                        <small>Alerts requiring operational attention</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-top">
+                            <span>High-Risk Activities</span>
+                            <span class="metric-icon amber">△</span>
+                        </div>
+
+                        <strong id="metricHighRisk">—</strong>
+
+                        <small>Activities meeting configured risk criteria</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-top">
+                            <span>Open Investigations</span>
+                            <span class="metric-icon purple">⌖</span>
+                        </div>
+
+                        <strong id="metricInvestigations">—</strong>
+
+                        <small>Active investigation assignments</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-top">
+                            <span>Pending AML Reviews</span>
+                            <span class="metric-icon cyan">◈</span>
+                        </div>
+
+                        <strong id="metricPendingAML">—</strong>
+
+                        <small>Screening and compliance reviews</small>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SECONDARY METRICS -->
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Open Financial Crime Cases</span>
+                        <strong id="metricOpenCases">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Unresolved Critical Alerts</span>
+                        <strong id="metricCriticalAlerts">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Screening Exceptions</span>
+                        <strong id="metricScreeningExceptions">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Compliance Obligations Due</span>
+                        <strong id="metricComplianceDue">—</strong>
+                    </article>
+
+                </div>
+
+
+                <!-- DASHBOARD GRID -->
+
+                <div class="overview-grid">
+
+
+                    <div class="panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <span class="eyebrow">RISK INTELLIGENCE</span>
+                                <h3>Global Risk Distribution</h3>
+                            </div>
+
+                            <span class="live-indicator">MONITORING</span>
+
+                        </div>
+
+                        <div id="riskDistribution" class="risk-distribution">
+
+                            <div class="empty-state">
+                                Waiting for risk intelligence data...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <span class="eyebrow">OPERATIONAL CONTROL</span>
+                                <h3>Security System Health</h3>
+                            </div>
+
+                        </div>
+
+                        <div id="securityHealth" class="health-list">
+
+                            <div class="empty-state">
+                                Retrieving security system health...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT ALERTS -->
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">PRIORITY INTELLIGENCE</span>
+                            <h3>Recent Fraud & AML Alerts</h3>
+                        </div>
+
+                        <button class="text-button" data-navigate="alerts">
+                            View all alerts →
+                        </button>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>ALERT REFERENCE</th>
+                                    <th>ACTIVITY</th>
+                                    <th>COUNTRY</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>RISK SCORE</th>
+                                    <th>DETECTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="overviewAlertTable">
+
+                                <tr>
+                                    <td colspan="8" class="empty-state">
+                                        Loading security alerts...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         2. FRAUD ALERTS
+    ====================================================== -->
+
+            <section class="content-section" id="alerts">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">THREAT DETECTION & RESPONSE</span>
+
+                        <h2>Global Fraud Alerts Centre</h2>
+
+                        <p>
+                            Review, prioritize, assign and escalate suspicious financial activities.
+                        </p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Alerts
+                    </button>
+
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>New Alerts</span>
+                        <strong id="alertNewCount">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Under Review</span>
+                        <strong id="alertReviewCount">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Critical Alerts</span>
+                        <strong id="alertCriticalCount">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Escalated Alerts</span>
+                        <strong id="alertEscalatedCount">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="alertSearch"
+                            placeholder="Search alert, transaction or account reference...">
+
+                        <select id="alertSeverity">
+                            <option value="">All risk levels</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                        <select id="alertStatus">
+                            <option value="">All statuses</option>
+                            <option value="new">New</option>
+                            <option value="open">Open</option>
+                            <option value="under_review">Under Review</option>
+                            <option value="escalated">Escalated</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <select id="alertCategory">
+                            <option value="">All categories</option>
+                            <option value="payment_fraud">Payment Fraud</option>
+                            <option value="account_takeover">Account Takeover</option>
+                            <option value="transaction_velocity">Transaction Velocity</option>
+                            <option value="identity_fraud">Identity Fraud</option>
+                            <option value="money_laundering">Money Laundering</option>
+                            <option value="sanctions">Sanctions</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>ALERT ID</th>
+                                    <th>ACTIVITY</th>
+                                    <th>ENTITY</th>
+                                    <th>COUNTRY</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>RISK SCORE</th>
+                                    <th>ASSIGNED TO</th>
+                                    <th>DETECTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="alertTable">
+
+                                <tr>
+                                    <td colspan="10" class="empty-state">
+                                        Loading fraud alerts...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         3. TRANSACTION MONITORING
+    ====================================================== -->
+
+            <section class="content-section" id="monitoring">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">FINANCIAL ACTIVITY INTELLIGENCE</span>
+
+                        <h2>Global Transaction Monitoring</h2>
+
+                        <p>
+                            Monitor unusual financial activity, transaction velocity,
+                            payment patterns and cross-border exposure.
+                        </p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Transactions
+                    </button>
+
+                </div>
+
+
+                <div class="security-banner">
+
+                    <span class="security-symbol">⬡</span>
+
+                    <div>
+                        <strong>Risk-Based Transaction Monitoring</strong>
+
+                        <p>
+                            Risk scores and monitoring decisions are supplied by
+                            the configured backend detection engine. This interface
+                            does not independently authorize or block financial transactions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Transactions Reviewed</span>
+                        <strong id="transactionReviewed">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Flagged Transactions</span>
+                        <strong id="transactionFlagged">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>High-Risk Transactions</span>
+                        <strong id="transactionHighRisk">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Reviews</span>
+                        <strong id="transactionPending">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="transactionSearch" placeholder="Search transaction reference...">
+
+                        <select id="transactionRisk">
+                            <option value="">All risk levels</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                        <select id="transactionCountry">
+                            <option value="">All countries</option>
+                        </select>
+
+                        <select id="transactionStatus">
+                            <option value="">All monitoring statuses</option>
+                            <option value="flagged">Flagged</option>
+                            <option value="under_review">Under Review</option>
+                            <option value="cleared">Cleared</option>
+                            <option value="escalated">Escalated</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>TRANSACTION REFERENCE</th>
+                                    <th>ACCOUNT REFERENCE</th>
+                                    <th>AMOUNT</th>
+                                    <th>COUNTRY</th>
+                                    <th>CHANNEL</th>
+                                    <th>RISK SCORE</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>DETECTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="transactionTable">
+
+                                <tr>
+                                    <td colspan="10" class="empty-state">
+                                        Loading monitored transactions...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         4. AML AND SANCTIONS SCREENING
+    ====================================================== -->
+
+            <section class="content-section" id="screening">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL FINANCIAL CRIME COMPLIANCE</span>
+
+                        <h2>AML & Sanctions Screening Centre</h2>
+
+                        <p>
+                            Screen individuals and organizations against configured
+                            sanctions, politically exposed persons and watchlists.
+                        </p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Screening
+                    </button>
+
+                </div>
+
+
+                <div class="security-banner">
+
+                    <span class="security-symbol">⬡</span>
+
+                    <div>
+                        <strong>Controlled Screening & Human Review</strong>
+
+                        <p>
+                            Potential matches require documented review.
+                            A screening match is not, by itself, a confirmed sanctions
+                            violation or determination of wrongdoing.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Screening Requests</span>
+                        <strong id="screeningTotal">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Potential Matches</span>
+                        <strong id="screeningMatches">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Reviews</span>
+                        <strong id="screeningPending">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Cleared Reviews</span>
+                        <strong id="screeningCleared">—</strong>
+                    </article>
+
+                </div>
+
+
+                <!-- SCREENING FORM -->
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">NEW SCREENING REQUEST</span>
+                            <h3>Individual & Entity Screening</h3>
+                        </div>
+
+                        <span class="test-icon">⌕</span>
+
+                    </div>
+
+
+                    <form id="screeningForm">
+
+                        <div class="screening-form-grid">
+
+                            <label>
+                                Individual or Organization Name
+
+                                <input type="text" name="subjectName" id="subjectName" maxlength="200" required
+                                    placeholder="Enter the subject's full name">
+                            </label>
+
+
+                            <label>
+                                Subject Type
+
+                                <select name="subjectType" id="subjectType" required>
+                                    <option value="individual">Individual</option>
+                                    <option value="organization">Organization</option>
+                                    <option value="beneficial_owner">Beneficial Owner</option>
+                                    <option value="employer">Employer</option>
+                                    <option value="employee">Employee</option>
+                                </select>
+
+                            </label>
+
+
+                            <label>
+                                Country
+
+                                <select name="country" id="screeningCountry" required>
+                                    <option value="">Select country</option>
+                                </select>
+
+                            </label>
+
+
+                            <label>
+                                Screening Categories
+
+                                <select name="screeningCategory" id="screeningCategory" required>
+                                    <option value="comprehensive">Comprehensive Screening</option>
+                                    <option value="sanctions">Sanctions Screening</option>
+                                    <option value="pep">PEP Screening</option>
+                                    <option value="watchlist">Watchlist Screening</option>
+                                    <option value="adverse_media">Adverse Media Screening</option>
+                                </select>
+
+                            </label>
+
+
+                            <label>
+                                Internal Reference
+
+                                <input type="text" name="externalReference" id="screeningReference" maxlength="120"
+                                    placeholder="Optional employee or employer reference">
+                            </label>
+
+
+                            <label>
+                                Screening Justification
+
+                                <input type="text" name="reason" id="screeningReason" maxlength="500" required
+                                    placeholder="Explain the screening purpose">
+                            </label>
+
+                        </div>
+
+
+                        <div class="form-note">
+                            Screening requests are processed by the configured
+                            backend screening service. Access to sensitive identity
+                            information must remain restricted and audited.
+                        </div>
+
+
+                        <button type="submit" class="primary-button" id="screeningSubmit">
+                            ⌕ Submit Screening Request
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- SCREENING RESULTS -->
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">SCREENING INTELLIGENCE</span>
+                            <h3>Recent Screening Records</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="filters">
+
+                        <input type="search" id="screeningSearch" placeholder="Search screening reference...">
+
+                        <select id="screeningStatus">
+                            <option value="">All screening results</option>
+                            <option value="potential_match">Potential Match</option>
+                            <option value="pending_review">Pending Review</option>
+                            <option value="cleared">Cleared</option>
+                            <option value="confirmed_match">Confirmed Match</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>SCREENING REFERENCE</th>
+                                    <th>SUBJECT</th>
+                                    <th>SUBJECT TYPE</th>
+                                    <th>CATEGORY</th>
+                                    <th>COUNTRY</th>
+                                    <th>SCREENING RESULT</th>
+                                    <th>REVIEW STATUS</th>
+                                    <th>SUBMITTED</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="screeningTable">
+
+                                <tr>
+                                    <td colspan="9" class="empty-state">
+                                        No screening records loaded.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         5. FRAUD RULES MANAGEMENT
+    ====================================================== -->
+
+            <section class="content-section" id="rules">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">DETECTION CONFIGURATION</span>
+
+                        <h2>Fraud Rules Management</h2>
+
+                        <p>
+                            Configure and manage fraud detection rules, thresholds,
+                            transaction velocity limits and risk escalation policies.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" id="newRuleButton">
+                        + Create Detection Rule
+                    </button>
+
+                </div>
+
+
+                <div class="security-banner">
+
+                    <span class="security-symbol">⬡</span>
+
+                    <div>
+                        <strong>Controlled Rule Governance</strong>
+
+                        <p>
+                            Rule modifications must be authorized, versioned,
+                            tested and audited. The backend remains responsible
+                            for applying production detection rules.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Registered Rules</span>
+                        <strong id="ruleTotal">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active Rules</span>
+                        <strong id="ruleActive">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Approvals</span>
+                        <strong id="rulePending">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Recently Modified</span>
+                        <strong id="ruleModified">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="ruleSearch" placeholder="Search detection rule...">
+
+                        <select id="ruleCategory">
+                            <option value="">All categories</option>
+                            <option value="transaction_velocity">Transaction Velocity</option>
+                            <option value="account_takeover">Account Takeover</option>
+                            <option value="payment_fraud">Payment Fraud</option>
+                            <option value="cross_border">Cross-Border Activity</option>
+                            <option value="aml">AML</option>
+                            <option value="identity">Identity Risk</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <select id="ruleStatus">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="pending_approval">Pending Approval</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>RULE REFERENCE</th>
+                                    <th>RULE NAME</th>
+                                    <th>CATEGORY</th>
+                                    <th>SEVERITY</th>
+                                    <th>VERSION</th>
+                                    <th>LAST MODIFIED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="ruleTable">
+
+                                <tr>
+                                    <td colspan="8" class="empty-state">
+                                        Loading detection rules...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         6. INVESTIGATION CENTRE
+    ====================================================== -->
+
+            <section class="content-section" id="investigations">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">FINANCIAL CRIME INVESTIGATIONS</span>
+
+                        <h2>Global Investigation Centre</h2>
+
+                        <p>
+                            Manage investigation assignments, findings, supporting
+                            evidence and operational recommendations.
+                        </p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Investigations
+                    </button>
+
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Active Investigations</span>
+                        <strong id="investigationActive">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Unassigned Investigations</span>
+                        <strong id="investigationUnassigned">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Overdue Reviews</span>
+                        <strong id="investigationOverdue">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Completed Investigations</span>
+                        <strong id="investigationCompleted">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="investigationSearch" placeholder="Search investigation reference...">
+
+                        <select id="investigationStatus">
+                            <option value="">All statuses</option>
+                            <option value="open">Open</option>
+                            <option value="assigned">Assigned</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="escalated">Escalated</option>
+                            <option value="completed">Completed</option>
+                        </select>
+
+                        <select id="investigationPriority">
+                            <option value="">All priorities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>INVESTIGATION ID</th>
+                                    <th>SUBJECT REFERENCE</th>
+                                    <th>INVESTIGATION TYPE</th>
+                                    <th>PRIORITY</th>
+                                    <th>ASSIGNED INVESTIGATOR</th>
+                                    <th>CREATED</th>
+                                    <th>DUE DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="investigationTable">
+
+                                <tr>
+                                    <td colspan="9" class="empty-state">
+                                        Loading investigation records...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         7. FINANCIAL CRIME CASE MANAGEMENT
+    ====================================================== -->
+
+            <section class="content-section" id="cases">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">CASE GOVERNANCE & RESOLUTION</span>
+
+                        <h2>Financial Crime Case Management</h2>
+
+                        <p>
+                            Centralized case creation, investigation coordination,
+                            evidence management and controlled case resolution.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" id="newCaseButton">
+                        + Create Financial Crime Case
+                    </button>
+
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Total Open Cases</span>
+                        <strong id="caseOpen">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>High-Priority Cases</span>
+                        <strong id="caseHigh">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Awaiting Decisions</span>
+                        <strong id="casePending">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Closed Cases</span>
+                        <strong id="caseClosed">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="caseSearch" placeholder="Search case reference...">
+
+                        <select id="caseCategory">
+                            <option value="">All case categories</option>
+                            <option value="payment_fraud">Payment Fraud</option>
+                            <option value="money_laundering">Money Laundering</option>
+                            <option value="sanctions">Sanctions</option>
+                            <option value="identity_fraud">Identity Fraud</option>
+                            <option value="account_takeover">Account Takeover</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <select id="caseStatus">
+                            <option value="">All case statuses</option>
+                            <option value="open">Open</option>
+                            <option value="under_review">Under Review</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="escalated">Escalated</option>
+                            <option value="pending_decision">Pending Decision</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>CASE REFERENCE</th>
+                                    <th>CASE TITLE</th>
+                                    <th>CATEGORY</th>
+                                    <th>SEVERITY</th>
+                                    <th>LEAD INVESTIGATOR</th>
+                                    <th>CREATED</th>
+                                    <th>LAST UPDATED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="caseTable">
+
+                                <tr>
+                                    <td colspan="9" class="empty-state">
+                                        Loading financial crime cases...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         8. REGULATORY COMPLIANCE
+    ====================================================== -->
+
+            <section class="content-section" id="compliance">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL REGULATORY GOVERNANCE</span>
+
+                        <h2>Regulatory Compliance Centre</h2>
+
+                        <p>
+                            Monitor financial crime compliance obligations,
+                            jurisdiction-specific controls, reporting deadlines
+                            and regulatory submissions.
+                        </p>
+                    </div>
+
+                    <button class="secondary-button" data-refresh>
+                        ↻ Refresh Compliance
+                    </button>
+
+                </div>
+
+
+                <div class="security-banner">
+
+                    <span class="security-symbol">⬡</span>
+
+                    <div>
+                        <strong>Jurisdiction-Specific Compliance</strong>
+
+                        <p>
+                            Compliance requirements, filing deadlines and reporting
+                            obligations must be configured and validated for each
+                            applicable country and legal entity.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="metrics-grid">
+
+                    <article class="metric-card">
+                        <span>Registered Obligations</span>
+                        <strong id="complianceTotal">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Compliant Obligations</span>
+                        <strong id="complianceCompleted">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Upcoming Deadlines</span>
+                        <strong id="complianceUpcoming">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Overdue Obligations</span>
+                        <strong id="complianceOverdue">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">REGULATORY REGISTER</span>
+                            <h3>Global Compliance Obligations</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="filters">
+
+                        <input type="search" id="complianceSearch" placeholder="Search obligation or regulator...">
+
+                        <select id="complianceCountry">
+                            <option value="">All jurisdictions</option>
+                        </select>
+
+                        <select id="complianceStatus">
+                            <option value="">All statuses</option>
+                            <option value="compliant">Compliant</option>
+                            <option value="pending">Pending</option>
+                            <option value="due_soon">Due Soon</option>
+                            <option value="overdue">Overdue</option>
+                            <option value="under_review">Under Review</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>OBLIGATION ID</th>
+                                    <th>REQUIREMENT</th>
+                                    <th>JURISDICTION</th>
+                                    <th>REGULATOR</th>
+                                    <th>REPORTING PERIOD</th>
+                                    <th>DUE DATE</th>
+                                    <th>RESPONSIBLE TEAM</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="complianceTable">
+
+                                <tr>
+                                    <td colspan="9" class="empty-state">
+                                        Loading regulatory obligations...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">REGULATORY REPORTING</span>
+                            <h3>Reporting & Submission History</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>REPORT REFERENCE</th>
+                                    <th>REPORT TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>REPORTING PERIOD</th>
+                                    <th>SUBMISSION DATE</th>
+                                    <th>REFERENCE NUMBER</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="reportTable">
+
+                                <tr>
+                                    <td colspan="8" class="empty-state">
+                                        Loading reporting history...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+         9. SECURITY & AUDIT
+    ====================================================== -->
+
+            <section class="content-section" id="audit">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">ADMINISTRATIVE ACCOUNTABILITY</span>
+
+                        <h2>Security & Audit Centre</h2>
+
+                        <p>
+                            Review privileged actions, financial crime decisions,
+                            rule modifications, case activity and compliance operations.
+                        </p>
+                    </div>
+
+                    <button class="secondary-button" id="exportAudit">
+                        ↓ Export Audit
+                    </button>
+
+                </div>
+
+
+                <div class="security-banner">
+
+                    <span class="security-symbol">⬡</span>
+
+                    <div>
+                        <strong>Protected Audit Infrastructure</strong>
+
+                        <p>
+                            Audit records must be generated and protected by the
+                            backend. Administrative actions must retain actor identity,
+                            timestamp, correlation reference and authorization outcome.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="metrics-grid compact-grid">
+
+                    <article class="metric-card">
+                        <span>Audit Records</span>
+                        <strong id="auditTotal">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Privileged Actions</span>
+                        <strong id="auditPrivileged">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Security Exceptions</span>
+                        <strong id="auditExceptions">—</strong>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending Approvals</span>
+                        <strong id="auditApprovals">—</strong>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="filters">
+
+                        <input type="search" id="auditSearch" placeholder="Search administrator or audit reference...">
+
+                        <select id="auditAction">
+                            <option value="">All actions</option>
+                            <option value="alert_review">Alert Review</option>
+                            <option value="case_creation">Case Creation</option>
+                            <option value="case_resolution">Case Resolution</option>
+                            <option value="rule_change">Rule Change</option>
+                            <option value="screening">Screening</option>
+                            <option value="approval">Approval</option>
+                            <option value="export">Data Export</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>AUDIT ID</th>
+                                    <th>ADMINISTRATOR</th>
+                                    <th>OPERATION</th>
+                                    <th>RESOURCE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>REASON</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="auditTable">
+
+                                <tr>
+                                    <td colspan="9" class="empty-state">
+                                        Loading audit records...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer>
+
+                <div>
+                    TALVORA GLOBAL FINANCIAL SECURITY
+                    <span>·</span>
+                    FRAUD & AML CENTRE
+                </div>
+
+                <div>
+                    SECURE ADMINISTRATIVE ENVIRONMENT
+                </div>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+     RECORD DETAILS MODAL
+====================================================== -->
+
+    <div class="modal-overlay" id="detailModal" hidden>
+
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">SECURITY RECORD</span>
+                    <h2 id="detailTitle">Record Details</h2>
+                </div>
+
+                <button class="modal-close" data-close-modal>
+                    ×
+                </button>
+
+            </div>
+
+            <div id="detailBody" class="detail-body"></div>
+
+            <div class="modal-actions">
+                <button class="secondary-button" data-close-modal>
+                    Close
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+     PROTECTED ACTION MODAL
+====================================================== -->
+
+    <div class="modal-overlay" id="actionModal" hidden>
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">PROTECTED ADMINISTRATIVE OPERATION</span>
+                    <h2 id="actionTitle">Confirm Operation</h2>
+                </div>
+
+                <button class="modal-close" data-close-modal>
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="confirmation-warning" id="actionDescription">
+                This operation requires backend authorization.
+            </div>
+
+
+            <label class="modal-label">
+
+                Assigned Investigator / Reviewer
+
+                <input type="text" id="actionAssignee" maxlength="150"
+                    placeholder="Optional staff reference or user ID">
+
+            </label>
+
+
+            <label class="modal-label">
+
+                Administrative Justification
+
+                <textarea id="actionReason" rows="4" maxlength="2000" required
+                    placeholder="Enter a detailed operational justification..."></textarea>
+
+            </label>
+
+
+            <div class="modal-note">
+                All actions are subject to backend authorization,
+                approval requirements, record-state validation and audit logging.
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button class="secondary-button" data-close-modal>
+                    Cancel
+                </button>
+
+                <button class="primary-button" id="actionConfirm" disabled>
+                    Submit Request
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+     CREATE CASE MODAL
+====================================================== -->
+
+    <div class="modal-overlay" id="caseModal" hidden>
+
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">FINANCIAL CRIME OPERATIONS</span>
+                    <h2>Create Investigation Case</h2>
+                </div>
+
+                <button class="modal-close" data-close-modal>
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="caseForm">
+
+                <div class="case-form-grid">
+
+                    <label>
+                        Case Title
+
+                        <input type="text" name="title" maxlength="200" required placeholder="Enter case title">
+                    </label>
+
+
+                    <label>
+                        Case Category
+
+                        <select name="category" required>
+                            <option value="payment_fraud">Payment Fraud</option>
+                            <option value="money_laundering">Money Laundering</option>
+                            <option value="sanctions">Sanctions</option>
+                            <option value="identity_fraud">Identity Fraud</option>
+                            <option value="account_takeover">Account Takeover</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+
+
+                    <label>
+                        Severity
+
+                        <select name="severity" required>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </label>
+
+
+                    <label>
+                        Related Alert Reference
+
+                        <input type="text" name="alertId" id="caseAlertId" maxlength="150"
+                            placeholder="Optional alert ID">
+                    </label>
+
+                </div>
+
+
+                <label class="modal-label">
+                    Case Description
+
+                    <textarea name="description" rows="5" maxlength="5000" required
+                        placeholder="Describe the financial crime concern and reason for investigation..."></textarea>
+
+                </label>
+
+
+                <div class="modal-note">
+                    Case creation records an allegation or investigation concern,
+                    not a final finding of misconduct. Evidence and decisions
+                    must follow the applicable review process.
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button type="button" class="secondary-button" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-button" id="caseSubmit">
+                        Create Investigation Case
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+     CREATE FRAUD RULE MODAL
+====================================================== -->
+
+    <div class="modal-overlay" id="ruleModal" hidden>
+
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow">DETECTION GOVERNANCE</span>
+                    <h2>Create Fraud Detection Rule</h2>
+                </div>
+
+                <button class="modal-close" data-close-modal>
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="ruleForm">
+
+                <label class="modal-label">
+                    Rule Name
+
+                    <input name="name" maxlength="150" required placeholder="Enter detection rule name">
+                </label>
+
+
+                <div class="case-form-grid">
+
+                    <label>
+                        Category
+
+                        <select name="category" required>
+                            <option value="transaction_velocity">Transaction Velocity</option>
+                            <option value="payment_fraud">Payment Fraud</option>
+                            <option value="account_takeover">Account Takeover</option>
+                            <option value="cross_border">Cross-Border Activity</option>
+                            <option value="aml">AML</option>
+                            <option value="identity">Identity Risk</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+
+
+                    <label>
+                        Severity
+
+                        <select name="severity" required>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </label>
+
+                </div>
+
+
+                <label class="modal-label">
+                    Rule Description
+
+                    <textarea name="description" rows="3" maxlength="2000" required
+                        placeholder="Explain the detection objective and intended behavior..."></textarea>
+                </label>
+
+
+                <label class="modal-label">
+                    Configuration Profile
+
+                    <select name="profile" required>
+                        <option value="server_managed">Server-Managed Rule Profile</option>
+                        <option value="velocity">Velocity Detection</option>
+                        <option value="cross_border">Cross-Border Detection</option>
+                        <option value="account_risk">Account Risk Detection</option>
+                        <option value="aml_monitoring">AML Monitoring</option>
+                    </select>
+                </label>
+
+
+                <div class="modal-note">
+                    Rule conditions, thresholds and execution logic are
+                    validated and stored server-side. New rules should undergo
+                    testing and approval before production activation.
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button type="button" class="secondary-button" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-button" id="ruleSubmit">
+                        Submit Rule for Registration
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST NOTIFICATIONS -->
+
+    <div class="toast-region" id="toastRegion" aria-live="polite">
+    </div>
+
+</body>
+
+</html>

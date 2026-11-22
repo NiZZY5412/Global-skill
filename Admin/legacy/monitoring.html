@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1730">
+    <meta name="description" content="TALVORA Super Admin System Monitoring and Infrastructure Centre">
+    <title>System Monitoring | TALVORA Super Admin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="monitoring.css">
+    <script src="monitoring.js" defer></script>
+</head>
+
+<body>
+
+    <div class="monitoring-app">
+
+        <!-- SIDEBAR -->
+        <aside class="monitoring-sidebar" id="monitoring-sidebar">
+
+            <div class="monitoring-brand">
+                <a href="../index.html" class="brand-link">
+                    <img src="../../talvora-logo.png" alt="TALVORA" class="brand-logo">
+                    <div class="brand-copy">
+                        <strong>TALVORA</strong>
+                        <span>GLOBAL TECHNOLOGY</span>
+                    </div>
+                </a>
+                <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">×</button>
+            </div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar" id="admin-avatar">—</div>
+                <div class="admin-info">
+                    <strong id="admin-name">Verifying administrator</strong>
+                    <span id="admin-email">Checking secure session...</span>
+                    <div class="admin-online">
+                        <i class="status-dot"></i>
+                        <span>Super Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="monitoring-navigation" aria-label="Monitoring navigation">
+
+                <div class="nav-heading">COMMAND CENTRE</div>
+
+                <a href="#overview" class="monitor-nav active" data-panel="overview">
+                    <span class="nav-icon">◫</span>
+                    Overview
+                </a>
+
+                <a href="#infrastructure" class="monitor-nav" data-panel="infrastructure">
+                    <span class="nav-icon">▦</span>
+                    Infrastructure
+                </a>
+
+                <a href="#servers" class="monitor-nav" data-panel="servers">
+                    <span class="nav-icon">▤</span>
+                    Servers & Hosting
+                </a>
+
+                <a href="#database" class="monitor-nav" data-panel="database">
+                    <span class="nav-icon">▣</span>
+                    Database Centre
+                </a>
+
+                <a href="#storage" class="monitor-nav" data-panel="storage">
+                    <span class="nav-icon">▱</span>
+                    Storage & Evidence
+                </a>
+
+                <a href="#network" class="monitor-nav" data-panel="network">
+                    <span class="nav-icon">◎</span>
+                    Network & Traffic
+                </a>
+
+                <div class="nav-heading">APPLICATION SERVICES</div>
+
+                <a href="#apis" class="monitor-nav" data-panel="apis">
+                    <span class="nav-icon">⌘</span>
+                    API Performance
+                </a>
+
+                <a href="#portals" class="monitor-nav" data-panel="portals">
+                    <span class="nav-icon">◈</span>
+                    Portal Connections
+                </a>
+
+                <a href="#integrations" class="monitor-nav" data-panel="integrations">
+                    <span class="nav-icon">⛓</span>
+                    Integrations
+                </a>
+
+                <a href="#jobs" class="monitor-nav" data-panel="jobs">
+                    <span class="nav-icon">◷</span>
+                    Background Jobs
+                </a>
+
+                <a href="#performance" class="monitor-nav" data-panel="performance">
+                    <span class="nav-icon">⌁</span>
+                    Application Performance
+                </a>
+
+                <div class="nav-heading">SECURITY & INCIDENTS</div>
+
+                <a href="#security" class="monitor-nav" data-panel="security">
+                    <span class="nav-icon">⬡</span>
+                    Security Monitoring
+                </a>
+
+                <a href="#incidents" class="monitor-nav" data-panel="incidents">
+                    <span class="nav-icon">⚠</span>
+                    Incidents
+                    <span class="nav-count" id="incident-nav-count" hidden>0</span>
+                </a>
+
+                <a href="#alerts" class="monitor-nav" data-panel="alerts">
+                    <span class="nav-icon">♢</span>
+                    Alert Centre
+                </a>
+
+                <div class="nav-heading">OPERATIONS</div>
+
+                <a href="#maintenance" class="monitor-nav" data-panel="maintenance">
+                    <span class="nav-icon">⚙</span>
+                    Maintenance Mode
+                </a>
+
+                <a href="#deployments" class="monitor-nav" data-panel="deployments">
+                    <span class="nav-icon">⇧</span>
+                    Deployments & Rollbacks
+                </a>
+
+                <a href="#scheduled" class="monitor-nav" data-panel="scheduled">
+                    <span class="nav-icon">▦</span>
+                    Scheduled Maintenance
+                </a>
+
+                <div class="nav-heading">INTELLIGENCE & REPORTING</div>
+
+                <a href="#capacity" class="monitor-nav" data-panel="capacity">
+                    <span class="nav-icon">◴</span>
+                    Capacity Planning
+                </a>
+
+                <a href="#reports" class="monitor-nav" data-panel="reports">
+                    <span class="nav-icon">▥</span>
+                    Monitoring Reports
+                </a>
+
+                <a href="#audit" class="monitor-nav" data-panel="audit">
+                    <span class="nav-icon">☷</span>
+                    Infrastructure Audit
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="../index.html" class="back-dashboard">
+                    <span>←</span> Return to Super Admin
+                </a>
+                <div class="sidebar-version">
+                    <span>TALVORA GSES SYSTEM 001</span>
+                    <span>MONITORING CENTRE</span>
+                </div>
+            </div>
+
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+        <!-- MAIN -->
+        <main class="monitoring-main">
+
+            <header class="monitoring-topbar">
+
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation">☰</button>
+                    <div>
+                        <div class="breadcrumb">TALVORA <span>/</span> SUPER ADMIN <span>/</span> INFRASTRUCTURE</div>
+                        <h1 id="current-page-title">System Monitoring Centre</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="connection-indicator">
+                        <i class="connection-dot" id="connection-dot"></i>
+                        <span id="connection-text">Checking connection</span>
+                    </div>
+
+                    <div class="refresh-indicator">
+                        <span>Next refresh</span>
+                        <strong id="refresh-countdown">—</strong>
+                    </div>
+
+                    <button class="topbar-button" id="refresh-button" type="button" title="Refresh current data">
+                        ↻ <span>Refresh</span>
+                    </button>
+
+                    <button class="topbar-button" id="alerts-button" type="button" data-panel="alerts"
+                        aria-label="Open alerts">
+                        ♢
+                        <span id="alert-button-count" hidden>0</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+            <div id="monitoring-notice" class="monitoring-notice" role="status" hidden></div>
+
+            <div class="monitoring-content">
+
+                <!-- OVERVIEW -->
+                <section class="monitor-panel active" id="panel-overview">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">GLOBAL INFRASTRUCTURE COMMAND</span>
+                            <h2>Platform Overview</h2>
+                            <p>Unified operational visibility across the TALVORA Employer, Employee and Super Admin
+                                portals.</p>
+                        </div>
+
+                        <div class="heading-actions">
+                            <span class="live-label"><i></i> LIVE MONITORING</span>
+                            <button class="primary-button" type="button" data-panel="incidents">View incidents</button>
+                        </div>
+                    </div>
+
+                    <div class="system-banner" id="overall-health-banner">
+                        <div class="health-symbol">◎</div>
+                        <div>
+                            <strong id="overall-health-title">Awaiting infrastructure data</strong>
+                            <p id="overall-health-description">Overall platform health will be displayed after the
+                                monitoring service connects.</p>
+                        </div>
+                        <span class="health-badge" id="overall-health-badge">UNVERIFIED</span>
+                    </div>
+
+                    <div class="metric-grid">
+
+                        <article class="metric-card">
+                            <div class="metric-heading">
+                                <span>PLATFORM UPTIME</span>
+                                <span class="metric-icon blue">◷</span>
+                            </div>
+                            <strong id="metric-uptime">—</strong>
+                            <small id="metric-uptime-period">Reporting period unavailable</small>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-heading">
+                                <span>ACTIVE INCIDENTS</span>
+                                <span class="metric-icon red">⚠</span>
+                            </div>
+                            <strong id="metric-incidents">—</strong>
+                            <small>Current unresolved incidents</small>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-heading">
+                                <span>API SUCCESS RATE</span>
+                                <span class="metric-icon cyan">⌘</span>
+                            </div>
+                            <strong id="metric-api">—</strong>
+                            <small>Measured from live API telemetry</small>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-heading">
+                                <span>AVERAGE RESPONSE</span>
+                                <span class="metric-icon purple">⌁</span>
+                            </div>
+                            <strong id="metric-response">—</strong>
+                            <small>API response time</small>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-heading">
+                                <span>SERVER HEALTH</span>
+                                <span class="metric-icon green">▤</span>
+                            </div>
+                            <strong id="metric-servers">—</strong>
+                            <small>Reporting infrastructure nodes</small>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-heading">
+                                <span>DATABASE HEALTH</span>
+                                <span class="metric-icon orange">▣</span>
+                            </div>
+                            <strong id="metric-database">—</strong>
+                            <small>Database availability status</small>
+                        </article>
+
+                    </div>
+
+                    <div class="section-heading">
+                        <div>
+                            <h3>Three-Portal Operational Status</h3>
+                            <p>Independent health monitoring for all connected TALVORA portals.</p>
+                        </div>
+                    </div>
+
+                    <div class="portal-grid">
+
+                        <article class="portal-card">
+                            <div class="portal-symbol employer">E</div>
+                            <div class="portal-details">
+                                <span>PORTAL 01</span>
+                                <h3>Employer Portal</h3>
+                                <p id="employer-status-detail">Awaiting monitoring data</p>
+                                <strong id="employer-status">UNVERIFIED</strong>
+                                <small id="employer-latency">Latency: —</small>
+                            </div>
+                        </article>
+
+                        <article class="portal-card">
+                            <div class="portal-symbol employee">W</div>
+                            <div class="portal-details">
+                                <span>PORTAL 02</span>
+                                <h3>Employee Portal</h3>
+                                <p id="employee-status-detail">Awaiting monitoring data</p>
+                                <strong id="employee-status">UNVERIFIED</strong>
+                                <small id="employee-latency">Latency: —</small>
+                            </div>
+                        </article>
+
+                        <article class="portal-card">
+                            <div class="portal-symbol admin">A</div>
+                            <div class="portal-details">
+                                <span>PORTAL 03</span>
+                                <h3>Super Admin Portal</h3>
+                                <p id="admin-portal-status-detail">Awaiting monitoring data</p>
+                                <strong id="admin-portal-status">UNVERIFIED</strong>
+                                <small id="admin-portal-latency">Latency: —</small>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="two-column-grid">
+
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Infrastructure Resources</h3>
+                                    <p>Latest available utilization measurements.</p>
+                                </div>
+                                <button class="text-button" type="button" data-panel="infrastructure">View details
+                                    →</button>
+                            </div>
+
+                            <div id="overview-resource-list" class="resource-list">
+                                <div class="empty-state">Infrastructure telemetry has not been received.</div>
+                            </div>
+                        </article>
+
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Live Incident Feed</h3>
+                                    <p>Latest detected infrastructure events.</p>
+                                </div>
+                                <button class="text-button" type="button" data-panel="incidents">View all →</button>
+                            </div>
+
+                            <div id="overview-incident-list" class="event-list">
+                                <div class="empty-state">No incident feed has been received yet.</div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>API Performance Overview</h3>
+                                <p>Aggregated response and reliability measurements.</p>
+                            </div>
+                            <button class="text-button" type="button" data-panel="apis">Open API Centre →</button>
+                        </div>
+                        <div id="overview-api-list" class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>API SERVICE</th>
+                                        <th>REQUESTS</th>
+                                        <th>SUCCESS RATE</th>
+                                        <th>AVG RESPONSE</th>
+                                        <th>ERRORS</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="overview-api-body">
+                                    <tr>
+                                        <td colspan="6" class="empty-cell">No API telemetry available.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <div class="last-updated">
+                        Last successful server response: <strong id="last-updated">Not yet received</strong>
+                    </div>
+
+                </section>
+
+
+                <!-- INFRASTRUCTURE -->
+                <section class="monitor-panel" id="panel-infrastructure">
+
+                    <div class="page-heading">
+                        <div>
+                            <span class="eyebrow">RESOURCE MANAGEMENT</span>
+                            <h2>Infrastructure Centre</h2>
+                            <p>Central view of computing, storage, networking, databases and application infrastructure.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>CPU UTILIZATION</span><span
+                                    class="metric-icon blue">▤</span></div><strong
+                                id="infra-cpu">—</strong><small>Latest reported utilization</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>MEMORY UTILIZATION</span><span
+                                    class="metric-icon purple">▥</span></div><strong
+                                id="infra-memory">—</strong><small>Latest reported utilization</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>STORAGE UTILIZATION</span><span
+                                    class="metric-icon cyan">▱</span></div><strong
+                                id="infra-storage">—</strong><small>Latest reported utilization</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>NETWORK UTILIZATION</span><span
+                                    class="metric-icon green">◎</span></div><strong
+                                id="infra-network">—</strong><small>Latest reported utilization</small>
+                        </article>
+                    </div>
+
+                    <div class="two-column-grid">
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Infrastructure Components</h3>
+                                    <p>Registered infrastructure resources.</p>
+                                </div>
+                            </div>
+                            <div id="infra-components" class="record-list">
+                                <div class="empty-state">No infrastructure components returned.</div>
+                            </div>
+                        </article>
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Resource Warnings</h3>
+                                    <p>Capacity and operational thresholds.</p>
+                                </div>
+                            </div>
+                            <div id="infra-warnings" class="event-list">
+                                <div class="empty-state">No infrastructure warnings returned.</div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Infrastructure Resource Register</h3>
+                                <p>Registered resources and their latest telemetry.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>RESOURCE</th>
+                                        <th>TYPE</th>
+                                        <th>ENVIRONMENT</th>
+                                        <th>CPU</th>
+                                        <th>MEMORY</th>
+                                        <th>STATUS</th>
+                                        <th>LAST REPORT</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="infra-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No infrastructure records available.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- SERVERS -->
+                <section class="monitor-panel" id="panel-servers">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">COMPUTE INFRASTRUCTURE</span>
+                            <h2>Servers & Hosting</h2>
+                            <p>Server availability, health, performance and resource utilization.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>REGISTERED SERVERS</span></div><strong
+                                id="server-total">—</strong><small>Server inventory</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>HEALTHY SERVERS</span></div><strong
+                                id="server-healthy">—</strong><small>Reported healthy nodes</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>UNAVAILABLE SERVERS</span></div><strong
+                                id="server-down">—</strong><small>Reported unavailable nodes</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>AVERAGE CPU</span></div><strong
+                                id="server-cpu">—</strong><small>Reported CPU utilization</small>
+                        </article>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Server Register</h3>
+                                <p>Infrastructure node inventory and health information.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>SERVER</th>
+                                        <th>ENVIRONMENT</th>
+                                        <th>REGION</th>
+                                        <th>CPU</th>
+                                        <th>MEMORY</th>
+                                        <th>UPTIME</th>
+                                        <th>STATUS</th>
+                                        <th>LAST HEARTBEAT</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servers-table-body">
+                                    <tr>
+                                        <td colspan="9" class="empty-cell">No server inventory returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- DATABASE -->
+                <section class="monitor-panel" id="panel-database">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">DATA INFRASTRUCTURE</span>
+                            <h2>Database Centre</h2>
+                            <p>Database availability, connection pools, performance and integrity monitoring.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>DATABASE INSTANCES</span></div><strong
+                                id="db-instances">—</strong><small>Registered instances</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>ACTIVE CONNECTIONS</span></div><strong
+                                id="db-connections">—</strong><small>Current connection count</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>QUERY RESPONSE</span></div><strong
+                                id="db-response">—</strong><small>Average query response</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>DATABASE AVAILABILITY</span></div><strong
+                                id="db-availability">—</strong><small>Latest reported availability</small>
+                        </article>
+                    </div>
+
+                    <div class="two-column-grid">
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Connection Pool Health</h3>
+                                    <p>Database connection utilization.</p>
+                                </div>
+                            </div>
+                            <div id="db-pool-list" class="resource-list">
+                                <div class="empty-state">No connection pool data.</div>
+                            </div>
+                        </article>
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Database Warnings</h3>
+                                    <p>Performance and availability events.</p>
+                                </div>
+                            </div>
+                            <div id="db-warning-list" class="event-list">
+                                <div class="empty-state">No database warnings returned.</div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Database Register</h3>
+                                <p>Instance-level database monitoring.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>INSTANCE</th>
+                                        <th>ENGINE</th>
+                                        <th>ENVIRONMENT</th>
+                                        <th>CONNECTIONS</th>
+                                        <th>QUERY TIME</th>
+                                        <th>REPLICATION</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="database-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No database instances returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- STORAGE -->
+                <section class="monitor-panel" id="panel-storage">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">FILE INFRASTRUCTURE</span>
+                            <h2>Storage & Evidence</h2>
+                            <p>Monitor file storage, evidence repositories, usage and storage availability.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>TOTAL CAPACITY</span></div><strong
+                                id="storage-capacity">—</strong><small>Reported total capacity</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>USED STORAGE</span></div><strong
+                                id="storage-used">—</strong><small>Reported consumption</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>AVAILABLE STORAGE</span></div><strong
+                                id="storage-available">—</strong><small>Remaining capacity</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>STORAGE AVAILABILITY</span></div><strong
+                                id="storage-status">—</strong><small>Storage service status</small>
+                        </article>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Storage Resource Register</h3>
+                                <p>Storage services and evidence repositories.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>RESOURCE</th>
+                                        <th>TYPE</th>
+                                        <th>CAPACITY</th>
+                                        <th>USED</th>
+                                        <th>AVAILABLE</th>
+                                        <th>UTILIZATION</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="storage-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No storage records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- NETWORK -->
+                <section class="monitor-panel" id="panel-network">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">CONNECTIVITY & TRAFFIC</span>
+                            <h2>Network & Traffic</h2>
+                            <p>Network throughput, connectivity, latency and infrastructure traffic.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>INBOUND TRAFFIC</span></div><strong
+                                id="network-inbound">—</strong><small>Latest measurement</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>OUTBOUND TRAFFIC</span></div><strong
+                                id="network-outbound">—</strong><small>Latest measurement</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>AVERAGE LATENCY</span></div><strong
+                                id="network-latency">—</strong><small>Reported network latency</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>PACKET LOSS</span></div><strong
+                                id="network-packet-loss">—</strong><small>Reported packet loss</small>
+                        </article>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Network Connections</h3>
+                                <p>Registered network paths and monitoring status.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>CONNECTION</th>
+                                        <th>SOURCE</th>
+                                        <th>DESTINATION</th>
+                                        <th>LATENCY</th>
+                                        <th>THROUGHPUT</th>
+                                        <th>PACKET LOSS</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="network-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No network measurements returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- API -->
+                <section class="monitor-panel" id="panel-apis">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">APPLICATION INTERFACES</span>
+                            <h2>API Performance Centre</h2>
+                            <p>Monitor internal APIs, endpoint reliability, request volumes and failures.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>REGISTERED ENDPOINTS</span></div><strong
+                                id="api-total">—</strong><small>Monitored endpoints</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>TOTAL REQUESTS</span></div><strong
+                                id="api-requests">—</strong><small>Reporting period</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>FAILED REQUESTS</span></div><strong
+                                id="api-failures">—</strong><small>Reported failures</small>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>SUCCESS RATE</span></div><strong
+                                id="api-success">—</strong><small>Reported API reliability</small>
+                        </article>
+                    </div>
+
+                    <div class="filter-bar">
+                        <input type="search" id="api-search" placeholder="Search API or endpoint..."
+                            aria-label="Search APIs">
+                        <select id="api-status-filter">
+                            <option value="">All statuses</option>
+                            <option value="healthy">Healthy</option>
+                            <option value="degraded">Degraded</option>
+                            <option value="down">Unavailable</option>
+                        </select>
+                        <button class="secondary-button" id="api-filter-button" type="button">Apply filters</button>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>API Endpoint Register</h3>
+                                <p>Live API telemetry and endpoint reliability.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>ENDPOINT</th>
+                                        <th>PORTAL</th>
+                                        <th>REQUESTS</th>
+                                        <th>ERRORS</th>
+                                        <th>SUCCESS RATE</th>
+                                        <th>AVG RESPONSE</th>
+                                        <th>P95 RESPONSE</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="api-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No API records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- PORTALS -->
+                <section class="monitor-panel" id="panel-portals">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">CONNECTED PLATFORMS</span>
+                            <h2>Portal Connections</h2>
+                            <p>Cross-portal availability and communication monitoring.</p>
+                        </div>
+                    </div>
+
+                    <div class="portal-grid portal-large">
+                        <article class="portal-card">
+                            <div class="portal-symbol employer">E</div>
+                            <div class="portal-details"><span>PORTAL 01</span>
+                                <h3>Employer Portal</h3><strong id="portal-employer-state">UNVERIFIED</strong>
+                                <p id="portal-employer-details">Awaiting server data</p>
+                            </div>
+                        </article>
+                        <article class="portal-card">
+                            <div class="portal-symbol employee">W</div>
+                            <div class="portal-details"><span>PORTAL 02</span>
+                                <h3>Employee Portal</h3><strong id="portal-employee-state">UNVERIFIED</strong>
+                                <p id="portal-employee-details">Awaiting server data</p>
+                            </div>
+                        </article>
+                        <article class="portal-card">
+                            <div class="portal-symbol admin">A</div>
+                            <div class="portal-details"><span>PORTAL 03</span>
+                                <h3>Super Admin Portal</h3><strong id="portal-admin-state">UNVERIFIED</strong>
+                                <p id="portal-admin-details">Awaiting server data</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Portal Connectivity Register</h3>
+                                <p>Connectivity, service dependencies and response measurements.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>PORTAL</th>
+                                        <th>SERVICE</th>
+                                        <th>DEPENDENCY</th>
+                                        <th>LATENCY</th>
+                                        <th>AVAILABILITY</th>
+                                        <th>STATUS</th>
+                                        <th>LAST CHECK</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="portal-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No portal connection records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- INTEGRATIONS -->
+                <section class="monitor-panel" id="panel-integrations">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">CONNECTED SERVICES</span>
+                            <h2>Integration Monitoring</h2>
+                            <p>Monitor internal and external service connections and isolate compromised integrations
+                                when authorized.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>REGISTERED INTEGRATIONS</span></div><strong
+                                id="integration-total">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>HEALTHY INTEGRATIONS</span></div><strong
+                                id="integration-healthy">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>FAILED INTEGRATIONS</span></div><strong
+                                id="integration-failed">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>PENDING RETRIES</span></div><strong
+                                id="integration-retries">—</strong>
+                        </article>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Integration Register</h3>
+                                <p>Service health, retry history and administrative controls.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>INTEGRATION</th>
+                                        <th>TYPE</th>
+                                        <th>CONNECTED PORTAL</th>
+                                        <th>LAST SUCCESS</th>
+                                        <th>FAILURES</th>
+                                        <th>RETRIES</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="integrations-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No integration records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- BACKGROUND JOBS -->
+                <section class="monitor-panel" id="panel-jobs">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">AUTOMATED OPERATIONS</span>
+                            <h2>Background Jobs & Scheduled Tasks</h2>
+                            <p>Monitor task execution, queues, failures, retries and scheduled processing.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>REGISTERED JOBS</span></div><strong
+                                id="jobs-total">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>RUNNING JOBS</span></div><strong
+                                id="jobs-running">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>FAILED JOBS</span></div><strong
+                                id="jobs-failed">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>QUEUED TASKS</span></div><strong
+                                id="jobs-queued">—</strong>
+                        </article>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Background Job Register</h3>
+                                <p>Execution history and task status.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>JOB</th>
+                                        <th>QUEUE</th>
+                                        <th>STATUS</th>
+                                        <th>STARTED</th>
+                                        <th>DURATION</th>
+                                        <th>ATTEMPTS</th>
+                                        <th>LAST RESULT</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="jobs-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No job records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- PERFORMANCE -->
+                <section class="monitor-panel" id="panel-performance">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">APPLICATION TELEMETRY</span>
+                            <h2>Application Performance</h2>
+                            <p>Monitor transaction performance, latency distributions and application errors.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>AVERAGE LATENCY</span></div><strong
+                                id="perf-average">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>P95 LATENCY</span></div><strong id="perf-p95">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>ERROR RATE</span></div><strong id="perf-errors">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>THROUGHPUT</span></div><strong
+                                id="perf-throughput">—</strong>
+                        </article>
+                    </div>
+
+                    <div class="two-column-grid">
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Performance Measurements</h3>
+                                </div>
+                            </div>
+                            <div id="performance-list" class="resource-list">
+                                <div class="empty-state">No performance measurements returned.</div>
+                            </div>
+                        </article>
+                        <article class="content-card">
+                            <div class="card-heading">
+                                <div>
+                                    <h3>Application Error Categories</h3>
+                                </div>
+                            </div>
+                            <div id="performance-errors-list" class="event-list">
+                                <div class="empty-state">No error categories returned.</div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Application Services</h3>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>SERVICE</th>
+                                        <th>PORTAL</th>
+                                        <th>AVERAGE</th>
+                                        <th>P95</th>
+                                        <th>ERROR RATE</th>
+                                        <th>THROUGHPUT</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="performance-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No application service telemetry returned.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- SECURITY -->
+                <section class="monitor-panel" id="panel-security">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">PLATFORM PROTECTION</span>
+                            <h2>Security Monitoring</h2>
+                            <p>Security events, suspicious access, authentication anomalies and integration risks.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>SECURITY INCIDENTS</span></div><strong
+                                id="security-incidents">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>FAILED AUTHENTICATIONS</span></div><strong
+                                id="security-auth-failures">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>SUSPICIOUS REQUESTS</span></div><strong
+                                id="security-suspicious">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>UNAUTHORIZED REQUESTS</span></div><strong
+                                id="security-unauthorized">—</strong>
+                        </article>
+                    </div>
+
+                    <div class="filter-bar">
+                        <input type="search" id="security-search" placeholder="Search security events..."
+                            aria-label="Search security events">
+                        <select id="security-severity">
+                            <option value="">All severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <button class="secondary-button" id="security-filter" type="button">Apply filters</button>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Security Event Register</h3>
+                                <p>Recorded security telemetry and investigation status.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>EVENT</th>
+                                        <th>TYPE</th>
+                                        <th>SEVERITY</th>
+                                        <th>SOURCE</th>
+                                        <th>PORTAL</th>
+                                        <th>TIME</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="security-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No security event records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- INCIDENTS -->
+                <section class="monitor-panel" id="panel-incidents">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">OPERATIONAL RESPONSE</span>
+                            <h2>Incident Management</h2>
+                            <p>Investigate, assign, resolve and document platform incidents.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>OPEN INCIDENTS</span></div><strong
+                                id="inc-open">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>CRITICAL INCIDENTS</span></div><strong
+                                id="inc-critical">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>INVESTIGATING</span></div><strong
+                                id="inc-investigating">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>RESOLVED</span></div><strong id="inc-resolved">—</strong>
+                        </article>
+                    </div>
+
+                    <div class="filter-bar">
+                        <input type="search" id="incident-search" placeholder="Search incidents..."
+                            aria-label="Search incidents">
+                        <select id="incident-severity">
+                            <option value="">All severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <select id="incident-status">
+                            <option value="">All statuses</option>
+                            <option value="open">Open</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                        <button class="secondary-button" id="incident-filter" type="button">Filter</button>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Incident Register</h3>
+                                <p>All detected platform incidents and their response history.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>INCIDENT</th>
+                                        <th>COMPONENT</th>
+                                        <th>SEVERITY</th>
+                                        <th>STATUS</th>
+                                        <th>ASSIGNED TO</th>
+                                        <th>DETECTED</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="incidents-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No incident records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- ALERTS -->
+                <section class="monitor-panel" id="panel-alerts">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">CENTRAL NOTIFICATION SERVICE</span>
+                            <h2>Alert Centre</h2>
+                            <p>Monitor alert generation, delivery, acknowledgement and notification history.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>ACTIVE ALERTS</span></div><strong
+                                id="alerts-active">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>ACKNOWLEDGED</span></div><strong
+                                id="alerts-acknowledged">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>EMAIL DELIVERY</span></div><strong
+                                id="alerts-email">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>SMS DELIVERY</span></div><strong
+                                id="alerts-sms">—</strong>
+                        </article>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Alert Delivery History</h3>
+                                <p>Dashboard, email and SMS notification records.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>ALERT</th>
+                                        <th>SEVERITY</th>
+                                        <th>CHANNEL</th>
+                                        <th>RECIPIENT GROUP</th>
+                                        <th>DELIVERY STATUS</th>
+                                        <th>CREATED</th>
+                                        <th>ACKNOWLEDGED</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="alerts-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No alert records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- MAINTENANCE -->
+                <section class="monitor-panel" id="panel-maintenance">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">CONTROLLED OPERATIONS</span>
+                            <h2>Maintenance Mode</h2>
+                            <p>Manage authorized maintenance windows and service availability.</p>
+                        </div>
+                    </div>
+
+                    <div class="system-warning">
+                        <strong>Administrative safety control</strong>
+                        <p>Maintenance operations affect live users. All actions require server-side authorization, a
+                            documented reason, confirmation and an immutable audit record. Portal-wide and
+                            service-specific maintenance must be distinguished.</p>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Current Maintenance State</h3>
+                                <p>Live maintenance configuration reported by the backend.</p>
+                            </div>
+                        </div>
+                        <div id="maintenance-current-state" class="maintenance-state">
+                            <div class="empty-state">Maintenance state has not been verified.</div>
+                        </div>
+                    </article>
+
+                    <div class="two-column-grid section-space">
+                        <article class="content-card">
+                            <h3>Activate Maintenance Mode</h3>
+                            <p class="card-description">Request controlled maintenance for a selected scope.</p>
+                            <form id="maintenance-activate-form">
+                                <label class="form-field">Maintenance scope<select name="scope" required>
+                                        <option value="">Select scope</option>
+                                        <option value="platform">Entire platform</option>
+                                        <option value="employer">Employer portal</option>
+                                        <option value="employee">Employee portal</option>
+                                        <option value="super_admin">Super Admin portal</option>
+                                        <option value="service">Specific service</option>
+                                    </select></label>
+                                <label class="form-field">Service reference (if applicable)<input
+                                        name="serviceReference" maxlength="150"></label>
+                                <label class="form-field">Reason<textarea name="reason" minlength="10" maxlength="2000"
+                                        required></textarea></label>
+                                <label class="form-field">Expected end time<input name="scheduledEnd"
+                                        type="datetime-local"></label>
+                                <button class="danger-button" type="submit">Request Maintenance Activation</button>
+                            </form>
+                        </article>
+
+                        <article class="content-card">
+                            <h3>Deactivate Maintenance Mode</h3>
+                            <p class="card-description">Request restoration of an authorized maintenance scope.</p>
+                            <form id="maintenance-deactivate-form">
+                                <label class="form-field">Maintenance reference<input name="maintenanceReference"
+                                        required maxlength="150"></label>
+                                <label class="form-field">Reason for restoration<textarea name="reason" minlength="10"
+                                        maxlength="2000" required></textarea></label>
+                                <button class="primary-button" type="submit">Request Service Restoration</button>
+                            </form>
+                        </article>
+                    </div>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Maintenance History</h3>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>SCOPE</th>
+                                        <th>INITIATED BY</th>
+                                        <th>REASON</th>
+                                        <th>STARTED</th>
+                                        <th>ENDED</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="maintenance-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No maintenance history returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- DEPLOYMENTS -->
+                <section class="monitor-panel" id="panel-deployments">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">RELEASE GOVERNANCE</span>
+                            <h2>Deployments & Rollbacks</h2>
+                            <p>Review software releases, application versions, deployment outcomes and rollback
+                                eligibility.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>CURRENT VERSION</span></div><strong
+                                id="deployment-version">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>LAST DEPLOYMENT</span></div><strong
+                                id="deployment-last">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>FAILED DEPLOYMENTS</span></div><strong
+                                id="deployment-failed">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>ROLLBACK ELIGIBLE</span></div><strong
+                                id="deployment-eligible">—</strong>
+                        </article>
+                    </div>
+
+                    <div class="system-warning"><strong>Rollback protection</strong>
+                        <p>Rollback is available only where supported by the deployment platform. The server must verify
+                            release compatibility, database migration safety, dependencies and authorization before
+                            execution.</p>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Deployment History</h3>
+                                <p>Release history and deployment health.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>RELEASE</th>
+                                        <th>VERSION</th>
+                                        <th>ENVIRONMENT</th>
+                                        <th>INITIATED BY</th>
+                                        <th>DEPLOYED</th>
+                                        <th>RESULT</th>
+                                        <th>ROLLBACK</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="deployments-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No deployment records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- SCHEDULED -->
+                <section class="monitor-panel" id="panel-scheduled">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">PLANNED OPERATIONS</span>
+                            <h2>Scheduled Maintenance</h2>
+                            <p>Manage future maintenance windows and review completed schedules.</p>
+                        </div>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Schedule Maintenance</h3>
+                                <p>Create an authorized maintenance proposal.</p>
+                            </div>
+                        </div>
+                        <form id="scheduled-maintenance-form" class="form-grid">
+                            <label class="form-field">Maintenance title<input name="title" maxlength="150"
+                                    required></label>
+                            <label class="form-field">Affected scope<select name="scope" required>
+                                    <option value="">Select scope</option>
+                                    <option value="platform">Entire platform</option>
+                                    <option value="employer">Employer portal</option>
+                                    <option value="employee">Employee portal</option>
+                                    <option value="super_admin">Super Admin portal</option>
+                                    <option value="service">Specific service</option>
+                                </select></label>
+                            <label class="form-field">Start time<input type="datetime-local" name="startsAt"
+                                    required></label>
+                            <label class="form-field">End time<input type="datetime-local" name="endsAt"
+                                    required></label>
+                            <label class="form-field full-field">Reason and expected impact<textarea name="reason"
+                                    minlength="10" maxlength="2000" required></textarea></label>
+                            <div class="full-field"><button class="primary-button" type="submit">Submit Maintenance
+                                    Schedule</button></div>
+                        </form>
+                    </article>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Scheduled Maintenance Register</h3>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>TITLE</th>
+                                        <th>SCOPE</th>
+                                        <th>START</th>
+                                        <th>END</th>
+                                        <th>CREATED BY</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scheduled-table-body">
+                                    <tr>
+                                        <td colspan="8" class="empty-cell">No scheduled maintenance returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- CAPACITY -->
+                <section class="monitor-panel" id="panel-capacity">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">RESOURCE INTELLIGENCE</span>
+                            <h2>Capacity Planning</h2>
+                            <p>Monitor utilization, resource trends and infrastructure capacity forecasts.</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>CPU CAPACITY</span></div><strong
+                                id="capacity-cpu">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>MEMORY CAPACITY</span></div><strong
+                                id="capacity-memory">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>STORAGE CAPACITY</span></div><strong
+                                id="capacity-storage">—</strong>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-heading"><span>PROJECTED EXHAUSTION</span></div><strong
+                                id="capacity-exhaustion">—</strong>
+                        </article>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Resource Forecasts</h3>
+                                <p>Forecasts supplied by the infrastructure monitoring service.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>RESOURCE</th>
+                                        <th>CURRENT USAGE</th>
+                                        <th>CAPACITY</th>
+                                        <th>GROWTH RATE</th>
+                                        <th>FORECAST</th>
+                                        <th>RISK</th>
+                                        <th>RECOMMENDATION</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="capacity-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No capacity forecast records returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- REPORTS -->
+                <section class="monitor-panel" id="panel-reports">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">OPERATIONAL INTELLIGENCE</span>
+                            <h2>Monitoring Reports</h2>
+                            <p>Generate infrastructure, uptime, API, portal, resource and incident reports.</p>
+                        </div>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Generate Monitoring Report</h3>
+                                <p>Choose a reporting period and report category.</p>
+                            </div>
+                        </div>
+                        <form id="report-form" class="form-grid">
+                            <label class="form-field">Report category<select name="category" required>
+                                    <option value="comprehensive">Comprehensive system report</option>
+                                    <option value="uptime">Uptime and availability</option>
+                                    <option value="infrastructure">Infrastructure performance</option>
+                                    <option value="api">API reliability</option>
+                                    <option value="portals">Portal comparison</option>
+                                    <option value="errors">Error and incident trends</option>
+                                    <option value="resources">Resource consumption</option>
+                                    <option value="security">Security events</option>
+                                </select></label>
+                            <label class="form-field">Output format<select name="format" required>
+                                    <option value="csv">CSV</option>
+                                    <option value="json">JSON</option>
+                                </select></label>
+                            <label class="form-field">Start date<input type="date" name="from" required></label>
+                            <label class="form-field">End date<input type="date" name="to" required></label>
+                            <div class="full-field"><button class="primary-button" type="submit">Generate
+                                    Report</button></div>
+                        </form>
+                    </article>
+
+                    <article class="content-card section-space">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Report History</h3>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>REPORT</th>
+                                        <th>CATEGORY</th>
+                                        <th>PERIOD</th>
+                                        <th>GENERATED BY</th>
+                                        <th>CREATED</th>
+                                        <th>STATUS</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reports-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No report history returned.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- AUDIT -->
+                <section class="monitor-panel" id="panel-audit">
+
+                    <div class="page-heading">
+                        <div><span class="eyebrow">ACCOUNTABILITY & GOVERNANCE</span>
+                            <h2>Infrastructure Audit Centre</h2>
+                            <p>Review administrator actions, privileged operations and infrastructure change history.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="system-warning"><strong>Audit integrity</strong>
+                        <p>Infrastructure audit records are retained for 365 days under the approved retention
+                            requirement. Records must be protected against unauthorized modification or deletion.</p>
+                    </div>
+
+                    <div class="filter-bar">
+                        <input type="search" id="audit-search" placeholder="Search audit records..."
+                            aria-label="Search audit records">
+                        <select id="audit-action-filter">
+                            <option value="">All actions</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="restart">Service restart</option>
+                            <option value="integration_disable">Integration isolation</option>
+                            <option value="rollback">Deployment rollback</option>
+                        </select>
+                        <button class="secondary-button" id="audit-filter" type="button">Filter</button>
+                        <button class="secondary-button" type="button" data-export="audit">Export</button>
+                    </div>
+
+                    <article class="content-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Privileged Action History</h3>
+                                <p>Recorded infrastructure and monitoring administration.</p>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="monitor-table">
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCE</th>
+                                        <th>ADMINISTRATOR</th>
+                                        <th>OPERATION</th>
+                                        <th>TARGET</th>
+                                        <th>JUSTIFICATION</th>
+                                        <th>TIME</th>
+                                        <th>RESULT</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="audit-table-body">
+                                    <tr>
+                                        <td colspan="7" class="empty-cell">No infrastructure audit records returned.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                </section>
+
+            </div>
+
+            <footer class="monitoring-footer">
+                <span>© TALVORA Technologies</span>
+                <span>GSES SYSTEM 001 · SYSTEM MONITORING & INFRASTRUCTURE</span>
+                <span>Authorized Super Admin Access</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ACTION CONFIRMATION MODAL -->
+    <div class="modal-overlay" id="action-modal" hidden>
+        <section class="action-modal" role="dialog" aria-modal="true" aria-labelledby="action-modal-title">
+
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">PRIVILEGED INFRASTRUCTURE OPERATION</span>
+                    <h2 id="action-modal-title">Confirm Administrative Action</h2>
+                </div>
+                <button class="modal-close" type="button" data-close-action aria-label="Close">×</button>
+            </div>
+
+            <div class="modal-content">
+
+                <div class="action-warning">
+                    <strong id="action-warning-title">Sensitive operation</strong>
+                    <p id="action-description">This operation may affect live platform services.</p>
+                </div>
+
+                <div class="detail-row"><strong>Operation</strong><span id="action-operation">—</span></div>
+                <div class="detail-row"><strong>Target</strong><span id="action-target">—</span></div>
+                <div class="detail-row"><strong>Administrator</strong><span id="action-administrator">—</span></div>
+
+                <form id="action-confirm-form">
+
+                    <label class="form-field" id="action-schedule-field" hidden>
+                        Scheduled execution time
+                        <input type="datetime-local" name="scheduledAt">
+                    </label>
+
+                    <label class="form-field">
+                        Administrative justification
+                        <textarea name="reason" minlength="10" maxlength="2000" required
+                            placeholder="Explain why this operation is necessary..."></textarea>
+                    </label>
+
+                    <label class="confirm-checkbox">
+                        <input type="checkbox" name="confirmation" required>
+                        I understand the operational impact and authorize submission of this request for server-side
+                        verification.
+                    </label>
+
+                    <div class="modal-actions">
+                        <button class="secondary-button" type="button" data-close-action>Cancel</button>
+                        <button class="danger-button" type="submit" id="action-submit">Submit Authorized
+                            Request</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+    </div>
+
+
+    <!-- INCIDENT DETAIL MODAL -->
+    <div class="modal-overlay" id="incident-modal" hidden>
+        <section class="action-modal" role="dialog" aria-modal="true" aria-labelledby="incident-modal-title">
+            <div class="modal-header">
+                <div><span class="eyebrow">INCIDENT INVESTIGATION</span>
+                    <h2 id="incident-modal-title">Incident Details</h2>
+                </div>
+                <button class="modal-close" type="button" data-close-incident aria-label="Close">×</button>
+            </div>
+            <div class="modal-content" id="incident-detail-content">
+                <div class="empty-state">No incident selected.</div>
+            </div>
+            <div class="modal-content">
+                <form id="incident-update-form">
+                    <input type="hidden" name="reference">
+                    <label class="form-field">Investigation status<select name="status" required>
+                            <option value="investigating">Investigating</option>
+                            <option value="monitoring">Monitoring</option>
+                            <option value="resolved">Resolved</option>
+                        </select></label>
+                    <label class="form-field">Investigation notes and resolution<textarea name="notes" minlength="10"
+                            maxlength="3000" required></textarea></label>
+                    <div class="modal-actions"><button class="secondary-button" type="button"
+                            data-close-incident>Cancel</button><button class="primary-button" type="submit">Save
+                            Incident Update</button></div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- TOAST -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+</body>
+
+</html>

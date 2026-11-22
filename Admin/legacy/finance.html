@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="theme-color" content="#102B46">
+    <meta name="description" content="GSES Super Admin Finance and Revenue">
+
+    <title>Finance & Revenue | GSES</title>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="finance.css">
+    <script src="../finance.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Visible until local preview or
+       server authorization succeeds. -->
+
+    <section id="finance-locked" class="finance-locked">
+        <div class="finance-access-card">
+            <div class="brand-logo">G</div>
+            <h1>Finance & Revenue</h1>
+
+            <p id="finance-access-message" role="status">
+                Checking administrator access...
+            </p>
+
+            <a href="../index.html" class="btn btn-primary">
+                Return to Admin Login
+            </a>
+        </div>
+    </section>
+
+
+    <!-- FINANCE ADMIN APPLICATION -->
+
+    <div id="finance-app" class="app-layout" hidden>
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+                <div class="sidebar-logo">G</div>
+
+                <div class="sidebar-brand">
+                    <h2>GSES</h2>
+                    <span>SUPER ADMIN</span>
+                </div>
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+                    &times;
+                </button>
+            </div>
+
+            <nav class="sidebar-navigation" aria-label="Admin navigation">
+
+                <div class="nav-section">
+                    <p class="nav-heading">OVERVIEW</p>
+
+                <a href="../index.html#/admin/dashboard" class="nav-link">
+                        Dashboard
+                    </a>
+
+                <a href="../index.html#/admin/activities" class="nav-link">
+                        Activities
+                    </a>
+
+                <a href="../index.html#/admin/locations" class="nav-link">
+                        Locations
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <p class="nav-heading">USER MANAGEMENT</p>
+
+                    <a href="../employees.html" class="nav-link">
+                        Employees
+                    </a>
+
+                    <a href="../employers.html" class="nav-link">
+                        Employers
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <p class="nav-heading">OPERATIONS</p>
+
+                    <a href="../index.html#/admin/jobs" class="nav-link">
+                        Jobs
+                    </a>
+
+                    <a href="../index.html#/admin/applications" class="nav-link">
+                        Applications
+                    </a>
+
+                    <a href="../index.html#/admin/assessments" class="nav-link">
+                        Assessments
+                    </a>
+
+                    <a href="../index.html#/admin/evidence" class="nav-link">
+                        Skills & Evidence
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <p class="nav-heading">FINANCIAL MANAGEMENT</p>
+
+                    <a href="finance.html" class="nav-link active" aria-current="page">
+                        Finance & Revenue
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <p class="nav-heading">TRUST & SYSTEM</p>
+
+                    <a href="../index.html#/admin/reports" class="nav-link">
+                        Reports
+                    </a>
+
+                    <a href="../index.html#/admin/audit" class="nav-link">
+                        Audit Logs
+                    </a>
+
+                    <a href="../index.html#/admin/team" class="nav-link">
+                        Admin Team
+                    </a>
+
+                    <a href="../index.html#/admin/settings" class="nav-link">
+                        Settings
+                    </a>
+                </div>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>GSES SYSTEM 001</p>
+                <span>Financial Administration</span>
+            </div>
+
+        </aside>
+
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden></div>
+
+
+        <div class="main-workspace">
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+                        &#9776;
+                    </button>
+
+                    <div class="header-title">
+                        <h2>Finance & Revenue</h2>
+                        <p>GSES Financial Management</p>
+                    </div>
+
+                </div>
+
+                <div class="header-right">
+
+                    <div class="connection-status">
+                        <span class="status-dot"></span>
+                        <span id="system-status">
+                            Not Connected
+                        </span>
+                    </div>
+
+                    <a href="../index.html#/admin/dashboard" class="logout-button">
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <main class="main-content">
+
+                <div class="page-heading">
+                    <div>
+                        <h1>Financial Overview</h1>
+                        <p>
+                            Monitor GSES revenue, payments,
+                            expenses and employer subscriptions.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div id="finance-notice" class="finance-notice" role="status" aria-live="polite">
+                    Awaiting financial service connection.
+                </div>
+
+
+                <!-- CURRENCY AND DATE FILTERS -->
+
+                <form id="finance-filters" class="finance-filters">
+
+                    <div class="finance-field">
+                        <label for="finance-currency">
+                            Currency
+                        </label>
+
+                        <select id="finance-currency" required disabled>
+                            <option value="">
+                                Select currency
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="finance-field">
+                        <label for="finance-from">
+                            From Date
+                        </label>
+
+                        <input id="finance-from" type="date" disabled>
+                    </div>
+
+                    <div class="finance-field">
+                        <label for="finance-to">
+                            To Date
+                        </label>
+
+                        <input id="finance-to" type="date" disabled>
+                    </div>
+
+                    <button id="finance-apply" class="btn btn-primary" type="submit" disabled>
+                        Apply Filters
+                    </button>
+
+                    <button id="finance-refresh" class="btn btn-secondary" type="button" disabled>
+                        Refresh
+                    </button>
+
+                </form>
+
+
+                <!-- FINANCIAL SUMMARY CARDS -->
+
+                <section class="finance-stats" aria-label="Financial statistics">
+
+                    <article class="finance-stat-card">
+                        <span>Gross Collected</span>
+                        <strong id="fin-collected">—</strong>
+                        <p>Settled customer payments</p>
+                    </article>
+
+                    <article class="finance-stat-card">
+                        <span>Refunds</span>
+                        <strong id="fin-refunds">—</strong>
+                        <p>Refunds issued</p>
+                    </article>
+
+                    <article class="finance-stat-card">
+                        <span>Processing Fees</span>
+                        <strong id="fin-fees">—</strong>
+                        <p>Payment provider charges</p>
+                    </article>
+
+                    <article class="finance-stat-card">
+                        <span>Operating Expenses</span>
+                        <strong id="fin-expenses">—</strong>
+                        <p>Recorded operating costs</p>
+                    </article>
+
+                    <article class="finance-stat-card">
+                        <span>Net Operating Cash</span>
+                        <strong id="fin-net">—</strong>
+                        <p>
+                            Collected less refunds,
+                            fees and operating payments
+                        </p>
+                    </article>
+
+                    <article class="finance-stat-card">
+                        <span>Outstanding Invoices</span>
+                        <strong id="fin-outstanding">—</strong>
+                        <p>Unpaid amounts, not earned cash</p>
+                    </article>
+
+                    <article class="finance-stat-card">
+                        <span>Active Subscriptions</span>
+                        <strong id="fin-subscriptions">—</strong>
+                        <p>Paying employer subscriptions</p>
+                    </article>
+
+                </section>
+
+
+                <!-- FINANCIAL RECORDS -->
+
+                <section class="content-card finance-records">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Financial Records</h3>
+                            <p>
+                                Payments, billing and expenses
+                                for the selected period.
+                            </p>
+                        </div>
+
+                        <span id="finance-record-count" class="finance-count">
+                            Records unavailable
+                        </span>
+
+                    </div>
+
+
+                    <div class="finance-tabs" role="tablist" aria-label="Financial records">
+
+                        <button type="button" class="finance-tab active" data-tab="transactions" role="tab"
+                            aria-selected="true" tabindex="0">
+                            Transactions
+                        </button>
+
+                        <button type="button" class="finance-tab" data-tab="subscriptions" role="tab"
+                            aria-selected="false" tabindex="-1">
+                            Subscriptions
+                        </button>
+
+                        <button type="button" class="finance-tab" data-tab="invoices" role="tab" aria-selected="false"
+                            tabindex="-1">
+                            Invoices
+                        </button>
+
+                        <button type="button" class="finance-tab" data-tab="refunds" role="tab" aria-selected="false"
+                            tabindex="-1">
+                            Refunds
+                        </button>
+
+                        <button type="button" class="finance-tab" data-tab="expenses" role="tab" aria-selected="false"
+                            tabindex="-1">
+                            Expenses
+                        </button>
+
+                        <button type="button" class="finance-tab" data-tab="settlements" role="tab"
+                            aria-selected="false" tabindex="-1">
+                            Settlements
+                        </button>
+
+                    </div>
+
+
+                    <div id="finance-records-panel" role="tabpanel" aria-live="polite">
+
+                        <div class="table-container">
+
+                            <table class="data-table finance-table">
+                                <thead id="finance-table-head"></thead>
+                                <tbody id="finance-table-body"></tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="finance-pagination">
+
+                        <span id="finance-page-info">
+                            No page information
+                        </span>
+
+                        <div class="pagination-actions">
+
+                            <button id="finance-prev" class="btn btn-secondary" type="button" disabled>
+                                Previous
+                            </button>
+
+                            <button id="finance-next" class="btn btn-secondary" type="button" disabled>
+                                Next
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="finance-information">
+
+                    <h3>Financial Data Integrity</h3>
+
+                    <p>
+                        All amounts must come from verified
+                        payment, billing and expense records.
+                        Pending payments are not counted as
+                        collected cash.
+                    </p>
+
+                    <p>
+                        Financial totals must be grouped by
+                        currency. Taxes, recognized revenue,
+                        processor settlements and profitability
+                        require separate accounting treatment.
+                    </p>
+
+                    <p>
+                        Payment secrets and complete card
+                        information must never be stored
+                        in this frontend.
+                    </p>
+
+                </section>
+
+            </main>
+
+
+            <footer class="main-footer">
+                <p>
+                    GSES System 001
+                    &copy; <span id="footer-year"></span>
+                </p>
+                <p>Super Admin · Finance & Revenue</p>
+            </footer>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

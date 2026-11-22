@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060638">
+
+    <meta name="description" content="TALVORA Global - Super Admin Skills and Evidence Management">
+
+    <title>Skills & Evidence | TALVORA Technologies</title>
+
+    <link rel="icon" href="../../talvora-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="evidence.css">
+
+    <script src="evidence.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+       ADMIN ACCESS SCREEN
+       ===================================================== -->
+
+    <section id="evidence-locked" class="evidence-locked">
+
+        <div class="evidence-locked-card">
+
+            <img src="../../talvora-logo.png" alt="TALVORA logo">
+
+            <h1>TALVORA</h1>
+
+            <p id="evidence-access-message" role="status">
+                Verifying administrator access...
+            </p>
+
+            <a href="../index.html" class="btn btn-primary">
+                Return to Super Admin
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+       APPLICATION
+       ===================================================== -->
+
+    <div id="evidence-app" class="app-layout" hidden>
+
+
+        <!-- ===================================================
+         SIDEBAR
+         =================================================== -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="../index.html" class="sidebar-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="" class="sidebar-logo">
+
+                    <div class="sidebar-brand">
+
+                        <h2>TALVORA</h2>
+
+                        <span>TECHNOLOGIES</span>
+
+                        <small>TALVORA GLOBAL</small>
+
+                    </div>
+
+                </a>
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-portal-label">
+
+                <span class="portal-indicator"></span>
+
+                SUPER ADMIN PORTAL
+
+            </div>
+
+
+            <nav class="sidebar-navigation" aria-label="Admin navigation">
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">OVERVIEW</p>
+
+                    <a href="../index.html#/admin/dashboard" class="nav-link">
+
+                        <span class="nav-icon">&#9638;</span>
+                        Dashboard
+
+                    </a>
+
+                    <a href="../index.html#/admin/activities" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Platform Activities
+
+                    </a>
+
+                    <a href="../index.html#/admin/locations" class="nav-link">
+
+                        <span class="nav-icon">&#9678;</span>
+                        Locations
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">USER MANAGEMENT</p>
+
+                    <a href="employees.html" class="nav-link">
+
+                        <span class="nav-icon">&#9786;</span>
+                        Employees
+
+                    </a>
+
+                    <a href="employers.html" class="nav-link">
+
+                        <span class="nav-icon">&#9635;</span>
+                        Employers
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">EMPLOYMENT OPERATIONS</p>
+
+                    <a href="jobs.html" class="nav-link">
+
+                        <span class="nav-icon">&#9636;</span>
+                        Job Management
+
+                    </a>
+
+                    <a href="applications.html" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Applications & Hiring
+
+                    </a>
+
+                    <a href="assessments.html" class="nav-link">
+
+                        <span class="nav-icon">&#10003;</span>
+                        Assessments
+
+                    </a>
+
+                    <a href="evidence.html" class="nav-link active" aria-current="page">
+
+                        <span class="nav-icon">&#9635;</span>
+                        Skills & Evidence
+
+                    </a>
+
+                    <a href="matching.html" class="nav-link">
+
+                        <span class="nav-icon">&#8644;</span>
+                        Matching Oversight
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">FINANCIAL MANAGEMENT</p>
+
+                    <a href="finance.html" class="nav-link">
+
+                        <span class="nav-icon">&#36;</span>
+                        Finance & Revenue
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">TRUST & SECURITY</p>
+
+                    <a href="reports.html" class="nav-link">
+
+                        <span class="nav-icon">&#9873;</span>
+                        Reports & Investigations
+
+                    </a>
+
+                    <a href="disputes.html" class="nav-link">
+
+                        <span class="nav-icon">&#9878;</span>
+                        Disputes & Appeals
+
+                    </a>
+
+                    <a href="consents.html" class="nav-link">
+
+                        <span class="nav-icon">&#10003;</span>
+                        Privacy & Consent
+
+                    </a>
+
+                    <a href="audit.html" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Audit Logs
+
+                    </a>
+
+                    <a href="support.html" class="nav-link">
+
+                        <span class="nav-icon">&#9993;</span>
+                        Support Center
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">PLATFORM MANAGEMENT</p>
+
+                    <a href="team.html" class="nav-link">
+
+                        <span class="nav-icon">&#9786;</span>
+                        Admin Team
+
+                    </a>
+
+                    <a href="settings.html" class="nav-link">
+
+                        <span class="nav-icon">&#9881;</span>
+                        System Settings
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="sidebar-footer-brand">
+                    TALVORA TECHNOLOGIES
+                </div>
+
+                <p>GSES SYSTEM 001</p>
+
+                <span>Global Workforce Infrastructure</span>
+
+            </div>
+
+        </aside>
+
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden>
+        </div>
+
+
+        <!-- ===================================================
+         MAIN WORKSPACE
+         =================================================== -->
+
+        <div class="main-workspace">
+
+
+            <!-- HEADER -->
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+
+                        &#9776;
+
+                    </button>
+
+
+                    <div class="header-title">
+
+                        <span class="header-brand-label">
+                            TALVORA GLOBAL
+                        </span>
+
+                        <h2>Skills & Evidence Management</h2>
+
+                        <p>Credentials, verification and skills oversight</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <div class="connection-status disconnected">
+
+                        <span class="status-dot"></span>
+
+                        <span id="evidence-system-status">
+                            Not Connected
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">SA</div>
+
+                        <div class="admin-info">
+
+                            <strong>Super Admin</strong>
+
+                            <span>Administration</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="../index.html" class="logout-button">
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+           PAGE CONTENT
+           ================================================= -->
+
+            <main class="main-content">
+
+
+                <!-- PAGE HEADING -->
+
+                <section class="page-heading evidence-heading">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            EMPLOYMENT OPERATIONS
+                        </span>
+
+                        <h1>Skills & Evidence Management</h1>
+
+                        <p>
+                            Oversee professional qualifications, employee
+                            skills, credentials, supporting evidence,
+                            verification and sharing permissions across
+                            TALVORA Global.
+                        </p>
+
+                    </div>
+
+
+                    <button id="evidence-refresh" class="btn btn-secondary" type="button" disabled>
+
+                        &#8635; Refresh Records
+
+                    </button>
+
+                </section>
+
+
+                <!-- SYSTEM NOTICE -->
+
+                <div id="evidence-notice" class="evidence-notice" role="status" aria-live="polite">
+
+                    Awaiting connection to the skills and evidence service.
+
+                </div>
+
+
+                <!-- =================================================
+             EVIDENCE STATISTICS
+             ================================================= -->
+
+                <section class="evidence-stats" aria-label="Evidence statistics">
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Total Evidence Records</span>
+
+                            <span class="evidence-stat-icon">&#9776;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-total">—</strong>
+
+                        <p>All registered evidence records</p>
+
+                    </article>
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Pending Verification</span>
+
+                            <span class="evidence-stat-icon">&#9203;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-pending">—</strong>
+
+                        <p>Awaiting verification</p>
+
+                    </article>
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Verified</span>
+
+                            <span class="evidence-stat-icon">&#10003;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-verified">—</strong>
+
+                        <p>Successfully verified records</p>
+
+                    </article>
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Rejected</span>
+
+                            <span class="evidence-stat-icon">&#10005;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-rejected">—</strong>
+
+                        <p>Rejected evidence records</p>
+
+                    </article>
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Expired</span>
+
+                            <span class="evidence-stat-icon">&#128197;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-expired">—</strong>
+
+                        <p>Expired credentials</p>
+
+                    </article>
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Disputed</span>
+
+                            <span class="evidence-stat-icon">&#9878;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-disputed">—</strong>
+
+                        <p>Under dispute or investigation</p>
+
+                    </article>
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Registered Skills</span>
+
+                            <span class="evidence-stat-icon">&#9733;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-skills">—</strong>
+
+                        <p>Recorded employee skills</p>
+
+                    </article>
+
+
+                    <article class="evidence-stat-card">
+
+                        <div class="evidence-stat-top">
+
+                            <span>Expiring Soon</span>
+
+                            <span class="evidence-stat-icon">&#9888;</span>
+
+                        </div>
+
+                        <strong id="metric-evidence-expiring">—</strong>
+
+                        <p>Credentials approaching expiry</p>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- =================================================
+             EVIDENCE DIRECTORY
+             ================================================= -->
+
+                <section class="content-card evidence-directory">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Global Evidence Directory</h3>
+
+                            <p>
+                                Review employee qualifications, professional
+                                credentials, skills evidence and verification
+                                records.
+                            </p>
+
+                        </div>
+
+
+                        <span id="evidence-record-count" class="evidence-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- STATUS TABS -->
+
+                    <div class="evidence-tabs" role="tablist" aria-label="Evidence status filters">
+
+
+                        <button type="button" class="evidence-tab active" data-status="all" role="tab"
+                            aria-selected="true" tabindex="0">
+
+                            All
+
+                        </button>
+
+
+                        <button type="button" class="evidence-tab" data-status="pending" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Pending
+
+                        </button>
+
+
+                        <button type="button" class="evidence-tab" data-status="verified" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Verified
+
+                        </button>
+
+
+                        <button type="button" class="evidence-tab" data-status="rejected" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Rejected
+
+                        </button>
+
+
+                        <button type="button" class="evidence-tab" data-status="expired" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Expired
+
+                        </button>
+
+
+                        <button type="button" class="evidence-tab" data-status="disputed" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Disputed
+
+                        </button>
+
+
+                        <button type="button" class="evidence-tab" data-status="flagged" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Flagged
+
+                        </button>
+
+
+                        <button type="button" class="evidence-tab" data-status="restricted" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Restricted
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- SEARCH AND FILTERS -->
+
+                    <form id="evidence-filter-form" class="evidence-filters">
+
+
+                        <div class="evidence-search-field">
+
+                            <label for="evidence-search">
+                                Search evidence
+                            </label>
+
+                            <input id="evidence-search" type="search" placeholder="Reference, employee, credential..."
+                                disabled>
+
+                        </div>
+
+
+                        <div class="evidence-filter-field">
+
+                            <label for="evidence-type">
+                                Evidence type
+                            </label>
+
+                            <select id="evidence-type" disabled>
+
+                                <option value="">All types</option>
+
+                                <option value="certificate">
+                                    Certificate
+                                </option>
+
+                                <option value="academic">
+                                    Academic Qualification
+                                </option>
+
+                                <option value="professional">
+                                    Professional Qualification
+                                </option>
+
+                                <option value="licence">
+                                    Professional Licence
+                                </option>
+
+                                <option value="experience">
+                                    Work Experience
+                                </option>
+
+                                <option value="portfolio">
+                                    Portfolio
+                                </option>
+
+                                <option value="training">
+                                    Training Record
+                                </option>
+
+                                <option value="assessment">
+                                    Assessment Evidence
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="evidence-filter-field">
+
+                            <label for="evidence-date-sort">
+                                Registration date
+                            </label>
+
+                            <select id="evidence-date-sort" disabled>
+
+                                <option value="newest">
+                                    Newest first
+                                </option>
+
+                                <option value="oldest">
+                                    Oldest first
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <label class="evidence-flagged-filter">
+
+                            <input id="evidence-flagged-only" type="checkbox" disabled>
+
+                            <span>Flagged only</span>
+
+                        </label>
+
+
+                        <button type="submit" id="evidence-apply-filters" class="btn btn-secondary" disabled>
+
+                            Apply Filters
+
+                        </button>
+
+
+                        <button type="button" id="evidence-clear-filters" class="btn btn-outline" disabled>
+
+                            Clear
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- EVIDENCE TABLE -->
+
+                    <div class="table-container evidence-table-container" role="region" aria-label="Evidence records"
+                        tabindex="0">
+
+
+                        <table class="data-table evidence-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>EVIDENCE REF.</th>
+
+                                    <th>EMPLOYEE</th>
+
+                                    <th>CREDENTIAL / EVIDENCE</th>
+
+                                    <th>TYPE</th>
+
+                                    <th>ISSUING ORGANIZATION</th>
+
+                                    <th>EXPIRY DATE</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>FLAG</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="evidence-table-body">
+
+                                <tr>
+
+                                    <td colspan="9">
+
+                                        <div class="evidence-empty">
+
+                                            <h4>No evidence records connected</h4>
+
+                                            <p>
+                                                Real employee qualifications and evidence
+                                                records will appear here when the authorized
+                                                backend service is connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+
+                    <div class="evidence-pagination">
+
+
+                        <span id="evidence-page-info">
+                            No records available
+                        </span>
+
+
+                        <div class="pagination-actions">
+
+
+                            <button id="evidence-prev" class="btn btn-secondary" type="button" disabled>
+
+                                Previous
+
+                            </button>
+
+
+                            <button id="evidence-next" class="btn btn-secondary" type="button" disabled>
+
+                                Next
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+             SKILLS REGISTRY
+             ================================================= -->
+
+                <section class="content-card skills-registry">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Employee Skills Registry</h3>
+
+                            <p>
+                                Monitor registered professional skills,
+                                competency classifications and verification.
+                            </p>
+
+                        </div>
+
+
+                        <span id="skills-record-count" class="evidence-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <form id="skills-filter-form" class="skills-filters">
+
+
+                        <div class="evidence-search-field">
+
+                            <label for="skills-search">
+                                Search skills
+                            </label>
+
+                            <input id="skills-search" type="search" placeholder="Skill, employee or reference..."
+                                disabled>
+
+                        </div>
+
+
+                        <div class="evidence-filter-field">
+
+                            <label for="skills-verification">
+                                Verification
+                            </label>
+
+                            <select id="skills-verification" disabled>
+
+                                <option value="">All verification states</option>
+
+                                <option value="verified">Verified</option>
+
+                                <option value="pending">Pending</option>
+
+                                <option value="unverified">Unverified</option>
+
+                                <option value="disputed">Disputed</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button type="submit" id="skills-apply-filters" class="btn btn-secondary" disabled>
+
+                            Search Skills
+
+                        </button>
+
+
+                    </form>
+
+
+                    <div class="table-container skills-table-container" role="region"
+                        aria-label="Employee skills records" tabindex="0">
+
+
+                        <table class="data-table skills-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>SKILL REF.</th>
+
+                                    <th>EMPLOYEE</th>
+
+                                    <th>SKILL / COMPETENCY</th>
+
+                                    <th>CATEGORY</th>
+
+                                    <th>PROFICIENCY</th>
+
+                                    <th>VERIFICATION</th>
+
+                                    <th>LINKED EVIDENCE</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="skills-table-body">
+
+                                <tr>
+
+                                    <td colspan="8">
+
+                                        <div class="evidence-empty">
+
+                                            <h4>No skills records connected</h4>
+
+                                            <p>
+                                                Employee skills will appear here when
+                                                the authorized skills registry service
+                                                is connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="evidence-pagination">
+
+
+                        <span id="skills-page-info">
+                            No records available
+                        </span>
+
+
+                        <div class="pagination-actions">
+
+
+                            <button id="skills-prev" class="btn btn-secondary" type="button" disabled>
+
+                                Previous
+
+                            </button>
+
+
+                            <button id="skills-next" class="btn btn-secondary" type="button" disabled>
+
+                                Next
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+             EVIDENCE GOVERNANCE
+             ================================================= -->
+
+                <section class="content-card evidence-governance">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Evidence Governance & Access Control</h3>
+
+                            <p>
+                                Oversight of credential sharing, verification
+                                permissions and privacy controls.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="governance-grid">
+
+
+                        <article class="governance-card">
+
+                            <div class="governance-icon">
+                                &#128274;
+                            </div>
+
+                            <h4>Consent Management</h4>
+
+                            <p>
+                                Monitor consent granted by employees for
+                                evidence access and sharing.
+                            </p>
+
+                            <span id="governance-consent-status">
+                                Data unavailable
+                            </span>
+
+                        </article>
+
+
+                        <article class="governance-card">
+
+                            <div class="governance-icon">
+                                &#128100;
+                            </div>
+
+                            <h4>Employer Access</h4>
+
+                            <p>
+                                Monitor authorized employer access to employee
+                                credentials and supporting evidence.
+                            </p>
+
+                            <span id="governance-employer-status">
+                                Data unavailable
+                            </span>
+
+                        </article>
+
+
+                        <article class="governance-card">
+
+                            <div class="governance-icon">
+                                &#128737;
+                            </div>
+
+                            <h4>Verification Integrity</h4>
+
+                            <p>
+                                Monitor credential verification records,
+                                disputes and administrative reviews.
+                            </p>
+
+                            <span id="governance-verification-status">
+                                Data unavailable
+                            </span>
+
+                        </article>
+
+
+                        <article class="governance-card">
+
+                            <div class="governance-icon">
+                                &#128337;
+                            </div>
+
+                            <h4>Access History</h4>
+
+                            <p>
+                                Review recorded evidence access events and
+                                administrative activity.
+                            </p>
+
+                            <span id="governance-history-status">
+                                Data unavailable
+                            </span>
+
+                        </article>
+
+
+                    </div>
+
+
+                    <div class="governance-footer">
+
+                        Consent and access information must always reflect
+                        the authoritative privacy and authorization records
+                        maintained by the backend.
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+             ADMINISTRATIVE GUIDANCE
+             ================================================= -->
+
+                <section class="content-card evidence-guidance">
+
+
+                    <div class="evidence-guidance-icon">
+                        &#9881;
+                    </div>
+
+
+                    <div>
+
+                        <h3>Credential Integrity & Employee Privacy</h3>
+
+                        <p>
+
+                            TALVORA Super Admin oversees the integrity of
+                            professional qualifications, employee skills
+                            and evidence-sharing activities. Original
+                            employee submissions must be preserved.
+                            Verification, rejection, disputes and changes
+                            to sharing permissions must be authorized,
+                            justified and recorded in the audit history.
+
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+            </main>
+
+
+            <!-- FOOTER -->
+
+            <footer class="main-footer">
+
+
+                <div class="footer-brand">
+
+                    <strong>TALVORA TECHNOLOGIES</strong>
+
+                    <span>
+                        Connecting Human Capability to Global Opportunity.
+                    </span>
+
+                </div>
+
+
+                <div class="footer-system">
+                    GSES SYSTEM 001
+                </div>
+
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+       EVIDENCE DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="evidence-detail-overlay" class="evidence-detail-overlay" hidden>
+
+
+        <aside id="evidence-detail-panel" class="evidence-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="evidence-detail-title">
+
+
+            <div class="evidence-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        EVIDENCE RECORD
+                    </span>
+
+                    <h2 id="evidence-detail-title">
+                        Evidence Details
+                    </h2>
+
+                </div>
+
+
+                <button id="evidence-detail-close" class="evidence-detail-close" type="button"
+                    aria-label="Close evidence details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="evidence-detail-content" class="evidence-detail-content">
+            </div>
+
+
+            <div id="evidence-detail-actions" class="evidence-detail-actions">
+
+
+                <div class="evidence-action-note">
+
+                    All administrative actions are subject to
+                    server-side authorization and consent rules.
+
+                </div>
+
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+    <!-- =====================================================
+       SKILL DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="skill-detail-overlay" class="skill-detail-overlay" hidden>
+
+
+        <aside id="skill-detail-panel" class="skill-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="skill-detail-title">
+
+
+            <div class="skill-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        EMPLOYEE SKILL RECORD
+                    </span>
+
+                    <h2 id="skill-detail-title">
+                        Skill Details
+                    </h2>
+
+                </div>
+
+
+                <button id="skill-detail-close" class="skill-detail-close" type="button"
+                    aria-label="Close skill details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="skill-detail-content" class="skill-detail-content">
+            </div>
+
+
+            <div id="skill-detail-actions" class="skill-detail-actions">
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+    <!-- =====================================================
+       ADMINISTRATIVE CONFIRMATION
+       ===================================================== -->
+
+    <div id="evidence-confirm-overlay" class="evidence-confirm-overlay" hidden>
+
+
+        <section class="evidence-confirm-dialog" role="dialog" aria-modal="true"
+            aria-labelledby="evidence-confirm-title">
+
+
+            <h2 id="evidence-confirm-title">
+                Confirm Administrative Action
+            </h2>
+
+
+            <p id="evidence-confirm-description"></p>
+
+
+            <label for="evidence-action-reason">
+                Reason for this action
+            </label>
+
+
+            <textarea id="evidence-action-reason" rows="4" maxlength="2000"
+                placeholder="Enter the documented reason...">
+      </textarea>
+
+
+            <div class="evidence-confirm-buttons">
+
+
+                <button id="evidence-confirm-cancel" class="btn btn-secondary" type="button">
+
+                    Cancel
+
+                </button>
+
+
+                <button id="evidence-confirm-submit" class="btn btn-danger" type="button" disabled>
+
+                    Confirm Action
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</body>
+
+</html>

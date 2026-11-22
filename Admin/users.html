@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Accounts & Identity | TALVORA Super Admin</title>
+
+    <meta name="description" content="TALVORA centralized user accounts, access and identity management centre.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="users.css">
+
+    <script src="users.js" defer></script>
+</head>
+
+<body class="ua-page">
+
+    <div class="ua-app">
+
+        <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+        <aside class="ua-sidebar" id="ua-sidebar">
+
+            <div class="ua-brand">
+
+                <div class="ua-brand-symbol">T</div>
+
+                <div class="ua-brand-text">
+                    <strong>TALVORA</strong>
+                    <span>SUPER ADMINISTRATION</span>
+                </div>
+
+                <button class="ua-sidebar-close" id="ua-sidebar-close" aria-label="Close navigation">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="ua-sidebar-label">MAIN WORKSPACE</div>
+
+            <nav class="ua-navigation">
+
+                <a href="index.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="employees.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">♙</span>
+                    <span>Employee Management</span>
+                </a>
+
+                <a href="employers.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">▣</span>
+                    <span>Employer Management</span>
+                </a>
+
+                <a href="jobs.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">▤</span>
+                    <span>Jobs Management</span>
+                </a>
+
+                <a href="legacy/applications.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">▧</span>
+                    <span>Applications</span>
+                </a>
+
+                <a href="legacy/assessments.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">◈</span>
+                    <span>Assessments</span>
+                </a>
+
+                <a href="legacy/evidence.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">▧</span>
+                    <span>Evidence Management</span>
+                </a>
+
+                <a href="legacy/matching.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">⇄</span>
+                    <span>Talent Matching</span>
+                </a>
+
+
+                <div class="ua-sidebar-label">FINANCIAL MANAGEMENT</div>
+
+                <a href="finance.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">◉</span>
+                    <span>Finance Centre</span>
+                </a>
+
+                <a href="monetization.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">◇</span>
+                    <span>Monetization</span>
+                </a>
+
+
+                <div class="ua-sidebar-label">GOVERNANCE & SECURITY</div>
+
+                <a href="legacy/consents.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">▤</span>
+                    <span>Privacy & Consent</span>
+                </a>
+
+                <a href="legacy/settings.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">⚙</span>
+                    <span>System Settings</span>
+                </a>
+
+                <a href="security.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">◉</span>
+                    <span>Activity & Security</span>
+                </a>
+
+                <a href="legacy/monitoring.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">⌁</span>
+                    <span>System Monitoring</span>
+                </a>
+
+                <a href="compliance.html" class="ua-nav-link">
+                    <span class="ua-nav-icon">▣</span>
+                    <span>Compliance & Governance</span>
+                </a>
+
+                <a href="users.html" class="ua-nav-link active" aria-current="page">
+                    <span class="ua-nav-icon">♙</span>
+                    <span>User Accounts & Identity</span>
+                    <span class="ua-nav-current"></span>
+                </a>
+
+            </nav>
+
+
+            <div class="ua-sidebar-footer">
+
+                <div class="ua-security-indicator">
+                    <span class="ua-online-dot"></span>
+
+                    <div>
+                        <strong>Administrative Workspace</strong>
+                        <small>Centralized platform access</small>
+                    </div>
+                </div>
+
+                <div class="ua-sidebar-version">
+                    TALVORA TECHNOLOGIES
+                    <span>GSES SYSTEM 001</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==================================================
+         SIDEBAR OVERLAY
+    =================================================== -->
+
+        <div class="ua-sidebar-overlay" id="ua-sidebar-overlay"></div>
+
+
+        <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+
+        <main class="ua-main">
+
+
+            <!-- TOPBAR -->
+
+            <header class="ua-topbar">
+
+                <div class="ua-topbar-left">
+
+                    <button class="ua-menu-button" id="ua-menu-button" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div class="ua-breadcrumb">
+                        <span>Super Admin</span>
+                        <span>/</span>
+                        <strong>Identity Management</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="ua-topbar-right">
+
+                    <div class="ua-connection">
+
+                        <span class="ua-connection-dot" id="ua-connection-dot"></span>
+
+                        <span id="ua-connection-label">
+                            Checking connection
+                        </span>
+
+                    </div>
+
+
+                    <button class="ua-icon-button" id="ua-notification-button" aria-label="Notifications">
+                        ♧
+                        <span class="ua-notification-count" id="ua-notification-count" hidden>0</span>
+                    </button>
+
+
+                    <div class="ua-admin-profile">
+
+                        <div class="ua-admin-avatar" id="ua-admin-avatar">
+                            SA
+                        </div>
+
+                        <div class="ua-admin-information">
+                            <strong id="ua-admin-name">Super Administrator</strong>
+                            <span id="ua-admin-email">Verified administrator session</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ==================================================
+             PAGE HEADER
+        =================================================== -->
+
+            <div class="ua-page-content">
+
+
+                <section class="ua-page-heading">
+
+                    <div>
+
+                        <div class="ua-eyebrow">
+                            TALVORA GLOBAL IDENTITY INFRASTRUCTURE
+                        </div>
+
+                        <h1>User Accounts, Access & Identity</h1>
+
+                        <p>
+                            Centralized administration of employer,
+                            employee and Super Admin identities across
+                            all three connected TALVORA portals.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ua-heading-actions">
+
+                        <button class="ua-button ua-button-secondary" id="ua-refresh">
+                            ↻ Refresh
+                        </button>
+
+                        <button class="ua-button ua-button-primary" id="ua-create-account">
+                            + Create Account
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ==================================================
+                 GLOBAL NOTICE
+            =================================================== -->
+
+                <div class="ua-notice" id="ua-global-notice" hidden role="alert"></div>
+
+
+                <!-- ==================================================
+                 IDENTITY BANNER
+            =================================================== -->
+
+                <section class="ua-identity-banner">
+
+                    <div class="ua-banner-content">
+
+                        <div class="ua-banner-label">
+                            CENTRALIZED IDENTITY & ACCESS ARCHITECTURE
+                        </div>
+
+                        <h2>
+                            One Platform. Three Portals. Unified Identity.
+                        </h2>
+
+                        <p>
+                            Manage user identity, verification, account
+                            security, access privileges and account
+                            lifecycle operations from one central
+                            administrative environment.
+                        </p>
+
+                        <div class="ua-banner-pills">
+
+                            <span>Employer Portal</span>
+                            <span>Employee Portal</span>
+                            <span>Super Admin Portal</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ua-banner-decoration">T</div>
+
+                </section>
+
+
+                <!-- ==================================================
+                 OVERVIEW METRICS
+            =================================================== -->
+
+                <section class="ua-metrics-grid">
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Total Accounts</span>
+                            <span class="ua-metric-icon blue">♙</span>
+                        </div>
+
+                        <strong id="ua-total-accounts">—</strong>
+
+                        <small>All registered platform identities</small>
+
+                    </article>
+
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Employer Accounts</span>
+                            <span class="ua-metric-icon cyan">▣</span>
+                        </div>
+
+                        <strong id="ua-total-employers">—</strong>
+
+                        <small>Employer portal identities</small>
+
+                    </article>
+
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Employee Accounts</span>
+                            <span class="ua-metric-icon purple">♙</span>
+                        </div>
+
+                        <strong id="ua-total-employees">—</strong>
+
+                        <small>Employee portal identities</small>
+
+                    </article>
+
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Super Admin Accounts</span>
+                            <span class="ua-metric-icon navy">♛</span>
+                        </div>
+
+                        <strong id="ua-total-admins">—</strong>
+
+                        <small>Authorized administrative accounts</small>
+
+                    </article>
+
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Pending Verification</span>
+                            <span class="ua-metric-icon orange">◷</span>
+                        </div>
+
+                        <strong id="ua-pending-verification">—</strong>
+
+                        <small>Awaiting verification decisions</small>
+
+                    </article>
+
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Suspended Accounts</span>
+                            <span class="ua-metric-icon red">⊘</span>
+                        </div>
+
+                        <strong id="ua-suspended-accounts">—</strong>
+
+                        <small>Accounts currently suspended</small>
+
+                    </article>
+
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Active Sessions</span>
+                            <span class="ua-metric-icon green">◉</span>
+                        </div>
+
+                        <strong id="ua-active-sessions">—</strong>
+
+                        <small>Currently authenticated sessions</small>
+
+                    </article>
+
+
+                    <article class="ua-metric-card">
+
+                        <div class="ua-metric-top">
+                            <span>Security Alerts</span>
+                            <span class="ua-metric-icon red">⚠</span>
+                        </div>
+
+                        <strong id="ua-security-alerts">—</strong>
+
+                        <small>Unresolved account security alerts</small>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ==================================================
+                 MODULE NAVIGATION
+            =================================================== -->
+
+                <nav class="ua-module-navigation" aria-label="Identity management sections">
+
+                    <button class="ua-module-tab active" data-view="overview" aria-selected="true">
+                        Overview
+                    </button>
+
+                    <button class="ua-module-tab" data-view="directory" aria-selected="false">
+                        Account Directory
+                    </button>
+
+                    <button class="ua-module-tab" data-view="verification" aria-selected="false">
+                        Identity Verification
+                    </button>
+
+                    <button class="ua-module-tab" data-view="sessions" aria-selected="false">
+                        Devices & Sessions
+                    </button>
+
+                    <button class="ua-module-tab" data-view="security" aria-selected="false">
+                        Security & Access
+                    </button>
+
+                    <button class="ua-module-tab" data-view="audit" aria-selected="false">
+                        Audit History
+                    </button>
+
+                </nav>
+
+
+                <!-- ==================================================
+                 VIEW 1: OVERVIEW
+            =================================================== -->
+
+                <section class="ua-view" id="ua-view-overview">
+
+
+                    <div class="ua-section-heading">
+
+                        <div>
+                            <h2>Identity Management Overview</h2>
+
+                            <p>
+                                Platform-wide account administration
+                                and identity security status.
+                            </p>
+                        </div>
+
+                        <span class="ua-live-indicator">
+                            <span></span>
+                            LIVE DATA WHEN CONNECTED
+                        </span>
+
+                    </div>
+
+
+                    <!-- PORTAL DISTRIBUTION -->
+
+                    <div class="ua-overview-grid">
+
+                        <article class="ua-card">
+
+                            <div class="ua-card-heading">
+
+                                <div>
+                                    <h3>Connected Portal Distribution</h3>
+
+                                    <p>
+                                        Account distribution across
+                                        the three portals.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="ua-portal-distribution">
+
+                                <div class="ua-portal-item">
+
+                                    <div class="ua-portal-icon employer">
+                                        ▣
+                                    </div>
+
+                                    <div class="ua-portal-details">
+                                        <strong>Employer Portal</strong>
+                                        <span>Business accounts</span>
+                                    </div>
+
+                                    <strong id="ua-employer-distribution">—</strong>
+
+                                </div>
+
+
+                                <div class="ua-portal-item">
+
+                                    <div class="ua-portal-icon employee">
+                                        ♙
+                                    </div>
+
+                                    <div class="ua-portal-details">
+                                        <strong>Employee Portal</strong>
+                                        <span>Individual accounts</span>
+                                    </div>
+
+                                    <strong id="ua-employee-distribution">—</strong>
+
+                                </div>
+
+
+                                <div class="ua-portal-item">
+
+                                    <div class="ua-portal-icon admin">
+                                        ♛
+                                    </div>
+
+                                    <div class="ua-portal-details">
+                                        <strong>Super Admin Portal</strong>
+                                        <span>Authorized administrators</span>
+                                    </div>
+
+                                    <strong id="ua-admin-distribution">—</strong>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- VERIFICATION SUMMARY -->
+
+                        <article class="ua-card">
+
+                            <div class="ua-card-heading">
+
+                                <div>
+                                    <h3>Identity Verification Status</h3>
+
+                                    <p>
+                                        Verification workload across
+                                        both user-facing portals.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="ua-verification-summary">
+
+                                <div class="ua-verification-stat">
+
+                                    <span class="ua-verification-dot pending"></span>
+
+                                    <span>Pending Review</span>
+
+                                    <strong id="ua-verification-pending">—</strong>
+
+                                </div>
+
+
+                                <div class="ua-verification-stat">
+
+                                    <span class="ua-verification-dot verified"></span>
+
+                                    <span>Verified</span>
+
+                                    <strong id="ua-verification-approved">—</strong>
+
+                                </div>
+
+
+                                <div class="ua-verification-stat">
+
+                                    <span class="ua-verification-dot rejected"></span>
+
+                                    <span>Rejected</span>
+
+                                    <strong id="ua-verification-rejected">—</strong>
+
+                                </div>
+
+
+                                <div class="ua-verification-stat">
+
+                                    <span class="ua-verification-dot review"></span>
+
+                                    <span>Under Investigation</span>
+
+                                    <strong id="ua-verification-investigation">—</strong>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- SECURITY OVERVIEW -->
+
+                    <div class="ua-overview-grid">
+
+                        <article class="ua-card">
+
+                            <div class="ua-card-heading">
+
+                                <div>
+                                    <h3>Recent Security Events</h3>
+
+                                    <p>
+                                        Account-related security activity.
+                                    </p>
+                                </div>
+
+                                <button class="ua-text-button" data-open-view="security">
+                                    View all →
+                                </button>
+
+                            </div>
+
+
+                            <div class="ua-event-list" id="ua-overview-security-events">
+
+                                <div class="ua-empty-state">
+                                    <span class="ua-empty-icon">◈</span>
+
+                                    <strong>No security events loaded</strong>
+
+                                    <p>
+                                        Security activity will appear here
+                                        when the backend is connected.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="ua-card">
+
+                            <div class="ua-card-heading">
+
+                                <div>
+                                    <h3>Recent Administrative Activity</h3>
+
+                                    <p>
+                                        Recorded identity-management
+                                        operations.
+                                    </p>
+                                </div>
+
+                                <button class="ua-text-button" data-open-view="audit">
+                                    View history →
+                                </button>
+
+                            </div>
+
+
+                            <div class="ua-event-list" id="ua-overview-audit-events">
+
+                                <div class="ua-empty-state">
+                                    <span class="ua-empty-icon">▤</span>
+
+                                    <strong>No administrative activity loaded</strong>
+
+                                    <p>
+                                        Verified audit records will
+                                        appear here.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- ADMINISTRATOR POLICY -->
+
+                    <article class="ua-card ua-policy-card">
+
+                        <div class="ua-card-heading">
+
+                            <div>
+                                <h3>Super Admin Authority & Security Policy</h3>
+
+                                <p>
+                                    Central administrative authority
+                                    governing the three connected portals.
+                                </p>
+                            </div>
+
+                            <span class="ua-policy-badge">FULL AUTHORITY</span>
+
+                        </div>
+
+
+                        <div class="ua-policy-grid">
+
+                            <div>
+                                <strong>Authorized Administrators</strong>
+                                <span>10 authorized Super Admins</span>
+                            </div>
+
+                            <div>
+                                <strong>Administrative Permissions</strong>
+                                <span>Equal full platform-wide authority</span>
+                            </div>
+
+                            <div>
+                                <strong>Super Admin MFA</strong>
+                                <span>Not required by the approved policy</span>
+                            </div>
+
+                            <div>
+                                <strong>Employer & Employee MFA</strong>
+                                <span>Configurable security requirements</span>
+                            </div>
+
+                            <div>
+                                <strong>Administrative Accountability</strong>
+                                <span>Privileged actions recorded in audit history</span>
+                            </div>
+
+                            <div>
+                                <strong>Sensitive Record Access</strong>
+                                <span>Access logging and oversight enabled</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                 VIEW 2: ACCOUNT DIRECTORY
+            =================================================== -->
+
+                <section class="ua-view" id="ua-view-directory" hidden>
+
+
+                    <div class="ua-section-heading">
+
+                        <div>
+                            <h2>Central Account Directory</h2>
+
+                            <p>
+                                Search, review and manage every
+                                registered platform identity.
+                            </p>
+                        </div>
+
+                        <button class="ua-button ua-button-primary" id="ua-directory-create">
+                            + New Account
+                        </button>
+
+                    </div>
+
+
+                    <!-- ACCOUNT FILTERS -->
+
+                    <article class="ua-card">
+
+                        <form id="ua-filter-form">
+
+                            <div class="ua-filter-grid">
+
+                                <div class="ua-field ua-search-field">
+
+                                    <label for="ua-search">
+                                        Search Accounts
+                                    </label>
+
+                                    <input type="search" id="ua-search" name="search"
+                                        placeholder="Name, email, ID or reference...">
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-account-type-filter">
+                                        Account Type
+                                    </label>
+
+                                    <select id="ua-account-type-filter" name="type">
+
+                                        <option value="">All account types</option>
+
+                                        <option value="employer">Employer</option>
+
+                                        <option value="employee">Employee</option>
+
+                                        <option value="super_admin">Super Admin</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-account-status-filter">
+                                        Account Status
+                                    </label>
+
+                                    <select id="ua-account-status-filter" name="status">
+
+                                        <option value="">All statuses</option>
+
+                                        <option value="active">Active</option>
+
+                                        <option value="pending">Pending</option>
+
+                                        <option value="suspended">Suspended</option>
+
+                                        <option value="locked">Locked</option>
+
+                                        <option value="inactive">Inactive</option>
+
+                                        <option value="archived">Archived</option>
+
+                                        <option value="deactivated">Deactivated</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-verification-filter">
+                                        Verification
+                                    </label>
+
+                                    <select id="ua-verification-filter" name="verification">
+
+                                        <option value="">All verification statuses</option>
+
+                                        <option value="verified">Verified</option>
+
+                                        <option value="pending">Pending</option>
+
+                                        <option value="rejected">Rejected</option>
+
+                                        <option value="under_review">Under Review</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-country-filter">
+                                        Country
+                                    </label>
+
+                                    <select id="ua-country-filter" name="country">
+
+                                        <option value="">All countries</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="ua-field ua-filter-actions">
+
+                                    <label>&nbsp;</label>
+
+                                    <button type="submit" class="ua-button ua-button-primary">
+                                        Search
+                                    </button>
+
+                                    <button type="button" class="ua-button ua-button-secondary" id="ua-reset-filters">
+                                        Reset
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+
+                    <!-- BULK ACTIONS -->
+
+                    <div class="ua-bulk-toolbar" id="ua-bulk-toolbar" hidden>
+
+                        <div>
+                            <strong id="ua-selection-count">0 selected</strong>
+                            <span>Selected account records</span>
+                        </div>
+
+
+                        <div class="ua-bulk-actions">
+
+                            <button class="ua-button ua-button-warning" id="ua-bulk-suspend">
+                                Suspend Selected
+                            </button>
+
+                            <button class="ua-button ua-button-secondary" id="ua-bulk-reactivate">
+                                Reactivate Selected
+                            </button>
+
+                            <button class="ua-button ua-button-secondary" id="ua-bulk-revoke-sessions">
+                                Revoke Sessions
+                            </button>
+
+                            <button class="ua-button ua-button-secondary" id="ua-bulk-clear">
+                                Clear Selection
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACCOUNT TABLE -->
+
+                    <article class="ua-card ua-table-card">
+
+                        <div class="ua-card-heading">
+
+                            <div>
+                                <h3>Registered Platform Accounts</h3>
+
+                                <p>
+                                    Employer, employee and Super Admin identities.
+                                </p>
+                            </div>
+
+                            <button class="ua-button ua-button-secondary" id="ua-export-accounts">
+                                ↓ Export CSV
+                            </button>
+
+                        </div>
+
+
+                        <div class="ua-table-wrapper">
+
+                            <table class="ua-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            <input type="checkbox" id="ua-select-all"
+                                                aria-label="Select all visible accounts">
+                                        </th>
+
+                                        <th>Account</th>
+
+                                        <th>Reference</th>
+
+                                        <th>Account Type</th>
+
+                                        <th>Country</th>
+
+                                        <th>Verification</th>
+
+                                        <th>Status</th>
+
+                                        <th>Registration Date</th>
+
+                                        <th>Actions</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="ua-account-table-body">
+
+                                    <tr>
+                                        <td colspan="9" class="ua-table-empty">
+                                            Account records will appear here when connected to the live platform
+                                            database.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="ua-pagination" id="ua-directory-pagination">
+
+                            <span id="ua-directory-count">
+                                No account records loaded
+                            </span>
+
+                            <div class="ua-pagination-controls">
+
+                                <button type="button" id="ua-directory-prev" disabled>
+                                    ← Previous
+                                </button>
+
+                                <span id="ua-directory-page">—</span>
+
+                                <button type="button" id="ua-directory-next" disabled>
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                 VIEW 3: IDENTITY VERIFICATION
+            =================================================== -->
+
+                <section class="ua-view" id="ua-view-verification" hidden>
+
+
+                    <div class="ua-section-heading">
+
+                        <div>
+                            <h2>Identity & Business Verification</h2>
+
+                            <p>
+                                Review identity documents, business
+                                registration evidence and verification decisions.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ua-verification-cards">
+
+                        <article class="ua-small-stat">
+                            <span>Pending Verification</span>
+                            <strong id="ua-ver-pending-count">—</strong>
+                        </article>
+
+                        <article class="ua-small-stat">
+                            <span>Verified Accounts</span>
+                            <strong id="ua-ver-approved-count">—</strong>
+                        </article>
+
+                        <article class="ua-small-stat">
+                            <span>Rejected Applications</span>
+                            <strong id="ua-ver-rejected-count">—</strong>
+                        </article>
+
+                        <article class="ua-small-stat">
+                            <span>Under Investigation</span>
+                            <strong id="ua-ver-review-count">—</strong>
+                        </article>
+
+                    </div>
+
+
+                    <article class="ua-card ua-table-card">
+
+                        <div class="ua-card-heading">
+
+                            <div>
+                                <h3>Verification Queue</h3>
+
+                                <p>
+                                    Review submitted identity and
+                                    business verification records.
+                                </p>
+                            </div>
+
+                            <button class="ua-button ua-button-secondary" id="ua-refresh-verification">
+                                ↻ Refresh Queue
+                            </button>
+
+                        </div>
+
+
+                        <div class="ua-filter-inline">
+
+                            <select id="ua-verification-type-filter">
+
+                                <option value="">All verification types</option>
+
+                                <option value="identity">Individual Identity</option>
+
+                                <option value="business">Business Verification</option>
+
+                                <option value="professional">Professional Credentials</option>
+
+                            </select>
+
+
+                            <select id="ua-verification-status-filter">
+
+                                <option value="">All statuses</option>
+
+                                <option value="pending">Pending</option>
+
+                                <option value="under_review">Under Review</option>
+
+                                <option value="verified">Verified</option>
+
+                                <option value="rejected">Rejected</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="ua-table-wrapper">
+
+                            <table class="ua-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Applicant</th>
+
+                                        <th>Account Type</th>
+
+                                        <th>Verification Type</th>
+
+                                        <th>Country</th>
+
+                                        <th>Submitted</th>
+
+                                        <th>Status</th>
+
+                                        <th>Reviewer</th>
+
+                                        <th>Actions</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="ua-verification-body">
+
+                                    <tr>
+
+                                        <td colspan="8" class="ua-table-empty">
+                                            No verification records loaded.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- DOCUMENT SECURITY -->
+
+                    <article class="ua-card ua-document-notice">
+
+                        <div class="ua-document-notice-icon">
+                            ◈
+                        </div>
+
+                        <div>
+
+                            <strong>Protected Identity Documents</strong>
+
+                            <p>
+                                Identity documents, business registration
+                                certificates and supporting evidence must
+                                be accessed through secure document services.
+                                Each sensitive-document access must be recorded
+                                in the administrative audit history.
+                            </p>
+
+                            <a href="legacy/evidence.html">
+                                Open Evidence Management →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                 VIEW 4: DEVICES & SESSIONS
+            =================================================== -->
+
+                <section class="ua-view" id="ua-view-sessions" hidden>
+
+
+                    <div class="ua-section-heading">
+
+                        <div>
+                            <h2>Devices, Login Locations & Sessions</h2>
+
+                            <p>
+                                Monitor authenticated devices, active
+                                sessions, IP addresses and account access.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <article class="ua-card ua-security-summary">
+
+                        <div>
+
+                            <span>Active Sessions</span>
+
+                            <strong id="ua-session-active-count">—</strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>Distinct Devices</span>
+
+                            <strong id="ua-session-device-count">—</strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>Flagged Sessions</span>
+
+                            <strong id="ua-session-flagged-count">—</strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>Revoked Sessions</span>
+
+                            <strong id="ua-session-revoked-count">—</strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="ua-card ua-table-card">
+
+                        <div class="ua-card-heading">
+
+                            <div>
+                                <h3>Platform Device Sessions</h3>
+
+                                <p>
+                                    Cross-portal session monitoring
+                                    and administrative control.
+                                </p>
+                            </div>
+
+                            <button class="ua-button ua-button-secondary" id="ua-refresh-sessions">
+                                ↻ Refresh
+                            </button>
+
+                        </div>
+
+
+                        <div class="ua-filter-inline">
+
+                            <input type="search" id="ua-session-search" placeholder="Search account, IP or device...">
+
+
+                            <select id="ua-session-status-filter">
+
+                                <option value="">All sessions</option>
+
+                                <option value="active">Active</option>
+
+                                <option value="flagged">Flagged</option>
+
+                                <option value="revoked">Revoked</option>
+
+                                <option value="expired">Expired</option>
+
+                            </select>
+
+
+                            <select id="ua-session-portal-filter">
+
+                                <option value="">All portals</option>
+
+                                <option value="employer">Employer</option>
+
+                                <option value="employee">Employee</option>
+
+                                <option value="super_admin">Super Admin</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="ua-table-wrapper">
+
+                            <table class="ua-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Account</th>
+
+                                        <th>Portal</th>
+
+                                        <th>Device</th>
+
+                                        <th>IP Address</th>
+
+                                        <th>Login Location</th>
+
+                                        <th>Last Activity</th>
+
+                                        <th>Session Status</th>
+
+                                        <th>Actions</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="ua-session-body">
+
+                                    <tr>
+
+                                        <td colspan="8" class="ua-table-empty">
+                                            No live session records loaded.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="ua-card ua-session-warning">
+
+                        <strong>Global Session Revocation</strong>
+
+                        <p>
+                            Authorized Super Admins can revoke sessions
+                            for individual accounts or multiple selected
+                            accounts across all connected portals.
+                            Revocation must be enforced by the authentication
+                            service, not merely by hiding sessions in this interface.
+                        </p>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                 VIEW 5: SECURITY & ACCESS
+            =================================================== -->
+
+                <section class="ua-view" id="ua-view-security" hidden>
+
+
+                    <div class="ua-section-heading">
+
+                        <div>
+                            <h2>Security & Access Management</h2>
+
+                            <p>
+                                Investigate suspicious access, account
+                                takeover indicators and authentication events.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- SECURITY CARDS -->
+
+                    <div class="ua-security-cards">
+
+                        <article class="ua-security-card">
+
+                            <span class="ua-security-card-icon red">
+                                ⚠
+                            </span>
+
+                            <div>
+                                <span>Unresolved Security Incidents</span>
+                                <strong id="ua-unresolved-incidents">—</strong>
+                            </div>
+
+                        </article>
+
+
+                        <article class="ua-security-card">
+
+                            <span class="ua-security-card-icon orange">
+                                ◉
+                            </span>
+
+                            <div>
+                                <span>Failed Login Attempts</span>
+                                <strong id="ua-failed-logins">—</strong>
+                            </div>
+
+                        </article>
+
+
+                        <article class="ua-security-card">
+
+                            <span class="ua-security-card-icon purple">
+                                ⌁
+                            </span>
+
+                            <div>
+                                <span>Suspicious Locations</span>
+                                <strong id="ua-suspicious-locations">—</strong>
+                            </div>
+
+                        </article>
+
+
+                        <article class="ua-security-card">
+
+                            <span class="ua-security-card-icon cyan">
+                                ◈
+                            </span>
+
+                            <div>
+                                <span>Unauthorized Access Attempts</span>
+                                <strong id="ua-unauthorized-attempts">—</strong>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- SECURITY POLICY -->
+
+                    <article class="ua-card">
+
+                        <div class="ua-card-heading">
+
+                            <div>
+                                <h3>Authentication & Access Policy</h3>
+
+                                <p>
+                                    Current administrative security requirements.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ua-access-policy-grid">
+
+                            <div class="ua-access-policy-item">
+
+                                <div>
+                                    <strong>Super Admin Authentication</strong>
+
+                                    <span>
+                                        MFA not required for the 10 authorized administrators.
+                                    </span>
+                                </div>
+
+                                <span class="ua-status-pill ua-status-approved">
+                                    Approved Policy
+                                </span>
+
+                            </div>
+
+
+                            <div class="ua-access-policy-item">
+
+                                <div>
+                                    <strong>Employer MFA</strong>
+
+                                    <span>
+                                        Configurable authentication requirement.
+                                    </span>
+                                </div>
+
+                                <span class="ua-status-pill ua-status-configurable">
+                                    Configurable
+                                </span>
+
+                            </div>
+
+
+                            <div class="ua-access-policy-item">
+
+                                <div>
+                                    <strong>Employee MFA</strong>
+
+                                    <span>
+                                        Configurable authentication requirement.
+                                    </span>
+                                </div>
+
+                                <span class="ua-status-pill ua-status-configurable">
+                                    Configurable
+                                </span>
+
+                            </div>
+
+
+                            <div class="ua-access-policy-item">
+
+                                <div>
+                                    <strong>Session Management</strong>
+
+                                    <span>
+                                        Session expiry, device tracking and remote revocation.
+                                    </span>
+                                </div>
+
+                                <span class="ua-status-pill ua-status-approved">
+                                    Required
+                                </span>
+
+                            </div>
+
+
+                            <div class="ua-access-policy-item">
+
+                                <div>
+                                    <strong>Suspicious Login Detection</strong>
+
+                                    <span>
+                                        Detect unusual access patterns and login activity.
+                                    </span>
+                                </div>
+
+                                <span class="ua-status-pill ua-status-approved">
+                                    Required
+                                </span>
+
+                            </div>
+
+
+                            <div class="ua-access-policy-item">
+
+                                <div>
+                                    <strong>Administrative Audit Logging</strong>
+
+                                    <span>
+                                        Record privileged actions and sensitive record access.
+                                    </span>
+                                </div>
+
+                                <span class="ua-status-pill ua-status-approved">
+                                    Required
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SECURITY INCIDENT TABLE -->
+
+                    <article class="ua-card ua-table-card">
+
+                        <div class="ua-card-heading">
+
+                            <div>
+                                <h3>Security Incident Register</h3>
+
+                                <p>
+                                    Suspicious activity and access
+                                    incidents across the three portals.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ua-filter-inline">
+
+                            <select id="ua-security-severity-filter">
+
+                                <option value="">All severity levels</option>
+
+                                <option value="critical">Critical</option>
+
+                                <option value="high">High</option>
+
+                                <option value="medium">Medium</option>
+
+                                <option value="low">Low</option>
+
+                            </select>
+
+
+                            <select id="ua-security-status-filter">
+
+                                <option value="">All incident statuses</option>
+
+                                <option value="open">Open</option>
+
+                                <option value="investigating">Investigating</option>
+
+                                <option value="resolved">Resolved</option>
+
+                                <option value="closed">Closed</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="ua-table-wrapper">
+
+                            <table class="ua-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Incident Reference</th>
+
+                                        <th>Account</th>
+
+                                        <th>Event Type</th>
+
+                                        <th>Severity</th>
+
+                                        <th>IP / Location</th>
+
+                                        <th>Detected</th>
+
+                                        <th>Status</th>
+
+                                        <th>Actions</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="ua-security-body">
+
+                                    <tr>
+
+                                        <td colspan="8" class="ua-table-empty">
+                                            No security incidents loaded.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                 VIEW 6: AUDIT HISTORY
+            =================================================== -->
+
+                <section class="ua-view" id="ua-view-audit" hidden>
+
+
+                    <div class="ua-section-heading">
+
+                        <div>
+                            <h2>Administrative Audit History</h2>
+
+                            <p>
+                                Complete accountability records for
+                                identity management and privileged operations.
+                            </p>
+                        </div>
+
+                        <button class="ua-button ua-button-secondary" id="ua-export-audit">
+                            ↓ Export Audit Records
+                        </button>
+
+                    </div>
+
+
+                    <article class="ua-card ua-audit-notice">
+
+                        <div class="ua-audit-icon">
+                            ◈
+                        </div>
+
+                        <div>
+
+                            <strong>Protected Administrative Audit Trail</strong>
+
+                            <p>
+                                Administrative records are read-only in this
+                                interface. Audit entries must preserve
+                                administrator identity, action, affected
+                                account, timestamp, reason and available
+                                before-and-after state information.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- AUDIT FILTERS -->
+
+                    <article class="ua-card">
+
+                        <form id="ua-audit-filter-form">
+
+                            <div class="ua-filter-grid">
+
+                                <div class="ua-field">
+
+                                    <label for="ua-audit-search">
+                                        Search
+                                    </label>
+
+                                    <input type="search" id="ua-audit-search" name="search"
+                                        placeholder="Administrator, account or reference...">
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-audit-action">
+                                        Action Type
+                                    </label>
+
+                                    <select id="ua-audit-action" name="action">
+
+                                        <option value="">All actions</option>
+
+                                        <option value="create">Account Created</option>
+
+                                        <option value="update">Account Updated</option>
+
+                                        <option value="verify">Account Verified</option>
+
+                                        <option value="suspend">Account Suspended</option>
+
+                                        <option value="reactivate">Account Reactivated</option>
+
+                                        <option value="lock">Account Locked</option>
+
+                                        <option value="unlock">Account Unlocked</option>
+
+                                        <option value="session_revoke">Session Revoked</option>
+
+                                        <option value="archive">Account Archived</option>
+
+                                        <option value="delete_request">Deletion Requested</option>
+
+                                        <option value="sensitive_access">Sensitive Record Access</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-audit-admin">
+                                        Administrator
+                                    </label>
+
+                                    <select id="ua-audit-admin" name="administrator">
+
+                                        <option value="">All administrators</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-audit-from">
+                                        From
+                                    </label>
+
+                                    <input type="date" id="ua-audit-from" name="from">
+
+                                </div>
+
+
+                                <div class="ua-field">
+
+                                    <label for="ua-audit-to">
+                                        To
+                                    </label>
+
+                                    <input type="date" id="ua-audit-to" name="to">
+
+                                </div>
+
+
+                                <div class="ua-field ua-filter-actions">
+
+                                    <label>&nbsp;</label>
+
+                                    <button type="submit" class="ua-button ua-button-primary">
+                                        Apply Filters
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+
+                    <!-- AUDIT TABLE -->
+
+                    <article class="ua-card ua-table-card">
+
+                        <div class="ua-card-heading">
+
+                            <div>
+                                <h3>Administrative Activity Records</h3>
+
+                                <p>
+                                    Searchable records of actions performed
+                                    by the 10 authorized Super Admins.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ua-table-wrapper">
+
+                            <table class="ua-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Date & Time</th>
+
+                                        <th>Administrator</th>
+
+                                        <th>Action</th>
+
+                                        <th>Affected Account</th>
+
+                                        <th>Account Type</th>
+
+                                        <th>Reason</th>
+
+                                        <th>Reference</th>
+
+                                        <th>Details</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="ua-audit-body">
+
+                                    <tr>
+
+                                        <td colspan="8" class="ua-table-empty">
+                                            No administrative audit records loaded.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="ua-pagination">
+
+                            <span id="ua-audit-count">
+                                No audit records loaded
+                            </span>
+
+                            <div class="ua-pagination-controls">
+
+                                <button type="button" id="ua-audit-prev" disabled>
+                                    ← Previous
+                                </button>
+
+                                <span id="ua-audit-page">—</span>
+
+                                <button type="button" id="ua-audit-next" disabled>
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                 FOOTER
+            =================================================== -->
+
+                <footer class="ua-footer">
+
+                    <div>
+                        <strong>TALVORA</strong>
+                        <span>Connecting Human Capability to Global Opportunity.</span>
+                    </div>
+
+                    <div>
+                        GSES SYSTEM 001 · SUPER ADMINISTRATION
+                    </div>
+
+                </footer>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ======================================================
+     ACCOUNT CREATION / EDIT MODAL
+======================================================= -->
+
+    <div class="ua-modal" id="ua-editor-modal" hidden>
+
+        <div class="ua-modal-backdrop" data-close-editor></div>
+
+
+        <section class="ua-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ua-editor-title">
+
+            <header class="ua-modal-header">
+
+                <div>
+
+                    <span class="ua-eyebrow">CENTRAL IDENTITY MANAGEMENT</span>
+
+                    <h2 id="ua-editor-title">Create Platform Account</h2>
+
+                    <p>
+                        Register or update a platform identity.
+                    </p>
+
+                </div>
+
+                <button type="button" class="ua-modal-close" data-close-editor aria-label="Close">
+                    ×
+                </button>
+
+            </header>
+
+
+            <form id="ua-account-form">
+
+                <input type="hidden" id="ua-account-reference" name="reference">
+
+
+                <div class="ua-form-grid">
+
+
+                    <div class="ua-field">
+
+                        <label for="ua-account-type">
+                            Account Type *
+                        </label>
+
+                        <select id="ua-account-type" name="type" required>
+
+                            <option value="">Select account type</option>
+
+                            <option value="employer">Employer</option>
+
+                            <option value="employee">Employee</option>
+
+                            <option value="super_admin">Super Admin</option>
+
+                        </select>
+
+                        <small>
+                            Super Admin provisioning must respect the
+                            authorized ten-account administrator cohort.
+                        </small>
+
+                    </div>
+
+
+                    <div class="ua-field">
+
+                        <label for="ua-account-name">
+                            Full Name / Organization Name *
+                        </label>
+
+                        <input type="text" id="ua-account-name" name="name" required maxlength="180"
+                            placeholder="Enter registered name">
+
+                    </div>
+
+
+                    <div class="ua-field">
+
+                        <label for="ua-account-email">
+                            Email Address *
+                        </label>
+
+                        <input type="email" id="ua-account-email" name="email" required maxlength="254"
+                            placeholder="Enter account email">
+
+                    </div>
+
+
+                    <div class="ua-field">
+
+                        <label for="ua-account-phone">
+                            Phone Number
+                        </label>
+
+                        <input type="tel" id="ua-account-phone" name="phone" maxlength="40"
+                            placeholder="Include international dialing code">
+
+                    </div>
+
+
+                    <div class="ua-field">
+
+                        <label for="ua-account-country">
+                            Country
+                        </label>
+
+                        <select id="ua-account-country" name="country">
+
+                            <option value="">Select country</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="ua-field">
+
+                        <label for="ua-account-status">
+                            Initial Account Status
+                        </label>
+
+                        <select id="ua-account-status" name="status">
+
+                            <option value="pending">Pending</option>
+
+                            <option value="active">Active</option>
+
+                            <option value="inactive">Inactive</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="ua-field ua-full-field">
+
+                        <label for="ua-account-notes">
+                            Administrative Notes
+                        </label>
+
+                        <textarea id="ua-account-notes" name="notes" rows="4" maxlength="2000"
+                            placeholder="Enter relevant administrative notes..."></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="ua-form-warning">
+
+                    Account creation does not automatically establish
+                    identity verification. Verification and activation
+                    must follow the appropriate platform workflow.
+
+                </div>
+
+
+                <div class="ua-modal-actions">
+
+                    <button type="button" class="ua-button ua-button-secondary" data-close-editor>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="ua-button ua-button-primary" id="ua-editor-submit">
+                        Create Account
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- ======================================================
+     ACCOUNT DETAILS MODAL
+======================================================= -->
+
+    <div class="ua-modal" id="ua-account-modal" hidden>
+
+        <div class="ua-modal-backdrop" data-close-account></div>
+
+
+        <section class="ua-modal-dialog ua-account-dialog" role="dialog" aria-modal="true"
+            aria-labelledby="ua-account-modal-title">
+
+
+            <header class="ua-modal-header">
+
+                <div>
+
+                    <span class="ua-eyebrow">PLATFORM IDENTITY RECORD</span>
+
+                    <h2 id="ua-account-modal-title">Account Details</h2>
+
+                    <p id="ua-account-modal-reference">
+                        Account reference unavailable
+                    </p>
+
+                </div>
+
+                <button type="button" class="ua-modal-close" data-close-account aria-label="Close">
+                    ×
+                </button>
+
+            </header>
+
+
+            <div id="ua-account-details" class="ua-account-details">
+
+                <div class="ua-empty-state">
+                    Account information will appear when a record is selected.
+                </div>
+
+            </div>
+
+
+            <div class="ua-account-modal-actions" id="ua-account-action-bar">
+
+                <button class="ua-button ua-button-secondary" type="button" data-close-account>
+                    Close
+                </button>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+    <!-- ======================================================
+     ADMINISTRATIVE ACTION MODAL
+======================================================= -->
+
+    <div class="ua-modal" id="ua-action-modal" hidden>
+
+        <div class="ua-modal-backdrop" data-close-action></div>
+
+
+        <section class="ua-modal-dialog ua-action-dialog" role="dialog" aria-modal="true"
+            aria-labelledby="ua-action-title">
+
+
+            <header class="ua-modal-header">
+
+                <div>
+
+                    <span class="ua-eyebrow">PRIVILEGED ADMINISTRATIVE OPERATION</span>
+
+                    <h2 id="ua-action-title">Confirm Administrative Action</h2>
+
+                    <p id="ua-action-description">
+                        Review the action before proceeding.
+                    </p>
+
+                </div>
+
+                <button type="button" class="ua-modal-close" data-close-action aria-label="Close">
+                    ×
+                </button>
+
+            </header>
+
+
+            <form id="ua-action-form">
+
+                <input type="hidden" id="ua-action-reference" name="reference">
+
+                <input type="hidden" id="ua-action-type" name="action">
+
+                <input type="hidden" id="ua-action-account-type" name="accountType">
+
+
+                <div class="ua-action-summary">
+
+                    <span>Selected Account</span>
+
+                    <strong id="ua-action-account-name">—</strong>
+
+                </div>
+
+
+                <div class="ua-field">
+
+                    <label for="ua-action-reason">
+                        Administrative Reason *
+                    </label>
+
+                    <textarea id="ua-action-reason" name="reason" rows="4" minlength="5" maxlength="2000" required
+                        placeholder="Explain the reason for this administrative operation..."></textarea>
+
+                    <small>
+                        This reason will be included in the administrative audit record.
+                    </small>
+
+                </div>
+
+
+                <div class="ua-action-warning" id="ua-action-warning">
+                    This operation may affect account access across connected portals.
+                </div>
+
+
+                <div class="ua-modal-actions">
+
+                    <button type="button" class="ua-button ua-button-secondary" data-close-action>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="ua-button ua-button-danger" id="ua-action-confirm">
+                        Confirm Action
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- ======================================================
+     NOTIFICATION DRAWER
+======================================================= -->
+
+    <div class="ua-notification-drawer" id="ua-notification-drawer" hidden>
+
+        <div class="ua-drawer-header">
+
+            <div>
+                <h3>Notifications</h3>
+                <p>Identity and security alerts</p>
+            </div>
+
+            <button type="button" id="ua-notification-close" aria-label="Close notifications">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="ua-notification-content" id="ua-notification-content">
+
+            <div class="ua-empty-state">
+                No notifications loaded.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+     TOAST NOTIFICATIONS
+======================================================= -->
+
+    <div class="ua-toast-region" id="ua-toast-region" aria-live="polite" aria-atomic="true"></div>
+
+
+</body>
+
+</html>

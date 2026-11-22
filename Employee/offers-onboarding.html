@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<title>Offers & Onboarding | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link active" href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Offers & Onboarding</div><div class="topbar-sub">Review employment offers and complete onboarding actions</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">EMPLOYMENT TRANSITION</span><h1>Offers & Onboarding</h1><p>Review employment offers, understand key terms and track onboarding tasks when you move into a new employment relationship.</p></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Offers received</div><div class="kpi-value" id="offerTotal">—</div></div>
+ <div class="kpi"><div class="kpi-label">Awaiting decision</div><div class="kpi-value" id="offerPending">—</div></div>
+ <div class="kpi"><div class="kpi-label">Accepted</div><div class="kpi-value" id="offerAccepted">—</div></div>
+ <div class="kpi"><div class="kpi-label">Onboarding tasks open</div><div class="kpi-value" id="tasksOpen">—</div></div>
+</div>
+<div class="grid grid-2">
+ <section class="panel">
+  <div class="panel-head"><div><h2>Employment offers</h2><p>Review the employer's formal offer and response deadline.</p></div></div>
+  <div id="offersList" class="card-list"><div class="empty-state">Loading offers…</div></div>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Onboarding checklist</h2><p>Tasks linked to an accepted employment relationship.</p></div></div>
+  <div id="onboardingList"><div class="empty-state">Loading onboarding tasks…</div></div>
+ </section>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Before you accept an offer</h2><p>Make an informed decision and retain a copy of your final agreement.</p></div></div>
+ <div class="notice warning">Review the complete contract, compensation, working hours, benefits, location, probation terms, notice requirements and applicable local employment conditions. TALVORA's offer summary is not a substitute for the official agreement or independent advice.</div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="offerDialog"><div class="modal-head"><h2>Review employment offer</h2><button class="modal-close" data-close-dialog="offerDialog">×</button></div><div class="modal-body" id="offerDetail"></div><div class="modal-foot" id="offerActions"></div></dialog>
+
+<script src="employee.js"></script>
+<script src="offers-onboarding.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

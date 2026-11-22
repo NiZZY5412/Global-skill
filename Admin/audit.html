@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111a35">
+    <title>TALVORA | Global Audit & Administrator Activity</title>
+    <link rel="stylesheet" href="audit.css">
+    <script src="audit.js" defer></script>
+</head>
+
+<body>
+
+    <div class="audit-layout">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <small>SUPER ADMINISTRATION</small>
+                </div>
+            </div>
+
+            <div class="side-label">AUDIT GOVERNANCE</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Audit Overview</a>
+                <a href="#activity" class="nav-link" data-section="activity">▤ Administrator Activity</a>
+                <a href="#permissions" class="nav-link" data-section="permissions">♙ Permission Changes</a>
+                <a href="#sensitive" class="nav-link" data-section="sensitive">⚠ Sensitive Operations</a>
+                <a href="#authentication" class="nav-link" data-section="authentication">⌑ Authentication History</a>
+                <a href="#investigations" class="nav-link" data-section="investigations">⌕ Audit Investigations</a>
+                <a href="#exports" class="nav-link" data-section="exports">⇩ Audit Exports</a>
+            </nav>
+
+            <div class="side-label">ADMINISTRATION</div>
+
+            <nav>
+                <a href="index.html" class="nav-link">← Super Admin Dashboard</a>
+                <a href="security.html" class="nav-link">Security Operations</a>
+                <a href="compliance.html" class="nav-link">Global Compliance</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Audit Authority</small>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div class="topbar-title">
+                    <button class="menu-toggle" id="menuToggle">☰</button>
+                    <div>
+                        <small>TALVORA / SUPER ADMIN / GOVERNANCE</small>
+                        <h1>Global Audit & Administrator Activity Centre</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span class="connection-status" id="connectionStatus">
+                        <i></i> Connecting
+                    </span>
+                    <button class="primary-button" id="refreshAudit">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="audit-banner">
+                <strong>GLOBAL AUDIT CONTROL</strong>
+                <span id="bannerMessage">Loading administrator activity records...</span>
+            </div>
+
+            <!-- OVERVIEW -->
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL ADMINISTRATIVE ACCOUNTABILITY</span>
+                        <h2>Audit overview</h2>
+                        <p>Centralized tracking of administrative actions across TALVORA.</p>
+                    </div>
+                    <button class="secondary-button" id="exportOverview">↓ Export audit report</button>
+                </div>
+
+                <div class="metrics-grid">
+                    <article class="metric-card">
+                        <span>Total audit events</span>
+                        <strong id="totalEvents">—</strong>
+                        <small>Recorded administrative actions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active administrators</span>
+                        <strong id="activeAdmins">—</strong>
+                        <small>Administrators with activity</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Permission changes</span>
+                        <strong id="permissionChanges">—</strong>
+                        <small>Recorded access modifications</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Sensitive operations</span>
+                        <strong id="sensitiveOperations">—</strong>
+                        <small>Protected administrative actions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Security flags</span>
+                        <strong id="securityFlags">—</strong>
+                        <small>Flagged administrative events</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Open investigations</span>
+                        <strong id="openInvestigations">—</strong>
+                        <small>Audit cases requiring review</small>
+                    </article>
+                </div>
+
+                <div class="audit-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Administrative activity trends</h3>
+                                <p>Recorded actions over the reporting period.</p>
+                            </div>
+                            <select id="trendPeriod">
+                                <option value="7d">7 days</option>
+                                <option value="30d" selected>30 days</option>
+                                <option value="90d">90 days</option>
+                            </select>
+                        </div>
+                        <div id="activityChart" class="chart-area">
+                            Activity information will appear here.
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Action distribution</h3>
+                                <p>Administrative events by action category.</p>
+                            </div>
+                        </div>
+                        <div id="actionBreakdown" class="breakdown-list">
+                            Action information will appear here.
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Latest administrator activity</h3>
+                            <p>Most recently recorded administrative actions.</p>
+                        </div>
+                        <button class="text-button" data-navigate="activity">View all →</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Administrator</th>
+                                    <th>Action</th>
+                                    <th>Module</th>
+                                    <th>IP Address</th>
+                                    <th>Timestamp</th>
+                                    <th>Outcome</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentActivity"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ACTIVITY -->
+            <section class="content-section" id="activity">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ADMINISTRATOR ACCOUNTABILITY</span>
+                        <h2>Administrator activity</h2>
+                        <p>Review all recorded administrator actions across the platform.</p>
+                    </div>
+                    <button class="secondary-button" id="exportActivity">↓ Export activity</button>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input id="activitySearch" type="search"
+                            placeholder="Search administrator, action or event ID...">
+
+                        <select id="activityAdmin">
+                            <option value="">All administrators</option>
+                        </select>
+
+                        <select id="activityModule">
+                            <option value="">All modules</option>
+                            <option value="employees">Employees</option>
+                            <option value="employers">Employers</option>
+                            <option value="finance">Finance</option>
+                            <option value="monetization">Monetization</option>
+                            <option value="identity">Identity management</option>
+                            <option value="configuration">Platform configuration</option>
+                            <option value="analytics">Analytics</option>
+                            <option value="risk">Risk management</option>
+                            <option value="disputes">Disputes</option>
+                            <option value="support">Support</option>
+                            <option value="security">Security</option>
+                            <option value="compliance">Compliance</option>
+                        </select>
+
+                        <select id="activityOutcome">
+                            <option value="">All outcomes</option>
+                            <option value="success">Successful</option>
+                            <option value="failed">Failed</option>
+                            <option value="denied">Denied</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="date-filters">
+                        <label>From <input type="date" id="activityFrom"></label>
+                        <label>To <input type="date" id="activityTo"></label>
+                        <button class="secondary-button" id="applyActivityFilters">Apply</button>
+                        <button class="secondary-button" id="resetActivityFilters">Reset</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Administrator</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                    <th>Module</th>
+                                    <th>IP Address</th>
+                                    <th>Timestamp</th>
+                                    <th>Outcome</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTable"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="activityCount">No records</span>
+                        <div>
+                            <button class="secondary-button" id="activityPrev" disabled>Previous</button>
+                            <span id="activityPage">Page 1</span>
+                            <button class="secondary-button" id="activityNext" disabled>Next</button>
+                        </div>
+                    </div>
+
+                </article>
+            </section>
+
+            <!-- PERMISSIONS -->
+            <section class="content-section" id="permissions">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ACCESS GOVERNANCE</span>
+                        <h2>Permission changes</h2>
+                        <p>Track role assignments, permission modifications and administrator access changes.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="permissionSearch" type="search" placeholder="Search administrator or permission...">
+                        <select id="permissionType">
+                            <option value="">All change types</option>
+                            <option value="role_assigned">Role assigned</option>
+                            <option value="role_removed">Role removed</option>
+                            <option value="permission_granted">Permission granted</option>
+                            <option value="permission_revoked">Permission revoked</option>
+                            <option value="access_scope_changed">Access scope changed</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Change ID</th>
+                                    <th>Administrator</th>
+                                    <th>Changed by</th>
+                                    <th>Previous access</th>
+                                    <th>New access</th>
+                                    <th>Change type</th>
+                                    <th>Timestamp</th>
+                                    <th>Approval</th>
+                                </tr>
+                            </thead>
+                            <tbody id="permissionsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- SENSITIVE OPERATIONS -->
+            <section class="content-section" id="sensitive">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">PROTECTED OPERATIONS</span>
+                        <h2>Sensitive operations</h2>
+                        <p>Monitor high-impact administrative actions and their authorization records.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card"><span>High-impact actions</span><strong id="highImpact">—</strong>
+                    </article>
+                    <article class="metric-card"><span>Approval required</span><strong id="approvalRequired">—</strong>
+                    </article>
+                    <article class="metric-card"><span>Flagged actions</span><strong id="flaggedActions">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="sensitiveSearch" type="search" placeholder="Search sensitive operations...">
+                        <select id="sensitiveStatus">
+                            <option value="">All states</option>
+                            <option value="approved">Approved</option>
+                            <option value="pending_approval">Pending approval</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="flagged">Flagged</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Administrator</th>
+                                    <th>Operation</th>
+                                    <th>Module</th>
+                                    <th>Approval authority</th>
+                                    <th>Timestamp</th>
+                                    <th>State</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="sensitiveTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- AUTHENTICATION -->
+            <section class="content-section" id="authentication">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">IDENTITY ACTIVITY HISTORY</span>
+                        <h2>Authentication history</h2>
+                        <p>Review administrator login, logout and authentication events.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="authSearch" type="search" placeholder="Search administrator or IP address...">
+                        <select id="authEvent">
+                            <option value="">All authentication events</option>
+                            <option value="login">Login</option>
+                            <option value="logout">Logout</option>
+                            <option value="failed_login">Failed login</option>
+                            <option value="session_expired">Session expired</option>
+                            <option value="access_denied">Access denied</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Administrator</th>
+                                    <th>Event</th>
+                                    <th>IP Address</th>
+                                    <th>Device</th>
+                                    <th>Location</th>
+                                    <th>Timestamp</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody id="authenticationTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- INVESTIGATIONS -->
+            <section class="content-section" id="investigations">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">AUDIT CASE MANAGEMENT</span>
+                        <h2>Audit investigations</h2>
+                        <p>Review suspicious administrator actions and maintain investigation records.</p>
+                    </div>
+                    <button class="primary-button" id="createInvestigation">+ Open investigation</button>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Subject</th>
+                                    <th>Related event</th>
+                                    <th>Investigator</th>
+                                    <th>Priority</th>
+                                    <th>Opened</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="investigationsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- EXPORTS -->
+            <section class="content-section" id="exports">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">AUDIT REPORTING</span>
+                        <h2>Audit exports</h2>
+                        <p>Generate controlled audit reports and review export history.</p>
+                    </div>
+                </div>
+
+                <div class="export-grid">
+
+                    <article class="export-card">
+                        <span class="export-icon">▤</span>
+                        <h3>Full audit report</h3>
+                        <p>Generate a report of administrative activity within a selected period.</p>
+                        <button class="primary-button" data-export="full_audit">Generate report</button>
+                    </article>
+
+                    <article class="export-card">
+                        <span class="export-icon">♙</span>
+                        <h3>Administrator activity</h3>
+                        <p>Export actions recorded against administrator accounts.</p>
+                        <button class="secondary-button" data-export="administrator_activity">Generate report</button>
+                    </article>
+
+                    <article class="export-card">
+                        <span class="export-icon">⚙</span>
+                        <h3>Permission changes</h3>
+                        <p>Export access, role and permission modification history.</p>
+                        <button class="secondary-button" data-export="permission_changes">Generate report</button>
+                    </article>
+
+                    <article class="export-card">
+                        <span class="export-icon">⚠</span>
+                        <h3>Sensitive operations</h3>
+                        <p>Export protected and high-impact administrative operations.</p>
+                        <button class="secondary-button" data-export="sensitive_operations">Generate report</button>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Report generation history</h3>
+                            <p>Previously generated audit reports.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Report type</th>
+                                    <th>Requested by</th>
+                                    <th>Generated</th>
+                                    <th>Format</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="exportsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <footer>
+                <span>© TALVORA Global Workforce Platform</span>
+                <span>Global Audit & Administrator Activity Centre</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- AUDIT EVENT DETAIL -->
+    <div class="modal-overlay" id="eventModal" hidden>
+        <div class="modal modal-large">
+            <div class="modal-header">
+                <div>
+                    <small>AUDIT EVENT RECORD</small>
+                    <h2 id="eventTitle">Event details</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+            <div id="eventDetails" class="event-details"></div>
+        </div>
+    </div>
+
+    <!-- INVESTIGATION MODAL -->
+    <div class="modal-overlay" id="investigationModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>AUDIT CASE MANAGEMENT</small>
+                    <h2>Open audit investigation</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="investigationForm">
+                <label>Investigation subject *
+                    <input name="title" required>
+                </label>
+
+                <label>Related audit event ID
+                    <input name="eventId">
+                </label>
+
+                <label>Investigation priority *
+                    <select name="priority" required>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </label>
+
+                <label>Assigned investigator ID
+                    <input name="investigatorId">
+                </label>
+
+                <label>Investigation description *
+                    <textarea name="description" rows="4" required></textarea>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Create investigation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+</body>
+
+</html>

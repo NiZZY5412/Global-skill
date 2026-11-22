@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#060638">
+    <meta name="description" content="TALVORA Global Privacy, Consent and Data Protection Management">
+    <title>Privacy, Consent & Data Protection | TALVORA GLOBAL</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="consents.css">
+
+    <script src="consents.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+       AUTHORIZATION SCREEN
+       ===================================================== -->
+
+    <section id="consents-locked" class="privacy-locked">
+        <div class="privacy-locked-card">
+            <img src="../../talvora-logo.png" alt="TALVORA">
+
+            <div class="privacy-lock-icon">◆</div>
+
+            <h1>TALVORA GLOBAL</h1>
+
+            <h2>Privacy & Data Protection</h2>
+
+            <p id="consents-access-message">
+                Verifying Super Admin authorization...
+            </p>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+       APPLICATION
+       ===================================================== -->
+
+    <div id="consents-app" class="app-shell" hidden>
+
+
+        <!-- SIDEBAR -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <img src="../../talvora-logo.png" alt="TALVORA Logo">
+
+                <div>
+                    <h2>TALVORA</h2>
+                    <span>GLOBAL · GSES 001</span>
+                </div>
+
+                <button type="button" id="close-sidebar" class="sidebar-close" aria-label="Close navigation">×</button>
+
+            </div>
+
+
+            <div class="sidebar-section-label">
+                SUPER ADMINISTRATION
+            </div>
+
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+
+                <a href="../index.html" class="nav-link">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="employees.html" class="nav-link">
+                    <span>♙</span> Employees
+                </a>
+
+                <a href="employers.html" class="nav-link">
+                    <span>♧</span> Employers
+                </a>
+
+                <a href="jobs.html" class="nav-link">
+                    <span>▤</span> Jobs & Opportunities
+                </a>
+
+                <a href="applications.html" class="nav-link">
+                    <span>▣</span> Applications
+                </a>
+
+                <a href="assessments.html" class="nav-link">
+                    <span>◇</span> Assessments
+                </a>
+
+                <a href="matching.html" class="nav-link">
+                    <span>⇄</span> Matching
+                </a>
+
+                <a href="finance.html" class="nav-link">
+                    <span>¤</span> Finance
+                </a>
+
+                <a href="evidence.html" class="nav-link">
+                    <span>▧</span> Evidence Management
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <span>▥</span> Reports & Analytics
+                </a>
+
+                <a href="disputes.html" class="nav-link">
+                    <span>⚖</span> Disputes & Appeals
+                </a>
+
+                <a href="consents.html" class="nav-link active" aria-current="page">
+                    <span>⬡</span> Privacy & Protection
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <span class="sidebar-security-indicator"></span>
+
+                <div>
+                    <strong>SECURE ADMIN ENVIRONMENT</strong>
+                    <small>Restricted Access</small>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden></div>
+
+
+        <!-- =================================================
+         MAIN CONTENT
+         ================================================= -->
+
+        <main class="main-content">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button type="button" id="menu-toggle" class="menu-toggle" aria-label="Open navigation"
+                        aria-expanded="false">☰</button>
+
+                    <div class="breadcrumb">
+                        <span>Super Admin</span>
+                        <span>/</span>
+                        <strong>Privacy & Data Protection</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="connection-status">
+                        <span class="connection-dot"></span>
+                        <span id="consents-system-status">
+                            Verifying connection...
+                        </span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+
+            <div class="privacy-page">
+
+
+                <!-- PAGE HEADING -->
+
+                <section class="page-header privacy-heading">
+
+                    <div>
+
+                        <div class="privacy-eyebrow">
+                            GOVERNANCE · RISK · COMPLIANCE
+                        </div>
+
+                        <h1>Privacy, Consent & Data Protection</h1>
+
+                        <p>
+                            Centralized oversight of personal data, user permissions,
+                            privacy requests, information sharing, retention and
+                            data protection obligations across TALVORA GLOBAL.
+                        </p>
+
+                    </div>
+
+
+                    <div class="privacy-heading-actions">
+
+                        <button type="button" id="consents-refresh" class="btn btn-secondary">
+                            ↻ Refresh
+                        </button>
+
+                        <button type="button" id="consents-export" class="btn btn-primary">
+                            ↓ Export Report
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SYSTEM NOTICE -->
+
+                <div id="consents-notice" class="privacy-notice" role="status" aria-live="polite">
+                    Initializing privacy management services...
+                </div>
+
+
+                <!-- =============================================
+             SUMMARY METRICS
+             ============================================= -->
+
+                <section class="privacy-stats" aria-label="Privacy performance indicators">
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Total Consent Records</span>
+                            <span class="privacy-stat-icon">◈</span>
+                        </div>
+
+                        <strong id="metric-consents-total">—</strong>
+
+                        <small>Registered consent events</small>
+
+                    </article>
+
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Active Consents</span>
+                            <span class="privacy-stat-icon">✓</span>
+                        </div>
+
+                        <strong id="metric-consents-active">—</strong>
+
+                        <small>Currently active records</small>
+
+                    </article>
+
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Withdrawn Consents</span>
+                            <span class="privacy-stat-icon">↶</span>
+                        </div>
+
+                        <strong id="metric-consents-withdrawn">—</strong>
+
+                        <small>Recorded withdrawal events</small>
+
+                    </article>
+
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Open Privacy Requests</span>
+                            <span class="privacy-stat-icon">▤</span>
+                        </div>
+
+                        <strong id="metric-requests-open">—</strong>
+
+                        <small>Outstanding data subject requests</small>
+
+                    </article>
+
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Overdue Requests</span>
+                            <span class="privacy-stat-icon">!</span>
+                        </div>
+
+                        <strong id="metric-requests-overdue">—</strong>
+
+                        <small>Requests requiring attention</small>
+
+                    </article>
+
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Open Incidents</span>
+                            <span class="privacy-stat-icon">⚑</span>
+                        </div>
+
+                        <strong id="metric-incidents-open">—</strong>
+
+                        <small>Unclosed privacy incidents</small>
+
+                    </article>
+
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Retention Reviews Due</span>
+                            <span class="privacy-stat-icon">◷</span>
+                        </div>
+
+                        <strong id="metric-retention-due">—</strong>
+
+                        <small>Records requiring review</small>
+
+                    </article>
+
+
+                    <article class="privacy-stat-card">
+
+                        <div class="privacy-stat-heading">
+                            <span>Active Data Sharing</span>
+                            <span class="privacy-stat-icon">⇄</span>
+                        </div>
+
+                        <strong id="metric-sharing-active">—</strong>
+
+                        <small>Approved active sharing arrangements</small>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             MODULE NAVIGATION
+             ============================================= -->
+
+                <nav class="privacy-module-nav" aria-label="Privacy management sections" role="tablist">
+
+                    <button type="button" class="privacy-module-tab active" data-panel-target="overview" role="tab"
+                        aria-selected="true">Overview</button>
+
+                    <button type="button" class="privacy-module-tab" data-panel-target="consents" role="tab"
+                        aria-selected="false">Consent Register</button>
+
+                    <button type="button" class="privacy-module-tab" data-panel-target="requests" role="tab"
+                        aria-selected="false">Data Subject Requests</button>
+
+                    <button type="button" class="privacy-module-tab" data-panel-target="incidents" role="tab"
+                        aria-selected="false">Privacy Incidents</button>
+
+                    <button type="button" class="privacy-module-tab" data-panel-target="sharing" role="tab"
+                        aria-selected="false">Data Sharing</button>
+
+                    <button type="button" class="privacy-module-tab" data-panel-target="retention" role="tab"
+                        aria-selected="false">Retention</button>
+
+                    <button type="button" class="privacy-module-tab" data-panel-target="processing" role="tab"
+                        aria-selected="false">Processing Register</button>
+
+                    <button type="button" class="privacy-module-tab" data-panel-target="activity" role="tab"
+                        aria-selected="false">Audit Trail</button>
+
+                </nav>
+
+
+                <!-- =============================================
+             01. OVERVIEW
+             ============================================= -->
+
+                <section id="privacy-panel-overview" class="privacy-panel active" role="tabpanel">
+
+                    <div class="privacy-overview-grid">
+
+
+                        <!-- CONSENT DISTRIBUTION -->
+
+                        <article class="card privacy-card">
+
+                            <div class="privacy-card-header">
+
+                                <div>
+                                    <h3>Consent Distribution</h3>
+                                    <p>Registered consent categories</p>
+                                </div>
+
+                                <span class="privacy-data-label">
+                                    LIVE DATA
+                                </span>
+
+                            </div>
+
+                            <div id="privacy-category-list" class="privacy-category-list">
+                                <div class="privacy-empty-inline">
+                                    Waiting for consent statistics...
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <!-- COMPLIANCE INDICATORS -->
+
+                        <article class="card privacy-card">
+
+                            <div class="privacy-card-header">
+
+                                <div>
+                                    <h3>Compliance Overview</h3>
+                                    <p>Server-calculated governance indicators</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="privacy-performance-grid">
+
+                                <div>
+                                    <span>Request Fulfilment Rate</span>
+                                    <strong id="privacy-fulfilment-rate">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Incident Closure Rate</span>
+                                    <strong id="privacy-incident-closure-rate">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Consent Verification Rate</span>
+                                    <strong id="privacy-verification-rate">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Overdue Obligations</span>
+                                    <strong id="privacy-overdue-obligations">—</strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="privacy-performance-footer">
+
+                                <span>Last calculated</span>
+
+                                <strong id="privacy-performance-updated">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- PRIORITY QUEUES -->
+
+                    <div class="privacy-overview-grid">
+
+
+                        <article class="card privacy-card">
+
+                            <div class="privacy-card-header">
+
+                                <div>
+                                    <h3>Outstanding Privacy Requests</h3>
+                                    <p>Requests requiring administrative attention</p>
+                                </div>
+
+                                <button type="button" class="privacy-text-button" data-open-panel="requests">
+                                    View All →
+                                </button>
+
+                            </div>
+
+
+                            <div class="table-container">
+
+                                <table class="privacy-compact-table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Reference</th>
+                                            <th>Request Type</th>
+                                            <th>Status</th>
+                                            <th>Deadline</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="privacy-overview-requests-body">
+
+                                        <tr>
+                                            <td colspan="4" class="privacy-loading-cell">
+                                                Loading privacy requests...
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card privacy-card">
+
+                            <div class="privacy-card-header">
+
+                                <div>
+                                    <h3>Recent Privacy Incidents</h3>
+                                    <p>Incident oversight and investigation</p>
+                                </div>
+
+                                <button type="button" class="privacy-text-button" data-open-panel="incidents">
+                                    View All →
+                                </button>
+
+                            </div>
+
+
+                            <div class="table-container">
+
+                                <table class="privacy-compact-table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Reference</th>
+                                            <th>Severity</th>
+                                            <th>Status</th>
+                                            <th>Reported</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="privacy-overview-incidents-body">
+
+                                        <tr>
+                                            <td colspan="4" class="privacy-loading-cell">
+                                                Loading incident information...
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- GOVERNANCE GUIDANCE -->
+
+                    <article class="card privacy-guidance">
+
+                        <div class="privacy-guidance-icon">◆</div>
+
+                        <div>
+
+                            <h3>Privacy Governance Principles</h3>
+
+                            <p>
+                                All personal information processing must have a documented
+                                purpose and an applicable lawful basis. Consent must be
+                                specific, informed, freely given where consent is relied
+                                upon, and capable of withdrawal. Data subject requests,
+                                security incidents, data-sharing arrangements and retention
+                                decisions must be documented and auditable.
+                            </p>
+
+                            <p>
+                                Administrative access does not automatically authorize
+                                unrestricted access to personal information. Apply
+                                least-privilege permissions, identity verification,
+                                confidentiality safeguards and appropriate review procedures.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             02. CONSENT REGISTER
+             ============================================= -->
+
+                <section id="privacy-panel-consents" class="privacy-panel" role="tabpanel" hidden>
+
+                    <article class="card privacy-directory">
+
+                        <div class="privacy-card-header">
+
+                            <div>
+                                <h2>Consent Register</h2>
+                                <p>
+                                    Track consent events, permissions, purpose limitations,
+                                    versions and withdrawals.
+                                </p>
+                            </div>
+
+                            <span id="privacy-consent-count" class="privacy-count">
+                                Records unavailable
+                            </span>
+
+                        </div>
+
+
+                        <form id="privacy-consent-filter-form" class="privacy-filters">
+
+                            <div class="privacy-filter-field privacy-search-field">
+
+                                <label for="privacy-consent-search">
+                                    Search
+                                </label>
+
+                                <input id="privacy-consent-search" type="search"
+                                    placeholder="Reference, subject or purpose...">
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-consent-status">
+                                    Status
+                                </label>
+
+                                <select id="privacy-consent-status">
+
+                                    <option value="">All statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="withdrawn">Withdrawn</option>
+                                    <option value="expired">Expired</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="superseded">Superseded</option>
+                                    <option value="invalid">Invalid</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-consent-party">
+                                    User Type
+                                </label>
+
+                                <select id="privacy-consent-party">
+
+                                    <option value="">All users</option>
+                                    <option value="employee">Employee</option>
+                                    <option value="employer">Employer</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-consent-purpose">
+                                    Purpose
+                                </label>
+
+                                <select id="privacy-consent-purpose">
+
+                                    <option value="">All purposes</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="analytics">Analytics</option>
+                                    <option value="matching">Matching</option>
+                                    <option value="communications">Communications</option>
+                                    <option value="sharing">Data Sharing</option>
+                                    <option value="other">Other</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Apply
+                            </button>
+
+                            <button type="button" id="privacy-consent-clear" class="btn btn-secondary">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-container">
+
+                            <table class="privacy-main-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Consent Reference</th>
+                                        <th>Subject</th>
+                                        <th>User Type</th>
+                                        <th>Purpose</th>
+                                        <th>Legal Basis</th>
+                                        <th>Version</th>
+                                        <th>Status</th>
+                                        <th>Recorded</th>
+                                        <th>Expiry</th>
+                                        <th>Source</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-consent-body">
+
+                                    <tr>
+                                        <td colspan="11" class="privacy-loading-cell">
+                                            Loading consent register...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="privacy-pagination">
+
+                            <span id="privacy-consent-page-info">
+                                Loading...
+                            </span>
+
+                            <div class="privacy-pagination-actions">
+
+                                <button type="button" id="privacy-consent-prev" class="btn btn-secondary" disabled>
+                                    ← Previous
+                                </button>
+
+                                <button type="button" id="privacy-consent-next" class="btn btn-secondary" disabled>
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             03. DATA SUBJECT REQUESTS
+             ============================================= -->
+
+                <section id="privacy-panel-requests" class="privacy-panel" role="tabpanel" hidden>
+
+                    <article class="card privacy-directory">
+
+                        <div class="privacy-card-header">
+
+                            <div>
+                                <h2>Data Subject Rights & Requests</h2>
+                                <p>
+                                    Manage verified requests relating to personal information.
+                                </p>
+                            </div>
+
+                            <span id="privacy-request-count" class="privacy-count">
+                                Records unavailable
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-rights-grid">
+
+                            <div>
+                                <strong>Access</strong>
+                                <span>Obtain a copy of personal data.</span>
+                            </div>
+
+                            <div>
+                                <strong>Rectification</strong>
+                                <span>Request correction of inaccurate data.</span>
+                            </div>
+
+                            <div>
+                                <strong>Erasure</strong>
+                                <span>Request deletion where applicable.</span>
+                            </div>
+
+                            <div>
+                                <strong>Portability</strong>
+                                <span>Request eligible transferable data.</span>
+                            </div>
+
+                            <div>
+                                <strong>Objection</strong>
+                                <span>Object to applicable processing.</span>
+                            </div>
+
+                            <div>
+                                <strong>Restriction</strong>
+                                <span>Request restriction of processing.</span>
+                            </div>
+
+                        </div>
+
+
+                        <form id="privacy-request-filter-form" class="privacy-filters">
+
+                            <div class="privacy-filter-field privacy-search-field">
+
+                                <label for="privacy-request-search">
+                                    Search
+                                </label>
+
+                                <input id="privacy-request-search" type="search"
+                                    placeholder="Request or subject reference...">
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-request-status">
+                                    Status
+                                </label>
+
+                                <select id="privacy-request-status">
+
+                                    <option value="">All statuses</option>
+                                    <option value="submitted">Submitted</option>
+                                    <option value="verification_pending">Verification Pending</option>
+                                    <option value="verified">Verified</option>
+                                    <option value="under_review">Under Review</option>
+                                    <option value="awaiting_information">Awaiting Information</option>
+                                    <option value="in_progress">In Progress</option>
+                                    <option value="fulfilled">Fulfilled</option>
+                                    <option value="partially_fulfilled">Partially Fulfilled</option>
+                                    <option value="rejected">Rejected</option>
+                                    <option value="closed">Closed</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-request-type">
+                                    Request Type
+                                </label>
+
+                                <select id="privacy-request-type">
+
+                                    <option value="">All request types</option>
+                                    <option value="access">Access</option>
+                                    <option value="rectification">Rectification</option>
+                                    <option value="erasure">Erasure</option>
+                                    <option value="portability">Portability</option>
+                                    <option value="objection">Objection</option>
+                                    <option value="restriction">Restriction</option>
+                                    <option value="withdrawal">Consent Withdrawal</option>
+                                    <option value="other">Other</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Apply
+                            </button>
+
+                            <button type="button" id="privacy-request-clear" class="btn btn-secondary">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-container">
+
+                            <table class="privacy-main-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Request Reference</th>
+                                        <th>Subject Reference</th>
+                                        <th>Request Type</th>
+                                        <th>Identity Verification</th>
+                                        <th>Status</th>
+                                        <th>Assigned Officer</th>
+                                        <th>Submitted</th>
+                                        <th>Due Date</th>
+                                        <th>Priority</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-request-body">
+
+                                    <tr>
+                                        <td colspan="10" class="privacy-loading-cell">
+                                            Loading data subject requests...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="privacy-pagination">
+
+                            <span id="privacy-request-page-info">
+                                Loading...
+                            </span>
+
+                            <div class="privacy-pagination-actions">
+
+                                <button type="button" id="privacy-request-prev" class="btn btn-secondary" disabled>
+                                    ← Previous
+                                </button>
+
+                                <button type="button" id="privacy-request-next" class="btn btn-secondary" disabled>
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             04. PRIVACY INCIDENTS
+             ============================================= -->
+
+                <section id="privacy-panel-incidents" class="privacy-panel" role="tabpanel" hidden>
+
+                    <article class="card privacy-directory">
+
+                        <div class="privacy-card-header">
+
+                            <div>
+                                <h2>Privacy & Data Protection Incidents</h2>
+                                <p>
+                                    Investigate reported personal data breaches,
+                                    unauthorized access and other privacy incidents.
+                                </p>
+                            </div>
+
+                            <span id="privacy-incident-count" class="privacy-count">
+                                Records unavailable
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-incident-warning">
+
+                            <strong>Incident response control</strong>
+
+                            <p>
+                                Incident classification, containment, notification
+                                decisions and closure must be supported by documented
+                                assessments and authorized approvals. Applicable
+                                notification deadlines must be determined from the
+                                governing requirements for each incident.
+                            </p>
+
+                        </div>
+
+
+                        <form id="privacy-incident-filter-form" class="privacy-filters">
+
+                            <div class="privacy-filter-field privacy-search-field">
+
+                                <label for="privacy-incident-search">
+                                    Search
+                                </label>
+
+                                <input id="privacy-incident-search" type="search"
+                                    placeholder="Incident reference or category...">
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-incident-status">
+                                    Status
+                                </label>
+
+                                <select id="privacy-incident-status">
+
+                                    <option value="">All statuses</option>
+                                    <option value="reported">Reported</option>
+                                    <option value="assessing">Assessing</option>
+                                    <option value="investigating">Investigating</option>
+                                    <option value="contained">Contained</option>
+                                    <option value="remediating">Remediating</option>
+                                    <option value="monitoring">Monitoring</option>
+                                    <option value="closed">Closed</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-incident-severity">
+                                    Severity
+                                </label>
+
+                                <select id="privacy-incident-severity">
+
+                                    <option value="">All severities</option>
+                                    <option value="critical">Critical</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Apply
+                            </button>
+
+                            <button type="button" id="privacy-incident-clear" class="btn btn-secondary">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-container">
+
+                            <table class="privacy-main-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Incident Reference</th>
+                                        <th>Incident Type</th>
+                                        <th>Severity</th>
+                                        <th>Status</th>
+                                        <th>Detection Date</th>
+                                        <th>Reported Date</th>
+                                        <th>Records Affected</th>
+                                        <th>Notification Review</th>
+                                        <th>Responsible Officer</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-incident-body">
+
+                                    <tr>
+                                        <td colspan="10" class="privacy-loading-cell">
+                                            Loading privacy incidents...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="privacy-pagination">
+
+                            <span id="privacy-incident-page-info">
+                                Loading...
+                            </span>
+
+                            <div class="privacy-pagination-actions">
+
+                                <button type="button" id="privacy-incident-prev" class="btn btn-secondary" disabled>←
+                                    Previous</button>
+
+                                <button type="button" id="privacy-incident-next" class="btn btn-secondary" disabled>Next
+                                    →</button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             05. DATA SHARING
+             ============================================= -->
+
+                <section id="privacy-panel-sharing" class="privacy-panel" role="tabpanel" hidden>
+
+                    <article class="card privacy-directory">
+
+                        <div class="privacy-card-header">
+
+                            <div>
+                                <h2>Data Sharing & Third-Party Processors</h2>
+                                <p>
+                                    Monitor approved disclosures, processing partners,
+                                    international transfers and contractual safeguards.
+                                </p>
+                            </div>
+
+                            <span id="privacy-sharing-count" class="privacy-count">
+                                Records unavailable
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-incident-warning">
+
+                            <strong>Third-party accountability</strong>
+
+                            <p>
+                                Each arrangement must identify its purpose, data
+                                categories, receiving party, role allocation,
+                                authorization, applicable transfer safeguards and
+                                review requirements.
+                            </p>
+
+                        </div>
+
+
+                        <form id="privacy-sharing-filter-form" class="privacy-filters">
+
+                            <div class="privacy-filter-field privacy-search-field">
+
+                                <label for="privacy-sharing-search">
+                                    Search
+                                </label>
+
+                                <input id="privacy-sharing-search" type="search"
+                                    placeholder="Partner, reference or purpose...">
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-sharing-status">
+                                    Status
+                                </label>
+
+                                <select id="privacy-sharing-status">
+
+                                    <option value="">All statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending_review">Pending Review</option>
+                                    <option value="suspended">Suspended</option>
+                                    <option value="expired">Expired</option>
+                                    <option value="terminated">Terminated</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-sharing-type">
+                                    Arrangement
+                                </label>
+
+                                <select id="privacy-sharing-type">
+
+                                    <option value="">All arrangements</option>
+                                    <option value="processor">Processor</option>
+                                    <option value="controller">Controller</option>
+                                    <option value="joint_controller">Joint Controller</option>
+                                    <option value="recipient">Other Recipient</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Apply
+                            </button>
+
+                            <button type="button" id="privacy-sharing-clear" class="btn btn-secondary">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-container">
+
+                            <table class="privacy-main-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Arrangement Reference</th>
+                                        <th>Recipient / Partner</th>
+                                        <th>Relationship</th>
+                                        <th>Purpose</th>
+                                        <th>Data Categories</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Safeguard Status</th>
+                                        <th>Agreement Status</th>
+                                        <th>Next Review</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-sharing-body">
+
+                                    <tr>
+                                        <td colspan="11" class="privacy-loading-cell">
+                                            Loading data sharing arrangements...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="privacy-pagination">
+
+                            <span id="privacy-sharing-page-info">
+                                Loading...
+                            </span>
+
+                            <div class="privacy-pagination-actions">
+
+                                <button type="button" id="privacy-sharing-prev" class="btn btn-secondary" disabled>←
+                                    Previous</button>
+
+                                <button type="button" id="privacy-sharing-next" class="btn btn-secondary" disabled>Next
+                                    →</button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             06. RETENTION MANAGEMENT
+             ============================================= -->
+
+                <section id="privacy-panel-retention" class="privacy-panel" role="tabpanel" hidden>
+
+                    <article class="card privacy-directory">
+
+                        <div class="privacy-card-header">
+
+                            <div>
+                                <h2>Data Retention & Disposal</h2>
+                                <p>
+                                    Review retention schedules, record expiry,
+                                    deletion eligibility and legal holds.
+                                </p>
+                            </div>
+
+                            <span id="privacy-retention-count" class="privacy-count">
+                                Records unavailable
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-incident-warning">
+
+                            <strong>Retention and deletion safeguards</strong>
+
+                            <p>
+                                Expiry does not automatically authorize deletion.
+                                Records must be checked for applicable legal holds,
+                                regulatory obligations, active disputes, investigations,
+                                contractual requirements and approved retention rules.
+                                Deletion must be authorized and auditable.
+                            </p>
+
+                        </div>
+
+
+                        <form id="privacy-retention-filter-form" class="privacy-filters">
+
+                            <div class="privacy-filter-field privacy-search-field">
+
+                                <label for="privacy-retention-search">
+                                    Search
+                                </label>
+
+                                <input id="privacy-retention-search" type="search"
+                                    placeholder="Record category or schedule...">
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-retention-status">
+                                    Status
+                                </label>
+
+                                <select id="privacy-retention-status">
+
+                                    <option value="">All statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="review_due">Review Due</option>
+                                    <option value="eligible_for_disposal">Eligible for Disposal</option>
+                                    <option value="on_hold">Legal Hold</option>
+                                    <option value="disposed">Disposed</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Apply
+                            </button>
+
+                            <button type="button" id="privacy-retention-clear" class="btn btn-secondary">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-container">
+
+                            <table class="privacy-main-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Schedule Reference</th>
+                                        <th>Record Category</th>
+                                        <th>Responsible Department</th>
+                                        <th>Retention Rule</th>
+                                        <th>Trigger</th>
+                                        <th>Eligible Records</th>
+                                        <th>Legal Holds</th>
+                                        <th>Next Review</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-retention-body">
+
+                                    <tr>
+                                        <td colspan="10" class="privacy-loading-cell">
+                                            Loading retention schedules...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="privacy-pagination">
+
+                            <span id="privacy-retention-page-info">
+                                Loading...
+                            </span>
+
+                            <div class="privacy-pagination-actions">
+
+                                <button type="button" id="privacy-retention-prev" class="btn btn-secondary" disabled>←
+                                    Previous</button>
+
+                                <button type="button" id="privacy-retention-next" class="btn btn-secondary"
+                                    disabled>Next →</button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             07. PROCESSING REGISTER
+             ============================================= -->
+
+                <section id="privacy-panel-processing" class="privacy-panel" role="tabpanel" hidden>
+
+                    <article class="card privacy-directory">
+
+                        <div class="privacy-card-header">
+
+                            <div>
+                                <h2>Personal Data Processing Register</h2>
+                                <p>
+                                    Maintain visibility over personal data processing
+                                    activities across the TALVORA ecosystem.
+                                </p>
+                            </div>
+
+                            <span id="privacy-processing-count" class="privacy-count">
+                                Records unavailable
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-rights-grid">
+
+                            <div>
+                                <strong>Purpose</strong>
+                                <span>Why information is processed.</span>
+                            </div>
+
+                            <div>
+                                <strong>Data Categories</strong>
+                                <span>Types of personal information.</span>
+                            </div>
+
+                            <div>
+                                <strong>Lawful Basis</strong>
+                                <span>Documented basis for processing.</span>
+                            </div>
+
+                            <div>
+                                <strong>Access</strong>
+                                <span>Authorized teams and systems.</span>
+                            </div>
+
+                            <div>
+                                <strong>Transfers</strong>
+                                <span>Recipients and applicable safeguards.</span>
+                            </div>
+
+                            <div>
+                                <strong>Retention</strong>
+                                <span>Storage and disposal arrangements.</span>
+                            </div>
+
+                        </div>
+
+
+                        <form id="privacy-processing-filter-form" class="privacy-filters">
+
+                            <div class="privacy-filter-field privacy-search-field">
+
+                                <label for="privacy-processing-search">
+                                    Search
+                                </label>
+
+                                <input id="privacy-processing-search" type="search"
+                                    placeholder="Activity, department or system...">
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-processing-status">
+                                    Status
+                                </label>
+
+                                <select id="privacy-processing-status">
+
+                                    <option value="">All statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="under_review">Under Review</option>
+                                    <option value="suspended">Suspended</option>
+                                    <option value="retired">Retired</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Apply
+                            </button>
+
+                            <button type="button" id="privacy-processing-clear" class="btn btn-secondary">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-container">
+
+                            <table class="privacy-main-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Activity Reference</th>
+                                        <th>Processing Activity</th>
+                                        <th>Department</th>
+                                        <th>Purpose</th>
+                                        <th>Data Categories</th>
+                                        <th>Lawful Basis</th>
+                                        <th>System</th>
+                                        <th>Risk Assessment</th>
+                                        <th>Review Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-processing-body">
+
+                                    <tr>
+                                        <td colspan="11" class="privacy-loading-cell">
+                                            Loading processing register...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="privacy-pagination">
+
+                            <span id="privacy-processing-page-info">
+                                Loading...
+                            </span>
+
+                            <div class="privacy-pagination-actions">
+
+                                <button type="button" id="privacy-processing-prev" class="btn btn-secondary" disabled>←
+                                    Previous</button>
+
+                                <button type="button" id="privacy-processing-next" class="btn btn-secondary"
+                                    disabled>Next →</button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+             08. PRIVACY AUDIT TRAIL
+             ============================================= -->
+
+                <section id="privacy-panel-activity" class="privacy-panel" role="tabpanel" hidden>
+
+                    <article class="card privacy-directory">
+
+                        <div class="privacy-card-header">
+
+                            <div>
+                                <h2>Privacy & Compliance Audit Trail</h2>
+                                <p>
+                                    Review documented privacy interventions,
+                                    consent events and governance activity.
+                                </p>
+                            </div>
+
+                            <span id="privacy-activity-count" class="privacy-count">
+                                Records unavailable
+                            </span>
+
+                        </div>
+
+
+                        <form id="privacy-activity-filter-form" class="privacy-filters">
+
+                            <div class="privacy-filter-field privacy-search-field">
+
+                                <label for="privacy-activity-search">
+                                    Search
+                                </label>
+
+                                <input id="privacy-activity-search" type="search"
+                                    placeholder="Event, reference or administrator...">
+
+                            </div>
+
+
+                            <div class="privacy-filter-field">
+
+                                <label for="privacy-activity-category">
+                                    Category
+                                </label>
+
+                                <select id="privacy-activity-category">
+
+                                    <option value="">All categories</option>
+                                    <option value="consent">Consent</option>
+                                    <option value="request">Privacy Request</option>
+                                    <option value="incident">Incident</option>
+                                    <option value="sharing">Data Sharing</option>
+                                    <option value="retention">Retention</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="administration">Administration</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Apply
+                            </button>
+
+                            <button type="button" id="privacy-activity-clear" class="btn btn-secondary">
+                                Clear
+                            </button>
+
+                        </form>
+
+
+                        <div class="table-container">
+
+                            <table class="privacy-main-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Event Reference</th>
+                                        <th>Event</th>
+                                        <th>Category</th>
+                                        <th>Related Record</th>
+                                        <th>Administrator / Actor</th>
+                                        <th>Action Details</th>
+                                        <th>Timestamp</th>
+                                        <th>Integrity Reference</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="privacy-activity-body">
+
+                                    <tr>
+                                        <td colspan="8" class="privacy-loading-cell">
+                                            Loading privacy audit history...
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="privacy-pagination">
+
+                            <span id="privacy-activity-page-info">
+                                Loading...
+                            </span>
+
+                            <div class="privacy-pagination-actions">
+
+                                <button type="button" id="privacy-activity-prev" class="btn btn-secondary" disabled>←
+                                    Previous</button>
+
+                                <button type="button" id="privacy-activity-next" class="btn btn-secondary" disabled>Next
+                                    →</button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- FOOTER -->
+
+                <footer class="privacy-footer">
+
+                    <span>
+                        TALVORA TECHNOLOGIES · TALVORA GLOBAL · GSES SYSTEM 001
+                    </span>
+
+                    <span>
+                        PRIVACY · DATA PROTECTION · GOVERNANCE
+                    </span>
+
+                </footer>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+       DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="privacy-detail-overlay" class="privacy-overlay" hidden>
+
+        <aside class="privacy-detail-panel" role="dialog" aria-modal="true" aria-labelledby="privacy-detail-title">
+
+            <header class="privacy-detail-header">
+
+                <div>
+                    <span class="privacy-eyebrow">
+                        PRIVACY RECORD
+                    </span>
+
+                    <h2 id="privacy-detail-title">
+                        Record Details
+                    </h2>
+                </div>
+
+
+                <button type="button" id="privacy-detail-close" class="privacy-detail-close"
+                    aria-label="Close details">×</button>
+
+            </header>
+
+
+            <div id="privacy-detail-content" class="privacy-detail-content"></div>
+
+
+            <footer id="privacy-detail-actions" class="privacy-detail-actions"></footer>
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       CONFIRMATION DIALOG
+       ===================================================== -->
+
+    <div id="privacy-confirm-overlay" class="privacy-confirm-overlay" hidden>
+
+        <section class="privacy-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="privacy-confirm-title">
+
+            <div class="privacy-confirm-icon">
+                !
+            </div>
+
+
+            <h2 id="privacy-confirm-title">
+                Confirm Administrative Action
+            </h2>
+
+
+            <p id="privacy-confirm-description">
+                Review the requested intervention before continuing.
+            </p>
+
+
+            <div id="privacy-assignee-field" class="privacy-dialog-field" hidden>
+
+                <label for="privacy-assignee-select">
+                    Assign Responsible Officer
+                </label>
+
+                <select id="privacy-assignee-select">
+
+                    <option value="">
+                        Select authorized officer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div id="privacy-decision-field" class="privacy-dialog-field" hidden>
+
+                <label for="privacy-decision">
+                    Decision / Administrative Outcome
+                </label>
+
+                <textarea id="privacy-decision" rows="4" placeholder="Document the proposed outcome..."></textarea>
+
+            </div>
+
+
+            <div class="privacy-dialog-field">
+
+                <label for="privacy-action-reason">
+                    Administrative Justification *
+                </label>
+
+                <textarea id="privacy-action-reason" rows="4" required
+                    placeholder="Provide the reason and relevant governance basis..."></textarea>
+
+            </div>
+
+
+            <div class="privacy-confirm-buttons">
+
+                <button type="button" id="privacy-confirm-cancel" class="btn btn-secondary">
+                    Cancel
+                </button>
+
+                <button type="button" id="privacy-confirm-submit" class="btn btn-primary" disabled>
+                    Confirm Action
+                </button>
+
+            </div>
+
+
+            <p class="privacy-dialog-footnote">
+                This intervention will be submitted to the authorized
+                backend for validation and audit recording.
+            </p>
+
+        </section>
+
+    </div>
+
+
+</body>
+
+</html>

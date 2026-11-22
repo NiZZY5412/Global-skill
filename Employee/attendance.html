@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA global employee workforce services and self-service portal.">
+<title>Attendance & Timesheets | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link active" href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Career · Employment · Workforce services</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Attendance & Timesheets</div><div class="topbar-sub">Record working time and review shifts and timesheets</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">WORK TIME MANAGEMENT</span><h1>Attendance, Shifts & Timesheets</h1><p>Record your working sessions, review assigned shifts and submit timesheets for the selected employment relationship.</p></div><div class="heading-actions"><button class="btn" id="refreshAttendance">↻ Refresh</button></div></div>
+<div class="grid grid-2">
+ <section class="clock-card">
+  <div class="clock-state" id="clockState">Attendance status</div>
+  <div class="clock-time" id="clockDisplay">--:--:--</div>
+  <p id="clockDate">Your local date and time</p>
+  <p id="clockContext" style="margin-top:8px">Selected employment context</p>
+  <button class="btn btn-teal" id="clockAction">Clock in</button>
+  <span id="clockHint" style="display:block;font-size:9px;color:#c6dbe8;margin-top:9px">Use this control only for your actual work session. Your employer's attendance policy applies.</span>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Today's shift</h2><p>Your assigned work schedule</p></div><span class="pill info" id="shiftTodayStatus">Scheduled</span></div>
+  <div id="todayShift"><div class="empty-state">Loading shift information…</div></div>
+ </section>
+</div>
+<div class="kpi-grid mt-12">
+ <div class="kpi"><div class="kpi-label">Hours recorded this week</div><div class="kpi-value" id="weekHours">—</div><div class="kpi-foot">From submitted attendance records</div></div>
+ <div class="kpi"><div class="kpi-label">Attendance days</div><div class="kpi-value" id="attendanceDays">—</div><div class="kpi-foot">Recorded days in current view</div></div>
+ <div class="kpi"><div class="kpi-label">Pending timesheets</div><div class="kpi-value" id="pendingTimesheets">—</div><div class="kpi-foot">Draft or returned for correction</div></div>
+ <div class="kpi"><div class="kpi-label">Overtime hours</div><div class="kpi-value" id="overtimeHours">—</div><div class="kpi-foot">As recorded in submitted timesheets</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Assigned shifts</h2><p>Upcoming shifts for your selected employment context.</p></div></div>
+ <div id="shiftList" class="grid grid-3"><div class="empty-state">Loading shifts…</div></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Attendance history</h2><p>Clock-in/out history and recorded working hours.</p></div><input type="month" class="control" id="attendanceMonth" style="max-width:165px"></div>
+ <div class="table-wrap"><table><thead><tr><th>DATE</th><th>CLOCK IN</th><th>CLOCK OUT</th><th>BREAK</th><th>HOURS</th><th>STATUS</th></tr></thead><tbody id="attendanceRows"><tr><td colspan="6" class="empty-state">Loading attendance…</td></tr></tbody></table></div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><h2>Timesheets</h2><p>Review your weekly hours and submit draft timesheets.</p></div></div>
+ <div id="timesheetList" class="card-list"><div class="empty-state">Loading timesheets…</div></div>
+</section>
+</div>
+</main>
+</div>
+
+<script src="employee.js"></script>
+<script src="attendance.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

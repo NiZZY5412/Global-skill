@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <title>Applications & Recruitment | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+    <link rel="stylesheet" href="applications.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body class="applications-page" data-module="applications">
+
+    <div class="employer-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="employer-sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <strong>TALVORA</strong>
+                    <small>EMPLOYER PORTAL</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation">
+
+                <a href="employer-dashboard.html" class="nav-link">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="company-profile.html" class="nav-link">
+                    <span>▤</span> Company Profile
+                </a>
+
+                <a href="locations.html" class="nav-link">
+                    <span>⌖</span> Branches & Locations
+                </a>
+
+                <a href="jobs.html" class="nav-link">
+                    <span>▣</span> Jobs Management
+                </a>
+
+                <a href="applications.html" class="nav-link active">
+                    <span>▥</span> Applications
+                </a>
+
+                <a href="skills-matching.html" class="nav-link">
+                    <span>✧</span> Skills Matching
+                </a>
+
+                <a href="workforce.html" class="nav-link">
+                    <span>♙</span> Workforce
+                </a>
+
+                <a href="analytics-reports.html" class="nav-link">
+                    <span>◫</span> Analytics
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-label">ACCOUNT</div>
+
+                <a href="team-permissions.html" class="nav-link">
+                    <span>♧</span> Team & Permissions
+                </a>
+
+                <a href="disputes-support.html" class="nav-link">
+                    <span>?</span> Support Centre
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="employer-main">
+
+            <!-- TOPBAR -->
+            <header class="employer-topbar">
+
+                <button id="menuToggle" class="icon-button" aria-label="Toggle navigation">
+                    ☰
+                </button>
+
+                <div class="topbar-title">
+                    <h1>Applications & Recruitment</h1>
+                    <p>Candidate management and recruitment operations</p>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <select id="companySwitcher" class="company-switcher" aria-label="Select organization">
+                        <option value="">Loading organizations...</option>
+                    </select>
+
+                    <button id="notificationToggle" class="icon-button" aria-label="Notifications">
+                        ♧
+                    </button>
+
+                    <div id="notificationPanel" class="notification-panel" hidden>
+                        <strong>Recruitment Notifications</strong>
+                        <p>New application notifications will appear here.</p>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+            <section class="module-content">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">TALENT ACQUISITION</span>
+
+                        <h2>Global Applications & Recruitment Centre</h2>
+
+                        <p>
+                            Track applicants, evaluate candidates and
+                            manage recruitment stages across your organization.
+                        </p>
+                    </div>
+
+                    <div class="heading-actions">
+
+                        <a href="jobs.html" class="btn btn-secondary">
+                            View Job Listings
+                        </a>
+
+                        <button class="btn btn-secondary" id="refreshApplicationsButton">
+                            ↻ Refresh
+                        </button>
+
+                        <button class="btn btn-primary" id="exportApplicationsButton">
+                            ↓ Export Report
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONNECTION STATUS -->
+                <div class="connection-banner">
+
+                    <span class="connection-dot"></span>
+
+                    <span id="applicationsConnectionStatus">
+                        Connecting to TALVORA...
+                    </span>
+
+                    <span class="last-updated" id="applicationsLastUpdated">
+                    </span>
+
+                </div>
+
+
+                <!-- RECRUITMENT KPI CARDS -->
+                <div class="applications-kpi-grid">
+
+                    <article class="applications-kpi-card">
+                        <div class="app-kpi-icon navy">▥</div>
+                        <div>
+                            <span>Total Applications</span>
+                            <strong id="totalApplications">0</strong>
+                            <small>All submitted applications</small>
+                        </div>
+                    </article>
+
+                    <article class="applications-kpi-card">
+                        <div class="app-kpi-icon blue">✉</div>
+                        <div>
+                            <span>New Applications</span>
+                            <strong id="newApplications">0</strong>
+                            <small>Awaiting initial screening</small>
+                        </div>
+                    </article>
+
+                    <article class="applications-kpi-card">
+                        <div class="app-kpi-icon teal">✓</div>
+                        <div>
+                            <span>Shortlisted</span>
+                            <strong id="shortlistedApplications">0</strong>
+                            <small>Selected for consideration</small>
+                        </div>
+                    </article>
+
+                    <article class="applications-kpi-card">
+                        <div class="app-kpi-icon purple">◷</div>
+                        <div>
+                            <span>Interviews</span>
+                            <strong id="interviewApplications">0</strong>
+                            <small>Interview stage</small>
+                        </div>
+                    </article>
+
+                    <article class="applications-kpi-card">
+                        <div class="app-kpi-icon orange">▤</div>
+                        <div>
+                            <span>Offers</span>
+                            <strong id="offerApplications">0</strong>
+                            <small>Offer stage</small>
+                        </div>
+                    </article>
+
+                    <article class="applications-kpi-card">
+                        <div class="app-kpi-icon green">♙</div>
+                        <div>
+                            <span>Hired</span>
+                            <strong id="hiredApplications">0</strong>
+                            <small>Successful recruitment</small>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- RECRUITMENT PIPELINE -->
+                <section class="applications-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>Recruitment Pipeline</h3>
+                            <p>Candidate distribution by recruitment stage</p>
+                        </div>
+
+                    </div>
+
+                    <div id="recruitmentPipeline" class="recruitment-pipeline">
+
+                        <div class="pipeline-loading">
+                            Loading recruitment pipeline...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- APPLICATION MANAGEMENT -->
+                <section class="applications-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>Applicant Management</h3>
+                            <p>
+                                Review, screen, shortlist and manage candidates.
+                            </p>
+                        </div>
+
+                        <span id="applicationCountLabel">
+                            0 applications
+                        </span>
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+                    <div class="application-filter-bar">
+
+                        <input type="search" id="applicationSearch" placeholder="Search applicant, email or job..."
+                            aria-label="Search applicants">
+
+                        <select id="applicationStageFilter">
+                            <option value="">All recruitment stages</option>
+                            <option value="new">New</option>
+                            <option value="screening">Screening</option>
+                            <option value="shortlisted">Shortlisted</option>
+                            <option value="interview">Interview</option>
+                            <option value="assessment">Assessment</option>
+                            <option value="offer">Offer</option>
+                            <option value="hired">Hired</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="withdrawn">Withdrawn</option>
+                        </select>
+
+                        <select id="applicationJobFilter">
+                            <option value="">All job listings</option>
+                        </select>
+
+                        <select id="applicationLocationFilter">
+                            <option value="">All locations</option>
+                        </select>
+
+                        <button class="btn btn-secondary" id="clearApplicationFilters">
+                            Clear
+                        </button>
+
+                    </div>
+
+
+                    <!-- APPLICATION TABLE -->
+                    <div class="table-responsive">
+
+                        <table class="applications-table">
+
+                            <thead>
+                                <tr>
+                                    <th>APPLICANT</th>
+                                    <th>JOB APPLIED FOR</th>
+                                    <th>LOCATION</th>
+                                    <th>APPLICATION DATE</th>
+                                    <th>STAGE</th>
+                                    <th>RATING</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="applicationsTableBody">
+
+                                <tr>
+                                    <td colspan="7" class="table-loading">
+                                        Loading applications...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="table-footer">
+
+                        <span id="applicationsTableFooter">
+                            Showing 0 applications
+                        </span>
+
+                        <span id="applicationsFilteredCount">
+                            0 records
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RECENT APPLICATIONS -->
+                <section class="applications-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent Applications</h3>
+                            <p>Latest applications received</p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+
+                        <table class="applications-table">
+
+                            <thead>
+                                <tr>
+                                    <th>APPLICANT</th>
+                                    <th>JOB</th>
+                                    <th>SUBMITTED</th>
+                                    <th>STAGE</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recentApplicationsBody">
+                                <tr>
+                                    <td colspan="4">Loading...</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- APPLICATION REVIEW DIALOG -->
+    <dialog id="applicationDialog" class="applications-dialog">
+
+        <div class="dialog-header">
+
+            <div>
+                <span class="eyebrow">CANDIDATE MANAGEMENT</span>
+                <h2 id="applicationDialogTitle">
+                    Applicant Review
+                </h2>
+            </div>
+
+            <button type="button" class="dialog-close" data-close-dialog="applicationDialog">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="applicationForm">
+
+            <input type="hidden" id="applicationId" name="applicationId">
+
+
+            <!-- CANDIDATE INFORMATION -->
+            <div class="candidate-profile">
+
+                <div class="candidate-avatar" id="candidateAvatar">
+                    ?
+                </div>
+
+                <div>
+                    <h3 id="candidateName">Applicant Name</h3>
+                    <p id="candidateEmail">Applicant email</p>
+                    <p id="candidatePhone">Applicant phone</p>
+                </div>
+
+            </div>
+
+
+            <div class="application-detail-grid">
+
+                <div class="detail-box">
+                    <span>JOB APPLIED FOR</span>
+                    <strong id="candidateJob">—</strong>
+                </div>
+
+                <div class="detail-box">
+                    <span>WORK LOCATION</span>
+                    <strong id="candidateLocation">—</strong>
+                </div>
+
+                <div class="detail-box">
+                    <span>APPLICATION DATE</span>
+                    <strong id="candidateAppliedAt">—</strong>
+                </div>
+
+                <div class="detail-box">
+                    <span>APPLICATION REFERENCE</span>
+                    <strong id="candidateReference">—</strong>
+                </div>
+
+            </div>
+
+
+            <div class="resume-section">
+
+                <strong>Supporting Documents</strong>
+
+                <a id="candidateResumeLink" href="#" target="_blank" rel="noopener noreferrer" hidden>
+                    View CV / Resume ↗
+                </a>
+
+                <span id="candidateResumeUnavailable">
+                    No accessible resume link provided.
+                </span>
+
+            </div>
+
+
+            <!-- RECRUITMENT REVIEW -->
+            <div class="form-section">
+
+                <h3>Recruitment Evaluation</h3>
+
+                <label class="form-field">
+                    Recruitment Stage *
+
+                    <select name="stage" id="applicationStage" required>
+
+                        <option value="new">New</option>
+                        <option value="screening">Screening</option>
+                        <option value="shortlisted">Shortlisted</option>
+                        <option value="interview">Interview</option>
+                        <option value="assessment">Assessment</option>
+                        <option value="offer">Offer</option>
+                        <option value="hired">Hired</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="withdrawn">Withdrawn</option>
+
+                    </select>
+
+                </label>
+
+
+                <label class="form-field">
+                    Candidate Rating
+
+                    <select name="rating" id="applicationRating">
+
+                        <option value="">Not rated</option>
+                        <option value="1">1 - Low suitability</option>
+                        <option value="2">2 - Below expectations</option>
+                        <option value="3">3 - Meets expectations</option>
+                        <option value="4">4 - Strong candidate</option>
+                        <option value="5">5 - Excellent candidate</option>
+
+                    </select>
+
+                </label>
+
+
+                <label class="form-field">
+                    Internal Recruitment Notes
+
+                    <textarea name="internalNotes" id="applicationNotes" rows="5"
+                        placeholder="Record screening observations, candidate strengths and recruitment decisions..."></textarea>
+
+                </label>
+
+                <p class="form-help">
+                    Internal notes should only be accessible to authorized
+                    recruitment personnel.
+                </p>
+
+            </div>
+
+
+            <div class="dialog-actions">
+
+                <button type="button" class="btn btn-secondary" data-close-dialog="applicationDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="saveApplicationButton">
+                    Save Evaluation
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- NOTIFICATIONS -->
+    <div id="toastRegion" class="toast-region" aria-live="polite">
+    </div>
+
+
+    <script src="../Admin/talvora-admin-config.js" defer></script>
+    <script src="employer.js" defer></script>
+    <script src="applications.js" defer></script>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>TALVORA | Global Reconciliation & Settlement Centre</title>
+    <link rel="stylesheet" href="talvora-admin.css">
+    <script defer src="talvora-admin-config.js"></script>
+    <script defer src="reconciliation.js"></script>
+</head>
+
+<body>
+    <div class="app">
+
+        <aside class="sidebar" id="sidebar">
+            <a class="brand" href="#">
+                <span class="brand-icon">T</span>
+                <span><strong>TALVORA</strong><small>GLOBAL SUPER ADMIN</small></span>
+            </a>
+
+            <div class="side-context"><i></i> FINANCIAL RECONCILIATION</div>
+            <div class="nav-label">SETTLEMENT OPERATIONS</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Overview</a>
+                <a href="#runs" class="nav-link" data-section="runs">↻ Reconciliation Runs</a>
+                <a href="#transactions" class="nav-link" data-section="transactions">▤ Transactions</a>
+                <a href="#settlements" class="nav-link" data-section="settlements">⇄ Settlement Batches</a>
+                <a href="#statements" class="nav-link" data-section="statements">▥ Bank Statements</a>
+                <a href="#integrations" class="nav-link" data-section="integrations">◎ Payment Providers</a>
+                <a href="#exceptions" class="nav-link" data-section="exceptions">⚠ Exceptions</a>
+                <a href="#fees" class="nav-link" data-section="fees">◇ Fees & FX</a>
+                <a href="#ledger" class="nav-link" data-section="ledger">▣ General Ledger</a>
+                <a href="#reports" class="nav-link" data-section="reports">▦ Financial Reports</a>
+                <a href="#audit" class="nav-link" data-section="audit">▧ Audit Trail</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="environment-card">
+                    <i></i>
+                    <span><strong>Settlement Environment</strong><small>Global financial operations</small></span>
+                </div>
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <span><strong>Super Administrator</strong><small>Financial Operations Authority</small></span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-button" id="menuToggle">☰</button>
+                    <div>
+                        <small>SUPER ADMIN / FINANCIAL OPERATIONS</small>
+                        <h1>Reconciliation & Settlement</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span class="connection" id="apiStatus"><i></i> Connecting</span>
+                    <span class="environment" id="environmentLabel">GLOBAL</span>
+                    <button class="btn btn-secondary" id="refreshAll">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="notice">
+                <span>⇄</span>
+                <div>
+                    <strong>Global Financial Reconciliation Command Centre</strong>
+                    <p>Centralized reconciliation of financial transactions, bank statements, payment gateway
+                        settlements, provider fees, foreign exchange and accounting records.</p>
+                </div>
+            </div>
+
+            <!-- 01 OVERVIEW -->
+
+            <section class="section active" id="overview">
+
+                <div class="heading">
+                    <div>
+                        <small>GLOBAL FINANCIAL INTELLIGENCE</small>
+                        <h2>Reconciliation Overview</h2>
+                        <p>Monitor financial matching, settlement performance, outstanding balances and reconciliation
+                            exceptions.</p>
+                    </div>
+                    <button class="btn btn-primary" data-open="runModal">+ Start Reconciliation</button>
+                </div>
+
+                <div class="metrics">
+                    <article class="metric">
+                        <span>Total Transaction Volume</span>
+                        <strong id="rVolume">—</strong>
+                        <small>Reporting-period transaction volume</small>
+                    </article>
+                    <article class="metric">
+                        <span>Matched Transactions</span>
+                        <strong id="rMatched">—</strong>
+                        <small>Successfully matched records</small>
+                    </article>
+                    <article class="metric">
+                        <span>Unmatched Transactions</span>
+                        <strong id="rUnmatched">—</strong>
+                        <small>Require reconciliation</small>
+                    </article>
+                    <article class="metric">
+                        <span>Open Exceptions</span>
+                        <strong id="rExceptions">—</strong>
+                        <small>Outstanding reconciliation issues</small>
+                    </article>
+                </div>
+
+                <div class="metrics">
+                    <article class="metric">
+                        <span>Settled Amount</span>
+                        <strong id="rSettled">—</strong>
+                        <small>Confirmed settlements</small>
+                    </article>
+                    <article class="metric">
+                        <span>Pending Settlements</span>
+                        <strong id="rPending">—</strong>
+                        <small>Awaiting confirmation</small>
+                    </article>
+                    <article class="metric">
+                        <span>Failed Settlements</span>
+                        <strong id="rFailed">—</strong>
+                        <small>Require investigation</small>
+                    </article>
+                    <article class="metric">
+                        <span>Outstanding Variance</span>
+                        <strong id="rVariance">—</strong>
+                        <small>Unresolved financial differences</small>
+                    </article>
+                </div>
+
+                <div class="grid-2">
+
+                    <article class="panel">
+                        <div class="panel-title">
+                            <div><small>RECONCILIATION PERFORMANCE</small>
+                                <h3>Matching Overview</h3>
+                            </div>
+                        </div>
+                        <div id="matchingHealth" class="health-list">
+                            <p class="muted">Loading reconciliation performance...</p>
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-title">
+                            <div><small>SETTLEMENT OPERATIONS</small>
+                                <h3>Settlement Health</h3>
+                            </div>
+                        </div>
+                        <div id="settlementHealth" class="health-list">
+                            <p class="muted">Loading settlement health...</p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Recent Reconciliation Runs</h3>
+                        <button class="btn btn-secondary" data-navigate="runs">View all</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RUN REFERENCE</th>
+                                    <th>SOURCE</th>
+                                    <th>ACCOUNT / PROVIDER</th>
+                                    <th>PERIOD START</th>
+                                    <th>PERIOD END</th>
+                                    <th>TRANSACTIONS</th>
+                                    <th>MATCHED</th>
+                                    <th>VARIANCE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentRuns"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Critical Reconciliation Exceptions</h3>
+                        <button class="btn btn-secondary" data-navigate="exceptions">Review exceptions</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>TYPE</th>
+                                    <th>TRANSACTION</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>EXPECTED</th>
+                                    <th>ACTUAL</th>
+                                    <th>VARIANCE</th>
+                                    <th>SEVERITY</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="criticalExceptions"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 02 RECONCILIATION RUNS -->
+
+            <section class="section" id="runs">
+
+                <div class="heading">
+                    <div>
+                        <small>FINANCIAL MATCHING ENGINE</small>
+                        <h2>Reconciliation Runs</h2>
+                        <p>Manage scheduled and on-demand reconciliation processes across bank accounts and payment
+                            providers.</p>
+                    </div>
+                    <button class="btn btn-primary" data-open="runModal">+ New Reconciliation Run</button>
+                </div>
+
+                <div class="filters">
+                    <input id="runSearch" placeholder="Search run reference...">
+                    <select id="runStatus">
+                        <option value="">All statuses</option>
+                        <option>queued</option>
+                        <option>running</option>
+                        <option>completed</option>
+                        <option>completed_with_exceptions</option>
+                        <option>failed</option>
+                    </select>
+                    <select id="runType">
+                        <option value="">All run types</option>
+                        <option>bank</option>
+                        <option>gateway</option>
+                        <option>internal</option>
+                        <option>full</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RUN REFERENCE</th>
+                                    <th>SOURCE</th>
+                                    <th>ACCOUNT / PROVIDER</th>
+                                    <th>PERIOD START</th>
+                                    <th>PERIOD END</th>
+                                    <th>TRANSACTIONS</th>
+                                    <th>MATCHED</th>
+                                    <th>VARIANCE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="runTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 03 TRANSACTIONS -->
+
+            <section class="section" id="transactions">
+
+                <div class="heading">
+                    <div>
+                        <small>TRANSACTION INTELLIGENCE</small>
+                        <h2>Financial Transactions</h2>
+                        <p>Inspect transaction records and compare internal financial entries with external records.</p>
+                    </div>
+                    <button class="btn btn-primary" data-open="matchModal">+ Request Manual Match</button>
+                </div>
+
+                <div class="filters">
+                    <input id="transactionSearch" placeholder="Search transaction or reference...">
+                    <select id="transactionStatus">
+                        <option value="">All statuses</option>
+                        <option>matched</option>
+                        <option>unmatched</option>
+                        <option>partially_matched</option>
+                        <option>under_review</option>
+                        <option>exception</option>
+                    </select>
+                    <select id="transactionCurrency">
+                        <option value="">All currencies</option>
+                    </select>
+                    <select id="transactionSource">
+                        <option value="">All sources</option>
+                        <option>bank</option>
+                        <option>gateway</option>
+                        <option>internal</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>TRANSACTION REFERENCE</th>
+                                    <th>EXTERNAL REFERENCE</th>
+                                    <th>DATE</th>
+                                    <th>SOURCE</th>
+                                    <th>TYPE</th>
+                                    <th>AMOUNT</th>
+                                    <th>FEE</th>
+                                    <th>CURRENCY</th>
+                                    <th>MATCH STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 04 SETTLEMENTS -->
+
+            <section class="section" id="settlements">
+
+                <div class="heading">
+                    <div>
+                        <small>PAYMENT SETTLEMENT CONTROL</small>
+                        <h2>Settlement Batches</h2>
+                        <p>Monitor settlement batches, payment-provider payouts, bank confirmations, settlement
+                            differences and outstanding balances.</p>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <input id="settlementSearch" placeholder="Search settlement reference...">
+                    <select id="settlementStatus">
+                        <option value="">All statuses</option>
+                        <option>initiated</option>
+                        <option>processing</option>
+                        <option>pending</option>
+                        <option>settled</option>
+                        <option>partially_settled</option>
+                        <option>failed</option>
+                    </select>
+                    <select id="settlementProvider">
+                        <option value="">All providers</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>BATCH REFERENCE</th>
+                                    <th>PROVIDER</th>
+                                    <th>JURISDICTION</th>
+                                    <th>TRANSACTIONS</th>
+                                    <th>GROSS AMOUNT</th>
+                                    <th>FEES</th>
+                                    <th>NET AMOUNT</th>
+                                    <th>SETTLEMENT DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="settlementTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 05 BANK STATEMENTS -->
+
+            <section class="section" id="statements">
+
+                <div class="heading">
+                    <div>
+                        <small>BANK RECORD MANAGEMENT</small>
+                        <h2>Bank Statements</h2>
+                        <p>Manage imported statements, statement periods, bank balances and statement-line matching.</p>
+                    </div>
+                    <button class="btn btn-primary" data-open="statementModal">+ Import Statement</button>
+                </div>
+
+                <div class="filters">
+                    <input id="statementSearch" placeholder="Search statement reference...">
+                    <select id="statementStatus">
+                        <option value="">All statuses</option>
+                        <option>uploaded</option>
+                        <option>processing</option>
+                        <option>processed</option>
+                        <option>reconciled</option>
+                        <option>failed</option>
+                    </select>
+                    <select id="statementAccount">
+                        <option value="">All accounts</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>STATEMENT REFERENCE</th>
+                                    <th>BANK / PROVIDER</th>
+                                    <th>ACCOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>PERIOD START</th>
+                                    <th>PERIOD END</th>
+                                    <th>OPENING BALANCE</th>
+                                    <th>CLOSING BALANCE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statementTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Statement Transaction Lines</h3>
+                    </div>
+                    <div class="filters">
+                        <input id="statementLineSearch" placeholder="Search statement line or reference...">
+                        <select id="statementLineStatus">
+                            <option value="">All line statuses</option>
+                            <option>unmatched</option>
+                            <option>matched</option>
+                            <option>under_review</option>
+                            <option>exception</option>
+                        </select>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>LINE REFERENCE</th>
+                                    <th>STATEMENT</th>
+                                    <th>TRANSACTION DATE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>REFERENCE</th>
+                                    <th>AMOUNT</th>
+                                    <th>CURRENCY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statementLineTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 06 PROVIDERS -->
+
+            <section class="section" id="integrations">
+
+                <div class="heading">
+                    <div>
+                        <small>PAYMENT INFRASTRUCTURE</small>
+                        <h2>Banking & Payment Providers</h2>
+                        <p>Monitor configured financial institutions, payment processors, settlement channels and
+                            integration health.</p>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <input id="providerSearch" placeholder="Search provider...">
+                    <select id="providerStatus">
+                        <option value="">All statuses</option>
+                        <option>connected</option>
+                        <option>degraded</option>
+                        <option>disconnected</option>
+                        <option>maintenance</option>
+                    </select>
+                    <select id="providerType">
+                        <option value="">All provider types</option>
+                        <option>bank</option>
+                        <option>payment_gateway</option>
+                        <option>payment_processor</option>
+                        <option>settlement_network</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PROVIDER</th>
+                                    <th>TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>SUPPORTED CURRENCIES</th>
+                                    <th>INTEGRATION</th>
+                                    <th>LAST SYNC</th>
+                                    <th>SETTLEMENT STATUS</th>
+                                    <th>CONNECTION</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="providerTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 07 EXCEPTIONS -->
+
+            <section class="section" id="exceptions">
+
+                <div class="heading">
+                    <div>
+                        <small>FINANCIAL EXCEPTION MANAGEMENT</small>
+                        <h2>Reconciliation Exceptions</h2>
+                        <p>Investigate mismatched amounts, missing records, duplicate transactions, failed settlements
+                            and unexplained variances.</p>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <input id="exceptionSearch" placeholder="Search exception...">
+                    <select id="exceptionType">
+                        <option value="">All exception types</option>
+                        <option>missing_transaction</option>
+                        <option>amount_mismatch</option>
+                        <option>duplicate_transaction</option>
+                        <option>currency_mismatch</option>
+                        <option>fee_variance</option>
+                        <option>settlement_delay</option>
+                        <option>unmatched_statement_line</option>
+                        <option>other</option>
+                    </select>
+                    <select id="exceptionSeverity">
+                        <option value="">All severities</option>
+                        <option>critical</option>
+                        <option>high</option>
+                        <option>medium</option>
+                        <option>low</option>
+                    </select>
+                    <select id="exceptionStatus">
+                        <option value="">All statuses</option>
+                        <option>open</option>
+                        <option>investigating</option>
+                        <option>pending_approval</option>
+                        <option>resolved</option>
+                        <option>closed</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>EXCEPTION REFERENCE</th>
+                                    <th>TYPE</th>
+                                    <th>TRANSACTION</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>EXPECTED</th>
+                                    <th>ACTUAL</th>
+                                    <th>VARIANCE</th>
+                                    <th>SEVERITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="exceptionTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 08 FEES AND FX -->
+
+            <section class="section" id="fees">
+
+                <div class="heading">
+                    <div>
+                        <small>FINANCIAL COST CONTROL</small>
+                        <h2>Fees & FX Reconciliation</h2>
+                        <p>Reconcile transaction charges, bank fees, processor fees, FX conversions and exchange-rate
+                            variances.</p>
+                    </div>
+                </div>
+
+                <div class="metrics">
+                    <article class="metric"><span>Recorded Fees</span><strong
+                            id="fRecorded">—</strong><small>Source-reported charges</small></article>
+                    <article class="metric"><span>Expected Fees</span><strong id="fExpected">—</strong><small>Contract
+                            or configured fee rules</small></article>
+                    <article class="metric"><span>Fee Variances</span><strong id="fVariance">—</strong><small>Unresolved
+                            fee differences</small></article>
+                    <article class="metric"><span>FX Exceptions</span><strong
+                            id="fFxExceptions">—</strong><small>Unresolved FX differences</small></article>
+                </div>
+
+                <div class="filters">
+                    <input id="feeSearch" placeholder="Search fee or transaction reference...">
+                    <select id="feeType">
+                        <option value="">All fee types</option>
+                        <option>bank_fee</option>
+                        <option>gateway_fee</option>
+                        <option>processing_fee</option>
+                        <option>transfer_fee</option>
+                        <option>fx_fee</option>
+                    </select>
+                    <select id="feeStatus">
+                        <option value="">All statuses</option>
+                        <option>matched</option>
+                        <option>variance</option>
+                        <option>unmatched</option>
+                        <option>under_review</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Fee Reconciliation</h3>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>PROVIDER</th>
+                                    <th>TRANSACTION</th>
+                                    <th>FEE TYPE</th>
+                                    <th>CURRENCY</th>
+                                    <th>EXPECTED FEE</th>
+                                    <th>ACTUAL FEE</th>
+                                    <th>VARIANCE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="feeTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Foreign Exchange Reconciliation</h3>
+                    </div>
+                    <div class="filters">
+                        <select id="fxStatus">
+                            <option value="">All FX statuses</option>
+                            <option>matched</option>
+                            <option>variance</option>
+                            <option>unmatched</option>
+                        </select>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>FROM</th>
+                                    <th>TO</th>
+                                    <th>TRANSACTION RATE</th>
+                                    <th>SETTLEMENT RATE</th>
+                                    <th>EXPECTED AMOUNT</th>
+                                    <th>ACTUAL AMOUNT</th>
+                                    <th>VARIANCE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fxTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 09 LEDGER -->
+
+            <section class="section" id="ledger">
+
+                <div class="heading">
+                    <div>
+                        <small>ACCOUNTING INTEGRATION</small>
+                        <h2>General Ledger Reconciliation</h2>
+                        <p>Compare financial transaction records against accounting entries and posting
+                            acknowledgements.</p>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <input id="ledgerSearch" placeholder="Search ledger reference...">
+                    <select id="ledgerStatus">
+                        <option value="">All statuses</option>
+                        <option>posted</option>
+                        <option>pending</option>
+                        <option>rejected</option>
+                        <option>unmatched</option>
+                        <option>under_review</option>
+                    </select>
+                    <select id="ledgerCurrency">
+                        <option value="">All currencies</option>
+                    </select>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>JOURNAL REFERENCE</th>
+                                    <th>TRANSACTION</th>
+                                    <th>ACCOUNT CODE</th>
+                                    <th>ACCOUNT NAME</th>
+                                    <th>DEBIT</th>
+                                    <th>CREDIT</th>
+                                    <th>CURRENCY</th>
+                                    <th>POSTING DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ledgerTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 10 REPORTS -->
+
+            <section class="section" id="reports">
+
+                <div class="heading">
+                    <div>
+                        <small>FINANCIAL INTELLIGENCE</small>
+                        <h2>Reconciliation Reports</h2>
+                        <p>Review settlement summaries, unmatched balances, provider performance and financial
+                            reconciliation reports.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REPORT</th>
+                                    <th>REPORT TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>CURRENCY</th>
+                                    <th>REPORTING PERIOD</th>
+                                    <th>GENERATED</th>
+                                    <th>OWNER</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 11 AUDIT -->
+
+            <section class="section" id="audit">
+
+                <div class="heading">
+                    <div>
+                        <small>FINANCIAL TRACEABILITY</small>
+                        <h2>Reconciliation Audit Trail</h2>
+                        <p>Review matching decisions, settlement approvals, statement imports, ledger postings and
+                            financial exceptions.</p>
+                    </div>
+                    <button class="btn btn-secondary" id="exportAudit">↓ Export Audit</button>
+                </div>
+
+                <div class="filters">
+                    <input id="auditSearch" placeholder="Search audit records...">
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>ACTOR</th>
+                                    <th>ACTION</th>
+                                    <th>RESOURCE</th>
+                                    <th>TRANSACTION REFERENCE</th>
+                                    <th>REASON</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <footer>
+                TALVORA GLOBAL FINANCIAL OPERATIONS
+                <span>•</span>
+                RECONCILIATION & SETTLEMENT MANAGEMENT
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- RECONCILIATION RUN MODAL -->
+
+    <div class="overlay" id="runModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <div><small>RECONCILIATION ENGINE</small>
+                    <h2>Start Reconciliation</h2>
+                </div>
+                <button class="close" data-close>×</button>
+            </div>
+
+            <form id="runForm">
+                <label>Reconciliation type
+                    <select name="type" required>
+                        <option value="">Select type</option>
+                        <option value="bank">Bank reconciliation</option>
+                        <option value="gateway">Payment gateway reconciliation</option>
+                        <option value="internal">Internal transaction reconciliation</option>
+                        <option value="full">Full financial reconciliation</option>
+                    </select>
+                </label>
+
+                <label>Bank account / provider
+                    <select name="accountId" id="runAccount">
+                        <option value="">All eligible accounts / providers</option>
+                    </select>
+                </label>
+
+                <label>Reporting currency
+                    <select name="currency" id="runCurrency">
+                        <option value="">All currencies</option>
+                    </select>
+                </label>
+
+                <label>Period start
+                    <input name="periodStart" type="date" required>
+                </label>
+
+                <label>Period end
+                    <input name="periodEnd" type="date" required>
+                </label>
+
+                <label>Execution notes
+                    <textarea name="notes" maxlength="1000"></textarea>
+                </label>
+
+                <p class="form-note">This creates a reconciliation job. Matching results depend on imported statements,
+                    external provider records and configured matching rules.</p>
+
+                <button class="btn btn-primary" id="runSubmit" type="submit">Start Reconciliation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- STATEMENT IMPORT MODAL -->
+
+    <div class="overlay" id="statementModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <div><small>BANK DATA INGESTION</small>
+                    <h2>Import Bank Statement</h2>
+                </div>
+                <button class="close" data-close>×</button>
+            </div>
+
+            <form id="statementForm">
+                <label>Bank account
+                    <select name="accountId" id="statementImportAccount" required>
+                        <option value="">Select account</option>
+                    </select>
+                </label>
+
+                <label>Statement period start
+                    <input name="periodStart" type="date" required>
+                </label>
+
+                <label>Statement period end
+                    <input name="periodEnd" type="date" required>
+                </label>
+
+                <label>Statement format
+                    <select name="format" required>
+                        <option value="">Select format</option>
+                        <option value="csv">CSV</option>
+                        <option value="xlsx">Excel XLSX</option>
+                        <option value="mt940">MT940</option>
+                        <option value="camt053">ISO 20022 CAMT.053</option>
+                        <option value="bai2">BAI2</option>
+                        <option value="other">Other supported format</option>
+                    </select>
+                </label>
+
+                <label>Statement file
+                    <input name="statementFile" type="file" required accept=".csv,.xlsx,.xls,.txt,.sta,.xml,.pdf">
+                </label>
+
+                <label>Import notes
+                    <textarea name="notes" maxlength="1000"></textarea>
+                </label>
+
+                <p class="form-note">The server must validate file format, malware scan the upload, verify the account
+                    and prevent duplicate statement imports before processing.</p>
+
+                <button class="btn btn-primary" id="statementSubmit" type="submit">Upload Statement</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MANUAL MATCH MODAL -->
+
+    <div class="overlay" id="matchModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <div><small>TRANSACTION MATCHING</small>
+                    <h2>Request Manual Match</h2>
+                </div>
+                <button class="close" data-close>×</button>
+            </div>
+
+            <form id="matchForm">
+                <label>Internal transaction
+                    <select name="transactionId" id="matchTransaction" required>
+                        <option value="">Select transaction</option>
+                    </select>
+                </label>
+
+                <label>External statement line
+                    <select name="statementLineId" id="matchStatementLine" required>
+                        <option value="">Select statement line</option>
+                    </select>
+                </label>
+
+                <label>Matching reason
+                    <textarea name="reason" minlength="10" maxlength="1000" required></textarea>
+                </label>
+
+                <p class="form-note">Manual matches are submitted for verification and approval. The system must
+                    independently validate amount, currency, account, date and reference consistency.</p>
+
+                <button class="btn btn-primary" id="matchSubmit" type="submit">Submit Match Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- GENERAL ACTION MODAL -->
+
+    <div class="overlay" id="actionModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <h2 id="actionTitle">Financial Action</h2>
+                <button class="close" data-close>×</button>
+            </div>
+
+            <p id="actionDescription" class="muted"></p>
+
+            <label>Reason and supporting explanation
+                <textarea id="actionReason" minlength="10" maxlength="1500" required></textarea>
+            </label>
+
+            <label>Supporting evidence reference
+                <input id="actionEvidence" maxlength="250">
+            </label>
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" data-close>Cancel</button>
+                <button class="btn btn-primary" id="actionSubmit" disabled>Submit Request</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAIL MODAL -->
+
+    <div class="overlay" id="detailModal" hidden>
+        <div class="modal large">
+            <div class="modal-head">
+                <h2 id="detailTitle">Financial Record</h2>
+                <button class="close" data-close>×</button>
+            </div>
+            <div id="detailBody"></div>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="../talvora-admin-config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <meta name="description" content="TALVORA Unified Global Super Admin Integration and Completion Centre.">
+
+    <title>TALVORA | Unified Admin Integration Centre</title>
+
+    <link rel="stylesheet" href="talvora-modules.css">
+
+    <script defer src="talvora-integration.js"></script>
+</head>
+
+<body data-integration-centre>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <a class="brand" href="integration.html">
+                <span class="brand-mark">T</span>
+
+                <span class="brand-copy">
+                    <strong>TALVORA</strong>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </span>
+            </a>
+
+            <div class="sidebar-label">
+                <span class="live-dot"></span>
+                PLATFORM CONTROL
+            </div>
+
+            <nav class="side-nav" aria-label="Global administration">
+
+                <a class="nav-link active" href="#overview" data-section="overview">
+                    <span class="nav-icon">◈</span>
+                    Integration Overview
+                </a>
+
+                <a class="nav-link" href="#modules" data-section="modules">
+                    <span class="nav-icon">▦</span>
+                    Module Management
+                </a>
+
+                <a class="nav-link" href="#authentication" data-section="authentication">
+                    <span class="nav-icon">⬡</span>
+                    Authentication & Access
+                </a>
+
+                <a class="nav-link" href="#apis" data-section="apis">
+                    <span class="nav-icon">⇄</span>
+                    API Connectivity
+                </a>
+
+                <a class="nav-link" href="#workflows" data-section="workflows">
+                    <span class="nav-icon">⌘</span>
+                    Workflow Monitoring
+                </a>
+
+                <a class="nav-link" href="#notifications" data-section="notifications">
+                    <span class="nav-icon">♢</span>
+                    Notifications
+                </a>
+
+                <a class="nav-link" href="#audit" data-section="audit">
+                    <span class="nav-icon">▤</span>
+                    Audit Trail
+                </a>
+
+                <a class="nav-link" href="#testing" data-section="testing">
+                    <span class="nav-icon">✓</span>
+                    Integration Testing
+                </a>
+
+            </nav>
+
+            <div class="sidebar-label">
+                TALVORA MODULES
+            </div>
+
+            <nav class="side-nav" aria-label="Platform modules">
+
+                <a class="nav-link" href="jobs.html">
+                    <span class="nav-icon">▣</span>
+                    Jobs & Recruitment
+                </a>
+
+                <a class="nav-link" href="skills.html">
+                    <span class="nav-icon">◈</span>
+                    Skills Passport
+                </a>
+
+                <a class="nav-link" href="kyc.html">
+                    <span class="nav-icon">♙</span>
+                    KYC & KYB
+                </a>
+
+                <a class="nav-link" href="privacy.html">
+                    <span class="nav-icon">⬡</span>
+                    Privacy & Data
+                </a>
+
+                <a class="nav-link" href="trust-safety.html">
+                    <span class="nav-icon">⚑</span>
+                    Trust & Safety
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-security">
+                    <span class="security-mark">⬡</span>
+
+                    <span>
+                        <strong>Platform governance</strong>
+                        <small>Unified administrative control</small>
+                    </span>
+                </div>
+
+                <div class="admin-chip">
+                    <span class="admin-avatar">SA</span>
+
+                    <span>
+                        <strong id="adminDisplayName">Administrator</strong>
+                        <small id="adminRole">Checking session...</small>
+                    </span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-area">
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div class="topbar-heading">
+
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <div class="breadcrumb">
+                            SUPER ADMIN
+                            <span>/</span>
+                            UNIFIED PLATFORM CONTROL
+                        </div>
+
+                        <h1>Integration & Completion Centre</h1>
+
+                    </div>
+
+                </div>
+
+                <div class="topbar-actions">
+
+                    <span class="connection-pill" id="connectionStatus">
+                        <i></i>
+                        Checking
+                    </span>
+
+                    <span class="region-pill">
+                        GLOBAL PLATFORM
+                    </span>
+
+                    <button class="button button-outline" id="refreshButton">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- WELCOME BANNER -->
+
+            <section class="welcome-banner banner-teal">
+
+                <div class="banner-symbol">⬡</div>
+
+                <div>
+
+                    <strong>
+                        TALVORA Unified Global Administration
+                    </strong>
+
+                    <p>
+                        Centralized monitoring and coordination of
+                        recruitment, skills intelligence, identity
+                        verification, privacy governance and platform
+                        trust and safety.
+                    </p>
+
+                </div>
+
+                <div class="banner-tag">
+                    UNIFIED PLATFORM CONTROL
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             OVERVIEW
+        ================================================== -->
+
+            <section class="module-section active" id="overview" data-view="overview">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL PLATFORM INTELLIGENCE</span>
+
+                        <h2>Platform Integration Overview</h2>
+
+                        <p>
+                            Monitor the connectivity, availability and
+                            operational health of all nineteen connected centres.
+                        </p>
+                    </div>
+
+                    <span class="updated-label" id="lastUpdated">
+                        Awaiting data
+                    </span>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Registered Modules</span>
+                        <strong data-integration-metric="totalModules">5</strong>
+                        <small>Core administrative modules</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Healthy Modules</span>
+                        <strong data-integration-metric="healthyModules">—</strong>
+                        <small>Successfully responding</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Degraded Modules</span>
+                        <strong data-integration-metric="degradedModules">—</strong>
+                        <small>Experiencing connectivity issues</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Unavailable Modules</span>
+                        <strong data-integration-metric="offlineModules">—</strong>
+                        <small>Not currently responding</small>
+                    </article>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+                        <span>Active Notifications</span>
+                        <strong data-integration-metric="notifications">—</strong>
+                        <small>Unread platform notifications</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Recent Audit Events</span>
+                        <strong data-integration-metric="auditEvents">—</strong>
+                        <small>Retrieved audit records</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Workflow Exceptions</span>
+                        <strong data-integration-metric="workflowExceptions">—</strong>
+                        <small>Reported workflow issues</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>API Availability</span>
+                        <strong data-integration-metric="apiAvailability">—</strong>
+                        <small>Latest integration health result</small>
+                    </article>
+
+                </div>
+
+
+                <!-- PLATFORM STATUS -->
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">MODULE CONNECTIVITY</span>
+                            <h3>Global Module Health</h3>
+                        </div>
+
+                        <button class="button button-outline button-small" data-go="modules">
+                            Manage Modules
+                        </button>
+
+                    </div>
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>MODULE</th>
+                                    <th>API STATUS</th>
+                                    <th>RESPONSE TIME</th>
+                                    <th>LAST CHECKED</th>
+                                    <th>HEALTH</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="moduleHealthTable">
+
+                                <tr>
+                                    <td colspan="5" class="empty-cell">
+                                        Checking module connectivity...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PLATFORM ARCHITECTURE -->
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">UNIFIED ARCHITECTURE</span>
+                            <h3>TALVORA Administrative Ecosystem</h3>
+                        </div>
+                    </div>
+
+                    <div class="integration-architecture">
+
+                        <div class="architecture-core">
+                            <span>⬡</span>
+                            <strong>TALVORA CORE</strong>
+                            <small>Authentication • Permissions • API</small>
+                        </div>
+
+                        <div class="architecture-connector"></div>
+
+                        <div class="architecture-modules">
+
+                            <a href="jobs.html" class="architecture-module">
+                                <strong>01</strong>
+                                <span>Jobs & Recruitment</span>
+                            </a>
+
+                            <a href="skills.html" class="architecture-module">
+                                <strong>02</strong>
+                                <span>Skills Intelligence</span>
+                            </a>
+
+                            <a href="kyc.html" class="architecture-module">
+                                <strong>03</strong>
+                                <span>KYC & KYB</span>
+                            </a>
+
+                            <a href="privacy.html" class="architecture-module">
+                                <strong>04</strong>
+                                <span>Privacy & Data</span>
+                            </a>
+
+                            <a href="trust-safety.html" class="architecture-module">
+                                <strong>05</strong>
+                                <span>Trust & Safety</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">PLATFORM ACTIVITY</span>
+                            <h3>Recent Administrative Events</h3>
+                        </div>
+
+                        <button class="button button-outline button-small" data-go="audit">
+                            Full Audit Trail
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>EVENT REF.</th>
+                                    <th>MODULE</th>
+                                    <th>ADMIN ACTION</th>
+                                    <th>RESULT</th>
+                                    <th>TIMESTAMP</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recentAuditTable">
+
+                                <tr>
+                                    <td colspan="5" class="empty-cell">
+                                        Loading audit activity...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             MODULE MANAGEMENT
+        ================================================== -->
+
+            <section class="module-section" id="modules" data-view="modules">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">CENTRAL MODULE MANAGEMENT</span>
+                        <h2>Global Module Management</h2>
+                        <p>Inspect all nineteen administrative centres and their integration health.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="integration-module-grid">
+
+                    <a href="jobs.html" class="integration-module-card">
+                        <span class="integration-module-number">01</span>
+                        <h3>Jobs & Recruitment</h3>
+                        <p>Jobs, applications, recruitment and moderation.</p>
+                        <span class="module-health-label" data-module-health="jobs">Checking...</span>
+                    </a>
+
+                    <a href="skills.html" class="integration-module-card">
+                        <span class="integration-module-number">02</span>
+                        <h3>Skills Passport</h3>
+                        <p>Skills, evidence, assessments and matching.</p>
+                        <span class="module-health-label" data-module-health="skills">Checking...</span>
+                    </a>
+
+                    <a href="kyc.html" class="integration-module-card">
+                        <span class="integration-module-number">03</span>
+                        <h3>KYC & KYB</h3>
+                        <p>Identity, business and document verification.</p>
+                        <span class="module-health-label" data-module-health="kyc">Checking...</span>
+                    </a>
+
+                    <a href="privacy.html" class="integration-module-card">
+                        <span class="integration-module-number">04</span>
+                        <h3>Privacy & Data Protection</h3>
+                        <p>Consent, data requests, retention and incidents.</p>
+                        <span class="module-health-label" data-module-health="privacy">Checking...</span>
+                    </a>
+
+                    <a href="trust-safety.html" class="integration-module-card">
+                        <span class="integration-module-number">05</span>
+                        <h3>Trust, Safety & Moderation</h3>
+                        <p>Reports, moderation, appeals and enforcement.</p>
+                        <span class="module-health-label" data-module-health="trust-safety">Checking...</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             AUTHENTICATION
+        ================================================== -->
+
+            <section class="module-section" id="authentication" data-view="authentication">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">IDENTITY & ACCESS GOVERNANCE</span>
+                        <h2>Authentication & Permissions</h2>
+                        <p>Monitor the authenticated administrator session and the permissions supplied by the server.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="content-grid">
+
+                    <article class="panel">
+
+                        <div class="panel-heading">
+                            <h3>Administrator Session</h3>
+                        </div>
+
+                        <div class="integration-detail-list">
+
+                            <div>
+                                <span>Authentication status</span>
+                                <strong id="sessionStatus">Checking...</strong>
+                            </div>
+
+                            <div>
+                                <span>Administrator</span>
+                                <strong id="sessionName">—</strong>
+                            </div>
+
+                            <div>
+                                <span>Role</span>
+                                <strong id="sessionRole">—</strong>
+                            </div>
+
+                            <div>
+                                <span>Session expiry</span>
+                                <strong id="sessionExpiry">—</strong>
+                            </div>
+
+                            <div>
+                                <span>Jurisdiction scope</span>
+                                <strong id="sessionJurisdiction">—</strong>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="panel">
+
+                        <div class="panel-heading">
+                            <h3>Permission Overview</h3>
+                        </div>
+
+                        <div class="integration-detail-list">
+
+                            <div>
+                                <span>Permission count</span>
+                                <strong id="permissionCount">—</strong>
+                            </div>
+
+                            <div>
+                                <span>Global administration</span>
+                                <strong id="globalPermission">—</strong>
+                            </div>
+
+                            <div>
+                                <span>Permission source</span>
+                                <strong>Server-authoritative</strong>
+                            </div>
+
+                        </div>
+
+                        <div id="permissionList" class="permission-list">
+                            Checking permissions...
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="notice notice-teal">
+                    <strong>Security architecture</strong>
+                    <p>
+                        Authentication and authorization are enforced by
+                        the backend. This interface displays the session
+                        and permissions returned by the server. It does
+                        not grant administrative privileges.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             API CONNECTIVITY
+        ================================================== -->
+
+            <section class="module-section" id="apis" data-view="apis">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">BACKEND COMMUNICATION</span>
+                        <h2>API Connectivity Centre</h2>
+                        <p>Monitor the expected backend interfaces supporting all nineteen administrative centres.</p>
+                    </div>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <h3>Core API Services</h3>
+                    </div>
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>SERVICE</th>
+                                    <th>ENDPOINT</th>
+                                    <th>METHOD</th>
+                                    <th>STATUS</th>
+                                    <th>RESPONSE</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="apiHealthTable">
+
+                                <tr>
+                                    <td colspan="5" class="empty-cell">
+                                        Run integration checks to inspect API availability.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+
+                <div class="notice">
+                    <strong>API security requirements</strong>
+                    <p>
+                        All administrative endpoints must validate
+                        authenticated sessions, enforce server-side
+                        permissions, validate input, and apply
+                        appropriate audit logging and rate limits.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             WORKFLOWS
+        ================================================== -->
+
+            <section class="module-section" id="workflows" data-view="workflows">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">CROSS-MODULE OPERATIONS</span>
+                        <h2>Workflow Monitoring</h2>
+                        <p>Monitor the major operational handoffs across the TALVORA platform.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="integration-workflow-list">
+
+                    <article class="workflow-card">
+                        <span>01</span>
+                        <div>
+                            <strong>Recruitment to Skills Matching</strong>
+                            <p>Jobs, applications and verified skills information.</p>
+                        </div>
+                        <span data-workflow-status="recruitment-skills">Checking...</span>
+                    </article>
+
+                    <article class="workflow-card">
+                        <span>02</span>
+                        <div>
+                            <strong>Identity to Workforce Verification</strong>
+                            <p>KYC, KYB and skills passport verification.</p>
+                        </div>
+                        <span data-workflow-status="identity-workforce">Checking...</span>
+                    </article>
+
+                    <article class="workflow-card">
+                        <span>03</span>
+                        <div>
+                            <strong>Consent to Data Processing</strong>
+                            <p>Privacy preferences and processing governance.</p>
+                        </div>
+                        <span data-workflow-status="consent-processing">Checking...</span>
+                    </article>
+
+                    <article class="workflow-card">
+                        <span>04</span>
+                        <div>
+                            <strong>Reports to Safety Resolution</strong>
+                            <p>Reporting, moderation, enforcement and appeals.</p>
+                        </div>
+                        <span data-workflow-status="reports-resolution">Checking...</span>
+                    </article>
+
+                    <article class="workflow-card">
+                        <span>05</span>
+                        <div>
+                            <strong>Unified Audit and Notifications</strong>
+                            <p>Cross-module administrative traceability and alerts.</p>
+                        </div>
+                        <span data-workflow-status="audit-notifications">Checking...</span>
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             NOTIFICATIONS
+        ================================================== -->
+
+            <section class="module-section" id="notifications" data-view="notifications">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">GLOBAL ALERT MANAGEMENT</span>
+                        <h2>Platform Notifications</h2>
+                        <p>Monitor system notifications, integration warnings and administrative alerts.</p>
+                    </div>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <h3>Global Notification Centre</h3>
+
+                        <button class="button button-outline button-small" id="refreshNotifications">
+                            Refresh Alerts
+                        </button>
+                    </div>
+
+                    <div id="notificationList" class="integration-notification-list">
+
+                        <div class="empty-cell">
+                            Loading notifications...
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             AUDIT TRAIL
+        ================================================== -->
+
+            <section class="module-section" id="audit" data-view="audit">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">ADMINISTRATIVE ACCOUNTABILITY</span>
+                        <h2>Unified Audit Trail</h2>
+                        <p>Review traceable administrative events across all nineteen centres.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="filter-bar">
+
+                    <input type="search" id="auditSearch" placeholder="Search event, actor or module...">
+
+                    <select id="auditModuleFilter">
+
+                        <option value="">All modules</option>
+                        <option value="jobs">Jobs</option>
+                        <option value="skills">Skills</option>
+                        <option value="kyc">KYC & KYB</option>
+                        <option value="privacy">Privacy</option>
+                        <option value="trust-safety">Trust & Safety</option>
+
+                    </select>
+
+                    <button class="button button-outline" id="refreshAudit">
+                        Refresh
+                    </button>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>EVENT REF.</th>
+                                    <th>ACTOR REF.</th>
+                                    <th>MODULE</th>
+                                    <th>ACTION</th>
+                                    <th>RESOURCE REF.</th>
+                                    <th>RESULT</th>
+                                    <th>TIMESTAMP</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="auditTable">
+
+                                <tr>
+                                    <td colspan="7" class="empty-cell">
+                                        Loading audit events...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="table-foot">
+                        <span id="auditCount">Awaiting records</span>
+                        <span>Server-generated audit records</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             INTEGRATION TESTING
+        ================================================== -->
+
+            <section class="module-section" id="testing" data-view="testing">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">PLATFORM QUALITY ASSURANCE</span>
+                        <h2>Integration & Completion Testing</h2>
+                        <p>Run read-only checks against the authentication, integration and module dashboard endpoints.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="notice notice-teal">
+                    <strong>Safe integration testing</strong>
+                    <p>
+                        These checks use read-only requests. They do not
+                        approve records, change accounts, alter permissions
+                        or perform financial or administrative transactions.
+                    </p>
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">SYSTEM DIAGNOSTICS</span>
+                            <h3>Run Platform Integration Checks</h3>
+                        </div>
+
+                        <button class="button button-primary" id="runIntegrationTests">
+                            ▶ Run All Checks
+                        </button>
+
+                    </div>
+
+
+                    <div class="integration-test-summary">
+
+                        <div>
+                            <span>Passed</span>
+                            <strong id="testsPassed">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Failed</span>
+                            <strong id="testsFailed">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Not checked</span>
+                            <strong id="testsPending">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>TEST</th>
+                                    <th>ENDPOINT</th>
+                                    <th>RESULT</th>
+                                    <th>RESPONSE TIME</th>
+                                    <th>DETAILS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="integrationTestTable">
+
+                                <tr>
+                                    <td colspan="5" class="empty-cell">
+                                        Integration tests have not been run.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+                        <h3>Completion Checklist</h3>
+                    </div>
+
+                    <div class="completion-checklist">
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            All nineteen centre pages are accessible.
+                        </label>
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            Authentication endpoint responds successfully.
+                        </label>
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            Module dashboard endpoints respond successfully.
+                        </label>
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            API authorization is enforced server-side.
+                        </label>
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            Audit events are persisted server-side.
+                        </label>
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            Notifications and alerts are operational.
+                        </label>
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            Cross-module workflows are verified.
+                        </label>
+
+                        <label>
+                            <input type="checkbox" disabled>
+                            Production security and deployment tests are passed.
+                        </label>
+
+                    </div>
+
+                    <p class="form-hint">
+                        These checklist items are completed only after
+                        the corresponding checks have been independently
+                        verified. Opening this page does not mark them complete.
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <footer class="page-footer">
+                TALVORA GLOBAL PLATFORM OPERATIONS
+                <span>•</span>
+                UNIFIED ADMIN INTEGRATION & COMPLETION CENTRE
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- NOTIFICATION TOAST -->
+
+    <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true">
+    </div>
+
+</body>
+
+</html>

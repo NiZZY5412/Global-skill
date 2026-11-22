@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>TALVORA | Global AML Command Centre</title>
+    <link rel="stylesheet" href="aml.css">
+    <script defer src="talvora-admin-config.js"></script>
+    <script defer src="aml.js"></script>
+</head>
+
+<body>
+
+    <div class="aml-app">
+
+        <aside class="aml-sidebar" id="sidebar">
+            <a class="aml-brand" href="#">
+                <span class="brand-symbol">T</span>
+                <span>
+                    <strong>TALVORA</strong>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </span>
+            </a>
+
+            <div class="sidebar-context">
+                <span class="status-dot"></span>
+                FINANCIAL CRIME CONTROL
+            </div>
+
+            <div class="nav-heading">AML OPERATIONS</div>
+
+            <nav class="aml-navigation">
+                <a href="#overview" class="nav-link active" data-section="overview">
+                    <span>◈</span> Intelligence Dashboard
+                </a>
+                <a href="#alerts" class="nav-link" data-section="alerts">
+                    <span>⚑</span> AML Alerts
+                </a>
+                <a href="#cases" class="nav-link" data-section="cases">
+                    <span>▤</span> Investigations
+                </a>
+                <a href="#monitoring" class="nav-link" data-section="monitoring">
+                    <span>◎</span> Monitoring Rules
+                </a>
+                <a href="#screening" class="nav-link" data-section="screening">
+                    <span>⌕</span> Sanctions & PEP
+                </a>
+                <a href="#customers" class="nav-link" data-section="customers">
+                    <span>♙</span> Customer Due Diligence
+                </a>
+                <a href="#reports" class="nav-link" data-section="reports">
+                    <span>▧</span> SAR / STR Reporting
+                </a>
+                <a href="#jurisdictions" class="nav-link" data-section="jurisdictions">
+                    <span>◎</span> Global Jurisdictions
+                </a>
+                <a href="#audit" class="nav-link" data-section="audit">
+                    <span>▣</span> Audit & Governance
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="security-card">
+                    <span class="security-icon">⬡</span>
+                    <div>
+                        <strong>Security Environment</strong>
+                        <small>Global AML Governance</small>
+                    </div>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">SA</div>
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Authority</small>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="aml-main">
+
+            <header class="aml-topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle">☰</button>
+                    <div>
+                        <small>SUPER ADMIN / FINANCIAL INTELLIGENCE</small>
+                        <h1>Transaction Monitoring & AML</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <span class="api-status" id="apiStatus">
+                        <i></i> Connecting
+                    </span>
+                    <span class="global-tag" id="environmentLabel">GLOBAL</span>
+                    <button class="aml-btn secondary" id="refreshAll">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="aml-banner">
+                <div class="banner-icon">⬡</div>
+                <div>
+                    <strong>Global Financial Crime Intelligence & Compliance Centre</strong>
+                    <p>
+                        Centralized oversight of transaction monitoring, suspicious activity,
+                        sanctions screening, customer due diligence and financial crime investigations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 01 DASHBOARD -->
+
+            <section class="aml-section active" id="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL FINANCIAL INTELLIGENCE</span>
+                        <h2>AML Intelligence Dashboard</h2>
+                        <p>Monitor financial crime exposure, suspicious activity and compliance operations.</p>
+                    </div>
+                    <button class="aml-btn primary" data-open="caseModal">+ Open Investigation</button>
+                </div>
+
+                <div class="metric-grid">
+                    <article class="metric-card">
+                        <span>Transactions Monitored</span>
+                        <strong id="mTransactions">—</strong>
+                        <small>Reporting-period volume</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Active AML Alerts</span>
+                        <strong id="mAlerts">—</strong>
+                        <small>Awaiting review or action</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Open Investigations</span>
+                        <strong id="mCases">—</strong>
+                        <small>Active financial crime cases</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Critical Risk Exposure</span>
+                        <strong id="mCritical">—</strong>
+                        <small>Critical outstanding risk records</small>
+                    </article>
+                </div>
+
+                <div class="metric-grid secondary-metrics">
+                    <article class="metric-card">
+                        <span>Potential Screening Matches</span>
+                        <strong id="mScreening">—</strong>
+                        <small>Require human assessment</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Enhanced Due Diligence</span>
+                        <strong id="mEDD">—</strong>
+                        <small>Active EDD reviews</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Pending SAR / STR Reviews</span>
+                        <strong id="mReports">—</strong>
+                        <small>Awaiting authorized review</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Monitoring Rule Health</span>
+                        <strong id="mRules">—</strong>
+                        <small>Configured rule status</small>
+                    </article>
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <article class="aml-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">RISK DISTRIBUTION</span>
+                                <h3>AML Alert Severity</h3>
+                            </div>
+                        </div>
+                        <div id="severityDistribution" class="severity-list">
+                            <p class="muted">Loading severity information...</p>
+                        </div>
+                    </article>
+
+                    <article class="aml-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">SCREENING INTELLIGENCE</span>
+                                <h3>Screening Overview</h3>
+                            </div>
+                        </div>
+                        <div id="screeningHealth" class="health-list">
+                            <p class="muted">Loading screening information...</p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="aml-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="eyebrow">PRIORITY OPERATIONS</span>
+                            <h3>Recent AML Alerts</h3>
+                        </div>
+                        <button class="aml-btn secondary" data-navigate="alerts">View all alerts</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ALERT REFERENCE</th>
+                                    <th>ALERT CATEGORY</th>
+                                    <th>JURISDICTION</th>
+                                    <th>RISK SCORE</th>
+                                    <th>SEVERITY</th>
+                                    <th>DETECTED</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentAlerts"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="aml-panel">
+                    <div class="panel-heading">
+                        <h3>Priority Investigations</h3>
+                        <button class="aml-btn secondary" data-navigate="cases">View investigations</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CASE REFERENCE</th>
+                                    <th>CASE TYPE</th>
+                                    <th>RISK</th>
+                                    <th>JURISDICTION</th>
+                                    <th>INVESTIGATOR</th>
+                                    <th>OPENED</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="priorityCases"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 02 ALERT MANAGEMENT -->
+
+            <section class="aml-section" id="alerts">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL CRIME DETECTION</span>
+                        <h2>AML Alert Management</h2>
+                        <p>Review transaction monitoring alerts, prioritize suspicious activity and manage escalation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="alertSearch" placeholder="Search alert reference...">
+                    <select id="alertSeverity">
+                        <option value="">All severity levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <select id="alertStatus">
+                        <option value="">All statuses</option>
+                        <option value="new">New</option>
+                        <option value="under_review">Under review</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                    <select id="alertCategory">
+                        <option value="">All categories</option>
+                        <option value="unusual_activity">Unusual activity</option>
+                        <option value="structuring">Structuring</option>
+                        <option value="rapid_movement">Rapid movement</option>
+                        <option value="unusual_volume">Unusual volume</option>
+                        <option value="high_risk_jurisdiction">High-risk jurisdiction</option>
+                        <option value="sanctions">Sanctions screening</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>CATEGORY</th>
+                                    <th>TRANSACTION</th>
+                                    <th>JURISDICTION</th>
+                                    <th>RISK SCORE</th>
+                                    <th>SEVERITY</th>
+                                    <th>ASSIGNED TO</th>
+                                    <th>DETECTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alertTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 03 INVESTIGATIONS -->
+
+            <section class="aml-section" id="cases">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FINANCIAL CRIME INVESTIGATION</span>
+                        <h2>Investigation Management</h2>
+                        <p>Coordinate cases, investigation ownership, findings, evidence and compliance decisions.</p>
+                    </div>
+                    <button class="aml-btn primary" data-open="caseModal">+ Create Investigation</button>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="caseSearch" placeholder="Search investigation...">
+                    <select id="caseStatus">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="investigating">Investigating</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                    <select id="caseRisk">
+                        <option value="">All risk levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CASE REFERENCE</th>
+                                    <th>CASE CATEGORY</th>
+                                    <th>RELATED ALERTS</th>
+                                    <th>RISK LEVEL</th>
+                                    <th>JURISDICTION</th>
+                                    <th>INVESTIGATOR</th>
+                                    <th>CREATED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="caseTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 04 MONITORING RULES -->
+
+            <section class="aml-section" id="monitoring">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">TRANSACTION SURVEILLANCE ENGINE</span>
+                        <h2>Transaction Monitoring Rules</h2>
+                        <p>Configure risk indicators, suspicious activity patterns and monitoring policies.</p>
+                    </div>
+                    <button class="aml-btn primary" data-open="ruleModal">+ Create Monitoring Rule</button>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="ruleSearch" placeholder="Search monitoring rule...">
+                    <select id="ruleStatus">
+                        <option value="">All rule statuses</option>
+                        <option value="active">Active</option>
+                        <option value="draft">Draft</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                    <select id="ruleCategory">
+                        <option value="">All rule categories</option>
+                        <option value="structuring">Structuring</option>
+                        <option value="velocity">Transaction velocity</option>
+                        <option value="unusual_volume">Unusual volume</option>
+                        <option value="geographic_risk">Geographic risk</option>
+                        <option value="behavioral">Behavioral anomaly</option>
+                        <option value="counterparty">Counterparty risk</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RULE REFERENCE</th>
+                                    <th>RULE NAME</th>
+                                    <th>CATEGORY</th>
+                                    <th>SCOPE</th>
+                                    <th>SEVERITY</th>
+                                    <th>TRIGGER COUNT</th>
+                                    <th>LAST TRIGGERED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ruleTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 05 SANCTIONS AND PEP -->
+
+            <section class="aml-section" id="screening">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">IDENTITY & COUNTERPARTY SCREENING</span>
+                        <h2>Sanctions, PEP & Adverse Media</h2>
+                        <p>Manage screening requests, potential matches, secondary reviews and documented dispositions.
+                        </p>
+                    </div>
+                    <button class="aml-btn primary" data-open="screeningModal">+ New Screening</button>
+                </div>
+
+                <div class="screening-notice">
+                    <strong>Screening governance</strong>
+                    <p>
+                        A potential name match is not proof of identity or wrongdoing.
+                        All matches require appropriate identity resolution, source verification
+                        and authorized human assessment.
+                    </p>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="screeningSearch" placeholder="Search screening reference...">
+                    <select id="screeningType">
+                        <option value="">All screening types</option>
+                        <option value="sanctions">Sanctions</option>
+                        <option value="pep">PEP</option>
+                        <option value="adverse_media">Adverse media</option>
+                        <option value="combined">Combined screening</option>
+                    </select>
+                    <select id="screeningStatus">
+                        <option value="">All screening statuses</option>
+                        <option value="clear">Clear</option>
+                        <option value="potential_match">Potential match</option>
+                        <option value="under_review">Under review</option>
+                        <option value="confirmed_match">Confirmed match</option>
+                        <option value="false_positive">False positive</option>
+                    </select>
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>SCREENING REFERENCE</th>
+                                    <th>SUBJECT TYPE</th>
+                                    <th>SCREENING TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>DATA SOURCE</th>
+                                    <th>MATCH CONFIDENCE</th>
+                                    <th>SCREENED</th>
+                                    <th>RESULT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="screeningTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 06 CUSTOMER DUE DILIGENCE -->
+
+            <section class="aml-section" id="customers">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">CUSTOMER RISK GOVERNANCE</span>
+                        <h2>Customer Due Diligence</h2>
+                        <p>Oversee customer risk classifications, KYC reviews, enhanced due diligence and ongoing
+                            monitoring.</p>
+                    </div>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="customerSearch" placeholder="Search customer reference...">
+                    <select id="customerRisk">
+                        <option value="">All risk classifications</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <select id="customerStatus">
+                        <option value="">All review statuses</option>
+                        <option value="current">Current</option>
+                        <option value="review_due">Review due</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="enhanced_due_diligence">Enhanced due diligence</option>
+                        <option value="under_review">Under review</option>
+                    </select>
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CUSTOMER REFERENCE</th>
+                                    <th>CUSTOMER TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>RISK CLASSIFICATION</th>
+                                    <th>KYC STATUS</th>
+                                    <th>EDD STATUS</th>
+                                    <th>LAST REVIEW</th>
+                                    <th>NEXT REVIEW</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customerTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 07 SAR / STR REPORTING -->
+
+            <section class="aml-section" id="reports">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">REGULATORY REPORTING</span>
+                        <h2>Suspicious Activity & Transaction Reporting</h2>
+                        <p>Manage suspicious activity report preparation, internal approval, filing records and
+                            regulatory acknowledgements.</p>
+                    </div>
+                    <button class="aml-btn primary" data-open="reportModal">+ Prepare SAR / STR</button>
+                </div>
+
+                <div class="report-notice">
+                    <strong>Controlled regulatory reporting</strong>
+                    <p>
+                        Reports must follow applicable jurisdictional requirements, confidentiality
+                        restrictions and authorized filing procedures. Creating a draft does not
+                        constitute a regulatory submission.
+                    </p>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="reportSearch" placeholder="Search report reference...">
+                    <select id="reportType">
+                        <option value="">All report types</option>
+                        <option value="sar">Suspicious Activity Report</option>
+                        <option value="str">Suspicious Transaction Report</option>
+                        <option value="internal">Internal Suspicious Activity Report</option>
+                        <option value="other">Other regulatory report</option>
+                    </select>
+                    <select id="reportStatus">
+                        <option value="">All statuses</option>
+                        <option value="draft">Draft</option>
+                        <option value="pending_review">Pending review</option>
+                        <option value="pending_approval">Pending approval</option>
+                        <option value="approved">Approved</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="acknowledged">Acknowledged</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REPORT REFERENCE</th>
+                                    <th>REPORT TYPE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>RELATED CASE</th>
+                                    <th>PREPARED BY</th>
+                                    <th>DEADLINE</th>
+                                    <th>SUBMITTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 08 JURISDICTIONS -->
+
+            <section class="aml-section" id="jurisdictions">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL REGULATORY INTELLIGENCE</span>
+                        <h2>Global AML Jurisdictions</h2>
+                        <p>Manage jurisdiction profiles, applicable AML requirements, reporting obligations and
+                            compliance reviews.</p>
+                    </div>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="jurisdictionSearch" placeholder="Search country or jurisdiction...">
+                    <select id="jurisdictionStatus">
+                        <option value="">All statuses</option>
+                        <option value="active">Active</option>
+                        <option value="under_review">Under review</option>
+                        <option value="restricted">Restricted</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>JURISDICTION</th>
+                                    <th>COUNTRY CODE</th>
+                                    <th>REGULATORY AUTHORITY</th>
+                                    <th>RISK CLASSIFICATION</th>
+                                    <th>REPORTING FRAMEWORK</th>
+                                    <th>LAST REVIEW</th>
+                                    <th>NEXT REVIEW</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jurisdictionTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- 09 AUDIT -->
+
+            <section class="aml-section" id="audit">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">COMPLIANCE ACCOUNTABILITY</span>
+                        <h2>AML Audit & Governance</h2>
+                        <p>Track investigation decisions, screening dispositions, rule changes, report approvals and
+                            administrative actions.</p>
+                    </div>
+                    <button class="aml-btn secondary" id="exportAudit">↓ Export Audit</button>
+                </div>
+
+                <div class="filter-bar">
+                    <input id="auditSearch" placeholder="Search audit record...">
+                </div>
+
+                <article class="aml-panel">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>ACTOR</th>
+                                    <th>ACTION</th>
+                                    <th>RESOURCE</th>
+                                    <th>REASON</th>
+                                    <th>JURISDICTION</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <footer class="aml-footer">
+                TALVORA GLOBAL FINANCIAL OPERATIONS
+                <span>•</span>
+                TRANSACTION MONITORING & AML GOVERNANCE
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- INVESTIGATION MODAL -->
+
+    <div class="overlay" id="caseModal" hidden>
+        <div class="aml-modal">
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">FINANCIAL CRIME OPERATIONS</span>
+                    <h2>Create Investigation</h2>
+                </div>
+                <button class="modal-close" data-close>×</button>
+            </div>
+
+            <form id="caseForm">
+                <label>Investigation title
+                    <input name="title" required maxlength="180">
+                </label>
+
+                <label>Investigation category
+                    <select name="category" required>
+                        <option value="">Select category</option>
+                        <option value="money_laundering">Money laundering</option>
+                        <option value="terrorist_financing">Terrorist financing</option>
+                        <option value="sanctions_evasion">Potential sanctions evasion</option>
+                        <option value="fraud">Financial fraud</option>
+                        <option value="structuring">Potential structuring</option>
+                        <option value="suspicious_transactions">Suspicious transactions</option>
+                        <option value="other">Other financial crime concern</option>
+                    </select>
+                </label>
+
+                <label>Related alert reference
+                    <input name="alertReference" maxlength="120">
+                </label>
+
+                <label>Jurisdiction
+                    <select name="jurisdiction" id="caseJurisdiction">
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>Risk classification
+                    <select name="riskLevel" required>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </label>
+
+                <label>Investigation summary
+                    <textarea name="summary" required minlength="20" maxlength="3000"></textarea>
+                </label>
+
+                <label>Initial evidence reference
+                    <input name="evidenceReference" maxlength="250">
+                </label>
+
+                <p class="form-note">
+                    Case creation is recorded for authorized investigation assignment and review.
+                </p>
+
+                <button class="aml-btn primary full-width" id="caseSubmit" type="submit">
+                    Create Investigation
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCREENING MODAL -->
+
+    <div class="overlay" id="screeningModal" hidden>
+        <div class="aml-modal">
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">IDENTITY SCREENING</span>
+                    <h2>New Screening Request</h2>
+                </div>
+                <button class="modal-close" data-close>×</button>
+            </div>
+
+            <form id="screeningForm">
+                <label>Subject type
+                    <select name="subjectType" required>
+                        <option value="">Select subject type</option>
+                        <option value="individual">Individual</option>
+                        <option value="company">Company</option>
+                        <option value="beneficial_owner">Beneficial owner</option>
+                        <option value="counterparty">Counterparty</option>
+                        <option value="employer">Employer</option>
+                        <option value="employee">Employee</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>Subject name
+                    <input name="subjectName" required maxlength="180" autocomplete="off">
+                </label>
+
+                <label>Jurisdiction
+                    <select name="jurisdiction" id="screeningJurisdiction">
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>Screening type
+                    <select name="screeningType" required>
+                        <option value="combined">Combined screening</option>
+                        <option value="sanctions">Sanctions</option>
+                        <option value="pep">Politically exposed persons</option>
+                        <option value="adverse_media">Adverse media</option>
+                    </select>
+                </label>
+
+                <label>Related customer reference
+                    <input name="customerReference" maxlength="120">
+                </label>
+
+                <label>Screening context
+                    <textarea name="context" maxlength="1000"></textarea>
+                </label>
+
+                <p class="form-note">
+                    Screening results are potential matches until identity and source evidence
+                    have been assessed by an authorized reviewer.
+                </p>
+
+                <button class="aml-btn primary full-width" id="screeningSubmit" type="submit">
+                    Submit Screening Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MONITORING RULE MODAL -->
+
+    <div class="overlay" id="ruleModal" hidden>
+        <div class="aml-modal">
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">TRANSACTION SURVEILLANCE</span>
+                    <h2>Create Monitoring Rule</h2>
+                </div>
+                <button class="modal-close" data-close>×</button>
+            </div>
+
+            <form id="ruleForm">
+                <label>Rule name
+                    <input name="name" required maxlength="180">
+                </label>
+
+                <label>Rule category
+                    <select name="category" required>
+                        <option value="">Select category</option>
+                        <option value="structuring">Structuring indicators</option>
+                        <option value="velocity">Transaction velocity</option>
+                        <option value="unusual_volume">Unusual transaction volume</option>
+                        <option value="geographic_risk">Geographic risk</option>
+                        <option value="behavioral">Behavioral anomalies</option>
+                        <option value="counterparty">Counterparty risk</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>Monitoring scope
+                    <select name="scope" required>
+                        <option value="global">Global</option>
+                        <option value="jurisdiction">Selected jurisdiction</option>
+                        <option value="payment_channel">Payment channel</option>
+                        <option value="customer_segment">Customer segment</option>
+                    </select>
+                </label>
+
+                <label>Risk severity
+                    <select name="severity" required>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </label>
+
+                <label>Threshold value (if applicable)
+                    <input name="threshold" type="number" min="0" step="any">
+                </label>
+
+                <label>Threshold currency (if applicable)
+                    <select name="currency" id="ruleCurrency">
+                        <option value="">Not applicable</option>
+                    </select>
+                </label>
+
+                <label>Rule description and logic
+                    <textarea name="description" required minlength="20" maxlength="3000"></textarea>
+                </label>
+
+                <p class="form-note">
+                    New rules enter draft status. Activation requires appropriate testing,
+                    documented approval and server-side validation.
+                </p>
+
+                <button class="aml-btn primary full-width" id="ruleSubmit" type="submit">
+                    Save Rule Draft
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SAR / STR MODAL -->
+
+    <div class="overlay" id="reportModal" hidden>
+        <div class="aml-modal">
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">REGULATORY COMPLIANCE</span>
+                    <h2>Prepare SAR / STR Report</h2>
+                </div>
+                <button class="modal-close" data-close>×</button>
+            </div>
+
+            <form id="reportForm">
+                <label>Report type
+                    <select name="type" required>
+                        <option value="">Select report type</option>
+                        <option value="sar">Suspicious Activity Report</option>
+                        <option value="str">Suspicious Transaction Report</option>
+                        <option value="internal">Internal Suspicious Activity Report</option>
+                        <option value="other">Other regulatory report</option>
+                    </select>
+                </label>
+
+                <label>Jurisdiction
+                    <select name="jurisdiction" id="reportJurisdiction" required>
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>Related investigation reference
+                    <input name="caseReference" maxlength="120">
+                </label>
+
+                <label>Reporting deadline
+                    <input name="deadline" type="date">
+                </label>
+
+                <label>Confidential report summary
+                    <textarea name="summary" required minlength="30" maxlength="5000"></textarea>
+                </label>
+
+                <p class="form-note">
+                    This creates a confidential draft for authorized compliance review.
+                    Filing must follow the applicable regulator's procedures.
+                </p>
+
+                <button class="aml-btn primary full-width" id="reportSubmit" type="submit">
+                    Save Confidential Draft
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- GENERAL ACTION MODAL -->
+
+    <div class="overlay" id="actionModal" hidden>
+        <div class="aml-modal">
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">AUTHORIZED AML WORKFLOW</span>
+                    <h2 id="actionTitle">Review Action</h2>
+                </div>
+                <button class="modal-close" data-close>×</button>
+            </div>
+
+            <p id="actionDescription" class="muted"></p>
+
+            <label>Reason and supporting explanation
+                <textarea id="actionReason" minlength="10" maxlength="2000" required></textarea>
+            </label>
+
+            <label>Supporting evidence reference
+                <input id="actionEvidence" maxlength="250">
+            </label>
+
+            <div class="modal-actions">
+                <button class="aml-btn secondary" data-close>Cancel</button>
+                <button class="aml-btn primary" id="actionSubmit" disabled>
+                    Submit Request
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAILS MODAL -->
+
+    <div class="overlay" id="detailModal" hidden>
+        <div class="aml-modal large">
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">CONTROLLED RECORD ACCESS</span>
+                    <h2 id="detailTitle">AML Record</h2>
+                </div>
+                <button class="modal-close" data-close>×</button>
+            </div>
+            <div id="detailBody" class="detail-body"></div>
+        </div>
+    </div>
+
+    <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../Auth/app-config.js" defer></script>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="TALVORA Technologies - GSES Global Skills-to-Employment System Super Admin Portal">
+
+    <meta name="theme-color" content="#060638">
+
+    <script>
+        if (!window.location.hash.startsWith("#/admin/")) {
+            window.location.replace("./index.html#/admin/dashboard");
+        }
+    </script>
+
+    <title>TALVORA | Super Admin Portal</title>
+
+    <link rel="icon" type="image/png" href="../talvora-logo.png">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* The admin portal is the entry page; never show the retired login view. */
+        #login-screen {
+            display: none !important;
+        }
+
+        #admin-app {
+            display: block !important;
+        }
+    </style>
+
+    <script src="app.js?v=admin-live-dashboard" defer></script>
+</head>
+
+<body>
+
+    <!-- ==========================================
+       TALVORA SUPER ADMIN LOGIN
+       ========================================== -->
+
+    <section id="login-screen" class="login-screen">
+
+        <div class="login-container">
+
+            <div class="login-brand">
+
+                <img src="../talvora-logo.png" alt="TALVORA Technologies logo" class="login-logo">
+
+                <h1>TALVORA</h1>
+
+                <span class="brand-subtitle">
+                    TECHNOLOGIES
+                </span>
+
+                <p class="brand-tagline">
+                    Connecting Human Capability<br>
+                    to Global Opportunity.
+                </p>
+
+            </div>
+
+
+            <div class="login-card">
+
+                <div class="login-heading">
+
+                    <span class="portal-label">
+                        TALVORA GLOBAL
+                    </span>
+
+                    <h2>Super Admin Portal</h2>
+
+                    <p>
+                        Opening the Global Skills-to-Employment System...
+                    </p>
+
+                </div>
+
+
+                <p id="login-message" class="form-message" role="status" aria-live="polite">
+                    Redirecting to the admin dashboard...
+                </p>
+
+                <a href="./index.html#/admin/dashboard" class="btn btn-primary login-button dashboard-link"
+                    id="dashboard-link">
+                    Open Admin Dashboard
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+
+
+                <div class="login-footer">
+
+                    <span>GSES SYSTEM 001</span>
+
+                    <span>Authorized Administration</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="login-copyright">
+                TALVORA TECHNOLOGIES
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+       TALVORA SUPER ADMIN APPLICATION
+       ========================================== -->
+
+    <div id="admin-app" class="app-layout" hidden>
+
+
+        <!-- ========================================
+         SIDEBAR
+         ======================================== -->
+
+        <aside id="sidebar" class="sidebar">
+
+
+            <!-- CORPORATE BRAND -->
+
+            <div class="sidebar-header">
+
+                <a href="#/admin/dashboard" class="sidebar-brand-link" aria-label="TALVORA dashboard">
+
+                    <img src="../talvora-logo.png" alt="" class="sidebar-logo">
+
+                    <div class="sidebar-brand">
+
+                        <h2>TALVORA</h2>
+
+                        <span>TECHNOLOGIES</span>
+
+                        <small>TALVORA GLOBAL</small>
+
+                    </div>
+
+                </a>
+
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- PORTAL IDENTITY -->
+
+            <div class="sidebar-portal-label">
+
+                <span class="portal-indicator"></span>
+
+                SUPER ADMIN PORTAL
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation" aria-label="Super Admin navigation">
+
+
+                <!-- OVERVIEW -->
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">OVERVIEW</p>
+
+                    <a href="#/admin/dashboard" class="nav-link active" data-page="dashboard">
+                        <span class="nav-icon">&#9638;</span>
+                        <span>Dashboard</span>
+                    </a>
+
+
+                    <a href="#/admin/activities" class="nav-link" data-page="activities">
+                        <span class="nav-icon">&#9776;</span>
+                        <span>Platform Activities</span>
+                    </a>
+
+
+                    <a href="#/admin/locations" class="nav-link" data-page="locations">
+                        <span class="nav-icon">&#9678;</span>
+                        <span>Locations</span>
+                    </a>
+
+                </div>
+
+
+                <!-- USER MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">
+                        USER MANAGEMENT
+                    </p>
+
+
+                    <a href="employees.html" class="nav-link">
+                        <span class="nav-icon">&#9786;</span>
+                        <span>Employees</span>
+                    </a>
+
+
+                    <a href="employers.html" class="nav-link">
+                        <span class="nav-icon">&#9635;</span>
+                        <span>Employers</span>
+                    </a>
+
+
+                    <a href="users.html" class="nav-link">
+                        <span class="nav-icon">&#9881;</span>
+                        <span>Admin Team & Roles</span>
+                    </a>
+
+                </div>
+
+
+                <!-- EMPLOYMENT OPERATIONS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">
+                        EMPLOYMENT OPERATIONS
+                    </p>
+
+
+                    <a href="jobs.html" class="nav-link">
+                        <span class="nav-icon">&#9636;</span>
+                        <span>Job Management</span>
+                    </a>
+
+
+                    <a href="legacy/applications.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        <span>Applications & Hiring</span>
+                    </a>
+
+
+                    <a href="legacy/assessments.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        <span>Assessments</span>
+                    </a>
+
+
+                    <a href="legacy/evidence.html" class="nav-link">
+                        <span class="nav-icon">&#9635;</span>
+                        <span>Skills & Evidence</span>
+                    </a>
+
+
+                    <a href="legacy/matching.html" class="nav-link">
+                        <span class="nav-icon">&#8644;</span>
+                        <span>Matching Oversight</span>
+                    </a>
+
+                </div>
+
+
+                <!-- FINANCIAL MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">
+                        FINANCIAL MANAGEMENT
+                    </p>
+
+
+                    <a href="finance.html" class="nav-link">
+                        <span class="nav-icon">&#36;</span>
+                        <span>Finance & Revenue</span>
+                    </a>
+
+
+                    <a href="financial-operations.html" class="nav-link">
+                        <span class="nav-icon">&#8646;</span>
+                        <span>Financial Operations</span>
+                    </a>
+
+
+                    <a href="payment-gateway.html" class="nav-link">
+                        <span class="nav-icon">&#128179;</span>
+                        <span>Payment Gateway</span>
+                    </a>
+
+
+                    <a href="treasury.html" class="nav-link">
+                        <span class="nav-icon">&#9878;</span>
+                        <span>Treasury & Liquidity</span>
+                    </a>
+
+                </div>
+
+
+                <!-- TRUST AND SECURITY -->
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">
+                        TRUST & SECURITY
+                    </p>
+
+
+                    <a href="kyc.html" class="nav-link">
+                        <span class="nav-icon">&#9745;</span>
+                        <span>KYC & KYB Verification</span>
+                    </a>
+
+
+                    <a href="legacy/reports.html" class="nav-link">
+                        <span class="nav-icon">&#9873;</span>
+                        <span>Reports & Investigations</span>
+                    </a>
+
+
+                    <a href="disputes.html" class="nav-link">
+                        <span class="nav-icon">&#9878;</span>
+                        <span>Disputes & Appeals</span>
+                    </a>
+
+
+                    <a href="legacy/consents.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        <span>Privacy & Consent</span>
+                    </a>
+
+
+                    <a href="compliance.html" class="nav-link">
+                        <span class="nav-icon">&#9878;</span>
+                        <span>Compliance Centre</span>
+                    </a>
+
+
+                    <a href="audit.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        <span>Audit Logs</span>
+                    </a>
+
+
+                    <a href="legacy/support.html" class="nav-link">
+                        <span class="nav-icon">&#9993;</span>
+                        <span>Support Center</span>
+                    </a>
+
+
+                    <a href="chat-monitor.html" class="nav-link">
+                        <span class="nav-icon">&#9993;</span>
+                        <span>Chat Monitor</span>
+                    </a>
+
+                </div>
+
+
+                <!-- PLATFORM MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">
+                        PLATFORM CONTROL
+                    </p>
+
+
+                    <a href="legacy/integration.html" class="nav-link">
+                        <span class="nav-icon">&#9672;</span>
+                        <span>Unified Integration Centre</span>
+                    </a>
+
+
+                    <a href="analytics.html" class="nav-link">
+                        <span class="nav-icon">&#9650;</span>
+                        <span>Analytics & Intelligence</span>
+                    </a>
+
+
+                    <a href="legacy/settings.html" class="nav-link">
+                        <span class="nav-icon">&#9881;</span>
+                        <span>System Settings</span>
+                    </a>
+
+                </div>
+
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <div class="sidebar-footer-brand">
+                    TALVORA TECHNOLOGIES
+                </div>
+
+                <p>GSES SYSTEM 001</p>
+
+                <span>Global Workforce Infrastructure</span>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MOBILE SIDEBAR OVERLAY -->
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden></div>
+
+
+        <!-- ========================================
+         MAIN WORKSPACE
+         ======================================== -->
+
+        <div class="main-workspace">
+
+
+            <!-- TOP HEADER -->
+
+            <header class="top-header">
+
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+                        &#9776;
+                    </button>
+
+
+                    <div class="header-title">
+
+                        <span class="header-brand-label">
+                            TALVORA GLOBAL
+                        </span>
+
+                        <h2 id="current-page-title">
+                            Dashboard
+                        </h2>
+
+                        <p id="current-page-description">
+                            GSES Platform Command Center
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <!-- ADMIN PROFILE -->
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">
+                            SA
+                        </div>
+
+                        <div class="admin-info">
+
+                            <strong>Super Admin</strong>
+
+                            <span>Authorized Administration</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SIGN OUT -->
+
+                    <button id="logout-button" class="logout-button" type="button">
+                        Sign Out
+                    </button>
+
+
+                </div>
+
+            </header>
+
+
+            <!-- ======================================
+           MAIN CONTENT
+           ====================================== -->
+
+            <main id="main-content" class="main-content">
+
+
+                <!-- DASHBOARD -->
+
+                <section id="dashboard-page" class="page-section" aria-labelledby="dashboard-heading">
+
+
+                    <div class="page-heading">
+
+                        <div>
+
+                            <span class="section-eyebrow">
+                                PLATFORM COMMAND CENTER
+                            </span>
+
+                            <h1 id="dashboard-heading">
+                                Platform Overview
+                            </h1>
+
+                            <p>
+                                Monitor the TALVORA Global Skills-to-Employment System.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATISTICS -->
+
+                    <div class="stats-grid">
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-header">
+
+                                <h3>Total Employees</h3>
+
+                                <span class="stat-icon">
+                                    &#9786;
+                                </span>
+
+                            </div>
+
+                            <div id="total-employees" class="stat-value">—</div>
+
+                            <p>Registered employee accounts</p>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-header">
+
+                                <h3>Total Employers</h3>
+
+                                <span class="stat-icon">
+                                    &#9635;
+                                </span>
+
+                            </div>
+
+                            <div id="total-employers" class="stat-value">—</div>
+
+                            <p>Registered employer organizations</p>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-header">
+
+                                <h3>Active Jobs</h3>
+
+                                <span class="stat-icon">
+                                    &#9636;
+                                </span>
+
+                            </div>
+
+                            <div id="active-jobs" class="stat-value">—</div>
+
+                            <p>Published employment opportunities</p>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-header">
+
+                                <h3>Total Applications</h3>
+
+                                <span class="stat-icon">
+                                    &#9776;
+                                </span>
+
+                            </div>
+
+                            <div id="total-applications" class="stat-value">—</div>
+
+                            <p>Submitted job applications</p>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-header">
+
+                                <h3>Suspended Accounts</h3>
+
+                                <span class="stat-icon">
+                                    &#9888;
+                                </span>
+
+                            </div>
+
+                            <div id="suspended-accounts" class="stat-value">—</div>
+
+                            <p>Suspended platform accounts</p>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-header">
+
+                                <h3>Open Reports</h3>
+
+                                <span class="stat-icon">
+                                    &#9873;
+                                </span>
+
+                            </div>
+
+                            <div id="open-reports" class="stat-value">—</div>
+
+                            <p>Reports requiring investigation</p>
+
+                        </article>
+
+
+                    </div>
+
+
+                    <!-- DASHBOARD CONTENT -->
+
+                    <div class="dashboard-grid">
+
+
+                        <!-- ACTIVITIES -->
+
+                        <section class="content-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <h3>Recent Platform Activity</h3>
+
+                                    <p>
+                                        Employee, employer and administrative activities
+                                    </p>
+
+                                </div>
+
+
+                                <a href="#/admin/activities" class="text-link">
+                                    View All &rarr;
+                                </a>
+
+                            </div>
+
+
+                            <div id="recent-activities" class="activity-container" aria-live="polite">
+
+                                <div class="empty-state">
+
+                                    <div class="empty-state-icon">
+                                        &#9776;
+                                    </div>
+
+                                    <h4>Activity data unavailable</h4>
+
+                                    <p>
+                                        Activity records will appear
+                                        when the backend is connected.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- MANAGEMENT OVERVIEW -->
+
+                        <section class="content-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <h3>Management Overview</h3>
+
+                                    <p>
+                                        Items requiring administrative review
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="management-list">
+
+
+                                <div class="management-item">
+
+                                    <span>Pending Employer Verifications</span>
+
+                                    <strong id="pending-verifications">—</strong>
+
+                                </div>
+
+
+                                <div class="management-item">
+
+                                    <span>Pending Evidence Reviews</span>
+
+                                    <strong id="pending-evidence">—</strong>
+
+                                </div>
+
+
+                                <div class="management-item">
+
+                                    <span>Open Disputes</span>
+
+                                    <strong id="pending-disputes">—</strong>
+
+                                </div>
+
+
+                                <div class="management-item">
+
+                                    <span>Security Alerts</span>
+
+                                    <strong id="security-alerts">—</strong>
+
+                                </div>
+
+
+                                <div class="management-item">
+
+                                    <span>Support Requests</span>
+
+                                    <strong id="support-requests">—</strong>
+
+                                </div>
+
+
+                            </div>
+
+                        </section>
+
+
+                    </div>
+
+
+                    <!-- QUICK MANAGEMENT -->
+
+                    <section class="content-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Platform Management</h3>
+
+                                <p>
+                                    Direct access to the main management portals.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+
+                            <a href="employees.html" class="quick-action-card">
+
+                                <span class="quick-action-icon">
+                                    &#9786;
+                                </span>
+
+                                <h4>Employee Management</h4>
+
+                                <p>
+                                    Review employee profiles,
+                                    account status and activities.
+                                </p>
+
+                                <span class="quick-action-link">
+                                    Open Employee Management &rarr;
+                                </span>
+
+                            </a>
+
+
+                            <a href="employers.html" class="quick-action-card">
+
+                                <span class="quick-action-icon">
+                                    &#9635;
+                                </span>
+
+                                <h4>Employer Management</h4>
+
+                                <p>
+                                    Review organizations, verification,
+                                    jobs and account activity.
+                                </p>
+
+                                <span class="quick-action-link">
+                                    Open Employer Management &rarr;
+                                </span>
+
+                            </a>
+
+
+                            <a href="finance.html" class="quick-action-card">
+
+                                <span class="quick-action-icon">
+                                    &#36;
+                                </span>
+
+                                <h4>Finance & Revenue</h4>
+
+                                <p>
+                                    Monitor payments, subscriptions,
+                                    refunds and operating expenses.
+                                </p>
+
+                                <span class="quick-action-link">
+                                    Open Finance Management &rarr;
+                                </span>
+
+                            </a>
+
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- SYSTEM INFORMATION -->
+
+                    <section class="content-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>System Information</h3>
+
+                                <p>
+                                    TALVORA platform identity and connection status
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="system-info-grid">
+
+
+                            <div class="info-item">
+
+                                <span>Corporate Brand</span>
+
+                                <strong>TALVORA Technologies</strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Platform</span>
+
+                                <strong>TALVORA Global</strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>System Number</span>
+
+                                <strong>GSES System 001</strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Active Portal</span>
+
+                                <strong>Super Admin</strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Data Connection</span>
+
+                                <strong id="data-connection">
+                                    Not Connected
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+                    </section>
+
+
+                </section>
+
+
+                <!-- OTHER ADMIN MODULES -->
+
+                <section id="module-page" class="page-section" hidden>
+
+
+                    <div class="page-heading">
+
+                        <div>
+
+                            <span class="section-eyebrow">
+                                TALVORA GLOBAL
+                            </span>
+
+                            <h1 id="module-heading"></h1>
+
+                            <p id="module-description"></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <section class="content-card">
+
+
+                        <div class="module-toolbar">
+
+                            <div class="module-search">
+
+                                <label for="module-search-input">
+                                    Search Records
+                                </label>
+
+                                <input type="search" id="module-search-input" placeholder="Search records..." disabled>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="module-content" class="module-content" aria-live="polite">
+
+                            <div class="empty-state">
+
+                                <h3>Module not connected</h3>
+
+                                <p>
+                                    This module will become operational
+                                    after its frontend and backend
+                                    services are implemented.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+                </section>
+
+
+            </main>
+
+
+            <!-- MAIN FOOTER -->
+
+            <footer class="main-footer">
+
+                <div class="footer-brand">
+
+                    <strong>TALVORA TECHNOLOGIES</strong>
+
+                    <span>Connecting Human Capability to Global Opportunity.</span>
+
+                </div>
+
+                <div class="footer-system">
+
+                    GSES SYSTEM 001
+
+                    <span id="footer-year"></span>
+
+                </div>
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

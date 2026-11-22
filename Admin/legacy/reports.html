@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060638">
+
+    <meta name="description" content="TALVORA Global Super Admin Reports and Investigations Centre">
+
+    <title>Reports & Investigations | TALVORA Technologies</title>
+
+    <link rel="icon" href="../../talvora-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="reports.css">
+
+    <script src="reports.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ACCESS CONTROL -->
+
+    <section id="reports-locked" class="reports-locked">
+
+        <div class="reports-locked-card">
+
+            <img src="../../talvora-logo.png" alt="TALVORA logo">
+
+            <h1>TALVORA</h1>
+
+            <p id="reports-access-message" role="status">
+                Verifying administrator access...
+            </p>
+
+            <a href="../index.html" class="btn btn-primary">
+                Return to Super Admin
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN APPLICATION -->
+
+    <div id="reports-app" class="app-layout" hidden>
+
+
+        <!-- SIDEBAR -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="../index.html" class="sidebar-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="" class="sidebar-logo">
+
+                    <div class="sidebar-brand">
+
+                        <h2>TALVORA</h2>
+
+                        <span>TECHNOLOGIES</span>
+
+                        <small>TALVORA GLOBAL</small>
+
+                    </div>
+
+                </a>
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-portal-label">
+
+                <span class="portal-indicator"></span>
+
+                SUPER ADMIN PORTAL
+
+            </div>
+
+
+            <nav class="sidebar-navigation" aria-label="Admin navigation">
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">OVERVIEW</p>
+
+                    <a href="../index.html#/admin/dashboard" class="nav-link">
+                        <span class="nav-icon">&#9638;</span>
+                        Dashboard
+                    </a>
+
+                    <a href="../index.html#/admin/activities" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Platform Activities
+                    </a>
+
+                    <a href="../index.html#/admin/locations" class="nav-link">
+                        <span class="nav-icon">&#9678;</span>
+                        Locations
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">USER MANAGEMENT</p>
+
+                    <a href="employees.html" class="nav-link">
+                        <span class="nav-icon">&#9786;</span>
+                        Employees
+                    </a>
+
+                    <a href="employers.html" class="nav-link">
+                        <span class="nav-icon">&#9635;</span>
+                        Employers
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">EMPLOYMENT OPERATIONS</p>
+
+                    <a href="jobs.html" class="nav-link">
+                        <span class="nav-icon">&#9636;</span>
+                        Job Management
+                    </a>
+
+                    <a href="applications.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Applications & Hiring
+                    </a>
+
+                    <a href="assessments.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        Assessments
+                    </a>
+
+                    <a href="evidence.html" class="nav-link">
+                        <span class="nav-icon">&#9635;</span>
+                        Skills & Evidence
+                    </a>
+
+                    <a href="matching.html" class="nav-link">
+                        <span class="nav-icon">&#8644;</span>
+                        Matching Oversight
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">FINANCIAL MANAGEMENT</p>
+
+                    <a href="finance.html" class="nav-link">
+                        <span class="nav-icon">&#36;</span>
+                        Finance & Revenue
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">TRUST & SECURITY</p>
+
+                    <a href="reports.html" class="nav-link active" aria-current="page">
+
+                        <span class="nav-icon">&#9873;</span>
+                        Reports & Investigations
+
+                    </a>
+
+                    <a href="disputes.html" class="nav-link">
+                        <span class="nav-icon">&#9878;</span>
+                        Disputes & Appeals
+                    </a>
+
+                    <a href="consents.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        Privacy & Consent
+                    </a>
+
+                    <a href="audit.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Audit Logs
+                    </a>
+
+                    <a href="support.html" class="nav-link">
+                        <span class="nav-icon">&#9993;</span>
+                        Support Center
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">PLATFORM MANAGEMENT</p>
+
+                    <a href="team.html" class="nav-link">
+                        <span class="nav-icon">&#9786;</span>
+                        Admin Team
+                    </a>
+
+                    <a href="settings.html" class="nav-link">
+                        <span class="nav-icon">&#9881;</span>
+                        System Settings
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="sidebar-footer-brand">
+                    TALVORA TECHNOLOGIES
+                </div>
+
+                <p>GSES SYSTEM 001</p>
+
+                <span>Global Workforce Infrastructure</span>
+
+            </div>
+
+        </aside>
+
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden>
+        </div>
+
+
+        <!-- MAIN WORKSPACE -->
+
+        <div class="main-workspace">
+
+
+            <!-- HEADER -->
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+
+                        &#9776;
+
+                    </button>
+
+
+                    <div class="header-title">
+
+                        <span class="header-brand-label">
+                            TALVORA GLOBAL
+                        </span>
+
+                        <h2>Reports & Investigations</h2>
+
+                        <p>Platform trust, incident management and investigation oversight</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <div class="connection-status disconnected">
+
+                        <span class="status-dot"></span>
+
+                        <span id="reports-system-status">
+                            Not Connected
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">SA</div>
+
+                        <div class="admin-info">
+
+                            <strong>Super Admin</strong>
+
+                            <span>Administration</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="../index.html" class="logout-button">
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+
+            <main class="main-content">
+
+
+                <!-- PAGE HEADING -->
+
+                <section class="page-heading reports-heading">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            TRUST & SECURITY MANAGEMENT
+                        </span>
+
+                        <h1>Reports & Investigations Centre</h1>
+
+                        <p>
+                            Centralized oversight of platform reports,
+                            incidents, complaints, suspicious activity,
+                            investigations, evidence and administrative
+                            resolutions across TALVORA Global.
+                        </p>
+
+                    </div>
+
+
+                    <div class="reports-heading-actions">
+
+                        <button id="reports-refresh" class="btn btn-secondary" type="button" disabled>
+
+                            &#8635; Refresh
+
+                        </button>
+
+
+                        <button id="reports-export" class="btn btn-primary" type="button" disabled>
+
+                            &#8681; Export Report
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SYSTEM NOTICE -->
+
+                <div id="reports-notice" class="reports-notice" role="status" aria-live="polite">
+
+                    Awaiting connection to the investigations service.
+
+                </div>
+
+
+                <!-- REPORT STATISTICS -->
+
+                <section class="reports-stats" aria-label="Investigation statistics">
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>Total Reports</span>
+
+                            <span class="reports-stat-icon">&#9776;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-total">—</strong>
+
+                        <p>Registered platform reports</p>
+
+                    </article>
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>Open Cases</span>
+
+                            <span class="reports-stat-icon">&#128196;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-open">—</strong>
+
+                        <p>Cases requiring attention</p>
+
+                    </article>
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>Under Investigation</span>
+
+                            <span class="reports-stat-icon">&#128269;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-investigating">—</strong>
+
+                        <p>Active investigations</p>
+
+                    </article>
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>High Priority</span>
+
+                            <span class="reports-stat-icon">&#9888;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-high">—</strong>
+
+                        <p>High-priority unresolved cases</p>
+
+                    </article>
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>Escalated Cases</span>
+
+                            <span class="reports-stat-icon">&#8593;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-escalated">—</strong>
+
+                        <p>Cases requiring higher attention</p>
+
+                    </article>
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>Awaiting Assignment</span>
+
+                            <span class="reports-stat-icon">&#9786;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-unassigned">—</strong>
+
+                        <p>Cases without an assigned investigator</p>
+
+                    </article>
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>Resolved Cases</span>
+
+                            <span class="reports-stat-icon">&#10003;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-resolved">—</strong>
+
+                        <p>Cases with recorded resolutions</p>
+
+                    </article>
+
+
+                    <article class="reports-stat-card">
+
+                        <div class="reports-stat-top">
+
+                            <span>Overdue Cases</span>
+
+                            <span class="reports-stat-icon">&#9203;</span>
+
+                        </div>
+
+                        <strong id="metric-reports-overdue">—</strong>
+
+                        <p>Cases beyond their recorded due dates</p>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- REPORT DISTRIBUTION AND WORKLOAD -->
+
+                <section class="reports-overview-grid">
+
+
+                    <article class="content-card reports-overview-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Report Categories</h3>
+
+                                <p>
+                                    Distribution of registered reports
+                                    by their recorded category.
+                                </p>
+
+                            </div>
+
+                            <span class="reports-data-label">
+                                Service Data
+                            </span>
+
+                        </div>
+
+
+                        <div id="reports-category-list" class="reports-category-list">
+
+                            <div class="reports-empty-inline">
+                                Category data unavailable.
+                            </div>
+
+                        </div>
+
+
+                    </article>
+
+
+                    <article class="content-card reports-overview-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Investigation Workload</h3>
+
+                                <p>
+                                    Current case allocation and
+                                    investigator workload.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="reports-workload-summary">
+
+
+                            <div>
+
+                                <span>Total Assigned</span>
+
+                                <strong id="workload-assigned">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Unassigned</span>
+
+                                <strong id="workload-unassigned">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Investigators Active</span>
+
+                                <strong id="workload-investigators">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Cases Requiring Attention</span>
+
+                                <strong id="workload-attention">—</strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="reports-workload-footer">
+
+                            <span>Last workload update</span>
+
+                            <strong id="workload-updated">
+                                Data unavailable
+                            </strong>
+
+                        </div>
+
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- MAIN CASE DIRECTORY -->
+
+                <section class="content-card reports-directory">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Central Investigation Register</h3>
+
+                            <p>
+                                Review, investigate, assign and monitor
+                                platform reports and incidents.
+                            </p>
+
+                        </div>
+
+
+                        <span id="reports-record-count" class="reports-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- STATUS TABS -->
+
+                    <div class="reports-tabs" role="tablist" aria-label="Investigation status filters">
+
+
+                        <button type="button" class="reports-tab active" data-status="all" role="tab"
+                            aria-selected="true" tabindex="0">
+
+                            All Reports
+
+                        </button>
+
+
+                        <button type="button" class="reports-tab" data-status="new" role="tab" aria-selected="false"
+                            tabindex="-1">
+
+                            New
+
+                        </button>
+
+
+                        <button type="button" class="reports-tab" data-status="open" role="tab" aria-selected="false"
+                            tabindex="-1">
+
+                            Open
+
+                        </button>
+
+
+                        <button type="button" class="reports-tab" data-status="investigating" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Investigating
+
+                        </button>
+
+
+                        <button type="button" class="reports-tab" data-status="escalated" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Escalated
+
+                        </button>
+
+
+                        <button type="button" class="reports-tab" data-status="resolved" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Resolved
+
+                        </button>
+
+
+                        <button type="button" class="reports-tab" data-status="closed" role="tab" aria-selected="false"
+                            tabindex="-1">
+
+                            Closed
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+
+                    <form id="reports-filter-form" class="reports-filters">
+
+
+                        <div class="reports-search-field">
+
+                            <label for="reports-search">
+                                Search reports
+                            </label>
+
+                            <input id="reports-search" type="search" placeholder="Case reference, title, person..."
+                                disabled>
+
+                        </div>
+
+
+                        <div class="reports-filter-field">
+
+                            <label for="reports-category-filter">
+                                Category
+                            </label>
+
+                            <select id="reports-category-filter" disabled>
+
+                                <option value="">All categories</option>
+
+                                <option value="fraud">Fraud</option>
+
+                                <option value="suspicious_activity">
+                                    Suspicious Activity
+                                </option>
+
+                                <option value="policy_violation">
+                                    Policy Violation
+                                </option>
+
+                                <option value="security_incident">
+                                    Security Incident
+                                </option>
+
+                                <option value="harassment">
+                                    Harassment
+                                </option>
+
+                                <option value="misconduct">
+                                    Misconduct
+                                </option>
+
+                                <option value="identity_concern">
+                                    Identity Concern
+                                </option>
+
+                                <option value="data_privacy">
+                                    Data Privacy
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="reports-filter-field">
+
+                            <label for="reports-severity-filter">
+                                Severity
+                            </label>
+
+                            <select id="reports-severity-filter" disabled>
+
+                                <option value="">All severities</option>
+
+                                <option value="critical">Critical</option>
+
+                                <option value="high">High</option>
+
+                                <option value="medium">Medium</option>
+
+                                <option value="low">Low</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="reports-filter-field">
+
+                            <label for="reports-portal-filter">
+                                Source Portal
+                            </label>
+
+                            <select id="reports-portal-filter" disabled>
+
+                                <option value="">All portals</option>
+
+                                <option value="employee">Employee</option>
+
+                                <option value="employer">Employer</option>
+
+                                <option value="super_admin">Super Admin</option>
+
+                                <option value="system">Platform System</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="reports-filter-field">
+
+                            <label for="reports-date-sort">
+                                Date
+                            </label>
+
+                            <select id="reports-date-sort" disabled>
+
+                                <option value="newest">Newest first</option>
+
+                                <option value="oldest">Oldest first</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button id="reports-apply-filters" class="btn btn-secondary" type="submit" disabled>
+
+                            Apply Filters
+
+                        </button>
+
+
+                        <button id="reports-clear-filters" class="btn btn-outline" type="button" disabled>
+
+                            Clear
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- CASE TABLE -->
+
+                    <div class="table-container reports-table-container" role="region"
+                        aria-label="Investigation records" tabindex="0">
+
+
+                        <table class="data-table reports-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>CASE REFERENCE</th>
+
+                                    <th>REPORT TITLE</th>
+
+                                    <th>CATEGORY</th>
+
+                                    <th>REPORTED BY</th>
+
+                                    <th>INVOLVED PARTY</th>
+
+                                    <th>SEVERITY</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>ASSIGNED TO</th>
+
+                                    <th>DATE REPORTED</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="reports-table-body">
+
+                                <tr>
+
+                                    <td colspan="10">
+
+                                        <div class="reports-empty">
+
+                                            <h4>No investigation records connected</h4>
+
+                                            <p>
+                                                Actual platform reports and investigation
+                                                cases will appear when the authorized
+                                                investigations service is connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+
+                    <div class="reports-pagination">
+
+
+                        <span id="reports-page-info">
+                            No records available
+                        </span>
+
+
+                        <div class="pagination-actions">
+
+
+                            <button id="reports-prev" class="btn btn-secondary" type="button" disabled>
+
+                                Previous
+
+                            </button>
+
+
+                            <button id="reports-next" class="btn btn-secondary" type="button" disabled>
+
+                                Next
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- PRIORITY AND SECURITY MONITORING -->
+
+                <section class="reports-secondary-grid">
+
+
+                    <!-- CRITICAL CASES -->
+
+                    <article class="content-card reports-priority-card">
+
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Critical & High-Priority Cases</h3>
+
+                                <p>
+                                    Unresolved cases requiring elevated attention.
+                                </p>
+
+                            </div>
+
+
+                            <span id="reports-priority-count" class="reports-record-count">
+
+                                Unavailable
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+
+                            <table class="data-table reports-compact-table">
+
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>CASE</th>
+
+                                        <th>SEVERITY</th>
+
+                                        <th>STATUS</th>
+
+                                        <th>REPORTED</th>
+
+                                        <th>ACTION</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="reports-priority-body">
+
+                                    <tr>
+
+                                        <td colspan="5">
+
+                                            <div class="reports-empty">
+
+                                                <p>
+                                                    Priority case records are not connected.
+                                                </p>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+
+                            </table>
+
+                        </div>
+
+
+                    </article>
+
+
+                    <!-- SECURITY INCIDENTS -->
+
+                    <article class="content-card reports-security-card">
+
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Security & Suspicious Activity</h3>
+
+                                <p>
+                                    Recorded security-related investigations
+                                    and suspicious activity reports.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="reports-security-metrics">
+
+
+                            <div>
+
+                                <span>Security Incidents</span>
+
+                                <strong id="security-incident-count">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Suspicious Activity</span>
+
+                                <strong id="security-suspicious-count">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Identity Concerns</span>
+
+                                <strong id="security-identity-count">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Privacy Incidents</span>
+
+                                <strong id="security-privacy-count">—</strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="reports-security-footer">
+
+                            <p>
+                                Security indicators reflect recorded reports.
+                                They are not independent findings of misconduct.
+                            </p>
+
+                        </div>
+
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- INVESTIGATION ASSIGNMENTS -->
+
+                <section class="content-card reports-assignments">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Investigation Assignments</h3>
+
+                            <p>
+                                Monitor investigator allocation,
+                                active workload and outstanding cases.
+                            </p>
+
+                        </div>
+
+
+                        <span id="reports-assignment-count" class="reports-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+
+                        <table class="data-table reports-assignment-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>INVESTIGATOR</th>
+
+                                    <th>ADMIN REFERENCE</th>
+
+                                    <th>ASSIGNED CASES</th>
+
+                                    <th>ACTIVE CASES</th>
+
+                                    <th>OVERDUE CASES</th>
+
+                                    <th>LAST ACTIVITY</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="reports-assignment-body">
+
+                                <tr>
+
+                                    <td colspan="6">
+
+                                        <div class="reports-empty">
+
+                                            <p>
+                                                Investigator allocation records
+                                                are not connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <section class="content-card reports-activity-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Recent Investigation Activity</h3>
+
+                            <p>
+                                Recorded case creation, assignments,
+                                escalations, evidence events and resolutions.
+                            </p>
+
+                        </div>
+
+
+                        <span id="reports-activity-count" class="reports-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+
+                        <table class="data-table reports-activity-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>EVENT REFERENCE</th>
+
+                                    <th>ACTIVITY</th>
+
+                                    <th>CASE REFERENCE</th>
+
+                                    <th>ACTOR</th>
+
+                                    <th>DESCRIPTION</th>
+
+                                    <th>DATE & TIME</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="reports-activity-body">
+
+                                <tr>
+
+                                    <td colspan="6">
+
+                                        <div class="reports-empty">
+
+                                            <p>
+                                                Investigation activity is not connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- INVESTIGATION PRINCIPLES -->
+
+                <section class="content-card reports-guidance">
+
+
+                    <div class="reports-guidance-icon">
+                        &#9878;
+                    </div>
+
+
+                    <div>
+
+                        <h3>Investigation Integrity & Administrative Responsibility</h3>
+
+                        <p>
+
+                            All reports must be treated as allegations or
+                            recorded concerns until appropriately reviewed.
+                            Investigators must document findings, preserve
+                            evidence integrity, maintain confidentiality and
+                            provide fair handling of all parties. Administrative
+                            decisions must be based on verified information,
+                            applicable platform policies and authorized
+                            procedures. Every significant case action must
+                            be recorded in the platform audit history.
+
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+            </main>
+
+
+            <!-- FOOTER -->
+
+            <footer class="main-footer">
+
+
+                <div class="footer-brand">
+
+                    <strong>TALVORA TECHNOLOGIES</strong>
+
+                    <span>
+                        Connecting Human Capability to Global Opportunity.
+                    </span>
+
+                </div>
+
+
+                <div class="footer-system">
+                    GSES SYSTEM 001
+                </div>
+
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+       INVESTIGATION DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="reports-detail-overlay" class="reports-detail-overlay" hidden>
+
+
+        <aside id="reports-detail-panel" class="reports-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="reports-detail-title">
+
+
+            <div class="reports-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        CONFIDENTIAL INVESTIGATION RECORD
+                    </span>
+
+                    <h2 id="reports-detail-title">
+                        Investigation Details
+                    </h2>
+
+                </div>
+
+
+                <button id="reports-detail-close" class="reports-detail-close" type="button"
+                    aria-label="Close investigation details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="reports-detail-content" class="reports-detail-content">
+            </div>
+
+
+            <div id="reports-detail-actions" class="reports-detail-actions">
+
+
+                <p class="reports-action-note">
+
+                    Administrative actions require server-side
+                    authorization, appropriate justification
+                    and audit recording.
+
+                </p>
+
+
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       EVIDENCE DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="reports-evidence-overlay" class="reports-evidence-overlay" hidden>
+
+
+        <aside id="reports-evidence-panel" class="reports-evidence-panel" role="dialog" aria-modal="true"
+            aria-labelledby="reports-evidence-title">
+
+
+            <div class="reports-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        CONTROLLED EVIDENCE ACCESS
+                    </span>
+
+                    <h2 id="reports-evidence-title">
+                        Evidence Register
+                    </h2>
+
+                </div>
+
+
+                <button id="reports-evidence-close" class="reports-detail-close" type="button"
+                    aria-label="Close evidence details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="reports-evidence-content" class="reports-detail-content">
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       CASE ACTION CONFIRMATION
+       ===================================================== -->
+
+    <div id="reports-confirm-overlay" class="reports-confirm-overlay" hidden>
+
+
+        <section class="reports-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="reports-confirm-title">
+
+
+            <h2 id="reports-confirm-title">
+                Confirm Investigation Action
+            </h2>
+
+
+            <p id="reports-confirm-description"></p>
+
+
+            <label for="reports-action-reason">
+                Administrative justification
+            </label>
+
+
+            <textarea id="reports-action-reason" rows="4" maxlength="3000"
+                placeholder="Record the reason and relevant findings...">
+      </textarea>
+
+
+            <div class="reports-confirm-buttons">
+
+
+                <button id="reports-confirm-cancel" class="btn btn-secondary" type="button">
+
+                    Cancel
+
+                </button>
+
+
+                <button id="reports-confirm-submit" class="btn btn-danger" type="button" disabled>
+
+                    Confirm Action
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+</body>
+
+</html>

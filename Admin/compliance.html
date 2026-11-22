@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111a35">
+    <title>TALVORA | Global Compliance & Data Governance</title>
+    <link rel="stylesheet" href="compliance.css">
+    <script src="compliance.js" defer></script>
+</head>
+
+<body>
+
+    <div class="compliance-layout">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <div>
+                    <h2>TALVORA</h2><small>SUPER ADMINISTRATION</small>
+                </div>
+            </div>
+
+            <div class="side-label">DATA GOVERNANCE</div>
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Compliance Overview</a>
+                <a href="#obligations" class="nav-link" data-section="obligations">▤ Regulatory Obligations</a>
+                <a href="#privacy" class="nav-link" data-section="privacy">♙ Privacy Requests</a>
+                <a href="#consent" class="nav-link" data-section="consent">✓ Consent Management</a>
+                <a href="#retention" class="nav-link" data-section="retention">◷ Data Retention</a>
+                <a href="#data-incidents" class="nav-link" data-section="data-incidents">⚠ Data Incidents</a>
+                <a href="#jurisdictions" class="nav-link" data-section="jurisdictions">◎ Jurisdictions</a>
+            </nav>
+
+            <div class="side-label">ADMINISTRATION</div>
+            <nav>
+                <a href="index.html" class="nav-link">← Super Admin Dashboard</a>
+                <a href="security.html" class="nav-link">Security Operations</a>
+                <a href="audit.html" class="nav-link">Administrator Audit</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <div><strong>Super Administrator</strong><small>Global Governance Authority</small></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div class="topbar-title">
+                    <button id="menuToggle" class="menu-toggle">☰</button>
+                    <div>
+                        <small>TALVORA / SUPER ADMIN / GOVERNANCE</small>
+                        <h1>Global Compliance & Data Governance</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <span class="connection-status" id="connectionStatus"><i></i> Connecting</span>
+                    <button class="icon-button" id="alertsButton" aria-label="Compliance alerts">♧</button>
+                    <button class="primary-button" id="refreshButton">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="compliance-banner">
+                <strong>GLOBAL GOVERNANCE CONTROL</strong>
+                <span id="bannerMessage">Loading compliance information...</span>
+            </div>
+
+            <!-- OVERVIEW -->
+            <section class="content-section active" id="overview">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL REGULATORY INTELLIGENCE</span>
+                        <h2>Compliance overview</h2>
+                        <p>Centralized visibility of TALVORA's data governance obligations.</p>
+                    </div>
+                    <button class="primary-button" data-open-request>+ Register privacy request</button>
+                </div>
+
+                <div class="metrics-grid">
+                    <article class="metric-card"><span>Regulatory obligations</span><strong
+                            id="totalObligations">—</strong><small>Recorded compliance obligations</small></article>
+                    <article class="metric-card"><span>Compliance issues</span><strong
+                            id="openIssues">—</strong><small>Open compliance findings</small></article>
+                    <article class="metric-card"><span>Privacy requests</span><strong
+                            id="privacyRequests">—</strong><small>Requests requiring processing</small></article>
+                    <article class="metric-card"><span>Overdue requests</span><strong
+                            id="overdueRequests">—</strong><small>Outside configured deadlines</small></article>
+                    <article class="metric-card"><span>Active data policies</span><strong
+                            id="activePolicies">—</strong><small>Currently active policies</small></article>
+                    <article class="metric-card"><span>Data incidents</span><strong
+                            id="dataIncidents">—</strong><small>Recorded data protection incidents</small></article>
+                </div>
+
+                <div class="compliance-grid">
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Compliance by jurisdiction</h3>
+                                <p>Current regulatory status across configured jurisdictions.</p>
+                            </div>
+                        </div>
+                        <div id="jurisdictionChart" class="chart-area">Jurisdiction information will appear here.</div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Privacy request status</h3>
+                                <p>Distribution of recorded privacy requests.</p>
+                            </div>
+                        </div>
+                        <div id="requestBreakdown" class="breakdown-list">Request information will appear here.</div>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Priority compliance actions</h3>
+                            <p>Items requiring governance attention.</p>
+                        </div>
+                    </div>
+                    <div id="complianceActions" class="actions-list">Loading compliance actions...</div>
+                </article>
+            </section>
+
+            <!-- OBLIGATIONS -->
+            <section class="content-section" id="obligations">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">REGULATORY MANAGEMENT</span>
+                        <h2>Regulatory obligations</h2>
+                        <p>Manage applicable legal, regulatory and internal governance requirements.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="obligationSearch" type="search" placeholder="Search obligations...">
+                        <select id="obligationCountry">
+                            <option value="">All jurisdictions</option>
+                        </select>
+                        <select id="obligationStatus">
+                            <option value="">All statuses</option>
+                            <option value="compliant">Compliant</option>
+                            <option value="review_required">Review required</option>
+                            <option value="non_compliant">Non-compliant</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Requirement</th>
+                                    <th>Jurisdiction</th>
+                                    <th>Category</th>
+                                    <th>Responsible owner</th>
+                                    <th>Review date</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="obligationsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- PRIVACY -->
+            <section class="content-section" id="privacy">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INDIVIDUAL DATA RIGHTS</span>
+                        <h2>Privacy requests</h2>
+                        <p>Manage data access, correction, deletion, portability and other privacy requests.</p>
+                    </div>
+                    <button class="primary-button" data-open-request>+ Register request</button>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card"><span>Received</span><strong id="requestsReceived">—</strong></article>
+                    <article class="metric-card"><span>In progress</span><strong id="requestsProcessing">—</strong>
+                    </article>
+                    <article class="metric-card"><span>Awaiting response</span><strong id="requestsAwaiting">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="privacySearch" type="search" placeholder="Search request or individual...">
+                        <select id="privacyType">
+                            <option value="">All request types</option>
+                            <option value="access">Data access</option>
+                            <option value="correction">Data correction</option>
+                            <option value="deletion">Data deletion</option>
+                            <option value="portability">Data portability</option>
+                            <option value="restriction">Processing restriction</option>
+                            <option value="objection">Processing objection</option>
+                            <option value="consent_withdrawal">Consent withdrawal</option>
+                        </select>
+                        <select id="privacyStatus">
+                            <option value="">All statuses</option>
+                            <option value="received">Received</option>
+                            <option value="verification">Identity verification</option>
+                            <option value="processing">Processing</option>
+                            <option value="awaiting_information">Awaiting information</option>
+                            <option value="completed">Completed</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Individual</th>
+                                    <th>Request type</th>
+                                    <th>Country</th>
+                                    <th>Received</th>
+                                    <th>Deadline</th>
+                                    <th>Assigned officer</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="privacyTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- CONSENT -->
+            <section class="content-section" id="consent">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">DATA CONSENT GOVERNANCE</span>
+                        <h2>Consent management</h2>
+                        <p>Monitor consent records, purposes, withdrawals and consent history.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="consentSearch" type="search" placeholder="Search individual or consent ID...">
+                        <select id="consentStatus">
+                            <option value="">All consent states</option>
+                            <option value="granted">Granted</option>
+                            <option value="withdrawn">Withdrawn</option>
+                            <option value="expired">Expired</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                        <select id="consentPurpose">
+                            <option value="">All purposes</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="analytics">Analytics</option>
+                            <option value="communications">Communications</option>
+                            <option value="data_processing">Data processing</option>
+                        </select>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Consent ID</th>
+                                    <th>Individual</th>
+                                    <th>Purpose</th>
+                                    <th>Consent method</th>
+                                    <th>Granted date</th>
+                                    <th>Withdrawal date</th>
+                                    <th>Country</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="consentTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- RETENTION -->
+            <section class="content-section" id="retention">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">DATA LIFECYCLE GOVERNANCE</span>
+                        <h2>Data retention policies</h2>
+                        <p>Manage retention schedules, review requirements and authorized disposal workflows.</p>
+                    </div>
+                </div>
+
+                <div id="retentionPolicies" class="policy-grid">
+                    <p>Loading data retention policies...</p>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Retention review register</h3>
+                            <p>Records approaching configured retention milestones.</p>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Record reference</th>
+                                    <th>Record category</th>
+                                    <th>Jurisdiction</th>
+                                    <th>Retention rule</th>
+                                    <th>Review date</th>
+                                    <th>Action status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="retentionTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- DATA INCIDENTS -->
+            <section class="content-section" id="data-incidents">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">DATA PROTECTION INCIDENTS</span>
+                        <h2>Data incidents</h2>
+                        <p>Record and manage personal data breaches, exposure events and investigations.</p>
+                    </div>
+                    <button class="primary-button" id="registerDataIncident">+ Register data incident</button>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="dataIncidentSearch" type="search" placeholder="Search incident...">
+                        <select id="dataIncidentStatus">
+                            <option value="">All statuses</option>
+                            <option value="reported">Reported</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="contained">Contained</option>
+                            <option value="notification_review">Notification review</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Incident ID</th>
+                                    <th>Incident type</th>
+                                    <th>Jurisdiction</th>
+                                    <th>Discovery date</th>
+                                    <th>Severity</th>
+                                    <th>Notification assessment</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataIncidentsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- JURISDICTIONS -->
+            <section class="content-section" id="jurisdictions">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INTERNATIONAL GOVERNANCE</span>
+                        <h2>Jurisdiction management</h2>
+                        <p>Review configured countries, applicable frameworks and country-specific compliance
+                            requirements.</p>
+                    </div>
+                </div>
+
+                <div id="jurisdictionGrid" class="jurisdiction-grid">
+                    <p>Loading jurisdiction information...</p>
+                </div>
+            </section>
+
+            <footer>
+                <span>© TALVORA Global Workforce Platform</span>
+                <span>Global Compliance & Data Governance Centre</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- PRIVACY REQUEST MODAL -->
+    <div class="modal-overlay" id="requestModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>PRIVACY CASE MANAGEMENT</small>
+                    <h2>Register privacy request</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="privacyRequestForm">
+                <label>Individual's full name *
+                    <input name="individualName" required>
+                </label>
+
+                <label>Contact email *
+                    <input name="email" type="email" required>
+                </label>
+
+                <label>Country / jurisdiction *
+                    <select name="country" id="requestCountry" required>
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>Request type *
+                    <select name="requestType" required>
+                        <option value="">Select request</option>
+                        <option value="access">Data access</option>
+                        <option value="correction">Data correction</option>
+                        <option value="deletion">Data deletion</option>
+                        <option value="portability">Data portability</option>
+                        <option value="restriction">Processing restriction</option>
+                        <option value="objection">Processing objection</option>
+                        <option value="consent_withdrawal">Consent withdrawal</option>
+                    </select>
+                </label>
+
+                <label>Request details *
+                    <textarea name="description" rows="4" required></textarea>
+                </label>
+
+                <label>Assigned compliance officer ID
+                    <input name="assigneeId">
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Register request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DATA INCIDENT MODAL -->
+    <div class="modal-overlay" id="dataIncidentModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div><small>DATA PROTECTION RESPONSE</small>
+                    <h2>Register data incident</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="dataIncidentForm">
+                <label>Incident category *
+                    <select name="category" required>
+                        <option value="">Select category</option>
+                        <option value="unauthorized_disclosure">Unauthorized disclosure</option>
+                        <option value="unauthorized_access">Unauthorized access</option>
+                        <option value="data_loss">Data loss</option>
+                        <option value="data_alteration">Unauthorized alteration</option>
+                        <option value="data_exposure">Data exposure</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>Jurisdiction
+                    <select name="country" id="incidentCountry">
+                        <option value="">Select jurisdiction</option>
+                    </select>
+                </label>
+
+                <label>Discovery date *
+                    <input type="datetime-local" name="discoveredAt" required>
+                </label>
+
+                <label>Severity *
+                    <select name="severity" required>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </label>
+
+                <label>Description *
+                    <textarea name="description" rows="4" required></textarea>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Register incident</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+</body>
+
+</html>

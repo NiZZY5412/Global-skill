@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>TALVORA | Global Security & Continuity Centre</title>
+    <link rel="stylesheet" href="talvora-admin.css">
+    <script defer src="continuity.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar" id="sidebar">
+            <a class="brand" href="#"><span class="brand-icon">T</span><span><strong>TALVORA</strong><small>GLOBAL SUPER
+                        ADMIN</small></span></a>
+            <div class="side-context"><i></i> SECURITY COMMAND CENTRE</div>
+            <div class="nav-label">SECURITY & RESILIENCE</div>
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Overview</a>
+                <a href="#services" class="nav-link" data-section="services">▣ Critical Services</a>
+                <a href="#incidents" class="nav-link" data-section="incidents">⚠ Security Incidents</a>
+                <a href="#recovery" class="nav-link" data-section="recovery">↻ Continuity Plans</a>
+                <a href="#tests" class="nav-link" data-section="tests">◇ Disaster Recovery Tests</a>
+                <a href="#backups" class="nav-link" data-section="backups">▤ Backup & Restoration</a>
+                <a href="#vendors" class="nav-link" data-section="vendors">◎ Third-Party Resilience</a>
+                <a href="#risks" class="nav-link" data-section="risks">⌁ Risk Register</a>
+                <a href="#communications" class="nav-link" data-section="communications">◉ Emergency Communications</a>
+                <a href="#audit" class="nav-link" data-section="audit">▥ Security Audit</a>
+            </nav>
+            <div class="sidebar-bottom">
+                <div class="environment-card"><i></i><span><strong>Security Environment</strong><small>Global resilience
+                            monitoring</small></span></div>
+                <div class="admin-profile">
+                    <div class="avatar">SA</div><span><strong>Super Administrator</strong><small>Global Security
+                            Authority</small></span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-button" id="menuToggle">☰</button>
+                    <div><small>SUPER ADMIN / PLATFORM RESILIENCE</small>
+                        <h1>Global Security & Continuity</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <span class="connection" id="apiStatus"><i></i> Connecting</span>
+                    <span class="environment" id="environmentLabel">GLOBAL</span>
+                    <button class="btn btn-secondary" id="refreshAll">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="notice">
+                <span>⬡</span>
+                <div><strong>Global Financial Security & Resilience</strong>
+                    <p>Centralized oversight of critical financial infrastructure, cybersecurity incidents, operational
+                        continuity, disaster recovery and third-party service resilience.</p>
+                </div>
+            </div>
+
+            <!-- OVERVIEW -->
+            <section class="section active" id="overview">
+                <div class="heading">
+                    <div><small>GLOBAL SECURITY INTELLIGENCE</small>
+                        <h2>Security & Resilience Overview</h2>
+                        <p>Monitor the availability, resilience and security posture of TALVORA's critical financial
+                            services.</p>
+                    </div>
+                    <button class="btn btn-primary" data-open="incidentModal">+ Report Incident</button>
+                </div>
+
+                <div class="metrics">
+                    <article class="metric"><span>Open Incidents</span><strong
+                            id="sIncidents">—</strong><small>Unresolved security and operational incidents</small>
+                    </article>
+                    <article class="metric"><span>Critical Services</span><strong
+                            id="sServices">—</strong><small>Services under resilience monitoring</small></article>
+                    <article class="metric"><span>Recovery Tests Due</span><strong
+                            id="sTests">—</strong><small>Scheduled continuity exercises</small></article>
+                    <article class="metric"><span>Backup Exceptions</span><strong
+                            id="sBackups">—</strong><small>Exceptions requiring investigation</small></article>
+                </div>
+
+                <div class="grid-2">
+                    <article class="panel">
+                        <div class="panel-title">
+                            <div><small>INFRASTRUCTURE STATUS</small>
+                                <h3>Critical Service Health</h3>
+                            </div><span class="live">MONITORING</span>
+                        </div>
+                        <div id="serviceHealth" class="health-list">
+                            <p class="muted">Loading service health...</p>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-title">
+                            <div><small>SECURITY OPERATIONS</small>
+                                <h3>Incident Severity</h3>
+                            </div>
+                        </div>
+                        <div id="incidentSummary" class="health-list">
+                            <p class="muted">Loading incident intelligence...</p>
+                        </div>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Recent Critical Incidents</h3><button class="btn btn-secondary"
+                            data-navigate="incidents">View incidents</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>INCIDENT</th>
+                                    <th>SERVICE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>SEVERITY</th>
+                                    <th>REPORTED</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentIncidents"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Business Continuity Readiness</h3>
+                    </div>
+                    <div id="continuityReadiness" class="health-list">
+                        <p class="muted">Loading continuity readiness...</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- CRITICAL SERVICES -->
+            <section class="section" id="services">
+                <div class="heading">
+                    <div><small>FINANCIAL INFRASTRUCTURE</small>
+                        <h2>Critical Financial Services</h2>
+                        <p>Monitor operational status, dependencies, recovery objectives and availability of essential
+                            services.</p>
+                    </div>
+                </div>
+                <div class="filters"><input id="serviceSearch" placeholder="Search service or provider..."><select
+                        id="serviceStatus">
+                        <option value="">All statuses</option>
+                        <option>operational</option>
+                        <option>degraded</option>
+                        <option>unavailable</option>
+                        <option>maintenance</option>
+                    </select><select id="serviceCriticality">
+                        <option value="">All criticality levels</option>
+                        <option>critical</option>
+                        <option>high</option>
+                        <option>medium</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>SERVICE</th>
+                                    <th>DOMAIN</th>
+                                    <th>PROVIDER</th>
+                                    <th>JURISDICTION</th>
+                                    <th>CRITICALITY</th>
+                                    <th>AVAILABILITY</th>
+                                    <th>RTO</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="serviceTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- INCIDENTS -->
+            <section class="section" id="incidents">
+                <div class="heading">
+                    <div><small>SECURITY OPERATIONS CENTRE</small>
+                        <h2>Security & Operational Incidents</h2>
+                        <p>Coordinate incident reporting, classification, response ownership, escalation and resolution.
+                        </p>
+                    </div><button class="btn btn-primary" data-open="incidentModal">+ Report Incident</button>
+                </div>
+                <div class="filters"><input id="incidentSearch" placeholder="Search incident reference..."><select
+                        id="incidentSeverity">
+                        <option value="">All severities</option>
+                        <option>critical</option>
+                        <option>high</option>
+                        <option>medium</option>
+                        <option>low</option>
+                    </select><select id="incidentStatus">
+                        <option value="">All statuses</option>
+                        <option>open</option>
+                        <option>investigating</option>
+                        <option>contained</option>
+                        <option>recovering</option>
+                        <option>resolved</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>INCIDENT</th>
+                                    <th>TYPE</th>
+                                    <th>SERVICE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>SEVERITY</th>
+                                    <th>OWNER</th>
+                                    <th>REPORTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="incidentTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- CONTINUITY PLANS -->
+            <section class="section" id="recovery">
+                <div class="heading">
+                    <div><small>BUSINESS CONTINUITY MANAGEMENT</small>
+                        <h2>Continuity & Recovery Plans</h2>
+                        <p>Maintain approved business continuity plans, recovery ownership, dependencies and recovery
+                            objectives.</p>
+                    </div>
+                </div>
+                <div class="filters"><input id="planSearch" placeholder="Search recovery plan..."><select
+                        id="planStatus">
+                        <option value="">All statuses</option>
+                        <option>approved</option>
+                        <option>under_review</option>
+                        <option>draft</option>
+                        <option>expired</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PLAN REFERENCE</th>
+                                    <th>PLAN NAME</th>
+                                    <th>SERVICE / FUNCTION</th>
+                                    <th>OWNER</th>
+                                    <th>JURISDICTION</th>
+                                    <th>RTO</th>
+                                    <th>RPO</th>
+                                    <th>LAST REVIEW</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="planTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- DR TESTS -->
+            <section class="section" id="tests">
+                <div class="heading">
+                    <div><small>RECOVERY ASSURANCE</small>
+                        <h2>Disaster Recovery Testing</h2>
+                        <p>Track scheduled exercises, failover simulations, recovery outcomes and remediation.</p>
+                    </div>
+                </div>
+                <div class="filters"><select id="testStatus">
+                        <option value="">All test statuses</option>
+                        <option>scheduled</option>
+                        <option>in_progress</option>
+                        <option>passed</option>
+                        <option>failed</option>
+                        <option>cancelled</option>
+                    </select><select id="testType">
+                        <option value="">All test types</option>
+                        <option>tabletop</option>
+                        <option>simulation</option>
+                        <option>technical_failover</option>
+                        <option>full_recovery</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>TEST REFERENCE</th>
+                                    <th>EXERCISE</th>
+                                    <th>SERVICE</th>
+                                    <th>TEST TYPE</th>
+                                    <th>PLANNED DATE</th>
+                                    <th>ACTUAL DATE</th>
+                                    <th>RESULT</th>
+                                    <th>OWNER</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="testTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- BACKUPS -->
+            <section class="section" id="backups">
+                <div class="heading">
+                    <div><small>DATA RESILIENCE</small>
+                        <h2>Backup & Restoration Monitoring</h2>
+                        <p>Monitor backup execution, retention compliance, recovery verification and restoration tests.
+                        </p>
+                    </div>
+                </div>
+                <div class="filters"><select id="backupStatus">
+                        <option value="">All backup statuses</option>
+                        <option>successful</option>
+                        <option>failed</option>
+                        <option>running</option>
+                        <option>degraded</option>
+                    </select><select id="backupType">
+                        <option value="">All backup types</option>
+                        <option>database</option>
+                        <option>file</option>
+                        <option>transaction_log</option>
+                        <option>configuration</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>BACKUP REFERENCE</th>
+                                    <th>SYSTEM</th>
+                                    <th>BACKUP TYPE</th>
+                                    <th>REGION</th>
+                                    <th>STARTED</th>
+                                    <th>COMPLETED</th>
+                                    <th>RETENTION</th>
+                                    <th>RESTORE TEST</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="backupTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- THIRD PARTY -->
+            <section class="section" id="vendors">
+                <div class="heading">
+                    <div><small>EXTERNAL DEPENDENCY RISK</small>
+                        <h2>Third-Party & Banking Provider Resilience</h2>
+                        <p>Track critical providers, dependency concentration, service-level performance and contingency
+                            arrangements.</p>
+                    </div>
+                </div>
+                <div class="filters"><input id="vendorSearch" placeholder="Search provider..."><select
+                        id="vendorCriticality">
+                        <option value="">All criticality levels</option>
+                        <option>critical</option>
+                        <option>high</option>
+                        <option>medium</option>
+                    </select><select id="vendorStatus">
+                        <option value="">All statuses</option>
+                        <option>active</option>
+                        <option>degraded</option>
+                        <option>under_review</option>
+                        <option>inactive</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PROVIDER</th>
+                                    <th>SERVICE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>CRITICALITY</th>
+                                    <th>DEPENDENCY</th>
+                                    <th>CONTINGENCY PLAN</th>
+                                    <th>LAST REVIEW</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vendorTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- RISK -->
+            <section class="section" id="risks">
+                <div class="heading">
+                    <div><small>ENTERPRISE RESILIENCE RISK</small>
+                        <h2>Security & Continuity Risk Register</h2>
+                        <p>Track cyber, operational, infrastructure, provider and disaster-related risks.</p>
+                    </div>
+                </div>
+                <div class="filters"><input id="riskSearch" placeholder="Search risk..."><select id="riskCategory">
+                        <option value="">All risk categories</option>
+                        <option>cyber</option>
+                        <option>operational</option>
+                        <option>infrastructure</option>
+                        <option>third_party</option>
+                        <option>disaster</option>
+                    </select><select id="riskStatus">
+                        <option value="">All statuses</option>
+                        <option>open</option>
+                        <option>mitigating</option>
+                        <option>accepted</option>
+                        <option>closed</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RISK REFERENCE</th>
+                                    <th>RISK DESCRIPTION</th>
+                                    <th>CATEGORY</th>
+                                    <th>JURISDICTION</th>
+                                    <th>LIKELIHOOD</th>
+                                    <th>IMPACT</th>
+                                    <th>SEVERITY</th>
+                                    <th>OWNER</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="riskTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- COMMUNICATIONS -->
+            <section class="section" id="communications">
+                <div class="heading">
+                    <div><small>CRISIS COORDINATION</small>
+                        <h2>Emergency Communications</h2>
+                        <p>Coordinate authorized incident communications, escalation contacts, notification plans and
+                            message approvals.</p>
+                    </div>
+                </div>
+                <div class="filters"><select id="communicationStatus">
+                        <option value="">All statuses</option>
+                        <option>draft</option>
+                        <option>pending_approval</option>
+                        <option>approved</option>
+                        <option>sent</option>
+                        <option>cancelled</option>
+                    </select><select id="communicationType">
+                        <option value="">All communication types</option>
+                        <option>internal_alert</option>
+                        <option>provider_notification</option>
+                        <option>regulatory_notification</option>
+                        <option>customer_notification</option>
+                        <option>executive_escalation</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>INCIDENT</th>
+                                    <th>COMMUNICATION TYPE</th>
+                                    <th>RECIPIENT GROUP</th>
+                                    <th>APPROVAL OWNER</th>
+                                    <th>CREATED</th>
+                                    <th>SENT</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="communicationTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- AUDIT -->
+            <section class="section" id="audit">
+                <div class="heading">
+                    <div><small>SECURITY GOVERNANCE</small>
+                        <h2>Security & Continuity Audit</h2>
+                        <p>Maintain traceability of incidents, administrative decisions, recovery operations and
+                            continuity changes.</p>
+                    </div><button class="btn btn-secondary" id="exportAudit">↓ Export audit</button>
+                </div>
+                <div class="filters"><input id="auditSearch" placeholder="Search security audit..."></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>ACTOR</th>
+                                    <th>ACTION</th>
+                                    <th>RESOURCE</th>
+                                    <th>INCIDENT REFERENCE</th>
+                                    <th>REASON</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <footer>TALVORA GLOBAL SECURITY <span>•</span> BUSINESS CONTINUITY & RESILIENCE</footer>
+        </main>
+    </div>
+
+    <!-- INCIDENT CREATION -->
+    <div class="overlay" id="incidentModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <div><small>SECURITY OPERATIONS</small>
+                    <h2>Report Security Incident</h2>
+                </div><button class="close" data-close>×</button>
+            </div>
+            <form id="incidentForm">
+                <label>Incident title<input name="title" required maxlength="180"></label>
+                <label>Incident type<select name="type" required>
+                        <option value="">Select type</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="payment_disruption">Payment disruption</option>
+                        <option value="banking_disruption">Banking disruption</option>
+                        <option value="infrastructure">Infrastructure failure</option>
+                        <option value="data_integrity">Data integrity</option>
+                        <option value="operational">Operational disruption</option>
+                        <option value="third_party">Third-party incident</option>
+                        <option value="other">Other</option>
+                    </select></label>
+                <label>Severity<select name="severity" required>
+                        <option value="">Select severity</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select></label>
+                <label>Affected service<input name="affectedService" required maxlength="180"></label>
+                <label>Jurisdiction<input name="jurisdiction" maxlength="100"></label>
+                <label>Incident description<textarea name="description" minlength="20" maxlength="2000"
+                        required></textarea></label>
+                <label>Initial response taken<textarea name="initialResponse" maxlength="1500"></textarea></label>
+                <p class="form-note">Submitting creates an incident record and initiates the configured response
+                    workflow. Containment and recovery must be performed by authorized responders.</p>
+                <button class="btn btn-primary" type="submit" id="incidentSubmit">Register Incident</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ACTION MODAL -->
+    <div class="overlay" id="actionModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <h2 id="actionTitle">Confirm Security Action</h2><button class="close" data-close>×</button>
+            </div>
+            <p id="actionDescription" class="muted"></p>
+            <label>Reason and action notes<textarea id="actionReason" minlength="10" required></textarea></label>
+            <div class="modal-actions"><button class="btn btn-secondary" data-close>Cancel</button><button
+                    class="btn btn-primary" id="actionSubmit" disabled>Submit Request</button></div>
+        </div>
+    </div>
+
+    <div class="overlay" id="detailModal" hidden>
+        <div class="modal large">
+            <div class="modal-head">
+                <h2 id="detailTitle">Security Record</h2><button class="close" data-close>×</button>
+            </div>
+            <div id="detailBody"></div>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+</body>
+
+</html>

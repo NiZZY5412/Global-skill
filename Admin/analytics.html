@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="TALVORA Global Platform Analytics and Intelligence Centre">
+    <meta name="theme-color" content="#101a35">
+
+    <title>TALVORA | Global Analytics & Intelligence</title>
+
+    <link rel="stylesheet" href="analytics.css">
+
+    <script src="analytics.js" defer></script>
+</head>
+
+<body>
+
+    <div class="ta-app" id="ta-app">
+
+        <!-- SIDEBAR OVERLAY -->
+        <div class="ta-sidebar-overlay" id="ta-sidebar-overlay"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="ta-sidebar" id="ta-sidebar">
+
+            <div class="ta-brand">
+                <div class="ta-brand-icon">T</div>
+
+                <div class="ta-brand-text">
+                    <strong>TALVORA</strong>
+                    <span>GLOBAL INTELLIGENCE</span>
+                </div>
+
+                <button class="ta-sidebar-close" id="ta-sidebar-close" aria-label="Close sidebar">
+                    ×
+                </button>
+            </div>
+
+            <div class="ta-sidebar-label">INTELLIGENCE CENTRE</div>
+
+            <nav class="ta-navigation" aria-label="Analytics navigation">
+
+                <button class="ta-nav-link active" data-view="overview">
+                    <span class="ta-nav-icon">◈</span>
+                    <span>Executive Overview</span>
+                </button>
+
+                <button class="ta-nav-link" data-view="growth">
+                    <span class="ta-nav-icon">↗</span>
+                    <span>Platform Growth</span>
+                </button>
+
+                <button class="ta-nav-link" data-view="workforce">
+                    <span class="ta-nav-icon">♙</span>
+                    <span>Workforce Intelligence</span>
+                </button>
+
+                <button class="ta-nav-link" data-view="countries">
+                    <span class="ta-nav-icon">◎</span>
+                    <span>Country Intelligence</span>
+                </button>
+
+                <button class="ta-nav-link" data-view="employment">
+                    <span class="ta-nav-icon">▤</span>
+                    <span>Employment Analytics</span>
+                </button>
+
+                <button class="ta-nav-link" data-view="financial">
+                    <span class="ta-nav-icon">◉</span>
+                    <span>Financial Intelligence</span>
+                </button>
+
+                <button class="ta-nav-link" data-view="operations">
+                    <span class="ta-nav-icon">⌁</span>
+                    <span>Operational Intelligence</span>
+                </button>
+
+                <button class="ta-nav-link" data-view="reports">
+                    <span class="ta-nav-icon">▧</span>
+                    <span>Reports & Exports</span>
+                </button>
+
+            </nav>
+
+            <div class="ta-sidebar-bottom">
+
+                <div class="ta-data-status">
+                    <span class="ta-status-dot"></span>
+
+                    <div>
+                        <strong>Local Analytics Mode</strong>
+                        <small>No live connection</small>
+                    </div>
+                </div>
+
+                <a href="index.html" class="ta-back-link">
+                    ← Super Admin Dashboard
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN AREA -->
+        <main class="ta-main">
+
+            <!-- TOPBAR -->
+            <header class="ta-topbar">
+
+                <div class="ta-topbar-left">
+
+                    <button class="ta-menu-button" id="ta-menu-button" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div class="ta-breadcrumb">
+                        <span>Super Admin</span>
+                        <span>/</span>
+                        <strong>Global Intelligence</strong>
+                    </div>
+
+                </div>
+
+                <div class="ta-topbar-right">
+
+                    <div class="ta-preview-indicator">
+                        <span></span>
+                        FRONTEND PREVIEW
+                    </div>
+
+                    <button class="ta-icon-button" id="ta-refresh" title="Refresh analytics">
+                        ↻
+                    </button>
+
+                    <div class="ta-admin-profile">
+
+                        <div class="ta-admin-avatar">SA</div>
+
+                        <div>
+                            <strong>Super Admin</strong>
+                            <small>Platform Administrator</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+            <div class="ta-content">
+
+                <!-- PAGE HEADING -->
+                <section class="ta-page-heading">
+
+                    <div>
+                        <div class="ta-eyebrow">
+                            TALVORA GLOBAL PLATFORM
+                        </div>
+
+                        <h1>Analytics & Intelligence</h1>
+
+                        <p>
+                            Understand platform growth, workforce performance,
+                            employment activity and global operational trends.
+                        </p>
+                    </div>
+
+                    <div class="ta-heading-actions">
+
+                        <button class="ta-button ta-button-outline" id="ta-import-trigger">
+                            ↑ Import Data
+                        </button>
+
+                        <button class="ta-button ta-button-primary" id="ta-export-current">
+                            ↓ Export Report
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- GLOBAL NOTICE -->
+                <div class="ta-notice" id="ta-notice" role="status">
+                    Analytics are operating in frontend-only mode.
+                    Import a dataset to begin analysis. No live platform
+                    statistics are currently connected.
+                </div>
+
+
+                <!-- GLOBAL FILTERS -->
+                <section class="ta-filter-bar">
+
+                    <div class="ta-filter-heading">
+                        <strong>Analytics Filters</strong>
+                        <span>Apply filters across available datasets</span>
+                    </div>
+
+                    <div class="ta-filters">
+
+                        <div class="ta-filter-field">
+                            <label for="ta-date-from">From</label>
+                            <input type="date" id="ta-date-from">
+                        </div>
+
+                        <div class="ta-filter-field">
+                            <label for="ta-date-to">To</label>
+                            <input type="date" id="ta-date-to">
+                        </div>
+
+                        <div class="ta-filter-field">
+                            <label for="ta-country-filter">Country</label>
+
+                            <select id="ta-country-filter">
+                                <option value="">All countries</option>
+                            </select>
+                        </div>
+
+                        <div class="ta-filter-field">
+                            <label for="ta-portal-filter">Platform area</label>
+
+                            <select id="ta-portal-filter">
+                                <option value="">All platform areas</option>
+                                <option value="employer">Employer</option>
+                                <option value="employee">Employee</option>
+                                <option value="admin">Super Admin</option>
+                            </select>
+                        </div>
+
+                        <button class="ta-button ta-button-primary" id="ta-apply-filters">
+                            Apply Filters
+                        </button>
+
+                        <button class="ta-button ta-button-outline" id="ta-clear-filters">
+                            Clear
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 1. EXECUTIVE OVERVIEW
+            ================================================== -->
+
+                <section class="ta-view active" id="ta-view-overview">
+
+                    <div class="ta-section-heading">
+
+                        <div>
+                            <h2>Executive Overview</h2>
+                            <p>Global platform performance at a glance.</p>
+                        </div>
+
+                        <span class="ta-data-label">Based on available data</span>
+
+                    </div>
+
+
+                    <!-- KPI CARDS -->
+                    <div class="ta-kpi-grid">
+
+                        <article class="ta-kpi-card">
+
+                            <div class="ta-kpi-top">
+                                <span>Total Registered Users</span>
+                                <span class="ta-kpi-icon purple">♙</span>
+                            </div>
+
+                            <strong class="ta-kpi-value" id="ta-total-users">—</strong>
+
+                            <small id="ta-users-change">No comparison available</small>
+
+                        </article>
+
+
+                        <article class="ta-kpi-card">
+
+                            <div class="ta-kpi-top">
+                                <span>Registered Employers</span>
+                                <span class="ta-kpi-icon blue">▣</span>
+                            </div>
+
+                            <strong class="ta-kpi-value" id="ta-total-employers">—</strong>
+
+                            <small id="ta-employers-change">No comparison available</small>
+
+                        </article>
+
+
+                        <article class="ta-kpi-card">
+
+                            <div class="ta-kpi-top">
+                                <span>Registered Employees</span>
+                                <span class="ta-kpi-icon green">♧</span>
+                            </div>
+
+                            <strong class="ta-kpi-value" id="ta-total-employees">—</strong>
+
+                            <small id="ta-employees-change">No comparison available</small>
+
+                        </article>
+
+
+                        <article class="ta-kpi-card">
+
+                            <div class="ta-kpi-top">
+                                <span>Published Jobs</span>
+                                <span class="ta-kpi-icon orange">▤</span>
+                            </div>
+
+                            <strong class="ta-kpi-value" id="ta-total-jobs">—</strong>
+
+                            <small id="ta-jobs-change">No comparison available</small>
+
+                        </article>
+
+
+                        <article class="ta-kpi-card">
+
+                            <div class="ta-kpi-top">
+                                <span>Applications</span>
+                                <span class="ta-kpi-icon cyan">▧</span>
+                            </div>
+
+                            <strong class="ta-kpi-value" id="ta-total-applications">—</strong>
+
+                            <small id="ta-applications-change">No comparison available</small>
+
+                        </article>
+
+
+                        <article class="ta-kpi-card">
+
+                            <div class="ta-kpi-top">
+                                <span>Successful Placements</span>
+                                <span class="ta-kpi-icon gold">✦</span>
+                            </div>
+
+                            <strong class="ta-kpi-value" id="ta-total-placements">—</strong>
+
+                            <small id="ta-placements-change">No comparison available</small>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- OVERVIEW CHARTS -->
+                    <div class="ta-chart-grid">
+
+                        <article class="ta-panel ta-chart-panel">
+
+                            <div class="ta-panel-heading">
+
+                                <div>
+                                    <h3>Platform Growth Trend</h3>
+                                    <p>Registration and adoption over time</p>
+                                </div>
+
+                                <select id="ta-growth-chart-metric">
+                                    <option value="platform_users">Total Users</option>
+                                    <option value="employers">Employers</option>
+                                    <option value="employees">Employees</option>
+                                </select>
+
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-overview-growth-chart">
+                                <div class="ta-empty-chart">
+                                    Import data to visualize platform growth.
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <article class="ta-panel ta-chart-panel">
+
+                            <div class="ta-panel-heading">
+
+                                <div>
+                                    <h3>Workforce Composition</h3>
+                                    <p>Employers and employees</p>
+                                </div>
+
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-workforce-chart">
+                                <div class="ta-empty-chart">
+                                    Workforce composition will appear here.
+                                </div>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- COUNTRY AND ACTIVITY -->
+                    <div class="ta-bottom-grid">
+
+                        <article class="ta-panel">
+
+                            <div class="ta-panel-heading">
+                                <div>
+                                    <h3>Country Performance</h3>
+                                    <p>Platform activity by country</p>
+                                </div>
+
+                                <button class="ta-text-button" data-go-view="countries">
+                                    View all →
+                                </button>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-overview-country-chart">
+                                <div class="ta-empty-chart">
+                                    No country statistics available.
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <article class="ta-panel">
+
+                            <div class="ta-panel-heading">
+                                <div>
+                                    <h3>Recent Analytics Activity</h3>
+                                    <p>Actions within this browser session</p>
+                                </div>
+                            </div>
+
+                            <div id="ta-recent-activity" class="ta-activity-list">
+
+                                <div class="ta-empty-state">
+                                    <strong>No activity recorded</strong>
+                                    <p>Imported data and report actions will appear here.</p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 2. PLATFORM GROWTH
+            ================================================== -->
+
+                <section class="ta-view" id="ta-view-growth">
+
+                    <div class="ta-section-heading">
+                        <div>
+                            <h2>Platform Growth Intelligence</h2>
+                            <p>Monitor registrations, adoption and platform expansion.</p>
+                        </div>
+                    </div>
+
+                    <div class="ta-kpi-grid ta-kpi-grid-four">
+
+                        <article class="ta-kpi-card">
+                            <span>New Registrations</span>
+                            <strong class="ta-kpi-value" id="ta-growth-registrations">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Active Users</span>
+                            <strong class="ta-kpi-value" id="ta-growth-active">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Countries Represented</span>
+                            <strong class="ta-kpi-value" id="ta-growth-countries">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Growth Records</span>
+                            <strong class="ta-kpi-value" id="ta-growth-records">—</strong>
+                        </article>
+
+                    </div>
+
+                    <article class="ta-panel">
+
+                        <div class="ta-panel-heading">
+                            <div>
+                                <h3>Registration Trends</h3>
+                                <p>Growth over the selected period</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-chart-container ta-chart-large" id="ta-registration-chart">
+                            <div class="ta-empty-chart">
+                                No registration trend data available.
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <div class="ta-chart-grid">
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>User Adoption</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-adoption-chart">
+                                <div class="ta-empty-chart">
+                                    No adoption data available.
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>Growth by Platform Area</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-growth-portal-chart">
+                                <div class="ta-empty-chart">
+                                    No portal growth data available.
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 3. WORKFORCE INTELLIGENCE
+            ================================================== -->
+
+                <section class="ta-view" id="ta-view-workforce">
+
+                    <div class="ta-section-heading">
+                        <div>
+                            <h2>Workforce Intelligence</h2>
+                            <p>Understand the employer and employee ecosystem.</p>
+                        </div>
+                    </div>
+
+                    <div class="ta-kpi-grid ta-kpi-grid-four">
+
+                        <article class="ta-kpi-card">
+                            <span>Total Workforce</span>
+                            <strong class="ta-kpi-value" id="ta-workforce-total">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Active Employees</span>
+                            <strong class="ta-kpi-value" id="ta-workforce-active">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Active Employers</span>
+                            <strong class="ta-kpi-value" id="ta-workforce-employers">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Employer to Employee Ratio</span>
+                            <strong class="ta-kpi-value" id="ta-workforce-ratio">—</strong>
+                        </article>
+
+                    </div>
+
+                    <div class="ta-chart-grid">
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>Workforce Distribution</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-workforce-distribution">
+                                <div class="ta-empty-chart">
+                                    Workforce distribution unavailable.
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>Workforce Activity Trends</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-workforce-trends">
+                                <div class="ta-empty-chart">
+                                    Workforce activity data unavailable.
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <article class="ta-panel">
+
+                        <div class="ta-panel-heading">
+                            <div>
+                                <h3>Workforce Records</h3>
+                                <p>Imported workforce statistics</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-table-wrapper">
+                            <table class="ta-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Country</th>
+                                        <th>Employers</th>
+                                        <th>Employees</th>
+                                        <th>Active Users</th>
+                                        <th>Platform Area</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="ta-workforce-table">
+                                    <tr>
+                                        <td colspan="6" class="ta-table-empty">
+                                            No workforce records available.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 4. COUNTRY INTELLIGENCE
+            ================================================== -->
+
+                <section class="ta-view" id="ta-view-countries">
+
+                    <div class="ta-section-heading">
+                        <div>
+                            <h2>Global Country Intelligence</h2>
+                            <p>Compare performance across TALVORA markets.</p>
+                        </div>
+                    </div>
+
+                    <div class="ta-kpi-grid ta-kpi-grid-four">
+
+                        <article class="ta-kpi-card">
+                            <span>Countries in Dataset</span>
+                            <strong class="ta-kpi-value" id="ta-country-total">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Leading Country</span>
+                            <strong class="ta-kpi-value" id="ta-country-leading">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Combined Users</span>
+                            <strong class="ta-kpi-value" id="ta-country-users">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Country Records</span>
+                            <strong class="ta-kpi-value" id="ta-country-records">—</strong>
+                        </article>
+
+                    </div>
+
+                    <article class="ta-panel">
+
+                        <div class="ta-panel-heading">
+                            <div>
+                                <h3>Country Comparison</h3>
+                                <p>Compare workforce and platform adoption.</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-chart-container ta-chart-large" id="ta-country-comparison">
+                            <div class="ta-empty-chart">
+                                Country comparison will appear after importing data.
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <article class="ta-panel">
+
+                        <div class="ta-panel-heading">
+                            <div>
+                                <h3>Country Performance Register</h3>
+                                <p>Detailed country-level statistics.</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-table-wrapper">
+
+                            <table class="ta-table">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Users</th>
+                                        <th>Employers</th>
+                                        <th>Employees</th>
+                                        <th>Jobs</th>
+                                        <th>Applications</th>
+                                        <th>Placements</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="ta-country-table">
+                                    <tr>
+                                        <td colspan="7" class="ta-table-empty">
+                                            No country data available.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 5. EMPLOYMENT ANALYTICS
+            ================================================== -->
+
+                <section class="ta-view" id="ta-view-employment">
+
+                    <div class="ta-section-heading">
+                        <div>
+                            <h2>Employment Analytics</h2>
+                            <p>Understand the entire recruitment and placement lifecycle.</p>
+                        </div>
+                    </div>
+
+                    <div class="ta-kpi-grid ta-kpi-grid-four">
+
+                        <article class="ta-kpi-card">
+                            <span>Jobs Published</span>
+                            <strong class="ta-kpi-value" id="ta-employment-jobs">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Applications Received</span>
+                            <strong class="ta-kpi-value" id="ta-employment-applications">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Successful Placements</span>
+                            <strong class="ta-kpi-value" id="ta-employment-placements">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Placement Rate</span>
+                            <strong class="ta-kpi-value" id="ta-employment-rate">—</strong>
+                        </article>
+
+                    </div>
+
+                    <article class="ta-panel">
+
+                        <div class="ta-panel-heading">
+                            <div>
+                                <h3>Employment Lifecycle</h3>
+                                <p>Jobs, applications and successful placements.</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-chart-container ta-chart-large" id="ta-employment-lifecycle">
+                            <div class="ta-empty-chart">
+                                Employment lifecycle data unavailable.
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <div class="ta-chart-grid">
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>Application Trends</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-application-chart">
+                                <div class="ta-empty-chart">
+                                    No application data available.
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>Placement Performance</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-placement-chart">
+                                <div class="ta-empty-chart">
+                                    No placement data available.
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 6. FINANCIAL INTELLIGENCE
+            ================================================== -->
+
+                <section class="ta-view" id="ta-view-financial">
+
+                    <div class="ta-section-heading">
+                        <div>
+                            <h2>Financial Intelligence</h2>
+                            <p>Review imported revenue and monetization performance.</p>
+                        </div>
+                    </div>
+
+                    <div class="ta-kpi-grid ta-kpi-grid-four">
+
+                        <article class="ta-kpi-card">
+                            <span>Total Recorded Revenue</span>
+                            <strong class="ta-kpi-value" id="ta-financial-revenue">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Transactions</span>
+                            <strong class="ta-kpi-value" id="ta-financial-transactions">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Average Transaction</span>
+                            <strong class="ta-kpi-value" id="ta-financial-average">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Revenue Currency</span>
+                            <strong class="ta-kpi-value" id="ta-financial-currency">—</strong>
+                        </article>
+
+                    </div>
+
+                    <div class="ta-notice ta-financial-notice">
+                        Financial indicators are calculated from imported records only.
+                        Different currencies are never added together.
+                    </div>
+
+                    <article class="ta-panel">
+                        <div class="ta-panel-heading">
+                            <div>
+                                <h3>Revenue Performance</h3>
+                                <p>Recorded revenue over time.</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-chart-container ta-chart-large" id="ta-revenue-chart">
+                            <div class="ta-empty-chart">
+                                No financial data available.
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="ta-panel">
+
+                        <div class="ta-panel-heading">
+                            <h3>Financial Records</h3>
+                        </div>
+
+                        <div class="ta-table-wrapper">
+                            <table class="ta-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Country</th>
+                                        <th>Revenue</th>
+                                        <th>Currency</th>
+                                        <th>Transactions</th>
+                                        <th>Category</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="ta-financial-table">
+                                    <tr>
+                                        <td colspan="6" class="ta-table-empty">
+                                            No financial records available.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 7. OPERATIONAL INTELLIGENCE
+            ================================================== -->
+
+                <section class="ta-view" id="ta-view-operations">
+
+                    <div class="ta-section-heading">
+                        <div>
+                            <h2>Operational Intelligence</h2>
+                            <p>Review imported availability, incidents and service performance.</p>
+                        </div>
+                    </div>
+
+                    <div class="ta-kpi-grid ta-kpi-grid-four">
+
+                        <article class="ta-kpi-card">
+                            <span>Recorded Uptime</span>
+                            <strong class="ta-kpi-value" id="ta-operations-uptime">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Incidents</span>
+                            <strong class="ta-kpi-value" id="ta-operations-incidents">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Recorded Errors</span>
+                            <strong class="ta-kpi-value" id="ta-operations-errors">—</strong>
+                        </article>
+
+                        <article class="ta-kpi-card">
+                            <span>Average Response Time</span>
+                            <strong class="ta-kpi-value" id="ta-operations-response">—</strong>
+                        </article>
+
+                    </div>
+
+                    <div class="ta-chart-grid">
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>Availability Trend</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-uptime-chart">
+                                <div class="ta-empty-chart">
+                                    No uptime data available.
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="ta-panel">
+                            <div class="ta-panel-heading">
+                                <h3>Incident Trends</h3>
+                            </div>
+
+                            <div class="ta-chart-container" id="ta-incident-chart">
+                                <div class="ta-empty-chart">
+                                    No incident data available.
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <article class="ta-panel">
+
+                        <div class="ta-panel-heading">
+                            <h3>Operational Records</h3>
+                        </div>
+
+                        <div class="ta-table-wrapper">
+
+                            <table class="ta-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Country</th>
+                                        <th>Uptime</th>
+                                        <th>Incidents</th>
+                                        <th>Errors</th>
+                                        <th>Response Time</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="ta-operations-table">
+                                    <tr>
+                                        <td colspan="6" class="ta-table-empty">
+                                            No operational records available.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                 8. REPORTS AND EXPORTS
+            ================================================== -->
+
+                <section class="ta-view" id="ta-view-reports">
+
+                    <div class="ta-section-heading">
+                        <div>
+                            <h2>Reports & Data Exports</h2>
+                            <p>Generate downloadable reports from imported analytics.</p>
+                        </div>
+                    </div>
+
+                    <div class="ta-report-grid">
+
+                        <article class="ta-report-card">
+                            <div class="ta-report-icon purple">◈</div>
+
+                            <h3>Executive Performance Report</h3>
+
+                            <p>
+                                Platform adoption, growth, workforce and
+                                operational overview.
+                            </p>
+
+                            <button class="ta-button ta-button-outline" data-report="executive">
+                                Export Report
+                            </button>
+                        </article>
+
+
+                        <article class="ta-report-card">
+                            <div class="ta-report-icon blue">◎</div>
+
+                            <h3>Country Intelligence Report</h3>
+
+                            <p>
+                                Compare registered users, employers,
+                                employees and employment activity.
+                            </p>
+
+                            <button class="ta-button ta-button-outline" data-report="countries">
+                                Export Report
+                            </button>
+                        </article>
+
+
+                        <article class="ta-report-card">
+                            <div class="ta-report-icon green">♙</div>
+
+                            <h3>Workforce Report</h3>
+
+                            <p>
+                                Review workforce registrations,
+                                activity and adoption.
+                            </p>
+
+                            <button class="ta-button ta-button-outline" data-report="workforce">
+                                Export Report
+                            </button>
+                        </article>
+
+
+                        <article class="ta-report-card">
+                            <div class="ta-report-icon orange">▤</div>
+
+                            <h3>Employment Report</h3>
+
+                            <p>
+                                Jobs, applications, matching and
+                                successful placements.
+                            </p>
+
+                            <button class="ta-button ta-button-outline" data-report="employment">
+                                Export Report
+                            </button>
+                        </article>
+
+
+                        <article class="ta-report-card">
+                            <div class="ta-report-icon gold">◉</div>
+
+                            <h3>Financial Report</h3>
+
+                            <p>
+                                Imported revenue, transaction records
+                                and currency breakdowns.
+                            </p>
+
+                            <button class="ta-button ta-button-outline" data-report="financial">
+                                Export Report
+                            </button>
+                        </article>
+
+
+                        <article class="ta-report-card">
+                            <div class="ta-report-icon cyan">⌁</div>
+
+                            <h3>Operational Report</h3>
+
+                            <p>
+                                Uptime, incident frequency,
+                                errors and service performance.
+                            </p>
+
+                            <button class="ta-button ta-button-outline" data-report="operations">
+                                Export Report
+                            </button>
+                        </article>
+
+                    </div>
+
+
+                    <!-- DATASET SUMMARY -->
+                    <article class="ta-panel ta-dataset-panel">
+
+                        <div class="ta-panel-heading">
+                            <div>
+                                <h3>Imported Dataset Register</h3>
+                                <p>Files loaded during the current browser session.</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-table-wrapper">
+                            <table class="ta-table">
+                                <thead>
+                                    <tr>
+                                        <th>Dataset</th>
+                                        <th>Records</th>
+                                        <th>Imported At</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="ta-dataset-table">
+                                    <tr>
+                                        <td colspan="4" class="ta-table-empty">
+                                            No datasets imported.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- FOOTER -->
+                <footer class="ta-footer">
+
+                    <div>
+                        <strong>TALVORA TECHNOLOGIES</strong>
+                        <span>Global Platform Analytics & Intelligence</span>
+                    </div>
+
+                    <div>
+                        FRONTEND PREVIEW · NO LIVE DATA CONNECTION
+                    </div>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+     IMPORT DATA MODAL
+====================================================== -->
+
+    <div class="ta-modal" id="ta-import-modal" hidden>
+
+        <div class="ta-modal-backdrop" data-close-modal></div>
+
+        <div class="ta-modal-content">
+
+            <div class="ta-modal-header">
+
+                <div>
+                    <h2>Import Analytics Dataset</h2>
+                    <p>Load a CSV file for browser-based analysis.</p>
+                </div>
+
+                <button class="ta-modal-close" data-close-modal aria-label="Close modal">
+                    ×
+                </button>
+
+            </div>
+
+            <form id="ta-import-form">
+
+                <div class="ta-form-group">
+
+                    <label for="ta-dataset-name">Dataset Name</label>
+
+                    <input type="text" id="ta-dataset-name" name="dataset_name" placeholder="e.g. Workforce Analytics"
+                        required>
+
+                </div>
+
+                <div class="ta-form-group">
+
+                    <label for="ta-dataset-file">CSV File</label>
+
+                    <input type="file" id="ta-dataset-file" accept=".csv,text/csv" required>
+
+                    <small>
+                        The selected file will be processed locally in your browser.
+                    </small>
+
+                </div>
+
+                <div class="ta-import-guidance">
+
+                    <strong>Supported CSV columns</strong>
+
+                    <code>
+date,country,portal,metric,value,currency
+                </code>
+
+                    <p>
+                        Example metric names include platform_users,
+                        employers, employees, jobs, applications,
+                        placements, active_users, revenue, uptime_percent,
+                        incidents, errors and response_time_ms.
+                    </p>
+
+                </div>
+
+                <div class="ta-modal-actions">
+
+                    <button type="button" class="ta-button ta-button-outline" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="ta-button ta-button-primary">
+                        Import Dataset
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST REGION -->
+    <div id="ta-toast-region" class="ta-toast-region" aria-live="polite"></div>
+
+</body>
+
+</html>

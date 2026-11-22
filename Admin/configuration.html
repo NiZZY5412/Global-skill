@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="TALVORA Super Admin Global Platform Configuration and Environment Management Centre">
+
+    <meta name="csrf-token" content="">
+
+    <title>Global Configuration | TALVORA Super Admin</title>
+
+    <!-- Shared TALVORA branding -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Module stylesheet -->
+    <link rel="stylesheet" href="configuration.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="tc-page">
+
+        <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+        <aside class="tc-sidebar" id="tc-sidebar">
+
+            <div class="tc-brand">
+
+                <div class="tc-brand-symbol">T</div>
+
+                <div class="tc-brand-information">
+                    <strong>TALVORA</strong>
+                    <span>TECHNOLOGIES</span>
+                </div>
+
+                <button class="tc-sidebar-close" id="tc-sidebar-close" aria-label="Close navigation">
+                    &times;
+                </button>
+
+            </div>
+
+            <div class="tc-sidebar-heading">
+                SUPER ADMINISTRATION
+            </div>
+
+            <nav class="tc-navigation">
+
+                <a href="index.html" class="tc-nav-link">
+                    <span>◫</span>
+                    <span>Super Admin Dashboard</span>
+                </a>
+
+                <a href="legacy/settings.html" class="tc-nav-link">
+                    <span>⚙</span>
+                    <span>System Settings</span>
+                </a>
+
+                <a href="legacy/monitoring.html" class="tc-nav-link">
+                    <span>◉</span>
+                    <span>System Monitoring</span>
+                </a>
+
+                <a href="security.html" class="tc-nav-link">
+                    <span>⬡</span>
+                    <span>Security Centre</span>
+                </a>
+
+                <a href="backup.html" class="tc-nav-link">
+                    <span>▣</span>
+                    <span>Backup & Recovery</span>
+                </a>
+
+                <div class="tc-sidebar-heading">
+                    PLATFORM MANAGEMENT
+                </div>
+
+                <a href="configuration.html" class="tc-nav-link active" aria-current="page">
+
+                    <span>◈</span>
+                    <span>Global Configuration</span>
+                    <span class="tc-active-indicator"></span>
+
+                </a>
+
+                <a href="compliance.html" class="tc-nav-link">
+                    <span>⚖</span>
+                    <span>Compliance & Governance</span>
+                </a>
+
+                <a href="identity-management.html" class="tc-nav-link">
+                    <span>♙</span>
+                    <span>User Identity Management</span>
+                </a>
+
+                <a href="finance.html" class="tc-nav-link">
+                    <span>▤</span>
+                    <span>Finance Centre</span>
+                </a>
+
+                <a href="monetization.html" class="tc-nav-link">
+                    <span>◆</span>
+                    <span>Monetization Centre</span>
+                </a>
+
+                <div class="tc-sidebar-heading">
+                    GOVERNANCE
+                </div>
+
+                <a href="legacy/activity.html" class="tc-nav-link">
+                    <span>◷</span>
+                    <span>Administrator Activity</span>
+                </a>
+
+                <a href="legacy/communications.html" class="tc-nav-link">
+                    <span>♧</span>
+                    <span>Notifications Centre</span>
+                </a>
+
+                <a href="legacy/support.html" class="tc-nav-link">
+                    <span>?</span>
+                    <span>Support & Helpdesk</span>
+                </a>
+
+            </nav>
+
+            <div class="tc-sidebar-footer">
+
+                <div class="tc-security-card">
+
+                    <span class="tc-security-indicator"></span>
+
+                    <div>
+                        <strong id="tc-sidebar-status">
+                            Checking connection
+                        </strong>
+
+                        <small>
+                            Platform configuration service
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="tc-version">
+                    TALVORA TECHNOLOGIES
+                    <span>Global Configuration Centre</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <div class="tc-sidebar-overlay" id="tc-sidebar-overlay"></div>
+
+
+        <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+        <main class="tc-main">
+
+            <!-- TOPBAR -->
+
+            <header class="tc-topbar">
+
+                <div class="tc-topbar-left">
+
+                    <button class="tc-menu-button" id="tc-menu-button" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div class="tc-breadcrumb">
+                        Super Admin
+                        <span>/</span>
+                        Platform Management
+                        <span>/</span>
+                        <strong>Global Configuration</strong>
+                    </div>
+
+                </div>
+
+                <div class="tc-topbar-right">
+
+                    <div class="tc-environment-indicator">
+                        <span class="tc-environment-dot"></span>
+                        <span id="tc-current-environment">
+                            Environment unavailable
+                        </span>
+                    </div>
+
+                    <button class="tc-icon-button" id="tc-notifications" aria-label="Notifications">
+                        ♧
+                    </button>
+
+                    <div class="tc-admin-profile">
+
+                        <div class="tc-admin-avatar" id="tc-admin-avatar">
+                            SA
+                        </div>
+
+                        <div class="tc-admin-information">
+
+                            <strong id="tc-admin-name">
+                                Administrator
+                            </strong>
+
+                            <span>
+                                Super Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+
+            <div class="tc-content">
+
+                <!-- PAGE TITLE -->
+
+                <section class="tc-page-heading">
+
+                    <div>
+
+                        <div class="tc-eyebrow">
+                            TALVORA GLOBAL INFRASTRUCTURE
+                        </div>
+
+                        <h1>
+                            Global Platform Configuration
+                        </h1>
+
+                        <p>
+                            Centralized administration of global platform
+                            settings, deployment environments, country
+                            configurations, portal controls and operational
+                            infrastructure.
+                        </p>
+
+                    </div>
+
+                    <div class="tc-heading-actions">
+
+                        <button class="tc-button tc-button-secondary" id="tc-refresh">
+                            ↻ Refresh
+                        </button>
+
+                        <button class="tc-button tc-button-primary" data-action="open-deployment">
+                            + New Deployment
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- GLOBAL NOTICE -->
+
+                <div class="tc-notice" id="tc-global-notice" role="alert" hidden>
+                </div>
+
+
+                <!-- ======================================
+                 HERO
+            ======================================= -->
+
+                <section class="tc-hero">
+
+                    <div class="tc-hero-content">
+
+                        <span class="tc-hero-label">
+                            CENTRAL PLATFORM GOVERNANCE
+                        </span>
+
+                        <h2>
+                            One Platform. Three Environments.
+                            Global Control.
+                        </h2>
+
+                        <p>
+                            Govern the complete TALVORA ecosystem from
+                            one centralized configuration environment.
+                            Manage global operations, control releases,
+                            coordinate country settings and maintain
+                            consistency across all connected portals.
+                        </p>
+
+                        <div class="tc-hero-pills">
+
+                            <span>Global Administration</span>
+                            <span>Multi-Country Architecture</span>
+                            <span>Controlled Deployment</span>
+                            <span>Centralized Governance</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tc-hero-decoration">T</div>
+
+                </section>
+
+
+                <!-- ======================================
+                 ENVIRONMENT OVERVIEW
+            ======================================= -->
+
+                <section class="tc-section">
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Environment Management</h2>
+
+                            <p>
+                                Manage and monitor the three independent
+                                TALVORA deployment environments.
+                            </p>
+                        </div>
+
+                        <span class="tc-live-indicator">
+                            <span></span>
+                            Backend status
+                        </span>
+
+                    </div>
+
+
+                    <div class="tc-environment-grid">
+
+                        <!-- DEVELOPMENT -->
+
+                        <article class="tc-environment-card">
+
+                            <div class="tc-environment-card-top">
+
+                                <div class="tc-environment-icon development">
+                                    D
+                                </div>
+
+                                <span class="tc-status" id="tc-development-status">
+                                    Unavailable
+                                </span>
+
+                            </div>
+
+                            <h3>Development</h3>
+
+                            <p>
+                                Development, engineering changes,
+                                feature construction and configuration.
+                            </p>
+
+                            <div class="tc-environment-meta">
+
+                                <span>Application version</span>
+
+                                <strong id="tc-development-version">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="tc-environment-meta">
+
+                                <span>Last deployment</span>
+
+                                <strong id="tc-development-deployment">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <button class="tc-button tc-button-secondary tc-full-button" data-environment="development">
+                                Manage Development
+                            </button>
+
+                        </article>
+
+
+                        <!-- STAGING -->
+
+                        <article class="tc-environment-card">
+
+                            <div class="tc-environment-card-top">
+
+                                <div class="tc-environment-icon staging">
+                                    S
+                                </div>
+
+                                <span class="tc-status" id="tc-staging-status">
+                                    Unavailable
+                                </span>
+
+                            </div>
+
+                            <h3>Staging</h3>
+
+                            <p>
+                                Testing, validation, configuration
+                                comparison and pre-production approval.
+                            </p>
+
+                            <div class="tc-environment-meta">
+
+                                <span>Application version</span>
+
+                                <strong id="tc-staging-version">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="tc-environment-meta">
+
+                                <span>Last deployment</span>
+
+                                <strong id="tc-staging-deployment">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <button class="tc-button tc-button-secondary tc-full-button" data-environment="staging">
+                                Manage Staging
+                            </button>
+
+                        </article>
+
+
+                        <!-- PRODUCTION -->
+
+                        <article class="tc-environment-card production">
+
+                            <div class="tc-environment-card-top">
+
+                                <div class="tc-environment-icon production">
+                                    P
+                                </div>
+
+                                <span class="tc-status" id="tc-production-status">
+                                    Unavailable
+                                </span>
+
+                            </div>
+
+                            <h3>Production</h3>
+
+                            <p>
+                                Live TALVORA platform serving employers,
+                                employees and administrators.
+                            </p>
+
+                            <div class="tc-environment-meta">
+
+                                <span>Application version</span>
+
+                                <strong id="tc-production-version">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="tc-environment-meta">
+
+                                <span>Last deployment</span>
+
+                                <strong id="tc-production-deployment">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <button class="tc-button tc-button-primary tc-full-button" data-environment="production">
+                                Manage Production
+                            </button>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ======================================
+                 PLATFORM METRICS
+            ======================================= -->
+
+                <section class="tc-metrics-grid">
+
+                    <article class="tc-metric-card">
+
+                        <div class="tc-metric-top">
+                            Managed Countries
+                            <span class="tc-metric-icon blue">◎</span>
+                        </div>
+
+                        <strong id="tc-country-count">—</strong>
+
+                        <small>
+                            Configured country environments
+                        </small>
+
+                    </article>
+
+
+                    <article class="tc-metric-card">
+
+                        <div class="tc-metric-top">
+                            Active Features
+                            <span class="tc-metric-icon cyan">◆</span>
+                        </div>
+
+                        <strong id="tc-feature-count">—</strong>
+
+                        <small>
+                            Enabled platform features
+                        </small>
+
+                    </article>
+
+
+                    <article class="tc-metric-card">
+
+                        <div class="tc-metric-top">
+                            Pending Approvals
+                            <span class="tc-metric-icon orange">◷</span>
+                        </div>
+
+                        <strong id="tc-approval-count">—</strong>
+
+                        <small>
+                            Awaiting administrator action
+                        </small>
+
+                    </article>
+
+
+                    <article class="tc-metric-card">
+
+                        <div class="tc-metric-top">
+                            Deployment Records
+                            <span class="tc-metric-icon purple">⇧</span>
+                        </div>
+
+                        <strong id="tc-deployment-count">—</strong>
+
+                        <small>
+                            Recorded deployment history
+                        </small>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 MODULE NAVIGATION
+            ======================================= -->
+
+                <nav class="tc-module-navigation" role="tablist" aria-label="Configuration modules">
+
+                    <button class="tc-module-tab active" data-view="overview" role="tab" aria-selected="true">
+                        Overview
+                    </button>
+
+                    <button class="tc-module-tab" data-view="global" role="tab" aria-selected="false">
+                        Global Settings
+                    </button>
+
+                    <button class="tc-module-tab" data-view="countries" role="tab" aria-selected="false">
+                        Countries
+                    </button>
+
+                    <button class="tc-module-tab" data-view="portals" role="tab" aria-selected="false">
+                        Portals
+                    </button>
+
+                    <button class="tc-module-tab" data-view="features" role="tab" aria-selected="false">
+                        Feature Controls
+                    </button>
+
+                    <button class="tc-module-tab" data-view="payments" role="tab" aria-selected="false">
+                        Payments
+                    </button>
+
+                    <button class="tc-module-tab" data-view="communications" role="tab" aria-selected="false">
+                        Communications
+                    </button>
+
+                    <button class="tc-module-tab" data-view="security" role="tab" aria-selected="false">
+                        Security
+                    </button>
+
+                    <button class="tc-module-tab" data-view="integrations" role="tab" aria-selected="false">
+                        Integrations
+                    </button>
+
+                    <button class="tc-module-tab" data-view="localization" role="tab" aria-selected="false">
+                        Localization
+                    </button>
+
+                    <button class="tc-module-tab" data-view="operations" role="tab" aria-selected="false">
+                        Operations
+                    </button>
+
+                    <button class="tc-module-tab" data-view="deployments" role="tab" aria-selected="false">
+                        Deployments
+                    </button>
+
+                    <button class="tc-module-tab" data-view="approvals" role="tab" aria-selected="false">
+                        Approvals
+                    </button>
+
+                    <button class="tc-module-tab" data-view="versions" role="tab" aria-selected="false">
+                        Versions & Rollback
+                    </button>
+
+                    <button class="tc-module-tab" data-view="audit" role="tab" aria-selected="false">
+                        Audit Trail
+                    </button>
+
+                </nav>
+
+
+                <!-- ======================================
+                 VIEW 1: OVERVIEW
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-overview" role="tabpanel">
+
+                    <div class="tc-overview-grid">
+
+                        <article class="tc-card">
+
+                            <div class="tc-card-heading">
+
+                                <div>
+                                    <h3>Portal Configuration Status</h3>
+
+                                    <p>
+                                        Configuration health across
+                                        all three TALVORA portals.
+                                    </p>
+                                </div>
+
+                                <span class="tc-card-icon">◫</span>
+
+                            </div>
+
+                            <div id="tc-portal-status">
+
+                                <div class="tc-empty-state">
+                                    <span class="tc-empty-icon">◫</span>
+
+                                    <strong>
+                                        Awaiting platform data
+                                    </strong>
+
+                                    <p>
+                                        Portal configuration information
+                                        will appear when the backend is connected.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="tc-card">
+
+                            <div class="tc-card-heading">
+
+                                <div>
+                                    <h3>Configuration Governance</h3>
+
+                                    <p>
+                                        Current deployment and governance
+                                        information.
+                                    </p>
+                                </div>
+
+                                <span class="tc-card-icon">⬡</span>
+
+                            </div>
+
+                            <div class="tc-readiness-list">
+
+                                <div class="tc-readiness-item">
+                                    <span>Environment separation</span>
+                                    <strong id="tc-check-environments">—</strong>
+                                </div>
+
+                                <div class="tc-readiness-item">
+                                    <span>Production approval policy</span>
+                                    <strong id="tc-check-approval">—</strong>
+                                </div>
+
+                                <div class="tc-readiness-item">
+                                    <span>Configuration versioning</span>
+                                    <strong id="tc-check-versioning">—</strong>
+                                </div>
+
+                                <div class="tc-readiness-item">
+                                    <span>Audit logging</span>
+                                    <strong id="tc-check-audit">—</strong>
+                                </div>
+
+                                <div class="tc-readiness-item">
+                                    <span>Rollback capability</span>
+                                    <strong id="tc-check-rollback">—</strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-card-heading">
+
+                            <div>
+                                <h3>Recent Configuration Activity</h3>
+
+                                <p>
+                                    Latest platform configuration
+                                    and environment management events.
+                                </p>
+                            </div>
+
+                            <button class="tc-text-button" data-go-view="audit">
+                                View Audit Trail →
+                            </button>
+
+                        </div>
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Administrator</th>
+                                        <th>Action</th>
+                                        <th>Environment</th>
+                                        <th>Result</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-recent-activity">
+
+                                    <tr>
+                                        <td colspan="6" class="tc-table-empty">
+                                            No configuration activity
+                                            records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 2: GLOBAL SETTINGS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-global" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Global Platform Settings</h2>
+
+                            <p>
+                                Configure central platform parameters
+                                shared across the TALVORA ecosystem.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <article class="tc-card">
+
+                        <form id="tc-global-form">
+
+                            <div class="tc-form-grid">
+
+                                <div class="tc-field">
+                                    <label for="tc-platform-name">
+                                        Platform Name
+                                    </label>
+
+                                    <input id="tc-platform-name" name="platform_name" type="text" maxlength="100"
+                                        required>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-corporate-name">
+                                        Corporate Name
+                                    </label>
+
+                                    <input id="tc-corporate-name" name="corporate_name" type="text" maxlength="150">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-default-language">
+                                        Default Language
+                                    </label>
+
+                                    <select id="tc-default-language" name="default_language">
+                                        <option value="">Select language</option>
+                                        <option value="en">English</option>
+                                        <option value="fr">French</option>
+                                        <option value="sw">Swahili</option>
+                                        <option value="ar">Arabic</option>
+                                        <option value="pt">Portuguese</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-default-timezone">
+                                        Default Time Zone
+                                    </label>
+
+                                    <select id="tc-default-timezone" name="default_timezone">
+                                        <option value="">Select time zone</option>
+                                        <option value="UTC">UTC</option>
+                                        <option value="Africa/Nairobi">
+                                            Africa/Nairobi
+                                        </option>
+                                        <option value="Europe/London">
+                                            Europe/London
+                                        </option>
+                                        <option value="America/New_York">
+                                            America/New_York
+                                        </option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-support-email">
+                                        Official Support Email
+                                    </label>
+
+                                    <input id="tc-support-email" name="support_email" type="email">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-default-currency">
+                                        Default Currency
+                                    </label>
+
+                                    <select id="tc-default-currency" name="default_currency">
+                                        <option value="">Select currency</option>
+                                        <option value="USD">USD</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="GBP">GBP</option>
+                                        <option value="USD">USD</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+
+                                    <label for="tc-global-description">
+                                        Platform Description
+                                    </label>
+
+                                    <textarea id="tc-global-description" name="description" rows="3"></textarea>
+
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+
+                                    <label for="tc-global-reason">
+                                        Reason for Configuration Change
+                                    </label>
+
+                                    <textarea id="tc-global-reason" name="reason" rows="2" required
+                                        placeholder="Explain why this configuration change is required."></textarea>
+
+                                </div>
+
+                            </div>
+
+                            <div class="tc-form-footer">
+
+                                <p>
+                                    Changes will be validated and versioned.
+                                    Production changes must follow the
+                                    production approval workflow.
+                                </p>
+
+                                <button type="submit" class="tc-button tc-button-primary">
+                                    Save Configuration
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 3: COUNTRY CONFIGURATION
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-countries" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Multi-Country Configuration</h2>
+
+                            <p>
+                                Manage country-specific operational,
+                                regulatory and localization settings.
+                            </p>
+                        </div>
+
+                        <button class="tc-button tc-button-primary" data-action="open-country">
+                            + Add Country
+                        </button>
+
+                    </div>
+
+
+                    <div class="tc-filter-bar">
+
+                        <input type="search" id="tc-country-search" placeholder="Search countries...">
+
+                        <select id="tc-country-status-filter">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="pending">Pending</option>
+                        </select>
+
+                        <button class="tc-button tc-button-secondary" id="tc-filter-countries">
+                            Apply Filters
+                        </button>
+
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Country Code</th>
+                                        <th>Currency</th>
+                                        <th>Language</th>
+                                        <th>Time Zone</th>
+                                        <th>Regulatory Profile</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-countries-body">
+
+                                    <tr>
+                                        <td colspan="8" class="tc-table-empty">
+                                            No country configurations available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 4: PORTAL CONFIGURATION
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-portals" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Portal Configuration</h2>
+
+                            <p>
+                                Manage the three connected TALVORA
+                                application portals independently.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tc-portal-grid">
+
+                        <article class="tc-card tc-portal-card">
+
+                            <div class="tc-portal-symbol employer">
+                                E
+                            </div>
+
+                            <h3>Employer Portal</h3>
+
+                            <p>
+                                Configuration for employer accounts,
+                                recruitment workflows and employer
+                                platform experiences.
+                            </p>
+
+                            <span id="tc-employer-config-status" class="tc-status">
+                                Unavailable
+                            </span>
+
+                            <button class="tc-button tc-button-secondary tc-full-button" data-portal="employer">
+                                Configure Employer Portal
+                            </button>
+
+                        </article>
+
+
+                        <article class="tc-card tc-portal-card">
+
+                            <div class="tc-portal-symbol employee">
+                                W
+                            </div>
+
+                            <h3>Employee Portal</h3>
+
+                            <p>
+                                Configuration for workforce accounts,
+                                professional profiles, assessments
+                                and employment experiences.
+                            </p>
+
+                            <span id="tc-employee-config-status" class="tc-status">
+                                Unavailable
+                            </span>
+
+                            <button class="tc-button tc-button-secondary tc-full-button" data-portal="employee">
+                                Configure Employee Portal
+                            </button>
+
+                        </article>
+
+
+                        <article class="tc-card tc-portal-card">
+
+                            <div class="tc-portal-symbol admin">
+                                A
+                            </div>
+
+                            <h3>Super Admin Portal</h3>
+
+                            <p>
+                                Configuration for central administration,
+                                platform governance and privileged
+                                operational interfaces.
+                            </p>
+
+                            <span id="tc-admin-config-status" class="tc-status">
+                                Unavailable
+                            </span>
+
+                            <button class="tc-button tc-button-secondary tc-full-button" data-portal="super_admin">
+                                Configure Super Admin Portal
+                            </button>
+
+                        </article>
+
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-card-heading">
+
+                            <div>
+                                <h3>Portal Configuration Records</h3>
+
+                                <p>
+                                    Individual configuration versions
+                                    and deployment environments.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Portal</th>
+                                        <th>Environment</th>
+                                        <th>Version</th>
+                                        <th>Last Updated</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-portal-records">
+
+                                    <tr>
+                                        <td colspan="6" class="tc-table-empty">
+                                            No portal configuration records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 5: FEATURE FLAGS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-features" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Feature Activation & Controls</h2>
+
+                            <p>
+                                Control platform functionality through
+                                centrally managed feature flags and
+                                selective rollouts.
+                            </p>
+                        </div>
+
+                        <button class="tc-button tc-button-primary" data-action="open-feature">
+                            + Register Feature
+                        </button>
+
+                    </div>
+
+
+                    <div class="tc-notice tc-info-notice">
+                        Feature changes must be scoped to the selected
+                        environment, country and portal. Production
+                        changes require controlled deployment approval.
+                    </div>
+
+
+                    <div class="tc-filter-bar">
+
+                        <input type="search" id="tc-feature-search" placeholder="Search features...">
+
+                        <select id="tc-feature-environment">
+                            <option value="">All environments</option>
+                            <option value="development">Development</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Production</option>
+                        </select>
+
+                        <select id="tc-feature-status">
+                            <option value="">All states</option>
+                            <option value="enabled">Enabled</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+
+                        <button class="tc-button tc-button-secondary" id="tc-filter-features">
+                            Filter
+                        </button>
+
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Feature Key</th>
+                                        <th>Environment</th>
+                                        <th>Portal</th>
+                                        <th>Country Scope</th>
+                                        <th>State</th>
+                                        <th>Updated</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-features-body">
+
+                                    <tr>
+                                        <td colspan="8" class="tc-table-empty">
+                                            No feature flag records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 6: PAYMENTS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-payments" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Payments & Monetization Configuration</h2>
+
+                            <p>
+                                Govern payment integrations, billing
+                                settings, transaction rules and
+                                monetization configurations.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <article class="tc-card">
+
+                        <form id="tc-payments-form">
+
+                            <div class="tc-form-grid">
+
+                                <div class="tc-field">
+                                    <label for="tc-payment-environment">
+                                        Environment
+                                    </label>
+
+                                    <select id="tc-payment-environment" name="environment" required>
+                                        <option value="">Select environment</option>
+                                        <option value="development">Development</option>
+                                        <option value="staging">Staging</option>
+                                        <option value="production">Production</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-payment-provider">
+                                        Payment Provider
+                                    </label>
+
+                                    <select id="tc-payment-provider" name="provider" required>
+                                        <option value="">Select provider</option>
+                                        <option value="provider_a">Provider A</option>
+                                        <option value="provider_b">Provider B</option>
+                                        <option value="other">Other / Custom</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-payment-currency">
+                                        Transaction Currency
+                                    </label>
+
+                                    <input id="tc-payment-currency" name="currency" type="text" maxlength="3"
+                                        placeholder="Currency code">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-payment-mode">
+                                        Integration Mode
+                                    </label>
+
+                                    <select id="tc-payment-mode" name="mode">
+                                        <option value="">Select mode</option>
+                                        <option value="test">Test</option>
+                                        <option value="live">Live</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-payment-endpoint">
+                                        Integration Endpoint
+                                    </label>
+
+                                    <input id="tc-payment-endpoint" name="endpoint" type="url"
+                                        placeholder="HTTPS endpoint">
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-payment-secret">
+                                        Credential Reference
+                                    </label>
+
+                                    <input id="tc-payment-secret" name="credential_reference" type="text"
+                                        autocomplete="off" placeholder="Enter secure vault reference, not a raw secret">
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-payment-reason">
+                                        Change Reason
+                                    </label>
+
+                                    <textarea id="tc-payment-reason" name="reason" rows="2" required></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="tc-form-footer">
+
+                                <p>
+                                    Sensitive credentials must be stored
+                                    in a secure backend vault. Never store
+                                    payment secrets in browser code.
+                                </p>
+
+                                <button type="submit" class="tc-button tc-button-primary">
+                                    Submit Payment Configuration
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 7: COMMUNICATIONS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-communications" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Communications & Notifications</h2>
+
+                            <p>
+                                Configure email, SMS, notification
+                                channels and messaging integrations.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <article class="tc-card">
+
+                        <form id="tc-communications-form">
+
+                            <div class="tc-form-grid">
+
+                                <div class="tc-field">
+                                    <label for="tc-communication-environment">
+                                        Environment
+                                    </label>
+
+                                    <select id="tc-communication-environment" name="environment" required>
+                                        <option value="">Select environment</option>
+                                        <option value="development">Development</option>
+                                        <option value="staging">Staging</option>
+                                        <option value="production">Production</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-email-provider">
+                                        Email Service Provider
+                                    </label>
+
+                                    <input id="tc-email-provider" name="email_provider" type="text">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-sms-provider">
+                                        SMS Service Provider
+                                    </label>
+
+                                    <input id="tc-sms-provider" name="sms_provider" type="text">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-sender-name">
+                                        Sender Identity
+                                    </label>
+
+                                    <input id="tc-sender-name" name="sender_name" type="text">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-sender-email">
+                                        Sender Email
+                                    </label>
+
+                                    <input id="tc-sender-email" name="sender_email" type="email">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-sender-number">
+                                        Sender Phone Reference
+                                    </label>
+
+                                    <input id="tc-sender-number" name="sender_phone_reference" type="text">
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-communication-reason">
+                                        Change Reason
+                                    </label>
+
+                                    <textarea id="tc-communication-reason" name="reason" rows="2" required></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="tc-form-footer">
+
+                                <p>
+                                    Provider credentials are managed
+                                    through secure backend integrations.
+                                </p>
+
+                                <button type="submit" class="tc-button tc-button-primary">
+                                    Save Communication Settings
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 8: SECURITY
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-security" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Global Security Configuration</h2>
+
+                            <p>
+                                Central management of authentication,
+                                access restrictions, sessions and
+                                platform security parameters.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tc-notice tc-warning-notice">
+                        Security configuration changes can affect all
+                        connected portals. Changes to authentication,
+                        sessions and access restrictions require
+                        validation before production deployment.
+                    </div>
+
+
+                    <article class="tc-card">
+
+                        <form id="tc-security-form">
+
+                            <div class="tc-form-grid">
+
+                                <div class="tc-field">
+                                    <label for="tc-security-environment">
+                                        Environment
+                                    </label>
+
+                                    <select id="tc-security-environment" name="environment" required>
+                                        <option value="">Select environment</option>
+                                        <option value="development">Development</option>
+                                        <option value="staging">Staging</option>
+                                        <option value="production">Production</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-session-duration">
+                                        Session Duration (Minutes)
+                                    </label>
+
+                                    <input id="tc-session-duration" name="session_duration" type="number" min="1"
+                                        max="1440">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-login-attempts">
+                                        Maximum Login Attempts
+                                    </label>
+
+                                    <input id="tc-login-attempts" name="login_attempts" type="number" min="1">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-lockout-duration">
+                                        Lockout Duration (Minutes)
+                                    </label>
+
+                                    <input id="tc-lockout-duration" name="lockout_duration" type="number" min="1">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-admin-session">
+                                        Administrator Session Policy
+                                    </label>
+
+                                    <select id="tc-admin-session" name="admin_session_policy">
+                                        <option value="">Select policy</option>
+                                        <option value="standard">Standard</option>
+                                        <option value="restricted">Restricted</option>
+                                        <option value="strict">Strict</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-api-access">
+                                        API Access Policy
+                                    </label>
+
+                                    <select id="tc-api-access" name="api_access_policy">
+                                        <option value="">Select policy</option>
+                                        <option value="standard">Standard</option>
+                                        <option value="restricted">Restricted</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-security-reason">
+                                        Reason for Security Configuration Change
+                                    </label>
+
+                                    <textarea id="tc-security-reason" name="reason" rows="2" required></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="tc-form-footer">
+
+                                <p>
+                                    Existing administrator access and
+                                    approved security controls must be
+                                    preserved during configuration changes.
+                                </p>
+
+                                <button type="submit" class="tc-button tc-button-primary">
+                                    Submit Security Configuration
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 9: INTEGRATIONS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-integrations" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>API & Third-Party Integrations</h2>
+
+                            <p>
+                                Govern internal APIs, external services,
+                                integration credentials and connectivity.
+                            </p>
+                        </div>
+
+                        <button class="tc-button tc-button-primary" data-action="open-integration">
+                            + Register Integration
+                        </button>
+
+                    </div>
+
+
+                    <div class="tc-filter-bar">
+
+                        <input type="search" id="tc-integration-search" placeholder="Search integrations...">
+
+                        <select id="tc-integration-environment">
+                            <option value="">All environments</option>
+                            <option value="development">Development</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Production</option>
+                        </select>
+
+                        <button class="tc-button tc-button-secondary" id="tc-filter-integrations">
+                            Filter
+                        </button>
+
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Integration</th>
+                                        <th>Service Type</th>
+                                        <th>Environment</th>
+                                        <th>Endpoint</th>
+                                        <th>Credential Status</th>
+                                        <th>Connection</th>
+                                        <th>Last Checked</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-integrations-body">
+
+                                    <tr>
+                                        <td colspan="8" class="tc-table-empty">
+                                            No integration records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 10: LOCALIZATION
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-localization" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Branding, Language & Localization</h2>
+
+                            <p>
+                                Manage the global TALVORA brand identity
+                                and country-specific presentation settings.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <article class="tc-card">
+
+                        <form id="tc-localization-form">
+
+                            <div class="tc-form-grid">
+
+                                <div class="tc-field">
+                                    <label for="tc-brand-name">
+                                        Brand Name
+                                    </label>
+
+                                    <input id="tc-brand-name" name="brand_name" type="text" maxlength="100">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-tagline">
+                                        Primary Brand Tagline
+                                    </label>
+
+                                    <input id="tc-tagline" name="tagline" type="text" maxlength="180">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-primary-color">
+                                        Primary Brand Colour
+                                    </label>
+
+                                    <input id="tc-primary-color" name="primary_color" type="color" value="#07162f">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-secondary-color">
+                                        Secondary Brand Colour
+                                    </label>
+
+                                    <input id="tc-secondary-color" name="secondary_color" type="color" value="#1769e0">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-accent-color">
+                                        Accent Colour
+                                    </label>
+
+                                    <input id="tc-accent-color" name="accent_color" type="color" value="#00c8e8">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-font-family">
+                                        Typography
+                                    </label>
+
+                                    <select id="tc-font-family" name="font_family">
+                                        <option value="Inter">Inter</option>
+                                        <option value="Manrope">Manrope</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-localization-reason">
+                                        Change Reason
+                                    </label>
+
+                                    <textarea id="tc-localization-reason" name="reason" rows="2" required></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="tc-form-footer">
+
+                                <p>
+                                    Branding changes should be reviewed
+                                    across all three portals before
+                                    production publication.
+                                </p>
+
+                                <button type="submit" class="tc-button tc-button-primary">
+                                    Save Brand Configuration
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 11: OPERATIONS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-operations" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Maintenance & Operational Controls</h2>
+
+                            <p>
+                                Manage platform maintenance windows,
+                                operational restrictions and service
+                                availability controls.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <article class="tc-card">
+
+                        <form id="tc-operations-form">
+
+                            <div class="tc-form-grid">
+
+                                <div class="tc-field">
+                                    <label for="tc-operation-environment">
+                                        Environment
+                                    </label>
+
+                                    <select id="tc-operation-environment" name="environment" required>
+                                        <option value="">Select environment</option>
+                                        <option value="development">Development</option>
+                                        <option value="staging">Staging</option>
+                                        <option value="production">Production</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-maintenance-mode">
+                                        Maintenance Mode
+                                    </label>
+
+                                    <select id="tc-maintenance-mode" name="maintenance_mode">
+                                        <option value="disabled">Disabled</option>
+                                        <option value="scheduled">Scheduled</option>
+                                        <option value="enabled">Enabled</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-maintenance-start">
+                                        Maintenance Start
+                                    </label>
+
+                                    <input id="tc-maintenance-start" name="maintenance_start" type="datetime-local">
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-maintenance-end">
+                                        Maintenance End
+                                    </label>
+
+                                    <input id="tc-maintenance-end" name="maintenance_end" type="datetime-local">
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-maintenance-message">
+                                        Maintenance Announcement
+                                    </label>
+
+                                    <textarea id="tc-maintenance-message" name="maintenance_message"
+                                        rows="3"></textarea>
+                                </div>
+
+
+                                <div class="tc-field tc-full-field">
+                                    <label for="tc-operation-reason">
+                                        Operational Change Reason
+                                    </label>
+
+                                    <textarea id="tc-operation-reason" name="reason" rows="2" required></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="tc-form-footer">
+
+                                <p>
+                                    Production maintenance actions require
+                                    explicit confirmation and full audit
+                                    recording.
+                                </p>
+
+                                <button type="submit" class="tc-button tc-button-primary">
+                                    Submit Operational Change
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-card-heading">
+
+                            <div>
+                                <h3>Maintenance History</h3>
+
+                                <p>
+                                    Recorded maintenance windows
+                                    and operational events.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Environment</th>
+                                        <th>Maintenance Type</th>
+                                        <th>Start</th>
+                                        <th>End</th>
+                                        <th>Status</th>
+                                        <th>Administrator</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-maintenance-body">
+
+                                    <tr>
+                                        <td colspan="7" class="tc-table-empty">
+                                            No maintenance records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 12: DEPLOYMENTS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-deployments" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Deployment Management</h2>
+
+                            <p>
+                                Manage controlled configuration promotion
+                                between Development, Staging and Production.
+                            </p>
+                        </div>
+
+                        <button class="tc-button tc-button-primary" data-action="open-deployment">
+                            + Create Deployment
+                        </button>
+
+                    </div>
+
+
+                    <div class="tc-deployment-flow">
+
+                        <div class="tc-flow-step">
+                            <span>01</span>
+                            <strong>Development</strong>
+                            <small>Prepare changes</small>
+                        </div>
+
+                        <span class="tc-flow-arrow">→</span>
+
+                        <div class="tc-flow-step">
+                            <span>02</span>
+                            <strong>Staging</strong>
+                            <small>Test and validate</small>
+                        </div>
+
+                        <span class="tc-flow-arrow">→</span>
+
+                        <div class="tc-flow-step production-flow">
+                            <span>03</span>
+                            <strong>Production</strong>
+                            <small>Approved release</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tc-notice tc-warning-notice">
+                        Production deployments require approval from a
+                        second Super Admin. The initiating administrator
+                        cannot approve their own production deployment.
+                    </div>
+
+
+                    <div class="tc-filter-bar">
+
+                        <input type="search" id="tc-deployment-search" placeholder="Search deployment records...">
+
+                        <select id="tc-deployment-status-filter">
+                            <option value="">All statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="running">Running</option>
+                            <option value="completed">Completed</option>
+                            <option value="failed">Failed</option>
+                        </select>
+
+                        <button class="tc-button tc-button-secondary" id="tc-filter-deployments">
+                            Filter
+                        </button>
+
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Deployment Reference</th>
+                                        <th>Source</th>
+                                        <th>Destination</th>
+                                        <th>Configuration Version</th>
+                                        <th>Initiated By</th>
+                                        <th>Approval</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-deployments-body">
+
+                                    <tr>
+                                        <td colspan="9" class="tc-table-empty">
+                                            No deployment records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 13: APPROVALS
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-approvals" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Production Approval Centre</h2>
+
+                            <p>
+                                Independent administrator review and
+                                authorization of production changes.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tc-notice tc-warning-notice">
+                        All 10 Super Admins retain full administrative
+                        authority. Production deployment approval is
+                        an independent safeguard: the requesting
+                        administrator cannot approve their own request.
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-card-heading">
+
+                            <div>
+                                <h3>Pending Administrator Approvals</h3>
+
+                                <p>
+                                    Review production deployment requests
+                                    and their supporting information.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Change Description</th>
+                                        <th>Initiated By</th>
+                                        <th>Target Environment</th>
+                                        <th>Reason</th>
+                                        <th>Requested</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-approvals-body">
+
+                                    <tr>
+                                        <td colspan="8" class="tc-table-empty">
+                                            No pending approval records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-card-heading">
+
+                            <div>
+                                <h3>Approval History</h3>
+
+                                <p>
+                                    Historical production approval
+                                    decisions and administrator accountability.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Requested By</th>
+                                        <th>Reviewed By</th>
+                                        <th>Decision</th>
+                                        <th>Reason</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-approval-history">
+
+                                    <tr>
+                                        <td colspan="6" class="tc-table-empty">
+                                            No approval history available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 14: VERSIONS & ROLLBACK
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-versions" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Configuration Versions & Rollback</h2>
+
+                            <p>
+                                Track configuration changes, compare
+                                environment versions and restore
+                                previously approved configurations.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <article class="tc-card">
+
+                        <div class="tc-card-heading">
+
+                            <div>
+                                <h3>Environment Comparison</h3>
+
+                                <p>
+                                    Compare configuration differences
+                                    before deployment.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <form id="tc-compare-form">
+
+                            <div class="tc-form-grid">
+
+                                <div class="tc-field">
+                                    <label for="tc-compare-source">
+                                        Source Environment
+                                    </label>
+
+                                    <select id="tc-compare-source" name="source" required>
+                                        <option value="">Select source</option>
+                                        <option value="development">Development</option>
+                                        <option value="staging">Staging</option>
+                                        <option value="production">Production</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="tc-field">
+                                    <label for="tc-compare-target">
+                                        Target Environment
+                                    </label>
+
+                                    <select id="tc-compare-target" name="target" required>
+                                        <option value="">Select target</option>
+                                        <option value="development">Development</option>
+                                        <option value="staging">Staging</option>
+                                        <option value="production">Production</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="tc-form-footer">
+
+                                <p>
+                                    Comparison is read-only and does
+                                    not change either environment.
+                                </p>
+
+                                <button type="submit" class="tc-button tc-button-primary">
+                                    Compare Configurations
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <div id="tc-comparison-results" class="tc-comparison-results" hidden>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-card-heading">
+
+                            <div>
+                                <h3>Configuration Version History</h3>
+
+                                <p>
+                                    Historical snapshots and
+                                    previously approved versions.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Version</th>
+                                        <th>Configuration</th>
+                                        <th>Environment</th>
+                                        <th>Created By</th>
+                                        <th>Approval</th>
+                                        <th>Created</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tc-versions-body">
+
+                                    <tr>
+                                        <td colspan="7" class="tc-table-empty">
+                                            No configuration versions available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <div class="tc-notice tc-warning-notice">
+                        Rollback creates a new, traceable configuration
+                        version. It does not erase historical versions
+                        or bypass production approval requirements.
+                    </div>
+
+                </section>
+
+
+                <!-- ======================================
+                 VIEW 15: AUDIT TRAIL
+            ======================================= -->
+
+                <section class="tc-view" id="tc-view-audit" role="tabpanel" hidden>
+
+                    <div class="tc-section-heading">
+
+                        <div>
+                            <h2>Configuration Audit Trail</h2>
+
+                            <p>
+                                Maintain accountability for every
+                                configuration change, deployment,
+                                approval and emergency operation.
+                            </p>
+                        </div>
+
+                        <button class="tc-button tc-button-secondary" id="tc-export-audit">
+                            ↓ Export Audit
+                        </button>
+
+                    </div>
+
+
+                    <div class="tc-filter-bar">
+
+                        <input type="search" id="tc-audit-search" placeholder="Search administrator or action...">
+
+                        <select id="tc-audit-environment">
+                            <option value="">All environments</option>
+                            <option value="development">Development</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Production</option>
+                        </select>
+
+                        <input type="date" id="tc-audit-from">
+
+                        <input type="date" id="tc-audit-to">
+
+                        <button class="tc-button tc-button-secondary" id="tc-filter-audit">
+                            Filter
+                        </button>
+
+                    </div>
+
+
+                    <article class="tc-card tc-table-card">
+
+                        <div class="tc-table-wrapper">
+
+                            <table class="tc-table">
+
+                                <thead>
+
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Administrator</th>
+                                        <th>Action</th>
+                                        <th>Configuration</th>
+                                        <th>Environment</th>
+                                        <th>IP Address</th>
+                                        <th>Outcome</th>
+                                        <th>Details</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="tc-audit-body">
+
+                                    <tr>
+                                        <td colspan="8" class="tc-table-empty">
+                                            No audit records available.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="tc-pagination">
+
+                            <span id="tc-audit-count">
+                                No records loaded
+                            </span>
+
+                            <div>
+
+                                <button id="tc-audit-prev" disabled>
+                                    Previous
+                                </button>
+
+                                <strong id="tc-audit-page">
+                                    —
+                                </strong>
+
+                                <button id="tc-audit-next" disabled>
+                                    Next
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ======================================
+                 FOOTER
+            ======================================= -->
+
+                <footer class="tc-footer">
+
+                    <div>
+                        <strong>TALVORA</strong>
+
+                        <span>
+                            Connecting Human Capability to Global Opportunity.
+                        </span>
+                    </div>
+
+                    <div>
+                        Global Platform Configuration Centre
+                        <span>Authorized Super Admin Access</span>
+                    </div>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==============================================
+     COUNTRY CONFIGURATION MODAL
+=============================================== -->
+
+    <div class="tc-modal" id="tc-country-modal" hidden>
+
+        <div class="tc-modal-backdrop" data-close-modal></div>
+
+        <div class="tc-modal-dialog">
+
+            <div class="tc-modal-header">
+
+                <div>
+                    <h2 id="tc-country-modal-title">
+                        Add Country Configuration
+                    </h2>
+
+                    <p>
+                        Register or update a country-specific
+                        platform configuration.
+                    </p>
+                </div>
+
+                <button class="tc-modal-close" data-close-modal aria-label="Close">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="tc-country-form">
+
+                <input type="hidden" id="tc-country-id" name="id">
+
+                <div class="tc-form-grid">
+
+                    <div class="tc-field">
+                        <label for="tc-country-name">Country Name</label>
+
+                        <input id="tc-country-name" name="name" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-country-code">ISO Country Code</label>
+
+                        <input id="tc-country-code" name="country_code" maxlength="2" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-country-currency">Currency</label>
+
+                        <input id="tc-country-currency" name="currency" maxlength="3" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-country-language">Primary Language</label>
+
+                        <input id="tc-country-language" name="language" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-country-timezone">Time Zone</label>
+
+                        <input id="tc-country-timezone" name="timezone" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-country-regulation">Regulatory Profile</label>
+
+                        <input id="tc-country-regulation" name="regulatory_profile">
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-country-status">Configuration Status</label>
+
+                        <select id="tc-country-status" name="status">
+                            <option value="pending">Pending</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-country-reason">Change Reason</label>
+
+                        <textarea id="tc-country-reason" name="reason" rows="3" required></textarea>
+                    </div>
+
+                </div>
+
+
+                <div class="tc-modal-actions">
+
+                    <button type="button" class="tc-button tc-button-secondary" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="tc-button tc-button-primary">
+                        Save Country
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+     FEATURE REGISTRATION MODAL
+=============================================== -->
+
+    <div class="tc-modal" id="tc-feature-modal" hidden>
+
+        <div class="tc-modal-backdrop" data-close-modal></div>
+
+        <div class="tc-modal-dialog">
+
+            <div class="tc-modal-header">
+
+                <div>
+                    <h2>Register Platform Feature</h2>
+
+                    <p>
+                        Register a feature flag and define
+                        its rollout scope.
+                    </p>
+                </div>
+
+                <button class="tc-modal-close" data-close-modal>
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="tc-feature-form">
+
+                <div class="tc-form-grid">
+
+                    <div class="tc-field">
+                        <label for="tc-feature-name">Feature Name</label>
+
+                        <input id="tc-feature-name" name="name" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-feature-key">Feature Key</label>
+
+                        <input id="tc-feature-key" name="key" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-feature-target-environment">
+                            Environment
+                        </label>
+
+                        <select id="tc-feature-target-environment" name="environment" required>
+                            <option value="">Select environment</option>
+                            <option value="development">Development</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Production</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-feature-target-portal">
+                            Target Portal
+                        </label>
+
+                        <select id="tc-feature-target-portal" name="portal" required>
+                            <option value="">Select portal</option>
+                            <option value="employer">Employer</option>
+                            <option value="employee">Employee</option>
+                            <option value="super_admin">Super Admin</option>
+                            <option value="all">All Portals</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-feature-country-scope">
+                            Country Scope
+                        </label>
+
+                        <input id="tc-feature-country-scope" name="country_scope" placeholder="Country codes or ALL">
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-feature-description">
+                            Description
+                        </label>
+
+                        <textarea id="tc-feature-description" name="description" rows="3"></textarea>
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-feature-reason">
+                            Reason
+                        </label>
+
+                        <textarea id="tc-feature-reason" name="reason" rows="2" required></textarea>
+                    </div>
+
+                </div>
+
+
+                <div class="tc-modal-actions">
+
+                    <button type="button" class="tc-button tc-button-secondary" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="tc-button tc-button-primary">
+                        Register Feature
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+     INTEGRATION REGISTRATION MODAL
+=============================================== -->
+
+    <div class="tc-modal" id="tc-integration-modal" hidden>
+
+        <div class="tc-modal-backdrop" data-close-modal></div>
+
+        <div class="tc-modal-dialog">
+
+            <div class="tc-modal-header">
+
+                <div>
+                    <h2>Register Integration</h2>
+
+                    <p>
+                        Add an internal or external service integration.
+                    </p>
+                </div>
+
+                <button class="tc-modal-close" data-close-modal>
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="tc-integration-form">
+
+                <div class="tc-form-grid">
+
+                    <div class="tc-field">
+                        <label for="tc-integration-name">Integration Name</label>
+
+                        <input id="tc-integration-name" name="name" required>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-integration-type">Service Type</label>
+
+                        <select id="tc-integration-type" name="type" required>
+                            <option value="">Select type</option>
+                            <option value="internal_api">Internal API</option>
+                            <option value="payment">Payment</option>
+                            <option value="identity">Identity Verification</option>
+                            <option value="email">Email</option>
+                            <option value="sms">SMS</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-integration-target">
+                            Environment
+                        </label>
+
+                        <select id="tc-integration-target" name="environment" required>
+                            <option value="">Select environment</option>
+                            <option value="development">Development</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Production</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-integration-endpoint">
+                            Service Endpoint
+                        </label>
+
+                        <input id="tc-integration-endpoint" name="endpoint" type="url" required>
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-integration-vault-reference">
+                            Secure Credential Reference
+                        </label>
+
+                        <input id="tc-integration-vault-reference" name="credential_reference" autocomplete="off">
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-integration-reason">
+                            Registration Reason
+                        </label>
+
+                        <textarea id="tc-integration-reason" name="reason" rows="2" required></textarea>
+                    </div>
+
+                </div>
+
+
+                <div class="tc-modal-actions">
+
+                    <button type="button" class="tc-button tc-button-secondary" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="tc-button tc-button-primary">
+                        Register Integration
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+     DEPLOYMENT MODAL
+=============================================== -->
+
+    <div class="tc-modal" id="tc-deployment-modal" hidden>
+
+        <div class="tc-modal-backdrop" data-close-modal></div>
+
+        <div class="tc-modal-dialog">
+
+            <div class="tc-modal-header">
+
+                <div>
+                    <h2>Create Platform Deployment</h2>
+
+                    <p>
+                        Prepare a controlled configuration promotion
+                        between TALVORA environments.
+                    </p>
+                </div>
+
+                <button class="tc-modal-close" data-close-modal>
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="tc-deployment-form">
+
+                <div class="tc-form-grid">
+
+                    <div class="tc-field">
+                        <label for="tc-deployment-source">
+                            Source Environment
+                        </label>
+
+                        <select id="tc-deployment-source" name="source_environment" required>
+                            <option value="">Select source</option>
+                            <option value="development">Development</option>
+                            <option value="staging">Staging</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-deployment-target">
+                            Destination Environment
+                        </label>
+
+                        <select id="tc-deployment-target" name="target_environment" required>
+                            <option value="">Select destination</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Production</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-deployment-version">
+                            Configuration Version
+                        </label>
+
+                        <select id="tc-deployment-version" name="configuration_version" required>
+                            <option value="">Select version</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field">
+                        <label for="tc-deployment-scope">
+                            Deployment Scope
+                        </label>
+
+                        <select id="tc-deployment-scope" name="scope" required>
+                            <option value="all">All applicable portals</option>
+                            <option value="employer">Employer Portal</option>
+                            <option value="employee">Employee Portal</option>
+                            <option value="super_admin">Super Admin Portal</option>
+                        </select>
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-deployment-countries">
+                            Country Rollout Scope
+                        </label>
+
+                        <input id="tc-deployment-countries" name="countries"
+                            placeholder="ALL or selected country codes">
+                    </div>
+
+
+                    <div class="tc-field tc-full-field">
+                        <label for="tc-deployment-reason">
+                            Deployment Reason
+                        </label>
+
+                        <textarea id="tc-deployment-reason" name="reason" rows="3" required></textarea>
+                    </div>
+
+                </div>
+
+
+                <div class="tc-modal-warning">
+
+                    Production deployment requests require an
+                    independent second Super Admin approval.
+
+                    Submitting a request does not automatically
+                    deploy changes to the live platform.
+
+                </div>
+
+
+                <div class="tc-modal-actions">
+
+                    <button type="button" class="tc-button tc-button-secondary" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="tc-button tc-button-primary">
+                        Submit Deployment Request
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+     APPROVAL MODAL
+=============================================== -->
+
+    <div class="tc-modal" id="tc-approval-modal" hidden>
+
+        <div class="tc-modal-backdrop" data-close-modal></div>
+
+        <div class="tc-modal-dialog">
+
+            <div class="tc-modal-header">
+
+                <div>
+                    <h2>Review Production Deployment</h2>
+
+                    <p>
+                        Independently review the requested
+                        production configuration change.
+                    </p>
+                </div>
+
+                <button class="tc-modal-close" data-close-modal>
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="tc-approval-form">
+
+                <input type="hidden" id="tc-approval-reference" name="deployment_id">
+
+                <div class="tc-field">
+                    <label for="tc-approval-decision">
+                        Approval Decision
+                    </label>
+
+                    <select id="tc-approval-decision" name="decision" required>
+                        <option value="">Select decision</option>
+                        <option value="approved">Approve</option>
+                        <option value="rejected">Reject</option>
+                    </select>
+                </div>
+
+
+                <div class="tc-field">
+                    <label for="tc-approval-reason">
+                        Review Reason
+                    </label>
+
+                    <textarea id="tc-approval-reason" name="reason" rows="4" required></textarea>
+                </div>
+
+
+                <div class="tc-modal-warning">
+                    The backend must independently verify the
+                    authenticated reviewer is not the deployment
+                    initiator and is authorized to approve the request.
+                </div>
+
+
+                <div class="tc-modal-actions">
+
+                    <button type="button" class="tc-button tc-button-secondary" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="tc-button tc-button-primary">
+                        Submit Review
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+     EMERGENCY CHANGE MODAL
+=============================================== -->
+
+    <div class="tc-modal" id="tc-emergency-modal" hidden>
+
+        <div class="tc-modal-backdrop" data-close-modal></div>
+
+        <div class="tc-modal-dialog">
+
+            <div class="tc-modal-header">
+
+                <div>
+                    <h2>Emergency Configuration Change</h2>
+
+                    <p>
+                        Record and submit an urgent platform
+                        configuration operation.
+                    </p>
+                </div>
+
+                <button class="tc-modal-close" data-close-modal>
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="tc-emergency-form">
+
+                <div class="tc-field">
+                    <label for="tc-emergency-environment">
+                        Target Environment
+                    </label>
+
+                    <select id="tc-emergency-environment" name="environment" required>
+                        <option value="">Select environment</option>
+                        <option value="development">Development</option>
+                        <option value="staging">Staging</option>
+                        <option value="production">Production</option>
+                    </select>
+                </div>
+
+
+                <div class="tc-field">
+                    <label for="tc-emergency-action">
+                        Emergency Action
+                    </label>
+
+                    <select id="tc-emergency-action" name="action" required>
+                        <option value="">Select action</option>
+                        <option value="configuration_override">
+                            Configuration Override
+                        </option>
+                        <option value="feature_disable">
+                            Disable Feature
+                        </option>
+                        <option value="maintenance">
+                            Emergency Maintenance
+                        </option>
+                        <option value="rollback">
+                            Emergency Rollback
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="tc-field">
+                    <label for="tc-emergency-reason">
+                        Mandatory Emergency Justification
+                    </label>
+
+                    <textarea id="tc-emergency-reason" name="reason" rows="4" required minlength="10"></textarea>
+                </div>
+
+
+                <div class="tc-modal-warning tc-danger-warning">
+
+                    Emergency actions must be recorded with
+                    administrator identity, timestamp, scope,
+                    reason and outcome.
+
+                    Backend safeguards and applicable production
+                    approval requirements remain in force.
+
+                </div>
+
+
+                <div class="tc-modal-actions">
+
+                    <button type="button" class="tc-button tc-button-secondary" data-close-modal>
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="tc-button tc-button-danger">
+                        Submit Emergency Request
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+     TOAST NOTIFICATIONS
+=============================================== -->
+
+    <div class="tc-toast-region" id="tc-toast-region" aria-live="polite" aria-atomic="true">
+    </div>
+
+
+    <!-- ==============================================
+     MODULE JAVASCRIPT
+=============================================== -->
+
+    <script src="configuration.js" defer></script>
+
+</body>
+
+</html>

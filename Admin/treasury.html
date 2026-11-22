@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>TALVORA | Global Treasury Centre</title>
+    <link rel="stylesheet" href="talvora-admin.css">
+    <script defer src="talvora-admin-config.js"></script>
+    <script defer src="treasury.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar" id="sidebar">
+            <a class="brand" href="#">
+                <span class="brand-icon">T</span>
+                <span><strong>TALVORA</strong><small>GLOBAL SUPER ADMIN</small></span>
+            </a>
+
+            <div class="side-context"><i></i> GLOBAL FINANCIAL COMMAND</div>
+            <div class="nav-label">TREASURY MANAGEMENT</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Overview</a>
+                <a href="#liquidity" class="nav-link" data-section="liquidity">▤ Global Liquidity</a>
+                <a href="#accounts" class="nav-link" data-section="accounts">▣ Bank Accounts</a>
+                <a href="#transfers" class="nav-link" data-section="transfers">⇄ Global Transfers</a>
+                <a href="#fx" class="nav-link" data-section="fx">◎ Foreign Exchange</a>
+                <a href="#forecast" class="nav-link" data-section="forecast">⌁ Cash Forecasting</a>
+                <a href="#risk" class="nav-link" data-section="risk">◇ Treasury Risk</a>
+                <a href="#reports" class="nav-link" data-section="reports">▥ Treasury Reports</a>
+                <a href="#audit" class="nav-link" data-section="audit">▤ Audit & Controls</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="environment-card">
+                    <i></i>
+                    <span><strong>Production Environment</strong><small>Authorized monitoring</small></span>
+                </div>
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <span><strong>Super Administrator</strong><small>Global Financial Authority</small></span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-button" id="menuToggle">☰</button>
+                    <div>
+                        <small>SUPER ADMIN / FINANCIAL INFRASTRUCTURE</small>
+                        <h1>Global Treasury Centre</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <span class="connection" id="apiStatus"><i></i> Connecting</span>
+                    <span class="environment" id="environmentLabel">PRODUCTION</span>
+                    <button class="btn btn-secondary" id="refreshAll">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="notice">
+                <span>◈</span>
+                <div><strong>Global Treasury Intelligence</strong>
+                    <p>Centralized oversight of liquidity, multi-currency positions, banking relationships, transfers
+                        and treasury exposure.</p>
+                </div>
+            </div>
+
+            <!-- OVERVIEW -->
+            <section class="section active" id="overview">
+                <div class="heading">
+                    <div><small>FINANCIAL COMMAND</small>
+                        <h2>Treasury Overview</h2>
+                        <p>Consolidated global treasury and liquidity intelligence.</p>
+                    </div>
+                    <button class="btn btn-primary" data-open="transferModal">+ New Transfer Request</button>
+                </div>
+
+                <div class="metrics">
+                    <article class="metric"><span>Total Treasury Balance</span><strong
+                            id="tCash">—</strong><small>Consolidated reporting currency</small></article>
+                    <article class="metric"><span>Available Liquidity</span><strong
+                            id="tAvailable">—</strong><small>Available funds across accounts</small></article>
+                    <article class="metric"><span>Pending Transfers</span><strong
+                            id="tPending">—</strong><small>Awaiting processing or approval</small></article>
+                    <article class="metric"><span>Currency Exposure</span><strong
+                            id="tExposure">—</strong><small>Reported treasury exposure</small></article>
+                </div>
+
+                <div class="grid-2">
+                    <article class="panel">
+                        <div class="panel-title">
+                            <div><small>GLOBAL POSITION</small>
+                                <h3>Liquidity by Currency</h3>
+                            </div><span class="live">LIVE DATA</span>
+                        </div>
+                        <div id="currencyDistribution" class="currency-list">
+                            <p class="muted">Loading currency positions...</p>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-title">
+                            <div><small>TREASURY CONTROL</small>
+                                <h3>Operational Health</h3>
+                            </div>
+                        </div>
+                        <div id="treasuryHealth" class="health-list">
+                            <p class="muted">Loading service health...</p>
+                        </div>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <div><small>RECENT ACTIVITY</small>
+                            <h3>Global Transfer Activity</h3>
+                        </div><button class="btn btn-secondary" data-navigate="transfers">View all</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>ORIGIN</th>
+                                    <th>DESTINATION</th>
+                                    <th>AMOUNT</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTransfers"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- LIQUIDITY -->
+            <section class="section" id="liquidity">
+                <div class="heading">
+                    <div><small>TREASURY POSITIONS</small>
+                        <h2>Global Liquidity</h2>
+                        <p>Monitor cash availability and liquidity distribution across jurisdictions.</p>
+                    </div><button class="btn btn-secondary" data-refresh>↻ Refresh positions</button>
+                </div>
+                <div class="metrics compact">
+                    <article class="metric"><span>Available Liquidity</span><strong id="lAvailable">—</strong></article>
+                    <article class="metric"><span>Restricted Funds</span><strong id="lRestricted">—</strong></article>
+                    <article class="metric"><span>Committed Funds</span><strong id="lCommitted">—</strong></article>
+                    <article class="metric"><span>Liquidity Shortfalls</span><strong id="lShortfalls">—</strong>
+                    </article>
+                </div>
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Country & Currency Liquidity</h3>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>JURISDICTION</th>
+                                    <th>CURRENCY</th>
+                                    <th>AVAILABLE</th>
+                                    <th>RESTRICTED</th>
+                                    <th>COMMITTED</th>
+                                    <th>MINIMUM RESERVE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="liquidityTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- BANK ACCOUNTS -->
+            <section class="section" id="accounts">
+                <div class="heading">
+                    <div><small>BANKING INFRASTRUCTURE</small>
+                        <h2>Global Bank Accounts</h2>
+                        <p>Monitor connected bank accounts, balances, settlement status and account restrictions.</p>
+                    </div>
+                </div>
+                <div class="filters"><input id="accountSearch" placeholder="Search account, bank or country..."><select
+                        id="accountStatus">
+                        <option value="">All statuses</option>
+                        <option>active</option>
+                        <option>restricted</option>
+                        <option>inactive</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ACCOUNT</th>
+                                    <th>BANK</th>
+                                    <th>COUNTRY</th>
+                                    <th>CURRENCY</th>
+                                    <th>BALANCE</th>
+                                    <th>AVAILABLE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accountTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- TRANSFERS -->
+            <section class="section" id="transfers">
+                <div class="heading">
+                    <div><small>GLOBAL FUND MOVEMENT</small>
+                        <h2>International Transfers</h2>
+                        <p>Manage cross-border transfer requests, approvals, settlement and reconciliation.</p>
+                    </div><button class="btn btn-primary" data-open="transferModal">+ Transfer Request</button>
+                </div>
+                <div class="filters"><input id="transferSearch" placeholder="Search transfer reference..."><select
+                        id="transferStatus">
+                        <option value="">All statuses</option>
+                        <option>pending</option>
+                        <option>pending_approval</option>
+                        <option>processing</option>
+                        <option>settled</option>
+                        <option>failed</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>FROM</th>
+                                    <th>TO</th>
+                                    <th>AMOUNT</th>
+                                    <th>FEE</th>
+                                    <th>REQUESTED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transferTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- FOREIGN EXCHANGE -->
+            <section class="section" id="fx">
+                <div class="heading">
+                    <div><small>GLOBAL CURRENCY OPERATIONS</small>
+                        <h2>Foreign Exchange Management</h2>
+                        <p>Request provider-backed FX quotes and manage currency conversion orders.</p>
+                    </div>
+                </div>
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>Request an FX Quote</h3><span class="badge info">Provider-backed rates</span>
+                    </div>
+                    <form id="fxForm" class="form-grid">
+                        <label>Source currency<select name="fromCurrency" required id="fxFrom">
+                                <option value="">Select currency</option>
+                            </select></label>
+                        <label>Destination currency<select name="toCurrency" required id="fxTo">
+                                <option value="">Select currency</option>
+                            </select></label>
+                        <label>Amount<input name="amount" type="number" min="0.01" step="0.01" required></label>
+                        <label>Purpose<input name="purpose" required maxlength="250"
+                                placeholder="Reason for conversion"></label>
+                        <div class="full"><button class="btn btn-primary" type="submit" id="fxQuoteButton">Request
+                                Exchange Quote</button></div>
+                    </form>
+                    <div id="fxQuoteResult" class="quote-result" hidden></div>
+                    <button class="btn btn-primary" id="fxConfirmButton" hidden>Submit FX Order for Approval</button>
+                </article>
+                <article class="panel">
+                    <div class="panel-title">
+                        <h3>FX Orders</h3>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>PAIR</th>
+                                    <th>SELL AMOUNT</th>
+                                    <th>BUY AMOUNT</th>
+                                    <th>RATE</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fxTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- FORECASTING -->
+            <section class="section" id="forecast">
+                <div class="heading">
+                    <div><small>FINANCIAL PLANNING</small>
+                        <h2>Cash Flow Forecasting</h2>
+                        <p>Review treasury forecasts, projected inflows, outflows and reserve requirements.</p>
+                    </div>
+                </div>
+                <div class="filters"><select id="forecastPeriod">
+                        <option value="">All forecast periods</option>
+                        <option>30_days</option>
+                        <option>90_days</option>
+                        <option>180_days</option>
+                        <option>365_days</option>
+                    </select><select id="forecastCurrency">
+                        <option value="">All currencies</option>
+                    </select></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PERIOD</th>
+                                    <th>JURISDICTION</th>
+                                    <th>CURRENCY</th>
+                                    <th>OPENING BALANCE</th>
+                                    <th>INFLOWS</th>
+                                    <th>OUTFLOWS</th>
+                                    <th>PROJECTED CLOSING</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="forecastTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- RISK -->
+            <section class="section" id="risk">
+                <div class="heading">
+                    <div><small>FINANCIAL RISK OVERSIGHT</small>
+                        <h2>Treasury Risk & Exposure</h2>
+                        <p>Monitor currency concentration, counterparty exposure, liquidity risks and limit breaches.
+                        </p>
+                    </div>
+                </div>
+                <div class="metrics compact">
+                    <article class="metric"><span>Open Risk Alerts</span><strong id="rAlerts">—</strong></article>
+                    <article class="metric"><span>Limit Breaches</span><strong id="rBreaches">—</strong></article>
+                    <article class="metric"><span>Counterparties</span><strong id="rCounterparties">—</strong></article>
+                    <article class="metric"><span>Unhedged Exposure</span><strong id="rUnhedged">—</strong></article>
+                </div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RISK REFERENCE</th>
+                                    <th>TYPE</th>
+                                    <th>CURRENCY</th>
+                                    <th>EXPOSURE</th>
+                                    <th>LIMIT</th>
+                                    <th>SEVERITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="exposureTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- REPORTS -->
+            <section class="section" id="reports">
+                <div class="heading">
+                    <div><small>MANAGEMENT INTELLIGENCE</small>
+                        <h2>Treasury Reports</h2>
+                        <p>Consolidated financial position, liquidity and currency reporting.</p>
+                    </div><button class="btn btn-secondary" data-refresh>↻ Refresh reports</button>
+                </div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REPORT</th>
+                                    <th>TYPE</th>
+                                    <th>PERIOD</th>
+                                    <th>JURISDICTION</th>
+                                    <th>GENERATED</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- AUDIT -->
+            <section class="section" id="audit">
+                <div class="heading">
+                    <div><small>FINANCIAL GOVERNANCE</small>
+                        <h2>Treasury Audit & Controls</h2>
+                        <p>Trace privileged actions, financial approvals and changes to treasury configuration.</p>
+                    </div><button class="btn btn-secondary" id="exportAudit">↓ Export audit</button>
+                </div>
+                <div class="filters"><input id="auditSearch" placeholder="Search audit records..."></div>
+                <article class="panel">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REFERENCE</th>
+                                    <th>ACTOR</th>
+                                    <th>ACTION</th>
+                                    <th>RESOURCE</th>
+                                    <th>REASON</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>RESULT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <footer>TALVORA GLOBAL TREASURY <span>•</span> FINANCIAL COMMAND & CONTROL</footer>
+        </main>
+    </div>
+
+    <!-- TRANSFER REQUEST MODAL -->
+    <div class="overlay" id="transferModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <div><small>TREASURY OPERATIONS</small>
+                    <h2>New Transfer Request</h2>
+                </div><button class="close" data-close>×</button>
+            </div>
+            <form id="transferForm">
+                <label>Source bank account<select name="sourceAccountId" id="transferSource" required>
+                        <option value="">Select source account</option>
+                    </select></label>
+                <label>Destination country<input name="destinationCountry" required maxlength="100"></label>
+                <label>Destination currency<select name="currency" class="currency-options" required>
+                        <option value="">Select currency</option>
+                    </select></label>
+                <label>Amount<input type="number" name="amount" min="0.01" step="0.01" required></label>
+                <label>Beneficiary reference<input name="beneficiaryReference" required maxlength="150"></label>
+                <label>Transfer purpose<textarea name="purpose" required minlength="10"
+                        maxlength="1000"></textarea></label>
+                <p class="form-note">This creates an authorized transfer request. Settlement, screening, fees and
+                    approval are handled by the connected financial services.</p>
+                <button class="btn btn-primary" type="submit" id="transferSubmit">Submit for Approval</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ACTION MODAL -->
+    <div class="overlay" id="actionModal" hidden>
+        <div class="modal">
+            <div class="modal-head">
+                <h2 id="actionTitle">Confirm Treasury Action</h2><button class="close" data-close>×</button>
+            </div>
+            <p id="actionDescription" class="muted"></p>
+            <label>Administrative justification<textarea id="actionReason" minlength="10" maxlength="1000"
+                    required></textarea></label>
+            <div class="modal-actions"><button class="btn btn-secondary" data-close>Cancel</button><button
+                    class="btn btn-primary" id="actionSubmit" disabled>Submit Request</button></div>
+        </div>
+    </div>
+
+    <div class="overlay" id="detailModal" hidden>
+        <div class="modal large">
+            <div class="modal-head">
+                <h2 id="detailTitle">Record Details</h2><button class="close" data-close>×</button>
+            </div>
+            <div id="detailBody"></div>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+</body>
+
+</html>

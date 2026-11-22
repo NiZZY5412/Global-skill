@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060638">
+
+    <meta name="description" content="TALVORA Global - Super Admin Matching Oversight">
+
+    <title>Matching Oversight | TALVORA Technologies</title>
+
+    <link rel="icon" href="../../talvora-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="matching.css">
+
+    <script src="matching.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+       ACCESS CONTROL
+       ===================================================== -->
+
+    <section id="matching-locked" class="matching-locked">
+
+        <div class="matching-locked-card">
+
+            <img src="../../talvora-logo.png" alt="TALVORA logo">
+
+            <h1>TALVORA</h1>
+
+            <p id="matching-access-message" role="status">
+                Verifying administrator access...
+            </p>
+
+            <a href="../index.html" class="btn btn-primary">
+                Return to Super Admin
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+       APPLICATION
+       ===================================================== -->
+
+    <div id="matching-app" class="app-layout" hidden>
+
+
+        <!-- ===================================================
+         SIDEBAR
+         =================================================== -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="../index.html" class="sidebar-brand-link">
+
+                    <img src="../../talvora-logo.png" alt="" class="sidebar-logo">
+
+                    <div class="sidebar-brand">
+
+                        <h2>TALVORA</h2>
+
+                        <span>TECHNOLOGIES</span>
+
+                        <small>TALVORA GLOBAL</small>
+
+                    </div>
+
+                </a>
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-portal-label">
+
+                <span class="portal-indicator"></span>
+
+                SUPER ADMIN PORTAL
+
+            </div>
+
+
+            <nav class="sidebar-navigation" aria-label="Admin navigation">
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">OVERVIEW</p>
+
+                    <a href="../index.html#/admin/dashboard" class="nav-link">
+
+                        <span class="nav-icon">&#9638;</span>
+                        Dashboard
+
+                    </a>
+
+                    <a href="../index.html#/admin/activities" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Platform Activities
+
+                    </a>
+
+                    <a href="../index.html#/admin/locations" class="nav-link">
+
+                        <span class="nav-icon">&#9678;</span>
+                        Locations
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">USER MANAGEMENT</p>
+
+                    <a href="employees.html" class="nav-link">
+
+                        <span class="nav-icon">&#9786;</span>
+                        Employees
+
+                    </a>
+
+                    <a href="employers.html" class="nav-link">
+
+                        <span class="nav-icon">&#9635;</span>
+                        Employers
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">EMPLOYMENT OPERATIONS</p>
+
+                    <a href="jobs.html" class="nav-link">
+
+                        <span class="nav-icon">&#9636;</span>
+                        Job Management
+
+                    </a>
+
+                    <a href="applications.html" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Applications & Hiring
+
+                    </a>
+
+                    <a href="assessments.html" class="nav-link">
+
+                        <span class="nav-icon">&#10003;</span>
+                        Assessments
+
+                    </a>
+
+                    <a href="evidence.html" class="nav-link">
+
+                        <span class="nav-icon">&#9635;</span>
+                        Skills & Evidence
+
+                    </a>
+
+                    <a href="matching.html" class="nav-link active" aria-current="page">
+
+                        <span class="nav-icon">&#8644;</span>
+                        Matching Oversight
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">FINANCIAL MANAGEMENT</p>
+
+                    <a href="finance.html" class="nav-link">
+
+                        <span class="nav-icon">&#36;</span>
+                        Finance & Revenue
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">TRUST & SECURITY</p>
+
+                    <a href="reports.html" class="nav-link">
+
+                        <span class="nav-icon">&#9873;</span>
+                        Reports & Investigations
+
+                    </a>
+
+                    <a href="disputes.html" class="nav-link">
+
+                        <span class="nav-icon">&#9878;</span>
+                        Disputes & Appeals
+
+                    </a>
+
+                    <a href="consents.html" class="nav-link">
+
+                        <span class="nav-icon">&#10003;</span>
+                        Privacy & Consent
+
+                    </a>
+
+                    <a href="audit.html" class="nav-link">
+
+                        <span class="nav-icon">&#9776;</span>
+                        Audit Logs
+
+                    </a>
+
+                    <a href="support.html" class="nav-link">
+
+                        <span class="nav-icon">&#9993;</span>
+                        Support Center
+
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">PLATFORM MANAGEMENT</p>
+
+                    <a href="team.html" class="nav-link">
+
+                        <span class="nav-icon">&#9786;</span>
+                        Admin Team
+
+                    </a>
+
+                    <a href="settings.html" class="nav-link">
+
+                        <span class="nav-icon">&#9881;</span>
+                        System Settings
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="sidebar-footer-brand">
+                    TALVORA TECHNOLOGIES
+                </div>
+
+                <p>GSES SYSTEM 001</p>
+
+                <span>Global Workforce Infrastructure</span>
+
+            </div>
+
+        </aside>
+
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden>
+        </div>
+
+
+        <!-- ===================================================
+         MAIN WORKSPACE
+         =================================================== -->
+
+        <div class="main-workspace">
+
+
+            <!-- HEADER -->
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+
+                        &#9776;
+
+                    </button>
+
+
+                    <div class="header-title">
+
+                        <span class="header-brand-label">
+                            TALVORA GLOBAL
+                        </span>
+
+                        <h2>Matching Oversight</h2>
+
+                        <p>Intelligent workforce matching and recommendation monitoring</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <div class="connection-status disconnected">
+
+                        <span class="status-dot"></span>
+
+                        <span id="matching-system-status">
+                            Not Connected
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">SA</div>
+
+                        <div class="admin-info">
+
+                            <strong>Super Admin</strong>
+
+                            <span>Administration</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="../index.html" class="logout-button">
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+           PAGE CONTENT
+           ================================================= -->
+
+            <main class="main-content">
+
+
+                <!-- PAGE HEADING -->
+
+                <section class="page-heading matching-heading">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            EMPLOYMENT OPERATIONS
+                        </span>
+
+                        <h1>Intelligent Matching Oversight</h1>
+
+                        <p>
+                            Monitor employee-to-job compatibility,
+                            employer recruitment requirements, matching
+                            recommendations, algorithm performance,
+                            fairness and recruitment outcomes across
+                            TALVORA Global.
+                        </p>
+
+                    </div>
+
+
+                    <div class="matching-heading-actions">
+
+                        <button id="matching-refresh" class="btn btn-secondary" type="button" disabled>
+
+                            &#8635; Refresh
+
+                        </button>
+
+                        <button id="matching-export" class="btn btn-primary" type="button" disabled>
+
+                            &#8681; Export Report
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SYSTEM NOTICE -->
+
+                <div id="matching-notice" class="matching-notice" role="status" aria-live="polite">
+
+                    Awaiting connection to the matching service.
+
+                </div>
+
+
+                <!-- =================================================
+             MATCHING STATISTICS
+             ================================================= -->
+
+                <section class="matching-stats" aria-label="Matching statistics">
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>Total Matches</span>
+
+                            <span class="matching-stat-icon">&#8644;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-total">—</strong>
+
+                        <p>Registered matching records</p>
+
+                    </article>
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>High Compatibility</span>
+
+                            <span class="matching-stat-icon">&#9733;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-high">—</strong>
+
+                        <p>High compatibility matches</p>
+
+                    </article>
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>Pending Review</span>
+
+                            <span class="matching-stat-icon">&#9203;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-pending">—</strong>
+
+                        <p>Awaiting further review</p>
+
+                    </article>
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>Active Matches</span>
+
+                            <span class="matching-stat-icon">&#10003;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-active">—</strong>
+
+                        <p>Currently active matching records</p>
+
+                    </article>
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>Unmatched Employees</span>
+
+                            <span class="matching-stat-icon">&#9786;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-unmatched-employees">—</strong>
+
+                        <p>Without a suitable current match</p>
+
+                    </article>
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>Unfilled Jobs</span>
+
+                            <span class="matching-stat-icon">&#9636;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-unfilled-jobs">—</strong>
+
+                        <p>Vacancies without a suitable candidate</p>
+
+                    </article>
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>Successful Outcomes</span>
+
+                            <span class="matching-stat-icon">&#10004;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-successful">—</strong>
+
+                        <p>Recorded successful hiring outcomes</p>
+
+                    </article>
+
+
+                    <article class="matching-stat-card">
+
+                        <div class="matching-stat-top">
+
+                            <span>Flagged Matches</span>
+
+                            <span class="matching-stat-icon">&#9888;</span>
+
+                        </div>
+
+                        <strong id="metric-matches-flagged">—</strong>
+
+                        <p>Requiring administrative attention</p>
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- =================================================
+             MATCHING PERFORMANCE
+             ================================================= -->
+
+                <section class="matching-performance-grid">
+
+
+                    <!-- PERFORMANCE OVERVIEW -->
+
+                    <article class="content-card matching-performance-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Matching Performance</h3>
+
+                                <p>
+                                    Authoritative performance indicators
+                                    reported by the matching engine.
+                                </p>
+
+                            </div>
+
+                            <span class="matching-live-label">
+                                <span></span>
+                                Service Data
+                            </span>
+
+                        </div>
+
+
+                        <div class="performance-metrics">
+
+
+                            <div class="performance-metric">
+
+                                <span>Successful Match Rate</span>
+
+                                <strong id="performance-success-rate">—</strong>
+
+                                <small>Based on defined outcome methodology</small>
+
+                            </div>
+
+
+                            <div class="performance-metric">
+
+                                <span>Average Compatibility</span>
+
+                                <strong id="performance-average-score">—</strong>
+
+                                <small>Engine-reported score</small>
+
+                            </div>
+
+
+                            <div class="performance-metric">
+
+                                <span>Matching Processing Time</span>
+
+                                <strong id="performance-processing-time">—</strong>
+
+                                <small>Reported processing duration</small>
+
+                            </div>
+
+
+                            <div class="performance-metric">
+
+                                <span>Recommendation Acceptance</span>
+
+                                <strong id="performance-acceptance-rate">—</strong>
+
+                                <small>Based on recorded responses</small>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="performance-footer">
+
+                            <span>Last engine update</span>
+
+                            <strong id="performance-last-updated">
+                                Data unavailable
+                            </strong>
+
+                        </div>
+
+
+                    </article>
+
+
+                    <!-- ALGORITHM STATUS -->
+
+                    <article class="content-card matching-engine-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Matching Engine Status</h3>
+
+                                <p>
+                                    Monitoring the recommendation engine
+                                    and its operational health.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="engine-status-block">
+
+                            <span class="engine-status-indicator"></span>
+
+                            <div>
+
+                                <strong id="matching-engine-status">
+                                    Not Connected
+                                </strong>
+
+                                <p id="matching-engine-description">
+                                    Engine status has not been retrieved.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="engine-information">
+
+
+                            <div>
+
+                                <span>Engine Version</span>
+
+                                <strong id="matching-engine-version">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Last Successful Run</span>
+
+                                <strong id="matching-engine-last-run">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Pending Processing</span>
+
+                                <strong id="matching-engine-queue">—</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Failed Processing</span>
+
+                                <strong id="matching-engine-failed">—</strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="engine-footer">
+
+                            <span>Engine configuration is managed through authorized platform services.</span>
+
+                        </div>
+
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- =================================================
+             MATCHING DIRECTORY
+             ================================================= -->
+
+                <section class="content-card matching-directory">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Global Matching Directory</h3>
+
+                            <p>
+                                Review employee-to-job recommendations,
+                                compatibility information and matching status.
+                            </p>
+
+                        </div>
+
+
+                        <span id="matching-record-count" class="matching-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- MATCH STATUS TABS -->
+
+                    <div class="matching-tabs" role="tablist" aria-label="Matching status filters">
+
+
+                        <button type="button" class="matching-tab active" data-status="all" role="tab"
+                            aria-selected="true" tabindex="0">
+
+                            All Matches
+
+                        </button>
+
+
+                        <button type="button" class="matching-tab" data-status="pending" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Pending Review
+
+                        </button>
+
+
+                        <button type="button" class="matching-tab" data-status="active" role="tab" aria-selected="false"
+                            tabindex="-1">
+
+                            Active
+
+                        </button>
+
+
+                        <button type="button" class="matching-tab" data-status="accepted" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Accepted
+
+                        </button>
+
+
+                        <button type="button" class="matching-tab" data-status="declined" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Declined
+
+                        </button>
+
+
+                        <button type="button" class="matching-tab" data-status="successful" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Successful
+
+                        </button>
+
+
+                        <button type="button" class="matching-tab" data-status="flagged" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Flagged
+
+                        </button>
+
+
+                        <button type="button" class="matching-tab" data-status="expired" role="tab"
+                            aria-selected="false" tabindex="-1">
+
+                            Expired
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- MATCH FILTERS -->
+
+                    <form id="matching-filter-form" class="matching-filters">
+
+
+                        <div class="matching-search-field">
+
+                            <label for="matching-search">
+                                Search matches
+                            </label>
+
+                            <input id="matching-search" type="search" placeholder="Match reference, employee, job..."
+                                disabled>
+
+                        </div>
+
+
+                        <div class="matching-filter-field">
+
+                            <label for="matching-score-filter">
+                                Compatibility
+                            </label>
+
+                            <select id="matching-score-filter" disabled>
+
+                                <option value="">All scores</option>
+
+                                <option value="high">High</option>
+
+                                <option value="medium">Medium</option>
+
+                                <option value="low">Low</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="matching-filter-field">
+
+                            <label for="matching-location-filter">
+                                Location
+                            </label>
+
+                            <input id="matching-location-filter" type="search" placeholder="Search location" disabled>
+
+                        </div>
+
+
+                        <div class="matching-filter-field">
+
+                            <label for="matching-date-sort">
+                                Date
+                            </label>
+
+                            <select id="matching-date-sort" disabled>
+
+                                <option value="newest">Newest first</option>
+
+                                <option value="oldest">Oldest first</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button id="matching-apply-filters" class="btn btn-secondary" type="submit" disabled>
+
+                            Apply Filters
+
+                        </button>
+
+
+                        <button id="matching-clear-filters" class="btn btn-outline" type="button" disabled>
+
+                            Clear
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- MATCH TABLE -->
+
+                    <div class="table-container matching-table-container" role="region"
+                        aria-label="Global matching records" tabindex="0">
+
+
+                        <table class="data-table matching-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>MATCH REF.</th>
+
+                                    <th>EMPLOYEE</th>
+
+                                    <th>JOB POSITION</th>
+
+                                    <th>EMPLOYER</th>
+
+                                    <th>LOCATION</th>
+
+                                    <th>COMPATIBILITY</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>DATE CREATED</th>
+
+                                    <th>ACTIONS</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="matching-table-body">
+
+                                <tr>
+
+                                    <td colspan="9">
+
+                                        <div class="matching-empty">
+
+                                            <h4>No matching records connected</h4>
+
+                                            <p>
+                                                Actual employee-to-job recommendations
+                                                will appear when the authorized matching
+                                                service is connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+
+                    <div class="matching-pagination">
+
+
+                        <span id="matching-page-info">
+                            No records available
+                        </span>
+
+
+                        <div class="pagination-actions">
+
+
+                            <button id="matching-prev" class="btn btn-secondary" type="button" disabled>
+
+                                Previous
+
+                            </button>
+
+
+                            <button id="matching-next" class="btn btn-secondary" type="button" disabled>
+
+                                Next
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+             UNMATCHED EMPLOYEES
+             ================================================= -->
+
+                <section class="matching-secondary-grid">
+
+
+                    <article class="content-card matching-exception-card">
+
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Unmatched Employees</h3>
+
+                                <p>
+                                    Employees without a suitable current
+                                    recommendation.
+                                </p>
+
+                            </div>
+
+
+                            <span id="unmatched-employee-count" class="matching-record-count">
+
+                                Unavailable
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="matching-exception-filters">
+
+                            <input id="unmatched-employee-search" type="search" placeholder="Search employee..."
+                                aria-label="Search unmatched employees" disabled>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+
+                            <table class="data-table matching-compact-table">
+
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>EMPLOYEE</th>
+
+                                        <th>SKILL PROFILE</th>
+
+                                        <th>LOCATION</th>
+
+                                        <th>LAST REVIEWED</th>
+
+                                        <th>ACTION</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="unmatched-employee-body">
+
+                                    <tr>
+
+                                        <td colspan="5">
+
+                                            <div class="matching-empty">
+
+                                                <p>
+                                                    Unmatched employee records
+                                                    are not connected.
+                                                </p>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="matching-section-footer">
+
+                            <span id="unmatched-employee-page-info">
+                                No records available
+                            </span>
+
+
+                            <div class="pagination-actions">
+
+                                <button id="unmatched-employee-prev" class="btn btn-secondary" type="button" disabled>
+
+                                    Previous
+
+                                </button>
+
+
+                                <button id="unmatched-employee-next" class="btn btn-secondary" type="button" disabled>
+
+                                    Next
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                    </article>
+
+
+                    <!-- UNFILLED JOBS -->
+
+                    <article class="content-card matching-exception-card">
+
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>Unfilled Jobs</h3>
+
+                                <p>
+                                    Published vacancies without a suitable
+                                    current recommendation.
+                                </p>
+
+                            </div>
+
+
+                            <span id="unfilled-job-count" class="matching-record-count">
+
+                                Unavailable
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="matching-exception-filters">
+
+                            <input id="unfilled-job-search" type="search" placeholder="Search vacancy..."
+                                aria-label="Search unfilled jobs" disabled>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+
+                            <table class="data-table matching-compact-table">
+
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>JOB POSITION</th>
+
+                                        <th>EMPLOYER</th>
+
+                                        <th>LOCATION</th>
+
+                                        <th>OPEN DATE</th>
+
+                                        <th>ACTION</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="unfilled-job-body">
+
+                                    <tr>
+
+                                        <td colspan="5">
+
+                                            <div class="matching-empty">
+
+                                                <p>
+                                                    Unfilled vacancy records
+                                                    are not connected.
+                                                </p>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="matching-section-footer">
+
+                            <span id="unfilled-job-page-info">
+                                No records available
+                            </span>
+
+
+                            <div class="pagination-actions">
+
+                                <button id="unfilled-job-prev" class="btn btn-secondary" type="button" disabled>
+
+                                    Previous
+
+                                </button>
+
+
+                                <button id="unfilled-job-next" class="btn btn-secondary" type="button" disabled>
+
+                                    Next
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                    </article>
+
+
+                </section>
+
+
+                <!-- =================================================
+             FAIRNESS MONITORING
+             ================================================= -->
+
+                <section class="content-card matching-fairness">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Matching Fairness & Integrity</h3>
+
+                            <p>
+                                Monitor recommendation quality,
+                                explainability, data integrity and
+                                fairness-related system alerts.
+                            </p>
+
+                        </div>
+
+
+                        <span class="matching-record-count">
+                            Authorized indicators only
+                        </span>
+
+                    </div>
+
+
+                    <div class="fairness-grid">
+
+
+                        <article class="fairness-card">
+
+                            <div class="fairness-icon">
+                                &#9878;
+                            </div>
+
+                            <h4>Fairness Monitoring</h4>
+
+                            <strong id="fairness-monitoring-status">
+                                Data unavailable
+                            </strong>
+
+                            <p>
+                                Review authorized fairness monitoring
+                                results and detected disparities.
+                            </p>
+
+                        </article>
+
+
+                        <article class="fairness-card">
+
+                            <div class="fairness-icon">
+                                &#128269;
+                            </div>
+
+                            <h4>Recommendation Explainability</h4>
+
+                            <strong id="fairness-explainability-status">
+                                Data unavailable
+                            </strong>
+
+                            <p>
+                                Monitor the availability of explanations
+                                supporting matching recommendations.
+                            </p>
+
+                        </article>
+
+
+                        <article class="fairness-card">
+
+                            <div class="fairness-icon">
+                                &#128737;
+                            </div>
+
+                            <h4>Data Integrity</h4>
+
+                            <strong id="fairness-integrity-status">
+                                Data unavailable
+                            </strong>
+
+                            <p>
+                                Monitor data-quality and integrity
+                                indicators reported by the platform.
+                            </p>
+
+                        </article>
+
+
+                        <article class="fairness-card">
+
+                            <div class="fairness-icon">
+                                &#9888;
+                            </div>
+
+                            <h4>Fairness Alerts</h4>
+
+                            <strong id="fairness-alert-count">
+                                —
+                            </strong>
+
+                            <p>
+                                Recorded fairness-related alerts
+                                requiring attention.
+                            </p>
+
+                        </article>
+
+
+                    </div>
+
+
+                    <div class="matching-fairness-note">
+
+                        Fairness monitoring must use an approved,
+                        privacy-preserving methodology. Protected
+                        characteristics must never be exposed through
+                        ordinary matching records or used as
+                        unauthorized matching criteria.
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+             MATCHING HISTORY
+             ================================================= -->
+
+                <section class="content-card matching-history-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Recent Matching Activity</h3>
+
+                            <p>
+                                Recorded matching engine events,
+                                recommendation updates and administrative
+                                interventions.
+                            </p>
+
+                        </div>
+
+
+                        <span id="matching-history-count" class="matching-record-count">
+
+                            Records unavailable
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+
+                        <table class="data-table matching-history-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>EVENT REF.</th>
+
+                                    <th>EVENT</th>
+
+                                    <th>RELATED RECORD</th>
+
+                                    <th>ACTOR / SERVICE</th>
+
+                                    <th>DESCRIPTION</th>
+
+                                    <th>DATE & TIME</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="matching-history-body">
+
+                                <tr>
+
+                                    <td colspan="6">
+
+                                        <div class="matching-empty">
+
+                                            <p>
+                                                Matching activity history is not connected.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+             ADMINISTRATIVE GUIDANCE
+             ================================================= -->
+
+                <section class="content-card matching-guidance">
+
+
+                    <div class="matching-guidance-icon">
+                        &#9881;
+                    </div>
+
+
+                    <div>
+
+                        <h3>Responsible Matching & Administrative Oversight</h3>
+
+                        <p>
+
+                            TALVORA's matching system supports the
+                            connection of human capability to employment
+                            opportunities. Matching recommendations are
+                            decision-support outputs, not automatic
+                            employment decisions. Employees must be
+                            evaluated against relevant job requirements,
+                            and employers retain their authorized
+                            recruitment responsibilities. Super Admin
+                            interventions must follow established
+                            permissions, privacy requirements and
+                            documented audit procedures.
+
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+            </main>
+
+
+            <!-- FOOTER -->
+
+            <footer class="main-footer">
+
+
+                <div class="footer-brand">
+
+                    <strong>TALVORA TECHNOLOGIES</strong>
+
+                    <span>
+                        Connecting Human Capability to Global Opportunity.
+                    </span>
+
+                </div>
+
+
+                <div class="footer-system">
+                    GSES SYSTEM 001
+                </div>
+
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+       MATCH DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="matching-detail-overlay" class="matching-detail-overlay" hidden>
+
+
+        <aside id="matching-detail-panel" class="matching-detail-panel" role="dialog" aria-modal="true"
+            aria-labelledby="matching-detail-title">
+
+
+            <div class="matching-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        MATCH RECORD
+                    </span>
+
+                    <h2 id="matching-detail-title">
+                        Matching Details
+                    </h2>
+
+                </div>
+
+
+                <button id="matching-detail-close" class="matching-detail-close" type="button"
+                    aria-label="Close match details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="matching-detail-content" class="matching-detail-content">
+            </div>
+
+
+            <div id="matching-detail-actions" class="matching-detail-actions">
+
+
+                <p class="matching-action-note">
+
+                    All administrative interventions are subject
+                    to server-side authorization and audit logging.
+
+                </p>
+
+
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       EMPLOYEE DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="matching-employee-overlay" class="matching-employee-overlay" hidden>
+
+
+        <aside id="matching-employee-panel" class="matching-employee-panel" role="dialog" aria-modal="true"
+            aria-labelledby="matching-employee-title">
+
+
+            <div class="matching-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        EMPLOYEE MATCHING PROFILE
+                    </span>
+
+                    <h2 id="matching-employee-title">
+                        Employee Details
+                    </h2>
+
+                </div>
+
+
+                <button id="matching-employee-close" class="matching-detail-close" type="button"
+                    aria-label="Close employee details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="matching-employee-content" class="matching-detail-content">
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       JOB DETAIL DRAWER
+       ===================================================== -->
+
+    <div id="matching-job-overlay" class="matching-job-overlay" hidden>
+
+
+        <aside id="matching-job-panel" class="matching-job-panel" role="dialog" aria-modal="true"
+            aria-labelledby="matching-job-title">
+
+
+            <div class="matching-detail-header">
+
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        EMPLOYER VACANCY PROFILE
+                    </span>
+
+                    <h2 id="matching-job-title">
+                        Job Details
+                    </h2>
+
+                </div>
+
+
+                <button id="matching-job-close" class="matching-detail-close" type="button"
+                    aria-label="Close job details">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+
+            <div id="matching-job-content" class="matching-detail-content">
+            </div>
+
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+       ADMINISTRATIVE ACTION CONFIRMATION
+       ===================================================== -->
+
+    <div id="matching-confirm-overlay" class="matching-confirm-overlay" hidden>
+
+
+        <section class="matching-confirm-dialog" role="dialog" aria-modal="true"
+            aria-labelledby="matching-confirm-title">
+
+
+            <h2 id="matching-confirm-title">
+                Confirm Administrative Action
+            </h2>
+
+
+            <p id="matching-confirm-description"></p>
+
+
+            <label for="matching-action-reason">
+                Administrative justification
+            </label>
+
+
+            <textarea id="matching-action-reason" rows="4" maxlength="2000"
+                placeholder="Explain why this intervention is required...">
+      </textarea>
+
+
+            <div class="matching-confirm-buttons">
+
+
+                <button id="matching-confirm-cancel" class="btn btn-secondary" type="button">
+
+                    Cancel
+
+                </button>
+
+
+                <button id="matching-confirm-submit" class="btn btn-danger" type="button" disabled>
+
+                    Confirm Action
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+</body>
+
+</html>

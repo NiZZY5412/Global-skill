@@ -1,0 +1,387 @@
+/* =========================================================
+   GSES SYSTEM 001
+   EMPLOYER MANAGEMENT
+   TALVORA TECHNOLOGIES
+========================================================= */
+
+.employer-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    min-height: 145px;
+    margin-bottom: 20px;
+    padding: 23px;
+
+    overflow: hidden;
+    border-radius: 14px;
+
+    background: linear-gradient(110deg,
+            #0b1730,
+            #17416c 65%,
+            #087f9c);
+
+    color: white;
+    box-shadow: 0 9px 25px rgba(11, 23, 48, .13);
+}
+
+.employer-banner-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, .1);
+    color: #6ce4f2;
+
+    font-size: 23px;
+}
+
+.employer-banner>div:nth-child(2) {
+    position: relative;
+    z-index: 2;
+}
+
+.employer-banner>div>span {
+    color: #70e3f0;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.employer-banner h3 {
+    margin: 7px 0;
+    font-family: Manrope, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.employer-banner p {
+    max-width: 700px;
+    margin: 0;
+    color: #c5d8e9;
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+.employer-banner-decoration {
+    position: absolute;
+    top: -52px;
+    right: 20px;
+
+    color: rgba(255, 255, 255, .055);
+    font-family: Manrope, sans-serif;
+    font-size: 230px;
+    font-weight: 800;
+    line-height: 1;
+    pointer-events: none;
+}
+
+
+/* METRICS */
+
+.employer-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 19px;
+}
+
+.employer-metrics .metric-card {
+    min-height: 119px;
+}
+
+
+/* SUMMARY */
+
+.employer-summary {
+    margin-bottom: 20px;
+}
+
+.employer-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.employer-summary-row:last-child {
+    border-bottom: 0;
+}
+
+.employer-summary-row strong {
+    color: var(--navy);
+    font-family: Manrope, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    text-align: right;
+}
+
+
+/* DIRECTORY */
+
+.employer-directory {
+    margin-bottom: 20px;
+}
+
+.employer-filters {
+    align-items: stretch;
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #f8fafd;
+}
+
+.employer-filters input,
+.employer-filters select {
+    flex: 1;
+    min-width: 135px;
+}
+
+.employer-table {
+    min-width: 1050px;
+}
+
+.employer-table tbody td:first-child {
+    min-width: 155px;
+}
+
+.employer-table tbody td:first-child strong {
+    display: block;
+    max-width: 220px;
+    overflow-wrap: anywhere;
+}
+
+.employer-table tbody td small {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 8px;
+}
+
+
+/* PAGINATION */
+
+.employer-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-top: 16px;
+
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.employer-pagination>div {
+    display: flex;
+    gap: 7px;
+}
+
+
+/* GOVERNANCE */
+
+.employer-governance {
+    margin-bottom: 20px;
+}
+
+.employer-governance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+    margin-top: 15px;
+}
+
+.employer-governance-grid>div {
+    padding: 16px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #fafcff;
+}
+
+.governance-icon {
+    display: grid;
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+    margin-bottom: 12px;
+
+    border-radius: 9px;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 15px;
+}
+
+.employer-governance-grid>div:nth-child(2) .governance-icon {
+    background: var(--gold-light);
+    color: var(--gold);
+}
+
+.employer-governance-grid>div:nth-child(3) .governance-icon {
+    background: var(--green-light);
+    color: var(--green);
+}
+
+.employer-governance-grid strong {
+    display: block;
+    color: var(--navy);
+    font-size: 10px;
+}
+
+.employer-governance-grid p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 8px;
+    line-height: 1.8;
+}
+
+
+/* EMPLOYER DETAILS */
+
+.employer-details-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0;
+}
+
+.employer-details-list>div {
+    min-width: 0;
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: #fafcff;
+}
+
+.employer-details-list dt {
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.employer-details-list dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+
+/* STATUS */
+
+.employer-status-active {
+    color: var(--green) !important;
+}
+
+.employer-status-suspended {
+    color: var(--red) !important;
+}
+
+.employer-status-pending {
+    color: var(--gold) !important;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1200px) {
+
+    .employer-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media(max-width:900px) {
+
+    .employer-governance-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:650px) {
+
+    .employer-banner {
+        align-items: flex-start;
+        padding: 17px;
+    }
+
+    .employer-banner-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .employer-banner h3 {
+        font-size: 16px;
+    }
+
+    .employer-banner-decoration {
+        right: -5px;
+        font-size: 145px;
+    }
+
+    .employer-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .employer-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .employer-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .employer-pagination>div {
+        width: 100%;
+    }
+
+    .employer-pagination button {
+        flex: 1;
+    }
+
+    .employer-details-list {
+        grid-template-columns: 1fr;
+    }
+
+    .employer-filters {
+        flex-direction: column;
+    }
+
+    .employer-filters input,
+    .employer-filters select,
+    .employer-filters button {
+        width: 100%;
+        min-width: 0;
+    }
+
+}

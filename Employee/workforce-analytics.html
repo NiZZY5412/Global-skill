@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<meta name="description" content="TALVORA employee administration and organizational intelligence portal.">
+<title>Workforce Analytics | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a>
+<a class="nav-link " href="employment.html"><span class="nav-icon">▣</span>Employment</a>
+<a class="nav-link " href="attendance.html"><span class="nav-icon">◷</span>Attendance & Timesheets</a>
+<a class="nav-link " href="leave.html"><span class="nav-icon">▤</span>Leave & Absence</a>
+<a class="nav-link " href="payroll.html"><span class="nav-icon">＄</span>Payroll & Benefits</a>
+<a class="nav-link " href="employee-documents.html"><span class="nav-icon">▧</span>Documents & Compliance</a>
+<a class="nav-link " href="learning.html"><span class="nav-icon">⌑</span>Learning & Certification</a>
+<a class="nav-link " href="performance.html"><span class="nav-icon">↗</span>Performance & Career</a>
+<a class="nav-link " href="communications.html"><span class="nav-icon">◉</span>Communication Centre</a>
+<a class="nav-link " href="employee-support.html"><span class="nav-icon">♡</span>Employee Support</a>
+<a class="nav-link " href="employee-directory.html"><span class="nav-icon">♙</span>Employee Directory</a>
+<a class="nav-link " href="team-management.html"><span class="nav-icon">♧</span>My Team & Manager</a>
+<a class="nav-link " href="hr-policies.html"><span class="nav-icon">▤</span>HR Policies & Handbook</a>
+<a class="nav-link " href="employee-engagement.html"><span class="nav-icon">♡</span>Engagement & Culture</a>
+<a class="nav-link active" href="workforce-analytics.html"><span class="nav-icon">▥</span>Workforce Analytics</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Workforce Analytics</div><div class="topbar-sub">Aggregated workforce metrics and organizational insights</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">WORKFORCE INTELLIGENCE</span><h1>Workforce Analytics & Employee Insights</h1><p>Review aggregated workforce indicators, organizational composition and high-level trends.</p></div><div class="heading-actions"><button class="btn" id="refreshAnalytics">↻ Refresh analytics</button></div></div>
+<div class="filter-bar"><select class="control" id="analyticsPeriod" style="max-width:220px"><option value="30d">Last 30 days</option><option value="90d">Last 90 days</option><option value="12m" selected>Last 12 months</option></select><span class="panel-note" id="analyticsSnapshot">Loading workforce snapshot…</span></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Total headcount</div><div class="kpi-value" id="metricHeadcount">—</div><div class="kpi-foot">Current workforce snapshot</div></div>
+ <div class="kpi"><div class="kpi-label">Active employees</div><div class="kpi-value" id="metricActive">—</div><div class="kpi-foot">Active employment status</div></div>
+ <div class="kpi"><div class="kpi-label">New hires YTD</div><div class="kpi-value" id="metricHires">—</div><div class="kpi-foot">Year-to-date new starters</div></div>
+ <div class="kpi"><div class="kpi-label">Departures YTD</div><div class="kpi-value" id="metricDepartures">—</div><div class="kpi-foot">Year-to-date departures</div></div>
+</div>
+<div class="grid grid-2">
+ <section class="panel">
+  <div class="panel-head"><div><h2>Headcount trend</h2><p>Illustrative monthly headcount trend for the selected period.</p></div></div>
+  <div id="headcountTrend" class="trend-chart"><div class="empty-state">Loading trend…</div></div>
+ </section>
+ <section class="panel">
+  <div class="panel-head"><div><h2>Workforce indicators</h2><p>Additional high-level workforce measures.</p></div></div>
+  <div class="grid grid-2">
+   <div class="kpi"><div class="kpi-label">On leave</div><div class="kpi-value" id="metricOnLeave">—</div></div>
+   <div class="kpi"><div class="kpi-label">12-month retention</div><div class="kpi-value" id="metricRetention">—</div></div>
+   <div class="kpi"><div class="kpi-label">Average tenure</div><div class="kpi-value" id="metricTenure">—</div></div>
+   <div class="kpi"><div class="kpi-label">Other statuses</div><div class="kpi-value" id="metricOther">—</div></div>
+  </div>
+  <p class="panel-note mt-12">Metric definitions and calculation periods must be confirmed by the authoritative HR data owner before operational use.</p>
+ </section>
+</div>
+<div class="grid grid-2">
+ <section class="panel"><div class="panel-head"><div><h2>Headcount by department</h2><p>Current workforce distribution.</p></div></div><div id="departmentBars" class="metric-bar-list"></div></section>
+ <section class="panel"><div class="panel-head"><div><h2>Headcount by location</h2><p>Country-level distribution.</p></div></div><div id="locationBars" class="metric-bar-list"></div></section>
+ <section class="panel"><div class="panel-head"><div><h2>Work arrangement</h2><p>Work mode composition.</p></div></div><div id="workModeBars" class="metric-bar-list"></div></section>
+ <section class="panel"><div class="panel-head"><div><h2>Employment type</h2><p>Contract and employment composition.</p></div></div><div id="employmentTypeBars" class="metric-bar-list"></div></section>
+</div>
+<div class="insight-note"><strong>Analytics governance:</strong> Workforce metrics are loaded from authorized source systems only. When no verified records are available, the dashboard remains empty rather than displaying estimates. Use documented metric definitions, aggregation thresholds and role-based access for all reporting.</div>
+</div>
+</main>
+</div>
+
+<script src="employee.js"></script>
+<script src="workforce-analytics.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

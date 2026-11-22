@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111a35">
+    <title>TALVORA | Global Security Operations</title>
+    <link rel="stylesheet" href="security.css">
+    <script src="security.js" defer></script>
+</head>
+
+<body>
+
+    <div class="security-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <small>SUPER ADMINISTRATION</small>
+                </div>
+            </div>
+
+            <div class="sidebar-label">SECURITY OPERATIONS</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">◈ Security Overview</a>
+                <a href="#incidents" class="nav-link" data-section="incidents">⚠ Security Incidents</a>
+                <a href="#threats" class="nav-link" data-section="threats">◉ Threat Monitoring</a>
+                <a href="#access" class="nav-link" data-section="access">♙ Access Monitoring</a>
+                <a href="#sessions" class="nav-link" data-section="sessions">▣ Active Sessions</a>
+                <a href="#policies" class="nav-link" data-section="policies">⚙ Security Policies</a>
+                <a href="#investigations" class="nav-link" data-section="investigations">⌕ Investigations</a>
+                <a href="#security-alerts" class="nav-link" data-section="security-alerts">♧ Security Alerts</a>
+            </nav>
+
+            <div class="sidebar-label">ADMINISTRATION</div>
+            <nav>
+                <a href="index.html" class="nav-link">← Super Admin Dashboard</a>
+                <a href="compliance.html" class="nav-link">Global Compliance</a>
+                <a href="audit.html" class="nav-link">Administrator Audit</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-identity">
+                    <div class="admin-avatar">SA</div>
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Security Authority</small>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div class="topbar-title">
+                    <button id="menuToggle" class="menu-toggle">☰</button>
+                    <div>
+                        <small>TALVORA / SUPER ADMIN / SECURITY</small>
+                        <h1>Global Security Operations Centre</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span class="connection-status" id="connectionStatus">
+                        <i></i> Connecting
+                    </span>
+                    <button class="icon-button" id="alertsButton" aria-label="Security alerts">♧</button>
+                    <button class="primary-button" id="refreshSecurity">↻ Refresh</button>
+                </div>
+            </header>
+
+            <div class="security-banner" id="securityBanner">
+                <strong>GLOBAL SECURITY COMMAND</strong>
+                <span id="bannerMessage">Loading security monitoring information...</span>
+            </div>
+
+            <!-- OVERVIEW -->
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL SECURITY INTELLIGENCE</span>
+                        <h2>Security overview</h2>
+                        <p>Monitor security conditions across all TALVORA portals.</p>
+                    </div>
+                    <button class="primary-button" data-open-incident>+ Register incident</button>
+                </div>
+
+                <div class="metrics-grid">
+                    <article class="metric-card">
+                        <span>Security incidents</span>
+                        <strong id="totalIncidents">—</strong>
+                        <small>Total recorded incidents</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Critical threats</span>
+                        <strong id="criticalThreats">—</strong>
+                        <small>Requiring immediate review</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Suspicious logins</span>
+                        <strong id="suspiciousLogins">—</strong>
+                        <small>Flagged authentication events</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active sessions</span>
+                        <strong id="activeSessions">—</strong>
+                        <small>Current authenticated sessions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Blocked access attempts</span>
+                        <strong id="blockedAttempts">—</strong>
+                        <small>Rejected access events</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Open investigations</span>
+                        <strong id="openInvestigations">—</strong>
+                        <small>Security cases under review</small>
+                    </article>
+                </div>
+
+                <div class="security-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Security incident trends</h3>
+                                <p>Recorded incidents over time.</p>
+                            </div>
+                            <select id="trendPeriod">
+                                <option value="7d">7 days</option>
+                                <option value="30d" selected>30 days</option>
+                                <option value="90d">90 days</option>
+                            </select>
+                        </div>
+                        <div id="incidentChart" class="chart-area">
+                            <p>Security trend data will appear here.</p>
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Threat severity</h3>
+                                <p>Current security threat classification.</p>
+                            </div>
+                        </div>
+                        <div id="severityBreakdown" class="severity-list">
+                            <p>Threat classification data will appear here.</p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent security incidents</h3>
+                            <p>Latest reported security events.</p>
+                        </div>
+                        <button class="text-button" data-navigate="incidents">View all →</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Incident ID</th>
+                                    <th>Description</th>
+                                    <th>Portal</th>
+                                    <th>Severity</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentIncidents">
+                                <tr>
+                                    <td colspan="7">Loading security records...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- INCIDENTS -->
+            <section class="content-section" id="incidents">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">INCIDENT MANAGEMENT</span>
+                        <h2>Security incidents</h2>
+                        <p>Investigate, classify, assign and resolve security incidents.</p>
+                    </div>
+                    <button class="primary-button" data-open-incident>+ Register incident</button>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="incidentSearch" type="search" placeholder="Search incidents...">
+
+                        <select id="incidentSeverity">
+                            <option value="">All severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                        <select id="incidentStatus">
+                            <option value="">All statuses</option>
+                            <option value="open">Open</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="contained">Contained</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <button class="secondary-button" id="resetIncidentFilters">Reset</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Incident ID</th>
+                                    <th>Incident</th>
+                                    <th>Category</th>
+                                    <th>Portal</th>
+                                    <th>Severity</th>
+                                    <th>Assigned to</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="incidentsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- THREATS -->
+            <section class="content-section" id="threats">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">THREAT INTELLIGENCE</span>
+                        <h2>Threat monitoring</h2>
+                        <p>Monitor detected security threats and suspicious activities.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Threats detected</span>
+                        <strong id="threatsDetected">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Unresolved threats</span>
+                        <strong id="unresolvedThreats">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Threats contained</span>
+                        <strong id="containedThreats">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <h3>Threat intelligence register</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Threat ID</th>
+                                    <th>Threat type</th>
+                                    <th>Source</th>
+                                    <th>Target</th>
+                                    <th>Severity</th>
+                                    <th>Detection date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="threatsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ACCESS -->
+            <section class="content-section" id="access">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">IDENTITY SECURITY</span>
+                        <h2>Access monitoring</h2>
+                        <p>Review authentication events and suspicious login activity.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="filters">
+                        <input id="accessSearch" type="search" placeholder="Search user, IP or event...">
+                        <select id="accessResult">
+                            <option value="">All outcomes</option>
+                            <option value="success">Successful</option>
+                            <option value="failed">Failed</option>
+                            <option value="blocked">Blocked</option>
+                            <option value="suspicious">Suspicious</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Portal</th>
+                                    <th>IP address</th>
+                                    <th>Location</th>
+                                    <th>Event</th>
+                                    <th>Outcome</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accessTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- SESSIONS -->
+            <section class="content-section" id="sessions">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">SESSION GOVERNANCE</span>
+                        <h2>Active sessions</h2>
+                        <p>Review authenticated sessions and revoke compromised sessions.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Portal</th>
+                                    <th>Device</th>
+                                    <th>IP address</th>
+                                    <th>Location</th>
+                                    <th>Last activity</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sessionsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- POLICIES -->
+            <section class="content-section" id="policies">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">SECURITY GOVERNANCE</span>
+                        <h2>Security policies</h2>
+                        <p>Manage platform-wide security controls and policy configurations.</p>
+                    </div>
+                </div>
+
+                <div class="policy-grid" id="policyGrid">
+                    <p>Loading security policies...</p>
+                </div>
+            </section>
+
+            <!-- INVESTIGATIONS -->
+            <section class="content-section" id="investigations">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">SECURITY CASE MANAGEMENT</span>
+                        <h2>Investigations</h2>
+                        <p>Coordinate security investigations and preserve case history.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Related incident</th>
+                                    <th>Investigator</th>
+                                    <th>Priority</th>
+                                    <th>Opened</th>
+                                    <th>Last updated</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="investigationsTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ALERTS -->
+            <section class="content-section" id="security-alerts">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">SECURITY NOTIFICATIONS</span>
+                        <h2>Security alerts</h2>
+                        <p>Critical warnings, suspicious activity and incident notifications.</p>
+                    </div>
+                    <button class="secondary-button" id="markAlertsRead">Mark all as read</button>
+                </div>
+
+                <div id="alertsList" class="alerts-list">
+                    <p>Loading security alerts...</p>
+                </div>
+            </section>
+
+            <footer>
+                <span>© TALVORA Global Workforce Platform</span>
+                <span>Global Security Operations Centre</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- INCIDENT MODAL -->
+    <div class="modal-overlay" id="incidentModal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <small>SECURITY CASE INTAKE</small>
+                    <h2>Register security incident</h2>
+                </div>
+                <button type="button" class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="incidentForm">
+                <label>Incident title *
+                    <input name="title" required maxlength="180">
+                </label>
+
+                <label>Incident category *
+                    <select name="category" required>
+                        <option value="">Select category</option>
+                        <option value="unauthorized_access">Unauthorized access</option>
+                        <option value="account_compromise">Account compromise</option>
+                        <option value="suspicious_login">Suspicious login</option>
+                        <option value="data_exposure">Data exposure</option>
+                        <option value="malware">Malware</option>
+                        <option value="phishing">Phishing</option>
+                        <option value="service_attack">Service attack</option>
+                        <option value="insider_threat">Insider threat</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>Severity *
+                    <select name="severity" required>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </label>
+
+                <label>Affected portal
+                    <select name="portal">
+                        <option value="">Platform-wide / unspecified</option>
+                        <option value="employer">Employer Portal</option>
+                        <option value="employee">Employee Portal</option>
+                        <option value="super_admin">Super Admin Portal</option>
+                    </select>
+                </label>
+
+                <label>Description *
+                    <textarea name="description" rows="5" required></textarea>
+                </label>
+
+                <label>Assigned investigator ID
+                    <input name="assigneeId" placeholder="Administrator or team ID">
+                </label>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>Cancel</button>
+                    <button type="submit" class="primary-button">Register incident</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- INCIDENT DETAIL MODAL -->
+    <div class="modal-overlay" id="detailModal" hidden>
+        <div class="modal modal-large">
+            <div class="modal-header">
+                <div>
+                    <small id="detailIncidentId">SECURITY INCIDENT</small>
+                    <h2 id="detailTitle">Incident details</h2>
+                </div>
+                <button type="button" class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div id="incidentDetailContent"></div>
+
+            <form id="incidentUpdateForm">
+                <label>Incident status
+                    <select name="status" id="detailStatus">
+                        <option value="open">Open</option>
+                        <option value="investigating">Investigating</option>
+                        <option value="contained">Contained</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </label>
+
+                <label>Investigation notes
+                    <textarea name="notes" rows="4" placeholder="Record investigation findings..."></textarea>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="submit" class="primary-button">Save investigation update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,1000 @@
+/* =========================================================
+   TALVORA EMPLOYER PORTAL
+   MODULE 5: APPLICATIONS & RECRUITMENT MANAGEMENT
+========================================================= */
+
+.applications-page {
+    --navy: #102B46;
+    --blue: #1769A1;
+    --teal: #16877C;
+    --canvas: #F3F6FA;
+    --border: #D5E0EA;
+    --white: #FFFFFF;
+    --text: #26394B;
+    --muted: #75869A;
+    --green: #16845F;
+    --orange: #D58A2B;
+    --red: #C94C52;
+    --purple: #7656A6;
+
+    margin: 0;
+    min-height: 100vh;
+    background: var(--canvas);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.applications-page *,
+.applications-page *::before,
+.applications-page *::after {
+    box-sizing: border-box;
+}
+
+.applications-page button,
+.applications-page input,
+.applications-page select,
+.applications-page textarea {
+    font: inherit;
+}
+
+.applications-page button {
+    cursor: pointer;
+}
+
+.applications-page button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.applications-page .employer-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.applications-page .employer-sidebar {
+    width: 255px;
+    flex: 0 0 255px;
+    min-height: 100vh;
+    padding: 25px 17px;
+    background: var(--navy);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.applications-page .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px 35px;
+}
+
+.applications-page .brand-symbol {
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    background: var(--teal);
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.applications-page .brand strong {
+    display: block;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+}
+
+.applications-page .brand small {
+    display: block;
+    margin-top: 3px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #B9CBD9;
+}
+
+.applications-page .sidebar-label {
+    padding: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #91A8BB;
+}
+
+.applications-page .sidebar-navigation {
+    display: grid;
+    gap: 5px;
+}
+
+.applications-page .sidebar-navigation .nav-link,
+.applications-page .sidebar-bottom .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    color: #D7E3ED;
+    font-size: 13px;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.applications-page .nav-link span {
+    width: 19px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.applications-page .sidebar-navigation .nav-link:hover,
+.applications-page .sidebar-bottom .nav-link:hover,
+.applications-page .nav-link.active {
+    background: #214665;
+    color: white;
+}
+
+.applications-page .nav-link.active {
+    border-left: 3px solid #35B7A6;
+}
+
+.applications-page .sidebar-bottom {
+    margin-top: auto;
+    padding-top: 35px;
+}
+
+.applications-page .employer-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.applications-page .employer-topbar {
+    position: relative;
+    z-index: 5;
+    min-height: 82px;
+    padding: 15px 30px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+
+.applications-page .topbar-title h1 {
+    margin: 0;
+    color: var(--navy);
+    font-size: 19px;
+}
+
+.applications-page .topbar-title p {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.applications-page .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.applications-page .company-switcher {
+    min-width: 160px;
+    max-width: 240px;
+}
+
+.applications-page .icon-button {
+    width: 39px;
+    height: 39px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: white;
+    color: var(--navy);
+    font-size: 17px;
+}
+
+.applications-page .notification-panel {
+    position: absolute;
+    right: 25px;
+    top: 72px;
+    z-index: 10;
+    width: 280px;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 12px 35px #102b461c;
+}
+
+.applications-page .notification-panel p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.applications-page .module-content {
+    max-width: 1700px;
+    margin: auto;
+    padding: 30px;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.applications-page .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.applications-page .eyebrow {
+    color: var(--teal);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.applications-page .page-heading h2 {
+    margin: 8px 0;
+    color: var(--navy);
+    font-size: 25px;
+}
+
+.applications-page .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.applications-page .heading-actions {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.applications-page .btn {
+    min-height: 39px;
+    padding: 9px 15px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+}
+
+.applications-page .btn-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.applications-page .btn-primary:hover {
+    background: var(--navy);
+}
+
+.applications-page .btn-secondary {
+    background: white;
+    border-color: var(--border);
+    color: var(--navy);
+}
+
+.applications-page .btn-secondary:hover {
+    background: #EAF1F7;
+}
+
+
+/* =========================================================
+   CONNECTION STATUS
+========================================================= */
+
+.applications-page .connection-banner {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 15px;
+    margin-bottom: 22px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.applications-page .connection-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+}
+
+.applications-page .connection-dot.connected {
+    background: var(--teal);
+}
+
+.applications-page .connection-dot.error {
+    background: var(--red);
+}
+
+.applications-page .last-updated {
+    margin-left: auto;
+}
+
+
+/* =========================================================
+   KPI CARDS
+========================================================= */
+
+.applications-page .applications-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.applications-page .applications-kpi-card {
+    min-width: 0;
+    padding: 17px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+}
+
+.applications-page .app-kpi-icon {
+    width: 39px;
+    height: 39px;
+    flex: 0 0 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.applications-page .app-kpi-icon.navy {
+    color: var(--navy);
+    background: #EAF0F6;
+}
+
+.applications-page .app-kpi-icon.blue {
+    color: var(--blue);
+    background: #E9F2FA;
+}
+
+.applications-page .app-kpi-icon.teal,
+.applications-page .app-kpi-icon.green {
+    color: var(--teal);
+    background: #E5F4F0;
+}
+
+.applications-page .app-kpi-icon.purple {
+    color: var(--purple);
+    background: #F0EBF7;
+}
+
+.applications-page .app-kpi-icon.orange {
+    color: var(--orange);
+    background: #FBF1E4;
+}
+
+.applications-page .applications-kpi-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.applications-page .applications-kpi-card strong {
+    display: block;
+    margin: 5px 0;
+    color: var(--navy);
+    font-size: 23px;
+}
+
+.applications-page .applications-kpi-card small {
+    display: block;
+    color: #8997A6;
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.applications-page .applications-panel {
+    min-width: 0;
+    margin-bottom: 20px;
+    padding: 21px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    box-shadow: 0 2px 7px #102b4606;
+}
+
+.applications-page .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.applications-page .panel-heading h3 {
+    margin: 0;
+    color: var(--navy);
+    font-size: 15px;
+}
+
+.applications-page .panel-heading p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.applications-page #applicationCountLabel {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RECRUITMENT PIPELINE
+========================================================= */
+
+.applications-page .recruitment-pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.applications-page .pipeline-stage {
+    min-width: 0;
+    padding: 15px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #FAFCFE;
+    text-align: center;
+}
+
+.applications-page .pipeline-stage strong {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--navy);
+    font-size: 22px;
+}
+
+.applications-page .pipeline-stage span {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.applications-page .pipeline-loading {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.applications-page .application-filter-bar {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, minmax(120px, 1fr)) auto;
+    gap: 9px;
+    margin-bottom: 19px;
+}
+
+.applications-page input,
+.applications-page select,
+.applications-page textarea {
+    width: 100%;
+    min-height: 39px;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: white;
+    color: var(--text);
+    outline: none;
+    font-size: 11px;
+}
+
+.applications-page input:focus,
+.applications-page select:focus,
+.applications-page textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px #1769A116;
+}
+
+.applications-page textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+/* =========================================================
+   APPLICATION TABLE
+========================================================= */
+
+.applications-page .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.applications-page .applications-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.applications-page .applications-table th {
+    padding: 13px 12px;
+    background: #F5F8FB;
+    color: #718397;
+    font-size: 9px;
+    letter-spacing: .7px;
+    white-space: nowrap;
+}
+
+.applications-page .applications-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #EDF1F5;
+    color: var(--text);
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.applications-page .applications-table tbody tr:hover {
+    background: #FAFCFE;
+}
+
+.applications-page .applicant-primary {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.applications-page .applicant-secondary {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.applications-page .status-badge {
+    display: inline-flex;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.applications-page .status-badge.verified {
+    color: #147554;
+    background: #E4F4EC;
+}
+
+.applications-page .status-badge.pending {
+    color: #A56B18;
+    background: #FFF3DD;
+}
+
+.applications-page .status-badge.rejected {
+    color: #B23E45;
+    background: #FCEAEC;
+}
+
+.applications-page .status-badge.neutral {
+    color: #64758A;
+    background: #EDF1F5;
+}
+
+.applications-page .application-action-group {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.applications-page .application-action {
+    padding: 6px 8px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: white;
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.applications-page .application-action:hover {
+    background: #EAF2F9;
+}
+
+.applications-page .application-action.danger {
+    color: var(--red);
+}
+
+.applications-page .table-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 16px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.applications-page .table-loading {
+    padding: 30px !important;
+    text-align: center;
+    color: var(--muted) !important;
+}
+
+
+/* =========================================================
+   APPLICATION REVIEW DIALOG
+========================================================= */
+
+.applications-page .applications-dialog {
+    width: min(700px, calc(100% - 25px));
+    max-height: 90vh;
+    padding: 0;
+    overflow-y: auto;
+    border: 0;
+    border-radius: 13px;
+    background: white;
+    color: var(--text);
+    box-shadow: 0 25px 80px #102b4640;
+}
+
+.applications-page .applications-dialog::backdrop {
+    background: #102B46A8;
+    backdrop-filter: blur(3px);
+}
+
+.applications-page .dialog-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 20px 25px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.applications-page .dialog-header h2 {
+    margin: 6px 0 0;
+    color: var(--navy);
+    font-size: 19px;
+}
+
+.applications-page .dialog-close {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 7px;
+    background: #EDF2F6;
+    color: var(--navy);
+    font-size: 22px;
+}
+
+.applications-page #applicationForm {
+    padding: 22px 25px;
+}
+
+
+/* =========================================================
+   CANDIDATE PROFILE
+========================================================= */
+
+.applications-page .candidate-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #F7FAFC;
+}
+
+.applications-page .candidate-avatar {
+    width: 53px;
+    height: 53px;
+    flex: 0 0 53px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.applications-page .candidate-profile h3 {
+    margin: 0 0 5px;
+    color: var(--navy);
+    font-size: 15px;
+}
+
+.applications-page .candidate-profile p {
+    margin: 3px 0;
+    color: var(--muted);
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.applications-page .application-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.applications-page .detail-box {
+    display: grid;
+    gap: 8px;
+    padding: 13px;
+    background: #F7FAFC;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.applications-page .detail-box span {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: .7px;
+}
+
+.applications-page .detail-box strong {
+    color: var(--navy);
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   RESUME AND FORM
+========================================================= */
+
+.applications-page .resume-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 22px;
+    background: #F1F7FA;
+    border-radius: 8px;
+    font-size: 11px;
+}
+
+.applications-page .resume-section strong {
+    color: var(--navy);
+}
+
+.applications-page .resume-section a {
+    color: var(--blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.applications-page .resume-section span {
+    color: var(--muted);
+}
+
+.applications-page .form-section {
+    margin-bottom: 22px;
+}
+
+.applications-page .form-section h3 {
+    margin: 0 0 16px;
+    color: var(--navy);
+    font-size: 13px;
+}
+
+.applications-page .form-field {
+    display: grid;
+    gap: 7px;
+    margin-bottom: 15px;
+    color: #53677B;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.applications-page .form-help {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.applications-page .dialog-actions {
+    position: sticky;
+    bottom: -22px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 18px;
+    background: white;
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   TOASTS
+========================================================= */
+
+.applications-page .toast-region {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1000;
+    display: grid;
+    gap: 9px;
+}
+
+.applications-page .toast {
+    max-width: 350px;
+    padding: 13px 17px;
+    border-radius: 8px;
+    background: var(--navy);
+    color: white;
+    font-size: 12px;
+    box-shadow: 0 8px 25px #102b4630;
+}
+
+.applications-page .toast.success {
+    background: #167B60;
+}
+
+.applications-page .toast.error {
+    background: #B83D46;
+}
+
+.applications-page .toast.warning {
+    background: #A76B1B;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1250px) {
+    .applications-page .applications-kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .applications-page .application-filter-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .applications-page .employer-sidebar {
+        position: fixed;
+        top: 0;
+        left: -270px;
+        z-index: 30;
+        height: 100vh;
+        overflow-y: auto;
+        transition: left .25s;
+    }
+
+    .applications-page .employer-sidebar.is-open {
+        left: 0;
+    }
+
+    .applications-page .module-content {
+        padding: 22px 17px;
+    }
+
+    .applications-page .recruitment-pipeline {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .applications-page .employer-topbar {
+        padding: 13px;
+    }
+
+    .applications-page .topbar-title h1 {
+        font-size: 14px;
+    }
+
+    .applications-page .topbar-title p {
+        display: none;
+    }
+
+    .applications-page .company-switcher {
+        min-width: 0;
+        max-width: 135px;
+    }
+
+    .applications-page .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .applications-page .page-heading h2 {
+        font-size: 21px;
+    }
+
+    .applications-page .heading-actions {
+        width: 100%;
+    }
+
+    .applications-page .applications-kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .applications-page .applications-kpi-card {
+        padding: 12px 9px;
+        gap: 7px;
+    }
+
+    .applications-page .app-kpi-icon {
+        width: 33px;
+        height: 33px;
+        flex-basis: 33px;
+        font-size: 15px;
+    }
+
+    .applications-page .applications-kpi-card strong {
+        font-size: 20px;
+    }
+
+    .applications-page .recruitment-pipeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .applications-page .application-filter-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .applications-page .applications-panel {
+        padding: 14px;
+    }
+
+    .applications-page .application-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .applications-page .dialog-header,
+    .applications-page #applicationForm {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .applications-page .table-footer {
+        flex-direction: column;
+    }
+
+    .applications-page .resume-section {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

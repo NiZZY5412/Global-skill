@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<title>TALVORA Employee Dashboard | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link active" href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link " href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">TALVORA Employee Dashboard</div><div class="topbar-sub">Your career and employment overview</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="hero-card">
+ <div class="hero-top">
+  <div><span class="eyebrow" style="color:#75d8cb">YOUR TALVORA WORKSPACE</span><h2>Welcome back, <span id="welcomeName">Employee</span></h2><p>Keep your career moving. Your applications, interviews, offers and employment actions are brought together here.</p><div style="margin-top:14px" id="lifecycleBadge"></div></div>
+  <div class="hero-progress"><div class="hero-progress-head"><span>Profile completion</span><strong id="profilePercent">—</strong></div><div class="progress"><span id="profileProgressBar"></span></div><a href="employee-profile.html" style="display:inline-block;color:#a9e7df;font-size:9px;margin-top:9px">Complete your profile →</a></div>
+ </div>
+</div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-top"><span class="kpi-label">Active applications</span><span class="kpi-icon">▤</span></div><div class="kpi-value" id="kpiApplications">—</div><div class="kpi-foot">Across your job searches</div></div>
+ <div class="kpi"><div class="kpi-top"><span class="kpi-label">Upcoming interviews</span><span class="kpi-icon">◷</span></div><div class="kpi-value" id="kpiInterviews">—</div><div class="kpi-foot">Scheduled and awaiting response</div></div>
+ <div class="kpi"><div class="kpi-top"><span class="kpi-label">Offers to review</span><span class="kpi-icon">✉</span></div><div class="kpi-value" id="kpiOffers">—</div><div class="kpi-foot">Offers requiring your attention</div></div>
+ <div class="kpi"><div class="kpi-top"><span class="kpi-label">Skills on passport</span><span class="kpi-icon">✧</span></div><div class="kpi-value" id="kpiSkills">—</div><div class="kpi-foot">Verified and self-declared skills</div></div>
+</div>
+<div class="dashboard-grid">
+ <div>
+  <section class="panel">
+   <div class="panel-head"><div><h2>Application activity</h2><p>Your latest recruitment progress</p></div><a class="link-button" href="applications.html">View all →</a></div>
+   <div id="dashboardApplications" class="card-list"><div class="empty-state">Loading applications…</div></div>
+  </section>
+  <section class="panel">
+   <div class="panel-head"><div><h2>Recommended opportunities</h2><p>Explore roles that may fit your experience</p></div><a class="link-button" href="job-search.html">Find jobs →</a></div>
+   <div id="recommendedJobs" class="grid grid-2"><div class="empty-state">Loading opportunities…</div></div>
+  </section>
+ </div>
+ <div>
+  <section class="panel">
+   <div class="panel-head"><div><h2>Next interview</h2><p>Your next scheduled recruitment activity</p></div><a class="link-button" href="interviews.html">All interviews</a></div>
+   <div id="nextInterview"><div class="empty-state">Loading interview details…</div></div>
+  </section>
+  <section class="panel">
+   <div class="panel-head"><div><h2>Onboarding checklist</h2><p>Tasks assigned to your employee journey</p></div><a class="link-button" href="offers-onboarding.html">Open tasks</a></div>
+   <div id="dashboardOnboarding"><div class="empty-state">Loading tasks…</div></div>
+  </section>
+  <section class="panel">
+   <div class="panel-head"><div><h2>Recent activity</h2><p>Updates across your TALVORA account</p></div></div>
+   <div id="recentActivity" class="timeline"><div class="empty-state">Loading activity…</div></div>
+  </section>
+ </div>
+</div>
+<section class="panel module-hub-panel">
+ <div class="panel-head"><div><span class="eyebrow">EMPLOYEE SERVICES</span><h2>Everything in your workspace</h2><p>Access your career, employment, wellbeing and workplace services from one place.</p></div></div>
+ <div class="module-hub">
+  <a class="module-tile module-tile-accent" href="employee-profile.html"><span class="module-tile-icon">◉</span><strong>My Profile</strong><small>Personal details and career identity</small></a>
+  <a class="module-tile" href="skills-passport.html"><span class="module-tile-icon">✦</span><strong>Skills Passport</strong><small>Skills, evidence and verification</small></a>
+  <a class="module-tile" href="job-search.html"><span class="module-tile-icon">⌕</span><strong>Find Jobs</strong><small>Discover relevant opportunities</small></a>
+  <a class="module-tile" href="applications.html"><span class="module-tile-icon">▤</span><strong>Applications</strong><small>Track your recruitment pipeline</small></a>
+  <a class="module-tile" href="interviews.html"><span class="module-tile-icon">◷</span><strong>Interviews</strong><small>Manage upcoming conversations</small></a>
+  <a class="module-tile" href="offers-onboarding.html"><span class="module-tile-icon">✓</span><strong>Offers &amp; Onboarding</strong><small>Review offers and start tasks</small></a>
+  <a class="module-tile" href="employment.html"><span class="module-tile-icon">▣</span><strong>Employment</strong><small>View current and past roles</small></a>
+  <a class="module-tile" href="attendance.html"><span class="module-tile-icon">◴</span><strong>Attendance</strong><small>Time, shifts and timesheets</small></a>
+  <a class="module-tile" href="leave.html"><span class="module-tile-icon">◌</span><strong>Leave &amp; Absence</strong><small>Balances and requests</small></a>
+  <a class="module-tile" href="payroll.html"><span class="module-tile-icon">¤</span><strong>Payroll &amp; Benefits</strong><small>Payslips, pay and benefits</small></a>
+  <a class="module-tile" href="employee-documents.html"><span class="module-tile-icon">▧</span><strong>Documents</strong><small>Secure records and compliance</small></a>
+  <a class="module-tile" href="learning.html"><span class="module-tile-icon">◎</span><strong>Learning</strong><small>Courses and development</small></a>
+  <a class="module-tile" href="performance.html"><span class="module-tile-icon">↗</span><strong>Performance</strong><small>Goals, reviews and feedback</small></a>
+  <a class="module-tile" href="employee-engagement.html"><span class="module-tile-icon">♡</span><strong>Engagement</strong><small>Surveys and workplace voice</small></a>
+  <a class="module-tile" href="communications.html"><span class="module-tile-icon">✉</span><strong>Communications</strong><small>Announcements and messages</small></a>
+  <a class="module-tile" href="hr-policies.html"><span class="module-tile-icon">§</span><strong>HR Policies</strong><small>Read and acknowledge policies</small></a>
+  <a class="module-tile" href="employee-support.html"><span class="module-tile-icon">?</span><strong>Employee Support</strong><small>Get help and raise a case</small></a>
+  <a class="module-tile" href="employee-directory.html"><span class="module-tile-icon">♙</span><strong>Directory</strong><small>Find people and teams</small></a>
+  <a class="module-tile" href="team-management.html"><span class="module-tile-icon">♧</span><strong>Team Management</strong><small>Team relationships and requests</small></a>
+  <a class="module-tile" href="workforce-analytics.html"><span class="module-tile-icon">▥</span><strong>Workforce Analytics</strong><small>Workplace insights and trends</small></a>
+ </div>
+</section>
+</div>
+</main>
+</div>
+
+<script src="employee.js?v=account-name"></script>
+<script src="employee-dashboard.js?v=account-name"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

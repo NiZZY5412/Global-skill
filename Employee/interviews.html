@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102B46">
+<title>Interviews & Recruitment Communication | TALVORA Employee Portal</title>
+<link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="employeeSidebar">
+  <a class="brand" href="employee-dashboard.html"><span class="brand-mark">T</span><span><span class="brand-name">TALVORA</span><span class="brand-sub">GLOBAL EMPLOYEE PORTAL</span></span></a>
+  <div class="nav-label">Employee workspace</div>
+  <nav class="nav-list"><a class="nav-link " href="employee-dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>
+<a class="nav-link " href="employee-profile.html"><span class="nav-icon">◎</span>My Profile</a>
+<a class="nav-link " href="skills-passport.html"><span class="nav-icon">✧</span>Skills Passport</a>
+<a class="nav-link " href="job-search.html"><span class="nav-icon">⌕</span>Find Jobs</a>
+<a class="nav-link " href="applications.html"><span class="nav-icon">▤</span>Applications</a>
+<a class="nav-link active" href="interviews.html"><span class="nav-icon">◷</span>Interviews</a>
+<a class="nav-link " href="offers-onboarding.html"><span class="nav-icon">✉</span>Offers & Onboarding</a></nav>
+  <div class="sidebar-foot">TALVORA Global Workforce Platform<br><span class="small">Employee services · Career · Employment</span></div>
+</aside>
+<main class="main-area">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button mobile-menu" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <div><div class="topbar-title">Interviews & Recruitment Communication</div><div class="topbar-sub">Manage interview invitations and scheduled conversations</div></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="demo-ribbon hidden" id="modePill"></span>
+      <a class="icon-button" href="employee-dashboard.html" aria-label="Dashboard">⌂</a>
+      <div class="user-chip"><div class="avatar" id="globalAvatar">E</div><div><div class="user-name" id="globalUserName">Employee</div><div class="user-role">Employee account</div></div></div>
+    </div>
+  </header>
+  <div class="page-wrap">
+<div class="page-heading"><div><span class="eyebrow">RECRUITMENT COMMUNICATION</span><h1>Interviews & Meetings</h1><p>Review invitations, prepare for interviews, confirm attendance or request a schedule change.</p></div></div>
+<div class="kpi-grid">
+ <div class="kpi"><div class="kpi-label">Upcoming</div><div class="kpi-value" id="upcomingCount">—</div></div>
+ <div class="kpi"><div class="kpi-label">Awaiting response</div><div class="kpi-value" id="responseCount">—</div></div>
+ <div class="kpi"><div class="kpi-label">Confirmed</div><div class="kpi-value" id="confirmedCount">—</div></div>
+ <div class="kpi"><div class="kpi-label">Completed</div><div class="kpi-value" id="completedCount">—</div></div>
+</div>
+<section class="panel">
+ <div class="panel-head"><div><h2>Interview schedule</h2><p>Interview invitations and scheduled sessions across your applications.</p></div><select id="interviewFilter" class="control" style="max-width:180px"><option value="">All interviews</option><option value="upcoming">Upcoming</option><option value="past">Past</option><option value="invited">Awaiting response</option><option value="confirmed">Confirmed</option></select></div>
+ <div id="interviewList" class="grid grid-2"><div class="empty-state">Loading interviews…</div></div>
+</section>
+</div>
+</main>
+</div>
+
+<dialog class="modal" id="interviewDialog"><div class="modal-head"><h2>Interview information</h2><button class="modal-close" data-close-dialog="interviewDialog">×</button></div><div class="modal-body" id="interviewDetail"></div><div class="modal-foot" id="interviewActions"></div></dialog>
+
+<script src="employee.js"></script>
+<script src="interviews.js"></script>
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+</html>

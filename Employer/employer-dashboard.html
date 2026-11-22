@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#102B46">
+    <meta name="description" content="TALVORA Global Employer Enterprise Portal">
+
+    <title>Employer Dashboard | TALVORA</title>
+
+    <link rel="stylesheet" href="employer.css">
+<script src="../Admin/talvora-admin-config.js" defer></script>
+<script src="employer.js?v=account-name" defer></script>
+    <link rel="stylesheet" href="../Shared/chat-widget.css">
+    <script src="../Auth/app-config.js" defer></script>
+</head>
+
+<body data-module="dashboard">
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-symbol">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <span>EMPLOYER PORTAL</span>
+                </div>
+            </div>
+
+            <div class="company-selector">
+                <label for="companySwitcher">ACTIVE ORGANIZATION</label>
+
+                <select id="companySwitcher">
+                    <option value="">Select organization</option>
+                </select>
+            </div>
+
+            <nav class="sidebar-navigation">
+
+                <div class="nav-heading">WORKSPACE</div>
+
+                <a href="employer-dashboard.html" class="nav-link active" data-section="dashboard">
+                    <span class="nav-icon">▦</span>
+                    Dashboard
+                </a>
+
+                <a href="company-profile.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Company Profile
+                </a>
+
+                <a href="locations.html" class="nav-link">
+                    <span class="nav-icon">⌖</span>
+                    Branches & Locations
+                </a>
+
+                <div class="nav-heading">TALENT ACQUISITION</div>
+
+                <a href="jobs.html" class="nav-link">
+                    <span class="nav-icon">▣</span>
+                    Jobs Management
+                </a>
+
+                <a href="applications.html" class="nav-link">
+                    <span class="nav-icon">▤</span>
+                    Applications
+                </a>
+
+                <a href="skills-matching.html" class="nav-link">
+                    <span class="nav-icon">◈</span>
+                    Skills & Matching
+                </a>
+
+                <a href="interviews.html" class="nav-link">
+                    <span class="nav-icon">◷</span>
+                    Interviews & Messages
+                </a>
+
+                <a href="offers-onboarding.html" class="nav-link">
+                    <span class="nav-icon">✓</span>
+                    Offers & Onboarding
+                </a>
+
+                <div class="nav-heading">WORKFORCE & FINANCE</div>
+
+                <a href="workforce.html" class="nav-link">
+                    <span class="nav-icon">♙</span>
+                    Workforce Management
+                </a>
+
+                <a href="billing.html" class="nav-link">
+                    <span class="nav-icon">◇</span>
+                    Payments & Billing
+                </a>
+
+<a href="compliance-documents.html" class="nav-link">
+                    <span class="nav-icon">▧</span>
+                    Compliance & Documents
+                </a>
+
+                <div class="nav-heading">BUSINESS MANAGEMENT</div>
+
+<a href="disputes-support.html" class="nav-link">
+                    <span class="nav-icon">◎</span>
+                    Disputes & Support
+                </a>
+
+<a href="analytics-reports.html" class="nav-link">
+                    <span class="nav-icon">▥</span>
+                    Analytics & Reports
+                </a>
+
+                <a href="team-permissions.html" class="nav-link">
+                    <span class="nav-icon">♧</span>
+                    Team & Permissions
+                </a>
+
+                <a href="notifications-settings.html" class="nav-link">
+                    <span class="nav-icon">⚙</span>
+                    Settings & Security
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="support-card">
+                    <span class="support-icon">?</span>
+                    <div>
+                        <strong>Need assistance?</strong>
+<a href="disputes-support.html">Contact TALVORA Support</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-version">
+                    TALVORA Employer Portal
+                    <span>Enterprise Workspace</span>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div class="breadcrumb">
+                        <span>Employer Portal</span>
+                        <span>/</span>
+                        <strong>Dashboard</strong>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="search" id="globalSearch" placeholder="Search workspace..."
+                            aria-label="Search workspace">
+                    </div>
+
+                    <button class="icon-button" id="notificationToggle" aria-label="Notifications">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+<a href="disputes-support.html" class="topbar-help">
+                        Help Centre
+                    </a>
+
+                    <div class="user-menu">
+                        <div class="avatar" id="userAvatar">E</div>
+                        <div class="user-details">
+                            <strong id="userName">Employer User</strong>
+                            <span id="userRole">Organization Member</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+
+            <div class="dashboard-container">
+
+                <!-- PAGE HEADING -->
+
+                <section class="welcome-section">
+
+                    <div>
+                        <div class="eyebrow">
+                            GLOBAL EMPLOYER WORKSPACE
+                        </div>
+
+                        <h1>
+                            Welcome back,
+                            <span id="welcomeName">Employer</span>
+                        </h1>
+
+                        <p>
+                            Manage your organizations, recruitment,
+                            workforce and business operations from one place.
+                        </p>
+
+                        <div class="dashboard-meta">
+                            <span class="status-indicator"></span>
+                            <span id="connectionStatus">
+                                Checking platform connection...
+                            </span>
+                            <span class="meta-divider">|</span>
+                            <span id="lastUpdated">Not yet updated</span>
+                        </div>
+                    </div>
+
+                    <div class="welcome-actions">
+
+                        <a href="jobs.html" class="btn btn-primary">
+                            + Create Job
+                        </a>
+
+                        <a href="team-permissions.html" class="btn btn-outline">
+                            Invite Team
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- COMPANY VERIFICATION -->
+
+                <section class="verification-banner">
+
+                    <div class="verification-icon">✓</div>
+
+                    <div class="verification-content">
+                        <strong>Company verification</strong>
+                        <p id="verificationMessage">
+                            Your organization's verification status
+                            will appear here.
+                        </p>
+                    </div>
+
+                    <span id="verificationStatus" class="status-badge neutral">
+                        Awaiting status
+                    </span>
+
+                    <a href="company-profile.html" class="verification-link">
+                        View profile →
+                    </a>
+
+                </section>
+
+
+                <!-- KEY METRICS -->
+
+                <section class="section-block">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Business Overview</h2>
+                            <p>Your organization's current performance.</p>
+                        </div>
+
+                        <button class="btn btn-light" id="refreshButton">
+                            ↻ Refresh
+                        </button>
+                    </div>
+
+                    <div class="metrics-grid">
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Active Jobs</span>
+                                <span class="metric-icon blue">▣</span>
+                            </div>
+                            <h3 data-metric="activeJobs">—</h3>
+                            <p>Currently published</p>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Total Applications</span>
+                                <span class="metric-icon teal">▤</span>
+                            </div>
+                            <h3 data-metric="totalApplications">—</h3>
+                            <p>Applications received</p>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Employees</span>
+                                <span class="metric-icon purple">♙</span>
+                            </div>
+                            <h3 data-metric="totalEmployees">—</h3>
+                            <p>Workforce records</p>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Upcoming Interviews</span>
+                                <span class="metric-icon orange">◷</span>
+                            </div>
+                            <h3 data-metric="upcomingInterviews">—</h3>
+                            <p>Scheduled interviews</p>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Open Positions</span>
+                                <span class="metric-icon blue">◈</span>
+                            </div>
+                            <h3 data-metric="openPositions">—</h3>
+                            <p>Recruitment opportunities</p>
+                        </article>
+
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span>Pending Invoices</span>
+                                <span class="metric-icon red">◇</span>
+                            </div>
+                            <h3 data-metric="pendingInvoices">—</h3>
+                            <p>Awaiting payment</p>
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RECRUITMENT AND ACTIVITIES -->
+
+                <div class="dashboard-grid">
+
+                    <section class="panel recruitment-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Recruitment Overview</h2>
+                                <p>Monitor your hiring pipeline.</p>
+                            </div>
+
+                            <a href="applications.html" class="text-link">
+                                View applications →
+                            </a>
+                        </div>
+
+                        <div class="pipeline-grid">
+
+                            <div class="pipeline-item">
+                                <span class="pipeline-dot blue-dot"></span>
+                                <span>New Applications</span>
+                                <strong data-metric="newApplications">—</strong>
+                            </div>
+
+                            <div class="pipeline-item">
+                                <span class="pipeline-dot teal-dot"></span>
+                                <span>Shortlisted</span>
+                                <strong data-metric="shortlistedApplications">—</strong>
+                            </div>
+
+                            <div class="pipeline-item">
+                                <span class="pipeline-dot orange-dot"></span>
+                                <span>Interview Stage</span>
+                                <strong data-metric="interviewStage">—</strong>
+                            </div>
+
+                            <div class="pipeline-item">
+                                <span class="pipeline-dot purple-dot"></span>
+                                <span>Offers Issued</span>
+                                <strong data-metric="offersIssued">—</strong>
+                            </div>
+
+                            <div class="pipeline-item">
+                                <span class="pipeline-dot green-dot"></span>
+                                <span>Successfully Hired</span>
+                                <strong data-metric="successfullyHired">—</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer">
+                            <a href="jobs.html" class="btn btn-light">
+                                Manage Jobs
+                            </a>
+
+                            <a href="applications.html" class="btn btn-light">
+                                Manage Applications
+                            </a>
+                        </div>
+
+                    </section>
+
+
+                    <!-- UPCOMING INTERVIEWS -->
+
+                    <section class="panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Upcoming Interviews</h2>
+                                <p>Your recruitment calendar.</p>
+                            </div>
+
+                            <a href="interviews.html" class="text-link">
+                                View all →
+                            </a>
+                        </div>
+
+                        <div id="upcomingInterviewsList" class="activity-list">
+
+                            <div class="empty-state">
+                                <span>◷</span>
+                                <p>Interview schedules will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- SECONDARY DASHBOARD GRID -->
+
+                <div class="dashboard-grid secondary-grid">
+
+                    <!-- RECENT ACTIVITY -->
+
+                    <section class="panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Recent Activity</h2>
+                                <p>Latest organization activity.</p>
+                            </div>
+
+<a href="analytics-reports.html" class="text-link">
+                                View reports →
+                            </a>
+                        </div>
+
+                        <div id="recentActivityList" class="activity-list">
+
+                            <div class="empty-state">
+                                <span>◌</span>
+                                <p>Recent activity will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- COMPLIANCE -->
+
+                    <section class="panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Compliance & Documents</h2>
+                                <p>Monitor important requirements.</p>
+                            </div>
+
+<a href="compliance-documents.html" class="text-link">
+                                Open centre →
+                            </a>
+                        </div>
+
+                        <div id="complianceList" class="activity-list">
+
+                            <div class="empty-state">
+                                <span>▧</span>
+                                <p>Compliance reminders will appear here.</p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- ORGANIZATION STRUCTURE -->
+
+                <section class="panel organization-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Organization Overview</h2>
+                            <p>Monitor your global company structure.</p>
+                        </div>
+
+                        <a href="locations.html" class="text-link">
+                            Manage locations →
+                        </a>
+                    </div>
+
+                    <div class="organization-stats">
+
+                        <div>
+                            <span>Registered Companies</span>
+                            <strong data-metric="totalCompanies">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Subsidiaries</span>
+                            <strong data-metric="totalSubsidiaries">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Branches</span>
+                            <strong data-metric="totalBranches">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Countries</span>
+                            <strong data-metric="countriesActive">—</strong>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- QUICK ACCESS -->
+
+                <section class="section-block quick-access-section">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Quick Access</h2>
+                            <p>Frequently used employer services.</p>
+                        </div>
+                    </div>
+
+                    <div class="quick-access-grid">
+
+                        <a href="jobs.html" class="quick-card">
+                            <span>▣</span>
+                            <strong>Post a Job</strong>
+                            <small>Create a recruitment opportunity</small>
+                        </a>
+
+                        <a href="applications.html" class="quick-card">
+                            <span>▤</span>
+                            <strong>Review Applicants</strong>
+                            <small>Manage candidate applications</small>
+                        </a>
+
+                        <a href="workforce.html" class="quick-card">
+                            <span>♙</span>
+                            <strong>Manage Employees</strong>
+                            <small>Access workforce records</small>
+                        </a>
+
+                        <a href="billing.html" class="quick-card">
+                            <span>◇</span>
+                            <strong>View Billing</strong>
+                            <small>Invoices and transactions</small>
+                        </a>
+
+<a href="analytics-reports.html" class="quick-card">
+                            <span>▥</span>
+                            <strong>Business Reports</strong>
+                            <small>Review performance</small>
+                        </a>
+
+                        <a href="team-permissions.html" class="quick-card">
+                            <span>♧</span>
+                            <strong>Manage Team</strong>
+                            <small>Control team access</small>
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+
+                <footer class="main-footer">
+                    <div>
+                        <strong>TALVORA</strong>
+                        <span>Global Employer Enterprise Portal</span>
+                    </div>
+
+                    <span>
+                        © <span id="currentYear"></span>
+                        TALVORA. All rights reserved.
+                    </span>
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- NOTIFICATION PANEL -->
+
+    <div class="notification-panel" id="notificationPanel" hidden>
+
+        <div class="notification-heading">
+            <strong>Notifications</strong>
+            <a href="notifications-settings.html">
+                View all
+            </a>
+        </div>
+
+        <div id="notificationList">
+            <p class="empty-state">
+                Notifications will appear here.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- TOAST NOTIFICATIONS -->
+
+    <div id="toastRegion" class="toast-region" aria-live="polite">
+    </div>
+
+    <script src="../Shared/chat-widget.js" defer></script>
+</body>
+
+</html>

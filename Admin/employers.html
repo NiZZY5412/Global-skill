@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../Auth/app-config.js" defer></script>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <meta name="description" content="GSES Super Admin Employer Management">
+
+    <title>Employer Management | GSES</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="employers.css">
+
+    <script src="employers.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-layout employers-app">
+
+        <!-- =========================================
+       SUPER ADMIN SIDEBAR
+       ========================================= -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="sidebar-logo">G</div>
+
+                <div class="sidebar-brand">
+                    <h2>GSES</h2>
+                    <span>SUPER ADMIN</span>
+                </div>
+
+                <button id="close-sidebar" class="sidebar-close" type="button" aria-label="Close navigation">
+                    &times;
+                </button>
+
+            </div>
+
+            <nav class="sidebar-navigation" aria-label="Admin navigation">
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">OVERVIEW</p>
+
+                    <a href="index.html#/admin/dashboard" class="nav-link">
+                        <span class="nav-icon">&#9638;</span>
+                        Dashboard
+                    </a>
+
+                    <a href="index.html#/admin/activities" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Activities
+                    </a>
+
+                    <a href="index.html#/admin/locations" class="nav-link">
+                        <span class="nav-icon">&#9678;</span>
+                        Locations
+                    </a>
+
+                </div>
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">USER MANAGEMENT</p>
+
+                    <a href="employees.html" class="nav-link">
+                        <span class="nav-icon">&#9786;</span>
+                        Employees
+                    </a>
+
+                    <a href="employers.html" class="nav-link active" aria-current="page">
+                        <span class="nav-icon">&#9635;</span>
+                        Employers
+                    </a>
+
+                    <a href="finance.html" class="nav-link">
+                        <span class="nav-icon">&#36;</span>
+                        Finance &amp; Revenue
+                    </a>
+
+                </div>
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">
+                        EMPLOYMENT OPERATIONS
+                    </p>
+
+                    <a href="jobs.html" class="nav-link">
+                        <span class="nav-icon">&#9636;</span>
+                        Jobs
+                    </a>
+
+                    <a href="legacy/applications.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Applications
+                    </a>
+
+                    <a href="legacy/assessments.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        Assessments
+                    </a>
+
+                    <a href="legacy/evidence.html" class="nav-link">
+                        <span class="nav-icon">&#9635;</span>
+                        Skills & Evidence
+                    </a>
+
+                    <a href="legacy/matching.html" class="nav-link">
+                        <span class="nav-icon">&#8644;</span>
+                        Matching System
+                    </a>
+
+                </div>
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">TRUST & SECURITY</p>
+
+                    <a href="legacy/reports.html" class="nav-link">
+                        <span class="nav-icon">&#9873;</span>
+                        Reports
+                    </a>
+
+                    <a href="disputes.html" class="nav-link">
+                        <span class="nav-icon">&#9878;</span>
+                        Disputes
+                    </a>
+
+                    <a href="legacy/consents.html" class="nav-link">
+                        <span class="nav-icon">&#10003;</span>
+                        Privacy & Consent
+                    </a>
+
+                    <a href="audit.html" class="nav-link">
+                        <span class="nav-icon">&#9776;</span>
+                        Audit Logs
+                    </a>
+
+                    <a href="legacy/support.html" class="nav-link">
+                        <span class="nav-icon">&#9993;</span>
+                        Support Center
+                    </a>
+
+                </div>
+
+                <div class="nav-section">
+
+                    <p class="nav-heading">SYSTEM</p>
+
+                    <a href="users.html" class="nav-link">
+                        <span class="nav-icon">&#9786;</span>
+                        Admin Team
+                    </a>
+
+                    <a href="legacy/settings.html" class="nav-link">
+                        <span class="nav-icon">&#9881;</span>
+                        System Settings
+                    </a>
+
+                </div>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>GSES SYSTEM 001</p>
+                <span>Administration Portal</span>
+            </div>
+
+        </aside>
+
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden></div>
+
+
+        <!-- =========================================
+       MAIN WORKSPACE
+       ========================================= -->
+
+        <div class="main-workspace">
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+                        &#9776;
+                    </button>
+
+                    <div class="header-title">
+                        <h2>Employer Management</h2>
+                        <p>GSES Super Admin Portal</p>
+                    </div>
+
+                </div>
+
+                <div class="header-right">
+
+                    <div class="connection-status">
+                        <span class="status-dot"></span>
+                        <span id="system-status">
+                            Not Connected
+                        </span>
+                    </div>
+
+                    <div class="admin-profile">
+
+                        <div id="admin-avatar" class="admin-avatar">SA</div>
+
+                        <div class="admin-info">
+                            <strong id="admin-name">
+                                Super Admin
+                            </strong>
+                            <span>Administration</span>
+                        </div>
+
+                    </div>
+
+                    <a href="index.html#/admin/dashboard" class="logout-button">
+                        Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- =======================================
+         EMPLOYER MANAGEMENT CONTENT
+         ======================================= -->
+
+            <main class="main-content employers-main">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Employer Management</h1>
+                        <p>
+                            Monitor organizations, verify business
+                            accounts and manage employer access.
+                        </p>
+                    </div>
+
+                    <button id="refresh-employers" class="btn btn-secondary" type="button" disabled>
+                        Refresh Records
+                    </button>
+
+                </div>
+
+
+                <!-- AUTHENTICATION AND CONNECTION NOTICE -->
+
+                <div id="employer-notice" class="employer-notice" role="status" aria-live="polite">
+                    Checking administrator authorization...
+                </div>
+
+
+                <!-- =======================================
+           EMPLOYER STATISTICS
+           ======================================= -->
+
+                <section class="employer-stats" aria-label="Employer statistics">
+
+                    <article class="employer-stat-card">
+                        <div class="employer-stat-header">
+                            <span>Total Employers</span>
+                            <span class="employer-stat-icon">&#9635;</span>
+                        </div>
+                        <strong id="stat-total">—</strong>
+                        <p>Registered organizations</p>
+                    </article>
+
+                    <article class="employer-stat-card">
+                        <div class="employer-stat-header">
+                            <span>Active Employers</span>
+                            <span class="employer-stat-icon">&#10003;</span>
+                        </div>
+                        <strong id="stat-active">—</strong>
+                        <p>Active organization accounts</p>
+                    </article>
+
+                    <article class="employer-stat-card">
+                        <div class="employer-stat-header">
+                            <span>Verified Employers</span>
+                            <span class="employer-stat-icon">&#10003;</span>
+                        </div>
+                        <strong id="stat-verified">—</strong>
+                        <p>Business verification completed</p>
+                    </article>
+
+                    <article class="employer-stat-card">
+                        <div class="employer-stat-header">
+                            <span>Pending Verification</span>
+                            <span class="employer-stat-icon">&#8987;</span>
+                        </div>
+                        <strong id="stat-pending">—</strong>
+                        <p>Verification requests awaiting review</p>
+                    </article>
+
+                    <article class="employer-stat-card">
+                        <div class="employer-stat-header">
+                            <span>Suspended Employers</span>
+                            <span class="employer-stat-icon">&#9888;</span>
+                        </div>
+                        <strong id="stat-suspended">—</strong>
+                        <p>Suspended organization accounts</p>
+                    </article>
+
+                    <article class="employer-stat-card">
+                        <div class="employer-stat-header">
+                            <span>Restricted Employers</span>
+                            <span class="employer-stat-icon">&#9888;</span>
+                        </div>
+                        <strong id="stat-restricted">—</strong>
+                        <p>Organizations with limited access</p>
+                    </article>
+
+                </section>
+
+
+                <!-- =======================================
+           EMPLOYER DIRECTORY
+           ======================================= -->
+
+                <section class="content-card employer-directory">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>All Employers</h3>
+                            <p>
+                                Search, inspect and manage
+                                registered employer organizations.
+                            </p>
+                        </div>
+
+                        <span id="employer-count" class="employer-count">
+                            Count unavailable
+                        </span>
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+
+                    <form id="employer-filters" class="employer-filters">
+
+                        <div class="employer-filter-field">
+
+                            <label for="employer-search">
+                                Search Employers
+                            </label>
+
+                            <input id="employer-search" type="search" placeholder="Organization name or email"
+                                autocomplete="off" disabled>
+
+                        </div>
+
+                        <div class="employer-filter-field">
+
+                            <label for="employer-status">
+                                Account Status
+                            </label>
+
+                            <select id="employer-status" disabled>
+                                <option value="">All Statuses</option>
+                                <option value="pending">Pending</option>
+                                <option value="active">Active</option>
+                                <option value="restricted">Restricted</option>
+                                <option value="suspended">Suspended</option>
+                                <option value="closed">Closed</option>
+                            </select>
+
+                        </div>
+
+                        <div class="employer-filter-field">
+
+                            <label for="verification-filter">
+                                Verification
+                            </label>
+
+                            <select id="verification-filter" disabled>
+                                <option value="">All Verification States</option>
+                                <option value="unverified">Unverified</option>
+                                <option value="pending">Pending Review</option>
+                                <option value="verified">Verified</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+
+                        </div>
+
+                        <div class="employer-filter-field">
+
+                            <label for="employer-sort">
+                                Sort By
+                            </label>
+
+                            <select id="employer-sort" disabled>
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="name">Organization Name</option>
+                                <option value="recent_activity">
+                                    Recent Activity
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="employer-filter-actions">
+
+                            <button id="search-employers" class="btn btn-primary" type="submit" disabled>
+                                Search
+                            </button>
+
+                            <button id="reset-employer-filters" class="btn btn-secondary" type="button" disabled>
+                                Reset
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <!-- EMPLOYER RECORD TABLE -->
+
+                    <div class="table-container employer-table-wrap">
+
+                        <table class="data-table employer-table">
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Organization</th>
+                                    <th scope="col">Account Status</th>
+                                    <th scope="col">Verification</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Active Jobs</th>
+                                    <th scope="col">Registered</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="employers-table-body">
+
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="empty-state">
+                                            <h3>Employer records unavailable</h3>
+                                            <p>
+                                                Live organization records will
+                                                appear after backend integration.
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+
+                    <div class="employer-pagination">
+
+                        <span id="employer-page-information">
+                            Page information unavailable
+                        </span>
+
+                        <div class="pagination-actions">
+
+                            <button id="previous-employer-page" class="btn btn-secondary" type="button" disabled>
+                                Previous
+                            </button>
+
+                            <button id="next-employer-page" class="btn btn-secondary" type="button" disabled>
+                                Next
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ADMINISTRATIVE POLICY NOTICE -->
+
+                <section class="employer-information">
+
+                    <h3>Administrative Access & Organization Control</h3>
+
+                    <p>
+                        Employer management actions must be
+                        authorized, validated and recorded
+                        in the GSES audit trail.
+                    </p>
+
+                    <p>
+                        Suspending an organization must restrict
+                        its protected operations across the
+                        connected Employer Portal and shared
+                        platform services.
+                    </p>
+
+                    <p>
+                        Organization verification must only be
+                        confirmed after an authorized review.
+                        Registration alone is not proof of
+                        verified business identity.
+                    </p>
+
+                </section>
+
+            </main>
+
+
+            <footer class="main-footer">
+
+                <p>
+                    GSES System 001
+                    &copy; <span id="footer-year"></span>
+                </p>
+
+                <p>Super Admin · Employer Management</p>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================================
+     EMPLOYER DETAILS DIALOG
+     ============================================ -->
+
+    <dialog id="employer-dialog" class="employer-dialog" aria-labelledby="employer-detail-heading">
+
+        <div class="employer-dialog-header">
+
+            <div>
+                <p class="dialog-eyebrow">
+                    EMPLOYER ORGANIZATION
+                </p>
+
+                <h2 id="employer-detail-heading">
+                    Employer Details
+                </h2>
+
+                <p id="employer-detail-email" class="detail-subtitle"></p>
+            </div>
+
+            <button id="close-employer-dialog" class="dialog-close" type="button" aria-label="Close employer details">
+                &times;
+            </button>
+
+        </div>
+
+
+        <!-- EMPLOYER DETAIL TABS -->
+
+        <div class="employer-tabs" role="tablist" aria-label="Employer information">
+
+            <button id="tab-overview" type="button" class="employer-tab active" data-tab="overview" role="tab"
+                aria-controls="employer-detail-content" aria-selected="true" tabindex="0">
+                Overview
+            </button>
+
+            <button id="tab-team" type="button" class="employer-tab" data-tab="team" role="tab"
+                aria-controls="employer-detail-content" aria-selected="false" tabindex="-1">
+                Team
+            </button>
+
+            <button id="tab-jobs" type="button" class="employer-tab" data-tab="jobs" role="tab"
+                aria-controls="employer-detail-content" aria-selected="false" tabindex="-1">
+                Jobs
+            </button>
+
+            <button id="tab-applications" type="button" class="employer-tab" data-tab="applications" role="tab"
+                aria-controls="employer-detail-content" aria-selected="false" tabindex="-1">
+                Applications
+            </button>
+
+            <button id="tab-activity" type="button" class="employer-tab" data-tab="activity" role="tab"
+                aria-controls="employer-detail-content" aria-selected="false" tabindex="-1">
+                Activity
+            </button>
+
+            <button id="tab-verification" type="button" class="employer-tab" data-tab="verification" role="tab"
+                aria-controls="employer-detail-content" aria-selected="false" tabindex="-1">
+                Verification
+            </button>
+
+            <button id="tab-security" type="button" class="employer-tab" data-tab="security" role="tab"
+                aria-controls="employer-detail-content" aria-selected="false" tabindex="-1">
+                Security
+            </button>
+
+        </div>
+
+
+        <!-- DYNAMIC DETAIL CONTENT -->
+
+        <div id="employer-detail-content" class="employer-detail-content" role="tabpanel" aria-labelledby="tab-overview"
+            aria-live="polite">
+
+            <div class="empty-state">
+                <p>No organization selected.</p>
+            </div>
+
+        </div>
+
+
+        <!-- ORGANIZATION ACTIONS -->
+
+        <div class="employer-dialog-footer">
+
+            <div class="employer-account-actions">
+
+                <button id="verify-employer" type="button" class="btn btn-success" hidden disabled>
+                    Approve Verification
+                </button>
+
+                <button id="reject-verification" type="button" class="btn btn-secondary" hidden disabled>
+                    Reject Verification
+                </button>
+
+                <button id="restrict-employer" type="button" class="btn btn-secondary" hidden disabled>
+                    Restrict
+                </button>
+
+                <button id="suspend-employer" type="button" class="btn btn-danger" hidden disabled>
+                    Suspend
+                </button>
+
+                <button id="reactivate-employer" type="button" class="btn btn-success" hidden disabled>
+                    Reactivate
+                </button>
+
+            </div>
+
+            <button id="close-employer-details" class="btn btn-secondary" type="button">
+                Close
+            </button>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ============================================
+     CONFIRM ADMINISTRATIVE ACTION
+     ============================================ -->
+
+    <dialog id="employer-action-dialog" class="employer-action-dialog" aria-labelledby="employer-action-heading">
+
+        <form id="employer-action-form">
+
+            <h2 id="employer-action-heading">
+                Confirm Administrative Action
+            </h2>
+
+            <p id="employer-action-description" class="action-description"></p>
+
+            <div class="form-group">
+
+                <label for="employer-action-reason">
+                    Reason for action
+                </label>
+
+                <textarea id="employer-action-reason" rows="4" minlength="10" maxlength="1000"
+                    placeholder="Explain the administrative decision" required></textarea>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="employer-confirm-name">
+                    Confirm organization name
+                </label>
+
+                <input id="employer-confirm-name" type="text" placeholder="Type the organization name"
+                    autocomplete="off" required>
+
+                <p class="confirmation-help">
+                    Enter the organization's exact name
+                    to confirm this action.
+                </p>
+
+            </div>
+
+            <p id="employer-action-error" class="action-error" role="alert"></p>
+
+            <div class="action-dialog-buttons">
+
+                <button id="cancel-employer-action" type="button" class="btn btn-secondary">
+                    Cancel
+                </button>
+
+                <button id="confirm-employer-action" type="submit" class="btn btn-danger">
+                    Confirm Action
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+</body>
+
+</html>

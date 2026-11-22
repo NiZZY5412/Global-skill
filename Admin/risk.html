@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="TALVORA Global Risk, Fraud Detection and Platform Integrity Centre">
+
+    <meta name="theme-color" content="#101a35">
+
+    <title>TALVORA | Global Risk & Platform Integrity</title>
+
+    <link rel="stylesheet" href="risk.css">
+
+    <script src="risk.js" defer></script>
+</head>
+
+<body>
+
+    <div class="tr-app" id="tr-app">
+
+        <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+        <aside class="tr-sidebar" id="tr-sidebar">
+
+            <div class="tr-brand">
+
+                <div class="tr-brand-icon">T</div>
+
+                <div class="tr-brand-text">
+                    <strong>TALVORA</strong>
+                    <span>SUPER ADMINISTRATION</span>
+                </div>
+
+                <button class="tr-icon-button tr-sidebar-close" id="tr-sidebar-close" aria-label="Close navigation">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="tr-sidebar-heading">
+                PLATFORM SECURITY
+            </div>
+
+
+            <nav class="tr-navigation">
+
+                <button class="tr-nav-link active" data-view="overview">
+                    <span class="tr-nav-icon">◈</span>
+                    <span>Risk Overview</span>
+                </button>
+
+                <button class="tr-nav-link" data-view="alerts">
+                    <span class="tr-nav-icon">♢</span>
+                    <span>Security Alerts</span>
+                    <span class="tr-nav-count" id="tr-alert-nav-count">0</span>
+                </button>
+
+                <button class="tr-nav-link" data-view="investigations">
+                    <span class="tr-nav-icon">⌕</span>
+                    <span>Investigations</span>
+                </button>
+
+                <button class="tr-nav-link" data-view="accounts">
+                    <span class="tr-nav-icon">♙</span>
+                    <span>Flagged Accounts</span>
+                </button>
+
+
+                <div class="tr-sidebar-heading">
+                    RISK INTELLIGENCE
+                </div>
+
+                <button class="tr-nav-link" data-view="categories">
+                    <span class="tr-nav-icon">▦</span>
+                    <span>Risk Categories</span>
+                </button>
+
+                <button class="tr-nav-link" data-view="detection">
+                    <span class="tr-nav-icon">⌘</span>
+                    <span>Detection & Scoring</span>
+                </button>
+
+                <button class="tr-nav-link" data-view="reports">
+                    <span class="tr-nav-icon">▤</span>
+                    <span>Risk Reports</span>
+                </button>
+
+                <button class="tr-nav-link" data-view="audit">
+                    <span class="tr-nav-icon">◷</span>
+                    <span>Security Audit Trail</span>
+                </button>
+
+            </nav>
+
+
+            <div class="tr-sidebar-bottom">
+
+                <div class="tr-authority-card">
+
+                    <div class="tr-authority-icon">♙</div>
+
+                    <div>
+                        <strong>Super Admin Authority</strong>
+                        <span>10 administrator seats</span>
+                        <span>Full authorized controls</span>
+                    </div>
+
+                </div>
+
+                <a href="index.html" class="tr-back-link">
+                    ← Back to Super Admin
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+         MOBILE SIDEBAR OVERLAY
+    ================================================== -->
+
+        <div class="tr-sidebar-overlay" id="tr-sidebar-overlay"></div>
+
+
+        <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+        <main class="tr-main">
+
+
+            <!-- TOPBAR -->
+
+            <header class="tr-topbar">
+
+                <div class="tr-topbar-left">
+
+                    <button class="tr-icon-button tr-menu-button" id="tr-menu-button" aria-label="Open navigation">
+                        ☰
+                    </button>
+
+                    <div>
+                        <div class="tr-breadcrumb">
+                            TALVORA / SUPER ADMIN / SECURITY
+                        </div>
+
+                        <h1>Risk & Platform Integrity</h1>
+                    </div>
+
+                </div>
+
+
+                <div class="tr-topbar-right">
+
+                    <div class="tr-monitor-status">
+                        <span class="tr-status-dot"></span>
+                        <span>Monitoring Centre</span>
+                    </div>
+
+                    <button class="tr-notification-button" id="tr-notification-button" aria-label="Open notifications">
+                        ♧
+                        <span class="tr-notification-badge" id="tr-notification-badge">0</span>
+                    </button>
+
+                    <div class="tr-admin-profile">
+
+                        <div class="tr-admin-avatar">SA</div>
+
+                        <div>
+                            <strong>Super Admin</strong>
+                            <span>Full Authority</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- GLOBAL NOTICE -->
+
+            <div class="tr-system-notice" id="tr-system-notice">
+
+                <span class="tr-notice-icon">ⓘ</span>
+
+                <span id="tr-system-notice-text">
+                    Risk intelligence workspace ready. Risk records will appear when available.
+                </span>
+
+            </div>
+
+
+            <!-- GLOBAL FILTERS -->
+
+            <section class="tr-filter-panel">
+
+                <div class="tr-filter-heading">
+                    <div>
+                        <strong>Global Risk Filters</strong>
+                        <span>Refine risk records across the platform</span>
+                    </div>
+                </div>
+
+
+                <div class="tr-filter-controls">
+
+                    <div class="tr-filter-field">
+                        <label for="tr-date-from">From date</label>
+                        <input type="date" id="tr-date-from">
+                    </div>
+
+                    <div class="tr-filter-field">
+                        <label for="tr-date-to">To date</label>
+                        <input type="date" id="tr-date-to">
+                    </div>
+
+                    <div class="tr-filter-field">
+                        <label for="tr-country-filter">Country</label>
+
+                        <select id="tr-country-filter">
+                            <option value="">All countries</option>
+                        </select>
+                    </div>
+
+                    <div class="tr-filter-field">
+                        <label for="tr-severity-filter">Severity</label>
+
+                        <select id="tr-severity-filter">
+                            <option value="">All severity levels</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="tr-filter-actions">
+
+                        <button class="tr-button tr-button-primary" id="tr-apply-filters">
+                            Apply Filters
+                        </button>
+
+                        <button class="tr-button tr-button-light" id="tr-clear-filters">
+                            Clear
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 1: OVERVIEW
+        ================================================== -->
+
+            <section class="tr-view active" id="tr-view-overview">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">GLOBAL SECURITY INTELLIGENCE</span>
+
+                        <h2>Platform Risk Overview</h2>
+
+                        <p>
+                            Centralized fraud detection, security monitoring
+                            and platform integrity oversight.
+                        </p>
+                    </div>
+
+                    <div class="tr-heading-actions">
+
+                        <button class="tr-button tr-button-light" id="tr-refresh">
+                            ↻ Refresh
+                        </button>
+
+                        <button class="tr-button tr-button-primary" data-go-view="investigations">
+                            Open Investigations
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- KPI CARDS -->
+
+                <div class="tr-kpi-grid">
+
+                    <article class="tr-kpi-card">
+
+                        <div class="tr-kpi-top">
+                            <span>Open Investigations</span>
+                            <span class="tr-kpi-icon purple">⌕</span>
+                        </div>
+
+                        <strong id="tr-kpi-open-cases">—</strong>
+
+                        <span>Current investigation records</span>
+
+                    </article>
+
+
+                    <article class="tr-kpi-card">
+
+                        <div class="tr-kpi-top">
+                            <span>Critical Risks</span>
+                            <span class="tr-kpi-icon red">!</span>
+                        </div>
+
+                        <strong id="tr-kpi-critical">—</strong>
+
+                        <span>Critical severity alerts</span>
+
+                    </article>
+
+
+                    <article class="tr-kpi-card">
+
+                        <div class="tr-kpi-top">
+                            <span>Unacknowledged Alerts</span>
+                            <span class="tr-kpi-icon orange">♢</span>
+                        </div>
+
+                        <strong id="tr-kpi-unacknowledged">—</strong>
+
+                        <span>Awaiting administrator acknowledgement</span>
+
+                    </article>
+
+
+                    <article class="tr-kpi-card">
+
+                        <div class="tr-kpi-top">
+                            <span>Escalated Cases</span>
+                            <span class="tr-kpi-icon blue">↗</span>
+                        </div>
+
+                        <strong id="tr-kpi-escalated">—</strong>
+
+                        <span>Escalated risk investigations</span>
+
+                    </article>
+
+                </div>
+
+
+                <!-- CHARTS -->
+
+                <div class="tr-dashboard-grid">
+
+                    <article class="tr-panel tr-panel-large">
+
+                        <div class="tr-panel-heading">
+
+                            <div>
+                                <h3>Risk Detection Trends</h3>
+
+                                <p>
+                                    Risk activity over the selected period
+                                </p>
+                            </div>
+
+                            <select id="tr-trend-period">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+
+                        </div>
+
+                        <div class="tr-chart-container" id="tr-risk-trend">
+                            <div class="tr-empty-state">
+                                <strong>No trend data available</strong>
+                                <span>Risk trends will appear when records are available.</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="tr-panel">
+
+                        <div class="tr-panel-heading">
+                            <div>
+                                <h3>Risk Severity</h3>
+                                <p>Distribution by severity</p>
+                            </div>
+                        </div>
+
+                        <div class="tr-chart-container" id="tr-severity-chart">
+                            <div class="tr-empty-state">
+                                <strong>No severity data</strong>
+                                <span>Severity distribution will appear here.</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- CATEGORY OVERVIEW -->
+
+                <article class="tr-panel tr-section-spacing">
+
+                    <div class="tr-panel-heading">
+
+                        <div>
+                            <h3>Global Risk Categories</h3>
+
+                            <p>
+                                Seven areas of platform risk intelligence
+                            </p>
+                        </div>
+
+                        <button class="tr-text-button" data-go-view="categories">
+                            View all categories →
+                        </button>
+
+                    </div>
+
+
+                    <div class="tr-category-grid" id="tr-category-overview">
+
+                        <button class="tr-category-card" data-category="global_monitoring">
+                            <span class="tr-category-icon purple">◈</span>
+                            <strong>Global Risk Monitoring</strong>
+                            <span>Platform-wide risk visibility</span>
+                            <small id="tr-category-global-count">—</small>
+                        </button>
+
+                        <button class="tr-category-card" data-category="employer_fraud">
+                            <span class="tr-category-icon blue">♙</span>
+                            <strong>Employer Fraud</strong>
+                            <span>Employer behaviour and identity risks</span>
+                            <small id="tr-category-employer-count">—</small>
+                        </button>
+
+                        <button class="tr-category-card" data-category="employee_identity">
+                            <span class="tr-category-icon green">♧</span>
+                            <strong>Employee Identity</strong>
+                            <span>Identity and document verification risks</span>
+                            <small id="tr-category-identity-count">—</small>
+                        </button>
+
+                        <button class="tr-category-card" data-category="recruitment_fraud">
+                            <span class="tr-category-icon orange">▤</span>
+                            <strong>Recruitment Fraud</strong>
+                            <span>Jobs and recruitment activities</span>
+                            <small id="tr-category-recruitment-count">—</small>
+                        </button>
+
+                        <button class="tr-category-card" data-category="financial_fraud">
+                            <span class="tr-category-icon red">¤</span>
+                            <strong>Financial Fraud</strong>
+                            <span>Suspicious transactions and payments</span>
+                            <small id="tr-category-financial-count">—</small>
+                        </button>
+
+                        <button class="tr-category-card" data-category="account_security">
+                            <span class="tr-category-icon purple">⌑</span>
+                            <strong>Account Security</strong>
+                            <span>Suspicious logins and access behaviour</span>
+                            <small id="tr-category-account-count">—</small>
+                        </button>
+
+                        <button class="tr-category-card" data-category="platform_abuse">
+                            <span class="tr-category-icon orange">⚑</span>
+                            <strong>Platform Abuse</strong>
+                            <span>Violations and misuse of platform services</span>
+                            <small id="tr-category-abuse-count">—</small>
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- RECENT ALERTS -->
+
+                <article class="tr-panel tr-section-spacing">
+
+                    <div class="tr-panel-heading">
+
+                        <div>
+                            <h3>Recent Security Alerts</h3>
+                            <p>Latest recorded risk events</p>
+                        </div>
+
+                        <button class="tr-text-button" data-go-view="alerts">
+                            View all alerts →
+                        </button>
+
+                    </div>
+
+
+                    <div class="tr-table-wrapper">
+
+                        <table class="tr-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Alert ID</th>
+                                    <th>Risk Category</th>
+                                    <th>Severity</th>
+                                    <th>Country</th>
+                                    <th>Detected</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tr-recent-alerts">
+
+                                <tr>
+                                    <td colspan="7" class="tr-table-empty">
+                                        No security alerts available.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 2: SECURITY ALERTS
+        ================================================== -->
+
+            <section class="tr-view" id="tr-view-alerts">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">SECURITY OPERATIONS</span>
+
+                        <h2>Security Alerts Centre</h2>
+
+                        <p>
+                            Review, acknowledge and escalate detected risks.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="tr-alert-summary-grid">
+
+                    <div class="tr-alert-summary critical">
+                        <span>Critical</span>
+                        <strong id="tr-alert-critical">—</strong>
+                    </div>
+
+                    <div class="tr-alert-summary high">
+                        <span>High</span>
+                        <strong id="tr-alert-high">—</strong>
+                    </div>
+
+                    <div class="tr-alert-summary medium">
+                        <span>Medium</span>
+                        <strong id="tr-alert-medium">—</strong>
+                    </div>
+
+                    <div class="tr-alert-summary low">
+                        <span>Low</span>
+                        <strong id="tr-alert-low">—</strong>
+                    </div>
+
+                </div>
+
+
+                <article class="tr-panel">
+
+                    <div class="tr-panel-heading">
+
+                        <div>
+                            <h3>All Security Alerts</h3>
+                            <p>Recorded risk events and administrator responses</p>
+                        </div>
+
+                        <div class="tr-inline-actions">
+
+                            <select id="tr-alert-status-filter">
+                                <option value="">All statuses</option>
+                                <option value="unacknowledged">Unacknowledged</option>
+                                <option value="acknowledged">Acknowledged</option>
+                                <option value="investigating">Investigating</option>
+                                <option value="escalated">Escalated</option>
+                                <option value="resolved">Resolved</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tr-table-wrapper">
+
+                        <table class="tr-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Alert ID</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Severity</th>
+                                    <th>Detected</th>
+                                    <th>Acknowledgement</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tr-alerts-table">
+
+                                <tr>
+                                    <td colspan="7" class="tr-table-empty">
+                                        No alerts available.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 3: INVESTIGATIONS
+        ================================================== -->
+
+            <section class="tr-view" id="tr-view-investigations">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">CASE MANAGEMENT</span>
+
+                        <h2>Risk Investigations</h2>
+
+                        <p>
+                            Manage investigations, evidence, decisions and resolutions.
+                        </p>
+                    </div>
+
+                    <button class="tr-button tr-button-primary" id="tr-create-investigation">
+                        + Create Investigation
+                    </button>
+
+                </div>
+
+
+                <div class="tr-investigation-summary">
+
+                    <div class="tr-panel">
+                        <span>Open Cases</span>
+                        <strong id="tr-invest-open">—</strong>
+                    </div>
+
+                    <div class="tr-panel">
+                        <span>Under Investigation</span>
+                        <strong id="tr-invest-active">—</strong>
+                    </div>
+
+                    <div class="tr-panel">
+                        <span>Escalated</span>
+                        <strong id="tr-invest-escalated">—</strong>
+                    </div>
+
+                    <div class="tr-panel">
+                        <span>Resolved</span>
+                        <strong id="tr-invest-resolved">—</strong>
+                    </div>
+
+                </div>
+
+
+                <article class="tr-panel">
+
+                    <div class="tr-panel-heading">
+
+                        <div>
+                            <h3>Investigation Register</h3>
+                            <p>All recorded investigations</p>
+                        </div>
+
+                        <select id="tr-investigation-status-filter">
+                            <option value="">All cases</option>
+                            <option value="open">Open</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="escalated">Escalated</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="tr-table-wrapper">
+
+                        <table class="tr-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Investigation</th>
+                                    <th>Category</th>
+                                    <th>Severity</th>
+                                    <th>Assigned Admin</th>
+                                    <th>Opened</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tr-investigations-table">
+
+                                <tr>
+                                    <td colspan="8" class="tr-table-empty">
+                                        No investigations available.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 4: FLAGGED ACCOUNTS
+        ================================================== -->
+
+            <section class="tr-view" id="tr-view-accounts">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">ACCOUNT INTEGRITY</span>
+
+                        <h2>Flagged Accounts</h2>
+
+                        <p>
+                            Review accounts associated with suspicious activity.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <article class="tr-panel">
+
+                    <div class="tr-panel-heading">
+
+                        <div>
+                            <h3>Account Risk Register</h3>
+                            <p>Employers, employees and administrator accounts</p>
+                        </div>
+
+                        <select id="tr-account-type-filter">
+                            <option value="">All account types</option>
+                            <option value="employer">Employer</option>
+                            <option value="employee">Employee</option>
+                            <option value="administrator">Administrator</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="tr-table-wrapper">
+
+                        <table class="tr-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Account Reference</th>
+                                    <th>Account Type</th>
+                                    <th>Country</th>
+                                    <th>Risk Score</th>
+                                    <th>Risk Level</th>
+                                    <th>Reported</th>
+                                    <th>Account Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tr-accounts-table">
+
+                                <tr>
+                                    <td colspan="8" class="tr-table-empty">
+                                        No flagged accounts available.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 5: RISK CATEGORIES
+        ================================================== -->
+
+            <section class="tr-view" id="tr-view-categories">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">RISK INTELLIGENCE</span>
+
+                        <h2>Risk Categories</h2>
+
+                        <p>
+                            Detailed oversight of all seven platform risk areas.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="tr-category-management-grid">
+
+                    <article class="tr-panel tr-category-detail" data-category="global_monitoring">
+
+                        <span class="tr-category-icon purple">◈</span>
+
+                        <h3>Global Risk Monitoring</h3>
+
+                        <p>
+                            Central monitoring of platform-wide threats,
+                            anomalies and emerging risks.
+                        </p>
+
+                        <div class="tr-category-meta">
+                            <span>Recorded risks</span>
+                            <strong id="tr-detail-global">—</strong>
+                        </div>
+
+                        <button class="tr-text-button" data-open-category="global_monitoring">
+                            Explore category →
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-category-detail" data-category="employer_fraud">
+
+                        <span class="tr-category-icon blue">♙</span>
+
+                        <h3>Employer Fraud Detection</h3>
+
+                        <p>
+                            Suspicious employer registration, business
+                            identities and employer activity.
+                        </p>
+
+                        <div class="tr-category-meta">
+                            <span>Recorded risks</span>
+                            <strong id="tr-detail-employer">—</strong>
+                        </div>
+
+                        <button class="tr-text-button" data-open-category="employer_fraud">
+                            Explore category →
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-category-detail" data-category="employee_identity">
+
+                        <span class="tr-category-icon green">♧</span>
+
+                        <h3>Employee Identity Risks</h3>
+
+                        <p>
+                            Identity inconsistencies, document concerns
+                            and verification anomalies.
+                        </p>
+
+                        <div class="tr-category-meta">
+                            <span>Recorded risks</span>
+                            <strong id="tr-detail-identity">—</strong>
+                        </div>
+
+                        <button class="tr-text-button" data-open-category="employee_identity">
+                            Explore category →
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-category-detail" data-category="recruitment_fraud">
+
+                        <span class="tr-category-icon orange">▤</span>
+
+                        <h3>Job & Recruitment Fraud</h3>
+
+                        <p>
+                            Fraudulent job listings, misleading recruitment
+                            activities and suspicious applications.
+                        </p>
+
+                        <div class="tr-category-meta">
+                            <span>Recorded risks</span>
+                            <strong id="tr-detail-recruitment">—</strong>
+                        </div>
+
+                        <button class="tr-text-button" data-open-category="recruitment_fraud">
+                            Explore category →
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-category-detail" data-category="financial_fraud">
+
+                        <span class="tr-category-icon red">¤</span>
+
+                        <h3>Financial Fraud</h3>
+
+                        <p>
+                            Suspicious transactions, payment anomalies
+                            and financial abuse indicators.
+                        </p>
+
+                        <div class="tr-category-meta">
+                            <span>Recorded risks</span>
+                            <strong id="tr-detail-financial">—</strong>
+                        </div>
+
+                        <button class="tr-text-button" data-open-category="financial_fraud">
+                            Explore category →
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-category-detail" data-category="account_security">
+
+                        <span class="tr-category-icon purple">⌑</span>
+
+                        <h3>Account Security</h3>
+
+                        <p>
+                            Unusual logins, suspicious access attempts,
+                            account compromise indicators and behaviour.
+                        </p>
+
+                        <div class="tr-category-meta">
+                            <span>Recorded risks</span>
+                            <strong id="tr-detail-account">—</strong>
+                        </div>
+
+                        <button class="tr-text-button" data-open-category="account_security">
+                            Explore category →
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-category-detail" data-category="platform_abuse">
+
+                        <span class="tr-category-icon orange">⚑</span>
+
+                        <h3>Platform Abuse & Violations</h3>
+
+                        <p>
+                            Policy violations, service misuse, abusive
+                            behaviour and platform integrity threats.
+                        </p>
+
+                        <div class="tr-category-meta">
+                            <span>Recorded risks</span>
+                            <strong id="tr-detail-abuse">—</strong>
+                        </div>
+
+                        <button class="tr-text-button" data-open-category="platform_abuse">
+                            Explore category →
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 6: DETECTION & RISK SCORING
+        ================================================== -->
+
+            <section class="tr-view" id="tr-view-detection">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">RISK INTELLIGENCE ENGINE</span>
+
+                        <h2>Detection & Risk Scoring</h2>
+
+                        <p>
+                            Review detection methods, risk classifications
+                            and administrator monitoring controls.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="tr-detection-grid">
+
+                    <article class="tr-panel">
+
+                        <h3>Detection Architecture</h3>
+
+                        <div class="tr-detection-method">
+
+                            <span class="tr-method-icon">⌘</span>
+
+                            <div>
+                                <strong>Automated Detection</strong>
+                                <p>
+                                    Identify unusual behaviour and
+                                    generate risk alerts.
+                                </p>
+                            </div>
+
+                            <span class="tr-method-status">Configured</span>
+
+                        </div>
+
+
+                        <div class="tr-detection-method">
+
+                            <span class="tr-method-icon">♙</span>
+
+                            <div>
+                                <strong>Manual Risk Reporting</strong>
+                                <p>
+                                    Allow authorized reporting and
+                                    administrator investigations.
+                                </p>
+                            </div>
+
+                            <span class="tr-method-status">Configured</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="tr-panel">
+
+                        <h3>Risk Severity Framework</h3>
+
+                        <div class="tr-severity-row">
+                            <span class="tr-severity-dot critical"></span>
+                            <div>
+                                <strong>Critical</strong>
+                                <p>Immediate security intervention</p>
+                            </div>
+                        </div>
+
+                        <div class="tr-severity-row">
+                            <span class="tr-severity-dot high"></span>
+                            <div>
+                                <strong>High</strong>
+                                <p>Priority investigation</p>
+                            </div>
+                        </div>
+
+                        <div class="tr-severity-row">
+                            <span class="tr-severity-dot medium"></span>
+                            <div>
+                                <strong>Medium</strong>
+                                <p>Administrator review queue</p>
+                            </div>
+                        </div>
+
+                        <div class="tr-severity-row">
+                            <span class="tr-severity-dot low"></span>
+                            <div>
+                                <strong>Low</strong>
+                                <p>Continuous risk monitoring</p>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <article class="tr-panel tr-section-spacing">
+
+                    <div class="tr-panel-heading">
+
+                        <div>
+                            <h3>Detection Event History</h3>
+                            <p>Recorded automated and manual detection events</p>
+                        </div>
+
+                    </div>
+
+                    <div class="tr-table-wrapper">
+
+                        <table class="tr-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Detection Type</th>
+                                    <th>Category</th>
+                                    <th>Severity</th>
+                                    <th>Detected At</th>
+                                    <th>Related Alert</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tr-detection-table">
+
+                                <tr>
+                                    <td colspan="6" class="tr-table-empty">
+                                        No detection events available.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 7: REPORTS
+        ================================================== -->
+
+            <section class="tr-view" id="tr-view-reports">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">SECURITY INTELLIGENCE</span>
+
+                        <h2>Risk Reports & Analysis</h2>
+
+                        <p>
+                            Review global risk exposure and investigation performance.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="tr-report-grid">
+
+                    <article class="tr-panel tr-report-card">
+
+                        <span class="tr-report-icon">◈</span>
+
+                        <h3>Global Risk Report</h3>
+
+                        <p>
+                            Consolidated overview of platform-wide risk activity.
+                        </p>
+
+                        <button class="tr-button tr-button-primary" data-report="global">
+                            Generate Report
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-report-card">
+
+                        <span class="tr-report-icon">♙</span>
+
+                        <h3>Account Risk Report</h3>
+
+                        <p>
+                            Employer, employee and administrator account risks.
+                        </p>
+
+                        <button class="tr-button tr-button-primary" data-report="accounts">
+                            Generate Report
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-report-card">
+
+                        <span class="tr-report-icon">⌕</span>
+
+                        <h3>Investigation Report</h3>
+
+                        <p>
+                            Case progress, outcomes and investigation records.
+                        </p>
+
+                        <button class="tr-button tr-button-primary" data-report="investigations">
+                            Generate Report
+                        </button>
+
+                    </article>
+
+
+                    <article class="tr-panel tr-report-card">
+
+                        <span class="tr-report-icon">♢</span>
+
+                        <h3>Security Alert Report</h3>
+
+                        <p>
+                            Severity distribution, acknowledgements and escalations.
+                        </p>
+
+                        <button class="tr-button tr-button-primary" data-report="alerts">
+                            Generate Report
+                        </button>
+
+                    </article>
+
+                </div>
+
+
+                <article class="tr-panel tr-section-spacing">
+
+                    <h3>Report Generation History</h3>
+
+                    <div class="tr-table-wrapper">
+
+                        <table class="tr-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Report Name</th>
+                                    <th>Generated By</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tr-report-history">
+
+                                <tr>
+                                    <td colspan="5" class="tr-table-empty">
+                                        No reports generated.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+             VIEW 8: AUDIT TRAIL
+        ================================================== -->
+
+            <section class="tr-view" id="tr-view-audit">
+
+                <div class="tr-page-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">ADMINISTRATOR ACCOUNTABILITY</span>
+
+                        <h2>Security Audit Trail</h2>
+
+                        <p>
+                            Trace alert acknowledgements, investigations,
+                            decisions and privileged actions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="tr-audit-principles">
+
+                    <div>
+                        <span class="tr-principle-icon">♙</span>
+                        <strong>Administrator Identity</strong>
+                        <p>Record who performed each action.</p>
+                    </div>
+
+                    <div>
+                        <span class="tr-principle-icon">◷</span>
+                        <strong>Timestamp Records</strong>
+                        <p>Record when actions occurred.</p>
+                    </div>
+
+                    <div>
+                        <span class="tr-principle-icon">▤</span>
+                        <strong>Action History</strong>
+                        <p>Preserve investigation and decision history.</p>
+                    </div>
+
+                    <div>
+                        <span class="tr-principle-icon">♢</span>
+                        <strong>Retention Policy</strong>
+                        <p>Apply approved retention and legal hold rules.</p>
+                    </div>
+
+                </div>
+
+
+                <article class="tr-panel tr-section-spacing">
+
+                    <div class="tr-panel-heading">
+
+                        <div>
+                            <h3>Administrator Security Activity</h3>
+
+                            <p>
+                                Acknowledgements, interventions and case decisions
+                            </p>
+                        </div>
+
+                        <button class="tr-button tr-button-light" id="tr-export-audit">
+                            Export Audit
+                        </button>
+
+                    </div>
+
+
+                    <div class="tr-table-wrapper">
+
+                        <table class="tr-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Audit ID</th>
+                                    <th>Administrator</th>
+                                    <th>Action</th>
+                                    <th>Related Record</th>
+                                    <th>Timestamp</th>
+                                    <th>Outcome</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tr-audit-table">
+
+                                <tr>
+                                    <td colspan="6" class="tr-table-empty">
+                                        No audit records available.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="tr-footer">
+
+                <span>TALVORA Technologies</span>
+
+                <span>Global Risk & Platform Integrity Centre</span>
+
+                <span id="tr-last-updated">
+                    Last updated: —
+                </span>
+
+            </footer>
+
+        </main>
+
+
+        <!-- =================================================
+         NOTIFICATION DRAWER
+    ================================================== -->
+
+        <aside class="tr-notification-drawer" id="tr-notification-drawer" aria-label="Security notifications" hidden>
+
+            <div class="tr-drawer-heading">
+
+                <div>
+                    <h3>Security Notifications</h3>
+                    <p>Administrator alert centre</p>
+                </div>
+
+                <button class="tr-icon-button" id="tr-close-notifications" aria-label="Close notifications">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="tr-notification-list" id="tr-notification-list">
+
+                <div class="tr-empty-state">
+                    <strong>No notifications</strong>
+                    <span>New security alerts will appear here.</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+         CRITICAL / HIGH ALERT POP-UP
+    ================================================== -->
+
+        <div class="tr-modal-overlay" id="tr-alert-modal" hidden>
+
+            <section class="tr-modal tr-security-modal" role="alertdialog" aria-modal="true"
+                aria-labelledby="tr-modal-title" aria-describedby="tr-modal-description">
+
+                <div class="tr-security-modal-header">
+
+                    <div class="tr-critical-symbol">!</div>
+
+                    <div>
+                        <span class="tr-eyebrow">TALVORA SECURITY ALERT</span>
+
+                        <h2 id="tr-modal-title">
+                            Security Alert
+                        </h2>
+
+                        <span class="tr-severity-badge" id="tr-modal-severity">
+                            CRITICAL
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="tr-security-modal-body">
+
+                    <div class="tr-modal-alert-banner">
+                        Immediate administrator attention required.
+                    </div>
+
+
+                    <p id="tr-modal-description">
+                        A security event requires administrator review.
+                    </p>
+
+
+                    <div class="tr-modal-details">
+
+                        <div>
+                            <span>Alert Reference</span>
+                            <strong id="tr-modal-alert-id">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Risk Category</span>
+                            <strong id="tr-modal-category">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Affected Account / Asset</span>
+                            <strong id="tr-modal-target">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Country</span>
+                            <strong id="tr-modal-country">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Detected At</span>
+                            <strong id="tr-modal-detected-at">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Notification Audience</span>
+                            <strong>All 10 Super Admins</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tr-modal-reason">
+
+                        <strong>Reason for Alert</strong>
+
+                        <p id="tr-modal-reason">
+                            Risk description will appear here.
+                        </p>
+
+                    </div>
+
+
+                    <div class="tr-acknowledgement-notice">
+                        This alert remains outstanding until acknowledged.
+                        Your acknowledgement and subsequent actions must
+                        be recorded in the security audit history.
+                    </div>
+
+                </div>
+
+
+                <div class="tr-modal-actions">
+
+                    <button class="tr-button tr-button-light" id="tr-modal-view-details">
+                        View Details
+                    </button>
+
+                    <button class="tr-button tr-button-primary" id="tr-modal-acknowledge">
+                        Acknowledge Alert
+                    </button>
+
+                    <button class="tr-button tr-button-danger" id="tr-modal-investigate">
+                        Investigate Now
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+         INVESTIGATION MODAL
+    ================================================== -->
+
+        <div class="tr-modal-overlay" id="tr-investigation-modal" hidden>
+
+            <section class="tr-modal" role="dialog" aria-modal="true" aria-labelledby="tr-investigation-modal-title">
+
+                <div class="tr-modal-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">CASE MANAGEMENT</span>
+
+                        <h2 id="tr-investigation-modal-title">
+                            Create Investigation
+                        </h2>
+
+                        <p>Record the investigation details.</p>
+                    </div>
+
+                    <button class="tr-icon-button" data-close-modal aria-label="Close">
+                        ×
+                    </button>
+
+                </div>
+
+
+                <form id="tr-investigation-form">
+
+                    <div class="tr-form-grid">
+
+                        <div class="tr-form-field">
+                            <label for="tr-case-title">
+                                Investigation Title
+                            </label>
+
+                            <input type="text" id="tr-case-title" name="title" required maxlength="180"
+                                placeholder="Enter investigation title">
+                        </div>
+
+
+                        <div class="tr-form-field">
+                            <label for="tr-case-category">
+                                Risk Category
+                            </label>
+
+                            <select id="tr-case-category" name="category" required>
+                                <option value="">Select category</option>
+                                <option value="global_monitoring">Global Monitoring</option>
+                                <option value="employer_fraud">Employer Fraud</option>
+                                <option value="employee_identity">Employee Identity</option>
+                                <option value="recruitment_fraud">Recruitment Fraud</option>
+                                <option value="financial_fraud">Financial Fraud</option>
+                                <option value="account_security">Account Security</option>
+                                <option value="platform_abuse">Platform Abuse</option>
+                            </select>
+                        </div>
+
+
+                        <div class="tr-form-field">
+                            <label for="tr-case-severity">
+                                Severity
+                            </label>
+
+                            <select id="tr-case-severity" name="severity" required>
+                                <option value="">Select severity</option>
+                                <option value="critical">Critical</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+
+
+                        <div class="tr-form-field">
+                            <label for="tr-case-reference">
+                                Related Alert / Account Reference
+                            </label>
+
+                            <input type="text" id="tr-case-reference" name="reference"
+                                placeholder="Enter reference if available">
+                        </div>
+
+
+                        <div class="tr-form-field tr-form-full">
+                            <label for="tr-case-description">
+                                Investigation Description
+                            </label>
+
+                            <textarea id="tr-case-description" name="description" rows="5" required
+                                placeholder="Describe the investigation..."></textarea>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tr-modal-actions">
+
+                        <button type="button" class="tr-button tr-button-light" data-close-modal>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="tr-button tr-button-primary">
+                            Create Investigation
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+         ACCOUNT INTERVENTION MODAL
+    ================================================== -->
+
+        <div class="tr-modal-overlay" id="tr-intervention-modal" hidden>
+
+            <section class="tr-modal" role="dialog" aria-modal="true" aria-labelledby="tr-intervention-title">
+
+                <div class="tr-modal-heading">
+
+                    <div>
+                        <span class="tr-eyebrow">PRIVILEGED SECURITY ACTION</span>
+
+                        <h2 id="tr-intervention-title">
+                            Account Intervention
+                        </h2>
+
+                        <p>
+                            Review the proposed action before proceeding.
+                        </p>
+                    </div>
+
+                    <button class="tr-icon-button" data-close-modal aria-label="Close">
+                        ×
+                    </button>
+
+                </div>
+
+
+                <form id="tr-intervention-form">
+
+                    <input type="hidden" id="tr-intervention-account-id">
+
+                    <div class="tr-form-field">
+
+                        <label for="tr-intervention-action">
+                            Intervention Action
+                        </label>
+
+                        <select id="tr-intervention-action" required>
+                            <option value="">Select action</option>
+                            <option value="restrict">Temporarily restrict account</option>
+                            <option value="suspend">Suspend account</option>
+                            <option value="request_verification">Request additional verification</option>
+                            <option value="restore">Restore account access</option>
+                            <option value="escalate">Escalate for further investigation</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="tr-form-field">
+
+                        <label for="tr-intervention-reason">
+                            Reason and Supporting Notes
+                        </label>
+
+                        <textarea id="tr-intervention-reason" rows="4" required
+                            placeholder="Document the reason for this action..."></textarea>
+
+                    </div>
+
+
+                    <div class="tr-warning-notice">
+                        This is a privileged action. The administrator,
+                        decision and supporting reason must be recorded
+                        in the security audit history.
+                    </div>
+
+
+                    <div class="tr-modal-actions">
+
+                        <button type="button" class="tr-button tr-button-light" data-close-modal>
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="tr-button tr-button-danger">
+                            Confirm Action
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+         GLOBAL SEARCH / STATUS REGION
+    ================================================== -->
+
+        <div class="tr-toast-region" id="tr-toast-region" aria-live="polite" aria-atomic="true"></div>
+
+
+        <div class="tr-live-region" id="tr-live-region" aria-live="assertive" aria-atomic="true"></div>
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="../talvora-admin-config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B46">
+
+    <title>TALVORA | Global Jobs & Recruitment Centre</title>
+
+    <meta name="description" content="TALVORA Global Super Admin Jobs, Applications and Recruitment Management Centre.">
+
+    <!-- Shared TALVORA stylesheet -->
+    <link rel="stylesheet" href="talvora-modules.css">
+
+    <!-- Shared TALVORA JavaScript -->
+    <script defer src="talvora-modules.js"></script>
+</head>
+
+<body data-module="jobs">
+
+    <div class="app-shell">
+
+        <!-- ==========================================
+         SIDEBAR NAVIGATION
+    =========================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <a class="brand" href="#overview">
+
+                <span class="brand-mark">T</span>
+
+                <span class="brand-copy">
+                    <strong>TALVORA</strong>
+                    <small>GLOBAL SUPER ADMIN</small>
+                </span>
+
+            </a>
+
+            <div class="sidebar-label">
+                <span class="live-dot"></span>
+                WORKFORCE OPERATIONS
+            </div>
+
+            <nav class="side-nav" aria-label="Jobs administration">
+
+                <a class="nav-link active" href="#overview" data-section="overview">
+
+                    <span class="nav-icon">◈</span>
+                    Overview
+
+                </a>
+
+                <a class="nav-link" href="#jobs" data-section="jobs">
+
+                    <span class="nav-icon">▤</span>
+                    Global Job Listings
+
+                </a>
+
+                <a class="nav-link" href="#applications" data-section="applications">
+
+                    <span class="nav-icon">♙</span>
+                    Applications
+
+                </a>
+
+                <a class="nav-link" href="#employers" data-section="employers">
+
+                    <span class="nav-icon">▣</span>
+                    Employer Hiring Activity
+
+                </a>
+
+                <a class="nav-link" href="#moderation" data-section="moderation">
+
+                    <span class="nav-icon">⚑</span>
+                    Moderation & Reports
+
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-security">
+
+                    <span class="security-mark">⬡</span>
+
+                    <span>
+                        <strong>Global governance</strong>
+                        <small>Jobs & recruitment oversight</small>
+                    </span>
+
+                </div>
+
+                <div class="admin-chip">
+
+                    <span class="admin-avatar">SA</span>
+
+                    <span>
+                        <strong>Super Administrator</strong>
+                        <small>Authorized workspace</small>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+        <main class="main-area">
+
+            <!-- TOP HEADER -->
+
+            <header class="topbar">
+
+                <div class="topbar-heading">
+
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">
+
+                        ☰
+
+                    </button>
+
+                    <div>
+
+                        <div class="breadcrumb">
+                            SUPER ADMIN
+                            <span>/</span>
+                            WORKFORCE OPERATIONS
+                        </div>
+
+                        <h1>Jobs & Recruitment Centre</h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <span class="connection-pill" id="connectionStatus">
+
+                        <i></i>
+                        Connecting
+
+                    </span>
+
+                    <span class="region-pill">
+                        GLOBAL PLATFORM
+                    </span>
+
+                    <button class="button button-outline" id="refreshButton">
+
+                        ↻ Refresh
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- WELCOME BANNER -->
+
+            <section class="welcome-banner">
+
+                <div class="banner-symbol">
+                    ▤
+                </div>
+
+                <div>
+
+                    <strong>
+                        Global Jobs, Applications & Recruitment Management
+                    </strong>
+
+                    <p>
+                        Centralized oversight of job listings, recruitment
+                        activity, applications, employer hiring operations
+                        and platform-wide recruitment integrity.
+                    </p>
+
+                </div>
+
+                <div class="banner-tag">
+                    TALVORA WORKFORCE
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+             SECTION 1: OVERVIEW
+        ======================================= -->
+
+            <section class="module-section active" id="overview" data-view="overview">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            GLOBAL RECRUITMENT INTELLIGENCE
+                        </span>
+
+                        <h2>Platform Overview</h2>
+
+                        <p>
+                            Global recruitment indicators and operational
+                            performance across TALVORA.
+                        </p>
+
+                    </div>
+
+                    <span class="updated-label" id="lastUpdated">
+                        Awaiting data
+                    </span>
+
+                </div>
+
+
+                <!-- PRIMARY METRICS -->
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+
+                        <span>Total Active Listings</span>
+
+                        <strong data-metric="activeJobs">—</strong>
+
+                        <small>Currently published jobs</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>Applications Received</span>
+
+                        <strong data-metric="totalApplications">—</strong>
+
+                        <small>Platform application records</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>Awaiting Review</span>
+
+                        <strong data-metric="pendingApplications">—</strong>
+
+                        <small>Applications requiring action</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>Open Moderation Cases</span>
+
+                        <strong data-metric="openModerationCases">—</strong>
+
+                        <small>Recruitment integrity cases</small>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SECONDARY METRICS -->
+
+                <div class="metric-grid">
+
+                    <article class="metric-card">
+
+                        <span>Verified Employers</span>
+
+                        <strong data-metric="verifiedEmployers">—</strong>
+
+                        <small>Verified employer accounts</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>Jobs Filled</span>
+
+                        <strong data-metric="filledJobs">—</strong>
+
+                        <small>Reported hiring outcomes</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>Suspended Listings</span>
+
+                        <strong data-metric="suspendedJobs">—</strong>
+
+                        <small>Restricted listings</small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>Countries Represented</span>
+
+                        <strong data-metric="countriesActive">—</strong>
+
+                        <small>Active recruitment jurisdictions</small>
+
+                    </article>
+
+                </div>
+
+
+                <!-- DISTRIBUTION CHARTS -->
+
+                <div class="content-grid">
+
+                    <article class="panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    LISTING HEALTH
+                                </span>
+
+                                <h3>Job Status Distribution</h3>
+
+                            </div>
+
+                        </div>
+
+                        <div class="distribution" data-distribution="jobStatus">
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    RECRUITMENT PIPELINE
+                                </span>
+
+                                <h3>Application Status Distribution</h3>
+
+                            </div>
+
+                        </div>
+
+                        <div class="distribution" data-distribution="applicationStatus">
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- RECENT JOB ACTIVITY -->
+
+                <article class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                LATEST ACTIVITY
+                            </span>
+
+                            <h3>Recently Updated Job Listings</h3>
+
+                        </div>
+
+                        <button class="button button-outline button-small" data-go="jobs">
+
+                            View All Listings
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>JOB REFERENCE</th>
+                                    <th>POSITION</th>
+                                    <th>EMPLOYER REF.</th>
+                                    <th>CATEGORY</th>
+                                    <th>JURISDICTION</th>
+                                    <th>STATUS</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody data-dashboard-table="jobs">
+
+                                <tr>
+                                    <td colspan="6" class="empty-cell">
+                                        Loading platform records...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ======================================
+             SECTION 2: JOB LISTINGS
+        ======================================= -->
+
+            <section class="module-section" id="jobs" data-view="jobs">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            LISTING GOVERNANCE
+                        </span>
+
+                        <h2>Global Job Listings</h2>
+
+                        <p>
+                            Manage job publication, listing quality,
+                            employer references and jurisdiction coverage.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FILTERS -->
+
+                <div class="filter-bar" data-filter-for="jobs">
+
+                    <input type="search" placeholder="Search job reference, title or employer..." data-query="search">
+
+                    <select data-query="status">
+
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="published">Published</option>
+                        <option value="paused">Paused</option>
+                        <option value="filled">Filled</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="suspended">Suspended</option>
+
+                    </select>
+
+                    <select data-query="priority">
+
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+
+                <!-- JOB TABLE -->
+
+                <article class="panel">
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>JOB REFERENCE</th>
+                                    <th>POSITION</th>
+                                    <th>EMPLOYER REF.</th>
+                                    <th>CATEGORY</th>
+                                    <th>JURISDICTION</th>
+                                    <th>STATUS</th>
+                                    <th>PRIORITY</th>
+                                    <th>UPDATED</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody data-table-body="jobs">
+
+                                <tr>
+                                    <td colspan="9" class="empty-cell">
+                                        Loading job listings...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="table-foot">
+
+                        <span data-result-count="jobs">
+                            Awaiting records
+                        </span>
+
+                        <span>
+                            Global job listing records
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ======================================
+             SECTION 3: APPLICATIONS
+        ======================================= -->
+
+            <section class="module-section" id="applications" data-view="applications">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            CANDIDATE WORKFLOW
+                        </span>
+
+                        <h2>Applications Management</h2>
+
+                        <p>
+                            Monitor applications, recruitment stages,
+                            employer decisions and workflow exceptions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-bar" data-filter-for="applications">
+
+                    <input type="search" placeholder="Search application or job reference..." data-query="search">
+
+                    <select data-query="status">
+
+                        <option value="">All application stages</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="shortlisted">Shortlisted</option>
+                        <option value="interview">Interview</option>
+                        <option value="offered">Offered</option>
+                        <option value="hired">Hired</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="withdrawn">Withdrawn</option>
+
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>APPLICATION REF.</th>
+                                    <th>JOB REF.</th>
+                                    <th>EMPLOYEE REF.</th>
+                                    <th>EMPLOYER REF.</th>
+                                    <th>STAGE</th>
+                                    <th>JURISDICTION</th>
+                                    <th>SUBMITTED</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody data-table-body="applications">
+
+                                <tr>
+                                    <td colspan="8" class="empty-cell">
+                                        Loading applications...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="table-foot">
+
+                        <span data-result-count="applications">
+                            Awaiting records
+                        </span>
+
+                        <span>
+                            Candidate identity information is protected.
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ======================================
+             SECTION 4: EMPLOYERS
+        ======================================= -->
+
+            <section class="module-section" id="employers" data-view="employers">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            EMPLOYER ACTIVITY
+                        </span>
+
+                        <h2>Employer Hiring Activity</h2>
+
+                        <p>
+                            Monitor employer recruitment volumes,
+                            active listings and reported hiring outcomes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-bar" data-filter-for="employers">
+
+                    <input type="search" placeholder="Search employer reference..." data-query="search">
+
+                    <select data-query="status">
+
+                        <option value="">All employer statuses</option>
+                        <option value="verified">Verified</option>
+                        <option value="pending">Pending</option>
+                        <option value="restricted">Restricted</option>
+                        <option value="suspended">Suspended</option>
+
+                    </select>
+
+                    <input type="text" placeholder="Jurisdiction code" data-query="jurisdiction">
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>EMPLOYER REF.</th>
+                                    <th>DISPLAY NAME</th>
+                                    <th>JURISDICTION</th>
+                                    <th>ACTIVE LISTINGS</th>
+                                    <th>APPLICATIONS</th>
+                                    <th>HIRES REPORTED</th>
+                                    <th>ACCOUNT STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody data-table-body="employers">
+
+                                <tr>
+                                    <td colspan="8" class="empty-cell">
+                                        Loading employer activity...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ======================================
+             SECTION 5: MODERATION
+        ======================================= -->
+
+            <section class="module-section" id="moderation" data-view="moderation">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            PLATFORM INTEGRITY
+                        </span>
+
+                        <h2>Moderation & Reports</h2>
+
+                        <p>
+                            Review reported listings, suspicious recruitment
+                            activity and recruitment integrity cases.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-bar" data-filter-for="moderation">
+
+                    <input type="search" placeholder="Search report or listing reference..." data-query="search">
+
+                    <select data-query="status">
+
+                        <option value="">All case statuses</option>
+                        <option value="open">Open</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="escalated">Escalated</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="dismissed">Dismissed</option>
+
+                    </select>
+
+                    <select data-query="priority">
+
+                        <option value="">All priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+
+                    </select>
+
+                </div>
+
+
+                <article class="panel">
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>CASE REF.</th>
+                                    <th>REPORTED ITEM</th>
+                                    <th>REPORT TYPE</th>
+                                    <th>REASON</th>
+                                    <th>JURISDICTION</th>
+                                    <th>PRIORITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody data-table-body="moderation">
+
+                                <tr>
+                                    <td colspan="8" class="empty-cell">
+                                        Loading moderation cases...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+            <footer class="page-footer">
+
+                TALVORA GLOBAL PLATFORM OPERATIONS
+
+                <span>•</span>
+
+                JOBS & RECRUITMENT GOVERNANCE
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==========================================
+     ADMINISTRATIVE ACTION MODAL
+=========================================== -->
+
+    <div class="modal-backdrop" id="actionModal" hidden>
+
+        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="actionTitle">
+
+            <div class="modal-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        CONTROLLED ADMINISTRATIVE ACTION
+                    </span>
+
+                    <h2 id="actionTitle">
+                        Review Record
+                    </h2>
+
+                </div>
+
+                <button class="icon-button" data-close-modal aria-label="Close">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <p class="modal-description" id="actionDescription">
+
+                This action will be submitted to the platform workflow.
+
+            </p>
+
+
+            <label class="field-label" for="actionReason">
+
+                Reason / Decision Notes
+
+            </label>
+
+            <textarea id="actionReason" rows="4" minlength="10" maxlength="2000"
+                placeholder="Provide a clear reason for this action...">
+        </textarea>
+
+
+            <label class="field-label" for="actionEvidence">
+
+                Supporting Evidence Reference (Optional)
+
+            </label>
+
+            <input type="text" id="actionEvidence" maxlength="250" placeholder="Evidence or case reference">
+
+
+            <div class="modal-actions">
+
+                <button class="button button-outline" data-close-modal>
+
+                    Cancel
+
+                </button>
+
+                <button class="button button-primary" id="submitAction" disabled>
+
+                    Submit Action
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ==========================================
+     RECORD DETAILS MODAL
+=========================================== -->
+
+    <div class="modal-backdrop" id="detailModal" hidden>
+
+        <section class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+
+            <div class="modal-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        CONTROLLED RECORD VIEW
+                    </span>
+
+                    <h2 id="detailTitle">
+                        Record Details
+                    </h2>
+
+                </div>
+
+                <button class="icon-button" data-close-modal aria-label="Close">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <div class="detail-grid" id="detailContent">
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ==========================================
+     NOTIFICATION REGION
+=========================================== -->
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true">
+
+    </div>
+
+
+</body>
+
+</html>

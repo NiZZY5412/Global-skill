@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="talvora-admin-config.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111a35">
+    <meta name="description" content="TALVORA Global User and Identity Management Centre">
+    <title>TALVORA | Global Identity Management</title>
+    <link rel="stylesheet" href="identity-management.css">
+    <script src="identity-management.js" defer></script>
+</head>
+
+<body>
+
+    <div class="identity-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <div>
+                    <h2>TALVORA</h2>
+                    <small>SUPER ADMINISTRATION</small>
+                </div>
+            </div>
+
+            <div class="side-label">IDENTITY MANAGEMENT</div>
+
+            <nav>
+                <a href="#overview" class="nav-link active" data-section="overview">
+                    ◈ Identity Overview
+                </a>
+                <a href="#directory" class="nav-link" data-section="directory">
+                    ▤ Global User Directory
+                </a>
+                <a href="#employees" class="nav-link" data-section="employees">
+                    ♙ Employee Management
+                </a>
+                <a href="#employers" class="nav-link" data-section="employers">
+                    ◫ Employer Management
+                </a>
+                <a href="#administrators" class="nav-link" data-section="administrators">
+                    ♛ Administrator Management
+                </a>
+                <a href="#verification" class="nav-link" data-section="verification">
+                    ✓ Identity Verification
+                </a>
+                <a href="#permissions" class="nav-link" data-section="permissions">
+                    ⚿ Access & Permissions
+                </a>
+                <a href="#suspensions" class="nav-link" data-section="suspensions">
+                    ⛨ Account Suspensions
+                </a>
+                <a href="#lifecycle" class="nav-link" data-section="lifecycle">
+                    ◷ Account Lifecycle
+                </a>
+                <a href="#risks" class="nav-link" data-section="risks">
+                    ⚠ Identity Risk Monitoring
+                </a>
+                <a href="#activity" class="nav-link" data-section="activity">
+                    ◉ Account Activity
+                </a>
+                <a href="#bulk" class="nav-link" data-section="bulk">
+                    ▦ Bulk Operations
+                </a>
+                <a href="#audit" class="nav-link" data-section="audit">
+                    ◷ Identity Audit Centre
+                </a>
+            </nav>
+
+            <div class="side-label">OTHER ADMINISTRATION</div>
+
+            <nav>
+                <a href="index.html" class="nav-link">← Super Admin Dashboard</a>
+                <a href="system-control.html" class="nav-link">Global System Control</a>
+                <a href="security.html" class="nav-link">Security Operations</a>
+                <a href="compliance.html" class="nav-link">Global Compliance</a>
+                <a href="audit.html" class="nav-link">Administrator Audit</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-profile">
+                    <div class="avatar">SA</div>
+                    <div>
+                        <strong>Super Administrator</strong>
+                        <small>Global Platform Authority</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div class="topbar-title">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+                    <div>
+                        <small>TALVORA / SUPER ADMIN / IDENTITY</small>
+                        <h1>Global User & Identity Management</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span class="connection-status" id="connectionStatus">
+                        <i></i> Connecting
+                    </span>
+                    <button class="icon-button" id="notificationButton" aria-label="View identity alerts">♧</button>
+                    <button class="primary-button" id="refreshButton">↻ Refresh</button>
+                </div>
+
+            </header>
+
+            <div class="system-banner">
+                <strong>GLOBAL IDENTITY AUTHORITY</strong>
+                <span id="bannerMessage">
+                    Loading identity management information...
+                </span>
+            </div>
+
+            <!-- ===================================
+         1. IDENTITY OVERVIEW
+    ==================================== -->
+
+            <section class="content-section active" id="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL IDENTITY GOVERNANCE</span>
+                        <h2>Identity management overview</h2>
+                        <p>Centralized visibility into all TALVORA user identities and account operations.</p>
+                    </div>
+                    <button class="secondary-button" id="exportOverview">
+                        ↓ Export overview
+                    </button>
+                </div>
+
+                <div class="metrics-grid">
+
+                    <article class="metric-card">
+                        <span>Total registered accounts</span>
+                        <strong id="totalUsers">—</strong>
+                        <small>All platform account categories</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Active accounts</span>
+                        <strong id="activeUsers">—</strong>
+                        <small>Currently active identities</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Employee accounts</span>
+                        <strong id="employeeUsers">—</strong>
+                        <small>Registered workforce accounts</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Employer accounts</span>
+                        <strong id="employerUsers">—</strong>
+                        <small>Organizations and employers</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Administrator accounts</span>
+                        <strong id="administratorUsers">—</strong>
+                        <small>All administrative personnel</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Pending verification</span>
+                        <strong id="pendingVerification">—</strong>
+                        <small>Awaiting identity review</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Suspended accounts</span>
+                        <strong id="suspendedUsers">—</strong>
+                        <small>Current restrictions</small>
+                    </article>
+
+                    <article class="metric-card">
+                        <span>Identity risk alerts</span>
+                        <strong id="identityRisks">—</strong>
+                        <small>Outstanding risk alerts</small>
+                    </article>
+
+                </div>
+
+                <div class="overview-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Account distribution</h3>
+                                <p>Registered identities by account category.</p>
+                            </div>
+                        </div>
+
+                        <div id="accountDistribution" class="distribution-list">
+                            Loading account distribution...
+                        </div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h3>Identity verification summary</h3>
+                                <p>Current verification workflow status.</p>
+                            </div>
+                        </div>
+
+                        <div id="verificationSummary" class="summary-list">
+                            Loading verification summary...
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent identity operations</h3>
+                            <p>Latest account creation, updates and administrative actions.</p>
+                        </div>
+                        <button class="text-button" data-navigate="audit">
+                            View audit history →
+                        </button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Account</th>
+                                    <th>Operation</th>
+                                    <th>Administrator</th>
+                                    <th>Timestamp</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentIdentityOperations"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Identity governance alerts</h3>
+                            <p>Important issues requiring administrative attention.</p>
+                        </div>
+                    </div>
+                    <div id="governanceAlerts" class="alert-list">
+                        Loading governance alerts...
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         2. GLOBAL USER DIRECTORY
+    ==================================== -->
+
+            <section class="content-section" id="directory">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">CENTRAL USER REGISTRY</span>
+                        <h2>Global user directory</h2>
+                        <p>Search, inspect and manage every registered TALVORA identity.</p>
+                    </div>
+
+                    <button class="primary-button" id="createUserButton">
+                        + Register account
+                    </button>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="userSearch" placeholder="Search name, email or account ID...">
+
+                        <select id="userTypeFilter">
+                            <option value="">All account categories</option>
+                            <option value="employee">Employees</option>
+                            <option value="employer">Employers</option>
+                            <option value="super_admin">Super Admins</option>
+                            <option value="country_admin">Country administrators</option>
+                            <option value="regional_admin">Regional administrators</option>
+                            <option value="support_admin">Support administrators</option>
+                            <option value="compliance_officer">Compliance officers</option>
+                            <option value="finance_admin">Finance administrators</option>
+                            <option value="auditor">Auditors</option>
+                            <option value="other_admin">Other administrators</option>
+                        </select>
+
+                        <select id="userStatusFilter">
+                            <option value="">All account statuses</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="deactivated">Deactivated</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <select id="userCountryFilter">
+                            <option value="">All countries</option>
+                        </select>
+
+                        <button class="secondary-button" id="clearUserFilters">
+                            Clear filters
+                        </button>
+                    </div>
+
+                    <div class="bulk-toolbar">
+                        <span id="selectedUserCount">0 accounts selected</span>
+
+                        <div>
+                            <button class="secondary-button" id="selectAllUsers">
+                                Select page
+                            </button>
+                            <button class="secondary-button" id="openBulkOperations">
+                                Bulk operations
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="selectPageCheckbox"
+                                            aria-label="Select all users on this page"></th>
+                                    <th>Account ID</th>
+                                    <th>Identity</th>
+                                    <th>Category</th>
+                                    <th>Country</th>
+                                    <th>Verification</th>
+                                    <th>Status</th>
+                                    <th>Last activity</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="userDirectoryTable"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <span id="userPaginationInfo">—</span>
+                        <div>
+                            <button class="secondary-button" id="previousUsers">Previous</button>
+                            <button class="secondary-button" id="nextUsers">Next</button>
+                        </div>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         3. EMPLOYEE MANAGEMENT
+    ==================================== -->
+
+            <section class="content-section" id="employees">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL WORKFORCE IDENTITIES</span>
+                        <h2>Employee management</h2>
+                        <p>Manage employee identities, account status and verification.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Total employees</span>
+                        <strong id="employeeTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Active employees</span>
+                        <strong id="activeEmployeeTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Pending employee verification</span>
+                        <strong id="pendingEmployeeTotal">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="employeeSearch" placeholder="Search employee...">
+                        <select id="employeeStatus">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="deactivated">Deactivated</option>
+                        </select>
+                        <select id="employeeCountry">
+                            <option value="">All countries</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Employee identity</th>
+                                    <th>Email</th>
+                                    <th>Country</th>
+                                    <th>Verification</th>
+                                    <th>Account status</th>
+                                    <th>Registered</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         4. EMPLOYER MANAGEMENT
+    ==================================== -->
+
+            <section class="content-section" id="employers">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">GLOBAL ORGANIZATION IDENTITIES</span>
+                        <h2>Employer management</h2>
+                        <p>Manage employer organizations, authorized representatives and account access.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="employerSearch" placeholder="Search employer or organization...">
+                        <select id="employerStatus">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="deactivated">Deactivated</option>
+                        </select>
+                        <select id="employerVerification">
+                            <option value="">All verification statuses</option>
+                            <option value="verified">Verified</option>
+                            <option value="pending">Pending</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Organization ID</th>
+                                    <th>Organization</th>
+                                    <th>Representative</th>
+                                    <th>Country</th>
+                                    <th>Verification</th>
+                                    <th>Account status</th>
+                                    <th>Registered</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="employerTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         5. ADMINISTRATOR MANAGEMENT
+    ==================================== -->
+
+            <section class="content-section" id="administrators">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ADMINISTRATIVE IDENTITY GOVERNANCE</span>
+                        <h2>Administrator management</h2>
+                        <p>Centralized management of all privileged and operational administrators.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice">
+                    <strong>Privileged access security</strong>
+                    <p>
+                        Super Admin and other privileged accounts require server-enforced
+                        MFA, role-based authorization and recorded administrative activity.
+                    </p>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Super Admin accounts</span>
+                        <strong id="superAdminTotal">—</strong>
+                        <small>Includes all 10 designated accounts</small>
+                    </article>
+                    <article class="metric-card">
+                        <span>Country administrators</span>
+                        <strong id="countryAdminTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Other administrators</span>
+                        <strong id="otherAdminTotal">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="adminSearch" placeholder="Search administrator...">
+
+                        <select id="adminRole">
+                            <option value="">All administrator roles</option>
+                            <option value="super_admin">Super Admin</option>
+                            <option value="country_admin">Country Admin</option>
+                            <option value="regional_admin">Regional Admin</option>
+                            <option value="support_admin">Support Admin</option>
+                            <option value="compliance_officer">Compliance Officer</option>
+                            <option value="finance_admin">Finance Admin</option>
+                            <option value="auditor">Auditor</option>
+                            <option value="other_admin">Other Admin</option>
+                        </select>
+
+                        <select id="adminStatus">
+                            <option value="">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="deactivated">Deactivated</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Administrator ID</th>
+                                    <th>Administrator</th>
+                                    <th>Role</th>
+                                    <th>Assigned scope</th>
+                                    <th>MFA status</th>
+                                    <th>Account status</th>
+                                    <th>Last activity</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="administratorTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         6. IDENTITY VERIFICATION
+    ==================================== -->
+
+            <section class="content-section" id="verification">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">IDENTITY ASSURANCE & KYC</span>
+                        <h2>Identity verification centre</h2>
+                        <p>Review identity verification cases and authorized verification decisions.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Pending cases</span>
+                        <strong id="verificationPendingTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Under review</span>
+                        <strong id="verificationReviewTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Completed cases</span>
+                        <strong id="verificationCompletedTotal">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="verificationSearch"
+                            placeholder="Search verification reference or account...">
+
+                        <select id="verificationType">
+                            <option value="">All identity types</option>
+                            <option value="employee">Employee</option>
+                            <option value="employer">Employer</option>
+                            <option value="administrator">Administrator</option>
+                        </select>
+
+                        <select id="verificationStatus">
+                            <option value="">All verification statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="under_review">Under review</option>
+                            <option value="verified">Verified</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="requires_information">Requires information</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Case reference</th>
+                                    <th>Account</th>
+                                    <th>Identity type</th>
+                                    <th>Country</th>
+                                    <th>Verification method</th>
+                                    <th>Submitted</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="verificationTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         7. ACCESS AND PERMISSIONS
+    ==================================== -->
+
+            <section class="content-section" id="permissions">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ROLE-BASED ACCESS GOVERNANCE</span>
+                        <h2>Access & permissions</h2>
+                        <p>Manage roles, permissions, administrative scopes and access assignments.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice">
+                    <strong>Centralized authorization policy</strong>
+                    <p>
+                        Permissions are enforced by the backend. Frontend visibility
+                        does not grant access to protected operations.
+                    </p>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Platform roles</h3>
+                            <p>Review the available identity and administrative roles.</p>
+                        </div>
+                        <button class="primary-button" id="createRoleButton">
+                            + Create role
+                        </button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Role ID</th>
+                                    <th>Role name</th>
+                                    <th>Scope</th>
+                                    <th>Assigned accounts</th>
+                                    <th>Permissions</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="roleTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Permission catalogue</h3>
+                            <p>Available permissions and their administrative scope.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Permission</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Risk level</th>
+                                </tr>
+                            </thead>
+                            <tbody id="permissionTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Account role assignments</h3>
+                            <p>Review account-to-role assignments and their scopes.</p>
+                        </div>
+                    </div>
+
+                    <div class="filters">
+                        <input type="search" id="assignmentSearch" placeholder="Search account or role...">
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Account</th>
+                                    <th>Assigned role</th>
+                                    <th>Country / region scope</th>
+                                    <th>Assigned by</th>
+                                    <th>Assigned date</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="assignmentTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         8. SUSPENSIONS
+    ==================================== -->
+
+            <section class="content-section" id="suspensions">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ACCOUNT ENFORCEMENT</span>
+                        <h2>Account suspensions</h2>
+                        <p>Manage restrictions, reinstatements, appeals and suspension decisions.</p>
+                    </div>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="suspensionSearch"
+                            placeholder="Search suspension reference or account...">
+
+                        <select id="suspensionStatus">
+                            <option value="">All suspension statuses</option>
+                            <option value="active">Active</option>
+                            <option value="under_appeal">Under appeal</option>
+                            <option value="expired">Expired</option>
+                            <option value="lifted">Lifted</option>
+                        </select>
+
+                        <select id="suspensionType">
+                            <option value="">All suspension types</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="permanent">Permanent</option>
+                            <option value="preventive">Preventive</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Account</th>
+                                    <th>Restriction type</th>
+                                    <th>Reason category</th>
+                                    <th>Start date</th>
+                                    <th>End date</th>
+                                    <th>Appeal status</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="suspensionTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         9. ACCOUNT LIFECYCLE
+    ==================================== -->
+
+            <section class="content-section" id="lifecycle">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">ACCOUNT LIFECYCLE GOVERNANCE</span>
+                        <h2>Account lifecycle management</h2>
+                        <p>Manage account invitations, activation, deactivation and closure requests.</p>
+                    </div>
+                </div>
+
+                <div class="lifecycle-flow">
+                    <div>Invitation</div>
+                    <span>→</span>
+                    <div>Verification</div>
+                    <span>→</span>
+                    <div>Activation</div>
+                    <span>→</span>
+                    <div>Active account</div>
+                    <span>→</span>
+                    <div>Closure / Deactivation</div>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="lifecycleSearch" placeholder="Search lifecycle records...">
+
+                        <select id="lifecycleStatus">
+                            <option value="">All lifecycle stages</option>
+                            <option value="invited">Invited</option>
+                            <option value="pending_verification">Pending verification</option>
+                            <option value="active">Active</option>
+                            <option value="deactivation_requested">Deactivation requested</option>
+                            <option value="deactivated">Deactivated</option>
+                            <option value="closure_requested">Closure requested</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Account ID</th>
+                                    <th>Identity</th>
+                                    <th>Account category</th>
+                                    <th>Current stage</th>
+                                    <th>Last transition</th>
+                                    <th>Requested by</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="lifecycleTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         10. IDENTITY RISK MONITORING
+    ==================================== -->
+
+            <section class="content-section" id="risks">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">IDENTITY PROTECTION & RISK INTELLIGENCE</span>
+                        <h2>Identity risk monitoring</h2>
+                        <p>Review identity-related anomalies, risk alerts and suspicious account patterns.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Critical risk alerts</span>
+                        <strong id="criticalRiskTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>High risk alerts</span>
+                        <strong id="highRiskTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Open investigations</span>
+                        <strong id="openInvestigationTotal">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="riskSearch" placeholder="Search account or risk reference...">
+
+                        <select id="riskSeverity">
+                            <option value="">All severity levels</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                        <select id="riskStatus">
+                            <option value="">All investigation statuses</option>
+                            <option value="open">Open</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="dismissed">Dismissed</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Risk reference</th>
+                                    <th>Account</th>
+                                    <th>Risk category</th>
+                                    <th>Severity</th>
+                                    <th>Country</th>
+                                    <th>Detected</th>
+                                    <th>Investigation</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="riskTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         11. ACCOUNT ACTIVITY
+    ==================================== -->
+
+            <section class="content-section" id="activity">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">IDENTITY ACCESS MONITORING</span>
+                        <h2>Account activity & sessions</h2>
+                        <p>Review authentication events, active sessions and access history.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid compact-grid">
+                    <article class="metric-card">
+                        <span>Active sessions</span>
+                        <strong id="activeSessionTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Failed login attempts</span>
+                        <strong id="failedLoginTotal">—</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Privileged account activity</span>
+                        <strong id="privilegedActivityTotal">—</strong>
+                    </article>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="activitySearch" placeholder="Search account or event...">
+
+                        <select id="activityType">
+                            <option value="">All event types</option>
+                            <option value="login">Login</option>
+                            <option value="logout">Logout</option>
+                            <option value="failed_login">Failed login</option>
+                            <option value="password_change">Password change</option>
+                            <option value="mfa_event">MFA event</option>
+                            <option value="session_revoked">Session revoked</option>
+                            <option value="role_change">Role change</option>
+                        </select>
+
+                        <select id="activityResult">
+                            <option value="">All results</option>
+                            <option value="success">Success</option>
+                            <option value="failed">Failed</option>
+                            <option value="blocked">Blocked</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Event reference</th>
+                                    <th>Account</th>
+                                    <th>Event</th>
+                                    <th>IP address</th>
+                                    <th>Location</th>
+                                    <th>Device</th>
+                                    <th>Timestamp</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Active account sessions</h3>
+                            <p>Review active authenticated sessions and their expiry.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Session reference</th>
+                                    <th>Account</th>
+                                    <th>Device</th>
+                                    <th>IP address</th>
+                                    <th>Started</th>
+                                    <th>Expires</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="sessionTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         12. BULK OPERATIONS
+    ==================================== -->
+
+            <section class="content-section" id="bulk">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">CONTROLLED MASS ACCOUNT ADMINISTRATION</span>
+                        <h2>Bulk account operations</h2>
+                        <p>Manage large-scale account updates through validated and auditable workflows.</p>
+                    </div>
+                </div>
+
+                <div class="security-notice warning-notice">
+                    <strong>Protected bulk operations</strong>
+                    <p>
+                        Bulk operations require scope validation, permission checks,
+                        an impact preview and server-side approval where applicable.
+                        No bulk action is executed solely by this frontend.
+                    </p>
+                </div>
+
+                <div class="bulk-grid">
+
+                    <article class="panel">
+                        <h3>Bulk account update</h3>
+                        <p>Apply an authorized operation to selected accounts.</p>
+
+                        <form id="bulkActionForm">
+
+                            <label>Operation *
+                                <select name="action" required>
+                                    <option value="">Select operation</option>
+                                    <option value="activate">Activate accounts</option>
+                                    <option value="deactivate">Deactivate accounts</option>
+                                    <option value="suspend">Suspend accounts</option>
+                                    <option value="reinstate">Reinstate accounts</option>
+                                    <option value="request_verification">Request verification</option>
+                                </select>
+                            </label>
+
+                            <label>Account IDs *
+                                <textarea name="userIds" id="bulkUserIds" rows="4" placeholder="One account ID per line"
+                                    required></textarea>
+                            </label>
+
+                            <label>Reason for operation *
+                                <textarea name="reason" rows="3" required></textarea>
+                            </label>
+
+                            <button type="submit" class="primary-button">
+                                Preview bulk operation
+                            </button>
+
+                        </form>
+                    </article>
+
+                    <article class="panel">
+                        <h3>Bulk account import</h3>
+                        <p>Import account records through a validated CSV workflow.</p>
+
+                        <form id="bulkImportForm">
+
+                            <label>CSV account file *
+                                <input type="file" name="file" id="bulkFile" accept=".csv,text/csv" required>
+                            </label>
+
+                            <label>Import mode
+                                <select name="mode">
+                                    <option value="validate_only">Validate only</option>
+                                    <option value="create_accounts">Create eligible accounts</option>
+                                    <option value="update_accounts">Update existing accounts</option>
+                                </select>
+                            </label>
+
+                            <label>Import reason *
+                                <textarea name="reason" rows="3" required></textarea>
+                            </label>
+
+                            <button type="submit" class="secondary-button">
+                                Validate import file
+                            </button>
+
+                        </form>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Bulk operation history</h3>
+                            <p>Review submitted imports and account administration batches.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Batch ID</th>
+                                    <th>Operation</th>
+                                    <th>Accounts affected</th>
+                                    <th>Submitted by</th>
+                                    <th>Submitted</th>
+                                    <th>Approval</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bulkHistoryTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ===================================
+         13. IDENTITY AUDIT CENTRE
+    ==================================== -->
+
+            <section class="content-section" id="audit">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">IDENTITY ACCOUNTABILITY & GOVERNANCE</span>
+                        <h2>Identity audit centre</h2>
+                        <p>Review the historical record of account and identity management operations.</p>
+                    </div>
+                    <button class="secondary-button" id="exportAudit">
+                        ↓ Export audit records
+                    </button>
+                </div>
+
+                <article class="panel">
+
+                    <div class="filters">
+                        <input type="search" id="auditSearch"
+                            placeholder="Search audit reference, user or administrator...">
+
+                        <select id="auditAction">
+                            <option value="">All operations</option>
+                            <option value="account_created">Account created</option>
+                            <option value="account_updated">Account updated</option>
+                            <option value="account_suspended">Account suspended</option>
+                            <option value="account_reinstated">Account reinstated</option>
+                            <option value="role_assigned">Role assigned</option>
+                            <option value="verification_decision">Verification decision</option>
+                            <option value="session_revoked">Session revoked</option>
+                        </select>
+
+                        <select id="auditResult">
+                            <option value="">All results</option>
+                            <option value="success">Success</option>
+                            <option value="failed">Failed</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Audit reference</th>
+                                    <th>Administrator</th>
+                                    <th>Target account</th>
+                                    <th>Operation</th>
+                                    <th>Reason</th>
+                                    <th>Timestamp</th>
+                                    <th>Result</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTable"></tbody>
+                        </table>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <footer>
+                <span>© TALVORA Global Workforce Platform</span>
+                <span>Global User & Identity Management Centre</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- ===================================
+     CREATE ACCOUNT MODAL
+==================================== -->
+
+    <div class="modal-overlay" id="createUserModal" hidden>
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>GLOBAL IDENTITY REGISTRATION</small>
+                    <h2>Register new account</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="createUserForm">
+
+                <label>Full legal name *
+                    <input name="fullName" required>
+                </label>
+
+                <label>Email address *
+                    <input type="email" name="email" required>
+                </label>
+
+                <label>Phone number
+                    <input type="tel" name="phone">
+                </label>
+
+                <label>Account category *
+                    <select name="accountType" required>
+                        <option value="">Select category</option>
+                        <option value="employee">Employee</option>
+                        <option value="employer">Employer</option>
+                        <option value="super_admin">Super Admin</option>
+                        <option value="country_admin">Country administrator</option>
+                        <option value="regional_admin">Regional administrator</option>
+                        <option value="support_admin">Support administrator</option>
+                        <option value="compliance_officer">Compliance officer</option>
+                        <option value="finance_admin">Finance administrator</option>
+                        <option value="auditor">Auditor</option>
+                        <option value="other_admin">Other administrator</option>
+                    </select>
+                </label>
+
+                <label>Country *
+                    <select name="country" id="createUserCountry" required>
+                        <option value="">Select country</option>
+                    </select>
+                </label>
+
+                <label>Organization
+                    <input name="organization">
+                </label>
+
+                <label>Administrative scope
+                    <select name="administrativeScope">
+                        <option value="none">No administrative scope</option>
+                        <option value="global">Global</option>
+                        <option value="regional">Regional</option>
+                        <option value="country">Country</option>
+                        <option value="organization">Organization</option>
+                    </select>
+                </label>
+
+                <div class="modal-note">
+                    Account registration does not automatically grant privileged
+                    permissions. Role assignment and activation are subject to
+                    server-side authorization and applicable approval workflows.
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>
+                        Cancel
+                    </button>
+                    <button type="submit" class="primary-button">
+                        Submit registration
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================
+     ACCOUNT DETAILS MODAL
+==================================== -->
+
+    <div class="modal-overlay" id="detailModal" hidden>
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>IDENTITY RECORD</small>
+                    <h2 id="detailTitle">Account details</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div id="detailContent"></div>
+
+            <div class="modal-actions" id="detailActions"></div>
+
+        </div>
+    </div>
+
+    <!-- ===================================
+     VERIFICATION REVIEW MODAL
+==================================== -->
+
+    <div class="modal-overlay" id="verificationModal" hidden>
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>IDENTITY ASSURANCE</small>
+                    <h2>Verification case review</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div id="verificationDetails"></div>
+
+            <div class="modal-actions" id="verificationActions"></div>
+
+        </div>
+    </div>
+
+    <!-- ===================================
+     ROLE MANAGEMENT MODAL
+==================================== -->
+
+    <div class="modal-overlay" id="roleModal" hidden>
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>ACCESS CONTROL MANAGEMENT</small>
+                    <h2 id="roleModalTitle">Create platform role</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <form id="roleForm">
+
+                <input type="hidden" name="roleId">
+
+                <label>Role name *
+                    <input name="name" required>
+                </label>
+
+                <label>Role description
+                    <textarea name="description" rows="3"></textarea>
+                </label>
+
+                <label>Administrative scope *
+                    <select name="scope" required>
+                        <option value="global">Global</option>
+                        <option value="regional">Regional</option>
+                        <option value="country">Country</option>
+                        <option value="organization">Organization</option>
+                        <option value="self">Self only</option>
+                    </select>
+                </label>
+
+                <label>Permissions
+                    <select name="permissions" id="rolePermissions" multiple size="7">
+                    </select>
+                </label>
+
+                <div class="modal-note">
+                    Protected system roles cannot be granted unrestricted authority
+                    through this form. Server-side policy determines the permitted
+                    role and permission changes.
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" data-close-modal>
+                        Cancel
+                    </button>
+                    <button type="submit" class="primary-button">
+                        Save role
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================
+     PROTECTED ACTION CONFIRMATION
+==================================== -->
+
+    <div class="modal-overlay" id="confirmationModal" hidden>
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>PROTECTED IDENTITY OPERATION</small>
+                    <h2 id="confirmationTitle">Confirm operation</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div class="confirmation-warning" id="confirmationMessage"></div>
+
+            <label>Reason for this operation *
+                <textarea id="confirmationReason" rows="3" required></textarea>
+            </label>
+
+            <label>Type CONFIRM to authorize
+                <input id="confirmationText" autocomplete="off">
+            </label>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-button" data-close-modal>
+                    Cancel
+                </button>
+                <button type="button" class="danger-button" id="confirmOperation" disabled>
+                    Submit protected operation
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================================
+     BULK PREVIEW MODAL
+==================================== -->
+
+    <div class="modal-overlay" id="bulkPreviewModal" hidden>
+        <div class="modal large-modal">
+
+            <div class="modal-header">
+                <div>
+                    <small>BULK OPERATION REVIEW</small>
+                    <h2>Review operation impact</h2>
+                </div>
+                <button class="close-modal" data-close-modal>×</button>
+            </div>
+
+            <div id="bulkPreviewContent"></div>
+
+            <div class="modal-note">
+                This preview is not authorization to execute. The server must
+                validate the affected accounts, permissions and approval requirements.
+            </div>
+
+            <div class="modal-actions">
+                <button class="secondary-button" data-close-modal>Cancel</button>
+                <button class="primary-button" id="submitBulkOperation">
+                    Submit for authorization
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================================
+     TOAST NOTIFICATIONS
+==================================== -->
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+</body>
+
+</html>
