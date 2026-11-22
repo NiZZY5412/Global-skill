@@ -259,6 +259,12 @@ def health() -> dict[str, str]:
     return {"status": "ok", "service": settings.app_name}
 
 
+@app.get("/")
+def api_root() -> dict[str, str]:
+    """Make a directly opened API deployment self-describing instead of 404."""
+    return {"service": settings.app_name, "status": "ok", "docs": "/docs", "health": "/health"}
+
+
 def require_admin(credentials: HTTPAuthorizationCredentials | None) -> sqlite3.Row | None:
     if settings.environment == "development" and not credentials:
         return None
